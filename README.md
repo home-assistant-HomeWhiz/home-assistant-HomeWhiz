@@ -5,6 +5,12 @@ Currently, only basic washing machines are supported. If your device doesn't wor
 
 ## Installation
 
+### Option 1. Using HACS
+1. Add this repository to [HACS custom repositories](https://hacs.xyz/docs/faq/custom_repositories/) 
+2. Search for `home-assistant-homewhiz` on HACS integration page
+3. Install the integration and Restart Home Assistant
+
+### Option 2. Manually
 1. Using the tool of choice open the directory (folder) for your HA configuration (where you find `configuration.yaml`).
 2. If you do not have a `custom_components` directory (folder) there, you need to create it.
 3. In the `custom_components` directory (folder) create a new folder called `HomeWhiz`.
