@@ -26,3 +26,8 @@ Currently, only basic washing machines are supported. If your device doesn't wor
 4. Optionally rename the device 
 
 
+## Additional notes
+
+Smartphone app doesn't seem to be working when integration is enabled. 
+To make the app work again you have to disable the integration, restart the HA and wait a few minutes ( In my case bluetooth icon on a washing machine starts flashing )
+

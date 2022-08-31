@@ -74,6 +74,7 @@ class MessageAccumulator:
             self.expected_index = 0
             return full_message
 
+
 def clamp(value: int):
     return value if value < 128 else value - 128
 
