@@ -74,14 +74,17 @@ class MessageAccumulator:
             self.expected_index = 0
             return full_message
 
+def clamp(value: int):
+    return value if value < 128 else value - 128
+
 
 def parse_message(message: bytearray):
     return WasherState(
         device_state=DeviceState(message[35]),
         device_sub_state=DeviceSubState(message[50]),
-        temperature=message[37],
-        spin=message[38] * 100,
-        rinse_hold=message[38] == 17,
+        temperature=clamp(message[37]),
+        spin=clamp(message[38]) * 100,
+        rinse_hold=clamp(message[38]) == 17,
         duration_minutes=message[44] * 60 + message[45],
         remaining_minutes=message[46] * 60 + message[47],
         delay_minutes=None if message[48] == 128 else message[48] * 60 + message[49]
