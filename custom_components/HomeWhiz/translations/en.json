@@ -22,5 +22,10 @@
       "progress": {
         "scan_task": "Searching for devices..."
       }
+    },
+    "options": {
+        "abort": {
+          "no_devices": "No devices found."
+        }
     }
   }
