@@ -8,7 +8,7 @@
           }
         },
         "confirm": {
-          "description": "Do you want to set up MagicStrip?"
+          "description": "Do you want to set up HomeWhiz?"
         }
       },
       "error": {
@@ -17,10 +17,15 @@
       },
       "abort": {
         "already_configured": "[%key:common::config_flow::abort::already_configured_device%]",
-        "no_devices": "No devices found."
+        "no_devices": "[%key:common::config_flow::abort::no_devices%]"
       },
       "progress": {
         "scan_task": "Searching for devices..."
       }
+    },
+    "options": {
+        "abort": {
+          "no_devices": "[%key:common::config_flow::abort::no_devices%]"
+        }
     }
   }
