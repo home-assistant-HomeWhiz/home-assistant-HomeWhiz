@@ -12,7 +12,7 @@ from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 from homeassistant.loader import async_get_custom_components
 
 from .const import DOMAIN, COORDINATORS
-from .homewhiz import ScannerHelper, scan, MessageAccumulator, parse_message, WasherState
+from .homewhiz import ScannerHelper, MessageAccumulator, parse_message, WasherState
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
