@@ -12,7 +12,7 @@ from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 from homeassistant.loader import async_get_custom_components
 
 from .const import DOMAIN, COORDINATORS
-from .homewhiz import scan, MessageAccumulator, parse_message, WasherState
+from .homewhiz import ScannerHelper, scan, MessageAccumulator, parse_message, WasherState
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
@@ -21,7 +21,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     hass.data.setdefault(DOMAIN, {})
 
     _LOGGER.info("Start scanning")
-    devices = await scan(hass)
+    scanner = ScannerHelper()
+    devices = await scanner.scan(hass)
     _LOGGER.info("Found {} device(s)".format(len(devices)))
     hass.data[DOMAIN].setdefault(COORDINATORS, [])
     for device in devices:
