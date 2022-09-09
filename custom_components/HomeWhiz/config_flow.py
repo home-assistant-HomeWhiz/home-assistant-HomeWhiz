@@ -6,7 +6,7 @@ from .homewhiz import scan
 
 
 async def _async_has_devices(hass: HomeAssistant) -> bool:
-    devices = await scan()
+    devices = await scan(hass)
     return len(devices) > 0
 
 

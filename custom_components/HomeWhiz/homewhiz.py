@@ -56,8 +56,8 @@ class WasherState:
     delay_minutes: Optional[int]
 
 
-async def scan():
-    devices = await bluetooth.async_get_scanner.discover()
+async def scan(hass):
+    devices = await bluetooth.async_get_scanner(hass).discover()
     return [d for d in devices if d.name.startswith("HwZ")]
 
 
