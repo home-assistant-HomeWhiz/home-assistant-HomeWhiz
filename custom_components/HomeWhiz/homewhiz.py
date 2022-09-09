@@ -3,6 +3,7 @@ from enum import Enum
 from typing import Optional
 
 from bleak import BleakScanner
+from homeassistant.components import bluetooth
 
 
 class DeviceState(Enum):
@@ -56,7 +57,7 @@ class WasherState:
 
 
 async def scan():
-    devices = await BleakScanner.discover()
+    devices = await bluetooth.async_get_scanner.discover()
     return [d for d in devices if d.name.startswith("HwZ")]
 
 
