@@ -21,7 +21,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     hass.data.setdefault(DOMAIN, {})
 
     _LOGGER.info("Start scanning")
-    devices = await scan()
+    devices = await scan(hass)
     _LOGGER.info("Found {} device(s)".format(len(devices)))
     hass.data[DOMAIN].setdefault(COORDINATORS, [])
     for device in devices:
