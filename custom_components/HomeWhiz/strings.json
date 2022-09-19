@@ -1,0 +1,31 @@
+{
+    "config": {
+      "step": {
+        "devices": {
+          "title": "Select a device",
+          "data": {
+            "device": "Device"
+          }
+        },
+        "confirm": {
+          "description": "Do you want to set up HomeWhiz?"
+        }
+      },
+      "error": {
+        "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]",
+        "unknown": "[%key:common::config_flow::error::unknown%]"
+      },
+      "abort": {
+        "already_configured": "[%key:common::config_flow::abort::already_configured_device%]",
+        "no_devices": "[%key:common::config_flow::abort::no_devices%]"
+      },
+      "progress": {
+        "scan_task": "Searching for devices..."
+      }
+    },
+    "options": {
+        "abort": {
+          "no_devices": "[%key:common::config_flow::abort::no_devices%]"
+        }
+    }
+  }

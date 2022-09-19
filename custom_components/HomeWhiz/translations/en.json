@@ -1,0 +1,31 @@
+{
+    "config": {
+      "abort": {
+        "already_configured": "Device is already configured",
+        "no_devices": "No devices found."
+      },
+      "error": {
+        "cannot_connect": "Failed to connect",
+        "unknown": "Unexpected error"
+      },
+      "step": {
+        "devices": {
+          "title": "Select a device",
+          "data": {
+            "device": "Device"
+          }
+        },
+        "confirm": {
+          "description": "Do you want to set up HomeWhiz?"
+        }
+      },
+      "progress": {
+        "scan_task": "Searching for devices..."
+      }
+    },
+    "options": {
+        "abort": {
+          "no_devices": "No devices found."
+        }
+    }
+  }

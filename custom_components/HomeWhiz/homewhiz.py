@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Optional
 
-from bleak import BleakScanner
+from homeassistant.components import bluetooth
 
 
 class DeviceState(Enum):
@@ -54,10 +54,10 @@ class WasherState:
     remaining_minutes: int
     delay_minutes: Optional[int]
 
-
-async def scan():
-    devices = await BleakScanner.discover()
-    return [d for d in devices if d.name.startswith("HwZ")]
+class ScannerHelper:
+    async def scan(self, hass):
+        devices = await bluetooth.async_get_scanner(hass).discover()
+        return [d for d in devices if d.name.startswith("HwZ")]
 
 
 class MessageAccumulator:
