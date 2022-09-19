@@ -1,5 +1,7 @@
 # HomeWhiz integration for Home Assistant
 
+![HomeWhiz icon](./icons/icon.png)
+
 Integration for devices that can connect to HomeWhiz mobile app (Beko, Grundig, Arcelik).
 Currently, only basic washing machines are supported. If your device doesn't work, please create an issue
 
