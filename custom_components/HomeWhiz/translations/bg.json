@@ -1,0 +1,31 @@
+{
+    "config": {
+      "abort": {
+        "already_configured": "Устройството вече е конфигурирано",
+        "no_devices": "Няма намерени устройства."
+      },
+      "error": {
+        "cannot_connect": "Неуспешно свързване",
+        "unknown": "Неочаквана грешка"
+      },
+      "step": {
+        "devices": {
+          "title": "Изберете устройство",
+          "data": {
+            "device": "Устройство"
+          }
+        },
+        "confirm": {
+          "description": "Искате ли да конфигурирате HomeWhiz?"
+        }
+      },
+      "progress": {
+        "scan_task": "Търсене на устройства..."
+      }
+    },
+    "options": {
+        "abort": {
+          "no_devices": "Няма намерени устройства."
+        }
+    }
+  }
