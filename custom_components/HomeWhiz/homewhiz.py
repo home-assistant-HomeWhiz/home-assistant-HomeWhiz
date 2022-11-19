@@ -36,6 +36,7 @@ class DeviceSubState(Enum):
     RINSE_HOLD = 17
     ADD_LAUNDRY = 19
     REMOTE_ANTICREASE = 20
+    DRYING = 21
     UNKNOWN = -1
 
     @classmethod
