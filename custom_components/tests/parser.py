@@ -1,7 +1,7 @@
 import unittest
 
-from custom_components.HomeWhiz import parse_message
-from custom_components.HomeWhiz.homewhiz import DeviceState, DeviceSubState
+from custom_components.homewhiz import parse_message
+from custom_components.homewhiz.homewhiz import DeviceState, DeviceSubState
 
 on = bytearray.fromhex("002f4a45a10100000000000000000000000000000000000000000200000000000000000a011e0c0000000080021102110000000000000000000000000000000100000000000001070000000000")
 running = bytearray.fromhex("002f4a45a10100000000000000000000000000000000000000000200000000000000001e819e0c0080000080021100398080010000000000000000000080808100800000008001078000808000")
