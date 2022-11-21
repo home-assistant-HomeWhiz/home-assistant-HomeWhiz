@@ -11,11 +11,13 @@
   "requirements": [
     "bleak"
   ],
+  "dependencies": ["bluetooth"],
   "version": "0.0.3",
   "bluetooth": [
     {
       "connectable": false,
       "local_name": "HwZ*"
     }
-  ]
+  ],
+  "iot_class": "local_push"
 }
