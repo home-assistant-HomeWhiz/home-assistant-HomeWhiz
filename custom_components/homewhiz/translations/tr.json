@@ -1,31 +1,32 @@
 {
-    "config": {
-      "abort": {
-        "already_configured": "Cihaz zaten yapılandırılmıştır",
-        "no_devices": "Cihazlar bulunamadı."
-      },
-      "error": {
-        "cannot_connect": "Bağlantı kurulamadı",
-        "unknown": "Beklenmedik hata"
-      },
-      "step": {
-        "devices": {
-          "title": "Bir cihaz seçiniz",
-          "data": {
-            "device": "Cihaz"
-          }
-        },
-        "confirm": {
-          "description": "HomeWhiz'i kurmak ister misiniz?"
+  "config": {
+    "abort": {
+      "already_configured": "Cihaz zaten yapılandırılmıştır",
+      "no_devices": "Cihazlar bulunamadı."
+    },
+    "error": {
+      "cannot_connect": "Bağlantı kurulamadı",
+      "unknown": "Beklenmedik hata"
+    },
+    "step": {
+      "devices": {
+        "title": "Bir cihaz seçiniz",
+        "data": {
+          "device": "Cihaz"
         }
       },
-      "progress": {
-        "scan_task": "Cihazlar aranıyor..."
+      "confirm": {
+        "description": "HomeWhiz'i kurmak ister misiniz?"
       }
     },
-    "options": {
-        "abort": {
-          "no_devices": "Cihazlar bulunamadı."
-        }
+    "progress": {
+      "scan_task": "Cihazlar aranıyor..."
+    }
+  },
+  "options": {
+    "step": {},
+    "abort": {
+      "no_devices": "Cihazlar bulunamadı."
     }
   }
+}
