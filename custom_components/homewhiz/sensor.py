@@ -5,9 +5,9 @@ from dataclasses import dataclass
 from typing import Callable, List
 
 from homeassistant.components.sensor import (
+    SensorDeviceClass,
     SensorEntity,
     SensorEntityDescription,
-    SensorDeviceClass,
 )
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import STATE_UNAVAILABLE, TEMP_CELSIUS
@@ -17,7 +17,7 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from . import HomewhizDataUpdateCoordinator
-from .const import DOMAIN, COORDINATORS
+from .const import COORDINATORS, DOMAIN
 from .homewhiz import WasherState
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
