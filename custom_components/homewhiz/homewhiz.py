@@ -5,6 +5,8 @@ from typing import Optional
 
 from homeassistant.components import bluetooth
 
+_LOGGER: logging.Logger = logging.getLogger(__package__)
+
 
 class DeviceState(Enum):
     ON = 10
@@ -16,6 +18,7 @@ class DeviceState(Enum):
 
     @classmethod
     def _missing_(cls, value: object):
+        _LOGGER.warning("Unknown DeviceState: %s", value)
         return cls.UNKNOWN
 
 
@@ -42,6 +45,7 @@ class DeviceSubState(Enum):
 
     @classmethod
     def _missing_(cls, value: object):
+        _LOGGER.warning("Unknown DeviceSubState: %s", value)
         return cls.UNKNOWN
 
 
@@ -68,6 +72,7 @@ class MessageAccumulator:
     accumulated = []
 
     def accumulate_message(self, message: bytearray):
+        _LOGGER.debug("Message (bytearray): %s", message)
         message_index = message[4]
         if message_index == 0:
             self.accumulated = message[7:]
