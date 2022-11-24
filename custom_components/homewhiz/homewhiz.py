@@ -81,6 +81,7 @@ class MessageAccumulator:
             full_message = self.accumulated + message[7:]
             self.expected_index = 0
             return full_message
+        return None
 
 
 def clamp(value: int):
