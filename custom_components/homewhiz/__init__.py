@@ -3,7 +3,6 @@ import logging
 
 from bleak import BleakClient
 from bleak.backends.device import BLEDevice
-from homeassistant.components import bluetooth
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant, callback
