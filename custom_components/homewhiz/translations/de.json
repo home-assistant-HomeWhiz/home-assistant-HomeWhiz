@@ -1,0 +1,32 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "Gerät ist bereits konfiguriert.",
+      "no_devices": "Keine Geräte gefunden."
+    },
+    "error": {
+      "cannot_connect": "Verbindung fehlgeschlagen",
+      "unknown": "Unerwarteter Fehler"
+    },
+    "step": {
+      "devices": {
+        "title": "Geräteauswahl",
+        "data": {
+          "device": "Gerät"
+        }
+      },
+      "confirm": {
+        "description": "Möchten Sie HomeWhiz einrichten?"
+      }
+    },
+    "progress": {
+      "scan_task": "Suche nach Geräten..."
+    }
+  },
+  "options": {
+    "step": {},
+    "abort": {
+      "no_devices": "Keine Geräte gefunden."
+    }
+  }
+}

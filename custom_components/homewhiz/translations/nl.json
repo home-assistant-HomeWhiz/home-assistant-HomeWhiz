@@ -1,0 +1,32 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "Het apparaat is al geconfigureerd",
+      "no_devices": "Geen apparaten gevonden."
+    },
+    "error": {
+      "cannot_connect": "Kan geen verbinding maken",
+      "unknown": "Onverwachte fout"
+    },
+    "step": {
+      "devices": {
+        "title": "Selecteer een apparaat",
+        "data": {
+          "device": "Apparaat"
+        }
+      },
+      "confirm": {
+        "description": "Wilt u HomeWhiz instellen?"
+      }
+    },
+    "progress": {
+      "scan_task": "Zoeken naar apparaten..."
+    }
+  },
+  "options": {
+    "step": {},
+    "abort": {
+      "no_devices": "Geen apparaten gevonden."
+    }
+  }
+}

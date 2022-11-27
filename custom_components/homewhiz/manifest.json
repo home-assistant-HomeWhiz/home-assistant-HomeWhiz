@@ -1,20 +1,23 @@
 {
-  "domain": "HomeWhiz",
+  "domain": "homewhiz",
   "name": "HomeWhiz",
   "documentation": "https://github.com/rowysock/home-assistant-HomeWhiz",
   "issue_tracker": "https://github.com/rowysock/home-assistant-HomeWhiz/issues",
   "config_flow": true,
   "codeowners": [
-    "@rowysock"
+    "@rowysock",
+    "@TechHummel"
   ],
   "requirements": [
     "bleak"
   ],
-  "version": "0.0.3",
+  "dependencies": ["bluetooth"],
+  "version": "0.0.6",
   "bluetooth": [
     {
       "connectable": false,
       "local_name": "HwZ*"
     }
-  ]
+  ],
+  "iot_class": "local_push"
 }

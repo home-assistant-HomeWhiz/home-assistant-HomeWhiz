@@ -1,7 +1,6 @@
 {
-  "name": "home-assistant-homewhiz",
+  "name": "HomeWhiz",
+  "render_readme": true,
   "hacs": "1.6.0",
-  "domains": ["sensor"],
-  "iot_class": "local_push",
   "homeassistant": "0.118.0"
 }

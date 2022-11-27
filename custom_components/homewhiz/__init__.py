@@ -5,16 +5,15 @@ from bleak import BleakClient
 from bleak.backends.device import BLEDevice
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import Platform
-from homeassistant.core import HomeAssistant
-from homeassistant.core import callback
-from homeassistant.components import bluetooth
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 from homeassistant.loader import async_get_custom_components
 
-from .const import DOMAIN, COORDINATORS
-from .homewhiz import ScannerHelper, MessageAccumulator, parse_message, WasherState
+from .const import COORDINATORS, DOMAIN
+from .homewhiz import MessageAccumulator, ScannerHelper, WasherState, parse_message
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
+CONNECTION_RETRY_TIMEOUT = 30
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
@@ -37,9 +36,9 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
 
 class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[WasherState]):
     def __init__(
-            self,
-            hass: HomeAssistant,
-            device: BLEDevice,
+        self,
+        hass: HomeAssistant,
+        device: BLEDevice,
     ) -> None:
         self._device = device
         self.client = BleakClient(device)
@@ -48,17 +47,24 @@ class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[WasherState]):
 
     async def connect(self):
         await self.connect_internal()
-        self.client.set_disconnected_callback(lambda client: self.hass.create_task(self.reconnect(client)))
+        self.client.set_disconnected_callback(
+            lambda client: self.hass.create_task(self.reconnect(client))
+        )
         await self.start_listening()
         return True
 
     async def start_listening(self):
-        await self.client.start_notify("0000ac02-0000-1000-8000-00805f9b34fb",
-                                       lambda sender, message: self.hass.create_task(
-                                           self.handle_notify(sender, message)))
-        await self.client.write_gatt_char("0000ac01-0000-1000-8000-00805f9b34fb",
-                                          bytearray.fromhex("02 04 00 04 00 1a 01 03"),
-                                          response=False)
+        await self.client.start_notify(
+            "0000ac02-0000-1000-8000-00805f9b34fb",
+            lambda sender, message: self.hass.create_task(
+                self.handle_notify(sender, message)
+            ),
+        )
+        await self.client.write_gatt_char(
+            "0000ac01-0000-1000-8000-00805f9b34fb",
+            bytearray.fromhex("02 04 00 04 00 1a 01 03"),
+            response=False,
+        )
 
     @callback
     async def handle_notify(self, sender: int, message: bytearray):
@@ -86,11 +92,13 @@ class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[WasherState]):
                 _LOGGER.debug("connected")
             except Exception as e:
                 _LOGGER.warning(e)
-                await asyncio.sleep(1)
+                await asyncio.sleep(CONNECTION_RETRY_TIMEOUT)
 
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
-    unload_ok = await hass.config_entries.async_unload_platforms(entry, [Platform.SENSOR])
+    unload_ok = await hass.config_entries.async_unload_platforms(
+        entry, [Platform.SENSOR]
+    )
     if unload_ok:
         hass.data[DOMAIN].pop(COORDINATORS, None)
 

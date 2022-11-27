@@ -1,8 +1,11 @@
+import logging
 from dataclasses import dataclass
 from enum import Enum
 from typing import Optional
 
 from homeassistant.components import bluetooth
+
+_LOGGER: logging.Logger = logging.getLogger(__package__)
 
 
 class DeviceState(Enum):
@@ -15,6 +18,7 @@ class DeviceState(Enum):
 
     @classmethod
     def _missing_(cls, value: object):
+        _LOGGER.warning("Unknown DeviceState: %s", value)
         return cls.UNKNOWN
 
 
@@ -36,10 +40,12 @@ class DeviceSubState(Enum):
     RINSE_HOLD = 17
     ADD_LAUNDRY = 19
     REMOTE_ANTICREASE = 20
+    DRYING = 21
     UNKNOWN = -1
 
     @classmethod
     def _missing_(cls, value: object):
+        _LOGGER.warning("Unknown DeviceSubState: %s", value)
         return cls.UNKNOWN
 
 
@@ -54,6 +60,7 @@ class WasherState:
     remaining_minutes: int
     delay_minutes: Optional[int]
 
+
 class ScannerHelper:
     async def scan(self, hass):
         devices = await bluetooth.async_get_scanner(hass).discover()
@@ -65,6 +72,7 @@ class MessageAccumulator:
     accumulated = []
 
     def accumulate_message(self, message: bytearray):
+        _LOGGER.debug("Message (bytearray): %s", message)
         message_index = message[4]
         if message_index == 0:
             self.accumulated = message[7:]
@@ -73,6 +81,7 @@ class MessageAccumulator:
             full_message = self.accumulated + message[7:]
             self.expected_index = 0
             return full_message
+        return None
 
 
 def clamp(value: int):
@@ -88,5 +97,5 @@ def parse_message(message: bytearray):
         rinse_hold=clamp(message[38]) == 17,
         duration_minutes=message[44] * 60 + message[45],
         remaining_minutes=message[46] * 60 + message[47],
-        delay_minutes=None if message[48] == 128 else message[48] * 60 + message[49]
+        delay_minutes=None if message[48] == 128 else message[48] * 60 + message[49],
     )
