@@ -23,6 +23,7 @@ class DeviceState(Enum):
 
 
 class DeviceSubState(Enum):
+    OFF = 0
     WASHING = 1
     SPIN = 2
     WATER_INTAKE = 3
