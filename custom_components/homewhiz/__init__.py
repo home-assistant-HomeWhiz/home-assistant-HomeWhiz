@@ -57,11 +57,12 @@ class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[WasherState | None]):
         super().__init__(hass, _LOGGER, name=DOMAIN)
 
     async def connect(self):
+        _LOGGER.info(f"[{self.address}] Connecting")
         self.device = bluetooth.async_ble_device_from_address(
             self._hass, self.address, connectable=True
         )
         if not self.device:
-            raise Exception(f"Device not found for address {self.address}")
+            raise Exception(f"device not found for address {self.address}")
         self._conn = await establish_connection(
             client_class=BleakClient,
             device=self.device,
@@ -69,7 +70,7 @@ class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[WasherState | None]):
             name=self.address,
         )
         if not self._conn.is_connected:
-            raise Exception(f"Can't connect to ${self.address}")
+            raise Exception(f"[{self.address}] Can't connect")
         await self._conn.start_notify(
             "0000ac02-0000-1000-8000-00805f9b34fb",
             lambda sender, message: self.hass.create_task(
@@ -81,7 +82,9 @@ class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[WasherState | None]):
             bytearray.fromhex("02 04 00 04 00 1a 01 03"),
             response=False,
         )
-        _LOGGER.info(f"[{self.address}] Successfully connected")
+        _LOGGER.info(
+            f"[{self.address}] Successfully connected. RSSI: {self.device.rssi}"
+        )
 
         return True
 
@@ -89,7 +92,7 @@ class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[WasherState | None]):
     def handle_disconnect(self):
         self.device = None
         self.async_set_updated_data(None)
-        _LOGGER.info(f"[{self.address}] Disconnected")
+        _LOGGER.info(f"[{self.address}] disconnected")
 
     @callback
     async def handle_notify(self, sender: int, message: bytearray):
