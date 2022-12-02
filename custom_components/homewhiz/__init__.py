@@ -1,4 +1,5 @@
 import logging
+import time
 
 from bleak import BleakClient
 from bleak.backends.device import BLEDevice
@@ -62,7 +63,7 @@ class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[WasherState | None]):
             self._hass, self.address, connectable=True
         )
         if not self.device:
-            raise Exception(f"device not found for address {self.address}")
+            raise Exception(f"Device not found for address {self.address}")
         self._conn = await establish_connection(
             client_class=BleakClient,
             device=self.device,
@@ -88,11 +89,31 @@ class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[WasherState | None]):
 
         return True
 
+    async def try_reconnect(self):
+        while self._conn is None or not self._conn.is_connected:
+            if not bluetooth.async_address_present(
+                self.hass, self.address, connectable=True
+            ):
+                _LOGGER.info(
+                    f"[{self.address}] Device not found. "
+                    f"Will reconnect automatically when the device becomes available"
+                )
+                return
+            try:
+                await self.connect()
+            except Exception:
+                _LOGGER.info(
+                    f"[{self.address}] Can't reconnect. Waiting a minute to try again"
+                )
+                time.sleep(60)
+
     @callback
     def handle_disconnect(self):
         self.device = None
+        self._conn = None
         self.async_set_updated_data(None)
-        _LOGGER.info(f"[{self.address}] disconnected")
+        _LOGGER.info(f"[{self.address}] Disconnected")
+        self.hass.create_task(self.try_reconnect())
 
     @callback
     async def handle_notify(self, sender: int, message: bytearray):
