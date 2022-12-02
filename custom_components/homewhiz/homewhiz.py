@@ -65,7 +65,7 @@ class WasherState:
 class ScannerHelper:
     async def scan(self, hass):
         devices = await bluetooth.async_get_scanner(hass).discover()
-        return [d for d in devices if d.name.startswith("HwZ")]
+        return [d for d in devices if d.name is not None and d.name.startswith("HwZ")]
 
 
 class MessageAccumulator:
@@ -73,8 +73,8 @@ class MessageAccumulator:
     accumulated = []
 
     def accumulate_message(self, message: bytearray):
-        _LOGGER.debug("Message (bytearray): %s", message)
         message_index = message[4]
+        _LOGGER.debug("Message index: %d", message_index)
         if message_index == 0:
             self.accumulated = message[7:]
             self.expected_index = 1

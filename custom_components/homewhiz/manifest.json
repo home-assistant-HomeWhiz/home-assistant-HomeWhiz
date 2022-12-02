@@ -9,7 +9,8 @@
     "@TechHummel"
   ],
   "requirements": [
-    "bleak"
+    "bleak",
+    "bleak_retry_connector"
   ],
   "dependencies": ["bluetooth"],
   "version": "0.0.6",

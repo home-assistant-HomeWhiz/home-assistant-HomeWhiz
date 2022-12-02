@@ -17,7 +17,7 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from . import HomewhizDataUpdateCoordinator
-from .const import COORDINATORS, DOMAIN
+from .const import DOMAIN
 from .homewhiz import WasherState
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
@@ -90,18 +90,18 @@ class HomeWhizEntity(CoordinatorEntity[WasherState], SensorEntity):
         self,
         coordinator: HomewhizDataUpdateCoordinator,
         description: HomeWhizEntityDescription,
+        entry: ConfigEntry,
     ):
         super().__init__(coordinator)
-        short_mac = coordinator.client.address.split("-")[-1]
+        name = entry.title
         self.entity_description = description
         self._value_fn = description.value_fn
-        self._attr_unique_id = f"{short_mac}_{description.key}"
-        self._attr_name = f"{short_mac} {description.name}"
-        _LOGGER.debug(self._attr_unique_id)
+        self._attr_unique_id = f"{name}_{description.key}"
+        self._attr_name = f"{name} {description.name}"
         self._attr_device_info = DeviceInfo(
-            connections={("bluetooth", coordinator.client.address)},
-            identifiers={(DOMAIN, short_mac)},
-            name=short_mac,
+            connections={("bluetooth", entry.unique_id)},
+            identifiers={(DOMAIN, name)},
+            name=name,
         )
 
     @property
@@ -121,11 +121,10 @@ class HomeWhizEntity(CoordinatorEntity[WasherState], SensorEntity):
 async def async_setup_entry(
     hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
 ) -> None:
-    coordinators = hass.data[DOMAIN][COORDINATORS]
+    coordinator = hass.data[DOMAIN][entry.entry_id]
     async_add_entities(
         [
-            HomeWhizEntity(coordinator, description)
-            for coordinator in coordinators
+            HomeWhizEntity(coordinator, description, entry)
             for description in DESCRIPTIONS
         ]
     )
