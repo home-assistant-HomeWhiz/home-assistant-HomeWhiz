@@ -14,7 +14,7 @@ spinning = bytearray.fromhex(
 )
 
 
-class ParserTestCase(unittest.TestCase):
+class TestParser(unittest.TestCase):
     def test_on(self):
         actual = parse_message(on)
         self.assertEqual(actual.device_state, DeviceState.ON)
@@ -24,7 +24,7 @@ class ParserTestCase(unittest.TestCase):
         self.assertEqual(actual.duration_minutes, 137)
         self.assertEqual(actual.remaining_minutes, 137)
         self.assertEqual(actual.delay_minutes, 0)
-        self.assertEqual(actual.device_sub_state, DeviceSubState.UNKNOWN)
+        self.assertEqual(actual.device_sub_state, DeviceSubState.OFF)
 
     def test_running(self):
         actual = parse_message(running)
