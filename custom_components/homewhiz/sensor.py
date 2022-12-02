@@ -62,6 +62,7 @@ DESCRIPTIONS: List[HomeWhizEntityDescription] = [
         value_fn=lambda s: s.rinse_hold,
     ),
     HomeWhizEntityDescription(
+        device_class=SensorDeviceClass.DURATION,
         key="duration",
         name="Duration",
         icon="mdi:clock-outline",
@@ -69,6 +70,7 @@ DESCRIPTIONS: List[HomeWhizEntityDescription] = [
         native_unit_of_measurement="min",
     ),
     HomeWhizEntityDescription(
+        device_class=SensorDeviceClass.DURATION,
         key="remaining",
         name="Time remaining",
         icon="mdi:clock-outline",
@@ -76,6 +78,7 @@ DESCRIPTIONS: List[HomeWhizEntityDescription] = [
         native_unit_of_measurement="min",
     ),
     HomeWhizEntityDescription(
+        device_class=SensorDeviceClass.DURATION,
         key="delay",
         name="Delay",
         icon="mdi:clock-outline",
