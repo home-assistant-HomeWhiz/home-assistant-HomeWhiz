@@ -1,5 +1,5 @@
+import asyncio
 import logging
-import time
 
 from bleak import BleakClient
 from bleak.backends.device import BLEDevice
@@ -105,7 +105,7 @@ class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[WasherState | None]):
                 _LOGGER.info(
                     f"[{self.address}] Can't reconnect. Waiting a minute to try again"
                 )
-                time.sleep(60)
+                await asyncio.sleep(60)
 
     @callback
     def handle_disconnect(self):
