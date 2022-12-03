@@ -11,7 +11,7 @@ from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 
 from .const import DOMAIN, PLATFORMS
-from .homewhiz import MessageAccumulator, ScannerHelper, WasherState, parse_message
+from .homewhiz import MessageAccumulator, WasherState, parse_message
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 CONNECTION_RETRY_TIMEOUT = 30
