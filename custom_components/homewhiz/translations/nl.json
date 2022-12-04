@@ -1,32 +1,21 @@
 {
-  "config": {
-    "abort": {
-      "already_configured": "Het apparaat is al geconfigureerd",
-      "no_devices": "Geen apparaten gevonden."
-    },
-    "error": {
-      "cannot_connect": "Kan geen verbinding maken",
-      "unknown": "Onverwachte fout"
-    },
-    "step": {
-      "devices": {
-        "title": "Selecteer een apparaat",
-        "data": {
-          "device": "Apparaat"
+    "config": {
+        "abort": {
+            "already_configured": "Apparaat is al geconfigureerd",
+            "already_in_progress": "De configuratie is momenteel al bezig",
+            "no_devices_found": "Geen apparaten gevonden op het netwerk"
+        },
+        "flow_title": "{name}",
+        "step": {
+            "bluetooth_confirm": {
+                "description": "Wilt u {name} instellen?"
+            },
+            "user": {
+                "data": {
+                    "address": "Apparaat"
+                },
+                "description": "Kies een apparaat om in te stellen"
+            }
         }
-      },
-      "confirm": {
-        "description": "Wilt u HomeWhiz instellen?"
-      }
-    },
-    "progress": {
-      "scan_task": "Zoeken naar apparaten..."
     }
-  },
-  "options": {
-    "step": {},
-    "abort": {
-      "no_devices": "Geen apparaten gevonden."
-    }
-  }
 }
