@@ -64,8 +64,8 @@ in the virtual environment should you have more thant one version installed)
 If everything works you should be set 
 
 6. In VSCode click on the 4 Squares icon on the left of the screen (`ctrl+shift+x`) to open the Marketplace
-7. Seach for "Black", and select "Formatting support for python files using black" by Microsoft in the results 
-and install it
+7. Seach for "Black", and select "Format Python code with black" in the results and install it. You'll be 
+able to run it by right-clicking your file and select "Run Black"
 
 You should now have a fully functional IDE.
 
@@ -73,12 +73,3 @@ You should now have a fully functional IDE.
 If your code requires automated testing, the project uses pytest.
 
 Simply go to the root of your project and run `pytest`
-
-
-
-
-
-
-
-
-
