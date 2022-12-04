@@ -2,7 +2,6 @@
 This is a quick tutorial on how to setup your development environnement from scratch on any Debian
 based Linux distro and get started quickly. While this is based on VSCode, you can apply these steps
 to any other IDE.
-This tutorial assumes you already have python3 and python3-dev installed on your machine
 
 ## Outline
 1. Create a folder for you to work in
@@ -22,7 +21,7 @@ or at type the command line
 We need to make sure the package list is up to date
 `user@machine:$ sudo apt-get update`
 
-`sudo apt-get install build-essential python3 python3-dev`
+`sudo apt-get install python3 python3-dev`
 
 ## Install Visual Studio Code
 go to https://code.visualstudio.com/Download and download your package (.deb)
