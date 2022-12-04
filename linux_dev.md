@@ -21,7 +21,7 @@ or at type the command line
 We need to make sure the package list is up to date
 `user@machine:$ sudo apt-get update`
 
-`sudo apt-get install python3 python3-dev`
+`sudo apt-get install python3 python3-dev python3-venv`
 
 ## Install Visual Studio Code
 go to https://code.visualstudio.com/Download and download your package (.deb)
@@ -36,8 +36,8 @@ You will be presented with a Welcome / Start screen, minimize the window for now
 1. Go to https://github.com Create an account if you haven't already
 2. Go to https://github.com/rowysock/home-assistant-HomeWhiz
 3. On the top right corner click on the down arrow at the right of "Fork" and "create new fork"
-4. Fill the required fields and continue. You now have your own copy of the code to work with
-5. Copy the URL (everything left of the '?') eg: https://github.com/YOUR_NAME/home-assistant-HomeWhiz
+4. Fill the required fields and follow the instructions. You now have your own copy of the code to work with
+5. Copy the URL (everything left of the '?' if present) eg: https://github.com/YOUR_NAME/home-assistant-HomeWhiz
 
 ## Configure your developement environnement inside VSCode
 1. Return to VSCode and click on "Clone Git Repository" and paste the URL
@@ -46,8 +46,6 @@ You will be presented with a Welcome / Start screen, minimize the window for now
 4. Now click Terminal on the menu bar at the to of the window, then New Terminal 
 
 The prompt should be `user@machine:~/dev/home-assistant-HomeWhiz$`
-
-`sudo apt-get install python3-venv`
 
 `python3 -m venv ./venv`
 
@@ -58,7 +56,8 @@ of your project
 
 5. Install the required python dependencies
 
-`python3 -m pip install -r requirement_dev.txt`
+`python3 -m pip install -r requirement_dev.txt` (using python3 -m instead of pip ensures that the same interpreter is used
+in the virtual environment should you have more thant one version installed)
 
 `python3 -m pip install -r requirement_test.txt`
 
