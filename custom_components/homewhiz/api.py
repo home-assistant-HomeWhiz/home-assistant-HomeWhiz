@@ -64,10 +64,11 @@ async def make_get_config_request(contents: dict):
     configuration_id = contents["cid"]
     configuration_version = contents["ver"]
     lang = contents["lang"]
+    ctype = contents["ctype"]
     async with aiohttp.ClientSession() as session:
         async with session.get(
             f"https://s3-eu-west-1.amazonaws.com/procam-contents"
-            f"/CONFIGURATIONS/{configuration_id}"
+            f"/{ctype}S/{configuration_id}"
             f"/v{configuration_version}"
             f"/{configuration_id}.{lang}.json",
         ) as response:

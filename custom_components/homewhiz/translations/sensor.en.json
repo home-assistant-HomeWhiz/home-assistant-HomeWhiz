@@ -1,0 +1,66 @@
+{
+  "state": {
+    "homewhiz__STATE": {
+      "DEVICE_STATE_ON": "On",
+      "DEVICE_STATE_OFF": "Off",
+      "DEVICE_STATE_RUNNING": "Running",
+      "DEVICE_STATE_PAUSED": "Paused",
+      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Time Delay Active"
+    },
+    "homewhiz__SUB_STATE": {
+      "WASHER_SUBSTATE_WASHING": "Wash",
+      "WASHER_SUBSTATE_SPIN": "Spin",
+      "WASHER_WATER_INTAKE": "Water intake",
+      "WASHER_SUBSTATE_PREWASH": "Prewash",
+      "WASHER_SUBSTATE_RINSING": "Rinse",
+      "WASHER_SUBSTATE_SOFTENER": "Softener",
+      "WASHER_SUBSTATE_PROGRAM_STARTED": "Programme starting",
+      "WASHER_SUBSTATE_TIME_DELAY_ENABLED": "End time enabled",
+      "WASHER_SUBSTATE_PAUSED": "Paused",
+      "WASHER_SUBSTATE_ANALYSING": "Analysing",
+      "WASHER_SUBSTATE_DOOR_LOCKED": "Door locked",
+      "WASHER_SUBSTATE_OPENING_DOOR": "Opening door",
+      "WASHER_SUBSTATE_LOCKING_DOOR": "Locking door",
+      "WASHER_SUBSTATE_REMOVE_LAUNDRY": "Washing cycle complete; remove laundry",
+      "WASHER_SUBSTATE_ADD_LAUNDRY": "You may add laundry",
+      "WASHER_SUBSTATE_RINSE_HOLD": "Rinse hold is active; select spin speed",
+      "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Remote anti-creasing is in progress.",
+      "WASHER_SUBSTATE_DRYING": "Drying"
+    },
+    "homewhiz__WASHER_TEMPERATURE": {
+      "TEMPERATURE_COLD_WASH": "Cold Wash",
+      "TEMPERATURE_20": "20 \u00b0C",
+      "TEMPERATURE_30": "30 \u00b0C",
+      "TEMPERATURE_40": "40 \u00b0C"
+    },
+    "homewhiz__WASHER_SPIN": {
+      "SPIN_NO_SPIN": "No Spin",
+      "SPIN_RINSE_HOLD": "Rinse Hold"
+    },
+    "homewhiz__WASHER_PREWASH": {
+      "PREWASH_OFF": "Off",
+      "PREWASH_ON": "On"
+    },
+    "homewhiz__WASHER_EXTRARINSE": {
+      "EXTRA_RINSE_OFF": "Extra Rinse Off",
+      "EXTRA_RINSE_ON": "Extra Rinse On"
+    },
+    "homewhiz__WASHER_FAST_PLUS": {
+      "FAST_PLUS_OFF": "Off",
+      "FAST_PLUS_ON_FAST": "Fast",
+      "FAST_PLUS_ON_FAST_PLUS": "Fast+"
+    },
+    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
+      "HIDDEN_ANTI_CREASE_OFF": "Off",
+      "HIDDEN_ANTI_CREASE_ON": "On"
+    },
+    "homewhiz__WASHER_STEAM": {
+      "STEAM_OFF": "STEAM_OFF",
+      "STEAM_ON": "STEAM_ON"
+    },
+    "homewhiz__WASHER_PHR": {
+      "PHR_OFF": "Off",
+      "PHR_ON": "On"
+    }
+  }
+}

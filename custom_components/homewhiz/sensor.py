@@ -36,7 +36,7 @@ def clamp(value: int):
 
 @dataclass
 class HomeWhizEntityDescription(SensorEntityDescription):
-    value_fn: Callable[[bytearray], float | str] | None = None
+    value_fn: Callable[[bytearray], float | str | None] | None = None
 
 
 class EnumEntityDescription(HomeWhizEntityDescription):
@@ -45,15 +45,16 @@ class EnumEntityDescription(HomeWhizEntityDescription):
     ):
         self.key = key
         self.icon = "mdi:state-machine"
-        self._options = options
+        self.options = options
         self._read_index = read_index
+        self.device_class = f"{DOMAIN}__{self.key}"
 
     def value_fn(self, data):
         value = clamp(data[self._read_index])
-        for option in self._options:
+        for option in self.options:
             if option.wifiArrayValue == value:
                 return option.strKey
-        return "UNKNOWN"
+        return None
 
 
 class ProgramEntityDescription(HomeWhizEntityDescription):
@@ -67,7 +68,7 @@ class ProgramEntityDescription(HomeWhizEntityDescription):
         for option in self._program.values:
             if option.wfaValue is value:
                 return option.strKey
-        return "UNKNOWN"
+        return None
 
 
 class SubProgramBoundedEntityDescription(HomeWhizEntityDescription):
@@ -163,10 +164,10 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizDataUpdateCoordinator], SensorEnt
     ):
         super().__init__(coordinator)
         name = entry.title
+        self._entry = entry
         self.entity_description = description
         self._value_fn = description.value_fn
         self._attr_unique_id = f"{name}_{description.key}"
-        self._attr_name = f"{name} {description.key}"
         self._attr_device_info = DeviceInfo(
             connections={("bluetooth", entry.unique_id)},
             identifiers={(DOMAIN, name)},
@@ -188,6 +189,19 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizDataUpdateCoordinator], SensorEnt
             self.coordinator.connection is not None
             and self.coordinator.connection.is_connected
         )
+
+    @property
+    def name(self) -> str | None:
+        key = self.entity_description.key
+        if key == "STATE":
+            return "State"
+        if key == "SUB_STATE":
+            return "Sub-state"
+        for localization in self._entry.data["localizations"]:
+            for localization_key in localization["localizations"]:
+                if localization_key == key:
+                    return localization["localizations"][localization_key]
+        return key
 
 
 async def async_setup_entry(

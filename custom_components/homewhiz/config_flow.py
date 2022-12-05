@@ -1,4 +1,3 @@
-import json
 import logging
 from typing import Any
 
@@ -106,17 +105,33 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):
                     canonical_uri="/procam/contents",
                     canonical_querystring=(
                         f"applianceId={appId}&"
-                        f"ctype=CONFIGURATION&"
+                        f"ctype=CONFIGURATION%2CLOCALIZATION&"
                         f"lang=en-GB&testMode=true"
                     ),
                     credentials=credentials,
                 )
-                contents = contents_response["data"]["results"][0]
-                config_response = await make_get_config_request(contents)
-                _LOGGER.debug(json.dumps(config_response, indent=4))
+                config_contents = [
+                    content
+                    for content in contents_response["data"]["results"]
+                    if content["ctype"] == "CONFIGURATION"
+                ]
+                localization_contents = [
+                    content
+                    for content in contents_response["data"]["results"]
+                    if content["ctype"] == "LOCALIZATION"
+                ]
+                config = await make_get_config_request(config_contents[0])
+                localizations = [
+                    await make_get_config_request(localization)
+                    for localization in localization_contents
+                ]
                 return self.async_create_entry(
                     title=self._name,
-                    data={"config": config_response, "model_id": modelId},
+                    data={
+                        "config": config,
+                        "localizations": localizations,
+                        "model_id": modelId,
+                    },
                 )
             except LoginError:
                 errors["base"] = "invalid_auth"
