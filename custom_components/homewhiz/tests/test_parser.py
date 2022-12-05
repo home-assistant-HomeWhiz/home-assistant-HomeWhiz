@@ -72,7 +72,7 @@ class TestParser(unittest.TestCase):
         self.assertEqual(actual.delay_minutes, 44)
         self.assertEqual(actual.device_sub_state, DeviceSubState.UNKNOWN)
 
-    def test_delay_defined(self):
+    def test_delay_started(self):
         actual = parse_message(delay_started)
         self.assertEqual(actual.device_state, DeviceState.TIME_DELAY_ACTIVE)
         self.assertEqual(actual.temperature, 40)
