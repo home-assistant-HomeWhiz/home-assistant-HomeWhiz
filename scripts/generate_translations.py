@@ -19,9 +19,18 @@ async def get_file(address: str):
             return json.loads(await response.text())
 
 
-localization_6_path = "https://s3-eu-west-1.amazonaws.com/procam-contents/LOCALIZATIONS/LOCALIZATION_6/v592/LOCALIZATION_6.en-GB.json"
-localization_30_path = "https://s3-eu-west-1.amazonaws.com/procam-contents/LOCALIZATIONS/LOCALIZATION_30/v100/LOCALIZATION_30.en-GB.json"
-config_216_path = "https://s3-eu-west-1.amazonaws.com/procam-contents/CONFIGURATIONS/CONFIGURATION_216/v14/CONFIGURATION_216.en-GB.json"
+localization_6_path = (
+    "https://s3-eu-west-1.amazonaws.com/procam-contents"
+    "/LOCALIZATIONS/LOCALIZATION_6/v592/LOCALIZATION_6.en-GB.json"
+)
+localization_30_path = (
+    "https://s3-eu-west-1.amazonaws.com/procam-contents"
+    "/LOCALIZATIONS/LOCALIZATION_30/v100/LOCALIZATION_30.en-GB.json"
+)
+config_216_path = (
+    "https://s3-eu-west-1.amazonaws.com/procam-contents"
+    "/CONFIGURATIONS/CONFIGURATION_216/v14/CONFIGURATION_216.en-GB.json"
+)
 
 
 async def generate():
