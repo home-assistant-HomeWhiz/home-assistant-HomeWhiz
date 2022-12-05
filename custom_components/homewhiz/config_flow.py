@@ -105,7 +105,9 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):
                     host="api.arcelikiot.com",
                     canonical_uri="/procam/contents",
                     canonical_querystring=(
-                        f"applianceId={appId}&ctype=CONFIGURATION&lang=en-GB&testMode=true"
+                        f"applianceId={appId}&"
+                        f"ctype=CONFIGURATION&"
+                        f"lang=en-GB&testMode=true"
                     ),
                     credentials=credentials,
                 )

@@ -21,7 +21,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     address = entry.unique_id
     if entry.data["config"] is None:
         raise Exception(
-            "Appliance config not fetched from the API. Please configure the integration again"
+            "Appliance config not fetched from the API. "
+            "Please configure the integration again"
         )
     coordinator = hass.data.setdefault(DOMAIN, {})[
         entry.entry_id

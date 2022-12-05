@@ -66,7 +66,10 @@ async def make_get_config_request(contents: dict):
     lang = contents["lang"]
     async with aiohttp.ClientSession() as session:
         async with session.get(
-            f"https://s3-eu-west-1.amazonaws.com/procam-contents/CONFIGURATIONS/{configuration_id}/v{configuration_version}/{configuration_id}.{lang}.json",
+            f"https://s3-eu-west-1.amazonaws.com/procam-contents"
+            f"/CONFIGURATIONS/{configuration_id}"
+            f"/v{configuration_version}"
+            f"/{configuration_id}.{lang}.json",
         ) as response:
             if not response.ok:
                 _LOGGER.error(await response.text())
