@@ -1,7 +1,7 @@
 # Develop on linux
 This is a quick tutorial on how to setup your development environnement from scratch on any Debian
-based Linux distro and get started quickly. While this is based on VSCode, you can apply these steps
-to any other IDE.
+based Linux distro and get started. While this is based on VSCode, you can apply these steps to any
+other IDE.
 
 ## Outline
 1. Create a folder for you to work in
@@ -19,6 +19,7 @@ or at type the command line
 
 ## Get your system ready
 We need to make sure the package list is up to date
+
 `user@machine:$ sudo apt-get update`
 
 `sudo apt-get install python3 python3-dev python3-venv`
@@ -28,7 +29,7 @@ go to https://code.visualstudio.com/Download and download your package (.deb)
 then follow the instructions at https://code.visualstudio.com/docs/setup/linux
 
 You can now lauch VSCode
-Follow the wizzard and at the end select the folder you created before. You can answer 'yes'
+Follow the wizzard and, at the end, select the folder you created before. You can answer 'yes'
 "Do you trust the authors of the files in this folder?".
 You will be presented with a Welcome / Start screen, minimize the window for now.
 
