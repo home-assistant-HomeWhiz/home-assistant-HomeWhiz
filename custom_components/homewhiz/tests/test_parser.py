@@ -18,12 +18,12 @@ spinning = bytearray.fromhex(
 
 delay_defined = bytearray.fromhex(
     "003853e0ab0100000000000000000000000000000000000000000300000000000000000a01280e"
-    "000000008002100210002c000000000000000000010000000100000000000001078000000000"
+    "000000008002100210012c000000000000000000010000000100000000000001078000000000"
 )
 
 delay_started = bytearray.fromhex(
     "003853e0ab0100000000000000000000000000000000000000000300000000000000003c01280e"
-    "00000000800210021080ac080000000000000000010000000100000000000001078000808000"
+    "00000000800210021081ac080000000000000000010000000100000000000001078000808000"
 )
 
 
@@ -69,8 +69,8 @@ class TestParser(unittest.TestCase):
         self.assertEqual(actual.rinse_hold, False)
         self.assertEqual(actual.duration_minutes, 136)
         self.assertEqual(actual.remaining_minutes, 136)
-        self.assertEqual(actual.delay_minutes, 44)
-        self.assertEqual(actual.device_sub_state, DeviceSubState.UNKNOWN)
+        self.assertEqual(actual.delay_minutes, 104)
+        self.assertEqual(actual.device_sub_state, DeviceSubState.OFF)
 
     def test_delay_started(self):
         actual = parse_message(delay_started)
@@ -80,7 +80,7 @@ class TestParser(unittest.TestCase):
         self.assertEqual(actual.rinse_hold, False)
         self.assertEqual(actual.duration_minutes, 136)
         self.assertEqual(actual.remaining_minutes, 136)
-        self.assertEqual(actual.delay_minutes, 44)
+        self.assertEqual(actual.delay_minutes, 104)
         self.assertEqual(actual.device_sub_state, DeviceSubState.TIME_DELAY_ENABLED)
 
 
