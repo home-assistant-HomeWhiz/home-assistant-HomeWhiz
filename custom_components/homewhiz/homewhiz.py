@@ -90,5 +90,7 @@ def parse_message(message: bytearray):
         rinse_hold=clamp(message[38]) == 17,
         duration_minutes=message[44] * 60 + message[45],
         remaining_minutes=message[46] * 60 + message[47],
-        delay_minutes=None if message[48] == 128 else message[48] * 60 + message[49],
+        delay_minutes=None
+        if message[48] == 128
+        else clamp(message[48]) * 60 + clamp(message[49]),
     )
