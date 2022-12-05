@@ -11,7 +11,7 @@ from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 
 from .const import DOMAIN, PLATFORMS
-from .homewhiz import MessageAccumulator, WasherState, parse_message
+from .homewhiz import MessageAccumulator
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 CONNECTION_RETRY_TIMEOUT = 30
@@ -19,6 +19,10 @@ CONNECTION_RETRY_TIMEOUT = 30
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     address = entry.unique_id
+    if entry.data["config"] is None:
+        raise Exception(
+            "Appliance config not fetched from the API. Please configure the integration again"
+        )
     coordinator = hass.data.setdefault(DOMAIN, {})[
         entry.entry_id
     ] = HomewhizDataUpdateCoordinator(hass, address)
@@ -44,7 +48,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     return True
 
 
-class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[WasherState | None]):
+class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[bytearray | None]):
     def __init__(
         self,
         hass: HomeAssistant,
@@ -53,38 +57,38 @@ class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[WasherState | None]):
         self.address = address
         self._accumulator = MessageAccumulator()
         self._hass = hass
-        self._conn: BleakClient | None = None
-        self.device: BLEDevice | None = None
+        self._device: BLEDevice | None = None
+        self.connection: BleakClient | None = None
         super().__init__(hass, _LOGGER, name=DOMAIN)
 
     async def connect(self):
         _LOGGER.info(f"[{self.address}] Connecting")
-        self.device = bluetooth.async_ble_device_from_address(
+        self._device = bluetooth.async_ble_device_from_address(
             self._hass, self.address, connectable=True
         )
-        if not self.device:
+        if not self._device:
             raise Exception(f"Device not found for address {self.address}")
-        self._conn = await establish_connection(
+        self.connection = await establish_connection(
             client_class=BleakClient,
-            device=self.device,
+            device=self._device,
             disconnected_callback=lambda client: self.handle_disconnect(),
             name=self.address,
         )
-        if not self._conn.is_connected:
+        if not self.connection.is_connected:
             raise Exception(f"[{self.address}] Can't connect")
-        await self._conn.start_notify(
+        await self.connection.start_notify(
             "0000ac02-0000-1000-8000-00805f9b34fb",
             lambda sender, message: self.hass.create_task(
                 self.handle_notify(sender, message)
             ),
         )
-        await self._conn.write_gatt_char(
+        await self.connection.write_gatt_char(
             "0000ac01-0000-1000-8000-00805f9b34fb",
             bytearray.fromhex("02 04 00 04 00 1a 01 03"),
             response=False,
         )
         _LOGGER.info(
-            f"[{self.address}] Successfully connected. RSSI: {self.device.rssi}"
+            f"[{self.address}] Successfully connected. RSSI: {self._device.rssi}"
         )
 
         return True
@@ -109,7 +113,7 @@ class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[WasherState | None]):
 
     @callback
     def handle_disconnect(self):
-        self.device = None
+        self._device = None
         self._conn = None
         self.async_set_updated_data(None)
         _LOGGER.info(f"[{self.address}] Disconnected")
@@ -123,12 +127,13 @@ class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[WasherState | None]):
             return
         full_message = self._accumulator.accumulate_message(message)
         if full_message is not None:
-            data = parse_message(full_message)
-            _LOGGER.debug(f"[{self.address}] Parsed message: {data}")
-            self.async_set_updated_data(data)
+            _LOGGER.debug(
+                f"Full message: {full_message}",
+            )
+            self.async_set_updated_data(full_message)
 
     async def disconnect(self):
-        await self._conn.disconnect()
+        await self.connection.disconnect()
 
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
