@@ -144,3 +144,71 @@ def test_generic_washing_machine_spinning(config):
             "WASHER_REMAINING": 10,
         },
     )
+
+
+def test_generic_washing_machine_delay_defined(config):
+    data = bytearray.fromhex(
+        "003853e0ab0100000000000000000000000000000000000000000300000000000000000a01280e"
+        "000000008002100210012c000000000000000000010000000100000000000001078000000000"
+    )
+    descriptions = generate_descriptions_from_config(config)
+    values = {
+        description.key: description.value_fn(data) for description in descriptions
+    }
+    test_case = TestCase()
+    test_case.maxDiff = None
+    test_case.assertDictEqual(
+        values,
+        {
+            "STATE": "DEVICE_STATE_ON",
+            "SUB_STATE": None,
+            "WASHER_EXTRARINSE": "EXTRA_RINSE_OFF",
+            "WASHER_FAST_PLUS": "FAST_PLUS_OFF",
+            "WASHER_HIDDEN_ANTI_CREASE": "HIDDEN_ANTI_CREASE_OFF",
+            "WASHER_PHR": "PHR_OFF",
+            "WASHER_PREWASH": "PREWASH_OFF",
+            "WASHER_PROGRAM": None,
+            "SPIN": 1400,
+            "WASHER_SPIN": None,
+            "TEMPERATURE": 40,
+            "WASHER_STEAM": "STEAM_OFF",
+            "WASHER_TEMPERATURE": "TEMPERATURE_40",
+            "WASHER_DELAY": 104,
+            "WASHER_DURATION": 136,
+            "WASHER_REMAINING": 136,
+        },
+    )
+
+
+def test_generic_washing_machine_delay_started(config):
+    data = bytearray.fromhex(
+        "003853e0ab0100000000000000000000000000000000000000000300000000000000003c01280e"
+        "00000000800210021081ac080000000000000000010000000100000000000001078000808000"
+    )
+    descriptions = generate_descriptions_from_config(config)
+    values = {
+        description.key: description.value_fn(data) for description in descriptions
+    }
+    test_case = TestCase()
+    test_case.maxDiff = None
+    test_case.assertDictEqual(
+        values,
+        {
+            "STATE": "DEVICE_STATE_TIME_DELAY_ACTIVE",
+            "SUB_STATE": "WASHER_SUBSTATE_TIME_DELAY_ENABLED",
+            "WASHER_EXTRARINSE": "EXTRA_RINSE_OFF",
+            "WASHER_FAST_PLUS": "FAST_PLUS_OFF",
+            "WASHER_HIDDEN_ANTI_CREASE": "HIDDEN_ANTI_CREASE_OFF",
+            "WASHER_PHR": "PHR_OFF",
+            "WASHER_PREWASH": "PREWASH_OFF",
+            "WASHER_PROGRAM": None,
+            "SPIN": 1400,
+            "WASHER_SPIN": None,
+            "TEMPERATURE": 40,
+            "WASHER_STEAM": "STEAM_OFF",
+            "WASHER_TEMPERATURE": "TEMPERATURE_40",
+            "WASHER_DELAY": 104,
+            "WASHER_DURATION": 136,
+            "WASHER_REMAINING": 136,
+        },
+    )
