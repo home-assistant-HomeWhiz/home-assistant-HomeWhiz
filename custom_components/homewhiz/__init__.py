@@ -78,7 +78,7 @@ class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[bytearray | None]):
             name=self.address,
         )
         if not self.connection.is_connected:
-            raise Exception(f"Can't connect")
+            raise Exception("Can't connect")
         await self.connection.start_notify(
             "0000ac02-0000-1000-8000-00805f9b34fb",
             lambda sender, message: self.hass.create_task(
@@ -102,14 +102,14 @@ class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[bytearray | None]):
                 self.hass, self.address, connectable=True
             ):
                 _LOGGER.info(
-                    f"Device not found. "
-                    f"Will reconnect automatically when the device becomes available"
+                    "Device not found. "
+                    "Will reconnect automatically when the device becomes available"
                 )
                 return
             try:
                 await self.connect()
             except Exception:
-                _LOGGER.info(f"Can't reconnect. Waiting a minute to try again")
+                _LOGGER.info("Can't reconnect. Waiting a minute to try again")
                 await asyncio.sleep(60)
 
     @callback
@@ -124,7 +124,7 @@ class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[bytearray | None]):
     async def handle_notify(self, sender: int, message: bytearray):
         _LOGGER.debug(f"Message received: {message}")
         if len(message) < 10:
-            _LOGGER.debug(f"Ignoring short message")
+            _LOGGER.debug("Ignoring short message")
             return
         full_message = self._accumulator.accumulate_message(message)
         if full_message is not None:
