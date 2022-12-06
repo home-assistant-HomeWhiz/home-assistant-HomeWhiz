@@ -7,15 +7,21 @@
         },
         "flow_title": "{name}",
         "step": {
-            "bluetooth_confirm": {
-                "description": "Do you want to setup {name}?"
-            },
             "user": {
                 "data": {
                     "address": "Device"
                 },
                 "description": "Choose a device to setup"
+            },
+            "credentials": {
+                "data":{
+                    "username": "Username",
+                    "password": "Password"
+                }
             }
+        },
+        "error": {
+            "invalid_auth": "Invalid authentication"
         }
     }
 }
