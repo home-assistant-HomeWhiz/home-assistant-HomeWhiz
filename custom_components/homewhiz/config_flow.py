@@ -1,4 +1,5 @@
 import logging
+from dataclasses import asdict
 from typing import Any
 
 import voluptuous as vol
@@ -19,9 +20,8 @@ from . import DOMAIN
 from .api import (
     login,
     LoginError,
-    make_api_get_request,
     make_id_exchange_request,
-    make_get_config_request,
+    fetch_appliance_contents,
 )
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
@@ -98,40 +98,13 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):
             try:
                 credentials = await login(username, password)
                 id_response = await make_id_exchange_request(self._name)
-                appId = id_response["appId"]
-                modelId = id_response["m"]
-                contents_response = await make_api_get_request(
-                    host="api.arcelikiot.com",
-                    canonical_uri="/procam/contents",
-                    canonical_querystring=(
-                        f"applianceId={appId}&"
-                        f"ctype=CONFIGURATION%2CLOCALIZATION&"
-                        f"lang=en-GB&testMode=true"
-                    ),
-                    credentials=credentials,
+                contents = await fetch_appliance_contents(
+                    credentials, id_response.appId
                 )
-                config_contents = [
-                    content
-                    for content in contents_response["data"]["results"]
-                    if content["ctype"] == "CONFIGURATION"
-                ]
-                localization_contents = [
-                    content
-                    for content in contents_response["data"]["results"]
-                    if content["ctype"] == "LOCALIZATION"
-                ]
-                config = await make_get_config_request(config_contents[0])
-                localizations = [
-                    await make_get_config_request(localization)
-                    for localization in localization_contents
-                ]
+
                 return self.async_create_entry(
                     title=self._name,
-                    data={
-                        "config": config,
-                        "localizations": localizations,
-                        "model_id": modelId,
-                    },
+                    data=asdict(id_response) | contents,
                 )
             except LoginError:
                 errors["base"] = "invalid_auth"

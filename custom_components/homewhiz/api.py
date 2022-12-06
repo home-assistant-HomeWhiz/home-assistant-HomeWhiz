@@ -3,11 +3,17 @@ import hashlib
 import hmac
 import json
 import logging
+from dataclasses import dataclass
+from typing import List
 
 import aiohttp
 from aiohttp import ContentTypeError
+from dacite import from_dict
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
+ALGORITHM = "AWS4-HMAC-SHA256"
+REGION = "eu-west-1"
+SERVICE = "execute-api"
 
 
 class RequestError(Exception):
@@ -16,6 +22,32 @@ class RequestError(Exception):
 
 class LoginError(Exception):
     pass
+
+
+@dataclass
+class IdExchangeResponse:
+    m: str
+    appId: str
+
+
+@dataclass
+class LoginResponse:
+    accessKey: str
+    secretKey: str
+    sessionToken: str
+
+
+@dataclass
+class ContentsDescription:
+    cid: str
+    ctype: str
+    ver: int
+    lang: str
+
+
+@dataclass
+class ContentsIndexResponse:
+    results: List[ContentsDescription]
 
 
 def sign(key, msg):
@@ -43,7 +75,7 @@ async def login(username: str, password: str):
                 _LOGGER.error(json.dumps(contents, indent=4))
                 raise LoginError(contents)
             data = contents["data"]
-            return data["credentials"]
+            return from_dict(LoginResponse, data["credentials"])
 
 
 async def make_id_exchange_request(device_name: str):
@@ -57,20 +89,16 @@ async def make_id_exchange_request(device_name: str):
                 _LOGGER.error(await response.text())
                 raise RequestError()
             contents = json.loads(await response.text())
-            return contents
+            return from_dict(IdExchangeResponse, contents)
 
 
-async def make_get_config_request(contents: dict):
-    configuration_id = contents["cid"]
-    configuration_version = contents["ver"]
-    lang = contents["lang"]
-    ctype = contents["ctype"]
+async def make_get_contents_request(contents: ContentsDescription):
     async with aiohttp.ClientSession() as session:
         async with session.get(
             f"https://s3-eu-west-1.amazonaws.com/procam-contents"
-            f"/{ctype}S/{configuration_id}"
-            f"/v{configuration_version}"
-            f"/{configuration_id}.{lang}.json",
+            f"/{contents.ctype}S/{contents.cid}"
+            f"/v{contents.ver}"
+            f"/{contents.cid}.{contents.lang}.json",
         ) as response:
             if not response.ok:
                 _LOGGER.error(await response.text())
@@ -79,18 +107,18 @@ async def make_get_config_request(contents: dict):
 
 
 async def make_api_get_request(
-    host: str, credentials: dict, canonical_uri: str, canonical_querystring: str
+    host: str,
+    credentials: LoginResponse,
+    canonical_uri: str,
+    canonical_querystring: str,
 ):
-    accessKey = credentials["accessKey"]
-    secretKey = credentials["secretKey"]
-    sessionToken = credentials["sessionToken"]
     t = datetime.datetime.utcnow()
     amz_date = t.strftime("%Y%m%dT%H%M%SZ")
     date_stamp = t.strftime("%Y%m%d")  # Date w/o time, used in credential scope
     canonical_headers = (
         f"host:{host}\n"
         + f"x-amz-date:{amz_date}\n"
-        + f"x-amz-security-token:{sessionToken}\n"
+        + f"x-amz-security-token:{credentials.sessionToken}\n"
     )
     signed_headers = "host;x-amz-date;x-amz-security-token"
     payload_hash = hashlib.sha256("".encode("utf-8")).hexdigest()
@@ -107,32 +135,30 @@ async def make_api_get_request(
     _LOGGER.debug(
         "Actual canonical request: {0}".format(canonical_request.replace("\n", "\\n"))
     )
-    algorithm = "AWS4-HMAC-SHA256"
-    region = "eu-west-1"
-    service = "execute-api"
-    credential_scope = f"{date_stamp}/{region}/{service}/aws4_request"
+
+    credential_scope = f"{date_stamp}/{REGION}/{SERVICE}/aws4_request"
     string_to_sign = (
-        f"{algorithm}\n"
+        f"{ALGORITHM}\n"
         f"{amz_date}\n"
         f"{credential_scope}\n"
         f"{hashlib.sha256(canonical_request.encode('utf-8')).hexdigest()}"
     )
 
     # Create the signing key using the function defined above.
-    signing_key = getSignatureKey(secretKey, date_stamp, region, service)
+    signing_key = getSignatureKey(credentials.secretKey, date_stamp, REGION, SERVICE)
     signature = hmac.new(
         signing_key, string_to_sign.encode("utf-8"), hashlib.sha256
     ).hexdigest()
     authorization_header = (
-        f"{algorithm} "
-        f"Credential={accessKey}/{credential_scope}, "
+        f"{ALGORITHM} "
+        f"Credential={credentials.accessKey}/{credential_scope}, "
         f"SignedHeaders={signed_headers}, "
         f"Signature={signature}"
     )
 
     headers = {
         "x-amz-date": amz_date,
-        "x-amz-security-token": sessionToken,
+        "x-amz-security-token": (credentials.sessionToken),
         "Authorization": authorization_header,
     }
 
@@ -149,3 +175,30 @@ async def make_api_get_request(
             except ContentTypeError:
                 _LOGGER.error(await response.text())
                 raise RequestError()
+
+
+async def fetch_appliance_contents(credentials: LoginResponse, app_id: str):
+    contents_index_response = await make_api_get_request(
+        host="api.arcelikiot.com",
+        canonical_uri="/procam/contents",
+        canonical_querystring=(
+            f"applianceId={app_id}&"
+            f"ctype=CONFIGURATION%2CLOCALIZATION&"
+            f"lang=en-GB&testMode=true"
+        ),
+        credentials=credentials,
+    )
+    contentsIndex = from_dict(ContentsIndexResponse, contents_index_response["data"])
+    config_contents = [
+        content for content in contentsIndex.results if content.ctype == "CONFIGURATION"
+    ]
+    localization_contents = [
+        content for content in contentsIndex.results if content.ctype == "LOCALIZATION"
+    ]
+    config = await make_get_contents_request(config_contents[0])
+    localizations = [
+        await make_get_contents_request(localization)
+        for localization in localization_contents
+    ]
+
+    return {"config": config, "localizations": localizations}
