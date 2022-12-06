@@ -18,6 +18,7 @@ CONNECTION_RETRY_TIMEOUT = 30
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
+    _LOGGER.info(f"Setting up entry {entry.unique_id}")
     address = entry.unique_id
     if entry.data["config"] is None:
         raise Exception(
@@ -60,10 +61,11 @@ class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[bytearray | None]):
         self._hass = hass
         self._device: BLEDevice | None = None
         self.connection: BleakClient | None = None
+        self.alive = True
         super().__init__(hass, _LOGGER, name=DOMAIN)
 
     async def connect(self):
-        _LOGGER.info(f"[{self.address}] Connecting")
+        _LOGGER.info(f"Connecting to {self.address}")
         self._device = bluetooth.async_ble_device_from_address(
             self._hass, self.address, connectable=True
         )
@@ -76,7 +78,7 @@ class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[bytearray | None]):
             name=self.address,
         )
         if not self.connection.is_connected:
-            raise Exception(f"[{self.address}] Can't connect")
+            raise Exception(f"Can't connect")
         await self.connection.start_notify(
             "0000ac02-0000-1000-8000-00805f9b34fb",
             lambda sender, message: self.hass.create_task(
@@ -88,43 +90,41 @@ class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[bytearray | None]):
             bytearray.fromhex("02 04 00 04 00 1a 01 03"),
             response=False,
         )
-        _LOGGER.info(
-            f"[{self.address}] Successfully connected. RSSI: {self._device.rssi}"
-        )
+        _LOGGER.info(f"Successfully connected. RSSI: {self._device.rssi}")
 
         return True
 
     async def try_reconnect(self):
-        while self._conn is None or not self._conn.is_connected:
+        while self.alive and (
+            self.connection is None or not self.connection.is_connected
+        ):
             if not bluetooth.async_address_present(
                 self.hass, self.address, connectable=True
             ):
                 _LOGGER.info(
-                    f"[{self.address}] Device not found. "
+                    f"Device not found. "
                     f"Will reconnect automatically when the device becomes available"
                 )
                 return
             try:
                 await self.connect()
             except Exception:
-                _LOGGER.info(
-                    f"[{self.address}] Can't reconnect. Waiting a minute to try again"
-                )
+                _LOGGER.info(f"Can't reconnect. Waiting a minute to try again")
                 await asyncio.sleep(60)
 
     @callback
     def handle_disconnect(self):
         self._device = None
-        self._conn = None
+        self.connection = None
         self.async_set_updated_data(None)
         _LOGGER.info(f"[{self.address}] Disconnected")
         self.hass.create_task(self.try_reconnect())
 
     @callback
     async def handle_notify(self, sender: int, message: bytearray):
-        _LOGGER.debug(f"[{self.address}] Message received: {message}")
+        _LOGGER.debug(f"Message received: {message}")
         if len(message) < 10:
-            _LOGGER.debug(f"[{self.address}] Message too short, ignoring")
+            _LOGGER.debug(f"Ignoring short message")
             return
         full_message = self._accumulator.accumulate_message(message)
         if full_message is not None:
@@ -133,12 +133,14 @@ class HomewhizDataUpdateCoordinator(DataUpdateCoordinator[bytearray | None]):
             )
             self.async_set_updated_data(full_message)
 
-    async def disconnect(self):
+    async def kill(self):
+        self.alive = False
         await self.connection.disconnect()
 
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
-    await hass.data[DOMAIN][entry.entry_id].disconnect()
+    _LOGGER.info(f"Unloading entry {entry.unique_id}")
+    await hass.data[DOMAIN][entry.entry_id].kill()
     if unload_ok := await hass.config_entries.async_unload_platforms(entry, PLATFORMS):
         hass.data[DOMAIN].pop(entry.entry_id)
     return unload_ok
