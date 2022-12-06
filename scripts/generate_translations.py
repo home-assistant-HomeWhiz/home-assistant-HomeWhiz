@@ -61,7 +61,7 @@ config_216 = (
 async def generate():
     dirname = os.path.dirname(__file__)
     translations_path = os.path.join(
-        dirname, f"../custom_components/homewhiz/translations/"
+        dirname, "../custom_components/homewhiz/translations/"
     )
     config = from_dict(ApplianceConfiguration, await get_file(config_216))
     descriptions = generate_descriptions_from_config(config)
