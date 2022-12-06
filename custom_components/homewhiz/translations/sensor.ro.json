@@ -1,0 +1,66 @@
+{
+  "state": {
+    "homewhiz__STATE": {
+      "DEVICE_STATE_ON": "Pornit",
+      "DEVICE_STATE_OFF": "Oprit",
+      "DEVICE_STATE_RUNNING": "\u00cen derulare",
+      "DEVICE_STATE_PAUSED": "\u00cen pauz\u0103",
+      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Temporizare activ\u0103"
+    },
+    "homewhiz__SUB_STATE": {
+      "WASHER_SUBSTATE_WASHING": "Sp\u0103lare",
+      "WASHER_SUBSTATE_SPIN": "Rotire",
+      "WASHER_WATER_INTAKE": "Admisie ap\u0103",
+      "WASHER_SUBSTATE_PREWASH": "Presp\u0103lare",
+      "WASHER_SUBSTATE_RINSING": "Cl\u0103tire",
+      "WASHER_SUBSTATE_SOFTENER": "Agent de \u00eenmuiere",
+      "WASHER_SUBSTATE_PROGRAM_STARTED": "Pornire program",
+      "WASHER_SUBSTATE_TIME_DELAY_ENABLED": "Timp de finalizare activat",
+      "WASHER_SUBSTATE_PAUSED": "Pauz\u0103",
+      "WASHER_SUBSTATE_ANALYSING": "Analizare",
+      "WASHER_SUBSTATE_DOOR_LOCKED": "U\u0219a este blocat\u0103",
+      "WASHER_SUBSTATE_OPENING_DOOR": "Deschidere u\u0219\u0103",
+      "WASHER_SUBSTATE_LOCKING_DOOR": "Blocare u\u0219\u0103",
+      "WASHER_SUBSTATE_REMOVE_LAUNDRY": "Ciclu de sp\u0103lare complet; scoate\u021bi rufele",
+      "WASHER_SUBSTATE_ADD_LAUNDRY": "Pute\u021bi ad\u0103uga rufe",
+      "WASHER_SUBSTATE_RINSE_HOLD": "Am\u00e2narea cl\u0103tirii este activ\u0103; selecta\u021bi viteza de rota\u021bie",
+      "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Programul anti-cute telecomandat este \u00een desf\u0103\u0219urare.",
+      "WASHER_SUBSTATE_DRYING": "Uscare"
+    },
+    "homewhiz__WASHER_TEMPERATURE": {
+      "TEMPERATURE_COLD_WASH": "Ap\u0103 rece",
+      "TEMPERATURE_20": "20 \u00b0C",
+      "TEMPERATURE_30": "30 \u00b0C",
+      "TEMPERATURE_40": "40 \u00b0C"
+    },
+    "homewhiz__WASHER_SPIN": {
+      "SPIN_NO_SPIN": "F\u0103r\u0103 rotire",
+      "SPIN_RINSE_HOLD": "Am\u00e2nare cl\u0103tire"
+    },
+    "homewhiz__WASHER_PREWASH": {
+      "PREWASH_OFF": "Oprit",
+      "PREWASH_ON": "Pornit"
+    },
+    "homewhiz__WASHER_EXTRARINSE": {
+      "EXTRA_RINSE_OFF": "Cl\u0103tire suplimentar\u0103 oprit\u0103",
+      "EXTRA_RINSE_ON": "Cl\u0103tire suplimentar\u0103 pornit\u0103"
+    },
+    "homewhiz__WASHER_FAST_PLUS": {
+      "FAST_PLUS_OFF": "Fast+ oprit",
+      "FAST_PLUS_ON_FAST": "Rapid",
+      "FAST_PLUS_ON_FAST_PLUS": "Rapid+"
+    },
+    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
+      "HIDDEN_ANTI_CREASE_OFF": "Oprit",
+      "HIDDEN_ANTI_CREASE_ON": "Pornit"
+    },
+    "homewhiz__WASHER_STEAM": {
+      "STEAM_OFF": "STEAM_OFF",
+      "STEAM_ON": "STEAM_ON"
+    },
+    "homewhiz__WASHER_PHR": {
+      "PHR_OFF": "Oprit",
+      "PHR_ON": "Pornit"
+    }
+  }
+}
