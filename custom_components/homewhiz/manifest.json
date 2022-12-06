@@ -10,7 +10,9 @@
   ],
   "requirements": [
     "bleak",
-    "bleak_retry_connector"
+    "bleak_retry_connector",
+    "dacite",
+    "aiohttp"
   ],
   "dependencies": ["bluetooth"],
   "version": "0.0.6",

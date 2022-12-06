@@ -1,0 +1,452 @@
+{
+  "version": "0.0.0",
+  "program": {
+    "isDisabled": 1,
+    "strKey": "FRIDGE_DEGREE_DIMENSION",
+    "wifiArrayIndex": 34,
+    "values": [
+      {
+        "strKey": "DEGREE_DIMENSION_CELCIUS",
+        "wifiArrayValue": 0,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "FRIDGE_COOLER_TEMPERATURE",
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          },
+          {
+            "strKeyRef": "FRIDGE_FREEZER_TEMPERATURE",
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          }
+        ]
+      },
+      {
+        "strKey": "DEGREE_DIMENSION_FAHRENHEIT",
+        "wifiArrayValue": 1,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "FRIDGE_COOLER_TEMPERATURE",
+            "allowedValueIndices": [
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21
+            ]
+          },
+          {
+            "strKeyRef": "FRIDGE_FREEZER_TEMPERATURE",
+            "allowedValueIndices": [
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "subPrograms": [
+    {
+      "strKey": "FRIDGE_COOLER_TEMPERATURE",
+      "wifiArrayIndex": 35,
+      "enumValues": [
+        {
+          "strKey": "1 °C",
+          "wifiArrayValue": 5
+        },
+        {
+          "strKey": "2 °C",
+          "wifiArrayValue": 6
+        },
+        {
+          "strKey": "3 °C",
+          "wifiArrayValue": 7
+        },
+        {
+          "strKey": "4 °C",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "5 °C",
+          "wifiArrayValue": 1
+        },
+        {
+          "strKey": "6 °C",
+          "wifiArrayValue": 2
+        },
+        {
+          "strKey": "7 °C",
+          "wifiArrayValue": 3
+        },
+        {
+          "strKey": "8 °C",
+          "wifiArrayValue": 4
+        },
+        {
+          "strKey": "33 °F",
+          "wifiArrayValue": 70
+        },
+        {
+          "strKey": "34 °F",
+          "wifiArrayValue": 69
+        },
+        {
+          "strKey": "35 °F",
+          "wifiArrayValue": 68
+        },
+        {
+          "strKey": "36 °F",
+          "wifiArrayValue": 67
+        },
+        {
+          "strKey": "37 °F",
+          "wifiArrayValue": 66
+        },
+        {
+          "strKey": "38 °F",
+          "wifiArrayValue": 65
+        },
+        {
+          "strKey": "39 °F",
+          "wifiArrayValue": 64
+        },
+        {
+          "strKey": "40 °F",
+          "wifiArrayValue": 77
+        },
+        {
+          "strKey": "41 °F",
+          "wifiArrayValue": 76
+        },
+        {
+          "strKey": "42 °F",
+          "wifiArrayValue": 75
+        },
+        {
+          "strKey": "43 °F",
+          "wifiArrayValue": 74
+        },
+        {
+          "strKey": "44 °F",
+          "wifiArrayValue": 73
+        },
+        {
+          "strKey": "45 °F",
+          "wifiArrayValue": 72
+        },
+        {
+          "strKey": "46 °F",
+          "wifiArrayValue": 71
+        },
+        {
+          "strKey": "--",
+          "wifiArrayValue": 127
+        }
+      ]
+    },
+    {
+      "strKey": "FRIDGE_QUICK_COOL",
+      "wifiArrayIndex": 40,
+      "isSwitch": 1,
+      "enumValues": [
+        {
+          "strKey": "QUICK_COOL_OFF",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "QUICK_COOL_ON",
+          "wifiArrayValue": 1
+        }
+      ]
+    },
+    {
+      "strKey": "FRIDGE_FREEZER_TEMPERATURE",
+      "wifiArrayIndex": 36,
+      "enumValues": [
+        {
+          "strKey": "-18 °C",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "-19 °C",
+          "wifiArrayValue": 6
+        },
+        {
+          "strKey": "-20 °C",
+          "wifiArrayValue": 5
+        },
+        {
+          "strKey": "-21 °C",
+          "wifiArrayValue": 4
+        },
+        {
+          "strKey": "-22 °C",
+          "wifiArrayValue": 3
+        },
+        {
+          "strKey": "-23 °C",
+          "wifiArrayValue": 2
+        },
+        {
+          "strKey": "-24 °C",
+          "wifiArrayValue": 1
+        },
+        {
+          "strKey": "0 °F",
+          "wifiArrayValue": 78
+        },
+        {
+          "strKey": "-1 °F",
+          "wifiArrayValue": 79
+        },
+        {
+          "strKey": "-2 °F",
+          "wifiArrayValue": 80
+        },
+        {
+          "strKey": "-3 °F",
+          "wifiArrayValue": 81
+        },
+        {
+          "strKey": "-4 °F",
+          "wifiArrayValue": 82
+        },
+        {
+          "strKey": "-5 °F",
+          "wifiArrayValue": 83
+        },
+        {
+          "strKey": "-6 °F",
+          "wifiArrayValue": 84
+        },
+        {
+          "strKey": "-7 °F",
+          "wifiArrayValue": 85
+        },
+        {
+          "strKey": "-8 °F",
+          "wifiArrayValue": 86
+        },
+        {
+          "strKey": "-9 °F",
+          "wifiArrayValue": 87
+        },
+        {
+          "strKey": "-10 °F",
+          "wifiArrayValue": 88
+        },
+        {
+          "strKey": "-11 °F",
+          "wifiArrayValue": 89
+        },
+        {
+          "strKey": "-12 °F",
+          "wifiArrayValue": 90
+        },
+        {
+          "strKey": "-27 °C",
+          "wifiArrayValue": 27
+        },
+        {
+          "strKey": "-16 °F",
+          "wifiArrayValue": 91
+        }
+      ]
+    },
+    {
+      "strKey": "FRIDGE_QUICK_FREEZE",
+      "wifiArrayIndex": 41,
+      "isSwitch": 1,
+      "enumValues": [
+        {
+          "strKey": "QUICK_FREEZE_OFF",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "QUICK_FREEZE_ON",
+          "wifiArrayValue": 1
+        }
+      ]
+    },
+    {
+      "strKey": "FRIDGE_ICE_MACHINE",
+      "wifiArrayIndex": 45,
+      "isSwitch": 1,
+      "enumValues": [
+        {
+          "strKey": "ICE_MACHINE_OFF",
+          "wifiArrayValue": 1
+        },
+        {
+          "strKey": "ICE_MACHINE_ON",
+          "wifiArrayValue": 0
+        }
+      ]
+    },
+    {
+      "strKey": "FRIDGE_ICE_SOURCE",
+      "wifiArrayIndex": 47,
+      "enumValues": [
+        {
+          "strKey": "ICE_SOURCE_NONE",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "ICE_SOURCE_CUBES",
+          "wifiArrayValue": 3
+        },
+        {
+          "strKey": "ICE_SOURCE_PIECES",
+          "wifiArrayValue": 4
+        }
+      ]
+    },
+    {
+      "strKey": "FRIDGE_VACATION_MODE",
+      "wifiArrayIndex": 51,
+      "isSwitch": 1,
+      "enumValues": [
+        {
+          "strKey": "VACATION_MODE_PASSIVE",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "VACATION_MODE_ACTIVE",
+          "wifiArrayValue": 1
+        }
+      ]
+    },
+    {
+      "strKey": "FRIDGE_ECO_FUZZY",
+      "wifiArrayIndex": 52,
+      "isSwitch": 1,
+      "enumValues": [
+        {
+          "strKey": "ECO_FUZZY_PASSIVE",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "ECO_FUZZY_ACTIVE",
+          "wifiArrayValue": 1
+        }
+      ]
+    }
+  ],
+  "deviceWarnings": {
+    "wifiArrayReadIndex": 56,
+    "warnings": [
+      {
+        "strKey": "FRIDGE_WARNING_DOOR_IS_OPEN",
+        "bitIndex": 0,
+        "notificationInfo": {
+          "strKey": "FRIDGE_WARNING_DOOR_IS_OPEN_NOTIFICATION",
+          "priority": "MEDIUM",
+          "necessity": "OPTON"
+        }
+      },
+      {
+        "strKey": "FRIDGE_WARNING_HIGH_TEMPERATURE",
+        "bitIndex": 1,
+        "notificationInfo": {
+          "strKey": "FRIDGE_WARNING_HIGH_TEMPERATURE_NOTIFICATION",
+          "priority": "HIGH",
+          "necessity": "MANDA"
+        },
+        "reasonInfo": {
+          "wifiArrayReadIndex": 82,
+          "values": [
+            {
+              "strKey": "FRIDGE_WARNING_HIGH_TEMPERATURE_REASON_UNKNOWN",
+              "wifiArrayValue": 0
+            },
+            {
+              "strKey": "FRIDGE_WARNING_HIGH_TEMPERATURE_REASON_POWER_LOSS",
+              "wifiArrayValue": 1
+            },
+            {
+              "strKey": "FRIDGE_WARNING_HIGH_TEMPERATURE_REASON_DEFROST",
+              "wifiArrayValue": 2
+            },
+            {
+              "strKey": "FRIDGE_WARNING_HIGH_TEMPERATURE_REASON_NORMAL",
+              "wifiArrayValue": 3
+            },
+            {
+              "strKey": "FRIDGE_WARNING_HIGH_TEMPERATURE_REASON_RESET_ATTEMPT",
+              "wifiArrayValue": 4
+            },
+            {
+              "strKey": "FRIDGE_WARNING_HIGH_TEMPERATURE_REASON_EEPROM",
+              "wifiArrayValue": 5
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "refrigeratorDefrostInformation": {
+    "dayTimeVariableIndices": {
+      "hourWfaIndex": 64,
+      "minuteWfaIndex": 65
+    },
+    "defrostSelectWfaIndex": 75,
+    "defrostConfigWfaIndex": 76,
+    "defrostCountdownWfaIndex": 77,
+    "defrostDurationIntervals": [
+      {
+        "startHourWfaIndex": 66,
+        "startMinuteWfaIndex": 67,
+        "intervalWfaIndex": 68,
+        "intervalCalculationFactor": 5
+      },
+      {
+        "startHourWfaIndex": 69,
+        "startMinuteWfaIndex": 70,
+        "intervalWfaIndex": 71,
+        "intervalCalculationFactor": 5
+      },
+      {
+        "startHourWfaIndex": 72,
+        "startMinuteWfaIndex": 73,
+        "intervalWfaIndex": 74,
+        "intervalCalculationFactor": 5
+      }
+    ]
+  }
+}

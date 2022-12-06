@@ -1,0 +1,1289 @@
+{
+  "version": "0.0.0",
+  "remoteControl": {
+    "wifiArrayReadIndex": 32,
+    "wifiArrayValue": 170
+  },
+  "program": {
+    "strKey": "WASHER_PROGRAM",
+    "wifiArrayIndex": 36,
+    "lastActiveProgramWifiArrayReadIndex": 52,
+    "values": [
+      {
+        "strKey": "PROGRAM_COTTONS",
+        "wifiArrayValue": 1,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "WASHER_DIRT_TYPE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_HIDDEN_ANTI_CREASE",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "PROGRAM_COTTONS_ECO",
+        "wifiArrayValue": 2,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "WASHER_TEMPERATURE",
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_SPIN",
+            "allowedValueIndices": [
+              0,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_EXTRA_WATER",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_SILENT_MODE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_DIRT_TYPE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_ANTI_CREASE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_HIDDEN_ANTI_CREASE",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "PROGRAM_ANTI_ALLERGY",
+        "wifiArrayValue": 3,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "WASHER_TEMPERATURE",
+            "allowedValueIndices": [
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_SPIN",
+            "allowedValueIndices": [
+              0,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_SILENT_MODE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_EXTRA_WATER",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_DIRT_TYPE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_ANTI_CREASE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_HIDDEN_ANTI_CREASE",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "PROGRAM_SYNTHETICS",
+        "wifiArrayValue": 4,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "WASHER_TEMPERATURE",
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_SPIN",
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_DIRT_TYPE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_HIDDEN_ANTI_CREASE",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "PROGRAM_STEAM_REFRESH",
+        "wifiArrayValue": 5,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "WASHER_TEMPERATURE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_SPIN",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_DIRT_LEVEL",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_EXTRA_WATER",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_SILENT_MODE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_DIRT_TYPE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_ANTI_CREASE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_HIDDEN_ANTI_CREASE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_LIQUID_DETERGENT_DOSING",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "PROGRAM_WOOLPROTECT",
+        "wifiArrayValue": 6,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "WASHER_TEMPERATURE",
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_SPIN",
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_DIRT_TYPE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_ANTI_CREASE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_HIDDEN_ANTI_CREASE",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "PROGRAM_BEDDING",
+        "wifiArrayValue": 7,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "WASHER_TEMPERATURE",
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_SPIN",
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_DIRT_TYPE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_ANTI_CREASE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_HIDDEN_ANTI_CREASE",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "PROGRAM_SPIN_PUMP",
+        "wifiArrayValue": 8,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "WASHER_TEMPERATURE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_SPIN",
+            "allowedValueIndices": [
+              0,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_DIRT_LEVEL",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_EXTRA_WATER",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_SILENT_MODE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_DIRT_TYPE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_HIDDEN_ANTI_CREASE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_LIQUID_DETERGENT_DOSING",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "PROGRAM_MULTISENSE",
+        "wifiArrayValue": 9,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "WASHER_TEMPERATURE",
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_DIRT_TYPE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_HIDDEN_ANTI_CREASE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_DIRT_LEVEL",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "PROGRAM_STAINCARE",
+        "wifiArrayValue": 10,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "WASHER_TEMPERATURE",
+            "allowedValueIndices": [
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_DIRT_LEVEL",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_EXTRA_WATER",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_SILENT_MODE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_ANTI_CREASE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_HIDDEN_ANTI_CREASE",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "PROGRAM_SHIRTS",
+        "wifiArrayValue": 11,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "WASHER_TEMPERATURE",
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_SPIN",
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_EXTRA_WATER",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_SILENT_MODE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_DIRT_TYPE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_HIDDEN_ANTI_CREASE",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "PROGRAM_EXPRESS",
+        "wifiArrayValue": 12,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "WASHER_SPIN",
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_DIRT_TYPE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_HIDDEN_ANTI_CREASE",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "PROGRAM_MINI_14",
+        "wifiArrayValue": 13,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "WASHER_TEMPERATURE",
+            "allowedValueIndices": [
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_SPIN",
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_DIRT_TYPE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_HIDDEN_ANTI_CREASE",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "PROGRAM_CURTAIN",
+        "wifiArrayValue": 14,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "WASHER_TEMPERATURE",
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_SPIN",
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_DIRT_TYPE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_EXTRA_WATER",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_SILENT_MODE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_HIDDEN_ANTI_CREASE",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "PROGRAM_HAND_WASH",
+        "wifiArrayValue": 15,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "WASHER_TEMPERATURE",
+            "allowedValueIndices": [
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_SPIN",
+            "allowedValueIndices": [
+              0,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "strKeyRef": "WASHER_SILENT_MODE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_DIRT_TYPE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_ANTI_CREASE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_HIDDEN_ANTI_CREASE",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "PROGRAM_RINSING",
+        "wifiArrayValue": 16,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "WASHER_TEMPERATURE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_DIRT_LEVEL",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_DIRT_TYPE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_HIDDEN_ANTI_CREASE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "WASHER_LIQUID_DETERGENT_DOSING",
+            "isDisabled": 1
+          }
+        ]
+      }
+    ]
+  },
+  "subPrograms": [
+    {
+      "strKey": "WASHER_TEMPERATURE",
+      "wifiArrayIndex": 37,
+      "enumValues": [
+        {
+          "strKey": "TEMPERATURE_COLD_WASH",
+          "wifiArrayValue": 0
+        }
+      ],
+      "boundedValues": [
+        {
+          "strKey": "TEMPERATURE",
+          "lowerLimit": 20,
+          "upperLimit": 90,
+          "step": 10,
+          "factor": 1,
+          "unit": "°C"
+        }
+      ]
+    },
+    {
+      "strKey": "WASHER_SPIN",
+      "wifiArrayIndex": 38,
+      "lastActiveSubProgramValueWifiArrayReadIndex": 51,
+      "enumValues": [
+        {
+          "strKey": "SPIN_NO_SPIN",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "SPIN_RINSE_HOLD",
+          "wifiArrayValue": 17
+        }
+      ],
+      "boundedValues": [
+        {
+          "strKey": "SPIN",
+          "lowerLimit": 600,
+          "upperLimit": 1400,
+          "step": 200,
+          "factor": 100,
+          "unit": ""
+        }
+      ]
+    },
+    {
+      "strKey": "WASHER_DIRT_LEVEL",
+      "wifiArrayIndex": 39,
+      "enumValues": [
+        {
+          "strKey": "DIRT_LEVEL_LOW",
+          "wifiArrayValue": 1
+        },
+        {
+          "strKey": "DIRT_LEVEL_MEDIUM",
+          "wifiArrayValue": 2
+        },
+        {
+          "strKey": "DIRT_LEVEL_HIGH",
+          "wifiArrayValue": 3
+        }
+      ]
+    },
+    {
+      "strKey": "WASHER_DIRT_TYPE",
+      "wifiArrayIndex": 39,
+      "enumValues": [
+        {
+          "strKey": "DIRT_LEVEL_HIGH_SWEAT",
+          "wifiArrayValue": 4
+        },
+        {
+          "strKey": "DIRT_LEVEL_COLLAR_SOIL",
+          "wifiArrayValue": 5
+        },
+        {
+          "strKey": "DIRT_LEVEL_TEA",
+          "wifiArrayValue": 6
+        },
+        {
+          "strKey": "DIRT_LEVEL_COFFEE",
+          "wifiArrayValue": 7
+        },
+        {
+          "strKey": "DIRT_LEVEL_MEAL",
+          "wifiArrayValue": 8
+        },
+        {
+          "strKey": "DIRT_LEVEL_KETCHUP",
+          "wifiArrayValue": 9
+        },
+        {
+          "strKey": "DIRT_LEVEL_MAYONNAISE",
+          "wifiArrayValue": 10
+        },
+        {
+          "strKey": "DIRT_LEVEL_SALAD_DRESSING",
+          "wifiArrayValue": 11
+        },
+        {
+          "strKey": "DIRT_LEVEL_MACHINE_OIL",
+          "wifiArrayValue": 12
+        },
+        {
+          "strKey": "DIRT_LEVEL_MAKE_UP",
+          "wifiArrayValue": 13
+        },
+        {
+          "strKey": "DIRT_LEVEL_BLOOD",
+          "wifiArrayValue": 14
+        },
+        {
+          "strKey": "DIRT_LEVEL_RED_WINE",
+          "wifiArrayValue": 15
+        },
+        {
+          "strKey": "DIRT_LEVEL_FRUIT_JUICE",
+          "wifiArrayValue": 16
+        },
+        {
+          "strKey": "DIRT_LEVEL_CHOCOLATE",
+          "wifiArrayValue": 17
+        },
+        {
+          "strKey": "DIRT_LEVEL_PUDDING",
+          "wifiArrayValue": 18
+        },
+        {
+          "strKey": "DIRT_LEVEL_MUD",
+          "wifiArrayValue": 19
+        },
+        {
+          "strKey": "DIRT_LEVEL_GRASS",
+          "wifiArrayValue": 20
+        },
+        {
+          "strKey": "DIRT_LEVEL_BABY_FORMULA",
+          "wifiArrayValue": 21
+        },
+        {
+          "strKey": "DIRT_LEVEL_EGG",
+          "wifiArrayValue": 22
+        },
+        {
+          "strKey": "DIRT_LEVEL_COKE",
+          "wifiArrayValue": 23
+        },
+        {
+          "strKey": "DIRT_LEVEL_BUTTER",
+          "wifiArrayValue": 24
+        },
+        {
+          "strKey": "DIRT_LEVEL_JAM",
+          "wifiArrayValue": 25
+        },
+        {
+          "strKey": "DIRT_LEVEL_CURRY",
+          "wifiArrayValue": 26
+        },
+        {
+          "strKey": "DIRT_LEVEL_COAL",
+          "wifiArrayValue": 27
+        }
+      ]
+    },
+    {
+      "strKey": "WASHER_EXTRA_WATER",
+      "wifiArrayIndex": 60,
+      "isSwitch": 1,
+      "enumValues": [
+        {
+          "strKey": "EXTRA_WATER_OFF",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "EXTRA_WATER_ON",
+          "wifiArrayValue": 1
+        }
+      ]
+    },
+    {
+      "strKey": "WASHER_SILENT_MODE",
+      "wifiArrayIndex": 42,
+      "isSwitch": 1,
+      "enumValues": [
+        {
+          "strKey": "SILENT_MODE_OFF",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "SILENT_MODE_ON",
+          "wifiArrayValue": 1
+        }
+      ]
+    },
+    {
+      "strKey": "WASHER_ANTI_CREASE",
+      "wifiArrayIndex": 66,
+      "isSwitch": 1,
+      "enumValues": [
+        {
+          "strKey": "ANTI_CREASE_OFF",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "ANTI_CREASE_ON",
+          "wifiArrayValue": 1
+        }
+      ]
+    },
+    {
+      "strKey": "WASHER_HIDDEN_ANTI_CREASE",
+      "wifiArrayIndex": 64,
+      "isSwitch": 1,
+      "enumValues": [
+        {
+          "strKey": "HIDDEN_ANTI_CREASE_OFF",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "HIDDEN_ANTI_CREASE_ON",
+          "wifiArrayValue": 1
+        }
+      ]
+    },
+    {
+      "strKey": "WASHER_LIQUID_DETERGENT_DOSING",
+      "wifiArrayIndex": 63,
+      "enumValues": [
+        {
+          "strKey": "WASHER_POWDER_DETERGENT",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "WASHER_LIQUID_DETERGENT",
+          "wifiArrayValue": 1
+        }
+      ]
+    }
+  ],
+  "progressVariables": {
+    "remaining": {
+      "strKey": "WASHER_REMAINING",
+      "isVisible": 0,
+      "hour": {
+        "wifiArrayIndex": 46,
+        "boundedValues": [
+          {
+            "strKey": "HOUR",
+            "lowerLimit": 0,
+            "upperLimit": 23,
+            "step": 1,
+            "factor": 1,
+            "unit": ""
+          }
+        ]
+      },
+      "minute": {
+        "wifiArrayIndex": 47,
+        "boundedValues": [
+          {
+            "strKey": "MINUTE",
+            "lowerLimit": 0,
+            "upperLimit": 59,
+            "step": 1,
+            "factor": 1,
+            "unit": ""
+          }
+        ]
+      }
+    },
+    "delay": {
+      "strKey": "WASHER_DELAY",
+      "isCalculatedToStart": 0,
+      "isVisible": 1,
+      "hour": {
+        "wifiArrayIndex": 48,
+        "boundedValues": [
+          {
+            "strKey": "HOUR",
+            "lowerLimit": 0,
+            "upperLimit": 23,
+            "step": 1,
+            "factor": 1,
+            "unit": ""
+          }
+        ]
+      },
+      "minute": {
+        "wifiArrayIndex": 49,
+        "boundedValues": [
+          {
+            "strKey": "MINUTE",
+            "lowerLimit": 0,
+            "upperLimit": 59,
+            "step": 1,
+            "factor": 1,
+            "unit": ""
+          }
+        ]
+      }
+    },
+    "duration": {
+      "strKey": "WASHER_DURATION",
+      "isVisible": 0,
+      "hour": {
+        "wifiArrayIndex": 44,
+        "boundedValues": [
+          {
+            "strKey": "HOUR",
+            "lowerLimit": 0,
+            "upperLimit": 23,
+            "step": 1,
+            "factor": 1,
+            "unit": ""
+          }
+        ]
+      },
+      "minute": {
+        "wifiArrayIndex": 45,
+        "boundedValues": [
+          {
+            "strKey": "MINUTE",
+            "lowerLimit": 0,
+            "upperLimit": 59,
+            "step": 1,
+            "factor": 1,
+            "unit": ""
+          }
+        ]
+      }
+    }
+  },
+  "deviceStates": {
+    "wifiArrayReadIndex": 35,
+    "wifiArrayWriteIndex": 34,
+    "states": [
+      {
+        "strKey": "DEVICE_STATE_ON",
+        "wifiArrayValue": 10,
+        "allowedTransitions": [
+          "DEVICE_STATE_OFF",
+          "DEVICE_STATE_RUNNING"
+        ],
+        "notificationInfo": {
+          "strKey": "DEVICE_STATE_ON_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "DEVICE_STATE_OFF",
+        "wifiArrayValue": 20,
+        "allowedTransitions": [
+          "DEVICE_STATE_ON"
+        ],
+        "notificationInfo": {
+          "strKey": "DEVICE_STATE_OFF_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "DEVICE_STATE_RUNNING",
+        "wifiArrayValue": 30,
+        "allowedTransitions": [
+          "DEVICE_STATE_OFF",
+          "DEVICE_STATE_PAUSED"
+        ],
+        "notificationInfo": {
+          "strKey": "DEVICE_STATE_RUNNING_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "DEVICE_STATE_PAUSED",
+        "wifiArrayValue": 40,
+        "allowedTransitions": [
+          "DEVICE_STATE_OFF",
+          "DEVICE_STATE_RUNNING"
+        ],
+        "notificationInfo": {
+          "strKey": "DEVICE_STATE_PAUSED_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "DEVICE_STATE_TIME_DELAY_ACTIVE",
+        "wifiArrayValue": 60,
+        "allowedTransitions": [
+          "DEVICE_STATE_OFF",
+          "DEVICE_STATE_PAUSED"
+        ],
+        "notificationInfo": {
+          "strKey": "DEVICE_STATE_TIME_DELAY_ACTIVE_NOTIFICATION",
+          "priority": "LOW"
+        }
+      }
+    ]
+  },
+  "deviceSubStates": {
+    "wifiArrayReadIndex": 50,
+    "subStates": [
+      {
+        "strKey": "WASHER_SUBSTATE_WASHING",
+        "wifiArrayValue": 1,
+        "notificationInfo": {
+          "strKey": "WASHER_SUBSTATE_WASHING_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "WASHER_SUBSTATE_SPIN",
+        "wifiArrayValue": 2,
+        "notificationInfo": {
+          "strKey": "WASHER_SUBSTATE_SPIN_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "WASHER_WATER_INTAKE",
+        "wifiArrayValue": 3,
+        "notificationInfo": {
+          "strKey": "WASHER_WATER_INTAKE_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "WASHER_SUBSTATE_RINSING",
+        "wifiArrayValue": 5,
+        "notificationInfo": {
+          "strKey": "WASHER_SUBSTATE_RINSING_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "WASHER_SUBSTATE_SOFTENER",
+        "wifiArrayValue": 6,
+        "notificationInfo": {
+          "strKey": "WASHER_SUBSTATE_SOFTENER_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "WASHER_SUBSTATE_PROGRAM_STARTED",
+        "wifiArrayValue": 7,
+        "notificationInfo": {
+          "strKey": "WASHER_SUBSTATE_PROGRAM_STARTED_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "WASHER_SUBSTATE_TIME_DELAY_ENABLED",
+        "wifiArrayValue": 8,
+        "notificationInfo": {
+          "strKey": "WASHER_SUBSTATE_TIME_DELAY_ENABLED_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "WASHER_SUBSTATE_PAUSED",
+        "wifiArrayValue": 9,
+        "notificationInfo": {
+          "strKey": "WASHER_SUBSTATE_PAUSED_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "WASHER_SUBSTATE_ANALYSING",
+        "wifiArrayValue": 10,
+        "notificationInfo": {
+          "strKey": "WASHER_SUBSTATE_ANALYSING_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "WASHER_SUBSTATE_DOOR_LOCKED",
+        "wifiArrayValue": 11,
+        "notificationInfo": {
+          "strKey": "WASHER_SUBSTATE_DOOR_LOCKED_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "WASHER_SUBSTATE_OPENING_DOOR",
+        "wifiArrayValue": 12,
+        "notificationInfo": {
+          "strKey": "WASHER_SUBSTATE_OPENING_DOOR_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "WASHER_SUBSTATE_LOCKING_DOOR",
+        "wifiArrayValue": 13,
+        "notificationInfo": {
+          "strKey": "WASHER_SUBSTATE_LOCKING_DOOR_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "WASHER_SUBSTATE_REMOVE_LAUNDRY",
+        "wifiArrayValue": 15,
+        "notificationInfo": {
+          "strKey": "WASHER_SUBSTATE_REMOVE_LAUNDRY_NOTIFICATION",
+          "priority": "MEDIUM",
+          "necessity": "OPTON"
+        }
+      },
+      {
+        "strKey": "WASHER_SUBSTATE_ADD_LAUNDRY",
+        "wifiArrayValue": 19,
+        "notificationInfo": {
+          "strKey": "WASHER_SUBSTATE_ADD_LAUNDRY_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "WASHER_SUBSTATE_RINSE_HOLD",
+        "wifiArrayValue": 17,
+        "notificationInfo": {
+          "strKey": "WASHER_SUBSTATE_RINSE_HOLD_NOTIFICATION",
+          "priority": "MEDIUM",
+          "necessity": "OPTON"
+        }
+      },
+      {
+        "strKey": "WASHER_SUBSTATE_REMOTE_ANTICREASE",
+        "wifiArrayValue": 20,
+        "notificationInfo": {
+          "strKey": "WASHER_SUBSTATE_REMOTE_ANTICREASE_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      }
+    ]
+  },
+  "settings": [
+    {
+      "strKey": "SETTINGS_LANGUAGE",
+      "wifiArrayIndex": 53,
+      "enumValues": [
+        {
+          "strKey": "LANGUAGE_TURKISH",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "LANGUAGE_ENGLISH",
+          "wifiArrayValue": 1
+        },
+        {
+          "strKey": "LANGUAGE_GERMAN",
+          "wifiArrayValue": 2
+        }
+      ]
+    },
+    {
+      "strKey": "SETTINGS_BRIGHTNESS",
+      "wifiArrayIndex": 54,
+      "boundedValues": [
+        {
+          "strKey": "BRIGHTNESS",
+          "lowerLimit": 1,
+          "upperLimit": 4,
+          "step": 1,
+          "factor": 1,
+          "unit": ""
+        }
+      ]
+    },
+    {
+      "strKey": "SETTINGS_VOLUME",
+      "wifiArrayIndex": 55,
+      "enumValues": [
+        {
+          "strKey": "VOLUME_LOW",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "VOLUME_HIGH",
+          "wifiArrayValue": 1
+        }
+      ]
+    },
+    {
+      "strKey": "SETTINGS_DETERGENT_DOSING_AMOUNT",
+      "wifiArrayIndex": 67,
+      "boundedValues": [
+        {
+          "strKey": "DETERGENT_DOSING",
+          "lowerLimit": 5,
+          "upperLimit": 130,
+          "step": 5,
+          "factor": 5,
+          "unit": ""
+        }
+      ]
+    },
+    {
+      "strKey": "SETTINGS_SOFTENER_DOSING_AMOUNT",
+      "wifiArrayIndex": 68,
+      "enumValues": [
+        {
+          "strKey": "NO_SOFTENER",
+          "wifiArrayValue": 0
+        }
+      ],
+      "boundedValues": [
+        {
+          "strKey": "SOFTENER_DOSING",
+          "lowerLimit": 5,
+          "upperLimit": 80,
+          "step": 5,
+          "factor": 5,
+          "unit": ""
+        }
+      ]
+    }
+  ],
+  "deviceWarnings": {
+    "wifiArrayReadIndex": 59,
+    "warnings": [
+      {
+        "strKey": "WASHER_WARNING_DOOR_IS_OPEN",
+        "bitIndex": 0,
+        "notificationInfo": {
+          "strKey": "WASHER_WARNING_DOOR_IS_OPEN_NOTIFICATION",
+          "priority": "HIGH",
+          "necessity": "OPTON"
+        }
+      },
+      {
+        "strKey": "WASHER_WARNING_NO_WATER",
+        "bitIndex": 1,
+        "notificationInfo": {
+          "strKey": "WASHER_WARNING_NO_WATER_NOTIFICATION",
+          "priority": "HIGH",
+          "necessity": "OPTON"
+        }
+      },
+      {
+        "strKey": "WASHER_WARNING_SECURITY",
+        "bitIndex": 2,
+        "notificationInfo": {
+          "strKey": "WASHER_WARNING_SECURITY_NOTIFICATION",
+          "priority": "HIGH",
+          "necessity": "MANDA"
+        }
+      },
+      {
+        "strKey": "WASHER_WARNING_NO_LIQUID_DETERGENT",
+        "bitIndex": 3,
+        "notificationInfo": {
+          "strKey": "WASHER_WARNING_NO_LIQUID_DETERGENT_NOTIFICATION",
+          "priority": "HIGH",
+          "necessity": "OPTON"
+        }
+      },
+      {
+        "strKey": "WASHER_WARNING_NO_SOFTENER",
+        "bitIndex": 4,
+        "notificationInfo": {
+          "strKey": "WASHER_WARNING_NO_SOFTENER_NOTIFICATION",
+          "priority": "MEDIUM",
+          "necessity": "OPTON"
+        }
+      },
+      {
+        "strKey": "WASHER_WARNING_NO_POWDER_DETERGENT",
+        "bitIndex": 5,
+        "notificationInfo": {
+          "strKey": "WASHER_WARNING_NO_POWDER_DETERGENT_NOTIFICATION",
+          "priority": "HIGH",
+          "necessity": "OPTON"
+        }
+      },
+      {
+        "strKey": "WASHER_WARNING_LIQUID_DETERGENT_PUMPING",
+        "bitIndex": 6,
+        "notificationInfo": {
+          "strKey": "WASHER_WARNING_LIQUID_DETERGENT_PUMPING_NOTIFICATION",
+          "priority": "HIGH",
+          "necessity": "OPTON"
+        }
+      },
+      {
+        "strKey": "WASHER_WARNING_POP_UP",
+        "bitIndex": 7,
+        "notificationInfo": {
+          "strKey": "WASHER_WARNING_POP_UP_NOTIFICATION",
+          "priority": "BLOCKER"
+        }
+      }
+    ]
+  }
+}
