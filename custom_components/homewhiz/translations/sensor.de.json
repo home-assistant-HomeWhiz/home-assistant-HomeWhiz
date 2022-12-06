@@ -1,0 +1,66 @@
+{
+  "state": {
+    "homewhiz__STATE": {
+      "DEVICE_STATE_ON": "Ein",
+      "DEVICE_STATE_OFF": "Aus",
+      "DEVICE_STATE_RUNNING": "L\u00e4uft",
+      "DEVICE_STATE_PAUSED": "Pausiert",
+      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Zeitverz\u00f6gerung aktiv"
+    },
+    "homewhiz__SUB_STATE": {
+      "WASHER_SUBSTATE_WASHING": "Waschen",
+      "WASHER_SUBSTATE_SPIN": "Schleudern",
+      "WASHER_WATER_INTAKE": "Wasserzufuhr",
+      "WASHER_SUBSTATE_PREWASH": "Vorw\u00e4sche",
+      "WASHER_SUBSTATE_RINSING": "Sp\u00fclen",
+      "WASHER_SUBSTATE_SOFTENER": "Weichsp\u00fcler",
+      "WASHER_SUBSTATE_PROGRAM_STARTED": "Programmstart",
+      "WASHER_SUBSTATE_TIME_DELAY_ENABLED": "Endzeit aktiviert",
+      "WASHER_SUBSTATE_PAUSED": "Pause",
+      "WASHER_SUBSTATE_ANALYSING": "Wird analysiert \u2026",
+      "WASHER_SUBSTATE_DOOR_LOCKED": "T\u00fcr versperrt",
+      "WASHER_SUBSTATE_OPENING_DOOR": "T\u00fcr wird ge\u00f6ffnet",
+      "WASHER_SUBSTATE_LOCKING_DOOR": "T\u00fcr wird versperrt",
+      "WASHER_SUBSTATE_REMOVE_LAUNDRY": "Waschzyklus abgeschlossen, bitte W\u00e4sche entnehmen",
+      "WASHER_SUBSTATE_ADD_LAUNDRY": "Sie k\u00f6nnen W\u00e4sche hinzuf\u00fcgen",
+      "WASHER_SUBSTATE_RINSE_HOLD": "Sp\u00fclstopp ist aktiv, bitte Schleudergeschwindigkeit ausw\u00e4hlen",
+      "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Ferngesteuertes Knitterschutz-Programm wird ausgef\u00fchrt",
+      "WASHER_SUBSTATE_DRYING": "Trocknung"
+    },
+    "homewhiz__WASHER_TEMPERATURE": {
+      "TEMPERATURE_COLD_WASH": "Kalt waschen",
+      "TEMPERATURE_20": "20 \u00b0C",
+      "TEMPERATURE_30": "30 \u00b0C",
+      "TEMPERATURE_40": "40 \u00b0C"
+    },
+    "homewhiz__WASHER_SPIN": {
+      "SPIN_NO_SPIN": "Nicht schleudern",
+      "SPIN_RINSE_HOLD": "Sp\u00fclstopp"
+    },
+    "homewhiz__WASHER_PREWASH": {
+      "PREWASH_OFF": "Aus",
+      "PREWASH_ON": "Ein"
+    },
+    "homewhiz__WASHER_EXTRARINSE": {
+      "EXTRA_RINSE_OFF": "Nachsp\u00fclen aus",
+      "EXTRA_RINSE_ON": "Nachsp\u00fclen ein"
+    },
+    "homewhiz__WASHER_FAST_PLUS": {
+      "FAST_PLUS_OFF": "Fast+ aus",
+      "FAST_PLUS_ON_FAST": "Schnell",
+      "FAST_PLUS_ON_FAST_PLUS": "Schnell+"
+    },
+    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
+      "HIDDEN_ANTI_CREASE_OFF": "Aus",
+      "HIDDEN_ANTI_CREASE_ON": "Ein"
+    },
+    "homewhiz__WASHER_STEAM": {
+      "STEAM_OFF": "STEAM_OFF",
+      "STEAM_ON": "STEAM_ON"
+    },
+    "homewhiz__WASHER_PHR": {
+      "PHR_OFF": "Aus",
+      "PHR_ON": "Ein"
+    }
+  }
+}
