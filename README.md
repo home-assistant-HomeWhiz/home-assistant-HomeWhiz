@@ -48,3 +48,9 @@ If you have a Wi-Fi connected HomeWhiz device, your PR is very welcome. We can o
 Smartphone app doesn't seem to be working when integration is enabled. 
 To make the app work again you have to disable the integration, restart the HA and wait a few minutes ( In my case bluetooth icon on a washing machine starts flashing )
 
+## Contributing to the project
+
+Contributions are welcome. 
+- Report problems by creating an issue [here](https://github.com/rowysock/home-assistant-HomeWhiz/issues)
+- [Get started developing](./dev_linux.md)
+- [Submit your code](https://github.com/rowysock/home-assistant-HomeWhiz/pulls)
