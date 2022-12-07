@@ -1,0 +1,66 @@
+{
+  "state": {
+    "homewhiz__STATE": {
+      "DEVICE_STATE_ON": "Marche",
+      "DEVICE_STATE_OFF": "Arr\u00eat",
+      "DEVICE_STATE_RUNNING": "En marche",
+      "DEVICE_STATE_PAUSED": "En pause",
+      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Temporisation activ\u00e9e"
+    },
+    "homewhiz__SUB_STATE": {
+      "WASHER_SUBSTATE_WASHING": "Lavage",
+      "WASHER_SUBSTATE_SPIN": "Essorage",
+      "WASHER_WATER_INTAKE": "Arriv\u00e9e d\u2019eau",
+      "WASHER_SUBSTATE_PREWASH": "Pr\u00e9lavage",
+      "WASHER_SUBSTATE_RINSING": "Rin\u00e7age",
+      "WASHER_SUBSTATE_SOFTENER": "Assouplissant",
+      "WASHER_SUBSTATE_PROGRAM_STARTED": "D\u00e9marrage du programme",
+      "WASHER_SUBSTATE_TIME_DELAY_ENABLED": "Heure de fin activ\u00e9e",
+      "WASHER_SUBSTATE_PAUSED": "Pause",
+      "WASHER_SUBSTATE_ANALYSING": "Analyse",
+      "WASHER_SUBSTATE_DOOR_LOCKED": "Porte verrouill\u00e9e",
+      "WASHER_SUBSTATE_OPENING_DOOR": "Ouverture de la porte",
+      "WASHER_SUBSTATE_LOCKING_DOOR": "Verrouillage de la porte",
+      "WASHER_SUBSTATE_REMOVE_LAUNDRY": "Cycle de lavage termin\u00e9, retirer le linge",
+      "WASHER_SUBSTATE_ADD_LAUNDRY": "Ajoutez le linge",
+      "WASHER_SUBSTATE_RINSE_HOLD": "Arr\u00eat cuve pleine actif, s\u00e9lectionnez la vitesse d'essorage",
+      "WASHER_SUBSTATE_REMOTE_ANTICREASE": "L'anti-froissage \u00e0 distance est en cours.",
+      "WASHER_SUBSTATE_DRYING": "S\u00e9chage"
+    },
+    "homewhiz__WASHER_TEMPERATURE": {
+      "TEMPERATURE_COLD_WASH": "Lavage \u00e0 froid",
+      "TEMPERATURE_20": "20\u00a0\u00b0C",
+      "TEMPERATURE_30": "30\u00a0\u00b0C",
+      "TEMPERATURE_40": "40\u00a0\u00b0C"
+    },
+    "homewhiz__WASHER_SPIN": {
+      "SPIN_NO_SPIN": "Pas d\u2019essorage",
+      "SPIN_RINSE_HOLD": "Arr\u00eat cuve pleine"
+    },
+    "homewhiz__WASHER_PREWASH": {
+      "PREWASH_OFF": "Arr\u00eat",
+      "PREWASH_ON": "Marche"
+    },
+    "homewhiz__WASHER_EXTRARINSE": {
+      "EXTRA_RINSE_OFF": "Rin\u00e7age suppl\u00e9mentaire D\u00e9sactiv\u00e9",
+      "EXTRA_RINSE_ON": "Rin\u00e7age suppl\u00e9mentaire Activ\u00e9"
+    },
+    "homewhiz__WASHER_FAST_PLUS": {
+      "FAST_PLUS_OFF": "Rapide Plus D\u00e9sactiv\u00e9",
+      "FAST_PLUS_ON_FAST": "Rapide",
+      "FAST_PLUS_ON_FAST_PLUS": "Rapide Plus"
+    },
+    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
+      "HIDDEN_ANTI_CREASE_OFF": "Arr\u00eat",
+      "HIDDEN_ANTI_CREASE_ON": "Marche"
+    },
+    "homewhiz__WASHER_STEAM": {
+      "STEAM_OFF": "STEAM_OFF",
+      "STEAM_ON": "STEAM_ON"
+    },
+    "homewhiz__WASHER_PHR": {
+      "PHR_OFF": "Arr\u00eat",
+      "PHR_ON": "Marche"
+    }
+  }
+}

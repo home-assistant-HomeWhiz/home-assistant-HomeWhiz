@@ -1,0 +1,66 @@
+{
+  "state": {
+    "homewhiz__STATE": {
+      "DEVICE_STATE_ON": "Zapnuto",
+      "DEVICE_STATE_OFF": "Vypnuto",
+      "DEVICE_STATE_RUNNING": "Spu\u0161t\u011bno",
+      "DEVICE_STATE_PAUSED": "Pozastaveno",
+      "DEVICE_STATE_TIME_DELAY_ACTIVE": "\u010casov\u00e1 prodleva je aktivn\u00ed"
+    },
+    "homewhiz__SUB_STATE": {
+      "WASHER_SUBSTATE_WASHING": "Pran\u00ed",
+      "WASHER_SUBSTATE_SPIN": "\u017dd\u00edm\u00e1n\u00ed",
+      "WASHER_WATER_INTAKE": "P\u0159\u00edvod vody",
+      "WASHER_SUBSTATE_PREWASH": "P\u0159edp\u00edrka",
+      "WASHER_SUBSTATE_RINSING": "M\u00e1ch\u00e1n\u00ed",
+      "WASHER_SUBSTATE_SOFTENER": "Aviv\u00e1\u017e",
+      "WASHER_SUBSTATE_PROGRAM_STARTED": "Spu\u0161t\u011bn\u00ed programu",
+      "WASHER_SUBSTATE_TIME_DELAY_ENABLED": "\u010cas ukon\u010den\u00ed povolen",
+      "WASHER_SUBSTATE_PAUSED": "Pozastaveno",
+      "WASHER_SUBSTATE_ANALYSING": "Anal\u00fdza",
+      "WASHER_SUBSTATE_DOOR_LOCKED": "Dv\u00ed\u0159ka zam\u010den\u00e1",
+      "WASHER_SUBSTATE_OPENING_DOOR": "Otev\u0159en\u00ed dv\u00ed\u0159ek",
+      "WASHER_SUBSTATE_LOCKING_DOOR": "Zamknut\u00ed dv\u00ed\u0159ek",
+      "WASHER_SUBSTATE_REMOVE_LAUNDRY": "Prac\u00ed cyklus dokon\u010den; vyjm\u011bte pr\u00e1dlo",
+      "WASHER_SUBSTATE_ADD_LAUNDRY": "M\u016f\u017eete p\u0159idat pr\u00e1dlo",
+      "WASHER_SUBSTATE_RINSE_HOLD": "Pozastaven\u00ed m\u00e1ch\u00e1n\u00ed je aktivn\u00ed; zvolte rychlost \u017ed\u00edm\u00e1n\u00ed",
+      "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Prob\u00edh\u00e1 vzd\u00e1len\u00e1 ochrana proti poma\u010dk\u00e1n\u00ed.",
+      "WASHER_SUBSTATE_DRYING": "Su\u0161en\u00ed"
+    },
+    "homewhiz__WASHER_TEMPERATURE": {
+      "TEMPERATURE_COLD_WASH": "Pran\u00ed za studena",
+      "TEMPERATURE_20": "TEMPERATURE_20",
+      "TEMPERATURE_30": "TEMPERATURE_30",
+      "TEMPERATURE_40": "TEMPERATURE_40"
+    },
+    "homewhiz__WASHER_SPIN": {
+      "SPIN_NO_SPIN": "Bez \u017ed\u00edm\u00e1n\u00ed",
+      "SPIN_RINSE_HOLD": "Pozastaven\u00ed m\u00e1ch\u00e1n\u00ed"
+    },
+    "homewhiz__WASHER_PREWASH": {
+      "PREWASH_OFF": "Vypnuto",
+      "PREWASH_ON": "Zapnuto"
+    },
+    "homewhiz__WASHER_EXTRARINSE": {
+      "EXTRA_RINSE_OFF": "Dal\u0161\u00ed m\u00e1ch\u00e1n\u00ed vypnuto",
+      "EXTRA_RINSE_ON": "Dal\u0161\u00ed m\u00e1ch\u00e1n\u00ed zapnuto"
+    },
+    "homewhiz__WASHER_FAST_PLUS": {
+      "FAST_PLUS_OFF": "Vypnuto",
+      "FAST_PLUS_ON_FAST": "Rychl\u00fd",
+      "FAST_PLUS_ON_FAST_PLUS": "Rychl\u00fd+"
+    },
+    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
+      "HIDDEN_ANTI_CREASE_OFF": "Vypnuto",
+      "HIDDEN_ANTI_CREASE_ON": "Zapnuto"
+    },
+    "homewhiz__WASHER_STEAM": {
+      "STEAM_OFF": "STEAM_OFF",
+      "STEAM_ON": "STEAM_ON"
+    },
+    "homewhiz__WASHER_PHR": {
+      "PHR_OFF": "Vypnuto",
+      "PHR_ON": "Zapnuto"
+    }
+  }
+}
