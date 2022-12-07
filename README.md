@@ -52,5 +52,5 @@ To make the app work again you have to disable the integration, restart the HA a
 
 Contributions are welcome. 
 - Report problems by creating an issue [here](https://github.com/rowysock/home-assistant-HomeWhiz/issues)
-- [Get started developing](./dev_linux.md)
+- [Get started developing](./linux_dev.md)
 - [Submit your code](https://github.com/rowysock/home-assistant-HomeWhiz/pulls)
