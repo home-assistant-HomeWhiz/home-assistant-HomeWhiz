@@ -1,6 +1,6 @@
 import logging
-from dataclasses import asdict
-from typing import Any
+from dataclasses import asdict, dataclass
+from typing import Any, Optional
 
 import voluptuous as vol
 from homeassistant.components.bluetooth import (
@@ -22,9 +22,20 @@ from .api import (
     LoginError,
     make_id_exchange_request,
     fetch_appliance_contents,
+    IdExchangeResponse,
+    ApplianceContents,
+    ApplianceInfo,
+    fetch_appliance_info,
 )
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
+
+
+@dataclass
+class EntryData:
+    ids: IdExchangeResponse
+    contents: ApplianceContents
+    appliance_info: Optional[ApplianceInfo]
 
 
 class TiltConfigFlow(ConfigFlow, domain=DOMAIN):
@@ -101,10 +112,15 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):
                 contents = await fetch_appliance_contents(
                     credentials, id_response.appId
                 )
-
+                appliance_info = await fetch_appliance_info(
+                    credentials, id_response.appId
+                )
+                data = EntryData(
+                    ids=id_response, contents=contents, appliance_info=appliance_info
+                )
                 return self.async_create_entry(
                     title=self._name,
-                    data=asdict(id_response) | contents,
+                    data=asdict(data),
                 )
             except LoginError:
                 errors["base"] = "invalid_auth"
