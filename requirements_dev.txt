@@ -3,3 +3,4 @@ bleak
 bleak_retry_connector
 dacite
 aiohttp
+pre-commit
