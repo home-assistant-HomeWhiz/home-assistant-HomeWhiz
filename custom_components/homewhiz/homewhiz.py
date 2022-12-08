@@ -1,4 +1,5 @@
 import logging
+from collections import defaultdict
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
@@ -20,41 +21,25 @@ class MessageAccumulator:
         return None
 
 
-def get_brand_name(brand_index: int):
-    match brand_index:
-        case 2:
-            return "Grundig"
-        case 3:
-            return "Beko"
-        case 4:
-            return "Blomberg"
-        case 5:
-            return "Elektrabregenz"
-        case 6:
-            return "Arctic"
-        case 7:
-            return "Defy"
-        case 8:
-            return "Leisure"
-        case 9:
-            return "Flavel"
-        case 10:
-            return "Altus"
-        case 11:
-            return "Dawlance"
-        case 12:
-            return "Viking"
-        case 13:
-            return "Cylinda"
-        case 14:
-            return "Smeg"
-        case 15:
-            return "V-Zug"
-        case 16:
-            return "Lamona"
-        case 17:
-            return "Teka"
-        case 18:
-            return "Voltas Beko"
-        case _:
-            return "Arcelik"
+brand_name_by_code = defaultdict(
+    lambda: "Arcelik",
+    {
+        2: "Grundig",
+        3: "Beko",
+        4: "Blomberg",
+        5: "Elektrabregenz",
+        6: "Arctic",
+        7: "Defy",
+        8: "Leisure",
+        9: "Flavel",
+        10: "Altus",
+        11: "Dawlance",
+        12: "Viking",
+        13: "Cylinda",
+        14: "Smeg",
+        15: "V-Zug",
+        16: "Lamona",
+        17: "Teka",
+        18: "Voltas Beko",
+    },
+)

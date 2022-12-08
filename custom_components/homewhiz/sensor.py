@@ -28,7 +28,7 @@ from .appliance_config import (
 )
 from .config_flow import EntryData
 from .const import DOMAIN
-from .homewhiz import get_brand_name
+from .homewhiz import brand_name_by_code
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
@@ -177,7 +177,7 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizDataUpdateCoordinator], SensorEnt
         self._value_fn = description.value_fn
         self._attr_unique_id = f"{unique_name}_{description.key}"
         manufacturer = (
-            get_brand_name(data.appliance_info.brand)
+            brand_name_by_code[data.appliance_info.brand]
             if data.appliance_info is not None
             else None
         )
