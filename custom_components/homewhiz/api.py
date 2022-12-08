@@ -5,7 +5,6 @@ import json
 import logging
 from dataclasses import dataclass
 from functools import reduce
-from typing import List
 
 import aiohttp
 from aiohttp import ContentTypeError
@@ -50,7 +49,7 @@ class ContentsDescription:
 
 @dataclass
 class ContentsIndexResponse:
-    results: List[ContentsDescription]
+    results: list[ContentsDescription]
 
 
 @dataclass
@@ -60,7 +59,7 @@ class Home:
 
 @dataclass
 class MyHomesResponse:
-    data: List[Home]
+    data: list[Home]
 
 
 @dataclass
@@ -78,7 +77,7 @@ class ApplianceInfo:
 
 @dataclass
 class HomeResponseData:
-    appliances: List[ApplianceInfo]
+    appliances: list[ApplianceInfo]
 
 
 @dataclass
@@ -158,7 +157,7 @@ async def make_api_get_request(
         + f"x-amz-security-token:{credentials.sessionToken}\n"
     )
     signed_headers = "host;x-amz-date;x-amz-security-token"
-    payload_hash = hashlib.sha256("".encode("utf-8")).hexdigest()
+    payload_hash = hashlib.sha256(b"").hexdigest()
 
     canonical_request = (
         f"GET\n"
@@ -170,7 +169,7 @@ async def make_api_get_request(
     )
 
     _LOGGER.debug(
-        "Actual canonical request: {0}".format(canonical_request.replace("\n", "\\n"))
+        "Actual canonical request: {}".format(canonical_request.replace("\n", "\\n"))
     )
 
     credential_scope = f"{date_stamp}/{REGION}/{SERVICE}/aws4_request"

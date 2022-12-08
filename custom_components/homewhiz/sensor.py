@@ -2,13 +2,13 @@ from __future__ import annotations
 
 import logging
 from dataclasses import dataclass, fields
-from typing import Callable, List
+from typing import Callable
 
 from dacite import from_dict
 from homeassistant.components.sensor import (
+    SensorDeviceClass,
     SensorEntity,
     SensorEntityDescription,
-    SensorDeviceClass,
 )
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import STATE_UNAVAILABLE, TEMP_CELSIUS
@@ -21,9 +21,9 @@ from . import HomewhizDataUpdateCoordinator
 from .api import ApplianceContents, ApplianceInfo, IdExchangeResponse
 from .appliance_config import (
     ApplianceConfiguration,
+    ApplianceFeatureBoundedOption,
     ApplianceFeatureEnumOption,
     ApplianceProgram,
-    ApplianceFeatureBoundedOption,
     ApplianceProgressFeature,
 )
 from .config_flow import EntryData
@@ -44,7 +44,7 @@ class HomeWhizEntityDescription(SensorEntityDescription):
 
 class EnumEntityDescription(HomeWhizEntityDescription):
     def __init__(
-        self, key: str, options: List[ApplianceFeatureEnumOption], read_index: int
+        self, key: str, options: list[ApplianceFeatureEnumOption], read_index: int
     ):
         self.key = key
         self.icon = "mdi:state-machine"
@@ -118,7 +118,7 @@ class ProgressEntityDescription(HomeWhizEntityDescription):
 
 def generate_descriptions_from_config(
     config: ApplianceConfiguration,
-) -> List[HomeWhizEntityDescription]:
+) -> list[HomeWhizEntityDescription]:
     result = []
     if config.deviceStates is not None:
         result.append(
