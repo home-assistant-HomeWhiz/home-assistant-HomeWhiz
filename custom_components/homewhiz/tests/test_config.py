@@ -26,8 +26,9 @@ file_names = [
     "oven-meat-probe.json",
     "oven-multi.json",
     "oven-pirolitik.json",
-    # config fetched from the api
+    # configs fetched from the api
     "example_appliance_config.json",
+    "example_ac_config.json",
 ]
 
 

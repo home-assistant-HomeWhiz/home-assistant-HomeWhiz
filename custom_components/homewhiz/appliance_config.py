@@ -116,9 +116,254 @@ class ApplianceSubState:
 
 
 @dataclass
+class OvenMeatProbePlug:
+    wifiArrayReadIndex: int
+    wifiArrayValue: int
+
+
+@dataclass
+class ApplianceOvenMeatProbe:
+    meatProbePrograms: List[str]
+    meatProbeSubprograms: List[ApplianceFeature]
+    meatProbePlug: OvenMeatProbePlug
+
+
+@dataclass
+class AutoController:
+    hasAutoController: bool
+
+
+@dataclass
+class ConsumableWarningSetting:
+    bitIndex: int
+    wifiArrayReadIndex: int
+
+
+@dataclass
+class ConsumableForm:
+    autoDosingAmountSetting: ApplianceFeature
+    consumableForm: str
+    lastCycleConsumptionAmountDataArrayReadIndex: int
+    warningSetting: ConsumableWarningSetting
+
+
+@dataclass
+class Consumable:
+    consumableType: str
+    forms: List[ConsumableForm]
+
+
+@dataclass
+class ApplianceConsumableSettings:
+    consumables: List[Consumable]
+
+
+@dataclass
+class ApplianceProgramDownloadSettings:
+    strKey: str
+    wifiArrayReadIndex: int
+
+
+@dataclass
+class ApplianceClock:
+    hourWifiArrayIndex: int
+    minuteWifiArrayIndex: int
+
+
+@dataclass
+class HobZoneRecipeInfo:
+    readyMealCurrentStepReadIndex: int
+    readyMealIdHighReadIndex: int
+    readyMealIdLowReadIndex: int
+
+
+@dataclass
+class ApplianceWarningReason:
+    values: List[ApplianceFeatureEnumOption]
+    wifiArrayReadIndex: int
+
+
+@dataclass
+class ApplianceWarningOption:
+    bitIndex: int
+    notificationInfo: ApplianceFeatureNotificationInfo
+    reasonInfo: Optional[ApplianceWarningReason]
+    strKey: str
+
+
+@dataclass
+class ApplianceWarning:
+    wifiArrayByteCount: Optional[int]
+    warnings: List[ApplianceWarningOption]
+    wifiArrayReadIndex: int
+
+
+@dataclass
+class HobDefaultZone:
+    cookingStates: ApplianceState
+    monitorings: ApplianceFeature
+    program: ApplianceProgram
+    progressVariables: ApplianceProgress
+    zoneRecipeInfo: HobZoneRecipeInfo
+    subPrograms: List[ApplianceFeature]
+    subStates: ApplianceSubState
+    deviceWarnings: ApplianceWarning
+
+
+@dataclass
+class ApplianceHobZones:
+    defaultZone: HobDefaultZone
+    eachZoneWifiArraySegmentLength: int
+    firstZoneWifiArrayStartIndex: int
+    numberOfZones: int
+
+
+@dataclass
+class AutoBakeDownloadedFood:
+    downloadedAutobakeIdHighWifiArrayIndex: int
+    downloadedAutobakeIdLowWifiArrayIndex: int
+
+
+@dataclass
+class ApplianceOvenRecipe:
+    cookingTypeRecipeWifiArrayValue: int
+    cookingTypeWifiArrayIndex: int
+    isRecipeUIHidden: Optional[str]
+    recipeCommandLength: int
+    recipeCommandWifiArrayStartIndex: int
+    recipeFormatVersion: Optional[str]
+    cookingTypeRecipeFromOvenStartedWifiArrayValue: int
+    cookingTypeRecipeFromOvenWifiArrayValue: int
+    recipeIdHighWifiArrayIndex: int
+    recipeIdLowWifiArrayIndex: int
+
+
+@dataclass
+class ApplianceFeatureReference:
+    strKeyRef: str
+    wifiArrayIndex: int
+
+
+@dataclass
+class ApplianceProgramReference:
+    strKeyRef: str
+    wifiArrayIndex: int
+
+
+@dataclass
+class ApplianceProgressFeatureReference:
+    hour: ApplianceFeatureReference
+    minute: ApplianceFeatureReference
+    strKeyRef: str
+
+
+@dataclass
+class ApplianceProgressReference:
+    delay: ApplianceProgressFeature
+    duration: ApplianceProgressFeatureReference
+    remaining: ApplianceProgressFeature
+
+
+@dataclass
+class ApplianceSubprogramReference:
+    strKeyRef: str
+    wifiArrayIndex: int
+
+
+@dataclass
+class OvenCookingStep:
+    program: ApplianceProgramReference
+    progressVariables: ApplianceProgressReference
+    stepEnableStatusIndex: int
+    subPrograms: List[ApplianceSubprogramReference]
+
+
+@dataclass
+class ApplianceOvenStepCooking:
+    activeStepIndex: int
+    cookingTypeManuelWifiArrayValue: int
+    cookingTypeStepCookingWifiArrayValue: int
+    cookingTypeWifiArrayIndex: int
+    defaultCookingStep: OvenCookingStep
+    eachStepWifiArraySegmentLength: int
+    firstStepWifiArrayStartIndex: int
+    numberOfSteps: int
+
+
+@dataclass
+class OvenTemperatureInfo:
+    ovenTemperatureNotVisiblePrograms: str
+    ovenTemperatureSubprograms: ApplianceFeature
+
+
+@dataclass
+class ApplianceRefrigeratorDayTime:
+    hourWfaIndex: int
+    minuteWfaIndex: int
+
+
+@dataclass
+class ApplianceDefrostDuration:
+    intervalCalculationFactor: int
+    intervalWfaIndex: int
+    startHourWfaIndex: int
+    startMinuteWfaIndex: int
+
+
+@dataclass
+class ApplianceRefrigeratorDefrost:
+    dayTimeVariableIndices: ApplianceRefrigeratorDayTime
+    defrostConfigWfaIndex: int
+    defrostCountdownWfaIndex: int
+    defrostDurationIntervals: List[ApplianceDefrostDuration]
+    defrostSelectWfaIndex: int
+
+
+@dataclass
+class ApplianceRemoteControl:
+    wifiArrayReadIndex: int
+    wifiArrayValue: int
+
+
+@dataclass
+class ApplianceScreenSaver:
+    ovenScreenSaverTimer: ApplianceFeature
+    ovenStandByMode: ApplianceFeature
+    ovenStandByTimer: ApplianceFeature
+
+
+@dataclass
+class ApplianceTeaMachineRecipe:
+    recipeFormatVersion: str
+    recipeIdWifiArrayIndex: int
+
+
+@dataclass
 class ApplianceConfiguration:
     program: ApplianceProgram
     subPrograms: List[ApplianceFeature]
     progressVariables: Optional[ApplianceProgress]
     deviceStates: Optional[ApplianceState]
     deviceSubStates: Optional[ApplianceSubState]
+    ovenMeatProbeAccessory: Optional[ApplianceOvenMeatProbe]
+    autoController: Optional[AutoController]
+    commands: Optional[List[ApplianceFeature]]
+    consumableSettings: Optional[ApplianceConsumableSettings]
+    customSubPrograms: Optional[List[ApplianceFeature]]
+    downloadCycleSettingsModel: Optional[ApplianceProgramDownloadSettings]
+    clock: Optional[ApplianceClock]
+    zones: Optional[ApplianceHobZones]
+    monitorings: Optional[List[ApplianceFeature]]
+    ovenClockWifiArrayIndexes: Optional[ApplianceClock]
+    ovenDownloadedAutoBakeInformation: Optional[AutoBakeDownloadedFood]
+    ovenRecipeInformation: Optional[ApplianceOvenRecipe]
+    stepCooking: Optional[ApplianceOvenStepCooking]
+    ovenTemperatureInfo: Optional[OvenTemperatureInfo]
+    refrigeratorDefrostInformation: Optional[ApplianceRefrigeratorDefrost]
+    remoteControl: Optional[ApplianceRemoteControl]
+    screenSaver: Optional[ApplianceScreenSaver]
+    settings: Optional[List[ApplianceFeature]]
+    teaRecipeInformation: Optional[ApplianceTeaMachineRecipe]
+    deviceWarningsExtra: Optional[ApplianceWarning]
+    deviceWarnings: Optional[ApplianceWarning]
+    warnings: Optional[ApplianceWarning]
