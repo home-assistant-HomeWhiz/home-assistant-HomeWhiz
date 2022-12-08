@@ -18,6 +18,7 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from . import HomewhizDataUpdateCoordinator
+from .api import ApplianceContents, ApplianceInfo, IdExchangeResponse
 from .appliance_config import (
     ApplianceConfiguration,
     ApplianceFeatureEnumOption,
@@ -25,7 +26,9 @@ from .appliance_config import (
     ApplianceFeatureBoundedOption,
     ApplianceProgressFeature,
 )
+from .config_flow import EntryData
 from .const import DOMAIN
+from .homewhiz import brand_name_by_code
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
@@ -161,17 +164,30 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizDataUpdateCoordinator], SensorEnt
         coordinator: HomewhizDataUpdateCoordinator,
         description: HomeWhizEntityDescription,
         entry: ConfigEntry,
+        data: EntryData,
     ):
         super().__init__(coordinator)
-        name = entry.title
-        self._entry = entry
+        unique_name = entry.title
+        friendly_name = (
+            data.appliance_info.name if data.appliance_info is not None else unique_name
+        )
+
+        self._localization = data.contents.localization
         self.entity_description = description
         self._value_fn = description.value_fn
-        self._attr_unique_id = f"{name}_{description.key}"
+        self._attr_unique_id = f"{unique_name}_{description.key}"
+        manufacturer = (
+            brand_name_by_code[data.appliance_info.brand]
+            if data.appliance_info is not None
+            else None
+        )
+        model = data.appliance_info.model if data.appliance_info is not None else None
         self._attr_device_info = DeviceInfo(
             connections={("bluetooth", entry.unique_id)},
-            identifiers={(DOMAIN, name)},
-            name=name,
+            identifiers={(DOMAIN, unique_name)},
+            name=friendly_name,
+            manufacturer=manufacturer,
+            model=model,
         )
 
     @property
@@ -197,23 +213,28 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizDataUpdateCoordinator], SensorEnt
             return "State"
         if key == "SUB_STATE":
             return "Sub-state"
-        for localization in self._entry.data["localizations"]:
-            for localization_key in localization["localizations"]:
-                if localization_key == key:
-                    return localization["localizations"][localization_key]
+        for localization_key in self._localization:
+            if localization_key == key:
+                return self._localization[localization_key]
         return key
 
 
 async def async_setup_entry(
     hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
 ) -> None:
-    config = from_dict(ApplianceConfiguration, entry.data["config"])
+    data = EntryData(
+        contents=from_dict(ApplianceContents, entry.data["contents"]),
+        appliance_info=from_dict(ApplianceInfo, entry.data["appliance_info"])
+        if entry.data["appliance_info"] is not None
+        else None,
+        ids=from_dict(IdExchangeResponse, entry.data["ids"]),
+    )
     coordinator = hass.data[DOMAIN][entry.entry_id]
-    descriptions = generate_descriptions_from_config(config)
+    descriptions = generate_descriptions_from_config(data.contents.config)
     _LOGGER.debug(f"Entities: {[d.key for d in descriptions]}")
     async_add_entities(
         [
-            HomeWhizEntity(coordinator, description, entry)
+            HomeWhizEntity(coordinator, description, entry, data)
             for description in descriptions
         ]
     )

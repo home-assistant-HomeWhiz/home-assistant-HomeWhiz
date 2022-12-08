@@ -20,7 +20,7 @@ CONNECTION_RETRY_TIMEOUT = 30
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     _LOGGER.info(f"Setting up entry {entry.unique_id}")
     address = entry.unique_id
-    if entry.data["config"] is None:
+    if "ids" not in entry.data:
         raise Exception(
             "Appliance config not fetched from the API. "
             "Please configure the integration again"
