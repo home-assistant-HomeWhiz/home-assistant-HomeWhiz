@@ -54,14 +54,6 @@ class ContentsIndexResponse:
 
 
 @dataclass
-class ApplianceInfo:
-    applianceId: str
-    brand: str
-    model: str
-    type: str
-
-
-@dataclass
 class Home:
     id: int
 
