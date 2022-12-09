@@ -1,0 +1,66 @@
+{
+  "state": {
+    "homewhiz__STATE": {
+      "DEVICE_STATE_ON": "On",
+      "DEVICE_STATE_OFF": "Off",
+      "DEVICE_STATE_RUNNING": "funcionando",
+      "DEVICE_STATE_PAUSED": "Pausa",
+      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Atraso de tempo ativo"
+    },
+    "homewhiz__SUB_STATE": {
+      "WASHER_SUBSTATE_WASHING": "Lavar",
+      "WASHER_SUBSTATE_SPIN": "Giro",
+      "WASHER_WATER_INTAKE": "Ingest\u00e3o de \u00e1gua",
+      "WASHER_SUBSTATE_PREWASH": "Pr\u00e9-lavagem",
+      "WASHER_SUBSTATE_RINSING": "Enxaguar",
+      "WASHER_SUBSTATE_SOFTENER": "Amaciador",
+      "WASHER_SUBSTATE_PROGRAM_STARTED": "In\u00edcio do programa",
+      "WASHER_SUBSTATE_TIME_DELAY_ENABLED": "Tempo final ativado",
+      "WASHER_SUBSTATE_PAUSED": "Pausa\r\nPausa",
+      "WASHER_SUBSTATE_ANALYSING": "An\u00e1lise",
+      "WASHER_SUBSTATE_DOOR_LOCKED": "Porta trancada",
+      "WASHER_SUBSTATE_OPENING_DOOR": "Porta de abertura",
+      "WASHER_SUBSTATE_LOCKING_DOOR": "Porta de bloqueio",
+      "WASHER_SUBSTATE_REMOVE_LAUNDRY": "Ciclo de lavagem completo; remover a roupa",
+      "WASHER_SUBSTATE_ADD_LAUNDRY": "Pode adicionar roupa suja",
+      "WASHER_SUBSTATE_RINSE_HOLD": "O enxaguamento est\u00e1 ativo; selecione velocidade de centrifuga\u00e7\u00e3o",
+      "WASHER_SUBSTATE_REMOTE_ANTICREASE": "O anti-rugas remoto est\u00e1 em andamento.",
+      "WASHER_SUBSTATE_DRYING": "Secagem"
+    },
+    "homewhiz__WASHER_TEMPERATURE": {
+      "TEMPERATURE_COLD_WASH": "Lavagem a frio",
+      "TEMPERATURE_20": "TEMPERATURE_20",
+      "TEMPERATURE_30": "TEMPERATURE_30",
+      "TEMPERATURE_40": "TEMPERATURE_40"
+    },
+    "homewhiz__WASHER_SPIN": {
+      "SPIN_NO_SPIN": "Sem rota\u00e7\u00e3o",
+      "SPIN_RINSE_HOLD": "Enxague preso"
+    },
+    "homewhiz__WASHER_PREWASH": {
+      "PREWASH_OFF": "Off",
+      "PREWASH_ON": "On"
+    },
+    "homewhiz__WASHER_EXTRARINSE": {
+      "EXTRA_RINSE_OFF": "Extra Rinse Off",
+      "EXTRA_RINSE_ON": "Enxaguar Extra"
+    },
+    "homewhiz__WASHER_FAST_PLUS": {
+      "FAST_PLUS_OFF": "Off",
+      "FAST_PLUS_ON_FAST": "R\u00e1pido",
+      "FAST_PLUS_ON_FAST_PLUS": "Fast+"
+    },
+    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
+      "HIDDEN_ANTI_CREASE_OFF": "Off",
+      "HIDDEN_ANTI_CREASE_ON": "On"
+    },
+    "homewhiz__WASHER_STEAM": {
+      "STEAM_OFF": "STEAM_OFF",
+      "STEAM_ON": "STEAM_ON"
+    },
+    "homewhiz__WASHER_PHR": {
+      "PHR_OFF": "Off",
+      "PHR_ON": "On"
+    }
+  }
+}
