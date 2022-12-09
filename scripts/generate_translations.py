@@ -7,8 +7,8 @@ from dacite import from_dict
 
 from custom_components.homewhiz.appliance_config import ApplianceConfiguration
 from custom_components.homewhiz.sensor import (
-    generate_descriptions_from_config,
     EnumEntityDescription,
+    generate_descriptions_from_config,
 )
 
 

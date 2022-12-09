@@ -13,7 +13,7 @@ from custom_components.homewhiz.sensor import generate_descriptions_from_config
 def config():
     dirname = os.path.dirname(__file__)
     file_path = os.path.join(dirname, "./fixtures/example_appliance_config.json")
-    with open(file_path, "r") as file:
+    with open(file_path) as file:
         json_content = json.load(file)
         return from_dict(ApplianceConfiguration, json_content)
 

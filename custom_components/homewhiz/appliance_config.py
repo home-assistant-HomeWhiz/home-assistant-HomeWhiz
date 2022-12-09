@@ -1,10 +1,10 @@
 from dataclasses import dataclass
-from typing import List, Optional
+from typing import Optional
 
 
 @dataclass
 class ApplianceSubprogramOverride:
-    allowedValueIndices: Optional[List[int]]
+    allowedValueIndices: Optional[list[int]]
     isDisabled: Optional[int]
     strKeyRef: Optional[str]
 
@@ -18,11 +18,11 @@ class ApplianceProgressFeatureOverride:
 
 @dataclass
 class ApplianceProgramOption:
-    customSubProgramOverrides: Optional[List[ApplianceSubprogramOverride]]
+    customSubProgramOverrides: Optional[list[ApplianceSubprogramOverride]]
     isDownloadableCycle: Optional[bool]
-    progressVariableOverrides: Optional[List[ApplianceProgressFeatureOverride]]
+    progressVariableOverrides: Optional[list[ApplianceProgressFeatureOverride]]
     strKey: str
-    subProgramOverrides: Optional[List[ApplianceSubprogramOverride]]
+    subProgramOverrides: Optional[list[ApplianceSubprogramOverride]]
     wfaValue: Optional[int]
     isVisible: int = 1
 
@@ -31,7 +31,7 @@ class ApplianceProgramOption:
 class ApplianceProgram:
     strKey: str
     isSwitch: Optional[int]
-    values: List[ApplianceProgramOption]
+    values: list[ApplianceProgramOption]
     wifiArrayIndex: int
     wfaWriteIndex: Optional[int]
     isVisible: int = 1
@@ -55,8 +55,8 @@ class ApplianceFeatureEnumOption:
 
 @dataclass
 class ApplianceFeature:
-    boundedValues: Optional[List[ApplianceFeatureBoundedOption]]
-    enumValues: Optional[List[ApplianceFeatureEnumOption]]
+    boundedValues: Optional[list[ApplianceFeatureBoundedOption]]
+    enumValues: Optional[list[ApplianceFeatureEnumOption]]
     isSwitch: Optional[int]
     strKey: Optional[str]
     wifiArrayIndex: int
@@ -97,13 +97,13 @@ class ApplianceFeatureNotificationInfo:
 
 @dataclass
 class ApplianceStateOption(ApplianceFeatureEnumOption):
-    allowedTransitions: List[str]
+    allowedTransitions: list[str]
     notificationInfo: ApplianceFeatureNotificationInfo
 
 
 @dataclass
 class ApplianceState:
-    states: List[ApplianceStateOption]
+    states: list[ApplianceStateOption]
     wfaIndex: Optional[int]
     wfaWriteIndex: Optional[int]
     wifiArrayReadIndex: Optional[int]
@@ -111,14 +111,14 @@ class ApplianceState:
 
 @dataclass
 class ApplianceSubState:
-    subStates: List[ApplianceFeatureEnumOption]
+    subStates: list[ApplianceFeatureEnumOption]
     wifiArrayReadIndex: int
 
 
 @dataclass
 class ApplianceConfiguration:
     program: ApplianceProgram
-    subPrograms: List[ApplianceFeature]
+    subPrograms: list[ApplianceFeature]
     progressVariables: Optional[ApplianceProgress]
     deviceStates: Optional[ApplianceState]
     deviceSubStates: Optional[ApplianceSubState]

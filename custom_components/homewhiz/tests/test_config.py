@@ -36,6 +36,6 @@ def test_all_configs(file_name: str):
     dirname = os.path.dirname(__file__)
     file_path = os.path.join(dirname, f"./fixtures/{file_name}")
 
-    with open(file_path, "r") as file:
+    with open(file_path) as file:
         json_content = json.load(file)
         from_dict(ApplianceConfiguration, json_content)
