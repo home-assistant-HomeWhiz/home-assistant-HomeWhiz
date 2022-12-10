@@ -64,8 +64,6 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):
         self, discovery_info: BluetoothServiceInfoBleak
     ) -> FlowResult:
         """Handle the bluetooth discovery step."""
-        print("BT!!", discovery_info)
-
         await self.async_set_unique_id(discovery_info.address)
         self._abort_if_unique_id_configured()
         if not discovery_info.name.startswith("HwZ"):
@@ -75,7 +73,6 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):
         return await self.async_step_bluetooth_connect()
 
     async def async_step_user(self, user_input: dict[str, Any] | None = None):
-        print("USER!!")
         return self.async_show_menu(
             step_id="user",
             menu_options=["select_bluetooth_device", "provide_cloud_credentials"],
