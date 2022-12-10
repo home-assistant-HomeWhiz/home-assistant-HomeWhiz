@@ -40,6 +40,9 @@ repos:
   hooks:
   - id: check-json
   - id: pretty-format-json
+    args:
+    - --autofix
+    - --no-sort-keys
 - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
   rev: v2.5.0
   hooks:
