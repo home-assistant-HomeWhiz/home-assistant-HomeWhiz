@@ -372,7 +372,7 @@
           "upperLimit": 280,
           "step": 5,
           "factor": 5,
-          "unit": "°C"
+          "unit": "\u00b0C"
         }
       ]
     },
@@ -793,7 +793,7 @@
             "upperLimit": 99,
             "step": 1,
             "factor": 1,
-            "unit": "°C"
+            "unit": "\u00b0C"
           }
         ]
       },
@@ -807,7 +807,7 @@
             "upperLimit": 99,
             "step": 1,
             "factor": 1,
-            "unit": "°C"
+            "unit": "\u00b0C"
           }
         ]
       }

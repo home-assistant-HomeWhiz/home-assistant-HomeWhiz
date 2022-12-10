@@ -1,27 +1,27 @@
 {
-    "config": {
-        "abort": {
-            "already_configured": "Device is already configured",
-            "already_in_progress": "Configuration flow is already in progress",
-            "no_devices_found": "No devices found on the network"
+  "config": {
+    "abort": {
+      "already_configured": "Device is already configured",
+      "already_in_progress": "Configuration flow is already in progress",
+      "no_devices_found": "No devices found on the network"
+    },
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "data": {
+          "address": "Device"
         },
-        "flow_title": "{name}",
-        "step": {
-            "user": {
-                "data": {
-                    "address": "Device"
-                },
-                "description": "Choose a device to setup"
-            },
-            "credentials": {
-                "data":{
-                    "username": "Username",
-                    "password": "Password"
-                }
-            }
-        },
-        "error": {
-            "invalid_auth": "Invalid authentication"
+        "description": "Choose a device to setup"
+      },
+      "credentials": {
+        "data": {
+          "username": "Username",
+          "password": "Password"
         }
+      }
+    },
+    "error": {
+      "invalid_auth": "Invalid authentication"
     }
+  }
 }

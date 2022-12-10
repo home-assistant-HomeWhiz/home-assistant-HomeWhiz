@@ -87,91 +87,91 @@
       "wifiArrayIndex": 35,
       "enumValues": [
         {
-          "strKey": "1 °C",
+          "strKey": "1 \u00b0C",
           "wifiArrayValue": 5
         },
         {
-          "strKey": "2 °C",
+          "strKey": "2 \u00b0C",
           "wifiArrayValue": 6
         },
         {
-          "strKey": "3 °C",
+          "strKey": "3 \u00b0C",
           "wifiArrayValue": 7
         },
         {
-          "strKey": "4 °C",
+          "strKey": "4 \u00b0C",
           "wifiArrayValue": 0
         },
         {
-          "strKey": "5 °C",
+          "strKey": "5 \u00b0C",
           "wifiArrayValue": 1
         },
         {
-          "strKey": "6 °C",
+          "strKey": "6 \u00b0C",
           "wifiArrayValue": 2
         },
         {
-          "strKey": "7 °C",
+          "strKey": "7 \u00b0C",
           "wifiArrayValue": 3
         },
         {
-          "strKey": "8 °C",
+          "strKey": "8 \u00b0C",
           "wifiArrayValue": 4
         },
         {
-          "strKey": "33 °F",
+          "strKey": "33 \u00b0F",
           "wifiArrayValue": 70
         },
         {
-          "strKey": "34 °F",
+          "strKey": "34 \u00b0F",
           "wifiArrayValue": 69
         },
         {
-          "strKey": "35 °F",
+          "strKey": "35 \u00b0F",
           "wifiArrayValue": 68
         },
         {
-          "strKey": "36 °F",
+          "strKey": "36 \u00b0F",
           "wifiArrayValue": 67
         },
         {
-          "strKey": "37 °F",
+          "strKey": "37 \u00b0F",
           "wifiArrayValue": 66
         },
         {
-          "strKey": "38 °F",
+          "strKey": "38 \u00b0F",
           "wifiArrayValue": 65
         },
         {
-          "strKey": "39 °F",
+          "strKey": "39 \u00b0F",
           "wifiArrayValue": 64
         },
         {
-          "strKey": "40 °F",
+          "strKey": "40 \u00b0F",
           "wifiArrayValue": 77
         },
         {
-          "strKey": "41 °F",
+          "strKey": "41 \u00b0F",
           "wifiArrayValue": 76
         },
         {
-          "strKey": "42 °F",
+          "strKey": "42 \u00b0F",
           "wifiArrayValue": 75
         },
         {
-          "strKey": "43 °F",
+          "strKey": "43 \u00b0F",
           "wifiArrayValue": 74
         },
         {
-          "strKey": "44 °F",
+          "strKey": "44 \u00b0F",
           "wifiArrayValue": 73
         },
         {
-          "strKey": "45 °F",
+          "strKey": "45 \u00b0F",
           "wifiArrayValue": 72
         },
         {
-          "strKey": "46 °F",
+          "strKey": "46 \u00b0F",
           "wifiArrayValue": 71
         },
         {
@@ -200,91 +200,91 @@
       "wifiArrayIndex": 36,
       "enumValues": [
         {
-          "strKey": "-18 °C",
+          "strKey": "-18 \u00b0C",
           "wifiArrayValue": 0
         },
         {
-          "strKey": "-19 °C",
+          "strKey": "-19 \u00b0C",
           "wifiArrayValue": 6
         },
         {
-          "strKey": "-20 °C",
+          "strKey": "-20 \u00b0C",
           "wifiArrayValue": 5
         },
         {
-          "strKey": "-21 °C",
+          "strKey": "-21 \u00b0C",
           "wifiArrayValue": 4
         },
         {
-          "strKey": "-22 °C",
+          "strKey": "-22 \u00b0C",
           "wifiArrayValue": 3
         },
         {
-          "strKey": "-23 °C",
+          "strKey": "-23 \u00b0C",
           "wifiArrayValue": 2
         },
         {
-          "strKey": "-24 °C",
+          "strKey": "-24 \u00b0C",
           "wifiArrayValue": 1
         },
         {
-          "strKey": "0 °F",
+          "strKey": "0 \u00b0F",
           "wifiArrayValue": 78
         },
         {
-          "strKey": "-1 °F",
+          "strKey": "-1 \u00b0F",
           "wifiArrayValue": 79
         },
         {
-          "strKey": "-2 °F",
+          "strKey": "-2 \u00b0F",
           "wifiArrayValue": 80
         },
         {
-          "strKey": "-3 °F",
+          "strKey": "-3 \u00b0F",
           "wifiArrayValue": 81
         },
         {
-          "strKey": "-4 °F",
+          "strKey": "-4 \u00b0F",
           "wifiArrayValue": 82
         },
         {
-          "strKey": "-5 °F",
+          "strKey": "-5 \u00b0F",
           "wifiArrayValue": 83
         },
         {
-          "strKey": "-6 °F",
+          "strKey": "-6 \u00b0F",
           "wifiArrayValue": 84
         },
         {
-          "strKey": "-7 °F",
+          "strKey": "-7 \u00b0F",
           "wifiArrayValue": 85
         },
         {
-          "strKey": "-8 °F",
+          "strKey": "-8 \u00b0F",
           "wifiArrayValue": 86
         },
         {
-          "strKey": "-9 °F",
+          "strKey": "-9 \u00b0F",
           "wifiArrayValue": 87
         },
         {
-          "strKey": "-10 °F",
+          "strKey": "-10 \u00b0F",
           "wifiArrayValue": 88
         },
         {
-          "strKey": "-11 °F",
+          "strKey": "-11 \u00b0F",
           "wifiArrayValue": 89
         },
         {
-          "strKey": "-12 °F",
+          "strKey": "-12 \u00b0F",
           "wifiArrayValue": 90
         },
         {
-          "strKey": "-27 °C",
+          "strKey": "-27 \u00b0C",
           "wifiArrayValue": 27
         },
         {
-          "strKey": "-16 °F",
+          "strKey": "-16 \u00b0F",
           "wifiArrayValue": 91
         }
       ]
