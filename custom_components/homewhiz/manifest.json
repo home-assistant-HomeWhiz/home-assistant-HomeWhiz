@@ -14,7 +14,9 @@
     "dacite",
     "aiohttp"
   ],
-  "dependencies": ["bluetooth"],
+  "dependencies": [
+    "bluetooth"
+  ],
   "version": "0.0.6",
   "bluetooth": [
     {
