@@ -73,7 +73,7 @@ class ApplianceInfo:
     applianceSerialNumber: str
     name: str
     hsmId: Optional[str]
-    connectivity: str
+    connectivity: str = "BT"
 
     def is_bt(self):
         return self == "BT" or self == "BASICBT"
