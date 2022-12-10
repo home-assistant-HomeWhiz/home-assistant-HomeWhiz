@@ -7,6 +7,12 @@
       "DEVICE_STATE_PAUSED": "Wstrzymano",
       "DEVICE_STATE_TIME_DELAY_ACTIVE": "Op\u00f3\u017anienie aktywne"
     },
+    "homewhiz__AIR_CONDITIONER_WIND_STRENGTH": {
+      "WIND_STRENGTH_LOW": "Niska",
+      "WIND_STRENGTH_MID": "\u015aredni",
+      "WIND_STRENGTH_HIGH": "Wysoki",
+      "WIND_STRENGTH_AUTO": "Automatyczny"
+    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Pranie",
       "WASHER_SUBSTATE_SPIN": "Wirowanie",

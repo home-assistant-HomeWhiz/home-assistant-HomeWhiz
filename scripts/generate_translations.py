@@ -3,9 +3,14 @@ import json
 import os
 
 import aiohttp
-from dacite import from_dict
+from mergedeep import Strategy, mergedeep
 
-from custom_components.homewhiz.appliance_config import ApplianceConfiguration
+from custom_components.homewhiz.api import (
+    fetch_appliance_contents,
+    fetch_base_contents_index,
+    fetch_localizations,
+    login,
+)
 from custom_components.homewhiz.sensor import (
     EnumEntityDescription,
     generate_descriptions_from_config,
@@ -35,61 +40,66 @@ api_languages = {
     "cs": "cs-CZ",
     "es": "es-ES",
     "pt": "pt-PT",
+    "sl": "sl-SI",
+    "sr": "sr-RS",
 }
 
-
-def localization_6(language: str):
-    return (
-        "https://s3-eu-west-1.amazonaws.com/procam-contents"
-        f"/LOCALIZATIONS/LOCALIZATION_6/v592/LOCALIZATION_6.{language}.json"
-    )
-
-
-def localization_30(language: str):
-    return (
-        "https://s3-eu-west-1.amazonaws.com/procam-contents"
-        f"/LOCALIZATIONS/LOCALIZATION_30/v100/LOCALIZATION_30.{language}.json"
-    )
-
-
-config_216 = (
-    "https://s3-eu-west-1.amazonaws.com/procam-contents"
-    "/CONFIGURATIONS/CONFIGURATION_216/v14/CONFIGURATION_216.en-GB.json"
-)
+known_appliance_ids = ["T999902890777401659617", "F999935286050711425369"]
 
 
 async def generate():
+    username = input("Username: ")
+    password = input("Password: ")
+    credentials = await login(username, password)
+
     dirname = os.path.dirname(__file__)
     translations_path = os.path.join(
         dirname, "../custom_components/homewhiz/translations/"
     )
-    config = from_dict(ApplianceConfiguration, await get_file(config_216))
-    descriptions = generate_descriptions_from_config(config)
 
     for short_code in api_languages:
         language = api_languages[short_code]
-        localizations_6 = (await get_file(localization_6(language)))["localizations"]
-        localizations_30 = (await get_file(localization_30(language)))["localizations"]
-        localizations = localizations_6 | localizations_30
+        print(f"language {language}")
+        base_contents_index = await fetch_base_contents_index(credentials, language)
+        base_localizations = await fetch_localizations(base_contents_index)
+        print(f"Base localizations {len(base_localizations.keys())}")
+        translations = {}
+        for appliance_id in known_appliance_ids:
+            contents = await fetch_appliance_contents(
+                credentials, appliance_id, language
+            )
+            appliance_localizations = contents.localization
+            appliance_config = contents.config
+            print(
+                f"{appliance_id} localizations: {len(appliance_localizations.keys())}"
+            )
+            localizations = base_localizations | appliance_localizations
+            appliance_descriptions = generate_descriptions_from_config(appliance_config)
 
-        def localize_key(key: str):
-            if key in localizations:
-                return localizations[key]
-            return key
+            def localize_key(key: str):
+                if key in localizations:
+                    return localizations[key]
+                return key
 
-        def localize(description: EnumEntityDescription):
-            return {
-                option.strKey: localize_key(option.strKey)
-                for option in description.options
-            }
+            def localize(description: EnumEntityDescription):
+                return {
+                    option.strKey: localize_key(option.strKey)
+                    for option in description.options
+                }
 
-        result = {
-            "state": {
+            appliance_translations = {
                 description.device_class: localize(description)
-                for description in descriptions
+                for description in appliance_descriptions
                 if isinstance(description, EnumEntityDescription)
             }
-        }
+
+            translations = mergedeep.merge(
+                translations,
+                appliance_translations,
+                strategy=Strategy.TYPESAFE_ADDITIVE,
+            )
+
+        result = {"state": translations}
 
         file_path = os.path.join(translations_path, f"sensor.{short_code}.json")
         with open(file_path, "w") as outfile:

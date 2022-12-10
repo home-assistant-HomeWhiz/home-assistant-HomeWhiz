@@ -10,7 +10,7 @@ from custom_components.homewhiz.sensor import generate_descriptions_from_config
 
 
 @pytest.fixture
-def config():
+def washing_machine_config():
     dirname = os.path.dirname(__file__)
     file_path = os.path.join(dirname, "./fixtures/example_appliance_config.json")
     with open(file_path) as file:
@@ -18,8 +18,17 @@ def config():
         return from_dict(ApplianceConfiguration, json_content)
 
 
-def test_generate_descriptions_from_config(config):
-    descriptions = generate_descriptions_from_config(config)
+@pytest.fixture
+def ac_config():
+    dirname = os.path.dirname(__file__)
+    file_path = os.path.join(dirname, "./fixtures/example_ac_config.json")
+    with open(file_path) as file:
+        json_content = json.load(file)
+        return from_dict(ApplianceConfiguration, json_content)
+
+
+def test_generate_descriptions_from_config(washing_machine_config):
+    descriptions = generate_descriptions_from_config(washing_machine_config)
     keys = [d.key for d in descriptions]
     TestCase().assertEqual(
         keys,
@@ -44,12 +53,12 @@ def test_generate_descriptions_from_config(config):
     )
 
 
-def test_generic_washing_machine_on(config):
+def test_generic_washing_machine_on(washing_machine_config):
     data = bytearray.fromhex(
         "002f4a45a10100000000000000000000000000000000000000000200000000000000000a011e0c"
         "0000000080021102110000000000000000000000000000000100000000000001070000000000"
     )
-    descriptions = generate_descriptions_from_config(config)
+    descriptions = generate_descriptions_from_config(washing_machine_config)
     values = {
         description.key: description.value_fn(data) for description in descriptions
     }
@@ -78,12 +87,12 @@ def test_generic_washing_machine_on(config):
     )
 
 
-def test_generic_washing_machine_running(config):
+def test_generic_washing_machine_running(washing_machine_config):
     data = bytearray.fromhex(
         "002f4a45a10100000000000000000000000000000000000000000200000000000000001e819e0c"
         "0080000080021100398080010000000000000000000080808100800000008001078000808000"
     )
-    descriptions = generate_descriptions_from_config(config)
+    descriptions = generate_descriptions_from_config(washing_machine_config)
     values = {
         description.key: description.value_fn(data) for description in descriptions
     }
@@ -112,12 +121,12 @@ def test_generic_washing_machine_running(config):
     )
 
 
-def test_generic_washing_machine_spinning(config):
+def test_generic_washing_machine_spinning(washing_machine_config):
     data = bytearray.fromhex(
         "002f4a45a10100000000000000000000000000000000000000000200000000000000001e819e8c"
         "00808080800211000a8080020000000000000000008080808180800000008081078000808000"
     )
-    descriptions = generate_descriptions_from_config(config)
+    descriptions = generate_descriptions_from_config(washing_machine_config)
     values = {
         description.key: description.value_fn(data) for description in descriptions
     }
@@ -146,12 +155,12 @@ def test_generic_washing_machine_spinning(config):
     )
 
 
-def test_generic_washing_machine_delay_defined(config):
+def test_generic_washing_machine_delay_defined(washing_machine_config):
     data = bytearray.fromhex(
         "003853e0ab0100000000000000000000000000000000000000000300000000000000000a01280e"
         "000000008002100210012c000000000000000000010000000100000000000001078000000000"
     )
-    descriptions = generate_descriptions_from_config(config)
+    descriptions = generate_descriptions_from_config(washing_machine_config)
     values = {
         description.key: description.value_fn(data) for description in descriptions
     }
@@ -180,12 +189,12 @@ def test_generic_washing_machine_delay_defined(config):
     )
 
 
-def test_generic_washing_machine_delay_started(config):
+def test_generic_washing_machine_delay_started(washing_machine_config):
     data = bytearray.fromhex(
         "003853e0ab0100000000000000000000000000000000000000000300000000000000003c01280e"
         "00000000800210021081ac080000000000000000010000000100000000000001078000808000"
     )
-    descriptions = generate_descriptions_from_config(config)
+    descriptions = generate_descriptions_from_config(washing_machine_config)
     values = {
         description.key: description.value_fn(data) for description in descriptions
     }
@@ -210,5 +219,32 @@ def test_generic_washing_machine_delay_started(config):
             "WASHER_DELAY": 104,
             "WASHER_DURATION": 136,
             "WASHER_REMAINING": 136,
+        },
+    )
+
+
+def test_ac(ac_config):
+    data = bytearray(
+        b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
+        b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
+        b"\x00\x00\x04\x1a\x00\x00\x00\x00\x1c\x00\x00\x14\x00\x00\x00\x00"
+        b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
+        b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
+        b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
+    )
+    descriptions = generate_descriptions_from_config(ac_config)
+    values = {
+        description.key: description.value_fn(data) for description in descriptions
+    }
+    test_case = TestCase()
+    test_case.maxDiff = None
+    test_case.assertDictEqual(
+        values,
+        {
+            "AIR_CONDITIONER_PROGRAM": None,
+            "AIR_CONDITIONER_TARGET_TEMPERATURE": 26,
+            "AIR_CONDITIONER_ROOM_TEMPERATURE": 28,
+            "AIR_CONDITIONER_WIND_STRENGTH": "WIND_STRENGTH_LOW",
+            "STATE": "DEVICE_STATE_OFF",
         },
     )

@@ -7,6 +7,12 @@
       "DEVICE_STATE_PAUSED": "Pys\u00e4ytetty",
       "DEVICE_STATE_TIME_DELAY_ACTIVE": "Aikaviive k\u00e4yt\u00f6ss\u00e4"
     },
+    "homewhiz__AIR_CONDITIONER_WIND_STRENGTH": {
+      "WIND_STRENGTH_LOW": "Matala",
+      "WIND_STRENGTH_MID": "Keskitaso",
+      "WIND_STRENGTH_HIGH": "Korkea",
+      "WIND_STRENGTH_AUTO": "Auto"
+    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Pesu",
       "WASHER_SUBSTATE_SPIN": "Linkous",

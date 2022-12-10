@@ -7,6 +7,12 @@
       "DEVICE_STATE_PAUSED": "Duraklat\u0131ld\u0131",
       "DEVICE_STATE_TIME_DELAY_ACTIVE": "Zaman Erteleme Aktif"
     },
+    "homewhiz__AIR_CONDITIONER_WIND_STRENGTH": {
+      "WIND_STRENGTH_LOW": "D\u00fc\u015f\u00fck",
+      "WIND_STRENGTH_MID": "Orta",
+      "WIND_STRENGTH_HIGH": "H\u0131zl\u0131",
+      "WIND_STRENGTH_AUTO": "Otomatik"
+    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Y\u0131kama",
       "WASHER_SUBSTATE_SPIN": "S\u0131kma",

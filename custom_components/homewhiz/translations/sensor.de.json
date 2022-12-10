@@ -7,6 +7,12 @@
       "DEVICE_STATE_PAUSED": "Pausiert",
       "DEVICE_STATE_TIME_DELAY_ACTIVE": "Zeitverz\u00f6gerung aktiv"
     },
+    "homewhiz__AIR_CONDITIONER_WIND_STRENGTH": {
+      "WIND_STRENGTH_LOW": "Niedrig",
+      "WIND_STRENGTH_MID": "Mittel",
+      "WIND_STRENGTH_HIGH": "Hoch",
+      "WIND_STRENGTH_AUTO": "Auto"
+    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Waschen",
       "WASHER_SUBSTATE_SPIN": "Schleudern",

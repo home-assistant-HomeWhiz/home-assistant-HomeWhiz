@@ -7,6 +7,12 @@
       "DEVICE_STATE_PAUSED": "Pausa",
       "DEVICE_STATE_TIME_DELAY_ACTIVE": "Atraso de tempo ativo"
     },
+    "homewhiz__AIR_CONDITIONER_WIND_STRENGTH": {
+      "WIND_STRENGTH_LOW": "Baixa",
+      "WIND_STRENGTH_MID": "M\u00e9dio",
+      "WIND_STRENGTH_HIGH": "Alto",
+      "WIND_STRENGTH_AUTO": "Auto"
+    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Lavar",
       "WASHER_SUBSTATE_SPIN": "Giro",
