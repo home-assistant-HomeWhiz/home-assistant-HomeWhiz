@@ -123,8 +123,8 @@ class OvenMeatProbePlug:
 
 @dataclass
 class ApplianceOvenMeatProbe:
-    meatProbePrograms: List[str]
-    meatProbeSubprograms: List[ApplianceFeature]
+    meatProbePrograms: list[str]
+    meatProbeSubprograms: list[ApplianceFeature]
     meatProbePlug: OvenMeatProbePlug
 
 
@@ -150,12 +150,12 @@ class ConsumableForm:
 @dataclass
 class Consumable:
     consumableType: str
-    forms: List[ConsumableForm]
+    forms: list[ConsumableForm]
 
 
 @dataclass
 class ApplianceConsumableSettings:
-    consumables: List[Consumable]
+    consumables: list[Consumable]
 
 
 @dataclass
@@ -179,7 +179,7 @@ class HobZoneRecipeInfo:
 
 @dataclass
 class ApplianceWarningReason:
-    values: List[ApplianceFeatureEnumOption]
+    values: list[ApplianceFeatureEnumOption]
     wifiArrayReadIndex: int
 
 
@@ -194,7 +194,7 @@ class ApplianceWarningOption:
 @dataclass
 class ApplianceWarning:
     wifiArrayByteCount: Optional[int]
-    warnings: List[ApplianceWarningOption]
+    warnings: list[ApplianceWarningOption]
     wifiArrayReadIndex: int
 
 
@@ -205,7 +205,7 @@ class HobDefaultZone:
     program: ApplianceProgram
     progressVariables: ApplianceProgress
     zoneRecipeInfo: HobZoneRecipeInfo
-    subPrograms: List[ApplianceFeature]
+    subPrograms: list[ApplianceFeature]
     subStates: ApplianceSubState
     deviceWarnings: ApplianceWarning
 
@@ -275,7 +275,7 @@ class OvenCookingStep:
     program: ApplianceProgramReference
     progressVariables: ApplianceProgressReference
     stepEnableStatusIndex: int
-    subPrograms: List[ApplianceSubprogramReference]
+    subPrograms: list[ApplianceSubprogramReference]
 
 
 @dataclass
@@ -315,7 +315,7 @@ class ApplianceRefrigeratorDefrost:
     dayTimeVariableIndices: ApplianceRefrigeratorDayTime
     defrostConfigWfaIndex: int
     defrostCountdownWfaIndex: int
-    defrostDurationIntervals: List[ApplianceDefrostDuration]
+    defrostDurationIntervals: list[ApplianceDefrostDuration]
     defrostSelectWfaIndex: int
 
 
@@ -347,13 +347,13 @@ class ApplianceConfiguration:
     deviceSubStates: Optional[ApplianceSubState]
     ovenMeatProbeAccessory: Optional[ApplianceOvenMeatProbe]
     autoController: Optional[AutoController]
-    commands: Optional[List[ApplianceFeature]]
+    commands: Optional[list[ApplianceFeature]]
     consumableSettings: Optional[ApplianceConsumableSettings]
-    customSubPrograms: Optional[List[ApplianceFeature]]
+    customSubPrograms: Optional[list[ApplianceFeature]]
     downloadCycleSettingsModel: Optional[ApplianceProgramDownloadSettings]
     clock: Optional[ApplianceClock]
     zones: Optional[ApplianceHobZones]
-    monitorings: Optional[List[ApplianceFeature]]
+    monitorings: Optional[list[ApplianceFeature]]
     ovenClockWifiArrayIndexes: Optional[ApplianceClock]
     ovenDownloadedAutoBakeInformation: Optional[AutoBakeDownloadedFood]
     ovenRecipeInformation: Optional[ApplianceOvenRecipe]
@@ -362,7 +362,7 @@ class ApplianceConfiguration:
     refrigeratorDefrostInformation: Optional[ApplianceRefrigeratorDefrost]
     remoteControl: Optional[ApplianceRemoteControl]
     screenSaver: Optional[ApplianceScreenSaver]
-    settings: Optional[List[ApplianceFeature]]
+    settings: Optional[list[ApplianceFeature]]
     teaRecipeInformation: Optional[ApplianceTeaMachineRecipe]
     deviceWarningsExtra: Optional[ApplianceWarning]
     deviceWarnings: Optional[ApplianceWarning]
