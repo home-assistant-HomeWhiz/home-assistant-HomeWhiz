@@ -1,7 +1,18 @@
 import logging
 from collections import defaultdict
 
+from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
+
 _LOGGER: logging.Logger = logging.getLogger(__package__)
+
+
+class HomewhizCoordinator(DataUpdateCoordinator[bytearray | None]):
+    def connect(self):
+        pass
+
+    @property
+    def is_connected(self):
+        return False
 
 
 class MessageAccumulator:

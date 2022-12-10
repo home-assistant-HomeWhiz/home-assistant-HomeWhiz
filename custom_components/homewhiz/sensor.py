@@ -17,10 +17,10 @@ from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from . import HomewhizDataUpdateCoordinator
 from .api import ApplianceContents, ApplianceInfo, IdExchangeResponse
 from .appliance_config import (
     ApplianceConfiguration,
+    ApplianceFeature,
     ApplianceFeatureBoundedOption,
     ApplianceFeatureEnumOption,
     ApplianceProgram,
@@ -28,7 +28,7 @@ from .appliance_config import (
 )
 from .config_flow import EntryData
 from .const import DOMAIN
-from .homewhiz import brand_name_by_code
+from .homewhiz import HomewhizCoordinator, brand_name_by_code
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
@@ -75,8 +75,10 @@ class ProgramEntityDescription(HomeWhizEntityDescription):
 
 
 class SubProgramBoundedEntityDescription(HomeWhizEntityDescription):
-    def __init__(self, bounds: ApplianceFeatureBoundedOption, read_index: int):
-        self.key = bounds.strKey
+    def __init__(
+        self, parent_key: str, bounds: ApplianceFeatureBoundedOption, read_index: int
+    ):
+        self.key = bounds.strKey if bounds.strKey else parent_key
         self._bounds = bounds
         self._read_index = read_index
 
@@ -116,6 +118,24 @@ class ProgressEntityDescription(HomeWhizEntityDescription):
         return hours * 60 + minutes
 
 
+def generate_descriptions_from_features(features: list[ApplianceFeature]):
+    result = []
+    for feature in features:
+        read_index = feature.wifiArrayIndex
+        if feature.boundedValues is not None:
+            for bounds in feature.boundedValues:
+                result.append(
+                    SubProgramBoundedEntityDescription(
+                        feature.strKey, bounds, read_index
+                    )
+                )
+        if feature.enumValues is not None:
+            result.append(
+                EnumEntityDescription(feature.strKey, feature.enumValues, read_index)
+            )
+    return result
+
+
 def generate_descriptions_from_config(
     config: ApplianceConfiguration,
 ) -> list[HomeWhizEntityDescription]:
@@ -137,17 +157,7 @@ def generate_descriptions_from_config(
             )
         )
     result.append(ProgramEntityDescription(config.program))
-    for sub_program in config.subPrograms:
-        read_index = sub_program.wifiArrayIndex
-        if sub_program.boundedValues is not None:
-            for bounds in sub_program.boundedValues:
-                result.append(SubProgramBoundedEntityDescription(bounds, read_index))
-        if sub_program.enumValues is not None:
-            result.append(
-                EnumEntityDescription(
-                    sub_program.strKey, sub_program.enumValues, read_index
-                )
-            )
+    result.extend(generate_descriptions_from_features(config.subPrograms))
     if config.progressVariables is not None:
         for field in fields(config.progressVariables):
             feature = getattr(config.progressVariables, field.name)
@@ -155,13 +165,16 @@ def generate_descriptions_from_config(
                 result.append(
                     ProgressEntityDescription(feature),
                 )
+    if config.monitorings is not None:
+        result.extend(generate_descriptions_from_features(config.monitorings))
+
     return result
 
 
-class HomeWhizEntity(CoordinatorEntity[HomewhizDataUpdateCoordinator], SensorEntity):
+class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator], SensorEntity):
     def __init__(
         self,
-        coordinator: HomewhizDataUpdateCoordinator,
+        coordinator: HomewhizCoordinator,
         description: HomeWhizEntityDescription,
         entry: ConfigEntry,
         data: EntryData,
@@ -201,10 +214,7 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizDataUpdateCoordinator], SensorEnt
 
     @property
     def available(self) -> bool:
-        return (
-            self.coordinator.connection is not None
-            and self.coordinator.connection.is_connected
-        )
+        return self.coordinator.is_connected
 
     @property
     def name(self) -> str | None:
@@ -228,6 +238,7 @@ async def async_setup_entry(
         if entry.data["appliance_info"] is not None
         else None,
         ids=from_dict(IdExchangeResponse, entry.data["ids"]),
+        cloud_config=None,
     )
     coordinator = hass.data[DOMAIN][entry.entry_id]
     descriptions = generate_descriptions_from_config(data.contents.config)

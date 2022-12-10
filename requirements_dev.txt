@@ -3,4 +3,7 @@ bleak
 bleak_retry_connector
 dacite
 aiohttp
+awsiotsdk
+bluetooth_adapters
+mergedeep
 pre-commit

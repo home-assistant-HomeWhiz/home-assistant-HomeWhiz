@@ -7,6 +7,12 @@
       "DEVICE_STATE_PAUSED": "Sat p\u00e5 pause",
       "DEVICE_STATE_TIME_DELAY_ACTIVE": "Udskudt start er aktiv"
     },
+    "homewhiz__AIR_CONDITIONER_WIND_STRENGTH": {
+      "WIND_STRENGTH_LOW": "Low",
+      "WIND_STRENGTH_MID": "Medium",
+      "WIND_STRENGTH_HIGH": "H\u00f8j",
+      "WIND_STRENGTH_AUTO": "Auto"
+    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Vask",
       "WASHER_SUBSTATE_SPIN": "Centrifugering",

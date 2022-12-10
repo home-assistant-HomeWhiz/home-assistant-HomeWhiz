@@ -7,6 +7,12 @@
       "DEVICE_STATE_PAUSED": "Pausad",
       "DEVICE_STATE_TIME_DELAY_ACTIVE": "F\u00f6rdr\u00f6jd tid \u00e4r aktiverat"
     },
+    "homewhiz__AIR_CONDITIONER_WIND_STRENGTH": {
+      "WIND_STRENGTH_LOW": "L\u00e5g",
+      "WIND_STRENGTH_MID": "Medel",
+      "WIND_STRENGTH_HIGH": "H\u00f6g",
+      "WIND_STRENGTH_AUTO": "Auto"
+    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Tv\u00e4tta",
       "WASHER_SUBSTATE_SPIN": "Centrifugering",

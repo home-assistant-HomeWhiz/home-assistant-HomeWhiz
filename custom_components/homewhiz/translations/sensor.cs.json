@@ -7,6 +7,12 @@
       "DEVICE_STATE_PAUSED": "Pozastaveno",
       "DEVICE_STATE_TIME_DELAY_ACTIVE": "\u010casov\u00e1 prodleva je aktivn\u00ed"
     },
+    "homewhiz__AIR_CONDITIONER_WIND_STRENGTH": {
+      "WIND_STRENGTH_LOW": "N\u00edzk\u00fd",
+      "WIND_STRENGTH_MID": "St\u0159edn\u00ed",
+      "WIND_STRENGTH_HIGH": "Vysok\u00fd",
+      "WIND_STRENGTH_AUTO": "Auto"
+    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Pran\u00ed",
       "WASHER_SUBSTATE_SPIN": "\u017dd\u00edm\u00e1n\u00ed",
