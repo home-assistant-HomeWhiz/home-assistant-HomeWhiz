@@ -60,8 +60,8 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         super().__init__(hass, _LOGGER, name=DOMAIN)
 
     async def connect(self):
-        from awsiot import mqtt_connection_builder
         from awscrt.auth import AwsCredentialsProvider
+        from awsiot import mqtt_connection_builder
 
         _LOGGER.info(f"Connecting to {self._appliance_id}")
         credentials = await login(
