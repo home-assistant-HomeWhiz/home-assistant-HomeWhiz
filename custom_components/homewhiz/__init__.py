@@ -11,7 +11,7 @@ from homeassistant.components.bluetooth import (
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.requirements import RequirementsNotFound
-from homeassistant.util.package import is_installed, install_package
+from homeassistant.util.package import install_package, is_installed
 
 from .api import IdExchangeResponse
 from .bluetooth import HomewhizBluetoothUpdateCoordinator
@@ -66,7 +66,6 @@ def _lazy_install_awsiotsdk():
     custom_required_packages = ["awsiotsdk"]
     links = "https://qqaatw.github.io/aws-crt-python-musllinux/"
     for pkg in custom_required_packages:
-        _LOGGER.debug(f"{pkg} installed before: {is_installed(pkg)}")
         if not is_installed(pkg) and not install_package(pkg, find_links=links):
             raise RequirementsNotFound(DOMAIN, [pkg])
 
