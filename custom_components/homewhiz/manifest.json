@@ -12,8 +12,7 @@
     "bleak",
     "bleak_retry_connector",
     "dacite",
-    "aiohttp",
-    "awsiotsdk"
+    "aiohttp"
   ],
   "dependencies": [
     "bluetooth"

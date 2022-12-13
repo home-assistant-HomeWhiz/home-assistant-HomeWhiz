@@ -10,6 +10,8 @@ from homeassistant.components.bluetooth import (
 )
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
+from homeassistant.requirements import RequirementsNotFound
+from homeassistant.util.package import install_package, is_installed
 
 from .api import IdExchangeResponse
 from .bluetooth import HomewhizBluetoothUpdateCoordinator
@@ -60,8 +62,17 @@ async def setup_bluetooth(address, entry, hass):
     return True
 
 
+def _lazy_install_awsiotsdk():
+    custom_required_packages = ["awsiotsdk"]
+    links = "https://qqaatw.github.io/aws-crt-python-musllinux/"
+    for pkg in custom_required_packages:
+        if not is_installed(pkg) and not install_package(pkg, find_links=links):
+            raise RequirementsNotFound(DOMAIN, [pkg])
+
+
 async def setup_cloud(entry, hass):
     _LOGGER.info("Setting up cloud connection")
+    _lazy_install_awsiotsdk()
 
     ids = from_dict(IdExchangeResponse, entry.data["ids"])
     cloud_config = from_dict(CloudConfig, entry.data["cloud_config"])

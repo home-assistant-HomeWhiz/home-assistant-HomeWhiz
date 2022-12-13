@@ -3,9 +3,6 @@ import logging
 import uuid
 from dataclasses import dataclass
 
-from awscrt import auth, mqtt
-from awscrt.mqtt import Connection
-from awsiot import mqtt_connection_builder
 from dacite import from_dict
 from homeassistant.core import HomeAssistant, callback
 
@@ -51,20 +48,26 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
     def __init__(
         self, hass: HomeAssistant, appliance_id: str, cloud_config: CloudConfig
     ) -> None:
+        from awscrt import mqtt
+
         self._appliance_id = appliance_id
         self._hass = hass
         self._cloud_config = cloud_config
         self.alive = True
-        self._connection: Connection | None = None
+        self._mqtt = mqtt
+        self._connection: mqtt.Connection | None = None
 
         super().__init__(hass, _LOGGER, name=DOMAIN)
 
     async def connect(self):
+        from awscrt.auth import AwsCredentialsProvider
+        from awsiot import mqtt_connection_builder
+
         _LOGGER.info(f"Connecting to {self._appliance_id}")
         credentials = await login(
             self._cloud_config.username, self._cloud_config.password
         )
-        credentials_provider = auth.AwsCredentialsProvider.new_static(
+        credentials_provider = AwsCredentialsProvider.new_static(
             access_key_id=credentials.accessKey,
             session_token=credentials.sessionToken,
             secret_access_key=credentials.secretKey,
@@ -78,7 +81,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         self._connection.connect().result()
         [subscribe_update, _] = self._connection.subscribe(
             f"$aws/things/{self._appliance_id}/shadow/update/accepted",
-            mqtt.QoS.AT_LEAST_ONCE,
+            self._mqtt.QoS.AT_LEAST_ONCE,
             lambda topic, payload, dup, qos, retain, **kwargs: self.handle_notify(
                 payload
             ),
@@ -87,7 +90,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
 
         [subscribe_get, _] = self._connection.subscribe(
             f"$aws/things/{self._appliance_id}/shadow/get/accepted",
-            mqtt.QoS.AT_LEAST_ONCE,
+            self._mqtt.QoS.AT_LEAST_ONCE,
             lambda topic, payload, dup, qos, retain, **kwargs: self.handle_notify(
                 payload
             ),
@@ -107,7 +110,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         [publish, _] = self._connection.publish(
             topic,
             json.dumps(force_read),
-            qos=mqtt.QoS.AT_MOST_ONCE,
+            qos=self._mqtt.QoS.AT_MOST_ONCE,
         )
         publish.result()
 
