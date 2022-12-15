@@ -174,6 +174,8 @@ def generate_descriptions_from_config(
 
 
 class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator], SensorEntity):
+    _attr_has_entity_name = True
+
     def __init__(
         self,
         coordinator: HomewhizCoordinator,
