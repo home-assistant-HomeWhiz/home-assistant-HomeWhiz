@@ -80,7 +80,7 @@ async def setup_cloud(entry, hass):
         entry.entry_id
     ] = HomewhizCloudUpdateCoordinator(hass, ids.appId, cloud_config, entry)
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
-    hass.async_create_task(coordinator.connect)
+    hass.async_create_task(coordinator.connect())
     return True
 
 
