@@ -37,6 +37,7 @@ class LoginResponse:
     accessKey: str
     secretKey: str
     sessionToken: str
+    expiration: int
 
 
 @dataclass

@@ -78,7 +78,7 @@ async def setup_cloud(entry, hass):
     cloud_config = from_dict(CloudConfig, entry.data["cloud_config"])
     coordinator = hass.data.setdefault(DOMAIN, {})[
         entry.entry_id
-    ] = HomewhizCloudUpdateCoordinator(hass, ids.appId, cloud_config)
+    ] = HomewhizCloudUpdateCoordinator(hass, ids.appId, cloud_config, entry)
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     hass.async_create_task(coordinator.connect())
     return True
