@@ -139,8 +139,10 @@ def generate_descriptions_from_features(features: list[ApplianceFeature]):
 def generate_descriptions_from_config(
     config: ApplianceConfiguration,
 ) -> list[HomeWhizEntityDescription]:
+    _LOGGER.debug("Generating descriptions from config")
     result = []
     if config.deviceStates is not None:
+        _LOGGER.debug("Adding STATE EnumEntityDescription")
         result.append(
             EnumEntityDescription(
                 "STATE",
@@ -149,6 +151,7 @@ def generate_descriptions_from_config(
             )
         )
     if config.deviceSubStates is not None:
+        _LOGGER.debug("Adding SUB_STATE EnumEntityDescription")
         result.append(
             EnumEntityDescription(
                 "SUB_STATE",
@@ -159,6 +162,7 @@ def generate_descriptions_from_config(
     result.append(ProgramEntityDescription(config.program))
     result.extend(generate_descriptions_from_features(config.subPrograms))
     if config.progressVariables is not None:
+        _LOGGER.debug("Adding config progress variables")
         for field in fields(config.progressVariables):
             feature = getattr(config.progressVariables, field.name)
             if feature is not None:
@@ -166,7 +170,14 @@ def generate_descriptions_from_config(
                     ProgressEntityDescription(feature),
                 )
     if config.monitorings is not None:
+        _LOGGER.debug("Adding config monitorings")
         result.extend(generate_descriptions_from_features(config.monitorings))
+
+    # Remove redundant entities from device
+    description_keys = [description.key for description in result]
+    if "TEMPERATURE" in description_keys and "WASHER_TEMPERATURE" in description_keys:
+        _LOGGER.debug("Removing redundant temperature description")
+        del result[description_keys.index("WASHER_TEMPERATURE")]
 
     return result
 
