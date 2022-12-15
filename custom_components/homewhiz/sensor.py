@@ -225,10 +225,9 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator], SensorEntity):
             return "State"
         if key == "SUB_STATE":
             return "Sub-state"
-        for localization_key in self._localization:
-            if localization_key == key:
-                return self._localization[localization_key]
-        return key
+        if key == "AIR_CONDITIONER_ROOM_TEMPERATURE":
+            return "Room temperature"
+        return self._localization.get(key, key)
 
 
 async def async_setup_entry(
