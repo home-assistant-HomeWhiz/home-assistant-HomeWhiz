@@ -73,7 +73,7 @@ def test_generic_washing_machine_on(washing_machine_config):
             "WASHER_HIDDEN_ANTI_CREASE": "HIDDEN_ANTI_CREASE_OFF",
             "WASHER_PHR": "PHR_OFF",
             "WASHER_PREWASH": "PREWASH_OFF",
-            "WASHER_PROGRAM": None,
+            "WASHER_PROGRAM": "PROGRAM_COTTONS",
             "SPIN": 1200,
             "WASHER_SPIN": None,
             "TEMPERATURE": 30,
@@ -106,7 +106,7 @@ def test_generic_washing_machine_running(washing_machine_config):
             "WASHER_HIDDEN_ANTI_CREASE": "HIDDEN_ANTI_CREASE_OFF",
             "WASHER_PHR": "PHR_OFF",
             "WASHER_PREWASH": "PREWASH_OFF",
-            "WASHER_PROGRAM": None,
+            "WASHER_PROGRAM": "PROGRAM_COTTONS",
             "SPIN": 1200,
             "WASHER_SPIN": None,
             "TEMPERATURE": 30,
@@ -139,7 +139,7 @@ def test_generic_washing_machine_spinning(washing_machine_config):
             "WASHER_HIDDEN_ANTI_CREASE": "HIDDEN_ANTI_CREASE_OFF",
             "WASHER_PHR": "PHR_OFF",
             "WASHER_PREWASH": "PREWASH_OFF",
-            "WASHER_PROGRAM": None,
+            "WASHER_PROGRAM": "PROGRAM_COTTONS",
             "SPIN": 1200,
             "WASHER_SPIN": None,
             "TEMPERATURE": 30,
@@ -172,7 +172,7 @@ def test_generic_washing_machine_delay_defined(washing_machine_config):
             "WASHER_HIDDEN_ANTI_CREASE": "HIDDEN_ANTI_CREASE_OFF",
             "WASHER_PHR": "PHR_OFF",
             "WASHER_PREWASH": "PREWASH_OFF",
-            "WASHER_PROGRAM": None,
+            "WASHER_PROGRAM": "PROGRAM_COTTONS",
             "SPIN": 1400,
             "WASHER_SPIN": None,
             "TEMPERATURE": 40,
@@ -205,7 +205,7 @@ def test_generic_washing_machine_delay_started(washing_machine_config):
             "WASHER_HIDDEN_ANTI_CREASE": "HIDDEN_ANTI_CREASE_OFF",
             "WASHER_PHR": "PHR_OFF",
             "WASHER_PREWASH": "PREWASH_OFF",
-            "WASHER_PROGRAM": None,
+            "WASHER_PROGRAM": "PROGRAM_COTTONS",
             "SPIN": 1400,
             "WASHER_SPIN": None,
             "TEMPERATURE": 40,
@@ -235,10 +235,37 @@ def test_ac(ac_config):
     test_case.assertDictEqual(
         values,
         {
-            "AIR_CONDITIONER_PROGRAM": None,
+            "AIR_CONDITIONER_PROGRAM": "AIR_CONDITIONER_MODE_HEATING",
             "AIR_CONDITIONER_TARGET_TEMPERATURE": 26,
             "AIR_CONDITIONER_ROOM_TEMPERATURE": 28,
             "AIR_CONDITIONER_WIND_STRENGTH": "WIND_STRENGTH_LOW",
             "STATE": "DEVICE_STATE_OFF",
+        },
+    )
+
+
+def test_ac_mode_auto(ac_config):
+    data = bytearray(
+        b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
+        b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
+        b"\x00\x00\x06\x17\x03\x00\x00\x00\x1a\x00\x00\n\x00\x00\x00\x00\x00"
+        b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
+        b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
+        b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
+    )
+    descriptions = generate_descriptions_from_config(ac_config)
+    values = {
+        description.key: description.value_fn(data) for description in descriptions
+    }
+    test_case = TestCase()
+    test_case.maxDiff = None
+    test_case.assertDictEqual(
+        values,
+        {
+            "AIR_CONDITIONER_PROGRAM": "AIR_CONDITIONER_MODE_AUTO",
+            "AIR_CONDITIONER_TARGET_TEMPERATURE": 23,
+            "AIR_CONDITIONER_ROOM_TEMPERATURE": 26,
+            "AIR_CONDITIONER_WIND_STRENGTH": "WIND_STRENGTH_AUTO",
+            "STATE": "DEVICE_STATE_ON",
         },
     )
