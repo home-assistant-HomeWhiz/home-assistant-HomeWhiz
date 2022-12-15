@@ -60,18 +60,9 @@ class EnumEntityDescription(HomeWhizEntityDescription):
         return None
 
 
-class ProgramEntityDescription(HomeWhizEntityDescription):
+class ProgramEntityDescription(EnumEntityDescription):
     def __init__(self, program: ApplianceProgram):
-        self.key = program.strKey
-        self.icon = "mdi:state-machine"
-        self._program = program
-
-    def value_fn(self, data):
-        value = clamp(data[self._program.wifiArrayIndex])
-        for option in self._program.values:
-            if option.wfaValue is value:
-                return option.strKey
-        return None
+        super().__init__(program.strKey, program.values, program.wifiArrayIndex)
 
 
 class SubProgramBoundedEntityDescription(HomeWhizEntityDescription):

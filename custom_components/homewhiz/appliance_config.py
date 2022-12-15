@@ -17,13 +17,19 @@ class ApplianceProgressFeatureOverride:
 
 
 @dataclass
-class ApplianceProgramOption:
+class ApplianceFeatureEnumOption:
+    strKey: str
+    wifiArrayValue: int
+
+
+@dataclass
+class ApplianceProgramOption(ApplianceFeatureEnumOption):
     customSubProgramOverrides: Optional[list[ApplianceSubprogramOverride]]
     isDownloadableCycle: Optional[bool]
     progressVariableOverrides: Optional[list[ApplianceProgressFeatureOverride]]
     strKey: str
     subProgramOverrides: Optional[list[ApplianceSubprogramOverride]]
-    wfaValue: Optional[int]
+    wifiArrayValue: int
     isVisible: int = 1
 
 
@@ -45,12 +51,6 @@ class ApplianceFeatureBoundedOption:
     strKey: str
     unit: str
     upperLimit: int
-
-
-@dataclass
-class ApplianceFeatureEnumOption:
-    strKey: str
-    wifiArrayValue: int
 
 
 @dataclass
