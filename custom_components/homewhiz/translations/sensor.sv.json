@@ -7,6 +7,13 @@
       "DEVICE_STATE_PAUSED": "Pausad",
       "DEVICE_STATE_TIME_DELAY_ACTIVE": "F\u00f6rdr\u00f6jd tid \u00e4r aktiverat"
     },
+    "homewhiz__AIR_CONDITIONER_PROGRAM": {
+      "AIR_CONDITIONER_MODE_COOLING": "Kylning",
+      "AIR_CONDITIONER_MODE_AUTO": "\u00c4ndra automatiskt",
+      "AIR_CONDITIONER_MODE_DRY": "Torka",
+      "AIR_CONDITIONER_MODE_HEATING": "Uppv\u00e4rmning",
+      "AIR_CONDITIONER_MODE_FAN": "Fl\u00e4kt"
+    },
     "homewhiz__AIR_CONDITIONER_WIND_STRENGTH": {
       "WIND_STRENGTH_LOW": "L\u00e5g",
       "WIND_STRENGTH_MID": "Medel",
@@ -33,11 +40,27 @@
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Fj\u00e4rrstyrd antiskrynkling p\u00e5g\u00e5r.",
       "WASHER_SUBSTATE_DRYING": "Torkar"
     },
-    "homewhiz__WASHER_TEMPERATURE": {
-      "TEMPERATURE_COLD_WASH": "Kallt vatten",
-      "TEMPERATURE_20": "20 \u00b0C",
-      "TEMPERATURE_30": "30 \u00b0C",
-      "TEMPERATURE_40": "40 \u00b0C"
+    "homewhiz__WASHER_PROGRAM": {
+      "PROGRAM_COTTONS": "Bomull",
+      "PROGRAM_ECO_40_60": "Eco 40-60",
+      "PROGRAM_SYNTHETICS": "Syntet",
+      "PROGRAM_MINI_MINI14": "Xpress",
+      "PROGRAM_WOOL_HANDWASH": "Woollens",
+      "PROGRAM_DELICATES": "PROGRAM_DELICATES",
+      "PROGRAM_SPIN_PUMP": "Spin+Drain",
+      "PROGRAM_RINSING": "Sk\u00f6ljning",
+      "PROGRAM_DARKWASH": "M\u00f6rk (jeans)",
+      "PROGRAM_OUTDOOR_SPORTS_GORETEX": "Sport",
+      "PROGRAM_STAIN": "Fl\u00e4ckbehandling",
+      "PROGRAM_HYGEINE": "Hygien+",
+      "PROGRAM_DUVET": "T\u00e4cken",
+      "PROGRAM_SHIRTS": "Skjortor/blusar",
+      "PROGRAM_DRUM_CLEAN": "Reng\u00f6ring trumma",
+      "PROGRAM_MIX": "Mixa",
+      "PROGRAM_CURTAIN": "Gardiner",
+      "PROGRAM_LINGERIE": "Underkl\u00e4der",
+      "PROGRAM_SOFT_TOYS": "Mjukisdjur",
+      "PROGRAM_TOWEL": "Handduk"
     },
     "homewhiz__WASHER_SPIN": {
       "SPIN_NO_SPIN": "Ingen centrifugering",

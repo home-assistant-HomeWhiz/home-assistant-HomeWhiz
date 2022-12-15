@@ -7,6 +7,13 @@
       "DEVICE_STATE_PAUSED": "In pausa",
       "DEVICE_STATE_TIME_DELAY_ACTIVE": "Partenza ritardata attiva"
     },
+    "homewhiz__AIR_CONDITIONER_PROGRAM": {
+      "AIR_CONDITIONER_MODE_COOLING": "Raffreddamento",
+      "AIR_CONDITIONER_MODE_AUTO": "Modifica automatica",
+      "AIR_CONDITIONER_MODE_DRY": "Deumidifica",
+      "AIR_CONDITIONER_MODE_HEATING": "Riscaldamento",
+      "AIR_CONDITIONER_MODE_FAN": "Ventola"
+    },
     "homewhiz__AIR_CONDITIONER_WIND_STRENGTH": {
       "WIND_STRENGTH_LOW": "Bassa",
       "WIND_STRENGTH_MID": "Medio",
@@ -33,11 +40,27 @@
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Antipiega remoto in corso.",
       "WASHER_SUBSTATE_DRYING": "Asciugatura"
     },
-    "homewhiz__WASHER_TEMPERATURE": {
-      "TEMPERATURE_COLD_WASH": "Lavaggio a freddo",
-      "TEMPERATURE_20": "TEMPERATURE_20",
-      "TEMPERATURE_30": "TEMPERATURE_30",
-      "TEMPERATURE_40": "TEMPERATURE_40"
+    "homewhiz__WASHER_PROGRAM": {
+      "PROGRAM_COTTONS": "Cotone",
+      "PROGRAM_ECO_40_60": "Eco 40-60",
+      "PROGRAM_SYNTHETICS": "Sintetici",
+      "PROGRAM_MINI_MINI14": "Xpress",
+      "PROGRAM_WOOL_HANDWASH": "Woollens",
+      "PROGRAM_DELICATES": "PROGRAM_DELICATES",
+      "PROGRAM_SPIN_PUMP": "Spin+Drain",
+      "PROGRAM_RINSING": "Risciacquo",
+      "PROGRAM_DARKWASH": "Colori scuri (jeans)",
+      "PROGRAM_OUTDOOR_SPORTS_GORETEX": "Sport",
+      "PROGRAM_STAIN": "Pronto Stiro Delicati",
+      "PROGRAM_HYGEINE": "Hygiene+",
+      "PROGRAM_DUVET": "Piumone/piumino",
+      "PROGRAM_SHIRTS": "Camicie",
+      "PROGRAM_DRUM_CLEAN": "Pulizia cestello",
+      "PROGRAM_MIX": "PROGRAM_MIX",
+      "PROGRAM_CURTAIN": "Tende",
+      "PROGRAM_LINGERIE": "Lingerie",
+      "PROGRAM_SOFT_TOYS": "Peluche",
+      "PROGRAM_TOWEL": "Asciugamano"
     },
     "homewhiz__WASHER_SPIN": {
       "SPIN_NO_SPIN": "Nessuna centrifuga",

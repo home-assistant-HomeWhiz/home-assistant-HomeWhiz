@@ -7,6 +7,13 @@
       "DEVICE_STATE_PAUSED": "Pozastaveno",
       "DEVICE_STATE_TIME_DELAY_ACTIVE": "\u010casov\u00e1 prodleva je aktivn\u00ed"
     },
+    "homewhiz__AIR_CONDITIONER_PROGRAM": {
+      "AIR_CONDITIONER_MODE_COOLING": "Chlazen\u00ed",
+      "AIR_CONDITIONER_MODE_AUTO": "Automatick\u00e1 zm\u011bna",
+      "AIR_CONDITIONER_MODE_DRY": "Such\u00fd",
+      "AIR_CONDITIONER_MODE_HEATING": "Oh\u0159ev",
+      "AIR_CONDITIONER_MODE_FAN": "Ventil\u00e1tor"
+    },
     "homewhiz__AIR_CONDITIONER_WIND_STRENGTH": {
       "WIND_STRENGTH_LOW": "N\u00edzk\u00fd",
       "WIND_STRENGTH_MID": "St\u0159edn\u00ed",
@@ -33,11 +40,27 @@
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Prob\u00edh\u00e1 vzd\u00e1len\u00e1 ochrana proti poma\u010dk\u00e1n\u00ed.",
       "WASHER_SUBSTATE_DRYING": "Su\u0161en\u00ed"
     },
-    "homewhiz__WASHER_TEMPERATURE": {
-      "TEMPERATURE_COLD_WASH": "Pran\u00ed za studena",
-      "TEMPERATURE_20": "TEMPERATURE_20",
-      "TEMPERATURE_30": "TEMPERATURE_30",
-      "TEMPERATURE_40": "TEMPERATURE_40"
+    "homewhiz__WASHER_PROGRAM": {
+      "PROGRAM_COTTONS": "PROGRAM_COTTONS",
+      "PROGRAM_ECO_40_60": "Eco 40\u201360",
+      "PROGRAM_SYNTHETICS": "PROGRAM_SYNTHETICS",
+      "PROGRAM_MINI_MINI14": "Xpress",
+      "PROGRAM_WOOL_HANDWASH": "Woollens",
+      "PROGRAM_DELICATES": "PROGRAM_DELICATES",
+      "PROGRAM_SPIN_PUMP": "Spin+Drain",
+      "PROGRAM_RINSING": "PROGRAM_RINSING",
+      "PROGRAM_DARKWASH": "Tmav\u00e9 (D\u017e\u00edny)",
+      "PROGRAM_OUTDOOR_SPORTS_GORETEX": "Sportovn\u00ed oble\u010den\u00ed",
+      "PROGRAM_STAIN": "Syntetick\u00e9 \u2013 \u017eehlen\u00ed na sucho",
+      "PROGRAM_HYGEINE": "Hygiena+",
+      "PROGRAM_DUVET": "Pe\u0159ina / Opot\u0159eben\u00ed",
+      "PROGRAM_SHIRTS": "PROGRAM_SHIRTS",
+      "PROGRAM_DRUM_CLEAN": "\u010ci\u0161t\u011bn\u00ed bubnu",
+      "PROGRAM_MIX": "Prom\u00edchat",
+      "PROGRAM_CURTAIN": "Z\u00e1clony",
+      "PROGRAM_LINGERIE": "D\u00e1msk\u00e9 pr\u00e1dlo",
+      "PROGRAM_SOFT_TOYS": "M\u011bkk\u00e9 hra\u010dky",
+      "PROGRAM_TOWEL": "Ru\u010dn\u00edk"
     },
     "homewhiz__WASHER_SPIN": {
       "SPIN_NO_SPIN": "Bez \u017ed\u00edm\u00e1n\u00ed",
