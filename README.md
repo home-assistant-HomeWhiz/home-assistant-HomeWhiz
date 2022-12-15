@@ -1,4 +1,4 @@
-# HomeWhiz integration for Home Assistant
+# HomeWhiz Integration for Home Assistant
 
 ![HomeWhiz icon](./icons/icon.png)
 
@@ -28,25 +28,35 @@ Integration for devices that can connect to HomeWhiz mobile app (Beko, Grundig, 
 3. In the HA UI go to "Configuration" -> "Integrations". The device should be automatically discovered. If it's not click "+" and search for "HomeWhiz"
 4. Provide the HomeWhiz username and password. These will be used to fetch your device mapping from the HomeWhiz API during configuration. No internet connection is required after the initial configuration. 
 
-## Bluetooth compatibility
+## Bluetooth Compatibility
 
-Integration should work with all of the devices connected via Blueooth.
-It was tested in a real life only for a generic washing machine. 
-If you have other device type please let us know.
-Support for other device types may be lacking
-If your device is missing some info please create an issue. 
-Don't forget to include your device digital ID that can be found either in the HomeWhiz app or the integration logs 
+Integration should work with all devices connected via Blueooth. Remember that the range of Bluetooth can be limited. If your device is out of range, you could try using an [ESPHome Bluetooth Proxy](https://esphome.github.io/bluetooth-proxies/).  
+This integration was only tested with a generic washing machine. 
+If you have other device types, please let us know.
+Support for other device types may be lacking.
+If your device is missing some information or not working, please create an issue. 
+Don't forget to include your device digital ID that can be found either in the HomeWhiz app or the integration logs.  
 
-## Wi-Fi compatibility
+## Wi-Fi Compatibility
 
 Wi-Fi devices are not yet supported. 
 It's not possible do develop a working integration without having access to a physical device. 
-If you have a Wi-Fi connected HomeWhiz device, your PR is very welcome. We can offer you a technical support. 
+If you have a Wi-Fi connected HomeWhiz device, your pull-request is very welcome. We will offer you technical support. 
 
-## Additional notes
+## Additional Notes
 
-Smartphone app doesn't seem to be working when integration is enabled. 
-To make the app work again you have to disable the integration, restart the HA and wait a few minutes ( In my case bluetooth icon on a washing machine starts flashing )
+The HomeWhiz smartphone app does not seem to be working when the integration is enabled. 
+To make the app work again, you have to disable the integration, restart Home Assistant and wait a few minutes - this can be indicated on the device: E.g.,  the Bluetooth icon on a washing machine starts flashing.
+
+## Retrieve Integration Logs
+
+To help us help you, please include integration logs when you submit issues. The integration supports multiple logging levels of which not all are shown in the Home Assistant log by default. To enable debug logging for this integration, please add the following configuration to your Home Assistant configuration.yaml file:
+```yaml
+logger:
+  logs:
+    custom_components.homewhiz: debug
+```
+To retrieve logs, navigate in Home Assistant to: settings -> system -> logs and retrieve logs by e.g. pressing the download button below the logs.
 
 ## Contributing to the project
 
