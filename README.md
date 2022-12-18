@@ -8,7 +8,7 @@ Integration for devices that can connect to HomeWhiz mobile app (Beko, Grundig, 
 
 ### Option 1. Using HACS (Recommended)
 
-1. Search for `HomeWhiz` on the HACS integration page (this integration is part of the HACS default repository meaning there is no need to add this integration via custom repositories)
+1. Search for `HomeWhiz` on the HACS integration page (this integration is part of the HACS default repository meaning it is not necessary to add this integration manually via custom repositories)
 2. Install the integration and Restart Home Assistant
 
 ### Option 2. Manually
