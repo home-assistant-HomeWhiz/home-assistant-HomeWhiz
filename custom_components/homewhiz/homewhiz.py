@@ -14,6 +14,9 @@ class HomewhizCoordinator(DataUpdateCoordinator[bytearray | None]):
     def is_connected(self):
         return False
 
+    def send_command(self, index: int, value: int):
+        pass
+
 
 class MessageAccumulator:
     expected_index = 0

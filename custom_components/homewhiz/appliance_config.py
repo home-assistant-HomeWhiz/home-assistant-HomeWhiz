@@ -105,7 +105,7 @@ class ApplianceStateOption(ApplianceFeatureEnumOption):
 class ApplianceState:
     states: list[ApplianceStateOption]
     wfaIndex: Optional[int]
-    wfaWriteIndex: Optional[int]
+    wifiArrayWriteIndex: Optional[int]
     wifiArrayReadIndex: Optional[int]
 
 
