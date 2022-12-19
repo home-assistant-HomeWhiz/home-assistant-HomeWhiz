@@ -8,17 +8,16 @@ Integration for devices that can connect to HomeWhiz mobile app (Beko, Grundig, 
 
 ### Option 1. Using HACS (Recommended)
 
-1. Add this repository to [HACS custom repositories](https://hacs.xyz/docs/faq/custom_repositories/) 
-2. Search for `home-assistant-homewhiz` on HACS integration page
-3. Install the integration and Restart Home Assistant
+1. Search for `HomeWhiz` on the HACS integration page (this integration is part of the HACS default repository meaning it is not necessary to add this integration manually via custom repositories)
+2. Install the integration and Restart Home Assistant
 
 ### Option 2. Manually
 
-1. Using the tool of choice open the directory (folder) for your HA configuration (where you find `configuration.yaml`).
-2. If you do not have a `custom_components` directory (folder) there, you need to create it.
-3. In the `custom_components` directory (folder) create a new folder called `HomeWhiz`.
-4. Download _all_ the files from the `custom_components/HomeWhiz/` directory (folder) in this repository.
-5. Place the files you downloaded in the new directory (folder) you created.
+1. Using the tool of choice, open the directory (folder) for your HA configuration (where you find `configuration.yaml`).
+2. If you do not have a `custom_components` directory there, you need to create it.
+3. In the `custom_components` directory create a new folder called `HomeWhiz`.
+4. Download _all_ files from the `custom_components/HomeWhiz/` directory in this repository.
+5. Place the files you downloaded in the new directory you created.
 6. Restart Home Assistant
 
 ## Configuration
@@ -56,7 +55,8 @@ logger:
   logs:
     custom_components.homewhiz: debug
 ```
-To retrieve logs, navigate in Home Assistant to: settings -> system -> logs and retrieve logs by e.g. pressing the download button below the logs.
+To retrieve logs, navigate in Home Assistant to: settings -> system -> logs and retrieve logs by e.g. pressing the download button below the logs.  
+> :warning: Please review your logs and **delete personal and private information before posting** :warning:
 
 ## Contributing to the project
 
