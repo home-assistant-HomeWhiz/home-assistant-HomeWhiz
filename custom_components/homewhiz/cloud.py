@@ -112,7 +112,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         )
         subscribe_get.result()
 
-        self.send_command(f"$aws/things/{self._appliance_id}/shadow/get", "fread")
+        self.force_read()
 
         self._entry.async_on_unload(
             async_track_point_in_time(self.hass, self.refresh_connection, expiration)
@@ -136,18 +136,35 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         await self.connect()
         old_connection.disconnect()
 
-    def send_command(self, topic: str, command: str):
+    def force_read(self):
         suffix = "/tuyacommand" if self._appliance_id.startswith("T") else "/command"
         force_read = {
             "applianceId": self._appliance_id,
-            "type": command + suffix,
+            "type": "fread" + suffix,
         }
         [publish, _] = self._connection.publish(
-            topic,
+            f"$aws/things/{self._appliance_id}/shadow/get",
             json.dumps(force_read),
             qos=self._mqtt.QoS.AT_MOST_ONCE,
         )
         publish.result()
+
+    def send_command(self, index: int, value: int):
+        suffix = "/tuyacommand" if self._appliance_id.startswith("T") else "/command"
+        obj = {
+            "applianceId": self._appliance_id,
+            "type": "write",
+            "prm": f"[{index},{value}]",
+        }
+        message = json.dumps(obj)
+        [publish, _] = self._connection.publish(
+            self._appliance_id + suffix,
+            message,
+            qos=self._mqtt.QoS.AT_LEAST_ONCE,
+        )
+        _LOGGER.debug("sending temp")
+        res = publish.result()
+        _LOGGER.debug(res)
 
     @callback
     def handle_notify(self, payload: str):
