@@ -1,25 +1,5 @@
 {
   "state": {
-    "homewhiz__STATE": {
-      "DEVICE_STATE_ON": "K\u00e4yt\u00f6ss\u00e4",
-      "DEVICE_STATE_OFF": "Ei k\u00e4yt\u00f6ss\u00e4",
-      "DEVICE_STATE_RUNNING": "K\u00e4ynniss\u00e4",
-      "DEVICE_STATE_PAUSED": "Pys\u00e4ytetty",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Aikaviive k\u00e4yt\u00f6ss\u00e4"
-    },
-    "homewhiz__AIR_CONDITIONER_PROGRAM": {
-      "AIR_CONDITIONER_MODE_COOLING": "J\u00e4\u00e4hdytys",
-      "AIR_CONDITIONER_MODE_AUTO": "Automaattinen vaihto",
-      "AIR_CONDITIONER_MODE_DRY": "Kuivaus",
-      "AIR_CONDITIONER_MODE_HEATING": "L\u00e4mmitys",
-      "AIR_CONDITIONER_MODE_FAN": "Puhallin"
-    },
-    "homewhiz__AIR_CONDITIONER_WIND_STRENGTH": {
-      "WIND_STRENGTH_LOW": "Matala",
-      "WIND_STRENGTH_MID": "Keskitaso",
-      "WIND_STRENGTH_HIGH": "Korkea",
-      "WIND_STRENGTH_AUTO": "Auto"
-    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Pesu",
       "WASHER_SUBSTATE_SPIN": "Linkous",
@@ -39,57 +19,6 @@
       "WASHER_SUBSTATE_RINSE_HOLD": "Huuhtelupito on k\u00e4yt\u00f6ss\u00e4, valitse linkousnopeus",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Rypistymisen et\u00e4esto on k\u00e4ynniss\u00e4.",
       "WASHER_SUBSTATE_DRYING": "Kuivaus"
-    },
-    "homewhiz__WASHER_PROGRAM": {
-      "PROGRAM_COTTONS": "Puuvillat",
-      "PROGRAM_ECO_40_60": "Eco 40-60",
-      "PROGRAM_SYNTHETICS": "Synteettinen",
-      "PROGRAM_MINI_MINI14": "Xpress",
-      "PROGRAM_WOOL_HANDWASH": "Woollens",
-      "PROGRAM_DELICATES": "PROGRAM_DELICATES",
-      "PROGRAM_SPIN_PUMP": "Spin+Drain",
-      "PROGRAM_RINSING": "Huuhtelu",
-      "PROGRAM_DARKWASH": "Tummat (farkut)",
-      "PROGRAM_OUTDOOR_SPORTS_GORETEX": "Urheilu",
-      "PROGRAM_STAIN": "Tahrahoito",
-      "PROGRAM_HYGEINE": "Hygienia+",
-      "PROGRAM_DUVET": "Peitto",
-      "PROGRAM_SHIRTS": "Paidat",
-      "PROGRAM_DRUM_CLEAN": "Rumpupuhdistus",
-      "PROGRAM_MIX": "Sekoita",
-      "PROGRAM_CURTAIN": "Verhot",
-      "PROGRAM_LINGERIE": "Alusasut",
-      "PROGRAM_SOFT_TOYS": "Pehmolelut",
-      "PROGRAM_TOWEL": "Pyyhkeet"
-    },
-    "homewhiz__WASHER_SPIN": {
-      "SPIN_NO_SPIN": "Ei linkousta",
-      "SPIN_RINSE_HOLD": "Huuhtelupito"
-    },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Ei k\u00e4yt\u00f6ss\u00e4",
-      "PREWASH_ON": "K\u00e4yt\u00f6ss\u00e4"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "Lis\u00e4huuhtelu pois",
-      "EXTRA_RINSE_ON": "Lis\u00e4huuhtelu k\u00e4yt\u00f6ss\u00e4"
-    },
-    "homewhiz__WASHER_FAST_PLUS": {
-      "FAST_PLUS_OFF": "Nopea + pois",
-      "FAST_PLUS_ON_FAST": "Nopea",
-      "FAST_PLUS_ON_FAST_PLUS": "Nopea+"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Ei k\u00e4yt\u00f6ss\u00e4",
-      "HIDDEN_ANTI_CREASE_ON": "K\u00e4yt\u00f6ss\u00e4"
-    },
-    "homewhiz__WASHER_STEAM": {
-      "STEAM_OFF": "STEAM_OFF",
-      "STEAM_ON": "STEAM_ON"
-    },
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Ei p\u00e4\u00e4ll\u00e4",
-      "PHR_ON": "P\u00e4\u00e4ll\u00e4"
     }
   }
 }

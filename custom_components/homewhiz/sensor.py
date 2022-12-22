@@ -23,12 +23,11 @@ from .appliance_config import (
     ApplianceFeature,
     ApplianceFeatureBoundedOption,
     ApplianceFeatureEnumOption,
-    ApplianceProgram,
     ApplianceProgressFeature,
 )
 from .config_flow import EntryData
 from .const import DOMAIN
-from .homewhiz import HomewhizCoordinator, brand_name_by_code
+from .homewhiz import HomewhizCoordinator, appliance_type_by_code, brand_name_by_code
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
@@ -38,34 +37,30 @@ def clamp(value: int):
 
 
 @dataclass
-class HomeWhizEntityDescription(SensorEntityDescription):
+class HomeWhizSensorEntityDescription(SensorEntityDescription):
     value_fn: Callable[[bytearray], float | str | None] | None = None
 
 
-class EnumEntityDescription(HomeWhizEntityDescription):
+class EnumSensorEntityDescription(HomeWhizSensorEntityDescription):
     def __init__(
         self, key: str, options: list[ApplianceFeatureEnumOption], read_index: int
     ):
         self.key = key
         self.icon = "mdi:state-machine"
-        self.options = options
+        self.enum_options = options
+        self.options = [option.strKey for option in options]
         self._read_index = read_index
         self.device_class = f"{DOMAIN}__{self.key}"
 
     def value_fn(self, data):
         value = clamp(data[self._read_index])
-        for option in self.options:
+        for option in self.enum_options:
             if option.wifiArrayValue == value:
                 return option.strKey
         return None
 
 
-class ProgramEntityDescription(EnumEntityDescription):
-    def __init__(self, program: ApplianceProgram):
-        super().__init__(program.strKey, program.values, program.wifiArrayIndex)
-
-
-class SubProgramBoundedEntityDescription(HomeWhizEntityDescription):
+class SubProgramBoundedSensorEntityDescription(HomeWhizSensorEntityDescription):
     def __init__(
         self, parent_key: str, bounds: ApplianceFeatureBoundedOption, read_index: int
     ):
@@ -81,7 +76,7 @@ class SubProgramBoundedEntityDescription(HomeWhizEntityDescription):
         if "TEMP" in self.key:
             return TEMP_CELSIUS
         if "SPIN" in self.key:
-            return "rpm"
+            return "RPM"
 
     @property
     def icon(self):
@@ -91,7 +86,7 @@ class SubProgramBoundedEntityDescription(HomeWhizEntityDescription):
             return "mdi:rotate-3d-variant"
 
 
-class ProgressEntityDescription(HomeWhizEntityDescription):
+class ProgressSensorEntityDescription(HomeWhizSensorEntityDescription):
     def __init__(self, progress: ApplianceProgressFeature):
         self.key = progress.strKey
         self.icon = "mdi:clock-outline"
@@ -109,77 +104,57 @@ class ProgressEntityDescription(HomeWhizEntityDescription):
         return hours * 60 + minutes
 
 
-def generate_descriptions_from_features(features: list[ApplianceFeature]):
+def generate_sensor_descriptions_from_features(features: list[ApplianceFeature]):
     result = []
     for feature in features:
         read_index = feature.wifiArrayIndex
         if feature.boundedValues is not None:
             for bounds in feature.boundedValues:
                 result.append(
-                    SubProgramBoundedEntityDescription(
+                    SubProgramBoundedSensorEntityDescription(
                         feature.strKey, bounds, read_index
                     )
                 )
-        if feature.enumValues is not None:
-            result.append(
-                EnumEntityDescription(feature.strKey, feature.enumValues, read_index)
-            )
     return result
 
 
-def generate_descriptions_from_config(
+def generate_sensor_descriptions_from_config(
     config: ApplianceConfiguration,
-) -> list[HomeWhizEntityDescription]:
+) -> list[HomeWhizSensorEntityDescription]:
     _LOGGER.debug("Generating descriptions from config")
     result = []
-    if config.deviceStates is not None:
-        _LOGGER.debug("Adding STATE EnumEntityDescription")
-        result.append(
-            EnumEntityDescription(
-                "STATE",
-                config.deviceStates.states,
-                config.deviceStates.wifiArrayReadIndex,
-            )
-        )
     if config.deviceSubStates is not None:
         _LOGGER.debug("Adding SUB_STATE EnumEntityDescription")
         result.append(
-            EnumEntityDescription(
+            EnumSensorEntityDescription(
                 "SUB_STATE",
                 config.deviceSubStates.subStates,
                 config.deviceSubStates.wifiArrayReadIndex,
             )
         )
-    result.append(ProgramEntityDescription(config.program))
-    result.extend(generate_descriptions_from_features(config.subPrograms))
+    result.extend(generate_sensor_descriptions_from_features(config.subPrograms))
     if config.progressVariables is not None:
         _LOGGER.debug("Adding config progress variables")
         for field in fields(config.progressVariables):
             feature = getattr(config.progressVariables, field.name)
             if feature is not None:
                 result.append(
-                    ProgressEntityDescription(feature),
+                    ProgressSensorEntityDescription(feature),
                 )
     if config.monitorings is not None:
         _LOGGER.debug("Adding config monitorings")
-        result.extend(generate_descriptions_from_features(config.monitorings))
-
-    # Remove redundant entities from device
-    description_keys = [description.key for description in result]
-    if "TEMPERATURE" in description_keys and "WASHER_TEMPERATURE" in description_keys:
-        _LOGGER.debug("Removing redundant temperature description")
-        del result[description_keys.index("WASHER_TEMPERATURE")]
+        result.extend(generate_sensor_descriptions_from_features(config.monitorings))
 
     return result
 
 
-class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator], SensorEntity):
+class HomeWhizSensorEntity(CoordinatorEntity[HomewhizCoordinator], SensorEntity):
     _attr_has_entity_name = True
 
     def __init__(
         self,
         coordinator: HomewhizCoordinator,
-        description: HomeWhizEntityDescription,
+        description: HomeWhizSensorEntityDescription,
         entry: ConfigEntry,
         data: EntryData,
     ):
@@ -227,8 +202,6 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator], SensorEntity):
             return "State"
         if key == "SUB_STATE":
             return "Sub-state"
-        if key == "AIR_CONDITIONER_ROOM_TEMPERATURE":
-            return "Room temperature"
         return self._localization.get(key, key)
 
 
@@ -243,12 +216,18 @@ async def async_setup_entry(
         ids=from_dict(IdExchangeResponse, entry.data["ids"]),
         cloud_config=None,
     )
+    if (
+        data.appliance_info is not None
+        and appliance_type_by_code[data.appliance_info.applianceType]
+        == "AIR_CONDITIONER"
+    ):
+        return
     coordinator = hass.data[DOMAIN][entry.entry_id]
-    descriptions = generate_descriptions_from_config(data.contents.config)
+    descriptions = generate_sensor_descriptions_from_config(data.contents.config)
     _LOGGER.debug(f"Sensors: {[d.key for d in descriptions]}")
     async_add_entities(
         [
-            HomeWhizEntity(coordinator, description, entry, data)
+            HomeWhizSensorEntity(coordinator, description, entry, data)
             for description in descriptions
         ]
     )

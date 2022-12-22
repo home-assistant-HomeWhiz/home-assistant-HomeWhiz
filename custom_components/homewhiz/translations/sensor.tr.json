@@ -1,25 +1,5 @@
 {
   "state": {
-    "homewhiz__STATE": {
-      "DEVICE_STATE_ON": "A\u00e7\u0131k",
-      "DEVICE_STATE_OFF": "Kapal\u0131",
-      "DEVICE_STATE_RUNNING": "\u00c7al\u0131\u015f\u0131yor",
-      "DEVICE_STATE_PAUSED": "Duraklat\u0131ld\u0131",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Zaman Erteleme Aktif"
-    },
-    "homewhiz__AIR_CONDITIONER_PROGRAM": {
-      "AIR_CONDITIONER_MODE_COOLING": "So\u011futma",
-      "AIR_CONDITIONER_MODE_AUTO": "Otomatik De\u011fi\u015fim",
-      "AIR_CONDITIONER_MODE_DRY": "Kurutma",
-      "AIR_CONDITIONER_MODE_HEATING": "Is\u0131tma",
-      "AIR_CONDITIONER_MODE_FAN": "Fan"
-    },
-    "homewhiz__AIR_CONDITIONER_WIND_STRENGTH": {
-      "WIND_STRENGTH_LOW": "D\u00fc\u015f\u00fck",
-      "WIND_STRENGTH_MID": "Orta",
-      "WIND_STRENGTH_HIGH": "H\u0131zl\u0131",
-      "WIND_STRENGTH_AUTO": "Otomatik"
-    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Y\u0131kama",
       "WASHER_SUBSTATE_SPIN": "S\u0131kma",
@@ -39,57 +19,6 @@
       "WASHER_SUBSTATE_RINSE_HOLD": "Suda bekletme devrede; devir h\u0131z\u0131 se\u00e7iniz",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Ak\u0131ll\u0131 k\u0131r\u0131\u015f\u0131k azaltma \u00e7al\u0131\u015f\u0131yor",
       "WASHER_SUBSTATE_DRYING": "Kurutma"
-    },
-    "homewhiz__WASHER_PROGRAM": {
-      "PROGRAM_COTTONS": "Pamuklu",
-      "PROGRAM_ECO_40_60": "Eco 40-60",
-      "PROGRAM_SYNTHETICS": "Sentetik",
-      "PROGRAM_MINI_MINI14": "Xpress",
-      "PROGRAM_WOOL_HANDWASH": "Woollens",
-      "PROGRAM_DELICATES": "Narin",
-      "PROGRAM_SPIN_PUMP": "Spin+Drain",
-      "PROGRAM_RINSING": "Durulama",
-      "PROGRAM_DARKWASH": "Koyu Renkliler (Kot)",
-      "PROGRAM_OUTDOOR_SPORTS_GORETEX": "Spor",
-      "PROGRAM_STAIN": "Leke Program\u0131",
-      "PROGRAM_HYGEINE": "Bebek+",
-      "PROGRAM_DUVET": "Yorgan/Ku\u015ft\u00fcy\u00fc",
-      "PROGRAM_SHIRTS": "G\u00f6mlek",
-      "PROGRAM_DRUM_CLEAN": "Makine Temizleme",
-      "PROGRAM_MIX": "Karma",
-      "PROGRAM_CURTAIN": "Perde",
-      "PROGRAM_LINGERIE": "\u0130\u00e7 \u00c7ama\u015f\u0131r\u0131",
-      "PROGRAM_SOFT_TOYS": "Yumu\u015fak Oyuncaklar",
-      "PROGRAM_TOWEL": "Havlu"
-    },
-    "homewhiz__WASHER_SPIN": {
-      "SPIN_NO_SPIN": "S\u0131kma Yok",
-      "SPIN_RINSE_HOLD": "Suda B\u0131rakma"
-    },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Kapal\u0131",
-      "PREWASH_ON": "A\u00e7\u0131k"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "\u0130lave Durulama Pasif",
-      "EXTRA_RINSE_ON": "\u0130lave Durulama Aktif"
-    },
-    "homewhiz__WASHER_FAST_PLUS": {
-      "FAST_PLUS_OFF": "Kapal\u0131",
-      "FAST_PLUS_ON_FAST": "H\u0131zl\u0131",
-      "FAST_PLUS_ON_FAST_PLUS": "\u00c7ok H\u0131zl\u0131"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Kapal\u0131",
-      "HIDDEN_ANTI_CREASE_ON": "A\u00e7\u0131k"
-    },
-    "homewhiz__WASHER_STEAM": {
-      "STEAM_OFF": "STEAM_OFF",
-      "STEAM_ON": "STEAM_ON"
-    },
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Kapal\u0131",
-      "PHR_ON": "A\u00e7\u0131k"
     }
   }
 }

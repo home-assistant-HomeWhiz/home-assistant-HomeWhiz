@@ -1,25 +1,5 @@
 {
   "state": {
-    "homewhiz__STATE": {
-      "DEVICE_STATE_ON": "T\u00e6ndt",
-      "DEVICE_STATE_OFF": "Slukket",
-      "DEVICE_STATE_RUNNING": "K\u00f8rer",
-      "DEVICE_STATE_PAUSED": "Sat p\u00e5 pause",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Udskudt start er aktiv"
-    },
-    "homewhiz__AIR_CONDITIONER_PROGRAM": {
-      "AIR_CONDITIONER_MODE_COOLING": "K\u00f8ling",
-      "AIR_CONDITIONER_MODE_AUTO": "Auto Change",
-      "AIR_CONDITIONER_MODE_DRY": "T\u00f8rring",
-      "AIR_CONDITIONER_MODE_HEATING": "Opvarmning",
-      "AIR_CONDITIONER_MODE_FAN": "Ventilator"
-    },
-    "homewhiz__AIR_CONDITIONER_WIND_STRENGTH": {
-      "WIND_STRENGTH_LOW": "Low",
-      "WIND_STRENGTH_MID": "Medium",
-      "WIND_STRENGTH_HIGH": "H\u00f8j",
-      "WIND_STRENGTH_AUTO": "Auto"
-    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Vask",
       "WASHER_SUBSTATE_SPIN": "Centrifugering",
@@ -39,57 +19,6 @@
       "WASHER_SUBSTATE_RINSE_HOLD": "Skyllestop er aktiv, v\u00e6lg centrifugeringshastighed",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Fjernstyret antikr\u00f8l er i gang.",
       "WASHER_SUBSTATE_DRYING": "T\u00f8rring"
-    },
-    "homewhiz__WASHER_PROGRAM": {
-      "PROGRAM_COTTONS": "Bomuld",
-      "PROGRAM_ECO_40_60": "Eco 40-60",
-      "PROGRAM_SYNTHETICS": "Syntetisk",
-      "PROGRAM_MINI_MINI14": "Xpress",
-      "PROGRAM_WOOL_HANDWASH": "Woollens",
-      "PROGRAM_DELICATES": "PROGRAM_DELICATES",
-      "PROGRAM_SPIN_PUMP": "Spin+Drain",
-      "PROGRAM_RINSING": "Skylning",
-      "PROGRAM_DARKWASH": "M\u00f8rk vask (Jeans)",
-      "PROGRAM_OUTDOOR_SPORTS_GORETEX": "Sport",
-      "PROGRAM_STAIN": "StainCare",
-      "PROGRAM_HYGEINE": "Hygiejne+",
-      "PROGRAM_DUVET": "Dyne",
-      "PROGRAM_SHIRTS": "Skjorter",
-      "PROGRAM_DRUM_CLEAN": "Reng\u00f8ring af tromle",
-      "PROGRAM_MIX": "Bland",
-      "PROGRAM_CURTAIN": "Gardiner",
-      "PROGRAM_LINGERIE": "Lingeri",
-      "PROGRAM_SOFT_TOYS": "T\u00f8jdyr",
-      "PROGRAM_TOWEL": "H\u00e5ndkl\u00e6der"
-    },
-    "homewhiz__WASHER_SPIN": {
-      "SPIN_NO_SPIN": "Ingen centrifugering",
-      "SPIN_RINSE_HOLD": "Skyllestop"
-    },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Slukket",
-      "PREWASH_ON": "T\u00e6ndt"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "Ekstra skylning fra",
-      "EXTRA_RINSE_ON": "Ekstra skylning til"
-    },
-    "homewhiz__WASHER_FAST_PLUS": {
-      "FAST_PLUS_OFF": "Hurtig + Fra",
-      "FAST_PLUS_ON_FAST": "Hurtig",
-      "FAST_PLUS_ON_FAST_PLUS": "Hurtig+"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Slukket",
-      "HIDDEN_ANTI_CREASE_ON": "T\u00e6ndt"
-    },
-    "homewhiz__WASHER_STEAM": {
-      "STEAM_OFF": "STEAM_OFF",
-      "STEAM_ON": "STEAM_ON"
-    },
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Slukket",
-      "PHR_ON": "T\u00e6ndt"
     }
   }
 }

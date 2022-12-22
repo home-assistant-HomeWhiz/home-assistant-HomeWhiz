@@ -11,9 +11,13 @@ from custom_components.homewhiz.api import (
     fetch_localizations,
     login,
 )
+from custom_components.homewhiz.select import (
+    EnumSelectEntityDescription,
+    generate_select_descriptions_from_config,
+)
 from custom_components.homewhiz.sensor import (
-    EnumEntityDescription,
-    generate_descriptions_from_config,
+    EnumSensorEntityDescription,
+    generate_sensor_descriptions_from_config,
 )
 
 
@@ -44,7 +48,18 @@ api_languages = {
     "sr": "sr-RS",
 }
 
-known_appliance_ids = ["T999902890777401659617", "F999935286050711425369"]
+known_appliance_ids = ["F999935286050711425369"]
+
+
+async def write_translations_file(name: str, translations: dict):
+    dirname = os.path.dirname(__file__)
+    translations_path = os.path.join(
+        dirname, "../custom_components/homewhiz/translations/"
+    )
+    file_path = os.path.join(translations_path, f"{name}.json")
+    with open(file_path, "w") as outfile:
+        json.dump({"state": translations}, outfile, indent=2)
+    print(f"{file_path} Updated")
 
 
 async def generate():
@@ -52,18 +67,14 @@ async def generate():
     password = input("Password: ")
     credentials = await login(username, password)
 
-    dirname = os.path.dirname(__file__)
-    translations_path = os.path.join(
-        dirname, "../custom_components/homewhiz/translations/"
-    )
-
     for short_code in api_languages:
         language = api_languages[short_code]
         print(f"language {language}")
         base_contents_index = await fetch_base_contents_index(credentials, language)
         base_localizations = await fetch_localizations(base_contents_index)
         print(f"Base localizations {len(base_localizations.keys())}")
-        translations = {}
+        select_translations = {}
+        sensor_translations = {}
         for appliance_id in known_appliance_ids:
             contents = await fetch_appliance_contents(
                 credentials, appliance_id, language
@@ -74,37 +85,54 @@ async def generate():
                 f"{appliance_id} localizations: {len(appliance_localizations.keys())}"
             )
             localizations = base_localizations | appliance_localizations
-            appliance_descriptions = generate_descriptions_from_config(appliance_config)
+            select_descriptions = [
+                description
+                for description in generate_select_descriptions_from_config(
+                    appliance_config
+                )
+                if isinstance(description, EnumSelectEntityDescription)
+            ]
+            sensor_descriptions = [
+                description
+                for description in generate_sensor_descriptions_from_config(
+                    appliance_config
+                )
+                if isinstance(description, EnumSensorEntityDescription)
+            ]
 
             def localize_key(key: str):
                 if key in localizations:
                     return localizations[key]
-                return key
 
-            def localize(description: EnumEntityDescription):
-                return {
-                    option.strKey: localize_key(option.strKey)
-                    for option in description.options
-                }
+            def localize(
+                description: EnumSelectEntityDescription | EnumSensorEntityDescription,
+            ):
+                entity_result: dict[str, str] = {}
+                for option in description.options:
+                    localized = localize_key(option)
+                    if localized is not None:
+                        entity_result[option] = localized
+                return entity_result
 
-            appliance_translations = {
-                description.device_class: localize(description)
-                for description in appliance_descriptions
-                if isinstance(description, EnumEntityDescription)
-            }
-
-            translations = mergedeep.merge(
-                translations,
-                appliance_translations,
+            select_translations = mergedeep.merge(
+                select_translations,
+                {
+                    description.device_class: localize(description)
+                    for description in select_descriptions
+                },
+                strategy=Strategy.TYPESAFE_ADDITIVE,
+            )
+            sensor_translations = mergedeep.merge(
+                sensor_translations,
+                {
+                    description.device_class: localize(description)
+                    for description in sensor_descriptions
+                },
                 strategy=Strategy.TYPESAFE_ADDITIVE,
             )
 
-        result = {"state": translations}
-
-        file_path = os.path.join(translations_path, f"sensor.{short_code}.json")
-        with open(file_path, "w") as outfile:
-            json.dump(result, outfile, indent=2)
-        print(f"{file_path} Updated")
+        await write_translations_file(f"select.{short_code}", select_translations)
+        await write_translations_file(f"sensor.{short_code}", sensor_translations)
 
 
 if __name__ == "__main__":

@@ -1,25 +1,5 @@
 {
   "state": {
-    "homewhiz__STATE": {
-      "DEVICE_STATE_ON": "W\u0142.",
-      "DEVICE_STATE_OFF": "Wy\u0142.",
-      "DEVICE_STATE_RUNNING": "Uruchomiono",
-      "DEVICE_STATE_PAUSED": "Wstrzymano",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Op\u00f3\u017anienie aktywne"
-    },
-    "homewhiz__AIR_CONDITIONER_PROGRAM": {
-      "AIR_CONDITIONER_MODE_COOLING": "Ch\u0142odzenie",
-      "AIR_CONDITIONER_MODE_AUTO": "Automatyczna zmiana",
-      "AIR_CONDITIONER_MODE_DRY": "Suchy",
-      "AIR_CONDITIONER_MODE_HEATING": "Ogrzewanie",
-      "AIR_CONDITIONER_MODE_FAN": "Wentylator"
-    },
-    "homewhiz__AIR_CONDITIONER_WIND_STRENGTH": {
-      "WIND_STRENGTH_LOW": "Niska",
-      "WIND_STRENGTH_MID": "\u015aredni",
-      "WIND_STRENGTH_HIGH": "Wysoki",
-      "WIND_STRENGTH_AUTO": "Automatyczny"
-    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Pranie",
       "WASHER_SUBSTATE_SPIN": "Wirowanie",
@@ -39,57 +19,6 @@
       "WASHER_SUBSTATE_RINSE_HOLD": "Wstrzymanie p\u0142ukania jest aktywne. Wybierz szybko\u015b\u0107 wirowania",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Zdalna ochrona przed zagnieceniami w toku.",
       "WASHER_SUBSTATE_DRYING": "Suszenie"
-    },
-    "homewhiz__WASHER_PROGRAM": {
-      "PROGRAM_COTTONS": "Bawe\u0142na",
-      "PROGRAM_ECO_40_60": "ECO 40-60",
-      "PROGRAM_SYNTHETICS": "Syntetyki",
-      "PROGRAM_MINI_MINI14": "Xpress",
-      "PROGRAM_WOOL_HANDWASH": "Woollens",
-      "PROGRAM_DELICATES": "PROGRAM_DELICATES",
-      "PROGRAM_SPIN_PUMP": "Spin+Drain",
-      "PROGRAM_RINSING": "P\u0142ukanie",
-      "PROGRAM_DARKWASH": "Ciemne (d\u017cinsowe)",
-      "PROGRAM_OUTDOOR_SPORTS_GORETEX": "Sport",
-      "PROGRAM_STAIN": "Odplamianie",
-      "PROGRAM_HYGEINE": "Higiena+",
-      "PROGRAM_DUVET": "Ko\u0142dra",
-      "PROGRAM_SHIRTS": "Koszule",
-      "PROGRAM_DRUM_CLEAN": "Czyszczenie b\u0119bna",
-      "PROGRAM_MIX": "Mieszanie",
-      "PROGRAM_CURTAIN": "Zas\u0142ony",
-      "PROGRAM_LINGERIE": "Bielizna damska",
-      "PROGRAM_SOFT_TOYS": "Pluszowe zabawki",
-      "PROGRAM_TOWEL": "R\u0119cznik"
-    },
-    "homewhiz__WASHER_SPIN": {
-      "SPIN_NO_SPIN": "Bez wirowania",
-      "SPIN_RINSE_HOLD": "Wstrzymanie p\u0142ukania"
-    },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Wy\u0142.",
-      "PREWASH_ON": "W\u0142."
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "Dodatkowe p\u0142ukanie wy\u0142.",
-      "EXTRA_RINSE_ON": "Dodatkowe p\u0142ukanie w\u0142."
-    },
-    "homewhiz__WASHER_FAST_PLUS": {
-      "FAST_PLUS_OFF": "Fast+ wy\u0142.",
-      "FAST_PLUS_ON_FAST": "Szybki",
-      "FAST_PLUS_ON_FAST_PLUS": "Fast+"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Wy\u0142.",
-      "HIDDEN_ANTI_CREASE_ON": "W\u0142."
-    },
-    "homewhiz__WASHER_STEAM": {
-      "STEAM_OFF": "STEAM_OFF",
-      "STEAM_ON": "STEAM_ON"
-    },
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Wy\u0142.",
-      "PHR_ON": "W\u0142."
     }
   }
 }

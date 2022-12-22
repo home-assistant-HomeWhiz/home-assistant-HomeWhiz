@@ -1,25 +1,5 @@
 {
   "state": {
-    "homewhiz__STATE": {
-      "DEVICE_STATE_ON": "P\u00e5",
-      "DEVICE_STATE_OFF": "Av",
-      "DEVICE_STATE_RUNNING": "Kj\u00f8rer",
-      "DEVICE_STATE_PAUSED": "P\u00e5 pause",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Forsinkelsen er aktivert"
-    },
-    "homewhiz__AIR_CONDITIONER_PROGRAM": {
-      "AIR_CONDITIONER_MODE_COOLING": "Nedkj\u00f8ling",
-      "AIR_CONDITIONER_MODE_AUTO": "Automatisk endring",
-      "AIR_CONDITIONER_MODE_DRY": "T\u00f8rk",
-      "AIR_CONDITIONER_MODE_HEATING": "Oppvarming",
-      "AIR_CONDITIONER_MODE_FAN": "Vifte"
-    },
-    "homewhiz__AIR_CONDITIONER_WIND_STRENGTH": {
-      "WIND_STRENGTH_LOW": "Lav",
-      "WIND_STRENGTH_MID": "Middels",
-      "WIND_STRENGTH_HIGH": "H\u00f8y",
-      "WIND_STRENGTH_AUTO": "Auto"
-    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Vask",
       "WASHER_SUBSTATE_SPIN": "Sentrifugering",
@@ -39,57 +19,6 @@
       "WASHER_SUBSTATE_RINSE_HOLD": "Skyllestopp er aktivert, velg sentrifugehastighet",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Fjernstyrt antikr\u00f8ll p\u00e5g\u00e5r.",
       "WASHER_SUBSTATE_DRYING": "T\u00f8rker"
-    },
-    "homewhiz__WASHER_PROGRAM": {
-      "PROGRAM_COTTONS": "Bomull",
-      "PROGRAM_ECO_40_60": "\u00d8ko 40\u201360",
-      "PROGRAM_SYNTHETICS": "Syntetisk",
-      "PROGRAM_MINI_MINI14": "Xpress",
-      "PROGRAM_WOOL_HANDWASH": "Woollens",
-      "PROGRAM_DELICATES": "PROGRAM_DELICATES",
-      "PROGRAM_SPIN_PUMP": "Spin+Drain",
-      "PROGRAM_RINSING": "Skylling",
-      "PROGRAM_DARKWASH": "M\u00f8rkt t\u00f8y (dongeribukser)",
-      "PROGRAM_OUTDOOR_SPORTS_GORETEX": "Sport",
-      "PROGRAM_STAIN": "Flekkfjerning",
-      "PROGRAM_HYGEINE": "Hygiene+",
-      "PROGRAM_DUVET": "Dyne",
-      "PROGRAM_SHIRTS": "Skjorter",
-      "PROGRAM_DRUM_CLEAN": "Trommelrengj\u00f8ring",
-      "PROGRAM_MIX": "PROGRAM_MIX",
-      "PROGRAM_CURTAIN": "Gardiner",
-      "PROGRAM_LINGERIE": "Dameundert\u00f8y",
-      "PROGRAM_SOFT_TOYS": "Myke leker",
-      "PROGRAM_TOWEL": "H\u00e5ndkle"
-    },
-    "homewhiz__WASHER_SPIN": {
-      "SPIN_NO_SPIN": "Uten sentrifugering",
-      "SPIN_RINSE_HOLD": "Skyllestopp"
-    },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Av",
-      "PREWASH_ON": "P\u00e5"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "Ekstra skylling av",
-      "EXTRA_RINSE_ON": "Ekstra skylling p\u00e5"
-    },
-    "homewhiz__WASHER_FAST_PLUS": {
-      "FAST_PLUS_OFF": "Rask+ av",
-      "FAST_PLUS_ON_FAST": "Hurtig",
-      "FAST_PLUS_ON_FAST_PLUS": "Hurtig+"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Av",
-      "HIDDEN_ANTI_CREASE_ON": "P\u00e5"
-    },
-    "homewhiz__WASHER_STEAM": {
-      "STEAM_OFF": "STEAM_OFF",
-      "STEAM_ON": "STEAM_ON"
-    },
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Av",
-      "PHR_ON": "P\u00e5"
     }
   }
 }

@@ -149,7 +149,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         )
         publish.result()
 
-    def send_command(self, index: int, value: int):
+    async def send_command(self, index: int, value: int):
         suffix = "/tuyacommand" if self._appliance_id.startswith("T") else "/command"
         obj = {
             "applianceId": self._appliance_id,
@@ -162,7 +162,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             message,
             qos=self._mqtt.QoS.AT_LEAST_ONCE,
         )
-        _LOGGER.debug("sending temp")
+        _LOGGER.debug(f"sending command {index}:{value}")
         res = publish.result()
         _LOGGER.debug(res)
 
