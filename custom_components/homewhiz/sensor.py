@@ -10,7 +10,7 @@ from homeassistant.components.sensor import (
     SensorEntityDescription,
 )
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import STATE_UNAVAILABLE, TEMP_CELSIUS
+from homeassistant.const import STATE_UNAVAILABLE
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
@@ -29,7 +29,9 @@ from .helper import (
     build_entry_data,
     clamp,
     find_by_value,
+    icon_for_key,
     is_air_conditioner,
+    unit_for_key,
 )
 from .homewhiz import HomewhizCoordinator
 
@@ -73,17 +75,11 @@ class SubProgramBoundedSensorEntityDescription(HomeWhizSensorEntityDescription):
 
     @property
     def native_unit_of_measurement(self):
-        if "TEMP" in self.key:
-            return TEMP_CELSIUS
-        if "SPIN" in self.key:
-            return "RPM"
+        return unit_for_key(self.key)
 
     @property
     def icon(self):
-        if "TEMP" in self.key:
-            return "mdi:thermometer"
-        if "SPIN" in self.key:
-            return "mdi:rotate-3d-variant"
+        return icon_for_key(self.key)
 
 
 class ProgressSensorEntityDescription(HomeWhizSensorEntityDescription):

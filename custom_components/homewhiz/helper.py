@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import TypeVar
 
 from dacite import from_dict
+from homeassistant.const import TEMP_CELSIUS
 from homeassistant.core import DOMAIN
 from homeassistant.helpers.entity import DeviceInfo
 
@@ -103,3 +104,17 @@ def build_device_info(unique_name: str, data: EntryData):
         manufacturer=manufacturer,
         model=model,
     )
+
+
+def unit_for_key(key: str):
+    if "TEMP" in key:
+        return TEMP_CELSIUS
+    if "SPIN" in key:
+        return "RPM"
+
+
+def icon_for_key(key: str):
+    if "TEMP" in key:
+        return "mdi:thermometer"
+    if "SPIN" in key:
+        return "mdi:rotate-3d-variant"

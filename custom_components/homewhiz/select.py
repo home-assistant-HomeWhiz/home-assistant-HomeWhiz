@@ -6,7 +6,7 @@ from typing import Callable
 
 from homeassistant.components.select import SelectEntity, SelectEntityDescription
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import STATE_UNAVAILABLE, TEMP_CELSIUS
+from homeassistant.const import STATE_UNAVAILABLE
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
@@ -26,18 +26,11 @@ from .helper import (
     find_by_key,
     find_by_value,
     is_air_conditioner,
+    unit_for_key,
 )
 from .homewhiz import HomewhizCoordinator
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
-
-
-def unit_for_key(key: str):
-    if "TEMP" in key:
-        return " " + TEMP_CELSIUS
-    if "SPIN" in key:
-        return " RPM"
-    return ""
 
 
 @dataclass
@@ -101,7 +94,9 @@ def generate_options_from_feature(feature: ApplianceFeature):
             while value <= boundedValues.upperLimit:
                 wifiValue = int(value / boundedValues.factor)
                 if wifiValue not in options:
-                    options[wifiValue] = str(value) + unit_for_key(feature.strKey)
+                    unit = unit_for_key(feature.strKey)
+                    name = f"{value} {unit}" if unit is not None else str(value)
+                    options[wifiValue] = name
                 value += boundedValues.step
     return [
         ApplianceFeatureEnumOption(strKey=options[key], wifiArrayValue=key)
