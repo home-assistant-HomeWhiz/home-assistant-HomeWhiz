@@ -1413,7 +1413,7 @@
         {
           "strKey": "SPIN",
           "lowerLimit": 600,
-          "upperLimit": 1200,
+          "upperLimit": 1400,
           "step": 200,
           "factor": 100,
           "unit": ""

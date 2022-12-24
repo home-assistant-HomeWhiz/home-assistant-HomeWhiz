@@ -139,7 +139,7 @@ def test_generic_washing_machine_delay_defined(washing_machine_config):
             "WASHER_PHR": "PHR_OFF",
             "WASHER_PREWASH": "PREWASH_OFF",
             "WASHER_PROGRAM": "PROGRAM_COTTONS",
-            "WASHER_SPIN": None,
+            "WASHER_SPIN": "1400 RPM",
             "WASHER_TEMPERATURE": "TEMPERATURE_40",
             "WASHER_STEAM": "STEAM_OFF",
         },
