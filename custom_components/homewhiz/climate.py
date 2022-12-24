@@ -1,6 +1,6 @@
 import logging
 
-from dacite import from_dict
+from bidict import bidict
 from homeassistant.components.climate import (
     FAN_AUTO,
     FAN_HIGH,
@@ -13,35 +13,41 @@ from homeassistant.components.climate import (
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import STATE_UNAVAILABLE, TEMP_CELSIUS
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .api import ApplianceContents, ApplianceInfo, IdExchangeResponse
 from .config_flow import EntryData
 from .const import DOMAIN
-from .homewhiz import HomewhizCoordinator, appliance_type_by_code, brand_name_by_code
+from .helper import (
+    build_device_info,
+    build_entry_data,
+    clamp,
+    find_by_key,
+    find_by_value,
+    is_air_conditioner,
+)
+from .homewhiz import HomewhizCoordinator
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
-program_dict: dict[str, HVACMode] = {
-    "AIR_CONDITIONER_MODE_COOLING": HVACMode.COOL,
-    "AIR_CONDITIONER_MODE_AUTO": HVACMode.AUTO,
-    "AIR_CONDITIONER_MODE_DRY": HVACMode.DRY,
-    "AIR_CONDITIONER_MODE_HEATING": HVACMode.HEAT,
-    "AIR_CONDITIONER_MODE_FAN": HVACMode.FAN_ONLY,
-}
+program_dict: bidict[str, HVACMode] = bidict(
+    {
+        "AIR_CONDITIONER_MODE_COOLING": HVACMode.COOL,
+        "AIR_CONDITIONER_MODE_AUTO": HVACMode.AUTO,
+        "AIR_CONDITIONER_MODE_DRY": HVACMode.DRY,
+        "AIR_CONDITIONER_MODE_HEATING": HVACMode.HEAT,
+        "AIR_CONDITIONER_MODE_FAN": HVACMode.FAN_ONLY,
+    }
+)
 
-wind_strength_dict: dict[str, str] = {
-    "WIND_STRENGTH_LOW": FAN_LOW,
-    "WIND_STRENGTH_MID": FAN_MEDIUM,
-    "WIND_STRENGTH_HIGH": FAN_HIGH,
-    "WIND_STRENGTH_AUTO": FAN_AUTO,
-}
-
-
-def clamp(value: int):
-    return value if value < 128 else value - 128
+wind_strength_dict: bidict[str, str] = bidict(
+    {
+        "WIND_STRENGTH_LOW": FAN_LOW,
+        "WIND_STRENGTH_MID": FAN_MEDIUM,
+        "WIND_STRENGTH_HIGH": FAN_HIGH,
+        "WIND_STRENGTH_AUTO": FAN_AUTO,
+    }
+)
 
 
 class HomeWhizClimateEntity(CoordinatorEntity[HomewhizCoordinator], ClimateEntity):
@@ -56,64 +62,25 @@ class HomeWhizClimateEntity(CoordinatorEntity[HomewhizCoordinator], ClimateEntit
     ):
         super().__init__(coordinator)
         unique_name = entry.title
-        friendly_name = (
-            data.appliance_info.name if data.appliance_info is not None else unique_name
-        )
 
         self._localization = data.contents.localization
         self._attr_unique_id = f"{unique_name}_AC"
-        manufacturer = (
-            brand_name_by_code[data.appliance_info.brand]
-            if data.appliance_info is not None
-            else None
-        )
-        model = data.appliance_info.model if data.appliance_info is not None else None
+        self._attr_device_info = build_device_info(unique_name, data)
+
         self._program = data.contents.config.program
 
-        self._target_temperature_description = next(
-            filter(
-                lambda sub_program: sub_program.strKey
-                == "AIR_CONDITIONER_TARGET_TEMPERATURE",
-                data.contents.config.subPrograms,
-            ),
-            None,
+        self._target_temperature_description = find_by_key(
+            "AIR_CONDITIONER_TARGET_TEMPERATURE", data.contents.config.subPrograms
         )
-        self._wind_strength_description = next(
-            filter(
-                lambda sub_program: sub_program.strKey
-                == "AIR_CONDITIONER_WIND_STRENGTH",
-                data.contents.config.subPrograms,
-            ),
-            None,
+        self._wind_strength_description = find_by_key(
+            "AIR_CONDITIONER_WIND_STRENGTH", data.contents.config.subPrograms
         )
-
         self._device_states = data.contents.config.deviceStates
-        self._state_on = next(
-            filter(
-                lambda state: state.strKey == "DEVICE_STATE_ON",
-                self._device_states.states,
-            )
-        )
-        self._state_off = next(
-            filter(
-                lambda state: state.strKey == "DEVICE_STATE_OFF",
-                self._device_states.states,
-            )
-        )
-        self._room_temperature_description = next(
-            filter(
-                lambda monitoring: monitoring.strKey
-                == "AIR_CONDITIONER_ROOM_TEMPERATURE",
-                data.contents.config.monitorings,
-            ),
-            None,
-        )
-
-        self._attr_device_info = DeviceInfo(
-            identifiers={(DOMAIN, unique_name)},
-            name=friendly_name,
-            manufacturer=manufacturer,
-            model=model,
+        self._state_on = find_by_key("DEVICE_STATE_ON", self._device_states.states)
+        self._state_off = find_by_key("DEVICE_STATE_OFF", self._device_states.states)
+        self._room_temperature_description = find_by_key(
+            "AIR_CONDITIONER_ROOM_TEMPERATURE",
+            data.contents.config.monitorings,
         )
 
     @property
@@ -134,10 +101,10 @@ class HomeWhizClimateEntity(CoordinatorEntity[HomewhizCoordinator], ClimateEntit
     @property
     def hvac_mode_raw(self):
         value = clamp(self.coordinator.data[self._program.wifiArrayIndex])
-        for option in self._program.values:
-            if option.wifiArrayValue == value:
-                return program_dict[option.strKey]
-        return None
+        option = find_by_value(value, self._program.values)
+        if option is None:
+            return None
+        return program_dict[option.strKey]
 
     @property
     def hvac_mode(self) -> HVACMode | None:
@@ -151,6 +118,7 @@ class HomeWhizClimateEntity(CoordinatorEntity[HomewhizCoordinator], ClimateEntit
 
     async def async_set_hvac_mode(self, hvac_mode: HVACMode):
         _LOGGER.debug(f"Changing HVAC mode {hvac_mode}")
+        program_key = program_dict.inverse.get(hvac_mode)
         if hvac_mode == HVACMode.OFF:
             await self.coordinator.send_command(
                 self._device_states.wifiArrayWriteIndex, self._state_off.wifiArrayValue
@@ -161,14 +129,9 @@ class HomeWhizClimateEntity(CoordinatorEntity[HomewhizCoordinator], ClimateEntit
                 self._device_states.wifiArrayWriteIndex, self._state_on.wifiArrayValue
             )
         if self.hvac_mode_raw != hvac_mode:
-            selected_state = next(
-                filter(
-                    lambda state: program_dict[state.strKey] == hvac_mode,
-                    self._program.values,
-                )
-            )
+            selected_program = find_by_key(program_key, self._program.values)
             await self.coordinator.send_command(
-                self._program.wifiArrayIndex, selected_state.wifiArrayValue
+                self._program.wifiArrayIndex, selected_program.wifiArrayValue
             )
 
     @property
@@ -216,18 +179,14 @@ class HomeWhizClimateEntity(CoordinatorEntity[HomewhizCoordinator], ClimateEntit
         value = clamp(
             self.coordinator.data[self._wind_strength_description.wifiArrayIndex]
         )
-        for option in self._wind_strength_description.enumValues:
-            if option.wifiArrayValue == value:
-                return wind_strength_dict[option.strKey]
-        return None
+        option = find_by_value(value, self._wind_strength_description.enumValues)
+        return wind_strength_dict[option.strKey]
 
     async def async_set_fan_mode(self, fan_mode: str):
         _LOGGER.debug(f"Changing fan mode {fan_mode}")
-        selected_option = next(
-            filter(
-                lambda option: wind_strength_dict[option.strKey] == fan_mode,
-                self._wind_strength_description.enumValues,
-            )
+        wind_strength_key = wind_strength_dict.inverse.get(fan_mode)
+        selected_option = find_by_key(
+            wind_strength_key, self._wind_strength_description.enumValues
         )
         await self.coordinator.send_command(
             self._wind_strength_description.wifiArrayIndex,
@@ -242,19 +201,9 @@ class HomeWhizClimateEntity(CoordinatorEntity[HomewhizCoordinator], ClimateEntit
 async def async_setup_entry(
     hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
 ) -> None:
-    data = EntryData(
-        contents=from_dict(ApplianceContents, entry.data["contents"]),
-        appliance_info=from_dict(ApplianceInfo, entry.data["appliance_info"])
-        if entry.data["appliance_info"] is not None
-        else None,
-        ids=from_dict(IdExchangeResponse, entry.data["ids"]),
-        cloud_config=None,
-    )
-    if (
-        data.appliance_info is None
-        or not appliance_type_by_code[data.appliance_info.applianceType]
-        == "AIR_CONDITIONER"
-    ):
+    data = build_entry_data(entry)
+    if not is_air_conditioner(data):
+        _LOGGER.debug("Appliance is not AC, not adding Climate entity")
         return
     coordinator = hass.data[DOMAIN][entry.entry_id]
     async_add_entities([HomeWhizClimateEntity(coordinator, entry, data)])

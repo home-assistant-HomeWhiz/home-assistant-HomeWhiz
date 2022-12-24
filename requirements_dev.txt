@@ -7,3 +7,4 @@ awsiotsdk
 bluetooth_adapters
 mergedeep
 pre-commit
+bidict

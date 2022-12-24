@@ -4,7 +4,6 @@ import logging
 from dataclasses import dataclass, fields
 from typing import Callable
 
-from dacite import from_dict
 from homeassistant.components.sensor import (
     SensorDeviceClass,
     SensorEntity,
@@ -13,11 +12,9 @@ from homeassistant.components.sensor import (
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import STATE_UNAVAILABLE, TEMP_CELSIUS
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .api import ApplianceContents, ApplianceInfo, IdExchangeResponse
 from .appliance_config import (
     ApplianceConfiguration,
     ApplianceFeature,
@@ -27,13 +24,16 @@ from .appliance_config import (
 )
 from .config_flow import EntryData
 from .const import DOMAIN
-from .homewhiz import HomewhizCoordinator, appliance_type_by_code, brand_name_by_code
+from .helper import (
+    build_device_info,
+    build_entry_data,
+    clamp,
+    find_by_value,
+    is_air_conditioner,
+)
+from .homewhiz import HomewhizCoordinator
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
-
-
-def clamp(value: int):
-    return value if value < 128 else value - 128
 
 
 @dataclass
@@ -54,10 +54,10 @@ class EnumSensorEntityDescription(HomeWhizSensorEntityDescription):
 
     def value_fn(self, data):
         value = clamp(data[self._read_index])
-        for option in self.enum_options:
-            if option.wifiArrayValue == value:
-                return option.strKey
-        return None
+        option = find_by_value(value, self.enum_options)
+        if option is None:
+            return None
+        return option.strKey
 
 
 class SubProgramBoundedSensorEntityDescription(HomeWhizSensorEntityDescription):
@@ -160,27 +160,12 @@ class HomeWhizSensorEntity(CoordinatorEntity[HomewhizCoordinator], SensorEntity)
     ):
         super().__init__(coordinator)
         unique_name = entry.title
-        friendly_name = (
-            data.appliance_info.name if data.appliance_info is not None else unique_name
-        )
+        self._attr_unique_id = f"{unique_name}_{description.key}"
+        self._attr_device_info = build_device_info(unique_name, data)
 
         self._localization = data.contents.localization
         self.entity_description = description
         self._value_fn = description.value_fn
-        self._attr_unique_id = f"{unique_name}_{description.key}"
-        manufacturer = (
-            brand_name_by_code[data.appliance_info.brand]
-            if data.appliance_info is not None
-            else None
-        )
-        model = data.appliance_info.model if data.appliance_info is not None else None
-        self._attr_device_info = DeviceInfo(
-            connections={("bluetooth", entry.unique_id)},
-            identifiers={(DOMAIN, unique_name)},
-            name=friendly_name,
-            manufacturer=manufacturer,
-            model=model,
-        )
 
     @property
     def native_value(self) -> float | int | str | None:
@@ -208,19 +193,9 @@ class HomeWhizSensorEntity(CoordinatorEntity[HomewhizCoordinator], SensorEntity)
 async def async_setup_entry(
     hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
 ) -> None:
-    data = EntryData(
-        contents=from_dict(ApplianceContents, entry.data["contents"]),
-        appliance_info=from_dict(ApplianceInfo, entry.data["appliance_info"])
-        if entry.data["appliance_info"] is not None
-        else None,
-        ids=from_dict(IdExchangeResponse, entry.data["ids"]),
-        cloud_config=None,
-    )
-    if (
-        data.appliance_info is not None
-        and appliance_type_by_code[data.appliance_info.applianceType]
-        == "AIR_CONDITIONER"
-    ):
+    data = build_entry_data(entry)
+    if is_air_conditioner(data):
+        _LOGGER.debug("Appliance is AC, not adding Sensor entities")
         return
     coordinator = hass.data[DOMAIN][entry.entry_id]
     descriptions = generate_sensor_descriptions_from_config(data.contents.config)
