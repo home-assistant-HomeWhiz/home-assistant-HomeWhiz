@@ -1,25 +1,5 @@
 {
   "state": {
-    "homewhiz__STATE": {
-      "DEVICE_STATE_ON": "On",
-      "DEVICE_STATE_OFF": "Off",
-      "DEVICE_STATE_RUNNING": "Running",
-      "DEVICE_STATE_PAUSED": "Paused",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Time Delay Active"
-    },
-    "homewhiz__AIR_CONDITIONER_PROGRAM": {
-      "AIR_CONDITIONER_MODE_COOLING": "Cooling",
-      "AIR_CONDITIONER_MODE_AUTO": "Auto Change",
-      "AIR_CONDITIONER_MODE_DRY": "Dry",
-      "AIR_CONDITIONER_MODE_HEATING": "Heating",
-      "AIR_CONDITIONER_MODE_FAN": "Fan"
-    },
-    "homewhiz__AIR_CONDITIONER_WIND_STRENGTH": {
-      "WIND_STRENGTH_LOW": "Low",
-      "WIND_STRENGTH_MID": "Medium",
-      "WIND_STRENGTH_HIGH": "High",
-      "WIND_STRENGTH_AUTO": "Auto"
-    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Wash",
       "WASHER_SUBSTATE_SPIN": "Spin",
@@ -39,57 +19,6 @@
       "WASHER_SUBSTATE_RINSE_HOLD": "Rinse hold is active; select spin speed",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Remote anti-creasing is in progress.",
       "WASHER_SUBSTATE_DRYING": "Drying"
-    },
-    "homewhiz__WASHER_PROGRAM": {
-      "PROGRAM_COTTONS": "Cottons",
-      "PROGRAM_ECO_40_60": "Eco 40-60",
-      "PROGRAM_SYNTHETICS": "Synthetics",
-      "PROGRAM_MINI_MINI14": "Xpress",
-      "PROGRAM_WOOL_HANDWASH": "Woollens",
-      "PROGRAM_DELICATES": "Delicates",
-      "PROGRAM_SPIN_PUMP": "Spin+Drain",
-      "PROGRAM_RINSING": "Rinse",
-      "PROGRAM_DARKWASH": "Dark (Jeans)",
-      "PROGRAM_OUTDOOR_SPORTS_GORETEX": "Outdoor/Sports",
-      "PROGRAM_STAIN": "StainExpert",
-      "PROGRAM_HYGEINE": "Hygiene+",
-      "PROGRAM_DUVET": "Duvet/Down Wear",
-      "PROGRAM_SHIRTS": "Shirts",
-      "PROGRAM_DRUM_CLEAN": "Drum Clean",
-      "PROGRAM_MIX": "Mix",
-      "PROGRAM_CURTAIN": "Curtains",
-      "PROGRAM_LINGERIE": "Lingerie",
-      "PROGRAM_SOFT_TOYS": "Soft Toys",
-      "PROGRAM_TOWEL": "Towel"
-    },
-    "homewhiz__WASHER_SPIN": {
-      "SPIN_NO_SPIN": "No Spin",
-      "SPIN_RINSE_HOLD": "Rinse Hold"
-    },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Off",
-      "PREWASH_ON": "On"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "Extra Rinse Off",
-      "EXTRA_RINSE_ON": "Extra Rinse On"
-    },
-    "homewhiz__WASHER_FAST_PLUS": {
-      "FAST_PLUS_OFF": "Off",
-      "FAST_PLUS_ON_FAST": "Fast",
-      "FAST_PLUS_ON_FAST_PLUS": "Fast+"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Off",
-      "HIDDEN_ANTI_CREASE_ON": "On"
-    },
-    "homewhiz__WASHER_STEAM": {
-      "STEAM_OFF": "STEAM_OFF",
-      "STEAM_ON": "STEAM_ON"
-    },
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Off",
-      "PHR_ON": "On"
     }
   }
 }

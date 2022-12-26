@@ -96,6 +96,9 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):
             if discovery_info.name.startswith("HwZ"):
                 self._discovered_bt_devices[address] = discovery_info.name
 
+        if len(self._discovered_bt_devices) == 0:
+            return self.async_abort(reason="no_devices_found")
+
         return self.async_show_form(
             step_id="select_bluetooth_device",
             data_schema=vol.Schema(
@@ -222,7 +225,8 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):
             self._cloud_appliances = await fetch_appliance_infos(
                 self._cloud_credentials
             )
-
+        if len(self._cloud_appliances) == 0:
+            return self.async_abort(reason="no_devices_found")
         options = {
             appliance.applianceId: appliance.name
             for appliance in self._cloud_appliances

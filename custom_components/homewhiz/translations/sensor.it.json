@@ -1,25 +1,5 @@
 {
   "state": {
-    "homewhiz__STATE": {
-      "DEVICE_STATE_ON": "Acceso",
-      "DEVICE_STATE_OFF": "Spento",
-      "DEVICE_STATE_RUNNING": "In funzione",
-      "DEVICE_STATE_PAUSED": "In pausa",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Partenza ritardata attiva"
-    },
-    "homewhiz__AIR_CONDITIONER_PROGRAM": {
-      "AIR_CONDITIONER_MODE_COOLING": "Raffreddamento",
-      "AIR_CONDITIONER_MODE_AUTO": "Modifica automatica",
-      "AIR_CONDITIONER_MODE_DRY": "Deumidifica",
-      "AIR_CONDITIONER_MODE_HEATING": "Riscaldamento",
-      "AIR_CONDITIONER_MODE_FAN": "Ventola"
-    },
-    "homewhiz__AIR_CONDITIONER_WIND_STRENGTH": {
-      "WIND_STRENGTH_LOW": "Bassa",
-      "WIND_STRENGTH_MID": "Medio",
-      "WIND_STRENGTH_HIGH": "Alto",
-      "WIND_STRENGTH_AUTO": "Auto"
-    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Lavaggio",
       "WASHER_SUBSTATE_SPIN": "Centrifuga",
@@ -39,57 +19,6 @@
       "WASHER_SUBSTATE_RINSE_HOLD": "Risciacquo aggiuntivo attivo; seleziona velocit\u00e0 centrifuga",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Antipiega remoto in corso.",
       "WASHER_SUBSTATE_DRYING": "Asciugatura"
-    },
-    "homewhiz__WASHER_PROGRAM": {
-      "PROGRAM_COTTONS": "Cotone",
-      "PROGRAM_ECO_40_60": "Eco 40-60",
-      "PROGRAM_SYNTHETICS": "Sintetici",
-      "PROGRAM_MINI_MINI14": "Xpress",
-      "PROGRAM_WOOL_HANDWASH": "Woollens",
-      "PROGRAM_DELICATES": "PROGRAM_DELICATES",
-      "PROGRAM_SPIN_PUMP": "Spin+Drain",
-      "PROGRAM_RINSING": "Risciacquo",
-      "PROGRAM_DARKWASH": "Colori scuri (jeans)",
-      "PROGRAM_OUTDOOR_SPORTS_GORETEX": "Sport",
-      "PROGRAM_STAIN": "Pronto Stiro Delicati",
-      "PROGRAM_HYGEINE": "Hygiene+",
-      "PROGRAM_DUVET": "Piumone/piumino",
-      "PROGRAM_SHIRTS": "Camicie",
-      "PROGRAM_DRUM_CLEAN": "Pulizia cestello",
-      "PROGRAM_MIX": "PROGRAM_MIX",
-      "PROGRAM_CURTAIN": "Tende",
-      "PROGRAM_LINGERIE": "Lingerie",
-      "PROGRAM_SOFT_TOYS": "Peluche",
-      "PROGRAM_TOWEL": "Asciugamano"
-    },
-    "homewhiz__WASHER_SPIN": {
-      "SPIN_NO_SPIN": "Nessuna centrifuga",
-      "SPIN_RINSE_HOLD": "Risciacquo aggiuntivo"
-    },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Spento",
-      "PREWASH_ON": "Acceso"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "Extra risciacquo disattivato",
-      "EXTRA_RINSE_ON": "Extra risciacquo attivo"
-    },
-    "homewhiz__WASHER_FAST_PLUS": {
-      "FAST_PLUS_OFF": "Fast+ attivo",
-      "FAST_PLUS_ON_FAST": "Fast",
-      "FAST_PLUS_ON_FAST_PLUS": "Fast+"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Spento",
-      "HIDDEN_ANTI_CREASE_ON": "Acceso"
-    },
-    "homewhiz__WASHER_STEAM": {
-      "STEAM_OFF": "STEAM_OFF",
-      "STEAM_ON": "STEAM_ON"
-    },
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Spento",
-      "PHR_ON": "Acceso"
     }
   }
 }

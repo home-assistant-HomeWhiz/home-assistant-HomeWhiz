@@ -1,25 +1,5 @@
 {
   "state": {
-    "homewhiz__STATE": {
-      "DEVICE_STATE_ON": "Marche",
-      "DEVICE_STATE_OFF": "Arr\u00eat",
-      "DEVICE_STATE_RUNNING": "En marche",
-      "DEVICE_STATE_PAUSED": "En pause",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Temporisation activ\u00e9e"
-    },
-    "homewhiz__AIR_CONDITIONER_PROGRAM": {
-      "AIR_CONDITIONER_MODE_COOLING": "Refroidissement",
-      "AIR_CONDITIONER_MODE_AUTO": "Automatique",
-      "AIR_CONDITIONER_MODE_DRY": "D\u00e9shumidificateur",
-      "AIR_CONDITIONER_MODE_HEATING": "Chauffage",
-      "AIR_CONDITIONER_MODE_FAN": "Ventilateur"
-    },
-    "homewhiz__AIR_CONDITIONER_WIND_STRENGTH": {
-      "WIND_STRENGTH_LOW": "Faible",
-      "WIND_STRENGTH_MID": "Moyenne",
-      "WIND_STRENGTH_HIGH": "\u00c9lev\u00e9e",
-      "WIND_STRENGTH_AUTO": "Automatique"
-    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Lavage",
       "WASHER_SUBSTATE_SPIN": "Essorage",
@@ -39,57 +19,6 @@
       "WASHER_SUBSTATE_RINSE_HOLD": "Arr\u00eat cuve pleine actif, s\u00e9lectionnez la vitesse d'essorage",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "L'anti-froissage \u00e0 distance est en cours.",
       "WASHER_SUBSTATE_DRYING": "S\u00e9chage"
-    },
-    "homewhiz__WASHER_PROGRAM": {
-      "PROGRAM_COTTONS": "Coton",
-      "PROGRAM_ECO_40_60": "\u00c9co 40-60",
-      "PROGRAM_SYNTHETICS": "Synth\u00e9tique",
-      "PROGRAM_MINI_MINI14": "Xpress",
-      "PROGRAM_WOOL_HANDWASH": "Woollens",
-      "PROGRAM_DELICATES": "PROGRAM_DELICATES",
-      "PROGRAM_SPIN_PUMP": "Spin+Drain",
-      "PROGRAM_RINSING": "Rin\u00e7age",
-      "PROGRAM_DARKWASH": "Jeans",
-      "PROGRAM_OUTDOOR_SPORTS_GORETEX": "Sport",
-      "PROGRAM_STAIN": "Expert taches Synth\u00e9tique",
-      "PROGRAM_HYGEINE": "Hygi\u00e8ne +",
-      "PROGRAM_DUVET": "Couette / Doudoune",
-      "PROGRAM_SHIRTS": "Chemises",
-      "PROGRAM_DRUM_CLEAN": "Nettoyage du tambour",
-      "PROGRAM_MIX": "Mixte",
-      "PROGRAM_CURTAIN": "Rideaux",
-      "PROGRAM_LINGERIE": "Lingerie",
-      "PROGRAM_SOFT_TOYS": "Peluches",
-      "PROGRAM_TOWEL": "Serviette"
-    },
-    "homewhiz__WASHER_SPIN": {
-      "SPIN_NO_SPIN": "Pas d\u2019essorage",
-      "SPIN_RINSE_HOLD": "Arr\u00eat cuve pleine"
-    },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Arr\u00eat",
-      "PREWASH_ON": "Marche"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "Rin\u00e7age suppl\u00e9mentaire D\u00e9sactiv\u00e9",
-      "EXTRA_RINSE_ON": "Rin\u00e7age suppl\u00e9mentaire Activ\u00e9"
-    },
-    "homewhiz__WASHER_FAST_PLUS": {
-      "FAST_PLUS_OFF": "Rapide Plus D\u00e9sactiv\u00e9",
-      "FAST_PLUS_ON_FAST": "Rapide",
-      "FAST_PLUS_ON_FAST_PLUS": "Rapide Plus"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Arr\u00eat",
-      "HIDDEN_ANTI_CREASE_ON": "Marche"
-    },
-    "homewhiz__WASHER_STEAM": {
-      "STEAM_OFF": "STEAM_OFF",
-      "STEAM_ON": "STEAM_ON"
-    },
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Arr\u00eat",
-      "PHR_ON": "Marche"
     }
   }
 }

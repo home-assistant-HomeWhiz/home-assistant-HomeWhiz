@@ -1,25 +1,5 @@
 {
   "state": {
-    "homewhiz__STATE": {
-      "DEVICE_STATE_ON": "Ein",
-      "DEVICE_STATE_OFF": "Aus",
-      "DEVICE_STATE_RUNNING": "L\u00e4uft",
-      "DEVICE_STATE_PAUSED": "Pausiert",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Zeitverz\u00f6gerung aktiv"
-    },
-    "homewhiz__AIR_CONDITIONER_PROGRAM": {
-      "AIR_CONDITIONER_MODE_COOLING": "K\u00fchlen und Gefrieren",
-      "AIR_CONDITIONER_MODE_AUTO": "Automatische \u00c4nderung",
-      "AIR_CONDITIONER_MODE_DRY": "Trocknen",
-      "AIR_CONDITIONER_MODE_HEATING": "Heizung",
-      "AIR_CONDITIONER_MODE_FAN": "Ventilator"
-    },
-    "homewhiz__AIR_CONDITIONER_WIND_STRENGTH": {
-      "WIND_STRENGTH_LOW": "Niedrig",
-      "WIND_STRENGTH_MID": "Mittel",
-      "WIND_STRENGTH_HIGH": "Hoch",
-      "WIND_STRENGTH_AUTO": "Auto"
-    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Waschen",
       "WASHER_SUBSTATE_SPIN": "Schleudern",
@@ -39,57 +19,6 @@
       "WASHER_SUBSTATE_RINSE_HOLD": "Sp\u00fclstopp ist aktiv, bitte Schleudergeschwindigkeit ausw\u00e4hlen",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Ferngesteuertes Knitterschutz-Programm wird ausgef\u00fchrt",
       "WASHER_SUBSTATE_DRYING": "Trocknung"
-    },
-    "homewhiz__WASHER_PROGRAM": {
-      "PROGRAM_COTTONS": "Koch-/Buntw\u00e4sche",
-      "PROGRAM_ECO_40_60": "ECO\u00a040\u201360",
-      "PROGRAM_SYNTHETICS": "Pflegeleicht",
-      "PROGRAM_MINI_MINI14": "Xpress",
-      "PROGRAM_WOOL_HANDWASH": "Woollens",
-      "PROGRAM_DELICATES": "Feinw\u00e4sche",
-      "PROGRAM_SPIN_PUMP": "Spin+Drain",
-      "PROGRAM_RINSING": "Sp\u00fclen",
-      "PROGRAM_DARKWASH": "Dunkel (Jeans)",
-      "PROGRAM_OUTDOOR_SPORTS_GORETEX": "Sport",
-      "PROGRAM_STAIN": "StainCare",
-      "PROGRAM_HYGEINE": "Hygiene+",
-      "PROGRAM_DUVET": "Bettdecke",
-      "PROGRAM_SHIRTS": "Hemden",
-      "PROGRAM_DRUM_CLEAN": "Trommelreinigung",
-      "PROGRAM_MIX": "Vermischen",
-      "PROGRAM_CURTAIN": "Vorh\u00e4nge",
-      "PROGRAM_LINGERIE": "Dessous",
-      "PROGRAM_SOFT_TOYS": "Stofftiere",
-      "PROGRAM_TOWEL": "Handt\u00fccher"
-    },
-    "homewhiz__WASHER_SPIN": {
-      "SPIN_NO_SPIN": "Nicht schleudern",
-      "SPIN_RINSE_HOLD": "Sp\u00fclstopp"
-    },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Aus",
-      "PREWASH_ON": "Ein"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "Nachsp\u00fclen aus",
-      "EXTRA_RINSE_ON": "Nachsp\u00fclen ein"
-    },
-    "homewhiz__WASHER_FAST_PLUS": {
-      "FAST_PLUS_OFF": "Fast+ aus",
-      "FAST_PLUS_ON_FAST": "Schnell",
-      "FAST_PLUS_ON_FAST_PLUS": "Schnell+"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Aus",
-      "HIDDEN_ANTI_CREASE_ON": "Ein"
-    },
-    "homewhiz__WASHER_STEAM": {
-      "STEAM_OFF": "STEAM_OFF",
-      "STEAM_ON": "STEAM_ON"
-    },
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Aus",
-      "PHR_ON": "Ein"
     }
   }
 }

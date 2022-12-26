@@ -1,0 +1,57 @@
+{
+  "state": {
+    "homewhiz__STATE": {
+      "DEVICE_STATE_ON": "Zapnuto",
+      "DEVICE_STATE_OFF": "Vypnuto",
+      "DEVICE_STATE_RUNNING": "Spu\u0161t\u011bno",
+      "DEVICE_STATE_PAUSED": "Pozastaveno",
+      "DEVICE_STATE_TIME_DELAY_ACTIVE": "\u010casov\u00e1 prodleva je aktivn\u00ed"
+    },
+    "homewhiz__WASHER_PROGRAM": {
+      "PROGRAM_ECO_40_60": "Eco 40\u201360",
+      "PROGRAM_MINI_MINI14": "Xpress",
+      "PROGRAM_WOOL_HANDWASH": "Woollens",
+      "PROGRAM_SPIN_PUMP": "Spin+Drain",
+      "PROGRAM_DARKWASH": "Tmav\u00e9 (D\u017e\u00edny)",
+      "PROGRAM_OUTDOOR_SPORTS_GORETEX": "Sportovn\u00ed oble\u010den\u00ed",
+      "PROGRAM_STAIN": "Syntetick\u00e9 \u2013 \u017eehlen\u00ed na sucho",
+      "PROGRAM_HYGEINE": "Hygiena+",
+      "PROGRAM_DUVET": "Pe\u0159ina / Opot\u0159eben\u00ed",
+      "PROGRAM_DRUM_CLEAN": "\u010ci\u0161t\u011bn\u00ed bubnu",
+      "PROGRAM_MIX": "Prom\u00edchat",
+      "PROGRAM_CURTAIN": "Z\u00e1clony",
+      "PROGRAM_LINGERIE": "D\u00e1msk\u00e9 pr\u00e1dlo",
+      "PROGRAM_SOFT_TOYS": "M\u011bkk\u00e9 hra\u010dky",
+      "PROGRAM_TOWEL": "Ru\u010dn\u00edk"
+    },
+    "homewhiz__WASHER_TEMPERATURE": {
+      "TEMPERATURE_COLD_WASH": "Pran\u00ed za studena"
+    },
+    "homewhiz__WASHER_SPIN": {
+      "SPIN_NO_SPIN": "Bez \u017ed\u00edm\u00e1n\u00ed",
+      "SPIN_RINSE_HOLD": "Pozastaven\u00ed m\u00e1ch\u00e1n\u00ed"
+    },
+    "homewhiz__WASHER_PREWASH": {
+      "PREWASH_OFF": "Vypnuto",
+      "PREWASH_ON": "Zapnuto"
+    },
+    "homewhiz__WASHER_EXTRARINSE": {
+      "EXTRA_RINSE_OFF": "Dal\u0161\u00ed m\u00e1ch\u00e1n\u00ed vypnuto",
+      "EXTRA_RINSE_ON": "Dal\u0161\u00ed m\u00e1ch\u00e1n\u00ed zapnuto"
+    },
+    "homewhiz__WASHER_FAST_PLUS": {
+      "FAST_PLUS_OFF": "Vypnuto",
+      "FAST_PLUS_ON_FAST": "Rychl\u00fd",
+      "FAST_PLUS_ON_FAST_PLUS": "Rychl\u00fd+"
+    },
+    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
+      "HIDDEN_ANTI_CREASE_OFF": "Vypnuto",
+      "HIDDEN_ANTI_CREASE_ON": "Zapnuto"
+    },
+    "homewhiz__WASHER_STEAM": {},
+    "homewhiz__WASHER_PHR": {
+      "PHR_OFF": "Vypnuto",
+      "PHR_ON": "Zapnuto"
+    }
+  }
+}

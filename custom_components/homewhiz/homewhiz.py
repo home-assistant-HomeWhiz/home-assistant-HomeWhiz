@@ -14,25 +14,8 @@ class HomewhizCoordinator(DataUpdateCoordinator[bytearray | None]):
     def is_connected(self):
         return False
 
-    def send_command(self, index: int, value: int):
+    async def send_command(self, index: int, value: int):
         pass
-
-
-class MessageAccumulator:
-    expected_index = 0
-    accumulated = []
-
-    def accumulate_message(self, message: bytearray):
-        message_index = message[4]
-        _LOGGER.debug("Message index: %d", message_index)
-        if message_index == 0:
-            self.accumulated = message[7:]
-            self.expected_index = 1
-        elif self.expected_index == 1:
-            full_message = self.accumulated + message[7:]
-            self.expected_index = 0
-            return full_message
-        return None
 
 
 brand_name_by_code = defaultdict(
@@ -55,5 +38,43 @@ brand_name_by_code = defaultdict(
         16: "Lamona",
         17: "Teka",
         18: "Voltas Beko",
+    },
+)
+
+appliance_type_by_code = defaultdict(
+    lambda: "None",
+    {
+        0: "NONE",
+        1: "WASHER",
+        2: "REFRIGERATOR",
+        3: "DISHWASHER",
+        4: "OVEN",
+        5: "DRYER",
+        6: "HERBGARDEN",
+        7: "HOB",
+        8: "HOOD",
+        9: "AIR_CONDITIONER",
+        10: "GATEWAY",
+        11: "BOILER_CONTROLLER",
+        12: "MOTION_SENSOR",
+        13: "DOOR_SENSOR",
+        14: "SMART_BUTTON",
+        15: "TEMPERATURE_HUMIDITY_SENSOR",
+        16: "LIGHT_BULB",
+        17: "IR_BLASTER",
+        18: "SMART_PLUG",
+        19: "IP_CAMERA",
+        20: "SMART_SWITCH",
+        21: "RADIATOR_VALVE",
+        22: "SMOKE_DETECTOR",
+        23: "WATER_LEAK_SENSOR",
+        24: "AIR_PURIFIER",
+        25: "VACUUM_CLEANER",
+        26: "CARBON_DIOXIDE_SENSOR",
+        27: "TEA_MACHINE",
+        28: "MULTIPLE_MESH",
+        29: "YOGURT_MACHINE",
+        30: "DRYANDWASHER",
+        31: "TEA_COFFEE_MACHINE",
     },
 )

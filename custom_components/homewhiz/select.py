@@ -4,44 +4,48 @@ import logging
 from dataclasses import dataclass
 from typing import Callable
 
-from dacite import from_dict
 from homeassistant.components.select import SelectEntity, SelectEntityDescription
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import STATE_UNAVAILABLE, TEMP_CELSIUS
+from homeassistant.const import STATE_UNAVAILABLE
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .api import ApplianceContents, ApplianceInfo, IdExchangeResponse
 from .appliance_config import (
     ApplianceConfiguration,
     ApplianceFeature,
-    ApplianceFeatureBoundedOption,
     ApplianceFeatureEnumOption,
     ApplianceProgram,
 )
 from .config_flow import EntryData
 from .const import DOMAIN
-from .homewhiz import HomewhizCoordinator, brand_name_by_code
+from .helper import (
+    build_device_info,
+    build_entry_data,
+    clamp,
+    find_by_key,
+    find_by_value,
+    is_air_conditioner,
+    unit_for_key,
+)
+from .homewhiz import HomewhizCoordinator
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
 
-def clamp(value: int):
-    return value if value < 128 else value - 128
-
-
 @dataclass
-class HomeWhizEntitySelectDescription(SelectEntityDescription):
+class HomeWhizSelectEntityDescription(SelectEntityDescription):
     read_index: int | None = None
     write_index: int | None = None
 
     byte_to_option: Callable[[int], float | str | None] | None = None
     option_to_byte: Callable[[str], int] | None = None
 
+    def get_option(self, data: bytearray):
+        return self.byte_to_option(clamp(data[self.read_index]))
 
-class EnumEntityDescription(HomeWhizEntitySelectDescription):
+
+class EnumSelectEntityDescription(HomeWhizSelectEntityDescription):
     def __init__(
         self,
         key: str,
@@ -55,23 +59,18 @@ class EnumEntityDescription(HomeWhizEntitySelectDescription):
         self.options = [option.strKey for option in options]
         self.read_index = read_index
         self.write_index = write_index
-        _LOGGER.debug(f"{key}: {write_index}")
         self.device_class = f"{DOMAIN}__{self.key}"
 
     def byte_to_option(self, byte):
-        for option in self.enum_options:
-            if option.wifiArrayValue == byte:
-                return option.strKey
-        return None
+        option = find_by_value(byte, self.enum_options)
+        return option.strKey
 
     def option_to_byte(self, value):
-        for option in self.enum_options:
-            if option.strKey == value:
-                return option.wifiArrayValue
-        return None
+        option = find_by_key(value, self.enum_options)
+        return option.wifiArrayValue
 
 
-class ProgramEntityDescription(EnumEntityDescription):
+class ProgramSelectEntityDescription(EnumSelectEntityDescription):
     def __init__(self, program: ApplianceProgram):
         super().__init__(
             program.strKey,
@@ -83,81 +82,53 @@ class ProgramEntityDescription(EnumEntityDescription):
         )
 
 
-class SubProgramBoundedEntityDescription(HomeWhizEntitySelectDescription):
-    def __init__(
-        self,
-        parent_key: str,
-        bounds: ApplianceFeatureBoundedOption,
-        read_index: int,
-        write_index: int,
-    ):
-        self.key = bounds.strKey if bounds.strKey else parent_key
-        self._bounds = bounds
-        self.read_index = read_index
-        self.write_index = write_index
-        self.options = [
-            str(num)
-            for num in range(bounds.lowerLimit, bounds.upperLimit + 1, bounds.step)
-        ]
-
-    def byte_to_option(self, value):
-        return value * self._bounds.factor
-
-    def option_to_byte(self, value):
-        return int(value)
-
-    @property
-    def native_unit_of_measurement(self):
-        if "TEMP" in self.key:
-            return TEMP_CELSIUS
-        if "SPIN" in self.key:
-            return "rpm"
-
-    @property
-    def icon(self):
-        if "TEMP" in self.key:
-            return "mdi:thermometer"
-        if "SPIN" in self.key:
-            return "mdi:rotate-3d-variant"
+def generate_options_from_feature(feature: ApplianceFeature):
+    options: dict[int, str] = {}
+    if feature.enumValues is not None:
+        options = options | {
+            option.wifiArrayValue: option.strKey for option in feature.enumValues
+        }
+    if feature.boundedValues is not None:
+        for boundedValues in feature.boundedValues:
+            value = boundedValues.lowerLimit
+            while value <= boundedValues.upperLimit:
+                wifiValue = int(value / boundedValues.factor)
+                if wifiValue not in options:
+                    unit = unit_for_key(feature.strKey)
+                    name = f"{value} {unit}" if unit is not None else str(value)
+                    options[wifiValue] = name
+                value += boundedValues.step
+    return [
+        ApplianceFeatureEnumOption(strKey=options[key], wifiArrayValue=key)
+        for key in options.keys()
+    ]
 
 
-def generate_descriptions_from_features(features: list[ApplianceFeature]):
-    result = []
-    for feature in features:
-        read_index = feature.wifiArrayIndex
-        write_index = (
-            feature.wfaWriteIndex
-            if feature.wfaWriteIndex is not None
-            else feature.wifiArrayIndex
+def generate_select_descriptions_from_features(features: list[ApplianceFeature]):
+    return [
+        EnumSelectEntityDescription(
+            feature.strKey,
+            generate_options_from_feature(feature),
+            read_index=feature.wifiArrayIndex,
+            write_index=(
+                feature.wfaWriteIndex
+                if feature.wfaWriteIndex is not None
+                else feature.wifiArrayIndex
+            ),
         )
-        if feature.boundedValues is not None:
-            for bounds in feature.boundedValues:
-                result.append(
-                    SubProgramBoundedEntityDescription(
-                        feature.strKey, bounds, read_index, write_index
-                    )
-                )
-        if feature.enumValues is not None:
-            result.append(
-                EnumEntityDescription(
-                    feature.strKey,
-                    feature.enumValues,
-                    read_index,
-                    write_index,
-                )
-            )
-    return result
+        for feature in features
+    ]
 
 
-def generate_descriptions_from_config(
+def generate_select_descriptions_from_config(
     config: ApplianceConfiguration,
-) -> list[HomeWhizEntitySelectDescription]:
+) -> list[HomeWhizSelectEntityDescription]:
     _LOGGER.debug("Generating descriptions from config")
     result = []
     if config.deviceStates is not None:
         _LOGGER.debug("Adding STATE EnumEntityDescription")
         result.append(
-            EnumEntityDescription(
+            EnumSelectEntityDescription(
                 "STATE",
                 config.deviceStates.states,
                 config.deviceStates.wifiArrayReadIndex,
@@ -166,64 +137,33 @@ def generate_descriptions_from_config(
                 else config.deviceStates.wfaIndex,
             )
         )
-    if config.deviceSubStates is not None:
-        _LOGGER.debug("Adding SUB_STATE EnumEntityDescription")
-        result.append(
-            EnumEntityDescription(
-                "SUB_STATE",
-                config.deviceSubStates.subStates,
-                config.deviceSubStates.wifiArrayReadIndex,
-                config.deviceStates.wifiArrayWriteIndex
-                if config.deviceStates.wifiArrayWriteIndex
-                else config.deviceStates.wfaIndex,
-            )
-        )
-    result.append(ProgramEntityDescription(config.program))
-    result.extend(generate_descriptions_from_features(config.subPrograms))
-
-    # Remove redundant entities from device
-    description_keys = [description.key for description in result]
-    if "TEMPERATURE" in description_keys and "WASHER_TEMPERATURE" in description_keys:
-        _LOGGER.debug("Removing redundant temperature description")
-        del result[description_keys.index("WASHER_TEMPERATURE")]
+    result.append(ProgramSelectEntityDescription(config.program))
+    result.extend(generate_select_descriptions_from_features(config.subPrograms))
 
     return result
 
 
-class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator], SelectEntity):
+class HomeWhizSelectEntity(CoordinatorEntity[HomewhizCoordinator], SelectEntity):
+    _attr_has_entity_name = True
+
     def __init__(
         self,
         coordinator: HomewhizCoordinator,
-        description: HomeWhizEntitySelectDescription,
+        description: HomeWhizSelectEntityDescription,
         entry: ConfigEntry,
         data: EntryData,
     ):
         super().__init__(coordinator)
         unique_name = entry.title
-        friendly_name = (
-            data.appliance_info.name if data.appliance_info is not None else unique_name
-        )
+        self._attr_unique_id = f"{unique_name}_{description.key}"
+        self._attr_device_info = build_device_info(unique_name, data)
 
         self._localization = data.contents.localization
         self.entity_description = description
         self.byte_to_option = description.byte_to_option
         self.option_to_byte = description.option_to_byte
-        self.read_index = description.read_index
+        self.get_option = description.get_option
         self.write_index = description.write_index
-        self._attr_unique_id = f"{unique_name}_{description.key}"
-        manufacturer = (
-            brand_name_by_code[data.appliance_info.brand]
-            if data.appliance_info is not None
-            else None
-        )
-        model = data.appliance_info.model if data.appliance_info is not None else None
-        self._attr_device_info = DeviceInfo(
-            connections={("bluetooth", entry.unique_id)},
-            identifiers={(DOMAIN, unique_name)},
-            name=friendly_name,
-            manufacturer=manufacturer,
-            model=model,
-        )
 
     @property
     def current_option(self) -> str | None:
@@ -231,11 +171,11 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator], SelectEntity):
             return STATE_UNAVAILABLE
         if self.coordinator.data is None:
             return None
-        return self.byte_to_option(clamp(self.coordinator.data[self.read_index]))
+        return self.get_option(self.coordinator.data)
 
     async def async_select_option(self, option: str):
         value = self.option_to_byte(option)
-        self.coordinator.send_command(self.write_index, value)
+        await self.coordinator.send_command(self.write_index, value)
 
     @property
     def available(self) -> bool:
@@ -254,20 +194,16 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator], SelectEntity):
 async def async_setup_entry(
     hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
 ) -> None:
-    data = EntryData(
-        contents=from_dict(ApplianceContents, entry.data["contents"]),
-        appliance_info=from_dict(ApplianceInfo, entry.data["appliance_info"])
-        if entry.data["appliance_info"] is not None
-        else None,
-        ids=from_dict(IdExchangeResponse, entry.data["ids"]),
-        cloud_config=None,
-    )
+    data = build_entry_data(entry)
+    if is_air_conditioner(data):
+        _LOGGER.debug("Appliance is AC, not adding Select entities")
+        return
     coordinator = hass.data[DOMAIN][entry.entry_id]
-    descriptions = generate_descriptions_from_config(data.contents.config)
+    descriptions = generate_select_descriptions_from_config(data.contents.config)
     _LOGGER.debug(f"Selects: {[d.key for d in descriptions]}")
     async_add_entities(
         [
-            HomeWhizEntity(coordinator, description, entry, data)
+            HomeWhizSelectEntity(coordinator, description, entry, data)
             for description in descriptions
         ]
     )

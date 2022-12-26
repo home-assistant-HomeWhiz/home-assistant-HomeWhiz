@@ -7,7 +7,7 @@ from homeassistant.components import bluetooth
 from homeassistant.core import HomeAssistant, callback
 
 from .const import DOMAIN
-from .homewhiz import HomewhizCoordinator, MessageAccumulator
+from .homewhiz import HomewhizCoordinator
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
@@ -95,6 +95,14 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
             )
             self.async_set_updated_data(full_message)
 
+    async def send_command(self, index: int, value: int):
+        payload = bytearray([2, 4, 0, 4, 0, index, 1, value])
+        print(payload)
+        await self._connection.write_gatt_char(
+            "0000ac01-0000-1000-8000-00805F9B34FB",
+            payload,
+        )
+
     @property
     def is_connected(self):
         return self._connection is not None and self._connection.is_connected
@@ -102,3 +110,20 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
     async def kill(self):
         self.alive = False
         await self._connection.disconnect()
+
+
+class MessageAccumulator:
+    expected_index = 0
+    accumulated = []
+
+    def accumulate_message(self, message: bytearray):
+        message_index = message[4]
+        _LOGGER.debug("Message index: %d", message_index)
+        if message_index == 0:
+            self.accumulated = message[7:]
+            self.expected_index = 1
+        elif self.expected_index == 1:
+            full_message = self.accumulated + message[7:]
+            self.expected_index = 0
+            return full_message
+        return None
