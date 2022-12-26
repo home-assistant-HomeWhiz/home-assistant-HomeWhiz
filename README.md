@@ -37,12 +37,13 @@ Integration for devices that can connect to HomeWhiz mobile app (Beko, Grundig, 
 5. Select the "Cloud" connection type 
 6. Provide the HomeWhiz username and password.
 
-Please note that the constant internet connection is required. Support for local connection is coming soon (#52)
+Please note that the constant internet connection is required. Support for local connection is coming soon ([#52](https://github.com/rowysock/home-assistant-HomeWhiz/issues/52))
 
 ## Supported device types
 
 The integration should theoretically work with all device types but was tested only with washing machines (Bluetooth) and Air Conditioning units (Wi-Fi). 
 If you have other device type like Oven or Refigerator, please let us know.
+
 If your device is missing some information, transtaltion or not working at all, please create an issue. 
 Don't forget to include your device digital ID that can be found either in the HomeWhiz app or the integration logs. 
 
