@@ -29,6 +29,7 @@ file_names = [
     # configs fetched from the api
     "example_appliance_config.json",
     "example_ac_config.json",
+    "example_ac_advanced_config.json",
 ]
 
 

@@ -67,7 +67,7 @@ class ApplianceFeature:
 @dataclass
 class ApplianceProgressFeature:
     hour: ApplianceFeature
-    isExpandableBySwitch: Optional[bool]
+    isExpandableBySwitch: Optional[int]
     minute: ApplianceFeature
     strKey: str
     wfaIndex: Optional[int]
@@ -80,8 +80,8 @@ class ApplianceProgressFeature:
 class ApplianceProgress:
     autoOff: Optional[ApplianceProgressFeature]
     autoOn: Optional[ApplianceProgressFeature]
-    delay: ApplianceProgressFeature
-    duration: ApplianceProgressFeature
+    delay: Optional[ApplianceProgressFeature]
+    duration: Optional[ApplianceProgressFeature]
     elapsed: Optional[ApplianceProgressFeature]
     fermentedremaining: Optional[ApplianceProgressFeature]
     remaining: Optional[ApplianceProgressFeature]
