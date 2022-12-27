@@ -50,10 +50,10 @@
     "homewhiz__WASHER_SPIN": {
       "SPIN_NO_SPIN": "Nicht schleudern",
       "SPIN_RINSE_HOLD": "Sp\u00fclstopp",
-      "SPIN_600": 600,
-      "SPIN_800": 800,
-      "SPIN_1200": 1200,
-      "SPIN_1400": 1400
+      "SPIN_600": "600",
+      "SPIN_800": "800",
+      "SPIN_1200": "1200",
+      "SPIN_1400": "1400"
     },
     "homewhiz__WASHER_PREWASH": {
       "PREWASH_OFF": "Aus",

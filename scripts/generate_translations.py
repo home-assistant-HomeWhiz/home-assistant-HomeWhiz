@@ -64,6 +64,7 @@ async def write_translations_file(name: str, translations: dict):
     file_path = os.path.join(translations_path, f"{name}.json")
     with open(file_path, "w") as outfile:
         json.dump({"state": translations}, outfile, indent=2)
+        outfile.write("\n")
     print(f"{file_path} Updated")
 
 
@@ -116,7 +117,7 @@ async def generate():
                 for option in description.options:
                     localized = localize_key(option)
                     if localized is not None:
-                        entity_result[option] = localized
+                        entity_result[option] = str(localized)
                 return entity_result
 
             select_translations = mergedeep.merge(

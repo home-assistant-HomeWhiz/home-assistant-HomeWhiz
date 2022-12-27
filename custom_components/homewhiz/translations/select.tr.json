@@ -50,10 +50,10 @@
     "homewhiz__WASHER_SPIN": {
       "SPIN_NO_SPIN": "S\u0131kma Yok",
       "SPIN_RINSE_HOLD": "Suda B\u0131rakma",
-      "SPIN_600": 600,
-      "SPIN_800": 800,
-      "SPIN_1200": 1200,
-      "SPIN_1400": 1400
+      "SPIN_600": "600",
+      "SPIN_800": "800",
+      "SPIN_1200": "1200",
+      "SPIN_1400": "1400"
     },
     "homewhiz__WASHER_PREWASH": {
       "PREWASH_OFF": "Kapal\u0131",
