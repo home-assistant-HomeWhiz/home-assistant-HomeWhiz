@@ -18,7 +18,17 @@
       "WASHER_SUBSTATE_ADD_LAUNDRY": "L\u00e4gg i tv\u00e4tten",
       "WASHER_SUBSTATE_RINSE_HOLD": "Sk\u00f6ljstopp \u00e4r aktiverat. V\u00e4lj centrifugeringshastighet",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Fj\u00e4rrstyrd antiskrynkling p\u00e5g\u00e5r.",
-      "WASHER_SUBSTATE_DRYING": "Torkar"
+      "WASHER_SUBSTATE_DRYING": "Torkar",
+      "OVEN_MESSAGE_GOOD_APPETITE": "Smaklig m\u00e5ltid!",
+      "OVEN_MESSAGE_COOKING": "Tillagning",
+      "OVEN_MESSAGE_PAUSED": "Pausad",
+      "OVEN_MESSAGE_WAITING": "V\u00e4ntar",
+      "OVEN_MESSAGE_DEFROSTING": "Upptining",
+      "OPERATION_COMPLETED": "Klart",
+      "OVEN_MESSAGE_PREHEATING": "F\u00f6ruppv\u00e4rmning",
+      "OVEN_MESSAGE_PREHEATING_COMPLETED": "F\u00f6rv\u00e4rmningen har slutf\u00f6rts",
+      "OVEN_MESSAGE_CLEANING": "Reng\u00f6ring",
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Ugnen \u00e4r rengjord"
     }
   }
 }

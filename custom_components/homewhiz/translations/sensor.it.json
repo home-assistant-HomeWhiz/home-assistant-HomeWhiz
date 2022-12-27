@@ -18,7 +18,17 @@
       "WASHER_SUBSTATE_ADD_LAUNDRY": "Puoi aggiungere bucato",
       "WASHER_SUBSTATE_RINSE_HOLD": "Risciacquo aggiuntivo attivo; seleziona velocit\u00e0 centrifuga",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Antipiega remoto in corso.",
-      "WASHER_SUBSTATE_DRYING": "Asciugatura"
+      "WASHER_SUBSTATE_DRYING": "Asciugatura",
+      "OVEN_MESSAGE_GOOD_APPETITE": "Buon appetito",
+      "OVEN_MESSAGE_COOKING": "Cottura",
+      "OVEN_MESSAGE_PAUSED": "In pausa",
+      "OVEN_MESSAGE_WAITING": "Attesa",
+      "OVEN_MESSAGE_DEFROSTING": "Sbrinamento",
+      "OPERATION_COMPLETED": "Operazione eseguita",
+      "OVEN_MESSAGE_PREHEATING": "Preriscaldamento",
+      "OVEN_MESSAGE_PREHEATING_COMPLETED": "Preriscaldamento completato",
+      "OVEN_MESSAGE_CLEANING": "Pulizia",
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Pulizia completata"
     }
   }
 }

@@ -60,6 +60,29 @@
     "homewhiz__WASHER_PHR": {
       "PHR_OFF": "Aus",
       "PHR_ON": "Ein"
-    }
+    },
+    "homewhiz__OVEN_PROGRAM": {
+      "PROGRAM_STATIC": "Statisch",
+      "PROGRAM_STATIC_FAN": "HeiBluft",
+      "PROGRAM_FAN_HEATING": "HeiBluft +",
+      "PROGRAM_MULTI_COOKING": "3D - Kochen",
+      "PROGRAM_FAN_HEAT_BOTTOM": "Pizzastufe",
+      "PROGRAM_ECO_GRILL": "Grill",
+      "PROGRAM_FULL_GRILL": "Fl\u00e4chengrill",
+      "PROGRAM_FULL_GRILL_FAN": "Umluftgrill groB",
+      "PROGRAM_BOTTOM_HEATING": "Unterhitze",
+      "PROGRAM_DEFROST": "Auftauen",
+      "PROGRAM_WARM_KEEPING": "Warmhalten",
+      "PROGRAM_ECO_FAN_HEATING": "\u00d6ko - Heissluft",
+      "PROGRAM_STEAM_CLEANING": "Dampfreinigung",
+      "PROGRAM_ECO_PYRO": "Umweltfreundlich reinigen",
+      "PROGRAM_PYRO": "Reinigen"
+    },
+    "homewhiz__OVEN_TEMPERATURE": {},
+    "homewhiz__OVEN_BOOSTER": {
+      "BOOSTER_OFF": "Aus",
+      "BOOSTER_ON": "Ein"
+    },
+    "homewhiz__OVEN_SKIP_PREHEATING": {}
   }
 }

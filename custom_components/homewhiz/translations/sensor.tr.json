@@ -18,7 +18,17 @@
       "WASHER_SUBSTATE_ADD_LAUNDRY": "\u00c7ama\u015f\u0131r koyabilirsiniz",
       "WASHER_SUBSTATE_RINSE_HOLD": "Suda bekletme devrede; devir h\u0131z\u0131 se\u00e7iniz",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Ak\u0131ll\u0131 k\u0131r\u0131\u015f\u0131k azaltma \u00e7al\u0131\u015f\u0131yor",
-      "WASHER_SUBSTATE_DRYING": "Kurutma"
+      "WASHER_SUBSTATE_DRYING": "Kurutma",
+      "OVEN_MESSAGE_GOOD_APPETITE": "Afiyet Olsun",
+      "OVEN_MESSAGE_COOKING": "Pi\u015firiliyor",
+      "OVEN_MESSAGE_PAUSED": "Durduruldu",
+      "OVEN_MESSAGE_WAITING": "Bekliyor",
+      "OVEN_MESSAGE_DEFROSTING": "Buz \u00c7\u00f6zme",
+      "OPERATION_COMPLETED": "\u0130\u015flem tamamland\u0131",
+      "OVEN_MESSAGE_PREHEATING": "\u00d6n Is\u0131tma",
+      "OVEN_MESSAGE_PREHEATING_COMPLETED": "\u00d6n \u0131s\u0131tma tamamland\u0131",
+      "OVEN_MESSAGE_CLEANING": "Temizleniyor",
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Temizlenme bitti"
     }
   }
 }

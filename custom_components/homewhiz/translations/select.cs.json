@@ -52,6 +52,29 @@
     "homewhiz__WASHER_PHR": {
       "PHR_OFF": "Vypnuto",
       "PHR_ON": "Zapnuto"
-    }
+    },
+    "homewhiz__OVEN_PROGRAM": {
+      "PROGRAM_STATIC": "Statick\u00fd oh\u0159ev",
+      "PROGRAM_STATIC_FAN": "Statick\u00fd oh\u0159ev + ventil\u00e1tor",
+      "PROGRAM_FAN_HEATING": "Horkovzdu\u0161n\u00fd oh\u0159ev",
+      "PROGRAM_MULTI_COOKING": "V\u00edcen\u00e1sobn\u00e9 (3D) va\u0159en\u00ed",
+      "PROGRAM_FAN_HEAT_BOTTOM": "Horkovzdu\u0161n\u00fd + spodn\u00ed oh\u0159ev",
+      "PROGRAM_ECO_GRILL": "Gril Eco",
+      "PROGRAM_FULL_GRILL": "Cel\u00fd gril",
+      "PROGRAM_FULL_GRILL_FAN": "Cel\u00fd gril + ventil\u00e1tor",
+      "PROGRAM_BOTTOM_HEATING": "Spodn\u00ed oh\u0159ev",
+      "PROGRAM_DEFROST": "Rozmrazov\u00e1n\u00ed",
+      "PROGRAM_WARM_KEEPING": "Udr\u017eet tepl\u00e9",
+      "PROGRAM_ECO_FAN_HEATING": "Horkovzdu\u0161n\u00fd oh\u0159ev Eco",
+      "PROGRAM_STEAM_CLEANING": "Parn\u00ed \u010di\u0161t\u011bn\u00ed",
+      "PROGRAM_ECO_PYRO": "\u010ci\u0161t\u011bn\u00ed Eco",
+      "PROGRAM_PYRO": "\u010ci\u0161t\u011bn\u00ed"
+    },
+    "homewhiz__OVEN_TEMPERATURE": {},
+    "homewhiz__OVEN_BOOSTER": {
+      "BOOSTER_OFF": "Vypnuto",
+      "BOOSTER_ON": "Zapnuto"
+    },
+    "homewhiz__OVEN_SKIP_PREHEATING": {}
   }
 }

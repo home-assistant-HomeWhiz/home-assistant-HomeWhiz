@@ -18,7 +18,17 @@
       "WASHER_SUBSTATE_ADD_LAUNDRY": "Mo\u017cesz doda\u0107 pranie",
       "WASHER_SUBSTATE_RINSE_HOLD": "Wstrzymanie p\u0142ukania jest aktywne. Wybierz szybko\u015b\u0107 wirowania",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Zdalna ochrona przed zagnieceniami w toku.",
-      "WASHER_SUBSTATE_DRYING": "Suszenie"
+      "WASHER_SUBSTATE_DRYING": "Suszenie",
+      "OVEN_MESSAGE_GOOD_APPETITE": "Smacznego",
+      "OVEN_MESSAGE_COOKING": "Pieczenie",
+      "OVEN_MESSAGE_PAUSED": "Wstrzymano",
+      "OVEN_MESSAGE_WAITING": "Oczekiwanie",
+      "OVEN_MESSAGE_DEFROSTING": "Rozmra\u017canie",
+      "OPERATION_COMPLETED": "Dzia\u0142anie zako\u0144czone",
+      "OVEN_MESSAGE_PREHEATING": "Grzanie wst\u0119pne",
+      "OVEN_MESSAGE_PREHEATING_COMPLETED": "Podgrzewanie wst\u0119pne zako\u0144czone",
+      "OVEN_MESSAGE_CLEANING": "Czyszczenie",
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Czyszczenie zako\u0144czone"
     }
   }
 }

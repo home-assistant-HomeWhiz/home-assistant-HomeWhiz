@@ -18,7 +18,17 @@
       "WASHER_SUBSTATE_ADD_LAUNDRY": "L\u00e6g t\u00f8j i",
       "WASHER_SUBSTATE_RINSE_HOLD": "Skyllestop er aktiv, v\u00e6lg centrifugeringshastighed",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Fjernstyret antikr\u00f8l er i gang.",
-      "WASHER_SUBSTATE_DRYING": "T\u00f8rring"
+      "WASHER_SUBSTATE_DRYING": "T\u00f8rring",
+      "OVEN_MESSAGE_GOOD_APPETITE": "Velbekomme!",
+      "OVEN_MESSAGE_COOKING": "Tilbereder",
+      "OVEN_MESSAGE_PAUSED": "Sat p\u00e5 pause",
+      "OVEN_MESSAGE_WAITING": "Venter",
+      "OVEN_MESSAGE_DEFROSTING": "Afrimer",
+      "OPERATION_COMPLETED": "Handlingen er udf\u00f8rt",
+      "OVEN_MESSAGE_PREHEATING": "Forvarmning",
+      "OVEN_MESSAGE_PREHEATING_COMPLETED": "Forvarmning f\u00e6rdig",
+      "OVEN_MESSAGE_CLEANING": "Rensning",
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Rensning afsluttet"
     }
   }
 }

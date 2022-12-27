@@ -60,6 +60,29 @@
     "homewhiz__WASHER_PHR": {
       "PHR_OFF": "Kapal\u0131",
       "PHR_ON": "A\u00e7\u0131k"
-    }
+    },
+    "homewhiz__OVEN_PROGRAM": {
+      "PROGRAM_STATIC": "Statik",
+      "PROGRAM_STATIC_FAN": "Statik + Fan",
+      "PROGRAM_FAN_HEATING": "Fan Destekli",
+      "PROGRAM_MULTI_COOKING": "Multi (3D) Pi\u015firme",
+      "PROGRAM_FAN_HEAT_BOTTOM": "Pizza",
+      "PROGRAM_ECO_GRILL": "K\u00fc\u00e7\u00fck Izgara",
+      "PROGRAM_FULL_GRILL": "Izgara",
+      "PROGRAM_FULL_GRILL_FAN": "Izgara+Fan",
+      "PROGRAM_BOTTOM_HEATING": "Alt Is\u0131t\u0131c\u0131",
+      "PROGRAM_DEFROST": "Buz \u00c7\u00f6zme",
+      "PROGRAM_WARM_KEEPING": "S\u0131cak Tutma",
+      "PROGRAM_ECO_FAN_HEATING": "Ekonomik Fanl\u0131",
+      "PROGRAM_STEAM_CLEANING": "Buharl\u0131 Temizleme",
+      "PROGRAM_ECO_PYRO": "Eko Temizleme",
+      "PROGRAM_PYRO": "Temizleme"
+    },
+    "homewhiz__OVEN_TEMPERATURE": {},
+    "homewhiz__OVEN_BOOSTER": {
+      "BOOSTER_OFF": "Kapal\u0131",
+      "BOOSTER_ON": "A\u00e7\u0131k"
+    },
+    "homewhiz__OVEN_SKIP_PREHEATING": {}
   }
 }

@@ -18,7 +18,17 @@
       "WASHER_SUBSTATE_ADD_LAUNDRY": "Legg inn vasken",
       "WASHER_SUBSTATE_RINSE_HOLD": "Skyllestopp er aktivert, velg sentrifugehastighet",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Fjernstyrt antikr\u00f8ll p\u00e5g\u00e5r.",
-      "WASHER_SUBSTATE_DRYING": "T\u00f8rker"
+      "WASHER_SUBSTATE_DRYING": "T\u00f8rker",
+      "OVEN_MESSAGE_GOOD_APPETITE": "God appetitt!",
+      "OVEN_MESSAGE_COOKING": "Steker",
+      "OVEN_MESSAGE_PAUSED": "P\u00e5 pause",
+      "OVEN_MESSAGE_WAITING": "Venter",
+      "OVEN_MESSAGE_DEFROSTING": "Opptining",
+      "OPERATION_COMPLETED": "Operasjonen er ferdig",
+      "OVEN_MESSAGE_PREHEATING": "Forvarming",
+      "OVEN_MESSAGE_PREHEATING_COMPLETED": "Forvarming fullf\u00f8rt",
+      "OVEN_MESSAGE_CLEANING": "Rengj\u00f8r",
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Rengj\u00f8ringen er ferdig"
     }
   }
 }

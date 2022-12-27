@@ -18,7 +18,17 @@
       "WASHER_SUBSTATE_ADD_LAUNDRY": "Ajoutez le linge",
       "WASHER_SUBSTATE_RINSE_HOLD": "Arr\u00eat cuve pleine actif, s\u00e9lectionnez la vitesse d'essorage",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "L'anti-froissage \u00e0 distance est en cours.",
-      "WASHER_SUBSTATE_DRYING": "S\u00e9chage"
+      "WASHER_SUBSTATE_DRYING": "S\u00e9chage",
+      "OVEN_MESSAGE_GOOD_APPETITE": "R\u00e9galez-vous",
+      "OVEN_MESSAGE_COOKING": "Cuisson",
+      "OVEN_MESSAGE_PAUSED": "En pause",
+      "OVEN_MESSAGE_WAITING": "En attente",
+      "OVEN_MESSAGE_DEFROSTING": "D\u00e9cong\u00e9lation",
+      "OPERATION_COMPLETED": "Op\u00e9ration termin\u00e9e",
+      "OVEN_MESSAGE_PREHEATING": "Pr\u00e9chauffage",
+      "OVEN_MESSAGE_PREHEATING_COMPLETED": "Pr\u00e9chauffage termin\u00e9",
+      "OVEN_MESSAGE_CLEANING": "Nettoyage",
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Nettoyage termin\u00e9"
     }
   }
 }

@@ -59,6 +59,29 @@
     "homewhiz__WASHER_PHR": {
       "PHR_OFF": "Wy\u0142.",
       "PHR_ON": "W\u0142."
-    }
+    },
+    "homewhiz__OVEN_PROGRAM": {
+      "PROGRAM_STATIC": "Statyczne",
+      "PROGRAM_STATIC_FAN": "Statyczne + wentylator",
+      "PROGRAM_FAN_HEATING": "Grzanie z wentylatorem",
+      "PROGRAM_MULTI_COOKING": "Pieczenie przy u\u017cyciu wielu grza\u0142ek (3D)",
+      "PROGRAM_FAN_HEAT_BOTTOM": "Termoobieg + grza\u0142ka dolna",
+      "PROGRAM_ECO_GRILL": "Grill Eko",
+      "PROGRAM_FULL_GRILL": "Grill",
+      "PROGRAM_FULL_GRILL_FAN": "Grill + wentylator",
+      "PROGRAM_BOTTOM_HEATING": "Grza\u0142ka dolna",
+      "PROGRAM_DEFROST": "Rozmra\u017canie",
+      "PROGRAM_WARM_KEEPING": "Utrzymywanie ciep\u0142a",
+      "PROGRAM_ECO_FAN_HEATING": "Grzanie eko z wentylatorem",
+      "PROGRAM_STEAM_CLEANING": "Czyszczenie par\u0105",
+      "PROGRAM_ECO_PYRO": "Czyszczenie eko",
+      "PROGRAM_PYRO": "Czyszczenie"
+    },
+    "homewhiz__OVEN_TEMPERATURE": {},
+    "homewhiz__OVEN_BOOSTER": {
+      "BOOSTER_OFF": "Wy\u0142.",
+      "BOOSTER_ON": "W\u0142."
+    },
+    "homewhiz__OVEN_SKIP_PREHEATING": {}
   }
 }

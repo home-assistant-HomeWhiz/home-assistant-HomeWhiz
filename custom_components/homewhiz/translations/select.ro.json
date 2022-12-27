@@ -59,6 +59,29 @@
     "homewhiz__WASHER_PHR": {
       "PHR_OFF": "Oprit",
       "PHR_ON": "Pornit"
-    }
+    },
+    "homewhiz__OVEN_PROGRAM": {
+      "PROGRAM_STATIC": "Static",
+      "PROGRAM_STATIC_FAN": "Static + ventilator",
+      "PROGRAM_FAN_HEATING": "\u00cenc\u0103lzire ventilator",
+      "PROGRAM_MULTI_COOKING": "G\u0103tire multipl\u0103 (3D)",
+      "PROGRAM_FAN_HEAT_BOTTOM": "C\u0103ldur\u0103 ventilator + de jos",
+      "PROGRAM_ECO_GRILL": "Gr\u0103tar Eco",
+      "PROGRAM_FULL_GRILL": "Gr\u0103tar complet",
+      "PROGRAM_FULL_GRILL_FAN": "Gr\u0103tar complet + ventilator",
+      "PROGRAM_BOTTOM_HEATING": "\u00cenc\u0103lzire de jos",
+      "PROGRAM_DEFROST": "Dezghe\u021bare",
+      "PROGRAM_WARM_KEEPING": "P\u0103strare c\u0103ldur\u0103",
+      "PROGRAM_ECO_FAN_HEATING": "\u00cenc\u0103lzire ventilator Eco",
+      "PROGRAM_STEAM_CLEANING": "Cur\u0103\u0163are cu aburi",
+      "PROGRAM_ECO_PYRO": "Cur\u0103\u021bare Eco",
+      "PROGRAM_PYRO": "Cur\u0103\u021bare"
+    },
+    "homewhiz__OVEN_TEMPERATURE": {},
+    "homewhiz__OVEN_BOOSTER": {
+      "BOOSTER_OFF": "Oprit",
+      "BOOSTER_ON": "Pornit"
+    },
+    "homewhiz__OVEN_SKIP_PREHEATING": {}
   }
 }

@@ -48,7 +48,7 @@ api_languages = {
     "sr": "sr-RS",
 }
 
-known_appliance_ids = ["F999935286050711425369"]
+known_appliance_ids = ["F999935286050711425369", "F999904668828549174231"]
 
 
 async def write_translations_file(name: str, translations: dict):

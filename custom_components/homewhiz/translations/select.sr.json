@@ -60,6 +60,29 @@
     "homewhiz__WASHER_PHR": {
       "PHR_OFF": "Off",
       "PHR_ON": "On"
-    }
+    },
+    "homewhiz__OVEN_PROGRAM": {
+      "PROGRAM_STATIC": "Static",
+      "PROGRAM_STATIC_FAN": "Static + Fan",
+      "PROGRAM_FAN_HEATING": "Fan Heating",
+      "PROGRAM_MULTI_COOKING": "Multi (3D) Cooking",
+      "PROGRAM_FAN_HEAT_BOTTOM": "Fan Heat + Bottom",
+      "PROGRAM_ECO_GRILL": "Eco Grill",
+      "PROGRAM_FULL_GRILL": "Full Grill",
+      "PROGRAM_FULL_GRILL_FAN": "Full Grill + Fan",
+      "PROGRAM_BOTTOM_HEATING": "Bottom Heating",
+      "PROGRAM_DEFROST": "Defrost",
+      "PROGRAM_WARM_KEEPING": "Keep Warm",
+      "PROGRAM_ECO_FAN_HEATING": "Eco Fan Heating",
+      "PROGRAM_STEAM_CLEANING": "Steam Cleaning",
+      "PROGRAM_ECO_PYRO": "Eco Cleaning",
+      "PROGRAM_PYRO": "Cleaning"
+    },
+    "homewhiz__OVEN_TEMPERATURE": {},
+    "homewhiz__OVEN_BOOSTER": {
+      "BOOSTER_OFF": "Off",
+      "BOOSTER_ON": "On"
+    },
+    "homewhiz__OVEN_SKIP_PREHEATING": {}
   }
 }

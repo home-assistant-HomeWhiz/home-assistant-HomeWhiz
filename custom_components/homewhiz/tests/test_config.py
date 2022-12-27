@@ -30,6 +30,7 @@ file_names = [
     "example_appliance_config.json",
     "example_ac_config.json",
     "example_ac_advanced_config.json",
+    "example_oven_config.json",
 ]
 
 

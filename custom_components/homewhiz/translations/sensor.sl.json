@@ -18,7 +18,17 @@
       "WASHER_SUBSTATE_ADD_LAUNDRY": "You may add laundry",
       "WASHER_SUBSTATE_RINSE_HOLD": "Rinse hold is active; select spin speed",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Remote anti-creasing is in progress.",
-      "WASHER_SUBSTATE_DRYING": "Drying"
+      "WASHER_SUBSTATE_DRYING": "Drying",
+      "OVEN_MESSAGE_GOOD_APPETITE": "Enjoy Your Meal",
+      "OVEN_MESSAGE_COOKING": "Cooking",
+      "OVEN_MESSAGE_PAUSED": "Paused",
+      "OVEN_MESSAGE_WAITING": "Waiting",
+      "OVEN_MESSAGE_DEFROSTING": "Defrosting",
+      "OPERATION_COMPLETED": "Operation is done",
+      "OVEN_MESSAGE_PREHEATING": "Preheating",
+      "OVEN_MESSAGE_PREHEATING_COMPLETED": "Preheating completed",
+      "OVEN_MESSAGE_CLEANING": "Cleaning",
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Cleaning Completed"
     }
   }
 }

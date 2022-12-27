@@ -59,6 +59,29 @@
     "homewhiz__WASHER_PHR": {
       "PHR_OFF": "Arr\u00eat",
       "PHR_ON": "Marche"
-    }
+    },
+    "homewhiz__OVEN_PROGRAM": {
+      "PROGRAM_STATIC": "Convection naturelle",
+      "PROGRAM_STATIC_FAN": "Chaleur brass\u00e9e",
+      "PROGRAM_FAN_HEATING": "Chaleur tournante",
+      "PROGRAM_MULTI_COOKING": "Cuisson 3D",
+      "PROGRAM_FAN_HEAT_BOTTOM": "Chaleur tournante + r\u00e9sistance de sole",
+      "PROGRAM_ECO_GRILL": "Grill \u00c9co",
+      "PROGRAM_FULL_GRILL": "Grill fort ",
+      "PROGRAM_FULL_GRILL_FAN": "Grill fort ventil\u00e9",
+      "PROGRAM_BOTTOM_HEATING": "R\u00e9sistance de sole",
+      "PROGRAM_DEFROST": "D\u00e9cong\u00e9lation",
+      "PROGRAM_WARM_KEEPING": "Maintien au chaud",
+      "PROGRAM_ECO_FAN_HEATING": "Chaleur tournante Eco",
+      "PROGRAM_STEAM_CLEANING": "Nettoyage vapeur",
+      "PROGRAM_ECO_PYRO": "Nettoyage Pyrolyse \u00c9co",
+      "PROGRAM_PYRO": "Nettoyage Pyrolyse"
+    },
+    "homewhiz__OVEN_TEMPERATURE": {},
+    "homewhiz__OVEN_BOOSTER": {
+      "BOOSTER_OFF": "Arr\u00eat",
+      "BOOSTER_ON": "Marche"
+    },
+    "homewhiz__OVEN_SKIP_PREHEATING": {}
   }
 }

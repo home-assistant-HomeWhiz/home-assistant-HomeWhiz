@@ -18,7 +18,17 @@
       "WASHER_SUBSTATE_ADD_LAUNDRY": "Pute\u021bi ad\u0103uga rufe",
       "WASHER_SUBSTATE_RINSE_HOLD": "Am\u00e2narea cl\u0103tirii este activ\u0103; selecta\u021bi viteza de rota\u021bie",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Programul anti-cute telecomandat este \u00een desf\u0103\u0219urare.",
-      "WASHER_SUBSTATE_DRYING": "Uscare"
+      "WASHER_SUBSTATE_DRYING": "Uscare",
+      "OVEN_MESSAGE_GOOD_APPETITE": "Poft\u0103 bun\u0103",
+      "OVEN_MESSAGE_COOKING": "G\u0103tire",
+      "OVEN_MESSAGE_PAUSED": "\u00cen pauz\u0103",
+      "OVEN_MESSAGE_WAITING": "\u00cen a\u0219teptare",
+      "OVEN_MESSAGE_DEFROSTING": "Dezghe\u021bare",
+      "OPERATION_COMPLETED": "Opera\u021biunea s-a \u00eencheiat",
+      "OVEN_MESSAGE_PREHEATING": "Pre\u00eenc\u0103lzire",
+      "OVEN_MESSAGE_PREHEATING_COMPLETED": "Pre\u00eenc\u0103lzire finalizat\u0103",
+      "OVEN_MESSAGE_CLEANING": "Cur\u0103\u021bare",
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Cur\u0103\u021barea s-a \u00eencheiat"
     }
   }
 }

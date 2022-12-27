@@ -18,7 +18,17 @@
       "WASHER_SUBSTATE_ADD_LAUNDRY": "Sie k\u00f6nnen W\u00e4sche hinzuf\u00fcgen",
       "WASHER_SUBSTATE_RINSE_HOLD": "Sp\u00fclstopp ist aktiv, bitte Schleudergeschwindigkeit ausw\u00e4hlen",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Ferngesteuertes Knitterschutz-Programm wird ausgef\u00fchrt",
-      "WASHER_SUBSTATE_DRYING": "Trocknung"
+      "WASHER_SUBSTATE_DRYING": "Trocknung",
+      "OVEN_MESSAGE_GOOD_APPETITE": "Guten Appetit",
+      "OVEN_MESSAGE_COOKING": "Garen",
+      "OVEN_MESSAGE_PAUSED": "Pausiert",
+      "OVEN_MESSAGE_WAITING": "Warten",
+      "OVEN_MESSAGE_DEFROSTING": "Auftauen",
+      "OPERATION_COMPLETED": "Vorgang abgeschlossen",
+      "OVEN_MESSAGE_PREHEATING": "Vorheizen",
+      "OVEN_MESSAGE_PREHEATING_COMPLETED": "Vorheizen abgeschlossen",
+      "OVEN_MESSAGE_CLEANING": "Reinigen",
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Reinigung abgeschlossen"
     }
   }
 }

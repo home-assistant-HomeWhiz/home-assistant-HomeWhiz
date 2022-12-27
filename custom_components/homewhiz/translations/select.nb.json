@@ -58,6 +58,29 @@
     "homewhiz__WASHER_PHR": {
       "PHR_OFF": "Av",
       "PHR_ON": "P\u00e5"
-    }
+    },
+    "homewhiz__OVEN_PROGRAM": {
+      "PROGRAM_STATIC": "Statisk",
+      "PROGRAM_STATIC_FAN": "Statisk + varmluft",
+      "PROGRAM_FAN_HEATING": "Varmluft",
+      "PROGRAM_MULTI_COOKING": "Multisteking (3D)",
+      "PROGRAM_FAN_HEAT_BOTTOM": "Varmluft + undervarme",
+      "PROGRAM_ECO_GRILL": "\u00d8kogrill",
+      "PROGRAM_FULL_GRILL": "Full grill",
+      "PROGRAM_FULL_GRILL_FAN": "Full grill + varmluft",
+      "PROGRAM_BOTTOM_HEATING": "Undervarme",
+      "PROGRAM_DEFROST": "Opptining",
+      "PROGRAM_WARM_KEEPING": "Hold varmt",
+      "PROGRAM_ECO_FAN_HEATING": "\u00d8kovarmluft",
+      "PROGRAM_STEAM_CLEANING": "Damprengj\u00f8ring",
+      "PROGRAM_ECO_PYRO": "\u00d8korengj\u00f8ring",
+      "PROGRAM_PYRO": "Rengj\u00f8ring"
+    },
+    "homewhiz__OVEN_TEMPERATURE": {},
+    "homewhiz__OVEN_BOOSTER": {
+      "BOOSTER_OFF": "Av",
+      "BOOSTER_ON": "P\u00e5"
+    },
+    "homewhiz__OVEN_SKIP_PREHEATING": {}
   }
 }

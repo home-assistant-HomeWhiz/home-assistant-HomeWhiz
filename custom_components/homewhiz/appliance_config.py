@@ -232,8 +232,8 @@ class ApplianceOvenRecipe:
     recipeCommandLength: int
     recipeCommandWifiArrayStartIndex: int
     recipeFormatVersion: Optional[str]
-    cookingTypeRecipeFromOvenStartedWifiArrayValue: int
-    cookingTypeRecipeFromOvenWifiArrayValue: int
+    cookingTypeRecipeFromOvenStartedWifiArrayValue: Optional[int]
+    cookingTypeRecipeFromOvenWifiArrayValue: Optional[int]
     recipeIdHighWifiArrayIndex: int
     recipeIdLowWifiArrayIndex: int
 

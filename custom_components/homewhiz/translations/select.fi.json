@@ -59,6 +59,29 @@
     "homewhiz__WASHER_PHR": {
       "PHR_OFF": "Ei p\u00e4\u00e4ll\u00e4",
       "PHR_ON": "P\u00e4\u00e4ll\u00e4"
-    }
+    },
+    "homewhiz__OVEN_PROGRAM": {
+      "PROGRAM_STATIC": "Kiinte\u00e4",
+      "PROGRAM_STATIC_FAN": "Kiinte\u00e4+kiertoilma",
+      "PROGRAM_FAN_HEATING": "Kiertoilma",
+      "PROGRAM_MULTI_COOKING": "Monitoimikypsennys (3D)",
+      "PROGRAM_FAN_HEAT_BOTTOM": "Kiertoilma+alal\u00e4mp\u00f6",
+      "PROGRAM_ECO_GRILL": "Eco-grillaus",
+      "PROGRAM_FULL_GRILL": "T\u00e4ysi grillaus",
+      "PROGRAM_FULL_GRILL_FAN": "T\u00e4ysi grillaus + kiertoilma",
+      "PROGRAM_BOTTOM_HEATING": "Alal\u00e4mp\u00f6",
+      "PROGRAM_DEFROST": "Sulatus",
+      "PROGRAM_WARM_KEEPING": "Pid\u00e4 l\u00e4mpim\u00e4n\u00e4",
+      "PROGRAM_ECO_FAN_HEATING": "Eco-kiertoilma",
+      "PROGRAM_STEAM_CLEANING": "H\u00f6yrypuhdistus",
+      "PROGRAM_ECO_PYRO": "Eco-puhdistus",
+      "PROGRAM_PYRO": "Puhdistus"
+    },
+    "homewhiz__OVEN_TEMPERATURE": {},
+    "homewhiz__OVEN_BOOSTER": {
+      "BOOSTER_OFF": "Ei k\u00e4yt\u00f6ss\u00e4",
+      "BOOSTER_ON": "K\u00e4yt\u00f6ss\u00e4"
+    },
+    "homewhiz__OVEN_SKIP_PREHEATING": {}
   }
 }

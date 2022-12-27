@@ -18,7 +18,17 @@
       "WASHER_SUBSTATE_ADD_LAUNDRY": "Puede a\u00f1adir la colada",
       "WASHER_SUBSTATE_RINSE_HOLD": "La funci\u00f3n remojo est\u00e1 activa; seleccione la velocidad de centrifugado",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Antiarrugas remoto en curso.",
-      "WASHER_SUBSTATE_DRYING": "Secado"
+      "WASHER_SUBSTATE_DRYING": "Secado",
+      "OVEN_MESSAGE_GOOD_APPETITE": "Buen provecho",
+      "OVEN_MESSAGE_COOKING": "Cocinando",
+      "OVEN_MESSAGE_PAUSED": "En pausa",
+      "OVEN_MESSAGE_WAITING": "En espera",
+      "OVEN_MESSAGE_DEFROSTING": "Descongelando",
+      "OPERATION_COMPLETED": "Operaci\u00f3n realizada",
+      "OVEN_MESSAGE_PREHEATING": "Precalentamiento",
+      "OVEN_MESSAGE_PREHEATING_COMPLETED": "Precalentamiento finalizado",
+      "OVEN_MESSAGE_CLEANING": "Limpieza",
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Limpieza completada"
     }
   }
 }

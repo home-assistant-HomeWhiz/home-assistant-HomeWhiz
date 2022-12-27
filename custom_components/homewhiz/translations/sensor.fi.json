@@ -18,7 +18,17 @@
       "WASHER_SUBSTATE_ADD_LAUNDRY": "Voit lis\u00e4t\u00e4 pyykki\u00e4",
       "WASHER_SUBSTATE_RINSE_HOLD": "Huuhtelupito on k\u00e4yt\u00f6ss\u00e4, valitse linkousnopeus",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Rypistymisen et\u00e4esto on k\u00e4ynniss\u00e4.",
-      "WASHER_SUBSTATE_DRYING": "Kuivaus"
+      "WASHER_SUBSTATE_DRYING": "Kuivaus",
+      "OVEN_MESSAGE_GOOD_APPETITE": "Nauti ateriastasi",
+      "OVEN_MESSAGE_COOKING": "Ruoanlaitto",
+      "OVEN_MESSAGE_PAUSED": "Pys\u00e4ytetty",
+      "OVEN_MESSAGE_WAITING": "Odottaa",
+      "OVEN_MESSAGE_DEFROSTING": "Sulatus",
+      "OPERATION_COMPLETED": "Toiminto on valmis",
+      "OVEN_MESSAGE_PREHEATING": "Esil\u00e4mmitys",
+      "OVEN_MESSAGE_PREHEATING_COMPLETED": "Esil\u00e4mmitys valmis",
+      "OVEN_MESSAGE_CLEANING": "Puhdistus",
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Puhdistus valmis"
     }
   }
 }
