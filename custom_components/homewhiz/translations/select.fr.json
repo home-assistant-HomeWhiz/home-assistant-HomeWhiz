@@ -29,7 +29,16 @@
       "PROGRAM_CURTAIN": "Rideaux",
       "PROGRAM_LINGERIE": "Lingerie",
       "PROGRAM_SOFT_TOYS": "Peluches",
-      "PROGRAM_TOWEL": "Serviette"
+      "PROGRAM_TOWEL": "Serviette",
+      "PROGRAM_COTTONS_ECO": "Coton \u00c9co",
+      "PROGRAM_DRYER_COTTON": "S\u00e9chage Coton",
+      "PROGRAM_DRYER_SYNTHETICS": "S\u00e9chage Synth\u00e9tique",
+      "PROGRAM_HYGIENE_WASH_DRY": "Lavage et s\u00e9chage Hygi\u00e8ne+",
+      "PROGRAM_4KG_WASH_DRY": "Lavage et s\u00e9chage 4\u00a0kg",
+      "PROGRAM_WASH_WEAR": "Lavage&S\u00e9chage Express",
+      "PROGRAM_DARK_WASH": "Textiles fonc\u00e9s",
+      "PROGRAM_OUTDOOR": "Imperm\u00e9able",
+      "PROGRAM_DRUM_CLEAN_PLUS": "Nettoyage du tambour Plus"
     },
     "homewhiz__WASHER_TEMPERATURE": {
       "TEMPERATURE_COLD_WASH": "Lavage \u00e0 froid",
@@ -39,7 +48,11 @@
     },
     "homewhiz__WASHER_SPIN": {
       "SPIN_NO_SPIN": "Pas d\u2019essorage",
-      "SPIN_RINSE_HOLD": "Arr\u00eat cuve pleine"
+      "SPIN_RINSE_HOLD": "Arr\u00eat cuve pleine",
+      "SPIN_600": "600",
+      "SPIN_800": "800",
+      "SPIN_1200": "1200",
+      "SPIN_1400": "1400"
     },
     "homewhiz__WASHER_PREWASH": {
       "PREWASH_OFF": "Arr\u00eat",
@@ -118,6 +131,19 @@
     "homewhiz__DISHWASHER_HALFLOAD": {
       "HALFLOAD_OFF": "Arr\u00eat",
       "HALFLOAD_ON": "Marche"
+    },
+    "homewhiz__WASHER_DRY": {
+      "DRY_OFF": "Arr\u00eat",
+      "DRY_EXTRA": "Extra sec",
+      "DRY_CABINET": "Wardrobe Dry",
+      "DRY_IRON": "Pr\u00eat \u00e0 repasser",
+      "DRY_10": "45\u00a0min",
+      "DRY_20": "20\u00a0min",
+      "DRY_30": "30\u00a0min",
+      "DRY_60": "60\u00a0min",
+      "DRY_90": "90\u00a0min",
+      "DRY_120": "15\u00a0min",
+      "DRY_150": "150\u00a0min"
     }
   }
 }

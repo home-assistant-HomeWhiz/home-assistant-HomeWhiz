@@ -15,7 +15,18 @@ test_case.maxDiff = None
 @pytest.fixture
 def washing_machine_config():
     dirname = os.path.dirname(__file__)
-    file_path = os.path.join(dirname, "./fixtures/example_appliance_config.json")
+    file_path = os.path.join(dirname, "fixtures/example_washing_machine_config.json")
+    with open(file_path) as file:
+        json_content = json.load(file)
+        return from_dict(ApplianceConfiguration, json_content)
+
+
+@pytest.fixture
+def washing_machine_with_dryer_config():
+    dirname = os.path.dirname(__file__)
+    file_path = os.path.join(
+        dirname, "fixtures/example_washing_machine_with_dryer_config.json"
+    )
     with open(file_path) as file:
         json_content = json.load(file)
         return from_dict(ApplianceConfiguration, json_content)
@@ -140,6 +151,37 @@ def test_generic_washing_machine_delay_defined(washing_machine_config):
             "WASHER_PREWASH": "PREWASH_OFF",
             "WASHER_PROGRAM": "PROGRAM_COTTONS",
             "WASHER_SPIN": "1400 RPM",
+            "WASHER_TEMPERATURE": "TEMPERATURE_40",
+            "WASHER_STEAM": "STEAM_OFF",
+        },
+    )
+
+
+def test_generic_washing_machine_with_dryer(washing_machine_with_dryer_config):
+    data = bytearray(
+        b"\x00\xb8d\x13\xab\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
+        b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\x00\x00\x00"
+        b"\x00\x00\x00\x00\x14\x80(\x0e\x00\x00\x00\x00\x00\x02\x14\x00"
+        b"\x00\x80\x80\x07\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
+        b"\x00\x00\x00\x00\x01\x00\x00\x00\x00\x13\x00\x00\x00\x00\x00\x00"
+    )
+    descriptions = generate_select_descriptions_from_config(
+        washing_machine_with_dryer_config
+    )
+    values = {
+        description.key: description.get_option(data) for description in descriptions
+    }
+    test_case.assertDictEqual(
+        values,
+        {
+            "STATE": "DEVICE_STATE_OFF",
+            "WASHER_DRY": "DRY_OFF",
+            "WASHER_EXTRARINSE": "EXTRA_RINSE_OFF",
+            "WASHER_FAST_PLUS": "FAST_PLUS_OFF",
+            "WASHER_HIDDEN_ANTI_CREASE": "HIDDEN_ANTI_CREASE_ON",
+            "WASHER_PREWASH": "PREWASH_OFF",
+            "WASHER_PROGRAM": None,
+            "WASHER_SPIN": "SPIN_1400",
             "WASHER_TEMPERATURE": "TEMPERATURE_40",
             "WASHER_STEAM": "STEAM_OFF",
         },

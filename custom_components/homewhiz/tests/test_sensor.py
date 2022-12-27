@@ -15,7 +15,7 @@ test_case.maxDiff = None
 @pytest.fixture
 def washing_machine_config():
     dirname = os.path.dirname(__file__)
-    file_path = os.path.join(dirname, "./fixtures/example_appliance_config.json")
+    file_path = os.path.join(dirname, "fixtures/example_washing_machine_config.json")
     with open(file_path) as file:
         json_content = json.load(file)
         return from_dict(ApplianceConfiguration, json_content)

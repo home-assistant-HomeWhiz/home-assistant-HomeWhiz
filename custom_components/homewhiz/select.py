@@ -63,10 +63,14 @@ class EnumSelectEntityDescription(HomeWhizSelectEntityDescription):
 
     def byte_to_option(self, byte):
         option = find_by_value(byte, self.enum_options)
+        if option is None:
+            return None
         return option.strKey
 
     def option_to_byte(self, value):
         option = find_by_key(value, self.enum_options)
+        if option is None:
+            return None
         return option.wifiArrayValue
 
 

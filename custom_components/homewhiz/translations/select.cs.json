@@ -25,7 +25,15 @@
       "PROGRAM_CURTAIN": "Z\u00e1clony",
       "PROGRAM_LINGERIE": "D\u00e1msk\u00e9 pr\u00e1dlo",
       "PROGRAM_SOFT_TOYS": "M\u011bkk\u00e9 hra\u010dky",
-      "PROGRAM_TOWEL": "Ru\u010dn\u00edk"
+      "PROGRAM_TOWEL": "Ru\u010dn\u00edk",
+      "PROGRAM_DRYER_COTTON": "Su\u0161en\u00ed bavlny",
+      "PROGRAM_DRYER_SYNTHETICS": "Su\u0161en\u00ed syntetick\u00e9ho pr\u00e1dla",
+      "PROGRAM_HYGIENE_WASH_DRY": "Pran\u00ed a\u00a0su\u0161en\u00ed Hygiena+",
+      "PROGRAM_4KG_WASH_DRY": "Pran\u00ed a\u00a0su\u0161en\u00ed 4\u00a0kg",
+      "PROGRAM_WASH_WEAR": "Pran\u00ed bez pot\u0159eby \u017eehlen\u00ed",
+      "PROGRAM_DARK_WASH": "Tmav\u00e9 pr\u00e1dlo",
+      "PROGRAM_OUTDOOR": "Venku",
+      "PROGRAM_DRUM_CLEAN_PLUS": "\u010ci\u0161t\u011bn\u00ed bubnu+"
     },
     "homewhiz__WASHER_TEMPERATURE": {
       "TEMPERATURE_COLD_WASH": "Pran\u00ed za studena"
@@ -111,6 +119,19 @@
     "homewhiz__DISHWASHER_HALFLOAD": {
       "HALFLOAD_OFF": "Vypnuto",
       "HALFLOAD_ON": "Zapnuto"
+    },
+    "homewhiz__WASHER_DRY": {
+      "DRY_OFF": "Vypnuto",
+      "DRY_EXTRA": "Dodate\u010dn\u00e9 su\u0161en\u00ed",
+      "DRY_CABINET": "Wardrobe Dry",
+      "DRY_IRON": "Su\u0161en\u00ed pr\u00e1dla k\u00a0\u017eehlen\u00ed",
+      "DRY_10": "45 min",
+      "DRY_20": "20 min",
+      "DRY_30": "30\u00a0min",
+      "DRY_60": "60 min",
+      "DRY_90": "90\u00a0min",
+      "DRY_120": "15 min",
+      "DRY_150": "150\u00a0min"
     }
   }
 }

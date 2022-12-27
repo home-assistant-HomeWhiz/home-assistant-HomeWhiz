@@ -28,7 +28,16 @@
       "PROGRAM_CURTAIN": "Tende",
       "PROGRAM_LINGERIE": "Lingerie",
       "PROGRAM_SOFT_TOYS": "Peluche",
-      "PROGRAM_TOWEL": "Asciugamano"
+      "PROGRAM_TOWEL": "Asciugamano",
+      "PROGRAM_COTTONS_ECO": "Cotone eco",
+      "PROGRAM_DRYER_COTTON": "Asciutto cotone",
+      "PROGRAM_DRYER_SYNTHETICS": "Asciutto sintetici",
+      "PROGRAM_HYGIENE_WASH_DRY": "Lava e asciuga Hygiene+",
+      "PROGRAM_4KG_WASH_DRY": "Lava e asciuga 4 Kg",
+      "PROGRAM_WASH_WEAR": "Lava e indossa",
+      "PROGRAM_DARK_WASH": "Capi scuri",
+      "PROGRAM_OUTDOOR": "Tempo libero",
+      "PROGRAM_DRUM_CLEAN_PLUS": "Pulizia cestello+"
     },
     "homewhiz__WASHER_TEMPERATURE": {
       "TEMPERATURE_COLD_WASH": "Lavaggio a freddo"
@@ -113,6 +122,19 @@
     "homewhiz__DISHWASHER_HALFLOAD": {
       "HALFLOAD_OFF": "Disattivato",
       "HALFLOAD_ON": "Attivato"
+    },
+    "homewhiz__WASHER_DRY": {
+      "DRY_OFF": "Spento",
+      "DRY_EXTRA": "Extra Dry",
+      "DRY_CABINET": "Wardrobe Dry",
+      "DRY_IRON": "Pronto Stiro",
+      "DRY_10": "45\\'",
+      "DRY_20": "20 min",
+      "DRY_30": "30 min",
+      "DRY_60": "60\\'",
+      "DRY_90": "90 min",
+      "DRY_120": "15\\'",
+      "DRY_150": "150 min"
     }
   }
 }

@@ -30,7 +30,16 @@
       "PROGRAM_CURTAIN": "Curtains",
       "PROGRAM_LINGERIE": "Lingerie",
       "PROGRAM_SOFT_TOYS": "Soft Toys",
-      "PROGRAM_TOWEL": "Towel"
+      "PROGRAM_TOWEL": "Towel",
+      "PROGRAM_COTTONS_ECO": "Cottons Eco",
+      "PROGRAM_DRYER_COTTON": "Cotton Dry",
+      "PROGRAM_DRYER_SYNTHETICS": "Synthetic Dry",
+      "PROGRAM_HYGIENE_WASH_DRY": "Hygiene+ Wash & Dry",
+      "PROGRAM_4KG_WASH_DRY": "4 Kg Wash & Dry",
+      "PROGRAM_WASH_WEAR": "Wash & Wear",
+      "PROGRAM_DARK_WASH": "Dark Wash",
+      "PROGRAM_OUTDOOR": "Outdoor",
+      "PROGRAM_DRUM_CLEAN_PLUS": "Drum Clean+"
     },
     "homewhiz__WASHER_TEMPERATURE": {
       "TEMPERATURE_COLD_WASH": "Cold Wash",
@@ -40,7 +49,11 @@
     },
     "homewhiz__WASHER_SPIN": {
       "SPIN_NO_SPIN": "No Spin",
-      "SPIN_RINSE_HOLD": "Rinse Hold"
+      "SPIN_RINSE_HOLD": "Rinse Hold",
+      "SPIN_600": 600,
+      "SPIN_800": 800,
+      "SPIN_1200": 1200,
+      "SPIN_1400": 1400
     },
     "homewhiz__WASHER_PREWASH": {
       "PREWASH_OFF": "Off",
@@ -120,6 +133,19 @@
     "homewhiz__DISHWASHER_HALFLOAD": {
       "HALFLOAD_OFF": "Off",
       "HALFLOAD_ON": "On"
+    },
+    "homewhiz__WASHER_DRY": {
+      "DRY_OFF": "Off",
+      "DRY_EXTRA": "Extra Dry",
+      "DRY_CABINET": "Wardrobe Dry",
+      "DRY_IRON": "Iron Dry",
+      "DRY_10": "45 Min",
+      "DRY_20": "20 Min",
+      "DRY_30": "30 Min",
+      "DRY_60": "60 Min",
+      "DRY_90": "90 Min",
+      "DRY_120": "15 Min",
+      "DRY_150": "150 Min"
     }
   }
 }

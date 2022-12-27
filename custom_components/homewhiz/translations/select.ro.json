@@ -29,7 +29,16 @@
       "PROGRAM_CURTAIN": "Perdele",
       "PROGRAM_LINGERIE": "Albituri",
       "PROGRAM_SOFT_TOYS": "Juc\u0103rii moi",
-      "PROGRAM_TOWEL": "Prosoape"
+      "PROGRAM_TOWEL": "Prosoape",
+      "PROGRAM_COTTONS_ECO": "Rufe din bumbac Eco",
+      "PROGRAM_DRYER_COTTON": "Uscare pentru bumbac",
+      "PROGRAM_DRYER_SYNTHETICS": "Uscare sintetice",
+      "PROGRAM_HYGIENE_WASH_DRY": "Igien\u0103+ Sp\u0103lare \u0219i uscare",
+      "PROGRAM_4KG_WASH_DRY": "4 kg Sp\u0103lare \u0219i uscare",
+      "PROGRAM_WASH_WEAR": "Sp\u0103lare \u0219i purtare",
+      "PROGRAM_DARK_WASH": "Culori \u00eenchise",
+      "PROGRAM_OUTDOOR": "Aer liber",
+      "PROGRAM_DRUM_CLEAN_PLUS": "Cur\u0103\u021bare tambur+"
     },
     "homewhiz__WASHER_TEMPERATURE": {
       "TEMPERATURE_COLD_WASH": "Ap\u0103 rece",
@@ -39,7 +48,11 @@
     },
     "homewhiz__WASHER_SPIN": {
       "SPIN_NO_SPIN": "F\u0103r\u0103 rotire",
-      "SPIN_RINSE_HOLD": "Am\u00e2nare cl\u0103tire"
+      "SPIN_RINSE_HOLD": "Am\u00e2nare cl\u0103tire",
+      "SPIN_600": "600",
+      "SPIN_800": "800",
+      "SPIN_1200": "1200",
+      "SPIN_1400": "1400"
     },
     "homewhiz__WASHER_PREWASH": {
       "PREWASH_OFF": "Oprit",
@@ -118,6 +131,19 @@
     "homewhiz__DISHWASHER_HALFLOAD": {
       "HALFLOAD_OFF": "Oprit",
       "HALFLOAD_ON": "Pornit"
+    },
+    "homewhiz__WASHER_DRY": {
+      "DRY_OFF": "Oprit",
+      "DRY_EXTRA": "Uscare suplimentar\u0103",
+      "DRY_CABINET": "Wardrobe Dry",
+      "DRY_IRON": "Uscare pentru c\u0103lcare",
+      "DRY_10": "45 min.",
+      "DRY_20": "20 min.",
+      "DRY_30": "30 min",
+      "DRY_60": "60 min.",
+      "DRY_90": "90 min",
+      "DRY_120": "15 min.",
+      "DRY_150": "150 min"
     }
   }
 }

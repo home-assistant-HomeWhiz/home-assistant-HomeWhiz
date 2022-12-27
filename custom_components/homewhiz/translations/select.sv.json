@@ -29,7 +29,16 @@
       "PROGRAM_CURTAIN": "Gardiner",
       "PROGRAM_LINGERIE": "Underkl\u00e4der",
       "PROGRAM_SOFT_TOYS": "Mjukisdjur",
-      "PROGRAM_TOWEL": "Handduk"
+      "PROGRAM_TOWEL": "Handduk",
+      "PROGRAM_COTTONS_ECO": "Bomull/eko",
+      "PROGRAM_DRYER_COTTON": "Bomull, torrt",
+      "PROGRAM_DRYER_SYNTHETICS": "Syntet, torrt",
+      "PROGRAM_HYGIENE_WASH_DRY": "Hygien+ tv\u00e4tt/tork",
+      "PROGRAM_4KG_WASH_DRY": "4 kg tv\u00e4tt/tork",
+      "PROGRAM_WASH_WEAR": "Strykfritt",
+      "PROGRAM_DARK_WASH": "M\u00f6rk",
+      "PROGRAM_OUTDOOR": "Fritidsplagg",
+      "PROGRAM_DRUM_CLEAN_PLUS": "Reng\u00f6ring trumma+"
     },
     "homewhiz__WASHER_TEMPERATURE": {
       "TEMPERATURE_COLD_WASH": "Kallt vatten",
@@ -39,7 +48,11 @@
     },
     "homewhiz__WASHER_SPIN": {
       "SPIN_NO_SPIN": "Ingen centrifugering",
-      "SPIN_RINSE_HOLD": "Sk\u00f6ljstopp"
+      "SPIN_RINSE_HOLD": "Sk\u00f6ljstopp",
+      "SPIN_600": "600",
+      "SPIN_800": "800",
+      "SPIN_1200": "1200",
+      "SPIN_1400": "1400"
     },
     "homewhiz__WASHER_PREWASH": {
       "PREWASH_OFF": "Av",
@@ -118,6 +131,19 @@
     "homewhiz__DISHWASHER_HALFLOAD": {
       "HALFLOAD_OFF": "Av",
       "HALFLOAD_ON": "P\u00e5"
+    },
+    "homewhiz__WASHER_DRY": {
+      "DRY_OFF": "Av",
+      "DRY_EXTRA": "Helt torrt",
+      "DRY_CABINET": "Wardrobe Dry",
+      "DRY_IRON": "Stryktorrt",
+      "DRY_10": "45 min.",
+      "DRY_20": "20 min.",
+      "DRY_30": "30 minuter",
+      "DRY_60": "60 min.",
+      "DRY_90": "90 minuter",
+      "DRY_120": "15 min.",
+      "DRY_150": "150 minuter"
     }
   }
 }
