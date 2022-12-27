@@ -1,12 +1,5 @@
 {
   "state": {
-    "homewhiz__STATE": {
-      "DEVICE_STATE_ON": "P\u00e5",
-      "DEVICE_STATE_OFF": "Av",
-      "DEVICE_STATE_RUNNING": "K\u00f6r",
-      "DEVICE_STATE_PAUSED": "Pausad",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "F\u00f6rdr\u00f6jd tid \u00e4r aktiverat"
-    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Tv\u00e4tta",
       "WASHER_SUBSTATE_SPIN": "Centrifugering",
@@ -25,42 +18,17 @@
       "WASHER_SUBSTATE_ADD_LAUNDRY": "L\u00e4gg i tv\u00e4tten",
       "WASHER_SUBSTATE_RINSE_HOLD": "Sk\u00f6ljstopp \u00e4r aktiverat. V\u00e4lj centrifugeringshastighet",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Fj\u00e4rrstyrd antiskrynkling p\u00e5g\u00e5r.",
-      "WASHER_SUBSTATE_DRYING": "Torkar"
-    },
-    "homewhiz__WASHER_TEMPERATURE": {
-      "TEMPERATURE_COLD_WASH": "Kallt vatten",
-      "TEMPERATURE_20": "20 \u00b0C",
-      "TEMPERATURE_30": "30 \u00b0C",
-      "TEMPERATURE_40": "40 \u00b0C"
-    },
-    "homewhiz__WASHER_SPIN": {
-      "SPIN_NO_SPIN": "Ingen centrifugering",
-      "SPIN_RINSE_HOLD": "Sk\u00f6ljstopp"
-    },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Av",
-      "PREWASH_ON": "P\u00e5"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "Extra sk\u00f6ljning av",
-      "EXTRA_RINSE_ON": "Extra sk\u00f6ljning p\u00e5"
-    },
-    "homewhiz__WASHER_FAST_PLUS": {
-      "FAST_PLUS_OFF": "Snabb+ av",
-      "FAST_PLUS_ON_FAST": "Snabb",
-      "FAST_PLUS_ON_FAST_PLUS": "Snabb+"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Av",
-      "HIDDEN_ANTI_CREASE_ON": "P\u00e5"
-    },
-    "homewhiz__WASHER_STEAM": {
-      "STEAM_OFF": "STEAM_OFF",
-      "STEAM_ON": "STEAM_ON"
-    },
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Av",
-      "PHR_ON": "P\u00e5"
+      "WASHER_SUBSTATE_DRYING": "Torkar",
+      "OVEN_MESSAGE_GOOD_APPETITE": "Smaklig m\u00e5ltid!",
+      "OVEN_MESSAGE_COOKING": "Tillagning",
+      "OVEN_MESSAGE_PAUSED": "Pausad",
+      "OVEN_MESSAGE_WAITING": "V\u00e4ntar",
+      "OVEN_MESSAGE_DEFROSTING": "Upptining",
+      "OPERATION_COMPLETED": "Klart",
+      "OVEN_MESSAGE_PREHEATING": "F\u00f6ruppv\u00e4rmning",
+      "OVEN_MESSAGE_PREHEATING_COMPLETED": "F\u00f6rv\u00e4rmningen har slutf\u00f6rts",
+      "OVEN_MESSAGE_CLEANING": "Reng\u00f6ring",
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Ugnen \u00e4r rengjord"
     }
   }
 }

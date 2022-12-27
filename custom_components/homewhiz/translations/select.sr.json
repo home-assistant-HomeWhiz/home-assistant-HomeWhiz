@@ -1,0 +1,88 @@
+{
+  "state": {
+    "homewhiz__STATE": {
+      "DEVICE_STATE_ON": "On",
+      "DEVICE_STATE_OFF": "Off",
+      "DEVICE_STATE_RUNNING": "Running",
+      "DEVICE_STATE_PAUSED": "Paused",
+      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Time Delay Active"
+    },
+    "homewhiz__WASHER_PROGRAM": {
+      "PROGRAM_COTTONS": "Cottons",
+      "PROGRAM_ECO_40_60": "Eco 40-60",
+      "PROGRAM_SYNTHETICS": "Synthetics",
+      "PROGRAM_MINI_MINI14": "Xpress",
+      "PROGRAM_WOOL_HANDWASH": "Woollens",
+      "PROGRAM_DELICATES": "Delicates",
+      "PROGRAM_SPIN_PUMP": "Spin+Drain",
+      "PROGRAM_RINSING": "Rinse",
+      "PROGRAM_DARKWASH": "Dark (Jeans)",
+      "PROGRAM_OUTDOOR_SPORTS_GORETEX": "Outdoor/Sports",
+      "PROGRAM_STAIN": "StainExpert",
+      "PROGRAM_HYGEINE": "Hygiene+",
+      "PROGRAM_DUVET": "Duvet/Down Wear",
+      "PROGRAM_SHIRTS": "Shirts",
+      "PROGRAM_DRUM_CLEAN": "Drum Clean",
+      "PROGRAM_MIX": "Mix",
+      "PROGRAM_CURTAIN": "Curtains",
+      "PROGRAM_LINGERIE": "Lingerie",
+      "PROGRAM_SOFT_TOYS": "Soft Toys",
+      "PROGRAM_TOWEL": "Towel"
+    },
+    "homewhiz__WASHER_TEMPERATURE": {
+      "TEMPERATURE_COLD_WASH": "Cold Wash",
+      "TEMPERATURE_20": "20 \u00b0C",
+      "TEMPERATURE_30": "30 \u00b0C",
+      "TEMPERATURE_40": "40 \u00b0C"
+    },
+    "homewhiz__WASHER_SPIN": {
+      "SPIN_NO_SPIN": "No Spin",
+      "SPIN_RINSE_HOLD": "Rinse Hold"
+    },
+    "homewhiz__WASHER_PREWASH": {
+      "PREWASH_OFF": "Off",
+      "PREWASH_ON": "On"
+    },
+    "homewhiz__WASHER_EXTRARINSE": {
+      "EXTRA_RINSE_OFF": "Extra Rinse Off",
+      "EXTRA_RINSE_ON": "Extra Rinse On"
+    },
+    "homewhiz__WASHER_FAST_PLUS": {
+      "FAST_PLUS_OFF": "Off",
+      "FAST_PLUS_ON_FAST": "Fast",
+      "FAST_PLUS_ON_FAST_PLUS": "Fast+"
+    },
+    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
+      "HIDDEN_ANTI_CREASE_OFF": "Off",
+      "HIDDEN_ANTI_CREASE_ON": "On"
+    },
+    "homewhiz__WASHER_STEAM": {},
+    "homewhiz__WASHER_PHR": {
+      "PHR_OFF": "Off",
+      "PHR_ON": "On"
+    },
+    "homewhiz__OVEN_PROGRAM": {
+      "PROGRAM_STATIC": "Static",
+      "PROGRAM_STATIC_FAN": "Static + Fan",
+      "PROGRAM_FAN_HEATING": "Fan Heating",
+      "PROGRAM_MULTI_COOKING": "Multi (3D) Cooking",
+      "PROGRAM_FAN_HEAT_BOTTOM": "Fan Heat + Bottom",
+      "PROGRAM_ECO_GRILL": "Eco Grill",
+      "PROGRAM_FULL_GRILL": "Full Grill",
+      "PROGRAM_FULL_GRILL_FAN": "Full Grill + Fan",
+      "PROGRAM_BOTTOM_HEATING": "Bottom Heating",
+      "PROGRAM_DEFROST": "Defrost",
+      "PROGRAM_WARM_KEEPING": "Keep Warm",
+      "PROGRAM_ECO_FAN_HEATING": "Eco Fan Heating",
+      "PROGRAM_STEAM_CLEANING": "Steam Cleaning",
+      "PROGRAM_ECO_PYRO": "Eco Cleaning",
+      "PROGRAM_PYRO": "Cleaning"
+    },
+    "homewhiz__OVEN_TEMPERATURE": {},
+    "homewhiz__OVEN_BOOSTER": {
+      "BOOSTER_OFF": "Off",
+      "BOOSTER_ON": "On"
+    },
+    "homewhiz__OVEN_SKIP_PREHEATING": {}
+  }
+}

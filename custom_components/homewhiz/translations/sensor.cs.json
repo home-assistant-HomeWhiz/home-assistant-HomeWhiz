@@ -1,12 +1,5 @@
 {
   "state": {
-    "homewhiz__STATE": {
-      "DEVICE_STATE_ON": "Zapnuto",
-      "DEVICE_STATE_OFF": "Vypnuto",
-      "DEVICE_STATE_RUNNING": "Spu\u0161t\u011bno",
-      "DEVICE_STATE_PAUSED": "Pozastaveno",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "\u010casov\u00e1 prodleva je aktivn\u00ed"
-    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Pran\u00ed",
       "WASHER_SUBSTATE_SPIN": "\u017dd\u00edm\u00e1n\u00ed",
@@ -25,42 +18,17 @@
       "WASHER_SUBSTATE_ADD_LAUNDRY": "M\u016f\u017eete p\u0159idat pr\u00e1dlo",
       "WASHER_SUBSTATE_RINSE_HOLD": "Pozastaven\u00ed m\u00e1ch\u00e1n\u00ed je aktivn\u00ed; zvolte rychlost \u017ed\u00edm\u00e1n\u00ed",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Prob\u00edh\u00e1 vzd\u00e1len\u00e1 ochrana proti poma\u010dk\u00e1n\u00ed.",
-      "WASHER_SUBSTATE_DRYING": "Su\u0161en\u00ed"
-    },
-    "homewhiz__WASHER_TEMPERATURE": {
-      "TEMPERATURE_COLD_WASH": "Pran\u00ed za studena",
-      "TEMPERATURE_20": "TEMPERATURE_20",
-      "TEMPERATURE_30": "TEMPERATURE_30",
-      "TEMPERATURE_40": "TEMPERATURE_40"
-    },
-    "homewhiz__WASHER_SPIN": {
-      "SPIN_NO_SPIN": "Bez \u017ed\u00edm\u00e1n\u00ed",
-      "SPIN_RINSE_HOLD": "Pozastaven\u00ed m\u00e1ch\u00e1n\u00ed"
-    },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Vypnuto",
-      "PREWASH_ON": "Zapnuto"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "Dal\u0161\u00ed m\u00e1ch\u00e1n\u00ed vypnuto",
-      "EXTRA_RINSE_ON": "Dal\u0161\u00ed m\u00e1ch\u00e1n\u00ed zapnuto"
-    },
-    "homewhiz__WASHER_FAST_PLUS": {
-      "FAST_PLUS_OFF": "Vypnuto",
-      "FAST_PLUS_ON_FAST": "Rychl\u00fd",
-      "FAST_PLUS_ON_FAST_PLUS": "Rychl\u00fd+"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Vypnuto",
-      "HIDDEN_ANTI_CREASE_ON": "Zapnuto"
-    },
-    "homewhiz__WASHER_STEAM": {
-      "STEAM_OFF": "STEAM_OFF",
-      "STEAM_ON": "STEAM_ON"
-    },
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Vypnuto",
-      "PHR_ON": "Zapnuto"
+      "WASHER_SUBSTATE_DRYING": "Su\u0161en\u00ed",
+      "OVEN_MESSAGE_GOOD_APPETITE": "Dobrou chu\u0165!",
+      "OVEN_MESSAGE_COOKING": "Va\u0159en\u00ed",
+      "OVEN_MESSAGE_PAUSED": "Pozastaveno",
+      "OVEN_MESSAGE_WAITING": "\u010cek\u00e1n\u00ed",
+      "OVEN_MESSAGE_DEFROSTING": "Rozmrazov\u00e1n\u00ed",
+      "OPERATION_COMPLETED": "Operace je dokon\u010dena",
+      "OVEN_MESSAGE_PREHEATING": "P\u0159edeh\u0159ev",
+      "OVEN_MESSAGE_PREHEATING_COMPLETED": "P\u0159edeh\u0159\u00edv\u00e1n\u00ed dokon\u010deno",
+      "OVEN_MESSAGE_CLEANING": "\u010ci\u0161t\u011bn\u00ed",
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "\u010ci\u0161t\u011bn\u00ed dokon\u010deno"
     }
   }
 }

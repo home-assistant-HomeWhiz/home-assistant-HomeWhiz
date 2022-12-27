@@ -26,8 +26,11 @@ file_names = [
     "oven-meat-probe.json",
     "oven-multi.json",
     "oven-pirolitik.json",
-    # config fetched from the api
+    # configs fetched from the api
     "example_appliance_config.json",
+    "example_ac_config.json",
+    "example_ac_advanced_config.json",
+    "example_oven_config.json",
 ]
 
 
@@ -36,6 +39,6 @@ def test_all_configs(file_name: str):
     dirname = os.path.dirname(__file__)
     file_path = os.path.join(dirname, f"./fixtures/{file_name}")
 
-    with open(file_path, "r") as file:
+    with open(file_path) as file:
         json_content = json.load(file)
         from_dict(ApplianceConfiguration, json_content)

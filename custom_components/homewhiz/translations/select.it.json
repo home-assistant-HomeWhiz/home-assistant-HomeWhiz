@@ -1,0 +1,83 @@
+{
+  "state": {
+    "homewhiz__STATE": {
+      "DEVICE_STATE_ON": "Acceso",
+      "DEVICE_STATE_OFF": "Spento",
+      "DEVICE_STATE_RUNNING": "In funzione",
+      "DEVICE_STATE_PAUSED": "In pausa",
+      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Partenza ritardata attiva"
+    },
+    "homewhiz__WASHER_PROGRAM": {
+      "PROGRAM_COTTONS": "Cotone",
+      "PROGRAM_ECO_40_60": "Eco 40-60",
+      "PROGRAM_SYNTHETICS": "Sintetici",
+      "PROGRAM_MINI_MINI14": "Xpress",
+      "PROGRAM_WOOL_HANDWASH": "Woollens",
+      "PROGRAM_SPIN_PUMP": "Spin+Drain",
+      "PROGRAM_RINSING": "Risciacquo",
+      "PROGRAM_DARKWASH": "Colori scuri (jeans)",
+      "PROGRAM_OUTDOOR_SPORTS_GORETEX": "Sport",
+      "PROGRAM_STAIN": "Pronto Stiro Delicati",
+      "PROGRAM_HYGEINE": "Hygiene+",
+      "PROGRAM_DUVET": "Piumone/piumino",
+      "PROGRAM_SHIRTS": "Camicie",
+      "PROGRAM_DRUM_CLEAN": "Pulizia cestello",
+      "PROGRAM_CURTAIN": "Tende",
+      "PROGRAM_LINGERIE": "Lingerie",
+      "PROGRAM_SOFT_TOYS": "Peluche",
+      "PROGRAM_TOWEL": "Asciugamano"
+    },
+    "homewhiz__WASHER_TEMPERATURE": {
+      "TEMPERATURE_COLD_WASH": "Lavaggio a freddo"
+    },
+    "homewhiz__WASHER_SPIN": {
+      "SPIN_NO_SPIN": "Nessuna centrifuga",
+      "SPIN_RINSE_HOLD": "Risciacquo aggiuntivo"
+    },
+    "homewhiz__WASHER_PREWASH": {
+      "PREWASH_OFF": "Spento",
+      "PREWASH_ON": "Acceso"
+    },
+    "homewhiz__WASHER_EXTRARINSE": {
+      "EXTRA_RINSE_OFF": "Extra risciacquo disattivato",
+      "EXTRA_RINSE_ON": "Extra risciacquo attivo"
+    },
+    "homewhiz__WASHER_FAST_PLUS": {
+      "FAST_PLUS_OFF": "Fast+ attivo",
+      "FAST_PLUS_ON_FAST": "Fast",
+      "FAST_PLUS_ON_FAST_PLUS": "Fast+"
+    },
+    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
+      "HIDDEN_ANTI_CREASE_OFF": "Spento",
+      "HIDDEN_ANTI_CREASE_ON": "Acceso"
+    },
+    "homewhiz__WASHER_STEAM": {},
+    "homewhiz__WASHER_PHR": {
+      "PHR_OFF": "Spento",
+      "PHR_ON": "Acceso"
+    },
+    "homewhiz__OVEN_PROGRAM": {
+      "PROGRAM_STATIC": "Statico",
+      "PROGRAM_STATIC_FAN": "Statico + Ventilato",
+      "PROGRAM_FAN_HEATING": "Ventilato",
+      "PROGRAM_MULTI_COOKING": "Cottura multi (3D)",
+      "PROGRAM_FAN_HEAT_BOTTOM": "Ventilato + Resistenza inferiore",
+      "PROGRAM_ECO_GRILL": "Eco Grill",
+      "PROGRAM_FULL_GRILL": "Grill completo",
+      "PROGRAM_FULL_GRILL_FAN": "Grill completo + Ventilato",
+      "PROGRAM_BOTTOM_HEATING": "Resistenza inferiore",
+      "PROGRAM_DEFROST": "Sbrinamento",
+      "PROGRAM_WARM_KEEPING": "Tieni al caldo",
+      "PROGRAM_ECO_FAN_HEATING": "Ventilato eco",
+      "PROGRAM_STEAM_CLEANING": "Pulitore A Vapore",
+      "PROGRAM_ECO_PYRO": "Pulizia Eco",
+      "PROGRAM_PYRO": "Pulizia"
+    },
+    "homewhiz__OVEN_TEMPERATURE": {},
+    "homewhiz__OVEN_BOOSTER": {
+      "BOOSTER_OFF": "Spento",
+      "BOOSTER_ON": "Acceso"
+    },
+    "homewhiz__OVEN_SKIP_PREHEATING": {}
+  }
+}

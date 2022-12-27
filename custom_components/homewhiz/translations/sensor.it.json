@@ -1,12 +1,5 @@
 {
   "state": {
-    "homewhiz__STATE": {
-      "DEVICE_STATE_ON": "Acceso",
-      "DEVICE_STATE_OFF": "Spento",
-      "DEVICE_STATE_RUNNING": "In funzione",
-      "DEVICE_STATE_PAUSED": "In pausa",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Partenza ritardata attiva"
-    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Lavaggio",
       "WASHER_SUBSTATE_SPIN": "Centrifuga",
@@ -25,42 +18,17 @@
       "WASHER_SUBSTATE_ADD_LAUNDRY": "Puoi aggiungere bucato",
       "WASHER_SUBSTATE_RINSE_HOLD": "Risciacquo aggiuntivo attivo; seleziona velocit\u00e0 centrifuga",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Antipiega remoto in corso.",
-      "WASHER_SUBSTATE_DRYING": "Asciugatura"
-    },
-    "homewhiz__WASHER_TEMPERATURE": {
-      "TEMPERATURE_COLD_WASH": "Lavaggio a freddo",
-      "TEMPERATURE_20": "TEMPERATURE_20",
-      "TEMPERATURE_30": "TEMPERATURE_30",
-      "TEMPERATURE_40": "TEMPERATURE_40"
-    },
-    "homewhiz__WASHER_SPIN": {
-      "SPIN_NO_SPIN": "Nessuna centrifuga",
-      "SPIN_RINSE_HOLD": "Risciacquo aggiuntivo"
-    },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Spento",
-      "PREWASH_ON": "Acceso"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "Extra risciacquo disattivato",
-      "EXTRA_RINSE_ON": "Extra risciacquo attivo"
-    },
-    "homewhiz__WASHER_FAST_PLUS": {
-      "FAST_PLUS_OFF": "Fast+ attivo",
-      "FAST_PLUS_ON_FAST": "Fast",
-      "FAST_PLUS_ON_FAST_PLUS": "Fast+"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Spento",
-      "HIDDEN_ANTI_CREASE_ON": "Acceso"
-    },
-    "homewhiz__WASHER_STEAM": {
-      "STEAM_OFF": "STEAM_OFF",
-      "STEAM_ON": "STEAM_ON"
-    },
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Spento",
-      "PHR_ON": "Acceso"
+      "WASHER_SUBSTATE_DRYING": "Asciugatura",
+      "OVEN_MESSAGE_GOOD_APPETITE": "Buon appetito",
+      "OVEN_MESSAGE_COOKING": "Cottura",
+      "OVEN_MESSAGE_PAUSED": "In pausa",
+      "OVEN_MESSAGE_WAITING": "Attesa",
+      "OVEN_MESSAGE_DEFROSTING": "Sbrinamento",
+      "OPERATION_COMPLETED": "Operazione eseguita",
+      "OVEN_MESSAGE_PREHEATING": "Preriscaldamento",
+      "OVEN_MESSAGE_PREHEATING_COMPLETED": "Preriscaldamento completato",
+      "OVEN_MESSAGE_CLEANING": "Pulizia",
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Pulizia completata"
     }
   }
 }

@@ -1,12 +1,5 @@
 {
   "state": {
-    "homewhiz__STATE": {
-      "DEVICE_STATE_ON": "A\u00e7\u0131k",
-      "DEVICE_STATE_OFF": "Kapal\u0131",
-      "DEVICE_STATE_RUNNING": "\u00c7al\u0131\u015f\u0131yor",
-      "DEVICE_STATE_PAUSED": "Duraklat\u0131ld\u0131",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Zaman Erteleme Aktif"
-    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Y\u0131kama",
       "WASHER_SUBSTATE_SPIN": "S\u0131kma",
@@ -25,42 +18,17 @@
       "WASHER_SUBSTATE_ADD_LAUNDRY": "\u00c7ama\u015f\u0131r koyabilirsiniz",
       "WASHER_SUBSTATE_RINSE_HOLD": "Suda bekletme devrede; devir h\u0131z\u0131 se\u00e7iniz",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Ak\u0131ll\u0131 k\u0131r\u0131\u015f\u0131k azaltma \u00e7al\u0131\u015f\u0131yor",
-      "WASHER_SUBSTATE_DRYING": "Kurutma"
-    },
-    "homewhiz__WASHER_TEMPERATURE": {
-      "TEMPERATURE_COLD_WASH": "So\u011fuk Y\u0131kama",
-      "TEMPERATURE_20": "20 \u00b0C",
-      "TEMPERATURE_30": "30 \u00b0C",
-      "TEMPERATURE_40": "40 \u00b0C"
-    },
-    "homewhiz__WASHER_SPIN": {
-      "SPIN_NO_SPIN": "S\u0131kma Yok",
-      "SPIN_RINSE_HOLD": "Suda B\u0131rakma"
-    },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Kapal\u0131",
-      "PREWASH_ON": "A\u00e7\u0131k"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "\u0130lave Durulama Pasif",
-      "EXTRA_RINSE_ON": "\u0130lave Durulama Aktif"
-    },
-    "homewhiz__WASHER_FAST_PLUS": {
-      "FAST_PLUS_OFF": "Kapal\u0131",
-      "FAST_PLUS_ON_FAST": "H\u0131zl\u0131",
-      "FAST_PLUS_ON_FAST_PLUS": "\u00c7ok H\u0131zl\u0131"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Kapal\u0131",
-      "HIDDEN_ANTI_CREASE_ON": "A\u00e7\u0131k"
-    },
-    "homewhiz__WASHER_STEAM": {
-      "STEAM_OFF": "STEAM_OFF",
-      "STEAM_ON": "STEAM_ON"
-    },
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Kapal\u0131",
-      "PHR_ON": "A\u00e7\u0131k"
+      "WASHER_SUBSTATE_DRYING": "Kurutma",
+      "OVEN_MESSAGE_GOOD_APPETITE": "Afiyet Olsun",
+      "OVEN_MESSAGE_COOKING": "Pi\u015firiliyor",
+      "OVEN_MESSAGE_PAUSED": "Durduruldu",
+      "OVEN_MESSAGE_WAITING": "Bekliyor",
+      "OVEN_MESSAGE_DEFROSTING": "Buz \u00c7\u00f6zme",
+      "OPERATION_COMPLETED": "\u0130\u015flem tamamland\u0131",
+      "OVEN_MESSAGE_PREHEATING": "\u00d6n Is\u0131tma",
+      "OVEN_MESSAGE_PREHEATING_COMPLETED": "\u00d6n \u0131s\u0131tma tamamland\u0131",
+      "OVEN_MESSAGE_CLEANING": "Temizleniyor",
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Temizlenme bitti"
     }
   }
 }

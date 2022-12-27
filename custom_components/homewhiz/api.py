@@ -5,13 +5,13 @@ import json
 import logging
 from dataclasses import dataclass
 from functools import reduce
-from typing import List
+from typing import Optional
 
 import aiohttp
 from aiohttp import ContentTypeError
 from dacite import from_dict
 
-from custom_components.homewhiz.appliance_config import ApplianceConfiguration
+from .appliance_config import ApplianceConfiguration
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 ALGORITHM = "AWS4-HMAC-SHA256"
@@ -29,7 +29,6 @@ class LoginError(Exception):
 
 @dataclass
 class IdExchangeResponse:
-    m: str
     appId: str
 
 
@@ -38,6 +37,7 @@ class LoginResponse:
     accessKey: str
     secretKey: str
     sessionToken: str
+    expiration: int
 
 
 @dataclass
@@ -50,7 +50,7 @@ class ContentsDescription:
 
 @dataclass
 class ContentsIndexResponse:
-    results: List[ContentsDescription]
+    results: list[ContentsDescription]
 
 
 @dataclass
@@ -60,7 +60,7 @@ class Home:
 
 @dataclass
 class MyHomesResponse:
-    data: List[Home]
+    data: list[Home]
 
 
 @dataclass
@@ -73,12 +73,16 @@ class ApplianceInfo:
     platformType: str
     applianceSerialNumber: str
     name: str
-    hsmId: str
+    hsmId: Optional[str]
+    connectivity: str = "BT"
+
+    def is_bt(self):
+        return self == "BT" or self == "BASICBT"
 
 
 @dataclass
 class HomeResponseData:
-    appliances: List[ApplianceInfo]
+    appliances: list[ApplianceInfo]
 
 
 @dataclass
@@ -158,7 +162,7 @@ async def make_api_get_request(
         + f"x-amz-security-token:{credentials.sessionToken}\n"
     )
     signed_headers = "host;x-amz-date;x-amz-security-token"
-    payload_hash = hashlib.sha256("".encode("utf-8")).hexdigest()
+    payload_hash = hashlib.sha256(b"").hexdigest()
 
     canonical_request = (
         f"GET\n"
@@ -170,7 +174,7 @@ async def make_api_get_request(
     )
 
     _LOGGER.debug(
-        "Actual canonical request: {0}".format(canonical_request.replace("\n", "\\n"))
+        "Actual canonical request: {}".format(canonical_request.replace("\n", "\\n"))
     )
 
     credential_scope = f"{date_stamp}/{REGION}/{SERVICE}/aws4_request"
@@ -214,54 +218,80 @@ async def make_api_get_request(
                 raise RequestError(contents)
 
 
-async def fetch_appliance_contents(
-    credentials: LoginResponse, app_id: str
-) -> ApplianceContents:
-    contents_index_response = await make_api_get_request(
+async def fetch_contents_index(
+    credentials: LoginResponse, app_id: str, language="en-GB"
+):
+    response = await make_api_get_request(
         host="api.arcelikiot.com",
         canonical_uri="/procam/contents",
         canonical_querystring=(
             f"applianceId={app_id}&"
             f"ctype=CONFIGURATION%2CLOCALIZATION&"
-            f"lang=en-GB&testMode=true"
+            f"lang={language}&"
+            f"testMode=true"
         ),
         credentials=credentials,
     )
-    contentsIndex = from_dict(ContentsIndexResponse, contents_index_response["data"])
-    config_contents = [
-        content for content in contentsIndex.results if content.ctype == "CONFIGURATION"
-    ]
-    localization_contents = [
-        content for content in contentsIndex.results if content.ctype == "LOCALIZATION"
-    ]
-    config = await make_get_contents_request(config_contents[0])
+    return from_dict(ContentsIndexResponse, response["data"])
 
+
+async def fetch_base_contents_index(credentials: LoginResponse, language: str):
+    response = await make_api_get_request(
+        host="api.arcelikiot.com",
+        canonical_uri="/procam/contents/subtype",
+        canonical_querystring=(
+            f"ctype=LOCALIZATION&"
+            f"lang={language}&"
+            f"subtype=NEW-HOMEWHIZ&"
+            f"testMode=false"
+        ),
+        credentials=credentials,
+    )
+    return from_dict(ContentsIndexResponse, response["data"])
+
+
+async def fetch_localizations(contents_index: ContentsIndexResponse):
+    localization_contents = [
+        content for content in contents_index.results if content.ctype == "LOCALIZATION"
+    ]
     localizations = [
         (await make_get_contents_request(localization))["localizations"]
         for localization in localization_contents
     ]
-    localization = reduce(lambda a, b: a | b, localizations)
+    return reduce(lambda a, b: a | b, localizations)
+
+
+async def fetch_appliance_contents(
+    credentials: LoginResponse, app_id: str, language="en-GB"
+) -> ApplianceContents:
+    contents_index = await fetch_contents_index(credentials, app_id, language)
+    config_contents = [
+        content
+        for content in contents_index.results
+        if content.ctype == "CONFIGURATION"
+    ]
+
+    config = await make_get_contents_request(config_contents[0])
+    localization = await fetch_localizations(contents_index)
 
     return ApplianceContents(
         config=from_dict(ApplianceConfiguration, config), localization=localization
     )
 
 
-async def fetch_appliance_info(credentials: LoginResponse, id: str):
+async def fetch_appliance_infos(credentials: LoginResponse):
     resp = await make_api_get_request(
         "smarthome.arcelikiot.com",
         credentials,
         canonical_uri="/my-homes",
     )
     homes = from_dict(MyHomesResponse, resp).data
+    appliances = []
     for home in homes:
         home_resp = await make_api_get_request(
             "smarthome.arcelikiot.com",
             credentials,
             canonical_uri=f"/my-homes/{home.id}",
         )
-        appliances = from_dict(HomeResponseData, home_resp["data"]).appliances
-        for appliance in appliances:
-            if appliance.applianceId == id:
-                return appliance
-    return None
+        appliances.extend(from_dict(HomeResponseData, home_resp["data"]).appliances)
+    return appliances

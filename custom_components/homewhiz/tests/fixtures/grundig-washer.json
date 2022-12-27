@@ -718,7 +718,7 @@
           "upperLimit": 90,
           "step": 10,
           "factor": 1,
-          "unit": "°C"
+          "unit": "\u00b0C"
         }
       ]
     },

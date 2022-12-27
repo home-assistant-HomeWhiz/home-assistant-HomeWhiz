@@ -1,12 +1,5 @@
 {
   "state": {
-    "homewhiz__STATE": {
-      "DEVICE_STATE_ON": "P\u00e5",
-      "DEVICE_STATE_OFF": "Av",
-      "DEVICE_STATE_RUNNING": "Kj\u00f8rer",
-      "DEVICE_STATE_PAUSED": "P\u00e5 pause",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Forsinkelsen er aktivert"
-    },
     "homewhiz__SUB_STATE": {
       "WASHER_SUBSTATE_WASHING": "Vask",
       "WASHER_SUBSTATE_SPIN": "Sentrifugering",
@@ -25,42 +18,17 @@
       "WASHER_SUBSTATE_ADD_LAUNDRY": "Legg inn vasken",
       "WASHER_SUBSTATE_RINSE_HOLD": "Skyllestopp er aktivert, velg sentrifugehastighet",
       "WASHER_SUBSTATE_REMOTE_ANTICREASE": "Fjernstyrt antikr\u00f8ll p\u00e5g\u00e5r.",
-      "WASHER_SUBSTATE_DRYING": "T\u00f8rker"
-    },
-    "homewhiz__WASHER_TEMPERATURE": {
-      "TEMPERATURE_COLD_WASH": "Kaldvask",
-      "TEMPERATURE_20": "20\u00a0\u00b0C",
-      "TEMPERATURE_30": "30\u00a0\u00b0C",
-      "TEMPERATURE_40": "40\u00a0\u00b0C"
-    },
-    "homewhiz__WASHER_SPIN": {
-      "SPIN_NO_SPIN": "Uten sentrifugering",
-      "SPIN_RINSE_HOLD": "Skyllestopp"
-    },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Av",
-      "PREWASH_ON": "P\u00e5"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "Ekstra skylling av",
-      "EXTRA_RINSE_ON": "Ekstra skylling p\u00e5"
-    },
-    "homewhiz__WASHER_FAST_PLUS": {
-      "FAST_PLUS_OFF": "Rask+ av",
-      "FAST_PLUS_ON_FAST": "Hurtig",
-      "FAST_PLUS_ON_FAST_PLUS": "Hurtig+"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Av",
-      "HIDDEN_ANTI_CREASE_ON": "P\u00e5"
-    },
-    "homewhiz__WASHER_STEAM": {
-      "STEAM_OFF": "STEAM_OFF",
-      "STEAM_ON": "STEAM_ON"
-    },
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Av",
-      "PHR_ON": "P\u00e5"
+      "WASHER_SUBSTATE_DRYING": "T\u00f8rker",
+      "OVEN_MESSAGE_GOOD_APPETITE": "God appetitt!",
+      "OVEN_MESSAGE_COOKING": "Steker",
+      "OVEN_MESSAGE_PAUSED": "P\u00e5 pause",
+      "OVEN_MESSAGE_WAITING": "Venter",
+      "OVEN_MESSAGE_DEFROSTING": "Opptining",
+      "OPERATION_COMPLETED": "Operasjonen er ferdig",
+      "OVEN_MESSAGE_PREHEATING": "Forvarming",
+      "OVEN_MESSAGE_PREHEATING_COMPLETED": "Forvarming fullf\u00f8rt",
+      "OVEN_MESSAGE_CLEANING": "Rengj\u00f8r",
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Rengj\u00f8ringen er ferdig"
     }
   }
 }

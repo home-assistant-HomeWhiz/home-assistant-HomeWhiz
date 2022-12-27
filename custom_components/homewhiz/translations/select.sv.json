@@ -1,0 +1,87 @@
+{
+  "state": {
+    "homewhiz__STATE": {
+      "DEVICE_STATE_ON": "P\u00e5",
+      "DEVICE_STATE_OFF": "Av",
+      "DEVICE_STATE_RUNNING": "K\u00f6r",
+      "DEVICE_STATE_PAUSED": "Pausad",
+      "DEVICE_STATE_TIME_DELAY_ACTIVE": "F\u00f6rdr\u00f6jd tid \u00e4r aktiverat"
+    },
+    "homewhiz__WASHER_PROGRAM": {
+      "PROGRAM_COTTONS": "Bomull",
+      "PROGRAM_ECO_40_60": "Eco 40-60",
+      "PROGRAM_SYNTHETICS": "Syntet",
+      "PROGRAM_MINI_MINI14": "Xpress",
+      "PROGRAM_WOOL_HANDWASH": "Woollens",
+      "PROGRAM_SPIN_PUMP": "Spin+Drain",
+      "PROGRAM_RINSING": "Sk\u00f6ljning",
+      "PROGRAM_DARKWASH": "M\u00f6rk (jeans)",
+      "PROGRAM_OUTDOOR_SPORTS_GORETEX": "Sport",
+      "PROGRAM_STAIN": "Fl\u00e4ckbehandling",
+      "PROGRAM_HYGEINE": "Hygien+",
+      "PROGRAM_DUVET": "T\u00e4cken",
+      "PROGRAM_SHIRTS": "Skjortor/blusar",
+      "PROGRAM_DRUM_CLEAN": "Reng\u00f6ring trumma",
+      "PROGRAM_MIX": "Mixa",
+      "PROGRAM_CURTAIN": "Gardiner",
+      "PROGRAM_LINGERIE": "Underkl\u00e4der",
+      "PROGRAM_SOFT_TOYS": "Mjukisdjur",
+      "PROGRAM_TOWEL": "Handduk"
+    },
+    "homewhiz__WASHER_TEMPERATURE": {
+      "TEMPERATURE_COLD_WASH": "Kallt vatten",
+      "TEMPERATURE_20": "20 \u00b0C",
+      "TEMPERATURE_30": "30 \u00b0C",
+      "TEMPERATURE_40": "40 \u00b0C"
+    },
+    "homewhiz__WASHER_SPIN": {
+      "SPIN_NO_SPIN": "Ingen centrifugering",
+      "SPIN_RINSE_HOLD": "Sk\u00f6ljstopp"
+    },
+    "homewhiz__WASHER_PREWASH": {
+      "PREWASH_OFF": "Av",
+      "PREWASH_ON": "P\u00e5"
+    },
+    "homewhiz__WASHER_EXTRARINSE": {
+      "EXTRA_RINSE_OFF": "Extra sk\u00f6ljning av",
+      "EXTRA_RINSE_ON": "Extra sk\u00f6ljning p\u00e5"
+    },
+    "homewhiz__WASHER_FAST_PLUS": {
+      "FAST_PLUS_OFF": "Snabb+ av",
+      "FAST_PLUS_ON_FAST": "Snabb",
+      "FAST_PLUS_ON_FAST_PLUS": "Snabb+"
+    },
+    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
+      "HIDDEN_ANTI_CREASE_OFF": "Av",
+      "HIDDEN_ANTI_CREASE_ON": "P\u00e5"
+    },
+    "homewhiz__WASHER_STEAM": {},
+    "homewhiz__WASHER_PHR": {
+      "PHR_OFF": "Av",
+      "PHR_ON": "P\u00e5"
+    },
+    "homewhiz__OVEN_PROGRAM": {
+      "PROGRAM_STATIC": "Statisk",
+      "PROGRAM_STATIC_FAN": "Statisk + varmluft",
+      "PROGRAM_FAN_HEATING": "Varmluft",
+      "PROGRAM_MULTI_COOKING": "Multitillagning (3D)",
+      "PROGRAM_FAN_HEAT_BOTTOM": "Varmluft + underv\u00e4rme",
+      "PROGRAM_ECO_GRILL": "Ekogrill",
+      "PROGRAM_FULL_GRILL": "H\u00f6gsta grill",
+      "PROGRAM_FULL_GRILL_FAN": "H\u00f6gsta grill + varmluft",
+      "PROGRAM_BOTTOM_HEATING": "Underv\u00e4rme",
+      "PROGRAM_DEFROST": "Avfrostning",
+      "PROGRAM_WARM_KEEPING": "H\u00e5ll varmt",
+      "PROGRAM_ECO_FAN_HEATING": "Ekovarmluft",
+      "PROGRAM_STEAM_CLEANING": "\u00c5ngreng\u00f6ring",
+      "PROGRAM_ECO_PYRO": "Ekoreng\u00f6ring",
+      "PROGRAM_PYRO": "Reng\u00f6ring"
+    },
+    "homewhiz__OVEN_TEMPERATURE": {},
+    "homewhiz__OVEN_BOOSTER": {
+      "BOOSTER_OFF": "Av",
+      "BOOSTER_ON": "P\u00e5"
+    },
+    "homewhiz__OVEN_SKIP_PREHEATING": {}
+  }
+}

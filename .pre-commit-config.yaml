@@ -1,0 +1,50 @@
+repos:
+- repo: https://github.com/asottile/pyupgrade
+  rev: v3.3.1
+  hooks:
+  - id: pyupgrade
+    args: [--py39-plus]
+- repo: https://github.com/PyCQA/autoflake
+  rev: v2.0.0
+  hooks:
+  - id: autoflake
+    args:
+    - --in-place
+    - --remove-all-unused-imports
+- repo: https://github.com/PyCQA/isort
+  rev: 5.10.1
+  hooks:
+  - id: isort
+    args: [--profile, black, --filter-files]
+- repo: https://github.com/psf/black
+  rev: 22.12.0
+  hooks:
+  - id: black
+    args:
+    - --quiet
+- repo: https://github.com/codespell-project/codespell
+  rev: v2.2.2
+  hooks:
+  - id: codespell
+    args:
+    - --ignore-words-list=additionals,alot,ba,bre,bund,datas,dof,dur,ether,farenheit,falsy,fo,haa,hass,hist,iam,iff,iif,incomfort,ines,ist,lightsensor,mut,nam,nd,pres,pullrequests,referer,resset,rime,ser,serie,sur,te,technik,ue,uint,unsecure,visability,wan,wanna,withing,zar
+    - --skip="./.*,*.csv,*.json"
+    - --quiet-level=2
+    exclude_types: [csv, json]
+- repo: https://github.com/PyCQA/flake8
+  rev: 6.0.0
+  hooks:
+  - id: flake8
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+  hooks:
+  - id: check-json
+  - id: pretty-format-json
+    args:
+    - --autofix
+    - --no-sort-keys
+- repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+  rev: v2.5.0
+  hooks:
+  - id: pretty-format-yaml
+    args: [--autofix, --indent, '2']

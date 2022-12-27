@@ -1,5 +1,5 @@
 # Develop on linux
-This is a quick tutorial on how to setup your development environnement from scratch on any Debian
+This is a quick tutorial on how to setup your development environment from scratch on any Debian
 based Linux distro and get started. While this is based on VSCode, you can apply these steps to any
 other IDE.
 
@@ -8,7 +8,7 @@ other IDE.
 2. Get your system ready
 3. Install VSCode
 4. Setup you own git repository
-5. Configure your developement environnement inside VSCode
+5. Configure your development environment inside VSCode
 6. Create and run tests
 
 ## Create a folder for you to work in
@@ -28,8 +28,8 @@ We need to make sure the package list is up to date
 go to https://code.visualstudio.com/Download and download your package (.deb)
 then follow the instructions at https://code.visualstudio.com/docs/setup/linux
 
-You can now lauch VSCode
-Follow the wizzard and, at the end, select the folder you created before. You can answer 'yes'
+You can now launch VSCode
+Follow the wizard and, at the end, select the folder you created before. You can answer 'yes'
 "Do you trust the authors of the files in this folder?".
 You will be presented with a Welcome / Start screen, minimize the window for now.
 
@@ -40,7 +40,7 @@ You will be presented with a Welcome / Start screen, minimize the window for now
 4. Fill the required fields and follow the instructions. You now have your own copy of the code to work with
 5. Copy the URL (everything left of the '?' if present) eg: https://github.com/YOUR_NAME/home-assistant-HomeWhiz
 
-## Configure your developement environnement inside VSCode
+## Configure your development environment inside VSCode
 1. Return to VSCode and click on "Clone Git Repository" and paste the URL
 2. Select your 'dev' folder in the dialog box and click "Select Repository Location"
 3. At the prompt "Would you like to open ..." select Open. 
@@ -58,14 +58,14 @@ of your project
 5. Install the required python dependencies
 
 `python3 -m pip install -r requirement_dev.txt` (using python3 -m instead of pip ensures that the same interpreter is used
-in the virtual environment should you have more thant one version installed)
+in the virtual environment should you have more than one version installed)
 
 `python3 -m pip install -r requirement_test.txt`
 
 If everything works you should be set 
 
 6. In VSCode click on the 4 Squares icon on the left of the screen (`ctrl+shift+x`) to open the Marketplace
-7. Seach for "Black", and select "Format Python code with black" in the results and install it. You'll be 
+7. Search for "Black", and select "Format Python code with black" in the results and install it. You'll be 
 able to run it by right-clicking your file and select "Run Black"
 
 You should now have a fully functional IDE.

@@ -1,0 +1,164 @@
+{
+  "program": {
+    "strKey": "AIR_CONDITIONER_PROGRAM",
+    "wifiArrayIndex": 34,
+    "values": [
+      {
+        "strKey": "AIR_CONDITIONER_MODE_COOLING",
+        "wifiArrayValue": 0,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "AIR_CONDITIONER_TARGET_TEMPERATURE",
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "strKey": "AIR_CONDITIONER_MODE_AUTO",
+        "wifiArrayValue": 6,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "AIR_CONDITIONER_TARGET_TEMPERATURE",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "AIR_CONDITIONER_MODE_DRY",
+        "wifiArrayValue": 1,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "AIR_CONDITIONER_TARGET_TEMPERATURE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "AIR_CONDITIONER_WIND_STRENGTH",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "AIR_CONDITIONER_MODE_HEATING",
+        "wifiArrayValue": 4,
+        "subProgramOverrides": []
+      },
+      {
+        "strKey": "AIR_CONDITIONER_MODE_FAN",
+        "wifiArrayValue": 2,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "AIR_CONDITIONER_TARGET_TEMPERATURE",
+            "isDisabled": 1
+          }
+        ]
+      }
+    ]
+  },
+  "subPrograms": [
+    {
+      "strKey": "AIR_CONDITIONER_TARGET_TEMPERATURE",
+      "wifiArrayIndex": 35,
+      "isSwitch": 0,
+      "boundedValues": [
+        {
+          "strKey": "AIR_CONDITIONER_TARGET_TEMPERATURE",
+          "lowerLimit": 17,
+          "upperLimit": 30,
+          "step": 1,
+          "factor": 1,
+          "unit": ""
+        }
+      ]
+    },
+    {
+      "strKey": "AIR_CONDITIONER_WIND_STRENGTH",
+      "wifiArrayIndex": 36,
+      "isSwitch": 0,
+      "enumValues": [
+        {
+          "strKey": "WIND_STRENGTH_LOW",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "WIND_STRENGTH_MID",
+          "wifiArrayValue": 1
+        },
+        {
+          "strKey": "WIND_STRENGTH_HIGH",
+          "wifiArrayValue": 2
+        },
+        {
+          "strKey": "WIND_STRENGTH_AUTO",
+          "wifiArrayValue": 3
+        }
+      ]
+    }
+  ],
+  "deviceStates": {
+    "wifiArrayReadIndex": 43,
+    "wifiArrayWriteIndex": 43,
+    "states": [
+      {
+        "strKey": "DEVICE_STATE_ON",
+        "wifiArrayValue": 10,
+        "allowedTransitions": [
+          "DEVICE_STATE_OFF"
+        ],
+        "notificationInfo": {
+          "strKey": "DEVICE_STATE_ON_NOTIFICATION",
+          "priority": "LOW"
+        }
+      },
+      {
+        "strKey": "DEVICE_STATE_OFF",
+        "wifiArrayValue": 20,
+        "allowedTransitions": [
+          "DEVICE_STATE_ON"
+        ],
+        "notificationInfo": {
+          "strKey": "DEVICE_STATE_OFF_NOTIFICATION",
+          "priority": "LOW"
+        }
+      }
+    ]
+  },
+  "monitorings": [
+    {
+      "strKey": "AIR_CONDITIONER_ROOM_TEMPERATURE",
+      "wifiArrayIndex": 40,
+      "isSwitch": 0,
+      "boundedValues": [
+        {
+          "strKey": "",
+          "lowerLimit": 0,
+          "upperLimit": 90,
+          "step": 1,
+          "factor": 1,
+          "unit": "\u00b0C"
+        }
+      ]
+    }
+  ],
+  "deviceWarnings": {
+    "wifiArrayReadIndex": 56,
+    "warnings": []
+  },
+  "autoController": {
+    "hasAutoController": true
+  }
+}
