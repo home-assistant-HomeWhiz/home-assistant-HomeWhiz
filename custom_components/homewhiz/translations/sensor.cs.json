@@ -28,7 +28,17 @@
       "OVEN_MESSAGE_PREHEATING": "P\u0159edeh\u0159ev",
       "OVEN_MESSAGE_PREHEATING_COMPLETED": "P\u0159edeh\u0159\u00edv\u00e1n\u00ed dokon\u010deno",
       "OVEN_MESSAGE_CLEANING": "\u010ci\u0161t\u011bn\u00ed",
-      "OVEN_MESSAGE_CLEANING_COMPLETED": "\u010ci\u0161t\u011bn\u00ed dokon\u010deno"
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "\u010ci\u0161t\u011bn\u00ed dokon\u010deno",
+      "DISHWASHER_MESSAGE_TIME_DELAY_STARTED": "\u010cas ukon\u010den\u00ed nastaven",
+      "DISHWASHER_MESSAGE_PAUSED": "Program pozastaven",
+      "DISHWASHER_MESSAGE_PROGRAM_FINISHED": "Program je dokon\u010den",
+      "DISHWASHER_MESSAGE_PROGRAM_SANITIZED": "Program je dokon\u010den a sanitized",
+      "DISHWASHER_MESSAGE_CANCELLING": "Zru\u0161en\u00ed...",
+      "DISHWASHER_MESSAGE_TIME_DELAY_CANCELLED": "Prodleva zru\u0161ena",
+      "DISHWASHER_MESSAGE_PROGRAM_STARTED": "Program spu\u0161t\u011bn",
+      "DISHWASHER_MESSAGE_WASHING": "Pran\u00ed",
+      "DISHWASHER_MESSAGE_RINSING": "M\u00e1ch\u00e1n\u00ed",
+      "DISHWASHER_MESSAGE_DRYING": "Su\u0161en\u00ed"
     }
   }
 }

@@ -1,0 +1,778 @@
+{
+  "remoteControl": {
+    "wifiArrayReadIndex": 32,
+    "wifiArrayValue": 170
+  },
+  "program": {
+    "strKey": "PROGRAM",
+    "wifiArrayIndex": 37,
+    "values": [
+      {
+        "strKey": "PROGRAM_AUTO",
+        "wifiArrayValue": 0,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "DISHWASHER_TRAYWASH",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "DISHWASHER_FAST+",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "DISHWASHER_HALFLOAD",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "PROGRAM_MIX_WASH_+",
+        "wifiArrayValue": 1
+      },
+      {
+        "strKey": "PROGRAM_INTENSIVE_70",
+        "wifiArrayValue": 2
+      },
+      {
+        "strKey": "PROGRAM_ECO_50",
+        "wifiArrayValue": 3
+      },
+      {
+        "strKey": "PROGRAM_GLASSCARE",
+        "wifiArrayValue": 4,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "DISHWASHER_TRAYWASH",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "PROGRAM_NEW58MIN",
+        "wifiArrayValue": 5,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "DISHWASHER_TRAYWASH",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "DISHWASHER_FAST+",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "DISHWASHER_HALFLOAD",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "PROGRAM_30MIN",
+        "wifiArrayValue": 6,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "DISHWASHER_TRAYWASH",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "DISHWASHER_FAST+",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "DISHWASHER_EXTRARINSE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "DISHWASHER_HALFLOAD",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "PROGRAM_PREWASH",
+        "wifiArrayValue": 7,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "DISHWASHER_TRAYWASH",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "DISHWASHER_FAST+",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "DISHWASHER_STEAMGLOSS",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "DISHWASHER_EXTRARINSE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "DISHWASHER_HALFLOAD",
+            "isDisabled": 1
+          }
+        ]
+      },
+      {
+        "strKey": "PROGRAM_HYGIENE",
+        "wifiArrayValue": 8,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "DISHWASHER_TRAYWASH",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "DISHWASHER_FAST+",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "DISHWASHER_EXTRARINSE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "DISHWASHER_HALFLOAD",
+            "isDisabled": 1
+          }
+        ],
+        "downloadableCycle": 1
+      },
+      {
+        "strKey": "PROGRAM_DAILY",
+        "wifiArrayValue": 9,
+        "downloadableCycle": 1
+      },
+      {
+        "strKey": "PROGRAM_SILENT",
+        "wifiArrayValue": 10,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "DISHWASHER_TRAYWASH",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "DISHWASHER_FAST+",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "DISHWASHER_HALFLOAD",
+            "isDisabled": 1
+          }
+        ],
+        "downloadableCycle": 1
+      },
+      {
+        "strKey": "PROGRAM_MAKINE_TEMIZLEME",
+        "wifiArrayValue": 11,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "DISHWASHER_TRAYWASH",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "DISHWASHER_FAST+",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "DISHWASHER_STEAMGLOSS",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "DISHWASHER_EXTRARINSE",
+            "isDisabled": 1
+          },
+          {
+            "strKeyRef": "DISHWASHER_HALFLOAD",
+            "isDisabled": 1
+          }
+        ],
+        "downloadableCycle": 1
+      }
+    ]
+  },
+  "subPrograms": [
+    {
+      "strKey": "DISHWASHER_TRAYWASH",
+      "wifiArrayIndex": 38,
+      "isSwitch": 1,
+      "enumValues": [
+        {
+          "strKey": "TRAY_WASH_OFF",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "TRAY_WASH_ON",
+          "wifiArrayValue": 1
+        }
+      ],
+      "excludesSubprograms": []
+    },
+    {
+      "strKey": "DISHWASHER_FAST+",
+      "wifiArrayIndex": 39,
+      "isSwitch": 1,
+      "enumValues": [
+        {
+          "strKey": "FAST+_OFF",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "FAST+_ON",
+          "wifiArrayValue": 1
+        }
+      ],
+      "excludesSubprograms": []
+    },
+    {
+      "strKey": "DISHWASHER_STEAMGLOSS",
+      "wifiArrayIndex": 40,
+      "isSwitch": 1,
+      "enumValues": [
+        {
+          "strKey": "STEAMGLOSS_OFF",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "STEAMGLOSS_ON",
+          "wifiArrayValue": 1
+        }
+      ],
+      "excludesSubprograms": []
+    },
+    {
+      "strKey": "DISHWASHER_EXTRARINSE",
+      "wifiArrayIndex": 41,
+      "isSwitch": 1,
+      "enumValues": [
+        {
+          "strKey": "EXTRARINSE_OFF",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "EXTRARINSE_ON",
+          "wifiArrayValue": 1
+        }
+      ],
+      "excludesSubprograms": []
+    },
+    {
+      "strKey": "DISHWASHER_HALFLOAD",
+      "wifiArrayIndex": 55,
+      "isSwitch": 1,
+      "enumValues": [
+        {
+          "strKey": "HALFLOAD_OFF",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "HALFLOAD_ON",
+          "wifiArrayValue": 1
+        }
+      ],
+      "excludesSubprograms": [
+        "DISHWASHER_EXTRARINSE"
+      ]
+    }
+  ],
+  "progressVariables": {
+    "remaining": {
+      "strKey": "DISHWASHER_REMAINING",
+      "isVisible": 0,
+      "hour": {
+        "wifiArrayIndex": 45,
+        "boundedValues": [
+          {
+            "strKey": "HOUR",
+            "lowerLimit": 0,
+            "upperLimit": 23,
+            "step": 1,
+            "factor": 1,
+            "unit": ""
+          }
+        ]
+      },
+      "minute": {
+        "wifiArrayIndex": 46,
+        "boundedValues": [
+          {
+            "strKey": "MINUTE",
+            "lowerLimit": 0,
+            "upperLimit": 59,
+            "step": 1,
+            "factor": 1,
+            "unit": ""
+          }
+        ]
+      }
+    },
+    "delay": {
+      "strKey": "DISHWASHER_DELAY",
+      "isVisible": 1,
+      "hour": {
+        "wifiArrayIndex": 49,
+        "boundedValues": [
+          {
+            "strKey": "HOUR",
+            "lowerLimit": 0,
+            "upperLimit": 23,
+            "step": 1,
+            "factor": 1,
+            "unit": ""
+          }
+        ]
+      },
+      "minute": {
+        "wifiArrayIndex": 50,
+        "boundedValues": [
+          {
+            "strKey": "MINUTE",
+            "lowerLimit": 0,
+            "upperLimit": 59,
+            "step": 1,
+            "factor": 1,
+            "unit": ""
+          }
+        ]
+      },
+      "isCalculatedToStart": 1
+    },
+    "duration": {
+      "strKey": "DISHWASHER_DURATION",
+      "isVisible": 0,
+      "hour": {
+        "wifiArrayIndex": 47,
+        "boundedValues": [
+          {
+            "strKey": "HOUR",
+            "lowerLimit": 0,
+            "upperLimit": 23,
+            "step": 1,
+            "factor": 1,
+            "unit": ""
+          }
+        ]
+      },
+      "minute": {
+        "wifiArrayIndex": 48,
+        "boundedValues": [
+          {
+            "strKey": "MINUTE",
+            "lowerLimit": 0,
+            "upperLimit": 59,
+            "step": 1,
+            "factor": 1,
+            "unit": ""
+          }
+        ]
+      }
+    }
+  },
+  "deviceStates": {
+    "wifiArrayReadIndex": 60,
+    "wifiArrayWriteIndex": 34,
+    "states": [
+      {
+        "strKey": "DEVICE_STATE_ON",
+        "wifiArrayValue": 10,
+        "allowedTransitions": [
+          "DEVICE_STATE_OFF",
+          "DEVICE_STATE_RUNNING"
+        ],
+        "notificationInfo": {
+          "strKey": "DEVICE_STATE_ON_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "DEVICE_STATE_OFF",
+        "wifiArrayValue": 20,
+        "allowedTransitions": [
+          "DEVICE_STATE_ON"
+        ],
+        "notificationInfo": {
+          "strKey": "DEVICE_STATE_OFF_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "DEVICE_STATE_RUNNING",
+        "wifiArrayValue": 30,
+        "allowedTransitions": [
+          "DEVICE_STATE_OFF",
+          "DEVICE_STATE_PAUSED",
+          "DEVICE_STATE_CANCELLING"
+        ],
+        "notificationInfo": {
+          "strKey": "DEVICE_STATE_RUNNING_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "DEVICE_STATE_PAUSED",
+        "wifiArrayValue": 40,
+        "allowedTransitions": [
+          "DEVICE_STATE_OFF",
+          "DEVICE_STATE_RUNNING",
+          "DEVICE_STATE_CANCELLING"
+        ],
+        "notificationInfo": {
+          "strKey": "DEVICE_STATE_PAUSED_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "DEVICE_STATE_CANCELLING",
+        "wifiArrayValue": 50,
+        "allowedTransitions": [
+          "DEVICE_STATE_OFF"
+        ],
+        "notificationInfo": {
+          "strKey": "DEVICE_STATE_CANCELLING_NOTIFICATION",
+          "priority": "LOW"
+        }
+      },
+      {
+        "strKey": "DEVICE_STATE_TIME_DELAY_ACTIVE",
+        "wifiArrayValue": 60,
+        "allowedTransitions": [
+          "DEVICE_STATE_OFF",
+          "DEVICE_STATE_PAUSED",
+          "DEVICE_STATE_CANCELLING"
+        ],
+        "notificationInfo": {
+          "strKey": "DEVICE_STATE_TIME_DELAY_ACTIVE_NOTIFICATION",
+          "priority": "LOW"
+        }
+      },
+      {
+        "strKey": "DEVICE_STATE_DOOR_OPEN",
+        "wifiArrayValue": 70,
+        "allowedTransitions": [],
+        "notificationInfo": {
+          "strKey": "DEVICE_STATE_DOOR_OPEN_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "DEVICE_STATE_SETTINGS",
+        "wifiArrayValue": 80,
+        "allowedTransitions": [],
+        "notificationInfo": {
+          "strKey": "DEVICE_STATE_SETTINGS_NOTIFICATION",
+          "priority": "LOW"
+        }
+      }
+    ]
+  },
+  "deviceSubStates": {
+    "wifiArrayReadIndex": 59,
+    "subStates": [
+      {
+        "strKey": "DISHWASHER_MESSAGE_TIME_DELAY_STARTED",
+        "wifiArrayValue": 25,
+        "notificationInfo": {
+          "strKey": "DISHWASHER_MESSAGE_TIME_DELAY_STARTED_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "DISHWASHER_MESSAGE_PAUSED",
+        "wifiArrayValue": 26,
+        "notificationInfo": {
+          "strKey": "DISHWASHER_MESSAGE_PAUSED_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "DISHWASHER_MESSAGE_PAUSED",
+        "wifiArrayValue": 27,
+        "notificationInfo": {
+          "strKey": "DISHWASHER_MESSAGE_PAUSED_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "DISHWASHER_MESSAGE_PROGRAM_FINISHED",
+        "wifiArrayValue": 28,
+        "notificationInfo": {
+          "strKey": "DISHWASHER_MESSAGE_PROGRAM_FINISHED_NOTIFICATION",
+          "priority": "MEDIUM",
+          "necessity": "OPTON"
+        }
+      },
+      {
+        "strKey": "DISHWASHER_MESSAGE_TIME_DELAY_STARTED",
+        "wifiArrayValue": 29,
+        "notificationInfo": {
+          "strKey": "DISHWASHER_MESSAGE_TIME_DELAY_STARTED_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "DISHWASHER_MESSAGE_PROGRAM_SANITIZED",
+        "wifiArrayValue": 31,
+        "notificationInfo": {
+          "strKey": "DISHWASHER_MESSAGE_PROGRAM_SANITIZED_NOTIFICATION",
+          "priority": "MEDIUM",
+          "necessity": "OPTON"
+        }
+      },
+      {
+        "strKey": "DISHWASHER_MESSAGE_CANCELLING",
+        "wifiArrayValue": 44,
+        "notificationInfo": {
+          "strKey": "DISHWASHER_MESSAGE_CANCELLING_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "DISHWASHER_MESSAGE_TIME_DELAY_CANCELLED",
+        "wifiArrayValue": 77,
+        "notificationInfo": {
+          "strKey": "DISHWASHER_MESSAGE_TIME_DELAY_CANCELLED_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "DISHWASHER_MESSAGE_PROGRAM_STARTED",
+        "wifiArrayValue": 78,
+        "notificationInfo": {
+          "strKey": "DISHWASHER_MESSAGE_PROGRAM_STARTED_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "DISHWASHER_MESSAGE_WASHING",
+        "wifiArrayValue": 81,
+        "notificationInfo": {
+          "strKey": "DISHWASHER_MESSAGE_WASHING_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "DISHWASHER_MESSAGE_RINSING",
+        "wifiArrayValue": 82,
+        "notificationInfo": {
+          "strKey": "DISHWASHER_MESSAGE_RINSING_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      },
+      {
+        "strKey": "DISHWASHER_MESSAGE_DRYING",
+        "wifiArrayValue": 83,
+        "notificationInfo": {
+          "strKey": "DISHWASHER_MESSAGE_DRYING_NOTIFICATION",
+          "priority": "MEDIUM"
+        }
+      }
+    ]
+  },
+  "settings": [
+    {
+      "strKey": "SETTING_AUTO_DOOR",
+      "wifiArrayIndex": 51,
+      "enumValues": [
+        {
+          "strKey": "SETTING_AUTO_DOOR_OFF",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "SETTING_AUTO_DOOR_ON",
+          "wifiArrayValue": 1
+        }
+      ]
+    },
+    {
+      "strKey": "SETTING_DETERGENT_TYPE",
+      "wifiArrayIndex": 52,
+      "enumValues": [
+        {
+          "strKey": "SETTING_DETERGENT_TYPE_POWDER",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "SETTING_DETERGENT_TYPE_TABLET",
+          "wifiArrayValue": 1
+        },
+        {
+          "strKey": "SETTING_DETERGENT_TYPE_LIQUID",
+          "wifiArrayValue": 2
+        }
+      ]
+    },
+    {
+      "strKey": "DISHWASHER_RINSE_AID_LEVEL",
+      "wifiArrayIndex": 64,
+      "boundedValues": [
+        {
+          "strKey": "DISHWASHER_RINSE_AID_LEVEL",
+          "lowerLimit": 0,
+          "upperLimit": 4,
+          "step": 1,
+          "factor": 1
+        }
+      ]
+    },
+    {
+      "strKey": "DISHWASHER_WATER_HARDNESS",
+      "wifiArrayIndex": 53,
+      "boundedValues": [
+        {
+          "strKey": "DISHWASHER_WATER_HARDNESS",
+          "lowerLimit": 0,
+          "upperLimit": 4,
+          "step": 1,
+          "factor": 1
+        }
+      ]
+    },
+    {
+      "strKey": "SETTING_INNER_ILLUMINATION",
+      "wifiArrayIndex": 58,
+      "enumValues": [
+        {
+          "strKey": "SETTING_INNER_ILLUMINATION_OFF",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "SETTING_INNER_ILLUMINATION_ON",
+          "wifiArrayValue": 1
+        }
+      ]
+    }
+  ],
+  "deviceWarnings": {
+    "wifiArrayReadIndex": 61,
+    "warnings": [
+      {
+        "strKey": "DISHWASHER_WARNING_NO_RINSE_AID",
+        "bitIndex": 0,
+        "notificationInfo": {
+          "strKey": "DISHWASHER_WARNING_NO_RINSE_AID_NOTIFICATION",
+          "priority": "MEDIUM",
+          "necessity": "OPTOFF"
+        }
+      },
+      {
+        "strKey": "DISHWASHER_WARNING_NO_SALT",
+        "bitIndex": 1,
+        "notificationInfo": {
+          "strKey": "DISHWASHER_WARNING_NO_SALT_NOTIFICATION",
+          "priority": "MEDIUM",
+          "necessity": "OPTOFF"
+        }
+      },
+      {
+        "strKey": "DISHWASHER_WARNING_NO_WATER",
+        "bitIndex": 2,
+        "notificationInfo": {
+          "strKey": "DISHWASHER_WARNING_NO_WATER_NOTIFICATION",
+          "priority": "HIGH",
+          "necessity": "OPTON"
+        }
+      },
+      {
+        "strKey": "DISHWASHER_WARNING_CHECK_THE_FILTER",
+        "bitIndex": 4,
+        "notificationInfo": {
+          "strKey": "DISHWASHER_WARNING_CHECK_THE_FILTER_NOTIFICATION",
+          "priority": "MEDIUM",
+          "necessity": "OPTON"
+        }
+      },
+      {
+        "strKey": "DISHWASHER_WARNING_DOOR_IS_OPEN",
+        "bitIndex": 5,
+        "notificationInfo": {
+          "strKey": "DISHWASHER_WARNING_DOOR_IS_OPEN_NOTIFICATION",
+          "priority": "MEDIUM",
+          "necessity": "OPTOFF"
+        }
+      },
+      {
+        "strKey": "DISHWASHER_WARNING_CALL_SERVICE",
+        "bitIndex": 6,
+        "notificationInfo": {
+          "strKey": "DISHWASHER_WARNING_CALL_SERVICE_NOTIFICATION",
+          "priority": "HIGH",
+          "necessity": "MANDA"
+        }
+      },
+      {
+        "strKey": "DISHWASHER_LIQUID_DETERGENT_LOW",
+        "bitIndex": 7,
+        "notificationInfo": {
+          "strKey": "DISHWASHER_LIQUID_DETERGENT_LOW_NOTIFICATION",
+          "priority": "MEDIUM",
+          "necessity": "OPTOFF"
+        }
+      }
+    ]
+  },
+  "version": "0.0.0",
+  "downloadCycleSettingsModel": {
+    "strKey": "DOWNLOADABLE_CYCLE_BYTE",
+    "wifiArrayReadIndex": 43
+  },
+  "consumableSettings": {
+    "consumables": [
+      {
+        "consumableType": "DETERGENT",
+        "forms": [
+          {
+            "consumableForm": "TABLET",
+            "lastCycleConsumptionAmountDataArrayReadIndex": 69
+          },
+          {
+            "consumableForm": "LIQUID",
+            "lastCycleConsumptionAmountDataArrayReadIndex": 73,
+            "lastCycleConsumptionAmountFactor": 1.6,
+            "warningSetting": {
+              "wifiArrayReadIndex": 61,
+              "bitIndex": 7
+            }
+          }
+        ]
+      },
+      {
+        "consumableType": "RINSE_AID",
+        "forms": [
+          {
+            "consumableForm": "LIQUID",
+            "lastCycleConsumptionAmountDataArrayReadIndex": 72,
+            "lastCycleConsumptionAmountFactor": 1.5,
+            "warningSetting": {
+              "wifiArrayReadIndex": 61,
+              "bitIndex": 0
+            },
+            "autoDosingAmountSetting": {
+              "wifiArrayIndex": 64,
+              "boundedValues": [
+                {
+                  "strKey": "",
+                  "lowerLimit": 0,
+                  "upperLimit": 4,
+                  "step": 1,
+                  "factor": 1,
+                  "unit": ""
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "consumableType": "SALT",
+        "forms": [
+          {
+            "consumableForm": "POWDER",
+            "lastCycleConsumptionAmountDataArrayReadIndex": 71,
+            "warningSetting": {
+              "wifiArrayReadIndex": 61,
+              "bitIndex": 1
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

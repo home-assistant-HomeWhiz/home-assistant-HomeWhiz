@@ -28,7 +28,17 @@
       "OVEN_MESSAGE_PREHEATING": "\u00d6n Is\u0131tma",
       "OVEN_MESSAGE_PREHEATING_COMPLETED": "\u00d6n \u0131s\u0131tma tamamland\u0131",
       "OVEN_MESSAGE_CLEANING": "Temizleniyor",
-      "OVEN_MESSAGE_CLEANING_COMPLETED": "Temizlenme bitti"
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Temizlenme bitti",
+      "DISHWASHER_MESSAGE_TIME_DELAY_STARTED": "Biti\u015f zaman\u0131 etkin",
+      "DISHWASHER_MESSAGE_PAUSED": "Program duraklat\u0131ld\u0131",
+      "DISHWASHER_MESSAGE_PROGRAM_FINISHED": "Program bitti",
+      "DISHWASHER_MESSAGE_PROGRAM_SANITIZED": "Program bitti ve dezenfekte edildi",
+      "DISHWASHER_MESSAGE_CANCELLING": "\u0130ptal ediliyor...",
+      "DISHWASHER_MESSAGE_TIME_DELAY_CANCELLED": "Gecikme iptal edildi",
+      "DISHWASHER_MESSAGE_PROGRAM_STARTED": "Program ba\u015flad\u0131",
+      "DISHWASHER_MESSAGE_WASHING": "Y\u0131k\u0131yor",
+      "DISHWASHER_MESSAGE_RINSING": "Duruluyor",
+      "DISHWASHER_MESSAGE_DRYING": "Kurutuluyor"
     }
   }
 }

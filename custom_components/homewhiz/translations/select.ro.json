@@ -5,7 +5,10 @@
       "DEVICE_STATE_OFF": "Oprit",
       "DEVICE_STATE_RUNNING": "\u00cen derulare",
       "DEVICE_STATE_PAUSED": "\u00cen pauz\u0103",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Temporizare activ\u0103"
+      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Temporizare activ\u0103",
+      "DEVICE_STATE_CANCELLING": "Se anuleaz\u0103",
+      "DEVICE_STATE_DOOR_OPEN": "U\u0219a este deschis\u0103!",
+      "DEVICE_STATE_SETTINGS": "Set\u0103ri"
     },
     "homewhiz__WASHER_PROGRAM": {
       "PROGRAM_COTTONS": "Bumbac",
@@ -82,6 +85,39 @@
       "BOOSTER_OFF": "Oprit",
       "BOOSTER_ON": "Pornit"
     },
-    "homewhiz__OVEN_SKIP_PREHEATING": {}
+    "homewhiz__OVEN_SKIP_PREHEATING": {},
+    "homewhiz__PROGRAM": {
+      "PROGRAM_AUTO": "Auto 40-65\u00b0C",
+      "PROGRAM_MIX_WASH_+": "Sp\u0103lare complet\u0103",
+      "PROGRAM_INTENSIVE_70": "Intensiv 70 \u00b0C",
+      "PROGRAM_ECO_50": "Eco 50 \u00b0C",
+      "PROGRAM_GLASSCARE": "\u00cengrijire sticl\u0103",
+      "PROGRAM_NEW58MIN": "QuickWash 58'",
+      "PROGRAM_30MIN": "Mini 30'",
+      "PROGRAM_PREWASH": "Presp\u0103lare",
+      "PROGRAM_HYGIENE": "HygieneCare",
+      "PROGRAM_SILENT": "SilentWash",
+      "PROGRAM_MAKINE_TEMIZLEME": "Cur\u0103\u021bare interioar\u0103"
+    },
+    "homewhiz__DISHWASHER_TRAYWASH": {
+      "TRAY_WASH_OFF": "Oprit",
+      "TRAY_WASH_ON": "Pornit"
+    },
+    "homewhiz__DISHWASHER_FAST+": {
+      "FAST+_OFF": "Express oprit",
+      "FAST+_ON": "Express pornit"
+    },
+    "homewhiz__DISHWASHER_STEAMGLOSS": {
+      "STEAMGLOSS_OFF": "Oprit",
+      "STEAMGLOSS_ON": "Pornit"
+    },
+    "homewhiz__DISHWASHER_EXTRARINSE": {
+      "EXTRARINSE_OFF": "Cl\u0103tire suplimentar\u0103 oprit\u0103",
+      "EXTRARINSE_ON": "Cl\u0103tire suplimentar\u0103 pornit\u0103"
+    },
+    "homewhiz__DISHWASHER_HALFLOAD": {
+      "HALFLOAD_OFF": "Oprit",
+      "HALFLOAD_ON": "Pornit"
+    }
   }
 }

@@ -5,7 +5,10 @@
       "DEVICE_STATE_OFF": "Av",
       "DEVICE_STATE_RUNNING": "K\u00f6r",
       "DEVICE_STATE_PAUSED": "Pausad",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "F\u00f6rdr\u00f6jd tid \u00e4r aktiverat"
+      "DEVICE_STATE_TIME_DELAY_ACTIVE": "F\u00f6rdr\u00f6jd tid \u00e4r aktiverat",
+      "DEVICE_STATE_CANCELLING": "Avbryter",
+      "DEVICE_STATE_DOOR_OPEN": "Luckan \u00e4r \u00f6ppen!",
+      "DEVICE_STATE_SETTINGS": "Inst\u00e4llningar"
     },
     "homewhiz__WASHER_PROGRAM": {
       "PROGRAM_COTTONS": "Bomull",
@@ -82,6 +85,39 @@
       "BOOSTER_OFF": "Av",
       "BOOSTER_ON": "P\u00e5"
     },
-    "homewhiz__OVEN_SKIP_PREHEATING": {}
+    "homewhiz__OVEN_SKIP_PREHEATING": {},
+    "homewhiz__PROGRAM": {
+      "PROGRAM_AUTO": "Auto 40-65\u00b0C",
+      "PROGRAM_MIX_WASH_+": "All-in-Wash",
+      "PROGRAM_INTENSIVE_70": "Intensiv 70 \u00b0C",
+      "PROGRAM_ECO_50": "Eco 50 \u00b0C",
+      "PROGRAM_GLASSCARE": "GlassCare",
+      "PROGRAM_NEW58MIN": "QuickWash 58 min",
+      "PROGRAM_30MIN": "Mini 30min",
+      "PROGRAM_PREWASH": "F\u00f6rtv\u00e4tt",
+      "PROGRAM_HYGIENE": "HygieneCare",
+      "PROGRAM_SILENT": "Tyst tv\u00e4tt",
+      "PROGRAM_MAKINE_TEMIZLEME": "Innerreng\u00f6ring"
+    },
+    "homewhiz__DISHWASHER_TRAYWASH": {
+      "TRAY_WASH_OFF": "Av",
+      "TRAY_WASH_ON": "P\u00e5"
+    },
+    "homewhiz__DISHWASHER_FAST+": {
+      "FAST+_OFF": "Express av",
+      "FAST+_ON": "Express p\u00e5"
+    },
+    "homewhiz__DISHWASHER_STEAMGLOSS": {
+      "STEAMGLOSS_OFF": "Av",
+      "STEAMGLOSS_ON": "P\u00e5"
+    },
+    "homewhiz__DISHWASHER_EXTRARINSE": {
+      "EXTRARINSE_OFF": "Extra sk\u00f6ljning av",
+      "EXTRARINSE_ON": "Extra sk\u00f6ljning p\u00e5"
+    },
+    "homewhiz__DISHWASHER_HALFLOAD": {
+      "HALFLOAD_OFF": "Av",
+      "HALFLOAD_ON": "P\u00e5"
+    }
   }
 }

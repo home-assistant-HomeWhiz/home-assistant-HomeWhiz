@@ -28,7 +28,17 @@
       "OVEN_MESSAGE_PREHEATING": "F\u00f6ruppv\u00e4rmning",
       "OVEN_MESSAGE_PREHEATING_COMPLETED": "F\u00f6rv\u00e4rmningen har slutf\u00f6rts",
       "OVEN_MESSAGE_CLEANING": "Reng\u00f6ring",
-      "OVEN_MESSAGE_CLEANING_COMPLETED": "Ugnen \u00e4r rengjord"
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Ugnen \u00e4r rengjord",
+      "DISHWASHER_MESSAGE_TIME_DELAY_STARTED": "Aktiverad sluttid",
+      "DISHWASHER_MESSAGE_PAUSED": "Pausat program",
+      "DISHWASHER_MESSAGE_PROGRAM_FINISHED": "Programmet \u00e4r klart",
+      "DISHWASHER_MESSAGE_PROGRAM_SANITIZED": "Programmet \u00e4r klart och sanitiseras",
+      "DISHWASHER_MESSAGE_CANCELLING": "Avbryter \u2026",
+      "DISHWASHER_MESSAGE_TIME_DELAY_CANCELLED": "F\u00f6rdr\u00f6jning avbruten",
+      "DISHWASHER_MESSAGE_PROGRAM_STARTED": "Programmet har b\u00f6rjat",
+      "DISHWASHER_MESSAGE_WASHING": "Diskar",
+      "DISHWASHER_MESSAGE_RINSING": "Sk\u00f6ljer",
+      "DISHWASHER_MESSAGE_DRYING": "Torkar"
     }
   }
 }

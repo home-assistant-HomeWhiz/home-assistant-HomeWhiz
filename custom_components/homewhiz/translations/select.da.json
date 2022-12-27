@@ -5,7 +5,10 @@
       "DEVICE_STATE_OFF": "Slukket",
       "DEVICE_STATE_RUNNING": "K\u00f8rer",
       "DEVICE_STATE_PAUSED": "Sat p\u00e5 pause",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Udskudt start er aktiv"
+      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Udskudt start er aktiv",
+      "DEVICE_STATE_CANCELLING": "Annullerer",
+      "DEVICE_STATE_DOOR_OPEN": "D\u00f8ren er \u00e5ben!",
+      "DEVICE_STATE_SETTINGS": "Indstillinger"
     },
     "homewhiz__WASHER_PROGRAM": {
       "PROGRAM_COTTONS": "Bomuld",
@@ -82,6 +85,39 @@
       "BOOSTER_OFF": "Slukket",
       "BOOSTER_ON": "T\u00e6ndt"
     },
-    "homewhiz__OVEN_SKIP_PREHEATING": {}
+    "homewhiz__OVEN_SKIP_PREHEATING": {},
+    "homewhiz__PROGRAM": {
+      "PROGRAM_AUTO": "Auto 40-65 \u00b0C",
+      "PROGRAM_MIX_WASH_+": "All-in-Wash",
+      "PROGRAM_INTENSIVE_70": "Intensiv 70",
+      "PROGRAM_ECO_50": "Eco 50",
+      "PROGRAM_GLASSCARE": "GlassCare",
+      "PROGRAM_NEW58MIN": "QuickWash 58'",
+      "PROGRAM_30MIN": "Mini 30'",
+      "PROGRAM_PREWASH": "Forvask",
+      "PROGRAM_HYGIENE": "HygieneCare",
+      "PROGRAM_SILENT": "SilentWash",
+      "PROGRAM_MAKINE_TEMIZLEME": "Indvendig reng\u00f8ring"
+    },
+    "homewhiz__DISHWASHER_TRAYWASH": {
+      "TRAY_WASH_OFF": "Fra",
+      "TRAY_WASH_ON": "Til"
+    },
+    "homewhiz__DISHWASHER_FAST+": {
+      "FAST+_OFF": "Express fra",
+      "FAST+_ON": "Express til"
+    },
+    "homewhiz__DISHWASHER_STEAMGLOSS": {
+      "STEAMGLOSS_OFF": "Slukket",
+      "STEAMGLOSS_ON": "T\u00e6ndt"
+    },
+    "homewhiz__DISHWASHER_EXTRARINSE": {
+      "EXTRARINSE_OFF": "Ekstra skylning fra",
+      "EXTRARINSE_ON": "Ekstra skylning til"
+    },
+    "homewhiz__DISHWASHER_HALFLOAD": {
+      "HALFLOAD_OFF": "Slukket",
+      "HALFLOAD_ON": "T\u00e6ndt"
+    }
   }
 }

@@ -28,7 +28,17 @@
       "OVEN_MESSAGE_PREHEATING": "Forvarmning",
       "OVEN_MESSAGE_PREHEATING_COMPLETED": "Forvarmning f\u00e6rdig",
       "OVEN_MESSAGE_CLEANING": "Rensning",
-      "OVEN_MESSAGE_CLEANING_COMPLETED": "Rensning afsluttet"
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Rensning afsluttet",
+      "DISHWASHER_MESSAGE_TIME_DELAY_STARTED": "Sluttid aktiveret",
+      "DISHWASHER_MESSAGE_PAUSED": "Program sat p\u00e5 pause",
+      "DISHWASHER_MESSAGE_PROGRAM_FINISHED": "Program afsluttet",
+      "DISHWASHER_MESSAGE_PROGRAM_SANITIZED": "Program afsluttet og sanitized",
+      "DISHWASHER_MESSAGE_CANCELLING": "Annullerer...",
+      "DISHWASHER_MESSAGE_TIME_DELAY_CANCELLED": "Udskudt start annulleret",
+      "DISHWASHER_MESSAGE_PROGRAM_STARTED": "Program startet",
+      "DISHWASHER_MESSAGE_WASHING": "Vasker",
+      "DISHWASHER_MESSAGE_RINSING": "Skylning",
+      "DISHWASHER_MESSAGE_DRYING": "T\u00f8rrer"
     }
   }
 }

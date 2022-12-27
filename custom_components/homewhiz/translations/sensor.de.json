@@ -28,7 +28,17 @@
       "OVEN_MESSAGE_PREHEATING": "Vorheizen",
       "OVEN_MESSAGE_PREHEATING_COMPLETED": "Vorheizen abgeschlossen",
       "OVEN_MESSAGE_CLEANING": "Reinigen",
-      "OVEN_MESSAGE_CLEANING_COMPLETED": "Reinigung abgeschlossen"
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Reinigung abgeschlossen",
+      "DISHWASHER_MESSAGE_TIME_DELAY_STARTED": "Startzeitvorwahl Start",
+      "DISHWASHER_MESSAGE_PAUSED": "Programm pausiert",
+      "DISHWASHER_MESSAGE_PROGRAM_FINISHED": "Programm abgeschlossen",
+      "DISHWASHER_MESSAGE_PROGRAM_SANITIZED": "Programm abgeschlossen und SANIERT",
+      "DISHWASHER_MESSAGE_CANCELLING": "Wird abgebrochen \u2026",
+      "DISHWASHER_MESSAGE_TIME_DELAY_CANCELLED": "Verz\u00f6gerung storniert",
+      "DISHWASHER_MESSAGE_PROGRAM_STARTED": "Program Gestartet",
+      "DISHWASHER_MESSAGE_WASHING": "Waschen",
+      "DISHWASHER_MESSAGE_RINSING": "Sp\u00fclen",
+      "DISHWASHER_MESSAGE_DRYING": "Trocknen"
     }
   }
 }

@@ -28,7 +28,17 @@
       "OVEN_MESSAGE_PREHEATING": "Pr\u00e9chauffage",
       "OVEN_MESSAGE_PREHEATING_COMPLETED": "Pr\u00e9chauffage termin\u00e9",
       "OVEN_MESSAGE_CLEANING": "Nettoyage",
-      "OVEN_MESSAGE_CLEANING_COMPLETED": "Nettoyage termin\u00e9"
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Nettoyage termin\u00e9",
+      "DISHWASHER_MESSAGE_TIME_DELAY_STARTED": "Heure de fin activ\u00e9e",
+      "DISHWASHER_MESSAGE_PAUSED": "Programme en pause",
+      "DISHWASHER_MESSAGE_PROGRAM_FINISHED": "Programme termin\u00e9",
+      "DISHWASHER_MESSAGE_PROGRAM_SANITIZED": "Programme termin\u00e9",
+      "DISHWASHER_MESSAGE_CANCELLING": "Annulation...",
+      "DISHWASHER_MESSAGE_TIME_DELAY_CANCELLED": "Temporisation annul\u00e9e",
+      "DISHWASHER_MESSAGE_PROGRAM_STARTED": "Programme lanc\u00e9",
+      "DISHWASHER_MESSAGE_WASHING": "Lavage",
+      "DISHWASHER_MESSAGE_RINSING": "Rin\u00e7age",
+      "DISHWASHER_MESSAGE_DRYING": "S\u00e9chage"
     }
   }
 }
