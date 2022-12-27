@@ -5,7 +5,10 @@
       "DEVICE_STATE_OFF": "Ei k\u00e4yt\u00f6ss\u00e4",
       "DEVICE_STATE_RUNNING": "K\u00e4ynniss\u00e4",
       "DEVICE_STATE_PAUSED": "Pys\u00e4ytetty",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Aikaviive k\u00e4yt\u00f6ss\u00e4"
+      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Aikaviive k\u00e4yt\u00f6ss\u00e4",
+      "DEVICE_STATE_CANCELLING": "Peruutetaan",
+      "DEVICE_STATE_DOOR_OPEN": "Ovi on auki!",
+      "DEVICE_STATE_SETTINGS": "Asetukset"
     },
     "homewhiz__WASHER_PROGRAM": {
       "PROGRAM_COTTONS": "Puuvillat",
@@ -82,6 +85,39 @@
       "BOOSTER_OFF": "Ei k\u00e4yt\u00f6ss\u00e4",
       "BOOSTER_ON": "K\u00e4yt\u00f6ss\u00e4"
     },
-    "homewhiz__OVEN_SKIP_PREHEATING": {}
+    "homewhiz__OVEN_SKIP_PREHEATING": {},
+    "homewhiz__PROGRAM": {
+      "PROGRAM_AUTO": "Automaattinen 40\u201365 \u00b0C",
+      "PROGRAM_MIX_WASH_+": "Kokonaispesu",
+      "PROGRAM_INTENSIVE_70": "Tehopesu 70 \u00b0C",
+      "PROGRAM_ECO_50": "Eco 50 \u00b0C",
+      "PROGRAM_GLASSCARE": "Lasinhoito",
+      "PROGRAM_NEW58MIN": "Pikapesu 58'",
+      "PROGRAM_30MIN": "Mini 30'",
+      "PROGRAM_PREWASH": "Esipesu",
+      "PROGRAM_HYGIENE": "Hygienia",
+      "PROGRAM_SILENT": "Hiljainen pesu",
+      "PROGRAM_MAKINE_TEMIZLEME": "Sis\u00e4inen puhdistus"
+    },
+    "homewhiz__DISHWASHER_TRAYWASH": {
+      "TRAY_WASH_OFF": "Pois",
+      "TRAY_WASH_ON": "K\u00e4yt\u00f6ss\u00e4"
+    },
+    "homewhiz__DISHWASHER_FAST+": {
+      "FAST+_OFF": "Pika pois",
+      "FAST+_ON": "Pika k\u00e4yt\u00f6ss\u00e4"
+    },
+    "homewhiz__DISHWASHER_STEAMGLOSS": {
+      "STEAMGLOSS_OFF": "Ei k\u00e4yt\u00f6ss\u00e4",
+      "STEAMGLOSS_ON": "K\u00e4yt\u00f6ss\u00e4"
+    },
+    "homewhiz__DISHWASHER_EXTRARINSE": {
+      "EXTRARINSE_OFF": "Lis\u00e4huuhtelu pois",
+      "EXTRARINSE_ON": "Lis\u00e4huuhtelu k\u00e4yt\u00f6ss\u00e4"
+    },
+    "homewhiz__DISHWASHER_HALFLOAD": {
+      "HALFLOAD_OFF": "Ei k\u00e4yt\u00f6ss\u00e4",
+      "HALFLOAD_ON": "K\u00e4yt\u00f6ss\u00e4"
+    }
   }
 }

@@ -28,7 +28,17 @@
       "OVEN_MESSAGE_PREHEATING": "Forvarming",
       "OVEN_MESSAGE_PREHEATING_COMPLETED": "Forvarming fullf\u00f8rt",
       "OVEN_MESSAGE_CLEANING": "Rengj\u00f8r",
-      "OVEN_MESSAGE_CLEANING_COMPLETED": "Rengj\u00f8ringen er ferdig"
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Rengj\u00f8ringen er ferdig",
+      "DISHWASHER_MESSAGE_TIME_DELAY_STARTED": "Sluttid er aktivert",
+      "DISHWASHER_MESSAGE_PAUSED": "Programmet er satt p\u00e5 pause",
+      "DISHWASHER_MESSAGE_PROGRAM_FINISHED": "Programmet er ferdig",
+      "DISHWASHER_MESSAGE_PROGRAM_SANITIZED": "Programmet er ferdig og sanitized",
+      "DISHWASHER_MESSAGE_CANCELLING": "Avbryter \u2026",
+      "DISHWASHER_MESSAGE_TIME_DELAY_CANCELLED": "Forsinkelsen er avbrutt",
+      "DISHWASHER_MESSAGE_PROGRAM_STARTED": "Programmet er startet",
+      "DISHWASHER_MESSAGE_WASHING": "Vasker",
+      "DISHWASHER_MESSAGE_RINSING": "Skyller",
+      "DISHWASHER_MESSAGE_DRYING": "T\u00f8rker"
     }
   }
 }

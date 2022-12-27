@@ -28,7 +28,17 @@
       "OVEN_MESSAGE_PREHEATING": "Preriscaldamento",
       "OVEN_MESSAGE_PREHEATING_COMPLETED": "Preriscaldamento completato",
       "OVEN_MESSAGE_CLEANING": "Pulizia",
-      "OVEN_MESSAGE_CLEANING_COMPLETED": "Pulizia completata"
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Pulizia completata",
+      "DISHWASHER_MESSAGE_TIME_DELAY_STARTED": "Partenza Ritardata avviata",
+      "DISHWASHER_MESSAGE_PAUSED": "Il programma \u00c3\u00a8 in pausa",
+      "DISHWASHER_MESSAGE_PROGRAM_FINISHED": "Il programma \u00c3\u00a8 terminato. I piatti sono pronti",
+      "DISHWASHER_MESSAGE_PROGRAM_SANITIZED": "Il programma \u00c3\u00a8 terminato e IGIENIZZATO. I piatti sono pronti",
+      "DISHWASHER_MESSAGE_CANCELLING": "Annullamento del programma in corso",
+      "DISHWASHER_MESSAGE_TIME_DELAY_CANCELLED": "Partenza Ritardata annullata",
+      "DISHWASHER_MESSAGE_PROGRAM_STARTED": "Programma avviato",
+      "DISHWASHER_MESSAGE_WASHING": "Lavaggio dei piatti",
+      "DISHWASHER_MESSAGE_RINSING": "Risciacquo dei piatti",
+      "DISHWASHER_MESSAGE_DRYING": "Asciugatura piatti"
     }
   }
 }

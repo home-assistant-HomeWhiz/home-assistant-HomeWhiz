@@ -5,7 +5,10 @@
       "DEVICE_STATE_OFF": "Off",
       "DEVICE_STATE_RUNNING": "funcionando",
       "DEVICE_STATE_PAUSED": "Pausa",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Atraso de tempo ativo"
+      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Atraso de tempo ativo",
+      "DEVICE_STATE_CANCELLING": "Cancelamento",
+      "DEVICE_STATE_DOOR_OPEN": "A porta est\u00e1 aberta!",
+      "DEVICE_STATE_SETTINGS": "Defini\u00e7\u00f5es"
     },
     "homewhiz__WASHER_PROGRAM": {
       "PROGRAM_COTTONS": "Algod\u00e3o",
@@ -80,6 +83,40 @@
       "BOOSTER_OFF": "Off",
       "BOOSTER_ON": "On"
     },
-    "homewhiz__OVEN_SKIP_PREHEATING": {}
+    "homewhiz__OVEN_SKIP_PREHEATING": {},
+    "homewhiz__PROGRAM": {
+      "PROGRAM_AUTO": "Auto 40-65\u00b0C",
+      "PROGRAM_MIX_WASH_+": "AquaFlex",
+      "PROGRAM_INTENSIVE_70": "Intensivo 70\u00b0C",
+      "PROGRAM_ECO_50": "Eco 50\u00b0C",
+      "PROGRAM_GLASSCARE": "Cuidados de Vidro",
+      "PROGRAM_NEW58MIN": "Quick&Clean",
+      "PROGRAM_30MIN": "Mini 30\".",
+      "PROGRAM_PREWASH": "Pr\u00e9-lavagem",
+      "PROGRAM_HYGIENE": "Higiene+",
+      "PROGRAM_DAILY": "Diariamente\r\nDailyWash",
+      "PROGRAM_SILENT": "SilentWash",
+      "PROGRAM_MAKINE_TEMIZLEME": "Inner Clean"
+    },
+    "homewhiz__DISHWASHER_TRAYWASH": {
+      "TRAY_WASH_OFF": "Off",
+      "TRAY_WASH_ON": "On"
+    },
+    "homewhiz__DISHWASHER_FAST+": {
+      "FAST+_OFF": "Express Off",
+      "FAST+_ON": "Expresso Ligado"
+    },
+    "homewhiz__DISHWASHER_STEAMGLOSS": {
+      "STEAMGLOSS_OFF": "Off",
+      "STEAMGLOSS_ON": "On"
+    },
+    "homewhiz__DISHWASHER_EXTRARINSE": {
+      "EXTRARINSE_OFF": "Enxaguamento Extra Off",
+      "EXTRARINSE_ON": "Enxaguamento extra em"
+    },
+    "homewhiz__DISHWASHER_HALFLOAD": {
+      "HALFLOAD_OFF": "Off",
+      "HALFLOAD_ON": "On"
+    }
   }
 }

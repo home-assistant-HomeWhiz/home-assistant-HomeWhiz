@@ -49,7 +49,7 @@ class ApplianceFeatureBoundedOption:
     lowerLimit: int
     step: float
     strKey: str
-    unit: str
+    unit: Optional[str]
     upperLimit: int
 
 
@@ -141,10 +141,10 @@ class ConsumableWarningSetting:
 
 @dataclass
 class ConsumableForm:
-    autoDosingAmountSetting: ApplianceFeature
+    autoDosingAmountSetting: Optional[ApplianceFeature]
     consumableForm: str
     lastCycleConsumptionAmountDataArrayReadIndex: int
-    warningSetting: ConsumableWarningSetting
+    warningSetting: Optional[ConsumableWarningSetting]
 
 
 @dataclass

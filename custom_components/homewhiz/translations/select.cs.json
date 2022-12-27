@@ -5,7 +5,10 @@
       "DEVICE_STATE_OFF": "Vypnuto",
       "DEVICE_STATE_RUNNING": "Spu\u0161t\u011bno",
       "DEVICE_STATE_PAUSED": "Pozastaveno",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "\u010casov\u00e1 prodleva je aktivn\u00ed"
+      "DEVICE_STATE_TIME_DELAY_ACTIVE": "\u010casov\u00e1 prodleva je aktivn\u00ed",
+      "DEVICE_STATE_CANCELLING": "Zru\u0161en\u00ed",
+      "DEVICE_STATE_DOOR_OPEN": "Dv\u00ed\u0159ka jsou otev\u0159en\u00e1!",
+      "DEVICE_STATE_SETTINGS": "Nastaven\u00ed"
     },
     "homewhiz__WASHER_PROGRAM": {
       "PROGRAM_ECO_40_60": "Eco 40\u201360",
@@ -75,6 +78,39 @@
       "BOOSTER_OFF": "Vypnuto",
       "BOOSTER_ON": "Zapnuto"
     },
-    "homewhiz__OVEN_SKIP_PREHEATING": {}
+    "homewhiz__OVEN_SKIP_PREHEATING": {},
+    "homewhiz__PROGRAM": {
+      "PROGRAM_AUTO": "Autom. 40\u201365\u00a0\u00b0C",
+      "PROGRAM_MIX_WASH_+": "M\u00fdt v\u0161e spole\u010dn\u011b",
+      "PROGRAM_INTENSIVE_70": "Intenzivn\u00ed 70\u00a0\u00b0C",
+      "PROGRAM_ECO_50": "Eco 50\u00a0\u00b0C",
+      "PROGRAM_GLASSCARE": "P\u00e9\u010de o sklo",
+      "PROGRAM_NEW58MIN": "Rychl\u00e9 myt\u00ed 58\u00a0s",
+      "PROGRAM_30MIN": "Mini 30\u00a0s",
+      "PROGRAM_PREWASH": "P\u0159edmyt\u00ed",
+      "PROGRAM_HYGIENE": "Hygienick\u00e1 p\u00e9\u010de",
+      "PROGRAM_SILENT": "Tich\u00e9 myt\u00ed",
+      "PROGRAM_MAKINE_TEMIZLEME": "Vnit\u0159n\u00ed \u010di\u0161t\u011bn\u00ed"
+    },
+    "homewhiz__DISHWASHER_TRAYWASH": {
+      "TRAY_WASH_OFF": "Vyp.",
+      "TRAY_WASH_ON": "Zap."
+    },
+    "homewhiz__DISHWASHER_FAST+": {
+      "FAST+_OFF": "Expresn\u00ed vyp.",
+      "FAST+_ON": "Expresn\u00ed zap."
+    },
+    "homewhiz__DISHWASHER_STEAMGLOSS": {
+      "STEAMGLOSS_OFF": "Vypnuto",
+      "STEAMGLOSS_ON": "Zapnuto"
+    },
+    "homewhiz__DISHWASHER_EXTRARINSE": {
+      "EXTRARINSE_OFF": "Extra om\u00fdv\u00e1n\u00ed vyp.",
+      "EXTRARINSE_ON": "Extra om\u00fdv\u00e1n\u00ed zap."
+    },
+    "homewhiz__DISHWASHER_HALFLOAD": {
+      "HALFLOAD_OFF": "Vypnuto",
+      "HALFLOAD_ON": "Zapnuto"
+    }
   }
 }

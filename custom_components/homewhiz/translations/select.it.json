@@ -5,7 +5,10 @@
       "DEVICE_STATE_OFF": "Spento",
       "DEVICE_STATE_RUNNING": "In funzione",
       "DEVICE_STATE_PAUSED": "In pausa",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Partenza ritardata attiva"
+      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Partenza ritardata attiva",
+      "DEVICE_STATE_CANCELLING": "Annullamento in corso",
+      "DEVICE_STATE_DOOR_OPEN": "Lo sportello \u00c3\u00a8 aperto.",
+      "DEVICE_STATE_SETTINGS": "Impostazioni"
     },
     "homewhiz__WASHER_PROGRAM": {
       "PROGRAM_COTTONS": "Cotone",
@@ -78,6 +81,38 @@
       "BOOSTER_OFF": "Spento",
       "BOOSTER_ON": "Acceso"
     },
-    "homewhiz__OVEN_SKIP_PREHEATING": {}
+    "homewhiz__OVEN_SKIP_PREHEATING": {},
+    "homewhiz__PROGRAM": {
+      "PROGRAM_AUTO": "Auto 40-65\u00c2 \u00c2\u00b0C",
+      "PROGRAM_MIX_WASH_+": "All in Wash",
+      "PROGRAM_INTENSIVE_70": "Intensivo 70\u00c2 \u00c2\u00b0C",
+      "PROGRAM_ECO_50": "Eco 50\u00c2 \u00c2\u00b0C",
+      "PROGRAM_GLASSCARE": "GlassCare",
+      "PROGRAM_NEW58MIN": "QuickWash 58'",
+      "PROGRAM_30MIN": "Mini 30\\'",
+      "PROGRAM_PREWASH": "Prelavaggio",
+      "PROGRAM_SILENT": "SilentWash",
+      "PROGRAM_MAKINE_TEMIZLEME": "Inner Clean"
+    },
+    "homewhiz__DISHWASHER_TRAYWASH": {
+      "TRAY_WASH_OFF": "Disattivato",
+      "TRAY_WASH_ON": "Attivato"
+    },
+    "homewhiz__DISHWASHER_FAST+": {
+      "FAST+_OFF": "Funzione Express disattivata",
+      "FAST+_ON": "Funzione Express attivata"
+    },
+    "homewhiz__DISHWASHER_STEAMGLOSS": {
+      "STEAMGLOSS_OFF": "Disattivato",
+      "STEAMGLOSS_ON": "Attivato"
+    },
+    "homewhiz__DISHWASHER_EXTRARINSE": {
+      "EXTRARINSE_OFF": "Funzione Risciacquo extra disattivata",
+      "EXTRARINSE_ON": "Funzione Risciacquo extra attivata"
+    },
+    "homewhiz__DISHWASHER_HALFLOAD": {
+      "HALFLOAD_OFF": "Disattivato",
+      "HALFLOAD_ON": "Attivato"
+    }
   }
 }

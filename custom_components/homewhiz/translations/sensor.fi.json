@@ -28,7 +28,17 @@
       "OVEN_MESSAGE_PREHEATING": "Esil\u00e4mmitys",
       "OVEN_MESSAGE_PREHEATING_COMPLETED": "Esil\u00e4mmitys valmis",
       "OVEN_MESSAGE_CLEANING": "Puhdistus",
-      "OVEN_MESSAGE_CLEANING_COMPLETED": "Puhdistus valmis"
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Puhdistus valmis",
+      "DISHWASHER_MESSAGE_TIME_DELAY_STARTED": "P\u00e4\u00e4ttymisaika k\u00e4yt\u00f6ss\u00e4",
+      "DISHWASHER_MESSAGE_PAUSED": "Ohjelma pys\u00e4ytetty",
+      "DISHWASHER_MESSAGE_PROGRAM_FINISHED": "Ohjelma valmis",
+      "DISHWASHER_MESSAGE_PROGRAM_SANITIZED": "Ohjelma valmis ja puhdistettava",
+      "DISHWASHER_MESSAGE_CANCELLING": "Peruutetaan...",
+      "DISHWASHER_MESSAGE_TIME_DELAY_CANCELLED": "Viive peruutettu",
+      "DISHWASHER_MESSAGE_PROGRAM_STARTED": "Ohjelma aloitettu",
+      "DISHWASHER_MESSAGE_WASHING": "Pesu",
+      "DISHWASHER_MESSAGE_RINSING": "Huuhtelu",
+      "DISHWASHER_MESSAGE_DRYING": "Kuivaus"
     }
   }
 }

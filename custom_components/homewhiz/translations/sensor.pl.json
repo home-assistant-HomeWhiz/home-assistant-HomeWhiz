@@ -28,7 +28,17 @@
       "OVEN_MESSAGE_PREHEATING": "Grzanie wst\u0119pne",
       "OVEN_MESSAGE_PREHEATING_COMPLETED": "Podgrzewanie wst\u0119pne zako\u0144czone",
       "OVEN_MESSAGE_CLEANING": "Czyszczenie",
-      "OVEN_MESSAGE_CLEANING_COMPLETED": "Czyszczenie zako\u0144czone"
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Czyszczenie zako\u0144czone",
+      "DISHWASHER_MESSAGE_TIME_DELAY_STARTED": "Czas zako\u0144czenia ustawiony",
+      "DISHWASHER_MESSAGE_PAUSED": "Program zosta\u0142 wstrzymany",
+      "DISHWASHER_MESSAGE_PROGRAM_FINISHED": "Programy zako\u0144czony",
+      "DISHWASHER_MESSAGE_PROGRAM_SANITIZED": "Programy zako\u0144czony i ZDEZYNFEKOWANY",
+      "DISHWASHER_MESSAGE_CANCELLING": "Anulowanie\u2026",
+      "DISHWASHER_MESSAGE_TIME_DELAY_CANCELLED": "Op\u00f3\u017anienie anulowane",
+      "DISHWASHER_MESSAGE_PROGRAM_STARTED": "Program uruchomiony",
+      "DISHWASHER_MESSAGE_WASHING": "Zmywanie",
+      "DISHWASHER_MESSAGE_RINSING": "P\u0142ukanie",
+      "DISHWASHER_MESSAGE_DRYING": "Suszenie"
     }
   }
 }

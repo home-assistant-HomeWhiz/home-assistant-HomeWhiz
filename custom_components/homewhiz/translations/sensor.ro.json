@@ -28,7 +28,17 @@
       "OVEN_MESSAGE_PREHEATING": "Pre\u00eenc\u0103lzire",
       "OVEN_MESSAGE_PREHEATING_COMPLETED": "Pre\u00eenc\u0103lzire finalizat\u0103",
       "OVEN_MESSAGE_CLEANING": "Cur\u0103\u021bare",
-      "OVEN_MESSAGE_CLEANING_COMPLETED": "Cur\u0103\u021barea s-a \u00eencheiat"
+      "OVEN_MESSAGE_CLEANING_COMPLETED": "Cur\u0103\u021barea s-a \u00eencheiat",
+      "DISHWASHER_MESSAGE_TIME_DELAY_STARTED": "Timp de finalizare activat",
+      "DISHWASHER_MESSAGE_PAUSED": "Pauz\u0103 program",
+      "DISHWASHER_MESSAGE_PROGRAM_FINISHED": "Program complet",
+      "DISHWASHER_MESSAGE_PROGRAM_SANITIZED": "Program complet \u0219i dezinfectat",
+      "DISHWASHER_MESSAGE_CANCELLING": "Se anuleaz\u0103...",
+      "DISHWASHER_MESSAGE_TIME_DELAY_CANCELLED": "Temporizare anulat\u0103",
+      "DISHWASHER_MESSAGE_PROGRAM_STARTED": "Program pornit",
+      "DISHWASHER_MESSAGE_WASHING": "Sp\u0103lare",
+      "DISHWASHER_MESSAGE_RINSING": "Se cl\u0103te\u0219te",
+      "DISHWASHER_MESSAGE_DRYING": "Uscare"
     }
   }
 }
