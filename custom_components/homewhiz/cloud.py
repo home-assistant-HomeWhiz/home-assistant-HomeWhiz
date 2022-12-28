@@ -65,6 +65,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         self._connection: mqtt.Connection | None = None
         self._is_connected = False
         self._entry = entry
+        self._is_tuya = self._appliance_id.startswith("T")
 
         super().__init__(hass, _LOGGER, name=DOMAIN)
 
@@ -101,7 +102,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
                 payload
             ),
         )
-        subscribe_update.result()
+        _LOGGER.debug(f"Subscribe to update result: {subscribe_update.result()}")
 
         [subscribe_get, _] = self._connection.subscribe(
             f"$aws/things/{self._appliance_id}/shadow/get/accepted",
@@ -110,9 +111,10 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
                 payload
             ),
         )
-        subscribe_get.result()
+        _LOGGER.debug(f"Subscribe to get result: {subscribe_get.result()}")
 
         self.force_read()
+        self.get_shadow()
 
         self._entry.async_on_unload(
             async_track_point_in_time(self.hass, self.refresh_connection, expiration)
@@ -137,34 +139,43 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         old_connection.disconnect()
 
     def force_read(self):
-        suffix = "/tuyacommand" if self._appliance_id.startswith("T") else "/command"
+        suffix = "/tuyacommand" if self._is_tuya else "/command"
         force_read = {
-            "applianceId": self._appliance_id,
             "type": "fread" + suffix,
         }
+        if self._is_tuya:
+            force_read["applianceId"] = self._appliance_id
         [publish, _] = self._connection.publish(
             f"$aws/things/{self._appliance_id}/shadow/get",
             json.dumps(force_read),
             qos=self._mqtt.QoS.AT_MOST_ONCE,
         )
-        publish.result()
+        _LOGGER.debug(f"Force read result: {publish.result()}")
+
+    def get_shadow(self):
+        [publish, _] = self._connection.publish(
+            f"$aws/things/{self._appliance_id}/shadow/get",
+            "{}",
+            qos=self._mqtt.QoS.AT_MOST_ONCE,
+        )
+        _LOGGER.debug(f"Get shadow result: {publish.result()}")
 
     async def send_command(self, index: int, value: int):
-        suffix = "/tuyacommand" if self._appliance_id.startswith("T") else "/command"
+        suffix = "/tuyacommand" if self._is_tuya else "/command"
         obj = {
-            "applianceId": self._appliance_id,
             "type": "write",
             "prm": f"[{index},{value}]",
         }
+        if self._is_tuya:
+            obj["applianceId"] = self._appliance_id
         message = json.dumps(obj)
         [publish, _] = self._connection.publish(
             self._appliance_id + suffix,
             message,
             qos=self._mqtt.QoS.AT_LEAST_ONCE,
         )
-        _LOGGER.debug(f"sending command {index}:{value}")
-        res = publish.result()
-        _LOGGER.debug(res)
+        _LOGGER.debug(f"Sending command {index}:{value}")
+        _LOGGER.debug(f"Command result: {publish.result()}")
 
     @callback
     def handle_notify(self, payload: str):
