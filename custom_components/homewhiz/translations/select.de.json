@@ -55,27 +55,10 @@
       "SPIN_1200": "1200",
       "SPIN_1400": "1400"
     },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Aus",
-      "PREWASH_ON": "Ein"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "Nachsp\u00fclen aus",
-      "EXTRA_RINSE_ON": "Nachsp\u00fclen ein"
-    },
     "homewhiz__WASHER_FAST_PLUS": {
       "FAST_PLUS_OFF": "Fast+ aus",
       "FAST_PLUS_ON_FAST": "Schnell",
       "FAST_PLUS_ON_FAST_PLUS": "Schnell+"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Aus",
-      "HIDDEN_ANTI_CREASE_ON": "Ein"
-    },
-    "homewhiz__WASHER_STEAM": {},
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Aus",
-      "PHR_ON": "Ein"
     },
     "homewhiz__OVEN_PROGRAM": {
       "PROGRAM_STATIC": "Statisch",
@@ -94,12 +77,6 @@
       "PROGRAM_ECO_PYRO": "Umweltfreundlich reinigen",
       "PROGRAM_PYRO": "Reinigen"
     },
-    "homewhiz__OVEN_TEMPERATURE": {},
-    "homewhiz__OVEN_BOOSTER": {
-      "BOOSTER_OFF": "Aus",
-      "BOOSTER_ON": "Ein"
-    },
-    "homewhiz__OVEN_SKIP_PREHEATING": {},
     "homewhiz__PROGRAM": {
       "PROGRAM_AUTO": "Auto 40-65\u00b0C",
       "PROGRAM_MIX_WASH_+": "All-in-Wash",
@@ -113,26 +90,6 @@
       "PROGRAM_DAILY": "DailyWash",
       "PROGRAM_SILENT": "SilentWash",
       "PROGRAM_MAKINE_TEMIZLEME": "Inner Clean"
-    },
-    "homewhiz__DISHWASHER_TRAYWASH": {
-      "TRAY_WASH_OFF": "Aus",
-      "TRAY_WASH_ON": "Ein"
-    },
-    "homewhiz__DISHWASHER_FAST+": {
-      "FAST+_OFF": "Schnell+ Aus",
-      "FAST+_ON": "Schnell+ Ein"
-    },
-    "homewhiz__DISHWASHER_STEAMGLOSS": {
-      "STEAMGLOSS_OFF": "Aus",
-      "STEAMGLOSS_ON": "Ein"
-    },
-    "homewhiz__DISHWASHER_EXTRARINSE": {
-      "EXTRARINSE_OFF": "Nachsp\u00fclen aus",
-      "EXTRARINSE_ON": "Nachsp\u00fclen ein"
-    },
-    "homewhiz__DISHWASHER_HALFLOAD": {
-      "HALFLOAD_OFF": "Aus",
-      "HALFLOAD_ON": "Ein"
     },
     "homewhiz__WASHER_DRY": {
       "DRY_OFF": "Aus",

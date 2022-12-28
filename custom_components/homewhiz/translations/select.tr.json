@@ -55,27 +55,10 @@
       "SPIN_1200": "1200",
       "SPIN_1400": "1400"
     },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Kapal\u0131",
-      "PREWASH_ON": "A\u00e7\u0131k"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "\u0130lave Durulama Pasif",
-      "EXTRA_RINSE_ON": "\u0130lave Durulama Aktif"
-    },
     "homewhiz__WASHER_FAST_PLUS": {
       "FAST_PLUS_OFF": "Kapal\u0131",
       "FAST_PLUS_ON_FAST": "H\u0131zl\u0131",
       "FAST_PLUS_ON_FAST_PLUS": "\u00c7ok H\u0131zl\u0131"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Kapal\u0131",
-      "HIDDEN_ANTI_CREASE_ON": "A\u00e7\u0131k"
-    },
-    "homewhiz__WASHER_STEAM": {},
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Kapal\u0131",
-      "PHR_ON": "A\u00e7\u0131k"
     },
     "homewhiz__OVEN_PROGRAM": {
       "PROGRAM_STATIC": "Statik",
@@ -94,12 +77,6 @@
       "PROGRAM_ECO_PYRO": "Eko Temizleme",
       "PROGRAM_PYRO": "Temizleme"
     },
-    "homewhiz__OVEN_TEMPERATURE": {},
-    "homewhiz__OVEN_BOOSTER": {
-      "BOOSTER_OFF": "Kapal\u0131",
-      "BOOSTER_ON": "A\u00e7\u0131k"
-    },
-    "homewhiz__OVEN_SKIP_PREHEATING": {},
     "homewhiz__PROGRAM": {
       "PROGRAM_AUTO": "Otomatik",
       "PROGRAM_MIX_WASH_+": "Karma",
@@ -113,26 +90,6 @@
       "PROGRAM_DAILY": "G\u00fcnl\u00fck Y\u0131kama",
       "PROGRAM_SILENT": "Ekstra Sessiz",
       "PROGRAM_MAKINE_TEMIZLEME": "Makine Y\u0131kama"
-    },
-    "homewhiz__DISHWASHER_TRAYWASH": {
-      "TRAY_WASH_OFF": "Kapal\u0131",
-      "TRAY_WASH_ON": "A\u00e7\u0131k"
-    },
-    "homewhiz__DISHWASHER_FAST+": {
-      "FAST+_OFF": "H\u0131zl\u0131 Kapal\u0131",
-      "FAST+_ON": "H\u0131zl\u0131 A\u00e7\u0131k"
-    },
-    "homewhiz__DISHWASHER_STEAMGLOSS": {
-      "STEAMGLOSS_OFF": "Kapal\u0131",
-      "STEAMGLOSS_ON": "A\u00e7\u0131k"
-    },
-    "homewhiz__DISHWASHER_EXTRARINSE": {
-      "EXTRARINSE_OFF": "Ekstra Durulama Kapal\u0131",
-      "EXTRARINSE_ON": "Ekstra Durulama A\u00e7\u0131k"
-    },
-    "homewhiz__DISHWASHER_HALFLOAD": {
-      "HALFLOAD_OFF": "Kapal\u0131",
-      "HALFLOAD_ON": "A\u00e7\u0131k"
     },
     "homewhiz__WASHER_DRY": {
       "DRY_OFF": "Kapal\u0131",

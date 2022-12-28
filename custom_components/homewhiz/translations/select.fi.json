@@ -54,27 +54,10 @@
       "SPIN_1200": "1200",
       "SPIN_1400": "1400"
     },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Ei k\u00e4yt\u00f6ss\u00e4",
-      "PREWASH_ON": "K\u00e4yt\u00f6ss\u00e4"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "Lis\u00e4huuhtelu pois",
-      "EXTRA_RINSE_ON": "Lis\u00e4huuhtelu k\u00e4yt\u00f6ss\u00e4"
-    },
     "homewhiz__WASHER_FAST_PLUS": {
       "FAST_PLUS_OFF": "Nopea + pois",
       "FAST_PLUS_ON_FAST": "Nopea",
       "FAST_PLUS_ON_FAST_PLUS": "Nopea+"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Ei k\u00e4yt\u00f6ss\u00e4",
-      "HIDDEN_ANTI_CREASE_ON": "K\u00e4yt\u00f6ss\u00e4"
-    },
-    "homewhiz__WASHER_STEAM": {},
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Ei p\u00e4\u00e4ll\u00e4",
-      "PHR_ON": "P\u00e4\u00e4ll\u00e4"
     },
     "homewhiz__OVEN_PROGRAM": {
       "PROGRAM_STATIC": "Kiinte\u00e4",
@@ -93,12 +76,6 @@
       "PROGRAM_ECO_PYRO": "Eco-puhdistus",
       "PROGRAM_PYRO": "Puhdistus"
     },
-    "homewhiz__OVEN_TEMPERATURE": {},
-    "homewhiz__OVEN_BOOSTER": {
-      "BOOSTER_OFF": "Ei k\u00e4yt\u00f6ss\u00e4",
-      "BOOSTER_ON": "K\u00e4yt\u00f6ss\u00e4"
-    },
-    "homewhiz__OVEN_SKIP_PREHEATING": {},
     "homewhiz__PROGRAM": {
       "PROGRAM_AUTO": "Automaattinen 40\u201365 \u00b0C",
       "PROGRAM_MIX_WASH_+": "Kokonaispesu",
@@ -111,26 +88,6 @@
       "PROGRAM_HYGIENE": "Hygienia",
       "PROGRAM_SILENT": "Hiljainen pesu",
       "PROGRAM_MAKINE_TEMIZLEME": "Sis\u00e4inen puhdistus"
-    },
-    "homewhiz__DISHWASHER_TRAYWASH": {
-      "TRAY_WASH_OFF": "Pois",
-      "TRAY_WASH_ON": "K\u00e4yt\u00f6ss\u00e4"
-    },
-    "homewhiz__DISHWASHER_FAST+": {
-      "FAST+_OFF": "Pika pois",
-      "FAST+_ON": "Pika k\u00e4yt\u00f6ss\u00e4"
-    },
-    "homewhiz__DISHWASHER_STEAMGLOSS": {
-      "STEAMGLOSS_OFF": "Ei k\u00e4yt\u00f6ss\u00e4",
-      "STEAMGLOSS_ON": "K\u00e4yt\u00f6ss\u00e4"
-    },
-    "homewhiz__DISHWASHER_EXTRARINSE": {
-      "EXTRARINSE_OFF": "Lis\u00e4huuhtelu pois",
-      "EXTRARINSE_ON": "Lis\u00e4huuhtelu k\u00e4yt\u00f6ss\u00e4"
-    },
-    "homewhiz__DISHWASHER_HALFLOAD": {
-      "HALFLOAD_OFF": "Ei k\u00e4yt\u00f6ss\u00e4",
-      "HALFLOAD_ON": "K\u00e4yt\u00f6ss\u00e4"
     },
     "homewhiz__WASHER_DRY": {
       "DRY_OFF": "Ei p\u00e4\u00e4ll\u00e4",

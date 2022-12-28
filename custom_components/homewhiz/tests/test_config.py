@@ -5,6 +5,7 @@ import pytest
 from dacite import from_dict
 
 from custom_components.homewhiz.appliance_config import ApplianceConfiguration
+from custom_components.homewhiz.appliance_controls import generate_controls_from_config
 
 file_names = [
     # Configs extracted from the original app
@@ -43,4 +44,5 @@ def test_all_configs(file_name: str):
 
     with open(file_path) as file:
         json_content = json.load(file)
-        from_dict(ApplianceConfiguration, json_content)
+        config = from_dict(ApplianceConfiguration, json_content)
+        generate_controls_from_config(config)

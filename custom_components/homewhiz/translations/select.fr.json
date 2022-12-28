@@ -54,27 +54,10 @@
       "SPIN_1200": "1200",
       "SPIN_1400": "1400"
     },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Arr\u00eat",
-      "PREWASH_ON": "Marche"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "Rin\u00e7age suppl\u00e9mentaire D\u00e9sactiv\u00e9",
-      "EXTRA_RINSE_ON": "Rin\u00e7age suppl\u00e9mentaire Activ\u00e9"
-    },
     "homewhiz__WASHER_FAST_PLUS": {
       "FAST_PLUS_OFF": "Rapide Plus D\u00e9sactiv\u00e9",
       "FAST_PLUS_ON_FAST": "Rapide",
       "FAST_PLUS_ON_FAST_PLUS": "Rapide Plus"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Arr\u00eat",
-      "HIDDEN_ANTI_CREASE_ON": "Marche"
-    },
-    "homewhiz__WASHER_STEAM": {},
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Arr\u00eat",
-      "PHR_ON": "Marche"
     },
     "homewhiz__OVEN_PROGRAM": {
       "PROGRAM_STATIC": "Convection naturelle",
@@ -93,12 +76,6 @@
       "PROGRAM_ECO_PYRO": "Nettoyage Pyrolyse \u00c9co",
       "PROGRAM_PYRO": "Nettoyage Pyrolyse"
     },
-    "homewhiz__OVEN_TEMPERATURE": {},
-    "homewhiz__OVEN_BOOSTER": {
-      "BOOSTER_OFF": "Arr\u00eat",
-      "BOOSTER_ON": "Marche"
-    },
-    "homewhiz__OVEN_SKIP_PREHEATING": {},
     "homewhiz__PROGRAM": {
       "PROGRAM_AUTO": "Auto 40-65\u00a0\u00b0C",
       "PROGRAM_MIX_WASH_+": "AquaFlex",
@@ -111,26 +88,6 @@
       "PROGRAM_HYGIENE": "Hygi\u00e8ne +",
       "PROGRAM_SILENT": "Silence Nuit",
       "PROGRAM_MAKINE_TEMIZLEME": "Nettoyage cuve"
-    },
-    "homewhiz__DISHWASHER_TRAYWASH": {
-      "TRAY_WASH_OFF": "Arr\u00eat",
-      "TRAY_WASH_ON": "Marche"
-    },
-    "homewhiz__DISHWASHER_FAST+": {
-      "FAST+_OFF": "Express D\u00e9sactiv\u00e9",
-      "FAST+_ON": "Express Activ\u00e9"
-    },
-    "homewhiz__DISHWASHER_STEAMGLOSS": {
-      "STEAMGLOSS_OFF": "Arr\u00eat",
-      "STEAMGLOSS_ON": "Marche"
-    },
-    "homewhiz__DISHWASHER_EXTRARINSE": {
-      "EXTRARINSE_OFF": "Rin\u00e7age Plus D\u00e9sactiv\u00e9",
-      "EXTRARINSE_ON": "Rin\u00e7age Plus Activ\u00e9"
-    },
-    "homewhiz__DISHWASHER_HALFLOAD": {
-      "HALFLOAD_OFF": "Arr\u00eat",
-      "HALFLOAD_ON": "Marche"
     },
     "homewhiz__WASHER_DRY": {
       "DRY_OFF": "Arr\u00eat",

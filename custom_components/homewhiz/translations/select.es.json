@@ -47,27 +47,10 @@
       "SPIN_NO_SPIN": "Sin centrifugado",
       "SPIN_RINSE_HOLD": "Remojo"
     },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Apagado",
-      "PREWASH_ON": "Encendido"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "Aclarado adicional apagado",
-      "EXTRA_RINSE_ON": "Aclarado adicional encendido"
-    },
     "homewhiz__WASHER_FAST_PLUS": {
       "FAST_PLUS_OFF": "Fast+ desactivado",
       "FAST_PLUS_ON_FAST": "R\u00e1pido",
       "FAST_PLUS_ON_FAST_PLUS": "Fast+"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Apagado",
-      "HIDDEN_ANTI_CREASE_ON": "Encendido"
-    },
-    "homewhiz__WASHER_STEAM": {},
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Apagado",
-      "PHR_ON": "Encendido"
     },
     "homewhiz__OVEN_PROGRAM": {
       "PROGRAM_STATIC": "Est\u00e1tico",
@@ -86,12 +69,6 @@
       "PROGRAM_ECO_PYRO": "Limpieza Eco",
       "PROGRAM_PYRO": "Limpieza"
     },
-    "homewhiz__OVEN_TEMPERATURE": {},
-    "homewhiz__OVEN_BOOSTER": {
-      "BOOSTER_OFF": "Apagado",
-      "BOOSTER_ON": "Encendido"
-    },
-    "homewhiz__OVEN_SKIP_PREHEATING": {},
     "homewhiz__PROGRAM": {
       "PROGRAM_AUTO": "40-65\u00a0\u00b0C autom\u00e1tico",
       "PROGRAM_MIX_WASH_+": "All-in-Wash",
@@ -105,26 +82,6 @@
       "PROGRAM_DAILY": "Diario",
       "PROGRAM_SILENT": "SilentWash",
       "PROGRAM_MAKINE_TEMIZLEME": "Inner Clean"
-    },
-    "homewhiz__DISHWASHER_TRAYWASH": {
-      "TRAY_WASH_OFF": "Apagado",
-      "TRAY_WASH_ON": "Encendido"
-    },
-    "homewhiz__DISHWASHER_FAST+": {
-      "FAST+_OFF": "Expr\u00e9s desactivado",
-      "FAST+_ON": "Express activado"
-    },
-    "homewhiz__DISHWASHER_STEAMGLOSS": {
-      "STEAMGLOSS_OFF": "Apagado",
-      "STEAMGLOSS_ON": "Encendido"
-    },
-    "homewhiz__DISHWASHER_EXTRARINSE": {
-      "EXTRARINSE_OFF": "Aclarado extra desactivado",
-      "EXTRARINSE_ON": "Aclarado extra encendido"
-    },
-    "homewhiz__DISHWASHER_HALFLOAD": {
-      "HALFLOAD_OFF": "Apagado",
-      "HALFLOAD_ON": "Encendido"
     },
     "homewhiz__WASHER_DRY": {
       "DRY_OFF": "Apagado",

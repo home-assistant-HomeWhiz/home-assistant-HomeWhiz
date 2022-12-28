@@ -13,7 +13,7 @@ from homeassistant.helpers.event import async_track_point_in_time
 from .api import login
 from .config_flow import CloudConfig
 from .const import DOMAIN
-from .homewhiz import HomewhizCoordinator
+from .homewhiz import Command, HomewhizCoordinator
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
@@ -161,11 +161,11 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         )
         _LOGGER.debug(f"Get shadow result: {publish.result()}")
 
-    async def send_command(self, index: int, value: int):
+    async def send_command(self, command: Command):
         suffix = "/tuyacommand" if self._is_tuya else "/command"
         obj = {
             "type": "write",
-            "prm": f"[{index},{value}]",
+            "prm": f"[{command.index},{command.value}]",
         }
         if self._is_tuya:
             obj["applianceId"] = self._appliance_id
@@ -175,7 +175,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             message,
             qos=self._mqtt.QoS.AT_LEAST_ONCE,
         )
-        _LOGGER.debug(f"Sending command {index}:{value}")
+        _LOGGER.debug(f"Sending command {command.index}:{command.value}")
         _LOGGER.debug(f"Command result: {publish.result()}")
 
     @callback

@@ -48,27 +48,10 @@
       "SPIN_NO_SPIN": "Sem rota\u00e7\u00e3o",
       "SPIN_RINSE_HOLD": "Enxague preso"
     },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Off",
-      "PREWASH_ON": "On"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "Extra Rinse Off",
-      "EXTRA_RINSE_ON": "Enxaguar Extra"
-    },
     "homewhiz__WASHER_FAST_PLUS": {
       "FAST_PLUS_OFF": "Off",
       "FAST_PLUS_ON_FAST": "R\u00e1pido",
       "FAST_PLUS_ON_FAST_PLUS": "Fast+"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Off",
-      "HIDDEN_ANTI_CREASE_ON": "On"
-    },
-    "homewhiz__WASHER_STEAM": {},
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Off",
-      "PHR_ON": "On"
     },
     "homewhiz__OVEN_PROGRAM": {
       "PROGRAM_STATIC": "Est\u00e1tica",
@@ -87,12 +70,6 @@
       "PROGRAM_ECO_PYRO": "Limpeza Ecol\u00f3gica",
       "PROGRAM_PYRO": "Limpeza"
     },
-    "homewhiz__OVEN_TEMPERATURE": {},
-    "homewhiz__OVEN_BOOSTER": {
-      "BOOSTER_OFF": "Off",
-      "BOOSTER_ON": "On"
-    },
-    "homewhiz__OVEN_SKIP_PREHEATING": {},
     "homewhiz__PROGRAM": {
       "PROGRAM_AUTO": "Auto 40-65\u00b0C",
       "PROGRAM_MIX_WASH_+": "AquaFlex",
@@ -106,26 +83,6 @@
       "PROGRAM_DAILY": "Diariamente\r\nDailyWash",
       "PROGRAM_SILENT": "SilentWash",
       "PROGRAM_MAKINE_TEMIZLEME": "Inner Clean"
-    },
-    "homewhiz__DISHWASHER_TRAYWASH": {
-      "TRAY_WASH_OFF": "Off",
-      "TRAY_WASH_ON": "On"
-    },
-    "homewhiz__DISHWASHER_FAST+": {
-      "FAST+_OFF": "Express Off",
-      "FAST+_ON": "Expresso Ligado"
-    },
-    "homewhiz__DISHWASHER_STEAMGLOSS": {
-      "STEAMGLOSS_OFF": "Off",
-      "STEAMGLOSS_ON": "On"
-    },
-    "homewhiz__DISHWASHER_EXTRARINSE": {
-      "EXTRARINSE_OFF": "Enxaguamento Extra Off",
-      "EXTRARINSE_ON": "Enxaguamento extra em"
-    },
-    "homewhiz__DISHWASHER_HALFLOAD": {
-      "HALFLOAD_OFF": "Off",
-      "HALFLOAD_ON": "On"
     },
     "homewhiz__WASHER_DRY": {
       "DRY_OFF": "Off",
