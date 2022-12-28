@@ -28,7 +28,16 @@
       "PROGRAM_CURTAIN": "Gardiner",
       "PROGRAM_LINGERIE": "Dameundert\u00f8y",
       "PROGRAM_SOFT_TOYS": "Myke leker",
-      "PROGRAM_TOWEL": "H\u00e5ndkle"
+      "PROGRAM_TOWEL": "H\u00e5ndkle",
+      "PROGRAM_COTTONS_ECO": "Bomull \u2013 \u00f8ko",
+      "PROGRAM_DRYER_COTTON": "Bomull \u2013 t\u00f8rt",
+      "PROGRAM_DRYER_SYNTHETICS": "Syntetisk t\u00f8rt",
+      "PROGRAM_HYGIENE_WASH_DRY": "Hygiene+ Vask og t\u00f8rk",
+      "PROGRAM_4KG_WASH_DRY": "4\u00a0kg vask og t\u00f8rk",
+      "PROGRAM_WASH_WEAR": "Strykefritt",
+      "PROGRAM_DARK_WASH": "M\u00f8rkt t\u00f8y",
+      "PROGRAM_OUTDOOR": "Friluftskl\u00e6r",
+      "PROGRAM_DRUM_CLEAN_PLUS": "Trommelrengj\u00f8ring+"
     },
     "homewhiz__WASHER_TEMPERATURE": {
       "TEMPERATURE_COLD_WASH": "Kaldvask",
@@ -38,7 +47,11 @@
     },
     "homewhiz__WASHER_SPIN": {
       "SPIN_NO_SPIN": "Uten sentrifugering",
-      "SPIN_RINSE_HOLD": "Skyllestopp"
+      "SPIN_RINSE_HOLD": "Skyllestopp",
+      "SPIN_600": "600",
+      "SPIN_800": "800",
+      "SPIN_1200": "1200",
+      "SPIN_1400": "1400"
     },
     "homewhiz__WASHER_PREWASH": {
       "PREWASH_OFF": "Av",
@@ -117,6 +130,19 @@
     "homewhiz__DISHWASHER_HALFLOAD": {
       "HALFLOAD_OFF": "Av",
       "HALFLOAD_ON": "P\u00e5"
+    },
+    "homewhiz__WASHER_DRY": {
+      "DRY_OFF": "Av",
+      "DRY_EXTRA": "Ekstra t\u00f8rt",
+      "DRY_CABINET": "Wardrobe Dry",
+      "DRY_IRON": "Stryket\u00f8rt",
+      "DRY_10": "45\u00a0min",
+      "DRY_20": "20 min",
+      "DRY_30": "30\u00a0minutter",
+      "DRY_60": "60\u00a0min",
+      "DRY_90": "90\u00a0minutter",
+      "DRY_120": "15\u00a0min",
+      "DRY_150": "150\u00a0minutter"
     }
   }
 }

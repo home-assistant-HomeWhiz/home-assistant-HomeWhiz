@@ -130,6 +130,8 @@ class HomeWhizClimateEntity(CoordinatorEntity[HomewhizCoordinator], ClimateEntit
             )
         if self.hvac_mode_raw != hvac_mode:
             selected_program = find_by_key(program_key, self._program.values)
+            if selected_program is None:
+                raise f"No program found for fan mode {hvac_mode} in {self._program}"
             await self.coordinator.send_command(
                 self._program.wifiArrayIndex, selected_program.wifiArrayValue
             )
@@ -180,6 +182,8 @@ class HomeWhizClimateEntity(CoordinatorEntity[HomewhizCoordinator], ClimateEntit
             self.coordinator.data[self._wind_strength_description.wifiArrayIndex]
         )
         option = find_by_value(value, self._wind_strength_description.enumValues)
+        if option is None:
+            return None
         return wind_strength_dict[option.strKey]
 
     async def async_set_fan_mode(self, fan_mode: str):
@@ -188,6 +192,11 @@ class HomeWhizClimateEntity(CoordinatorEntity[HomewhizCoordinator], ClimateEntit
         selected_option = find_by_key(
             wind_strength_key, self._wind_strength_description.enumValues
         )
+        if selected_option is None:
+            raise (
+                f"No option found for fan mode {fan_mode} "
+                f"in {self._wind_strength_description}"
+            )
         await self.coordinator.send_command(
             self._wind_strength_description.wifiArrayIndex,
             selected_option.wifiArrayValue,

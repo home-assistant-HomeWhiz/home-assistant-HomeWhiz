@@ -30,7 +30,16 @@
       "PROGRAM_CURTAIN": "Cortinas",
       "PROGRAM_LINGERIE": "Lingerie",
       "PROGRAM_SOFT_TOYS": "Brinquedos suaves",
-      "PROGRAM_TOWEL": "Toalha"
+      "PROGRAM_TOWEL": "Toalha",
+      "PROGRAM_COTTONS_ECO": "Algod\u00e3o Eco",
+      "PROGRAM_DRYER_COTTON": "Algod\u00e3o seco",
+      "PROGRAM_DRYER_SYNTHETICS": "Sint\u00e9tico Seco",
+      "PROGRAM_HYGIENE_WASH_DRY": "Higiene+ Lavar e Secar",
+      "PROGRAM_4KG_WASH_DRY": "4 Kg Wash & Dry",
+      "PROGRAM_WASH_WEAR": "Lavar & Desgastar",
+      "PROGRAM_DARK_WASH": "Lavagem \u00e0s escuras",
+      "PROGRAM_OUTDOOR": "Ao ar livre",
+      "PROGRAM_DRUM_CLEAN_PLUS": "Drum Clean+"
     },
     "homewhiz__WASHER_TEMPERATURE": {
       "TEMPERATURE_COLD_WASH": "Lavagem a frio"
@@ -117,6 +126,19 @@
     "homewhiz__DISHWASHER_HALFLOAD": {
       "HALFLOAD_OFF": "Off",
       "HALFLOAD_ON": "On"
+    },
+    "homewhiz__WASHER_DRY": {
+      "DRY_OFF": "Off",
+      "DRY_EXTRA": "Extra Seco",
+      "DRY_CABINET": "Wardrobe Dry",
+      "DRY_IRON": "Ferro Seco",
+      "DRY_10": "45 Min",
+      "DRY_20": "20 Min.",
+      "DRY_30": "30 Min.",
+      "DRY_60": "60 Min.",
+      "DRY_90": "90 Min",
+      "DRY_120": "15 Min.",
+      "DRY_150": "150 Min"
     }
   }
 }

@@ -30,7 +30,16 @@
       "PROGRAM_CURTAIN": "Perde",
       "PROGRAM_LINGERIE": "\u0130\u00e7 \u00c7ama\u015f\u0131r\u0131",
       "PROGRAM_SOFT_TOYS": "Yumu\u015fak Oyuncaklar",
-      "PROGRAM_TOWEL": "Havlu"
+      "PROGRAM_TOWEL": "Havlu",
+      "PROGRAM_COTTONS_ECO": "Pamuklu Ekonomik",
+      "PROGRAM_DRYER_COTTON": "Pamuklu Kurutma",
+      "PROGRAM_DRYER_SYNTHETICS": "Sentetik Kurutma",
+      "PROGRAM_HYGIENE_WASH_DRY": "Bebek+ Y\u0131ka & Kurut",
+      "PROGRAM_4KG_WASH_DRY": "4 kg Y\u0131ka & Kurut",
+      "PROGRAM_WASH_WEAR": "Y\u0131ka & Giy",
+      "PROGRAM_DARK_WASH": "Koyu Renkliler",
+      "PROGRAM_OUTDOOR": "Spor",
+      "PROGRAM_DRUM_CLEAN_PLUS": "Kazan Temizleme+"
     },
     "homewhiz__WASHER_TEMPERATURE": {
       "TEMPERATURE_COLD_WASH": "So\u011fuk Y\u0131kama",
@@ -40,7 +49,11 @@
     },
     "homewhiz__WASHER_SPIN": {
       "SPIN_NO_SPIN": "S\u0131kma Yok",
-      "SPIN_RINSE_HOLD": "Suda B\u0131rakma"
+      "SPIN_RINSE_HOLD": "Suda B\u0131rakma",
+      "SPIN_600": "600",
+      "SPIN_800": "800",
+      "SPIN_1200": "1200",
+      "SPIN_1400": "1400"
     },
     "homewhiz__WASHER_PREWASH": {
       "PREWASH_OFF": "Kapal\u0131",
@@ -120,6 +133,19 @@
     "homewhiz__DISHWASHER_HALFLOAD": {
       "HALFLOAD_OFF": "Kapal\u0131",
       "HALFLOAD_ON": "A\u00e7\u0131k"
+    },
+    "homewhiz__WASHER_DRY": {
+      "DRY_OFF": "Kapal\u0131",
+      "DRY_EXTRA": "Ekstra Kuru",
+      "DRY_CABINET": "Wardrobe Dry",
+      "DRY_IRON": "\u00dct\u00fc Kurulu\u011fu",
+      "DRY_10": "45 dk",
+      "DRY_20": "20 dk",
+      "DRY_30": "30 dk",
+      "DRY_60": "60 dk",
+      "DRY_90": "90 dk",
+      "DRY_120": "15 dk",
+      "DRY_150": "150 dk"
     }
   }
 }

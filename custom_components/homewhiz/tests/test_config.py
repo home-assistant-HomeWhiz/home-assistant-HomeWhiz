@@ -27,11 +27,12 @@ file_names = [
     "oven-multi.json",
     "oven-pirolitik.json",
     # configs fetched from the api
-    "example_appliance_config.json",
+    "example_washing_machine_config.json",
     "example_ac_config.json",
     "example_ac_advanced_config.json",
     "example_oven_config.json",
     "example_dishwasher_config.json",
+    "example_washing_machine_with_dryer_config.json",
 ]
 
 

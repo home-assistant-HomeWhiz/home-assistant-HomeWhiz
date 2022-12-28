@@ -29,7 +29,16 @@
       "PROGRAM_CURTAIN": "Gardiner",
       "PROGRAM_LINGERIE": "Lingeri",
       "PROGRAM_SOFT_TOYS": "T\u00f8jdyr",
-      "PROGRAM_TOWEL": "H\u00e5ndkl\u00e6der"
+      "PROGRAM_TOWEL": "H\u00e5ndkl\u00e6der",
+      "PROGRAM_COTTONS_ECO": "Bomuld Eco",
+      "PROGRAM_DRYER_COTTON": "Bomuld t\u00f8rt",
+      "PROGRAM_DRYER_SYNTHETICS": "Syntetisk t\u00f8rt",
+      "PROGRAM_HYGIENE_WASH_DRY": "Hygiejne+ vask og t\u00f8rring",
+      "PROGRAM_4KG_WASH_DRY": "4 kg vask og t\u00f8rring",
+      "PROGRAM_WASH_WEAR": "Vask og tag p\u00e5",
+      "PROGRAM_DARK_WASH": "M\u00f8rk vask",
+      "PROGRAM_OUTDOOR": "Overt\u00f8j",
+      "PROGRAM_DRUM_CLEAN_PLUS": "Reng\u00f8ring af tromle+"
     },
     "homewhiz__WASHER_TEMPERATURE": {
       "TEMPERATURE_COLD_WASH": "Kold vask",
@@ -39,7 +48,11 @@
     },
     "homewhiz__WASHER_SPIN": {
       "SPIN_NO_SPIN": "Ingen centrifugering",
-      "SPIN_RINSE_HOLD": "Skyllestop"
+      "SPIN_RINSE_HOLD": "Skyllestop",
+      "SPIN_600": "600",
+      "SPIN_800": "800",
+      "SPIN_1200": "1200",
+      "SPIN_1400": "1400"
     },
     "homewhiz__WASHER_PREWASH": {
       "PREWASH_OFF": "Slukket",
@@ -118,6 +131,19 @@
     "homewhiz__DISHWASHER_HALFLOAD": {
       "HALFLOAD_OFF": "Slukket",
       "HALFLOAD_ON": "T\u00e6ndt"
+    },
+    "homewhiz__WASHER_DRY": {
+      "DRY_OFF": "Slukket",
+      "DRY_EXTRA": "Ekstra t\u00f8rt",
+      "DRY_CABINET": "Wardrobe Dry",
+      "DRY_IRON": "Stryget\u00f8rt",
+      "DRY_10": "45 min.",
+      "DRY_20": "20 min.",
+      "DRY_30": "30 min.",
+      "DRY_60": "60 min.",
+      "DRY_90": "90 min.",
+      "DRY_120": "15 min.",
+      "DRY_150": "150 min."
     }
   }
 }

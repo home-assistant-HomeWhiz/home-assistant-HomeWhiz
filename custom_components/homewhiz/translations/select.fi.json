@@ -29,7 +29,16 @@
       "PROGRAM_CURTAIN": "Verhot",
       "PROGRAM_LINGERIE": "Alusasut",
       "PROGRAM_SOFT_TOYS": "Pehmolelut",
-      "PROGRAM_TOWEL": "Pyyhkeet"
+      "PROGRAM_TOWEL": "Pyyhkeet",
+      "PROGRAM_COTTONS_ECO": "Puuvillat \u2013 Eco",
+      "PROGRAM_DRYER_COTTON": "Puuvillan kuivaus",
+      "PROGRAM_DRYER_SYNTHETICS": "Synteettinen \u2013 kuivaus",
+      "PROGRAM_HYGIENE_WASH_DRY": "Hygienia+ \u2013 pesu ja kuivaus",
+      "PROGRAM_4KG_WASH_DRY": "4 kg:n pesu ja kuivaus",
+      "PROGRAM_WASH_WEAR": "Vaatteiden pesu ja kuivaus",
+      "PROGRAM_DARK_WASH": "Tumma",
+      "PROGRAM_OUTDOOR": "Ulkoilu",
+      "PROGRAM_DRUM_CLEAN_PLUS": "Rumpupuhdistus+"
     },
     "homewhiz__WASHER_TEMPERATURE": {
       "TEMPERATURE_COLD_WASH": "Kylm\u00e4pesu",
@@ -39,7 +48,11 @@
     },
     "homewhiz__WASHER_SPIN": {
       "SPIN_NO_SPIN": "Ei linkousta",
-      "SPIN_RINSE_HOLD": "Huuhtelupito"
+      "SPIN_RINSE_HOLD": "Huuhtelupito",
+      "SPIN_600": "600",
+      "SPIN_800": "800",
+      "SPIN_1200": "1200",
+      "SPIN_1400": "1400"
     },
     "homewhiz__WASHER_PREWASH": {
       "PREWASH_OFF": "Ei k\u00e4yt\u00f6ss\u00e4",
@@ -118,6 +131,19 @@
     "homewhiz__DISHWASHER_HALFLOAD": {
       "HALFLOAD_OFF": "Ei k\u00e4yt\u00f6ss\u00e4",
       "HALFLOAD_ON": "K\u00e4yt\u00f6ss\u00e4"
+    },
+    "homewhiz__WASHER_DRY": {
+      "DRY_OFF": "Ei p\u00e4\u00e4ll\u00e4",
+      "DRY_EXTRA": "Eritt\u00e4in kuiva",
+      "DRY_CABINET": "Wardrobe Dry",
+      "DRY_IRON": "Silityskuiva",
+      "DRY_10": "45 min",
+      "DRY_20": "20\u00a0min",
+      "DRY_30": "30 min",
+      "DRY_60": "60 min",
+      "DRY_90": "90 min",
+      "DRY_120": "15 min",
+      "DRY_150": "150 min"
     }
   }
 }
