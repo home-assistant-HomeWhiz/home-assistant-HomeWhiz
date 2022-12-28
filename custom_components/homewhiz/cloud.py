@@ -3,6 +3,7 @@ import logging
 import uuid
 from dataclasses import dataclass
 from datetime import datetime
+from typing import Optional
 
 from dacite import from_dict
 from homeassistant.config_entries import ConfigEntry
@@ -28,8 +29,8 @@ class Reported:
     applianceId: str
     macAddr: str
     wfa: list[int]
-    modifiedTime: int
-    wfaSizeModifiedTime: int
+    modifiedTime: Optional[int]
+    wfaSizeModifiedTime: Optional[int]
 
 
 @dataclass
