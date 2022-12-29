@@ -16,7 +16,7 @@ def build_device_info(unique_name: str, data: EntryData):
         else None
     )
     model = data.appliance_info.model if data.appliance_info is not None else None
-    return DeviceInfo(
+    return DeviceInfo(  # type: ignore[typeddict-item]
         identifiers={(DOMAIN, unique_name)},
         name=friendly_name,
         manufacturer=manufacturer,
@@ -24,7 +24,7 @@ def build_device_info(unique_name: str, data: EntryData):
     )
 
 
-class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator]):
+class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator]):  # type: ignore[type-arg]
     _attr_has_entity_name = True
 
     def __init__(

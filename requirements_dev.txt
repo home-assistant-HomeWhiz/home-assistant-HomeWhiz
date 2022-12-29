@@ -8,3 +8,6 @@ bluetooth_adapters
 mergedeep
 pre-commit
 bidict
+homeassistant-stubs
+types-awscrt
+voluptuous-stubs

@@ -46,7 +46,7 @@ class EntryData:
     cloud_config: Optional[CloudConfig]
 
 
-class TiltConfigFlow(ConfigFlow, domain=DOMAIN):
+class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
     """Handle a config flow for HomeWhiz"""
 
     VERSION = 1
@@ -157,7 +157,7 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):
                 {
                     vol.Required(CONF_USERNAME): str,
                     vol.Required(CONF_PASSWORD): TextSelector(
-                        TextSelectorConfig(
+                        TextSelectorConfig(  # type: ignore[typeddict-item]
                             type=TextSelectorType.PASSWORD,
                         )
                     ),
@@ -187,7 +187,7 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):
                 {
                     vol.Required(CONF_USERNAME): str,
                     vol.Required(CONF_PASSWORD): TextSelector(
-                        TextSelectorConfig(
+                        TextSelectorConfig(  # type: ignore[typeddict-item]
                             type=TextSelectorType.PASSWORD,
                         )
                     ),
@@ -200,6 +200,7 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):
         self, user_input: dict[str, Any] | None = None
     ) -> FlowResult:
         assert self._cloud_credentials is not None
+        assert self._cloud_appliances is not None
         if user_input is not None:
             appliance_id = user_input[CONF_ID]
             await self.async_set_unique_id(appliance_id)

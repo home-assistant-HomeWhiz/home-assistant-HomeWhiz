@@ -11,7 +11,7 @@ from homeassistant.components.climate import (
     HVACMode,
 )
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import STATE_UNAVAILABLE, TEMP_CELSIUS
+from homeassistant.const import TEMP_CELSIUS
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
@@ -78,8 +78,6 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
 
     @property
     def hvac_mode(self) -> HVACMode | None:
-        if not self.available:
-            return STATE_UNAVAILABLE
         if self.coordinator.data is None:
             return None
         if self.is_off:
@@ -95,6 +93,8 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
             await self.coordinator.send_command(self._control.state.set_value(True))
         if self.hvac_mode_raw != hvac_mode:
             program_key = program_dict.inverse.get(hvac_mode)
+            if program_key is None:
+                raise Exception(f"Unrecognized fan mode {hvac_mode}")
             await self.coordinator.send_command(
                 self._control.program.set_value(program_key)
             )
@@ -113,8 +113,6 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
 
     @property
     def target_temperature(self) -> float | None:
-        if not self.available:
-            return STATE_UNAVAILABLE
         if self.coordinator.data is None:
             return None
         return self._control.target_temperature.get_value(self.coordinator.data)
@@ -143,6 +141,8 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
     async def async_set_fan_mode(self, fan_mode: str):
         _LOGGER.debug(f"Changing fan mode {fan_mode}")
         wind_strength_key = wind_strength_dict.inverse.get(fan_mode)
+        if wind_strength_key is None:
+            raise Exception(f"Unrecognized fan mode {fan_mode}")
         await self.coordinator.send_command(
             self._control.fan_mode.set_value(wind_strength_key)
         )

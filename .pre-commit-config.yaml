@@ -48,3 +48,7 @@ repos:
   hooks:
   - id: pretty-format-yaml
     args: [--autofix, --indent, '2']
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: 0b037c2
+  hooks:
+  - id: mypy

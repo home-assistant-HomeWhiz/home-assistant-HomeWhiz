@@ -5,7 +5,6 @@ from typing import Any
 
 from homeassistant.components.switch import SwitchEntity
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import STATE_UNAVAILABLE
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
@@ -32,8 +31,6 @@ class HomeWhizSwitchEntity(HomeWhizEntity, SwitchEntity):
 
     @property
     def is_on(self) -> bool | None:
-        if not self.available:
-            return STATE_UNAVAILABLE
         if self.coordinator.data is None:
             return None
         return self._control.get_value(self.coordinator.data)

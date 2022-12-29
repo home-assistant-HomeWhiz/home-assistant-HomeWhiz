@@ -4,7 +4,6 @@ import logging
 
 from homeassistant.components.sensor import SensorDeviceClass, SensorEntity
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import STATE_UNAVAILABLE
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
@@ -41,9 +40,7 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
             self._attr_device_class = SensorDeviceClass.DURATION
 
     @property
-    def native_value(self) -> float | None:
-        if not self.available:
-            return STATE_UNAVAILABLE
+    def native_value(self) -> float | int | str | None:
         if self.coordinator.data is None:
             return None
         return self._control.get_value(self.coordinator.data)

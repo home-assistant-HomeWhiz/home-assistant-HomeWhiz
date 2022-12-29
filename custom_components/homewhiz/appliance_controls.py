@@ -1,7 +1,8 @@
 import logging
-from collections.abc import Mapping
+from abc import ABC
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, fields
-from typing import Any, Callable, Optional, TypeVar
+from typing import Any, Generic, Optional, TypeVar
 
 from bidict import bidict
 
@@ -27,17 +28,18 @@ def clamp(value: int):
     return value if value < 128 else value - 128
 
 
-@dataclass
-class Control:
+class Control(ABC):
     key: str
-    get_value: Callable[[bytearray], Any]
+
+    def get_value(self, data: bytearray) -> Any:
+        pass
 
 
-Options = TypeVar("Options", bound=Mapping[int, str])
+_Options = TypeVar("_Options", bound=Mapping[int, str])
 
 
-class EnumControl(Control):
-    def __init__(self, key: str, read_index: int, options: Options):
+class EnumControl(Control, Generic[_Options]):
+    def __init__(self, key: str, read_index: int, options: _Options):
         self.key = key
         self.read_index = read_index
         self.options = options
@@ -49,7 +51,7 @@ class EnumControl(Control):
         return None
 
 
-class WriteEnumControl(EnumControl):
+class WriteEnumControl(EnumControl[bidict[int, str]]):
     def __init__(
         self, key: str, read_index: int, write_index: int, options: bidict[int, str]
     ):
@@ -102,11 +104,6 @@ class TimeControl(Control):
 
 
 @dataclass
-class BooleanControl(Control):
-    get_value: Callable[[bytearray], bool]
-
-
-@dataclass
 class WriteBooleanControl(Control):
     def __init__(
         self, key: str, read_index: int, write_index: int, value_on: int, value_off: int
@@ -127,7 +124,7 @@ class WriteBooleanControl(Control):
         )
 
 
-class ClimateControl(BooleanControl):
+class ClimateControl(Control):
     key = "AC"
 
     def __init__(
@@ -159,7 +156,7 @@ def get_bounded_values_options(
     key: str, values: ApplianceFeatureBoundedOption
 ) -> bidict[int, str]:
     result: bidict[int, str] = bidict()
-    value = values.lowerLimit
+    value = float(values.lowerLimit)
     while value <= values.upperLimit:
         wifiValue = int(value / values.factor)
         unit = unit_for_key(key)
@@ -169,7 +166,7 @@ def get_bounded_values_options(
     return result
 
 
-def get_options_from_feature(feature: ApplianceFeature) -> bidict[int, str]:
+def get_options_from_feature(key: str, feature: ApplianceFeature) -> bidict[int, str]:
     options: bidict[int, str] = bidict()
     if feature.enumValues is not None:
         options = options | {
@@ -177,58 +174,62 @@ def get_options_from_feature(feature: ApplianceFeature) -> bidict[int, str]:
         }
     if feature.boundedValues is not None:
         for boundedValues in feature.boundedValues:
-            options = (
-                get_bounded_values_options(feature.strKey, boundedValues) | options
-            )
+            options = get_bounded_values_options(key, boundedValues) | options
     return options
 
 
 def get_options_from_enum_options(
-    options: list[ApplianceFeatureEnumOption],
+    options: Sequence[ApplianceFeatureEnumOption],
 ) -> dict[int, str]:
     return {option.wifiArrayValue: option.strKey for option in options}
 
 
-def build_read_control_from_feature(feature: ApplianceFeature) -> Control:
+def build_read_control_from_feature(feature: ApplianceFeature) -> Optional[Control]:
+    key = feature.strKey
+    if key is None:
+        return None
     if (
         feature.enumValues is None
         and feature.boundedValues is not None
         and len(feature.boundedValues) == 1
     ):
         return NumericControl(
-            key=feature.strKey,
+            key=key,
             read_index=feature.wifiArrayIndex,
             bounds=feature.boundedValues[0],
         )
     return EnumControl(
-        key=feature.strKey,
+        key=key,
         read_index=feature.wifiArrayIndex,
-        options=get_options_from_feature(feature),
+        options=get_options_from_feature(key, feature),
     )
 
 
-def build_write_control_from_feature(feature: ApplianceFeature) -> Control:
+def build_write_control_from_feature(feature: ApplianceFeature) -> Optional[Control]:
     write_index = (
         feature.wfaWriteIndex
         if feature.wfaWriteIndex is not None
         else feature.wifiArrayIndex
     )
+    key = feature.strKey
+    if key is None:
+        return None
     if (
         feature.enumValues is None
         and feature.boundedValues is not None
         and len(feature.boundedValues) == 1
     ):
         return WriteNumericControl(
-            key=feature.strKey,
+            key=key,
             read_index=feature.wifiArrayIndex,
             write_index=write_index,
             bounds=feature.boundedValues[0],
         )
     return WriteEnumControl(
-        key=feature.strKey,
+        key=key,
         read_index=feature.wifiArrayIndex,
         write_index=write_index,
-        options=get_options_from_feature(feature),
+        options=get_options_from_feature(key, feature),
     )
 
 
@@ -266,14 +267,18 @@ def build_controls_from_monitorings(
 def build_control_from_state(state: Optional[ApplianceState]) -> Optional[Control]:
     if state is None:
         return None
+    read_index = state.wifiArrayReadIndex
+    write_index = (
+        state.wifiArrayWriteIndex
+        if state.wifiArrayWriteIndex is not None
+        else state.wfaIndex
+    )
+    if read_index is None or write_index is None:
+        return None
     return WriteEnumControl(
         key="STATE",
-        read_index=state.wifiArrayReadIndex,
-        write_index=(
-            state.wifiArrayWriteIndex
-            if state.wifiArrayWriteIndex is not None
-            else state.wfaIndex
-        ),
+        read_index=read_index,
+        write_index=write_index,
         options=bidict(get_options_from_enum_options(state.states)),
     )
 
@@ -326,12 +331,22 @@ def extract_ac_control(controls: list[Control]) -> list[Control]:
     controls_dict = {control.key: control for control in controls}
     keys = controls_dict.keys()
     if "AIR_CONDITIONER_PROGRAM" in keys:
+        state = controls_dict["STATE"]
+        assert isinstance(state, WriteBooleanControl)
+        program = controls_dict["AIR_CONDITIONER_PROGRAM"]
+        assert isinstance(program, WriteEnumControl)
+        current_temperature = controls_dict["AIR_CONDITIONER_ROOM_TEMPERATURE"]
+        assert isinstance(current_temperature, NumericControl)
+        target_temperature = controls_dict["AIR_CONDITIONER_TARGET_TEMPERATURE"]
+        assert isinstance(target_temperature, WriteNumericControl)
+        fan_mode = controls_dict["AIR_CONDITIONER_WIND_STRENGTH"]
+        assert isinstance(fan_mode, WriteEnumControl)
         climate = ClimateControl(
-            state=controls_dict["STATE"],
-            program=controls_dict["AIR_CONDITIONER_PROGRAM"],
-            current_temperature=controls_dict["AIR_CONDITIONER_ROOM_TEMPERATURE"],
-            target_temperature=controls_dict["AIR_CONDITIONER_TARGET_TEMPERATURE"],
-            fan_mode=controls_dict["AIR_CONDITIONER_WIND_STRENGTH"],
+            state=state,
+            program=program,
+            current_temperature=current_temperature,
+            target_temperature=target_temperature,
+            fan_mode=fan_mode,
         )
         return [c for c in controls if c not in climate.controls] + [climate]
     return controls
