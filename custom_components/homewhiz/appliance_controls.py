@@ -160,7 +160,8 @@ def get_bounded_values_options(
     while value <= values.upperLimit:
         wifiValue = int(value / values.factor)
         unit = unit_for_key(key)
-        name = f"{value} {unit}" if unit is not None else str(value)
+        value_str = f"{value:g}"
+        name = f"{value_str} {unit}" if unit is not None else value_str
         result[wifiValue] = name
         value += values.step
     return result
