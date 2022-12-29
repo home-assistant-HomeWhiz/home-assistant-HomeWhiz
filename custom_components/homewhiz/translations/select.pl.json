@@ -54,27 +54,10 @@
       "SPIN_1200": "1200",
       "SPIN_1400": "1400"
     },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Wy\u0142.",
-      "PREWASH_ON": "W\u0142."
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "Dodatkowe p\u0142ukanie wy\u0142.",
-      "EXTRA_RINSE_ON": "Dodatkowe p\u0142ukanie w\u0142."
-    },
     "homewhiz__WASHER_FAST_PLUS": {
       "FAST_PLUS_OFF": "Fast+ wy\u0142.",
       "FAST_PLUS_ON_FAST": "Szybki",
       "FAST_PLUS_ON_FAST_PLUS": "Fast+"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Wy\u0142.",
-      "HIDDEN_ANTI_CREASE_ON": "W\u0142."
-    },
-    "homewhiz__WASHER_STEAM": {},
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Wy\u0142.",
-      "PHR_ON": "W\u0142."
     },
     "homewhiz__OVEN_PROGRAM": {
       "PROGRAM_STATIC": "Statyczne",
@@ -93,12 +76,6 @@
       "PROGRAM_ECO_PYRO": "Czyszczenie eko",
       "PROGRAM_PYRO": "Czyszczenie"
     },
-    "homewhiz__OVEN_TEMPERATURE": {},
-    "homewhiz__OVEN_BOOSTER": {
-      "BOOSTER_OFF": "Wy\u0142.",
-      "BOOSTER_ON": "W\u0142."
-    },
-    "homewhiz__OVEN_SKIP_PREHEATING": {},
     "homewhiz__PROGRAM": {
       "PROGRAM_AUTO": "Auto 40-65\u00b0C",
       "PROGRAM_MIX_WASH_+": "All-in-Wash\nAquaFlex",
@@ -112,26 +89,6 @@
       "PROGRAM_DAILY": "Codzienne",
       "PROGRAM_SILENT": "SilentWash",
       "PROGRAM_MAKINE_TEMIZLEME": "Inner Clean"
-    },
-    "homewhiz__DISHWASHER_TRAYWASH": {
-      "TRAY_WASH_OFF": "Wy\u0142.",
-      "TRAY_WASH_ON": "W\u0142."
-    },
-    "homewhiz__DISHWASHER_FAST+": {
-      "FAST+_OFF": "Express Wy\u0142.",
-      "FAST+_ON": "Express W\u0142."
-    },
-    "homewhiz__DISHWASHER_STEAMGLOSS": {
-      "STEAMGLOSS_OFF": "Wy\u0142.",
-      "STEAMGLOSS_ON": "W\u0142."
-    },
-    "homewhiz__DISHWASHER_EXTRARINSE": {
-      "EXTRARINSE_OFF": "Extra P\u0142ukanie Wy\u0142.",
-      "EXTRARINSE_ON": "Extra P\u0142ukanie W\u0142."
-    },
-    "homewhiz__DISHWASHER_HALFLOAD": {
-      "HALFLOAD_OFF": "Wy\u0142.",
-      "HALFLOAD_ON": "W\u0142."
     },
     "homewhiz__WASHER_DRY": {
       "DRY_OFF": "Wy\u0142.",

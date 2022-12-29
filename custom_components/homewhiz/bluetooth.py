@@ -7,7 +7,7 @@ from homeassistant.components import bluetooth
 from homeassistant.core import HomeAssistant, callback
 
 from .const import DOMAIN
-from .homewhiz import HomewhizCoordinator
+from .homewhiz import Command, HomewhizCoordinator
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
@@ -95,9 +95,9 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
             )
             self.async_set_updated_data(full_message)
 
-    async def send_command(self, index: int, value: int):
-        payload = bytearray([2, 4, 0, 4, 0, index, 1, value])
-        print(payload)
+    async def send_command(self, command: Command):
+        _LOGGER.debug(f"Sending command {command.index}:{command.value}")
+        payload = bytearray([2, 4, 0, 4, 0, command.index, 1, command.value])
         await self._connection.write_gatt_char(
             "0000ac01-0000-1000-8000-00805F9B34FB",
             payload,

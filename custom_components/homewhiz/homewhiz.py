@@ -1,9 +1,16 @@
 import logging
 from collections import defaultdict
+from dataclasses import dataclass
 
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
+
+
+@dataclass
+class Command:
+    index: int
+    value: int
 
 
 class HomewhizCoordinator(DataUpdateCoordinator[bytearray | None]):
@@ -14,7 +21,7 @@ class HomewhizCoordinator(DataUpdateCoordinator[bytearray | None]):
     def is_connected(self):
         return False
 
-    async def send_command(self, index: int, value: int):
+    async def send_command(self, command: Command):
         pass
 
 

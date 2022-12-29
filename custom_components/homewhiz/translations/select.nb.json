@@ -53,27 +53,10 @@
       "SPIN_1200": "1200",
       "SPIN_1400": "1400"
     },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Av",
-      "PREWASH_ON": "P\u00e5"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "Ekstra skylling av",
-      "EXTRA_RINSE_ON": "Ekstra skylling p\u00e5"
-    },
     "homewhiz__WASHER_FAST_PLUS": {
       "FAST_PLUS_OFF": "Rask+ av",
       "FAST_PLUS_ON_FAST": "Hurtig",
       "FAST_PLUS_ON_FAST_PLUS": "Hurtig+"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Av",
-      "HIDDEN_ANTI_CREASE_ON": "P\u00e5"
-    },
-    "homewhiz__WASHER_STEAM": {},
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Av",
-      "PHR_ON": "P\u00e5"
     },
     "homewhiz__OVEN_PROGRAM": {
       "PROGRAM_STATIC": "Statisk",
@@ -92,12 +75,6 @@
       "PROGRAM_ECO_PYRO": "\u00d8korengj\u00f8ring",
       "PROGRAM_PYRO": "Rengj\u00f8ring"
     },
-    "homewhiz__OVEN_TEMPERATURE": {},
-    "homewhiz__OVEN_BOOSTER": {
-      "BOOSTER_OFF": "Av",
-      "BOOSTER_ON": "P\u00e5"
-    },
-    "homewhiz__OVEN_SKIP_PREHEATING": {},
     "homewhiz__PROGRAM": {
       "PROGRAM_AUTO": "Auto. 40\u201365\u00a0\u00b0C",
       "PROGRAM_MIX_WASH_+": "All-in-Wash",
@@ -110,26 +87,6 @@
       "PROGRAM_HYGIENE": "HygieneCare",
       "PROGRAM_SILENT": "Stillevask",
       "PROGRAM_MAKINE_TEMIZLEME": "Innvendig rengj\u00f8ring"
-    },
-    "homewhiz__DISHWASHER_TRAYWASH": {
-      "TRAY_WASH_OFF": "Av",
-      "TRAY_WASH_ON": "P\u00e5"
-    },
-    "homewhiz__DISHWASHER_FAST+": {
-      "FAST+_OFF": "Ekspress av",
-      "FAST+_ON": "Ekspress p\u00e5"
-    },
-    "homewhiz__DISHWASHER_STEAMGLOSS": {
-      "STEAMGLOSS_OFF": "Av",
-      "STEAMGLOSS_ON": "P\u00e5"
-    },
-    "homewhiz__DISHWASHER_EXTRARINSE": {
-      "EXTRARINSE_OFF": "Ekstra skylling av",
-      "EXTRARINSE_ON": "Ekstra skylling p\u00e5"
-    },
-    "homewhiz__DISHWASHER_HALFLOAD": {
-      "HALFLOAD_OFF": "Av",
-      "HALFLOAD_ON": "P\u00e5"
     },
     "homewhiz__WASHER_DRY": {
       "DRY_OFF": "Av",

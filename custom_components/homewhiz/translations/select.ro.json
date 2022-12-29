@@ -54,27 +54,10 @@
       "SPIN_1200": "1200",
       "SPIN_1400": "1400"
     },
-    "homewhiz__WASHER_PREWASH": {
-      "PREWASH_OFF": "Oprit",
-      "PREWASH_ON": "Pornit"
-    },
-    "homewhiz__WASHER_EXTRARINSE": {
-      "EXTRA_RINSE_OFF": "Cl\u0103tire suplimentar\u0103 oprit\u0103",
-      "EXTRA_RINSE_ON": "Cl\u0103tire suplimentar\u0103 pornit\u0103"
-    },
     "homewhiz__WASHER_FAST_PLUS": {
       "FAST_PLUS_OFF": "Fast+ oprit",
       "FAST_PLUS_ON_FAST": "Rapid",
       "FAST_PLUS_ON_FAST_PLUS": "Rapid+"
-    },
-    "homewhiz__WASHER_HIDDEN_ANTI_CREASE": {
-      "HIDDEN_ANTI_CREASE_OFF": "Oprit",
-      "HIDDEN_ANTI_CREASE_ON": "Pornit"
-    },
-    "homewhiz__WASHER_STEAM": {},
-    "homewhiz__WASHER_PHR": {
-      "PHR_OFF": "Oprit",
-      "PHR_ON": "Pornit"
     },
     "homewhiz__OVEN_PROGRAM": {
       "PROGRAM_STATIC": "Static",
@@ -93,12 +76,6 @@
       "PROGRAM_ECO_PYRO": "Cur\u0103\u021bare Eco",
       "PROGRAM_PYRO": "Cur\u0103\u021bare"
     },
-    "homewhiz__OVEN_TEMPERATURE": {},
-    "homewhiz__OVEN_BOOSTER": {
-      "BOOSTER_OFF": "Oprit",
-      "BOOSTER_ON": "Pornit"
-    },
-    "homewhiz__OVEN_SKIP_PREHEATING": {},
     "homewhiz__PROGRAM": {
       "PROGRAM_AUTO": "Auto 40-65\u00b0C",
       "PROGRAM_MIX_WASH_+": "Sp\u0103lare complet\u0103",
@@ -111,26 +88,6 @@
       "PROGRAM_HYGIENE": "HygieneCare",
       "PROGRAM_SILENT": "SilentWash",
       "PROGRAM_MAKINE_TEMIZLEME": "Cur\u0103\u021bare interioar\u0103"
-    },
-    "homewhiz__DISHWASHER_TRAYWASH": {
-      "TRAY_WASH_OFF": "Oprit",
-      "TRAY_WASH_ON": "Pornit"
-    },
-    "homewhiz__DISHWASHER_FAST+": {
-      "FAST+_OFF": "Express oprit",
-      "FAST+_ON": "Express pornit"
-    },
-    "homewhiz__DISHWASHER_STEAMGLOSS": {
-      "STEAMGLOSS_OFF": "Oprit",
-      "STEAMGLOSS_ON": "Pornit"
-    },
-    "homewhiz__DISHWASHER_EXTRARINSE": {
-      "EXTRARINSE_OFF": "Cl\u0103tire suplimentar\u0103 oprit\u0103",
-      "EXTRARINSE_ON": "Cl\u0103tire suplimentar\u0103 pornit\u0103"
-    },
-    "homewhiz__DISHWASHER_HALFLOAD": {
-      "HALFLOAD_OFF": "Oprit",
-      "HALFLOAD_ON": "Pornit"
     },
     "homewhiz__WASHER_DRY": {
       "DRY_OFF": "Oprit",
