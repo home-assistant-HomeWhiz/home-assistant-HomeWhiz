@@ -170,6 +170,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         if self._is_tuya:
             obj["applianceId"] = self._appliance_id
         message = json.dumps(obj)
+        assert self._connection is not None
         [publish, _] = self._connection.publish(
             self._appliance_id + suffix,
             message,

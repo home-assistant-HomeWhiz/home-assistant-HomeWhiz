@@ -1,4 +1,4 @@
-name: Test with pylint
+name: Test with pytest
 
 on:
   push:

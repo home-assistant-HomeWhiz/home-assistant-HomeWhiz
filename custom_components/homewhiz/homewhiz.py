@@ -13,7 +13,9 @@ class Command:
     value: int
 
 
-class HomewhizCoordinator(DataUpdateCoordinator[bytearray | None]):
+class HomewhizCoordinator(
+    DataUpdateCoordinator[bytearray | None]  # type: ignore[type-arg]
+):
     def connect(self):
         pass
 

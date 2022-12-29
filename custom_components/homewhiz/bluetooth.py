@@ -98,6 +98,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
     async def send_command(self, command: Command):
         _LOGGER.debug(f"Sending command {command.index}:{command.value}")
         payload = bytearray([2, 4, 0, 4, 0, command.index, 1, command.value])
+        assert self._connection is not None
         await self._connection.write_gatt_char(
             "0000ac01-0000-1000-8000-00805F9B34FB",
             payload,
@@ -114,7 +115,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
 
 class MessageAccumulator:
     expected_index = 0
-    accumulated = []
+    accumulated: bytearray = bytearray()
 
     def accumulate_message(self, message: bytearray):
         message_index = message[4]
