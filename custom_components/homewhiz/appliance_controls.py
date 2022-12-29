@@ -43,7 +43,7 @@ class DebugControl(Control):
         self.read_index = read_index
 
     def get_value(self, data: bytearray) -> Any:
-        return clamp(data[self.read_index])
+        return data[self.read_index]
 
 
 _Options = TypeVar("_Options", bound=Mapping[int, str])
