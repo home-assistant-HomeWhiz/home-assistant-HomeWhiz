@@ -4,7 +4,13 @@ from homeassistant.const import Platform
 NAME = "HomeWhiz"
 DOMAIN = "homewhiz"
 DOMAIN_DATA = f"{DOMAIN}_data"
-PLATFORMS = [Platform.SELECT, Platform.SENSOR, Platform.CLIMATE, Platform.SWITCH]
+PLATFORMS = [
+    Platform.SELECT,
+    Platform.SENSOR,
+    Platform.CLIMATE,
+    Platform.SWITCH,
+    Platform.BINARY_SENSOR,
+]
 VERSION = "0.0.0"
 CONF_TYPE = "type"
 CONF_CLOUD = "could"

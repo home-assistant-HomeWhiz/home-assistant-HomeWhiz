@@ -59,6 +59,18 @@
       "FAST_PLUS_ON_FAST": "Nopea",
       "FAST_PLUS_ON_FAST_PLUS": "Nopea+"
     },
+    "homewhiz__CUSTOM_DURATION_LEVEL": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6"
+    },
+    "homewhiz__SETTINGS_VOLUME": {
+      "VOLUME_LOW": "Pieni",
+      "VOLUME_HIGH": "Suuri"
+    },
     "homewhiz__OVEN_PROGRAM": {
       "PROGRAM_STATIC": "Kiinte\u00e4",
       "PROGRAM_STATIC_FAN": "Kiinte\u00e4+kiertoilma",
@@ -89,6 +101,11 @@
       "PROGRAM_SILENT": "Hiljainen pesu",
       "PROGRAM_MAKINE_TEMIZLEME": "Sis\u00e4inen puhdistus"
     },
+    "homewhiz__SETTING_DETERGENT_TYPE": {
+      "SETTING_DETERGENT_TYPE_POWDER": "Pesuainejauhe",
+      "SETTING_DETERGENT_TYPE_TABLET": "Tablettipuhdistusaine",
+      "SETTING_DETERGENT_TYPE_LIQUID": "Nestem\u00e4inen puhdistusaine"
+    },
     "homewhiz__WASHER_DRY": {
       "DRY_OFF": "Ei p\u00e4\u00e4ll\u00e4",
       "DRY_EXTRA": "Eritt\u00e4in kuiva",
@@ -101,6 +118,32 @@
       "DRY_90": "90 min",
       "DRY_120": "15 min",
       "DRY_150": "150 min"
+    },
+    "homewhiz__AIR_CONDITIONER_SOFT_AIR": {
+      "AIR_CONDITIONER_SOFT_AIR_OFF": "Poissa k\u00e4yt\u00f6st\u00e4",
+      "AIR_CONDITIONER_SOFT_AIR_UP": "Yl\u00f6s",
+      "AIR_CONDITIONER_SOFT_AIR_DOWN": "Alas"
+    },
+    "homewhiz__AIR_CONDITIONER_UP_DOWN_VANE_CONTROL": {
+      "UP_DOWN_VANE_CONTROL_OFF": "Poissa k\u00e4yt\u00f6st\u00e4",
+      "UP_DOWN_VANE_CONTROL_1": "1",
+      "UP_DOWN_VANE_CONTROL_2": "2",
+      "UP_DOWN_VANE_CONTROL_3": "3",
+      "UP_DOWN_VANE_CONTROL_4": "4",
+      "UP_DOWN_VANE_CONTROL_5": "5",
+      "UP_DOWN_VANE_CONTROL_6": "6",
+      "UP_DOWN_VANE_CONTROL_AUTO": "Auto"
+    },
+    "homewhiz__AIR_CONDITIONER_LEFT_RIGHT_VANE_CONTROL": {
+      "LEFT_RIGHT_VANE_CONTROL_OFF": "Poissa k\u00e4yt\u00f6st\u00e4",
+      "LEFT_RIGHT_VANE_CONTROL_1": "1",
+      "LEFT_RIGHT_VANE_CONTROL_2": "2",
+      "LEFT_RIGHT_VANE_CONTROL_3": "3",
+      "LEFT_RIGHT_VANE_CONTROL_4": "4",
+      "LEFT_RIGHT_VANE_CONTROL_5": "5",
+      "LEFT_RIGHT_VANE_CONTROL_LEFT": "Vasen",
+      "LEFT_RIGHT_VANE_CONTROL_RIGHT": "Oikea",
+      "LEFT_RIGHT_VANE_CONTROL_AUTO": "Auto"
     }
   }
 }

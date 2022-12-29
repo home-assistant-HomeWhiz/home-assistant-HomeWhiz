@@ -59,6 +59,18 @@
       "FAST_PLUS_ON_FAST": "Rapid",
       "FAST_PLUS_ON_FAST_PLUS": "Rapid+"
     },
+    "homewhiz__CUSTOM_DURATION_LEVEL": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6"
+    },
+    "homewhiz__SETTINGS_VOLUME": {
+      "VOLUME_LOW": "Sc\u0103zut",
+      "VOLUME_HIGH": "Ridicat"
+    },
     "homewhiz__OVEN_PROGRAM": {
       "PROGRAM_STATIC": "Static",
       "PROGRAM_STATIC_FAN": "Static + ventilator",
@@ -89,6 +101,11 @@
       "PROGRAM_SILENT": "SilentWash",
       "PROGRAM_MAKINE_TEMIZLEME": "Cur\u0103\u021bare interioar\u0103"
     },
+    "homewhiz__SETTING_DETERGENT_TYPE": {
+      "SETTING_DETERGENT_TYPE_POWDER": "Detergent pudr\u0103",
+      "SETTING_DETERGENT_TYPE_TABLET": "Detergent tablet\u0103",
+      "SETTING_DETERGENT_TYPE_LIQUID": "Detergent lichid"
+    },
     "homewhiz__WASHER_DRY": {
       "DRY_OFF": "Oprit",
       "DRY_EXTRA": "Uscare suplimentar\u0103",
@@ -101,6 +118,32 @@
       "DRY_90": "90 min",
       "DRY_120": "15 min.",
       "DRY_150": "150 min"
+    },
+    "homewhiz__AIR_CONDITIONER_SOFT_AIR": {
+      "AIR_CONDITIONER_SOFT_AIR_OFF": "Oprit",
+      "AIR_CONDITIONER_SOFT_AIR_UP": "Sus",
+      "AIR_CONDITIONER_SOFT_AIR_DOWN": "Jos"
+    },
+    "homewhiz__AIR_CONDITIONER_UP_DOWN_VANE_CONTROL": {
+      "UP_DOWN_VANE_CONTROL_OFF": "Oprit",
+      "UP_DOWN_VANE_CONTROL_1": "1",
+      "UP_DOWN_VANE_CONTROL_2": "2",
+      "UP_DOWN_VANE_CONTROL_3": "3",
+      "UP_DOWN_VANE_CONTROL_4": "4",
+      "UP_DOWN_VANE_CONTROL_5": "5",
+      "UP_DOWN_VANE_CONTROL_6": "6",
+      "UP_DOWN_VANE_CONTROL_AUTO": "Automat"
+    },
+    "homewhiz__AIR_CONDITIONER_LEFT_RIGHT_VANE_CONTROL": {
+      "LEFT_RIGHT_VANE_CONTROL_OFF": "Oprit",
+      "LEFT_RIGHT_VANE_CONTROL_1": "1",
+      "LEFT_RIGHT_VANE_CONTROL_2": "2",
+      "LEFT_RIGHT_VANE_CONTROL_3": "3",
+      "LEFT_RIGHT_VANE_CONTROL_4": "4",
+      "LEFT_RIGHT_VANE_CONTROL_5": "5",
+      "LEFT_RIGHT_VANE_CONTROL_LEFT": "St\u00e2nga",
+      "LEFT_RIGHT_VANE_CONTROL_RIGHT": "Dreapta",
+      "LEFT_RIGHT_VANE_CONTROL_AUTO": "Automat"
     }
   }
 }

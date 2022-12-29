@@ -51,6 +51,11 @@
       "FAST_PLUS_ON_FAST": "Fast",
       "FAST_PLUS_ON_FAST_PLUS": "Fast+"
     },
+    "homewhiz__CUSTOM_DURATION_LEVEL": {},
+    "homewhiz__SETTINGS_VOLUME": {
+      "VOLUME_LOW": "Basso",
+      "VOLUME_HIGH": "Alto"
+    },
     "homewhiz__OVEN_PROGRAM": {
       "PROGRAM_STATIC": "Statico",
       "PROGRAM_STATIC_FAN": "Statico + Ventilato",
@@ -80,6 +85,11 @@
       "PROGRAM_SILENT": "SilentWash",
       "PROGRAM_MAKINE_TEMIZLEME": "Inner Clean"
     },
+    "homewhiz__SETTING_DETERGENT_TYPE": {
+      "SETTING_DETERGENT_TYPE_POWDER": "Detergente in polvere",
+      "SETTING_DETERGENT_TYPE_TABLET": "Detergente in pastiglie",
+      "SETTING_DETERGENT_TYPE_LIQUID": "Detergente liquido"
+    },
     "homewhiz__WASHER_DRY": {
       "DRY_OFF": "Spento",
       "DRY_EXTRA": "Extra Dry",
@@ -92,6 +102,32 @@
       "DRY_90": "90 min",
       "DRY_120": "15\\'",
       "DRY_150": "150 min"
+    },
+    "homewhiz__AIR_CONDITIONER_SOFT_AIR": {
+      "AIR_CONDITIONER_SOFT_AIR_OFF": "Spento",
+      "AIR_CONDITIONER_SOFT_AIR_UP": "Su",
+      "AIR_CONDITIONER_SOFT_AIR_DOWN": "In basso"
+    },
+    "homewhiz__AIR_CONDITIONER_UP_DOWN_VANE_CONTROL": {
+      "UP_DOWN_VANE_CONTROL_OFF": "Spento",
+      "UP_DOWN_VANE_CONTROL_1": "1",
+      "UP_DOWN_VANE_CONTROL_2": "2",
+      "UP_DOWN_VANE_CONTROL_3": "3",
+      "UP_DOWN_VANE_CONTROL_4": "4",
+      "UP_DOWN_VANE_CONTROL_5": "5",
+      "UP_DOWN_VANE_CONTROL_6": "6",
+      "UP_DOWN_VANE_CONTROL_AUTO": "Auto"
+    },
+    "homewhiz__AIR_CONDITIONER_LEFT_RIGHT_VANE_CONTROL": {
+      "LEFT_RIGHT_VANE_CONTROL_OFF": "Spento",
+      "LEFT_RIGHT_VANE_CONTROL_1": "1",
+      "LEFT_RIGHT_VANE_CONTROL_2": "2",
+      "LEFT_RIGHT_VANE_CONTROL_3": "3",
+      "LEFT_RIGHT_VANE_CONTROL_4": "4",
+      "LEFT_RIGHT_VANE_CONTROL_5": "5",
+      "LEFT_RIGHT_VANE_CONTROL_LEFT": "Sinistra",
+      "LEFT_RIGHT_VANE_CONTROL_RIGHT": "Destra",
+      "LEFT_RIGHT_VANE_CONTROL_AUTO": "Auto"
     }
   }
 }

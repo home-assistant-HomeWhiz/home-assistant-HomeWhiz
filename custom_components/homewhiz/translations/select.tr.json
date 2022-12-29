@@ -60,6 +60,18 @@
       "FAST_PLUS_ON_FAST": "H\u0131zl\u0131",
       "FAST_PLUS_ON_FAST_PLUS": "\u00c7ok H\u0131zl\u0131"
     },
+    "homewhiz__CUSTOM_DURATION_LEVEL": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6"
+    },
+    "homewhiz__SETTINGS_VOLUME": {
+      "VOLUME_LOW": "D\u00fc\u015f\u00fck",
+      "VOLUME_HIGH": "Y\u00fcksek"
+    },
     "homewhiz__OVEN_PROGRAM": {
       "PROGRAM_STATIC": "Statik",
       "PROGRAM_STATIC_FAN": "Statik + Fan",
@@ -91,6 +103,11 @@
       "PROGRAM_SILENT": "Ekstra Sessiz",
       "PROGRAM_MAKINE_TEMIZLEME": "Makine Y\u0131kama"
     },
+    "homewhiz__SETTING_DETERGENT_TYPE": {
+      "SETTING_DETERGENT_TYPE_POWDER": "Toz Deterjan",
+      "SETTING_DETERGENT_TYPE_TABLET": "Tablet Deterjan",
+      "SETTING_DETERGENT_TYPE_LIQUID": "S\u0131v\u0131/Jel Deterjan"
+    },
     "homewhiz__WASHER_DRY": {
       "DRY_OFF": "Kapal\u0131",
       "DRY_EXTRA": "Ekstra Kuru",
@@ -103,6 +120,32 @@
       "DRY_90": "90 dk",
       "DRY_120": "15 dk",
       "DRY_150": "150 dk"
+    },
+    "homewhiz__AIR_CONDITIONER_SOFT_AIR": {
+      "AIR_CONDITIONER_SOFT_AIR_OFF": "Kapal\u0131",
+      "AIR_CONDITIONER_SOFT_AIR_UP": "Yukar\u0131",
+      "AIR_CONDITIONER_SOFT_AIR_DOWN": "A\u015fa\u011f\u0131"
+    },
+    "homewhiz__AIR_CONDITIONER_UP_DOWN_VANE_CONTROL": {
+      "UP_DOWN_VANE_CONTROL_OFF": "Kapal\u0131",
+      "UP_DOWN_VANE_CONTROL_1": "1",
+      "UP_DOWN_VANE_CONTROL_2": "2",
+      "UP_DOWN_VANE_CONTROL_3": "3",
+      "UP_DOWN_VANE_CONTROL_4": "4",
+      "UP_DOWN_VANE_CONTROL_5": "5",
+      "UP_DOWN_VANE_CONTROL_6": "6",
+      "UP_DOWN_VANE_CONTROL_AUTO": "Otomatik"
+    },
+    "homewhiz__AIR_CONDITIONER_LEFT_RIGHT_VANE_CONTROL": {
+      "LEFT_RIGHT_VANE_CONTROL_OFF": "Kapal\u0131",
+      "LEFT_RIGHT_VANE_CONTROL_1": "1",
+      "LEFT_RIGHT_VANE_CONTROL_2": "2",
+      "LEFT_RIGHT_VANE_CONTROL_3": "3",
+      "LEFT_RIGHT_VANE_CONTROL_4": "4",
+      "LEFT_RIGHT_VANE_CONTROL_5": "5",
+      "LEFT_RIGHT_VANE_CONTROL_LEFT": "Sol",
+      "LEFT_RIGHT_VANE_CONTROL_RIGHT": "Sa\u011f",
+      "LEFT_RIGHT_VANE_CONTROL_AUTO": "Otomatik"
     }
   }
 }

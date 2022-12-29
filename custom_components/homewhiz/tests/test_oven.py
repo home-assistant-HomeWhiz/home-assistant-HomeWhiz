@@ -56,5 +56,11 @@ def test_off(config):
             "VARIABLE_DELAY": 98,
             "VARIABLE_OVEN_DURATION": 0,
             "VARIABLE_REMAINING": 6,
+            "REMOTE_CONTROL": True,
+            "OVEN_WARNING_DOOR_IS_OPEN": False,
+            "OVEN_WARNING_DOOR_LOCKED": False,
+            "OVEN_WARNING_ERROR": False,
+            "SETTINGS_BRIGHTNESS": 3,
+            "SETTINGS_VOLUME": "VOLUME_HIGH",
         },
     )
