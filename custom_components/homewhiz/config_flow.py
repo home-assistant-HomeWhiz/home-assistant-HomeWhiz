@@ -200,8 +200,8 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
         self, user_input: dict[str, Any] | None = None
     ) -> FlowResult:
         assert self._cloud_credentials is not None
-        assert self._cloud_appliances is not None
         if user_input is not None:
+            assert self._cloud_appliances is not None
             appliance_id = user_input[CONF_ID]
             await self.async_set_unique_id(appliance_id)
             self._abort_if_unique_id_configured()
