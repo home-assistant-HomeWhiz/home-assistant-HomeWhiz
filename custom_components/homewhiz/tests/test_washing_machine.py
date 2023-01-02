@@ -13,7 +13,7 @@ test_case.maxDiff = None
 
 
 @pytest.fixture
-def config():
+def config() -> ApplianceConfiguration:
     dirname = os.path.dirname(__file__)
     file_path = os.path.join(dirname, "fixtures/example_washing_machine_config.json")
     with open(file_path) as file:
@@ -21,15 +21,13 @@ def config():
         return from_dict(ApplianceConfiguration, json_content)
 
 
-def test_on(config):
+def test_on(config: ApplianceConfiguration) -> None:
     data = bytearray.fromhex(
         "002f4a45a10100000000000000000000000000000000000000000200000000000000000a011e0c"
         "0000000080021102110000000000000000000000000000000100000000000001070000000000"
     )
-    descriptions = generate_controls_from_config(config)
-    values = {
-        description.key: description.get_value(data) for description in descriptions
-    }
+    controls = generate_controls_from_config(config)
+    values = {control.key: control.get_value(data) for control in controls}
 
     test_case.assertDictEqual(
         values,
@@ -63,15 +61,13 @@ def test_on(config):
     )
 
 
-def test_running(config):
+def test_running(config: ApplianceConfiguration) -> None:
     data = bytearray.fromhex(
         "002f4a45a10100000000000000000000000000000000000000000200000000000000001e819e0c"
         "0080000080021100398080010000000000000000000080808100800000008001078000808000"
     )
-    descriptions = generate_controls_from_config(config)
-    values = {
-        description.key: description.get_value(data) for description in descriptions
-    }
+    controls = generate_controls_from_config(config)
+    values = {control.key: control.get_value(data) for control in controls}
     test_case.assertDictEqual(
         values,
         {
@@ -104,15 +100,13 @@ def test_running(config):
     )
 
 
-def test_spinning(config):
+def test_spinning(config: ApplianceConfiguration) -> None:
     data = bytearray.fromhex(
         "002f4a45a10100000000000000000000000000000000000000000200000000000000001e819e8c"
         "00808080800211000a8080020000000000000000008080808180800000008081078000808000"
     )
-    descriptions = generate_controls_from_config(config)
-    values = {
-        description.key: description.get_value(data) for description in descriptions
-    }
+    controls = generate_controls_from_config(config)
+    values = {control.key: control.get_value(data) for control in controls}
     test_case.assertDictEqual(
         values,
         {
@@ -145,13 +139,13 @@ def test_spinning(config):
     )
 
 
-def test_delay_defined(config):
+def test_delay_defined(config: ApplianceConfiguration) -> None:
     data = bytearray.fromhex(
         "003853e0ab0100000000000000000000000000000000000000000300000000000000000a01280e"
         "000000008002100210012c000000000000000000010000000100000000000001078000000000"
     )
-    descriptions = generate_controls_from_config(config)
-    values = {control.key: control.get_value(data) for control in descriptions}
+    controls = generate_controls_from_config(config)
+    values = {control.key: control.get_value(data) for control in controls}
     test_case.assertDictEqual(
         values,
         {
@@ -184,7 +178,7 @@ def test_delay_defined(config):
     )
 
 
-def test_warning(config):
+def test_warning(config: ApplianceConfiguration) -> None:
     data = bytearray(
         b"\x00/JE\xa1\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
         b"\x00\x00\x00\x00\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00(\x07(\x08\x00\x00"
@@ -192,8 +186,8 @@ def test_warning(config):
         b"\x81\x00\x00\x01\x80\x80\x00\x00\x00\x00\x01\x07\x00\x00\x00\x00\x00"
     )
 
-    descriptions = generate_controls_from_config(config)
-    values = {control.key: control.get_value(data) for control in descriptions}
+    controls = generate_controls_from_config(config)
+    values = {control.key: control.get_value(data) for control in controls}
     test_case.assertDictEqual(
         values,
         {
@@ -226,7 +220,7 @@ def test_warning(config):
     )
 
 
-def test_remote_control_custom_settings(config):
+def test_remote_control_custom_settings(config: ApplianceConfiguration) -> None:
     data = bytearray(
         b"\x00/JE\xa1\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
         b"\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\x00\x00\x00\x00\xaa\x00"
@@ -235,8 +229,8 @@ def test_remote_control_custom_settings(config):
         b"\x00\x01\x07\x00\x00\x00\x01\x00"
     )
 
-    descriptions = generate_controls_from_config(config)
-    values = {control.key: control.get_value(data) for control in descriptions}
+    controls = generate_controls_from_config(config)
+    values = {control.key: control.get_value(data) for control in controls}
     test_case.assertDictEqual(
         values,
         {

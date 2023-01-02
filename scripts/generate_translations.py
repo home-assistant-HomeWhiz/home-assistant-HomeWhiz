@@ -1,9 +1,11 @@
 import asyncio
 import json
 import os
+from collections.abc import Mapping, MutableMapping
+from typing import Any
 
 import aiohttp
-from mergedeep import Strategy, mergedeep
+from mergedeep import Strategy, mergedeep  # type: ignore[import]
 
 from custom_components.homewhiz import DOMAIN
 from custom_components.homewhiz.api import (
@@ -19,7 +21,7 @@ from custom_components.homewhiz.appliance_controls import (
 )
 
 
-async def get_file(address: str):
+async def get_file(address: str) -> Any:
     async with aiohttp.ClientSession() as session:
         async with session.get(
             address,
@@ -56,7 +58,9 @@ known_appliance_ids = [
 ]
 
 
-async def write_translations_file(name: str, translations: dict):
+async def write_translations_file(
+    name: str, translations: Mapping[str, Mapping[str, str]]
+) -> None:
     dirname = os.path.dirname(__file__)
     translations_path = os.path.join(
         dirname, "../custom_components/homewhiz/translations/"
@@ -68,7 +72,7 @@ async def write_translations_file(name: str, translations: dict):
     print(f"{file_path} Updated")
 
 
-async def generate():
+async def generate() -> None:
     username = input("Username: ")
     password = input("Password: ")
     credentials = await login(username, password)
@@ -78,8 +82,8 @@ async def generate():
         print(f"language {language}")
         base_contents_index = await fetch_base_contents_index(credentials, language)
         base_localizations = await fetch_localizations(base_contents_index)
-        select_translations = {}
-        sensor_translations = {}
+        select_translations: MutableMapping[str, Mapping[str, str]] = {}
+        sensor_translations: MutableMapping[str, Mapping[str, str]] = {}
         for appliance_id in known_appliance_ids:
             contents = await fetch_appliance_contents(
                 credentials, appliance_id, language
@@ -101,11 +105,12 @@ async def generate():
                 and not isinstance(control, WriteEnumControl)
             ]
 
-            def localize_key(key: str):
+            def localize_key(key: str) -> str | None:
                 if key in localizations:
                     return localizations[key]
+                return None
 
-            def localize(control: EnumControl):
+            def localize(control: EnumControl) -> dict[str, str]:
                 entity_result: dict[str, str] = {}
                 for option in control.options.values():
                     localized = localize_key(option)

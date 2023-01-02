@@ -1,5 +1,6 @@
 import asyncio
 import logging
+from typing import Optional
 
 from bleak import BleakClient, BLEDevice
 from bleak_retry_connector import establish_connection
@@ -26,7 +27,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         self.alive = True
         super().__init__(hass, _LOGGER, name=DOMAIN)
 
-    async def connect(self):
+    async def connect(self) -> bool:
         _LOGGER.info(f"Connecting to {self.address}")
         self._device = bluetooth.async_ble_device_from_address(
             self._hass, self.address, connectable=True
@@ -43,9 +44,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
             raise Exception("Can't connect")
         await self._connection.start_notify(
             "0000ac02-0000-1000-8000-00805f9b34fb",
-            lambda sender, message: self.hass.create_task(
-                self.handle_notify(sender, message)
-            ),
+            lambda sender, message: self.hass.create_task(self.handle_notify(message)),
         )
         await self._connection.write_gatt_char(
             "0000ac01-0000-1000-8000-00805f9b34fb",
@@ -56,7 +55,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
 
         return True
 
-    async def try_reconnect(self):
+    async def try_reconnect(self) -> None:
         while self.alive and (
             self._connection is None or not self._connection.is_connected
         ):
@@ -75,7 +74,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                 await asyncio.sleep(60)
 
     @callback
-    def handle_disconnect(self):
+    def handle_disconnect(self) -> None:
         self._device = None
         self._connection = None
         self.async_set_updated_data(None)
@@ -83,7 +82,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         self.hass.create_task(self.try_reconnect())
 
     @callback
-    async def handle_notify(self, sender: int, message: bytearray):
+    async def handle_notify(self, message: bytearray) -> None:
         _LOGGER.debug(f"Message received: {message}")
         if len(message) < 10:
             _LOGGER.debug("Ignoring short message")
@@ -95,7 +94,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
             )
             self.async_set_updated_data(full_message)
 
-    async def send_command(self, command: Command):
+    async def send_command(self, command: Command) -> None:
         _LOGGER.debug(f"Sending command {command.index}:{command.value}")
         payload = bytearray([2, 4, 0, 4, 0, command.index, 1, command.value])
         assert self._connection is not None
@@ -105,19 +104,20 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         )
 
     @property
-    def is_connected(self):
+    def is_connected(self) -> bool:
         return self._connection is not None and self._connection.is_connected
 
-    async def kill(self):
+    async def kill(self) -> None:
         self.alive = False
-        await self._connection.disconnect()
+        if self._connection is not None:
+            await self._connection.disconnect()
 
 
 class MessageAccumulator:
     expected_index = 0
     accumulated: bytearray = bytearray()
 
-    def accumulate_message(self, message: bytearray):
+    def accumulate_message(self, message: bytearray) -> Optional[bytearray]:
         message_index = message[4]
         _LOGGER.debug("Message index: %d", message_index)
         if message_index == 0:

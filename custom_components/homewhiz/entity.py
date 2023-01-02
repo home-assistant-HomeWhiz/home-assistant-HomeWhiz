@@ -6,7 +6,7 @@ from .const import DOMAIN
 from .homewhiz import HomewhizCoordinator, brand_name_by_code
 
 
-def build_device_info(unique_name: str, data: EntryData):
+def build_device_info(unique_name: str, data: EntryData) -> DeviceInfo:
     friendly_name = (
         data.appliance_info.name if data.appliance_info is not None else unique_name
     )

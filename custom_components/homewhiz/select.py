@@ -59,7 +59,7 @@ class HomeWhizSelectEntity(HomeWhizEntity, SelectEntity):
             return None
         return self._control.get_value(self.coordinator.data)
 
-    async def async_select_option(self, option: str):
+    async def async_select_option(self, option: str) -> None:
         await self.coordinator.send_command(self._control.set_value(option))
 
 

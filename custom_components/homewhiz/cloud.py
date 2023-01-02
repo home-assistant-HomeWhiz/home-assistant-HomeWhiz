@@ -3,7 +3,7 @@ import logging
 import uuid
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Optional
+from typing import Any, Optional
 
 from dacite import from_dict
 from homeassistant.config_entries import ConfigEntry
@@ -70,9 +70,9 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
 
         super().__init__(hass, _LOGGER, name=DOMAIN)
 
-    async def connect(self):
+    async def connect(self) -> bool:
         from awscrt.auth import AwsCredentialsProvider
-        from awsiot import mqtt_connection_builder
+        from awsiot import mqtt_connection_builder  # type: ignore[import]
 
         _LOGGER.info(f"Connecting to {self._appliance_id}")
         credentials = await login(
@@ -86,7 +86,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             session_token=credentials.sessionToken,
             secret_access_key=credentials.secretKey,
         )
-        self._connection = mqtt_connection_builder.websockets_with_default_aws_signing(
+        connection = mqtt_connection_builder.websockets_with_default_aws_signing(
             client_id=uuid.uuid1().hex,
             endpoint="ajf7v9dcoe69w-ats.iot.eu-west-1.amazonaws.com",
             region="eu-west-1",
@@ -94,9 +94,10 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             on_connection_interrupted=self.on_connection_interrupted,
             on_connection_resumed=self.on_connection_resumed,
         )
-        self._connection.connect().result()
+        self._connection = connection
+        connection.connect().result()
         self._is_connected = True
-        [subscribe_update, _] = self._connection.subscribe(
+        [subscribe_update, _] = connection.subscribe(
             f"$aws/things/{self._appliance_id}/shadow/update/accepted",
             self._mqtt.QoS.AT_LEAST_ONCE,
             lambda topic, payload, dup, qos, retain, **kwargs: self.handle_notify(
@@ -105,7 +106,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         )
         _LOGGER.debug(f"Subscribe to update result: {subscribe_update.result()}")
 
-        [subscribe_get, _] = self._connection.subscribe(
+        [subscribe_get, _] = connection.subscribe(
             f"$aws/things/{self._appliance_id}/shadow/get/accepted",
             self._mqtt.QoS.AT_LEAST_ONCE,
             lambda topic, payload, dup, qos, retain, **kwargs: self.handle_notify(
@@ -118,28 +119,34 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         self.get_shadow()
 
         self._entry.async_on_unload(
-            async_track_point_in_time(self.hass, self.refresh_connection, expiration)
+            async_track_point_in_time(
+                hass=self.hass,
+                action=self.refresh_connection,  # type: ignore[arg-type]
+                point_in_time=expiration,
+            )
         )
         return True
 
     @callback
-    def on_connection_interrupted(self, connection, error, **kwargs):
-        _LOGGER.debug(f"Connection interrupted {error}"),
+    def on_connection_interrupted(self, error: str, **kwargs: Any) -> None:
+        _LOGGER.debug(f"Connection interrupted {error}")
         self._is_connected = False
 
     @callback
-    def on_connection_resumed(self, connection, return_code, session_present):
-        _LOGGER.debug("Connection resumed"),
+    def on_connection_resumed(self, **kwargs: Any) -> None:
+        _LOGGER.debug("Connection resumed")
         self._is_connected = True
 
     @callback
-    async def refresh_connection(self):
-        _LOGGER.debug("Refreshing connection"),
+    async def refresh_connection(self, **kwargs: Any) -> None:
+        _LOGGER.debug("Refreshing connection")
+        assert self._connection is not None
         old_connection = self._connection
         await self.connect()
         old_connection.disconnect()
 
-    def force_read(self):
+    def force_read(self) -> None:
+        assert self._connection is not None
         suffix = "/tuyacommand" if self._is_tuya else "/command"
         force_read = {
             "type": "fread" + suffix,
@@ -153,7 +160,8 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         )
         _LOGGER.debug(f"Force read result: {publish.result()}")
 
-    def get_shadow(self):
+    def get_shadow(self) -> None:
+        assert self._connection is not None
         [publish, _] = self._connection.publish(
             f"$aws/things/{self._appliance_id}/shadow/get",
             "{}",
@@ -161,7 +169,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         )
         _LOGGER.debug(f"Get shadow result: {publish.result()}")
 
-    async def send_command(self, command: Command):
+    async def send_command(self, command: Command) -> None:
         suffix = "/tuyacommand" if self._is_tuya else "/command"
         obj = {
             "type": "write",
@@ -180,7 +188,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         _LOGGER.debug(f"Command result: {publish.result()}")
 
     @callback
-    def handle_notify(self, payload: str):
+    def handle_notify(self, payload: str) -> None:
         message = from_dict(MqttPayload, json.loads(payload))
         offset = int(message.state.reported.wfaStartOffset)
         padding = [0 for _ in range(0, offset)]
@@ -189,10 +197,11 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         self.async_set_updated_data(data)
 
     @property
-    def is_connected(self):
+    def is_connected(self) -> bool:
         return self._is_connected
 
-    async def kill(self):
+    async def kill(self) -> None:
         self._is_connected = False
         self.alive = False
-        self._connection.disconnect()
+        if self._connection is not None:
+            self._connection.disconnect()

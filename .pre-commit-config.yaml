@@ -52,3 +52,5 @@ repos:
   rev: 0b037c2
   hooks:
   - id: mypy
+    additional_dependencies: [homeassistant-stubs, types-awscrt, voluptuous-stubs, dacite, pytest, bidict, bleak_retry_connector]
+    args: []

@@ -1,4 +1,5 @@
 import logging
+from pprint import pprint
 
 from dacite import from_dict
 from homeassistant.components.bluetooth import (
@@ -22,7 +23,7 @@ from .const import DOMAIN, PLATFORMS
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
 
-async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
+async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     _LOGGER.info(f"Setting up entry {entry.unique_id}")
     address = entry.unique_id
     if "ids" not in entry.data:
@@ -36,7 +37,9 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
         return await setup_bluetooth(address, entry, hass)
 
 
-async def setup_bluetooth(address, entry, hass):
+async def setup_bluetooth(
+    address: str | None, entry: ConfigEntry, hass: HomeAssistant
+) -> bool:
     _LOGGER.info("Setting up bluetooth connection")
 
     coordinator = hass.data.setdefault(DOMAIN, {})[
@@ -55,14 +58,14 @@ async def setup_bluetooth(address, entry, hass):
         async_register_callback(
             hass,
             connect,
-            BluetoothCallbackMatcher(address=address),
+            BluetoothCallbackMatcher(address=address),  # type: ignore[typeddict-item]
             BluetoothScanningMode.ACTIVE,
         )
     )
     return True
 
 
-def _lazy_install_awsiotsdk():
+def _lazy_install_awsiotsdk() -> None:
     custom_required_packages = ["awsiotsdk"]
     links = "https://qqaatw.github.io/aws-crt-python-musllinux/"
     for pkg in custom_required_packages:
@@ -70,7 +73,7 @@ def _lazy_install_awsiotsdk():
             raise RequirementsNotFound(DOMAIN, [pkg])
 
 
-async def setup_cloud(entry, hass):
+async def setup_cloud(entry: ConfigEntry, hass: HomeAssistant) -> bool:
     _LOGGER.info("Setting up cloud connection")
     _lazy_install_awsiotsdk()
 
@@ -80,6 +83,7 @@ async def setup_cloud(entry, hass):
         entry.entry_id
     ] = HomewhizCloudUpdateCoordinator(hass, ids.appId, cloud_config, entry)
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
+    pprint(hass.config.components)
     hass.async_create_task(coordinator.connect())
     return True
 

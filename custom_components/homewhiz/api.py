@@ -5,7 +5,7 @@ import json
 import logging
 from dataclasses import dataclass
 from functools import reduce
-from typing import Optional
+from typing import Any, Optional
 
 import aiohttp
 from aiohttp import ContentTypeError
@@ -76,7 +76,7 @@ class ApplianceInfo:
     hsmId: Optional[str]
     connectivity: str = "BT"
 
-    def is_bt(self):
+    def is_bt(self) -> bool:
         return self == "BT" or self == "BASICBT"
 
 
@@ -91,19 +91,21 @@ class ApplianceContents:
     localization: dict[str, str]
 
 
-def sign(key, msg):
+def sign(key: bytes, msg: str) -> bytes:
     return hmac.new(key, msg.encode("utf-8"), hashlib.sha256).digest()
 
 
-def getSignatureKey(key, date_stamp, regionName, serviceName):
+def get_signature_key(
+    key: str, date_stamp: str, region_name: str, service_name: str
+) -> bytes:
     kDate = sign(("AWS4" + key).encode("utf-8"), date_stamp)
-    kRegion = sign(kDate, regionName)
-    kService = sign(kRegion, serviceName)
+    kRegion = sign(kDate, region_name)
+    kService = sign(kRegion, service_name)
     kSigning = sign(kService, "aws4_request")
     return kSigning
 
 
-async def login(username: str, password: str):
+async def login(username: str, password: str) -> LoginResponse:
     request_parameters = {"password": password, "username": username}
 
     async with aiohttp.ClientSession() as session:
@@ -119,7 +121,7 @@ async def login(username: str, password: str):
             return from_dict(LoginResponse, data["credentials"])
 
 
-async def make_id_exchange_request(device_name: str):
+async def make_id_exchange_request(device_name: str) -> IdExchangeResponse:
     hsmid = device_name[4:]
     _LOGGER.debug(f"hsmid: {hsmid}")
     async with aiohttp.ClientSession() as session:
@@ -133,7 +135,7 @@ async def make_id_exchange_request(device_name: str):
             return from_dict(IdExchangeResponse, contents)
 
 
-async def make_get_contents_request(contents: ContentsDescription):
+async def make_get_contents_request(contents: ContentsDescription) -> Any:
     async with aiohttp.ClientSession() as session:
         async with session.get(
             f"https://s3-eu-west-1.amazonaws.com/procam-contents"
@@ -152,7 +154,7 @@ async def make_api_get_request(
     credentials: LoginResponse,
     canonical_uri: str,
     canonical_querystring: str = "",
-):
+) -> Any:
     t = datetime.datetime.utcnow()
     amz_date = t.strftime("%Y%m%dT%H%M%SZ")
     date_stamp = t.strftime("%Y%m%d")  # Date w/o time, used in credential scope
@@ -186,7 +188,7 @@ async def make_api_get_request(
     )
 
     # Create the signing key using the function defined above.
-    signing_key = getSignatureKey(credentials.secretKey, date_stamp, REGION, SERVICE)
+    signing_key = get_signature_key(credentials.secretKey, date_stamp, REGION, SERVICE)
     signature = hmac.new(
         signing_key, string_to_sign.encode("utf-8"), hashlib.sha256
     ).hexdigest()
@@ -219,8 +221,8 @@ async def make_api_get_request(
 
 
 async def fetch_contents_index(
-    credentials: LoginResponse, app_id: str, language="en-GB"
-):
+    credentials: LoginResponse, app_id: str, language: str = "en-GB"
+) -> ContentsIndexResponse:
     response = await make_api_get_request(
         host="api.arcelikiot.com",
         canonical_uri="/procam/contents",
@@ -235,7 +237,9 @@ async def fetch_contents_index(
     return from_dict(ContentsIndexResponse, response["data"])
 
 
-async def fetch_base_contents_index(credentials: LoginResponse, language: str):
+async def fetch_base_contents_index(
+    credentials: LoginResponse, language: str
+) -> ContentsIndexResponse:
     response = await make_api_get_request(
         host="api.arcelikiot.com",
         canonical_uri="/procam/contents/subtype",
@@ -250,7 +254,7 @@ async def fetch_base_contents_index(credentials: LoginResponse, language: str):
     return from_dict(ContentsIndexResponse, response["data"])
 
 
-async def fetch_localizations(contents_index: ContentsIndexResponse):
+async def fetch_localizations(contents_index: ContentsIndexResponse) -> dict[str, str]:
     localization_contents = [
         content for content in contents_index.results if content.ctype == "LOCALIZATION"
     ]
@@ -262,7 +266,7 @@ async def fetch_localizations(contents_index: ContentsIndexResponse):
 
 
 async def fetch_appliance_contents(
-    credentials: LoginResponse, app_id: str, language="en-GB"
+    credentials: LoginResponse, app_id: str, language: str = "en-GB"
 ) -> ApplianceContents:
     contents_index = await fetch_contents_index(credentials, app_id, language)
     config_contents = [
@@ -279,7 +283,7 @@ async def fetch_appliance_contents(
     )
 
 
-async def fetch_appliance_infos(credentials: LoginResponse):
+async def fetch_appliance_infos(credentials: LoginResponse) -> list[ApplianceInfo]:
     resp = await make_api_get_request(
         "smarthome.arcelikiot.com",
         credentials,

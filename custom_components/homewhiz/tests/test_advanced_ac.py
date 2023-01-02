@@ -13,7 +13,7 @@ test_case.maxDiff = None
 
 
 @pytest.fixture
-def config():
+def config() -> ApplianceConfiguration:
     dirname = os.path.dirname(__file__)
     file_path = os.path.join(dirname, "fixtures/example_ac_advanced_config.json")
     with open(file_path) as file:
@@ -21,7 +21,7 @@ def config():
         return from_dict(ApplianceConfiguration, json_content)
 
 
-def test(config):
+def test(config: ApplianceConfiguration) -> None:
     controls = generate_controls_from_config(config)
     control_keys = [control.key for control in controls]
 

@@ -1,6 +1,6 @@
 import logging
 from abc import ABC, abstractmethod
-from collections.abc import Mapping, Sequence
+from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass, fields
 from typing import Any, Generic, Optional, TypeVar
 
@@ -26,7 +26,7 @@ from .homewhiz import Command
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
 
-def clamp(value: int):
+def clamp(value: int) -> int:
     return value if value < 128 else value - 128
 
 
@@ -185,7 +185,7 @@ class ClimateControl(Control):
             fan_mode,
         ]
 
-    def get_value(self, data: bytearray):
+    def get_value(self, data: bytearray) -> dict[str, Any]:
         return {c.key: c.get_value(data) for c in self.controls}
 
 
@@ -213,7 +213,7 @@ def get_options_from_feature(key: str, feature: ApplianceFeature) -> bidict[int,
     if feature.boundedValues is not None:
         for boundedValues in feature.boundedValues:
             options = get_bounded_values_options(key, boundedValues) | options
-    return options
+    return bidict(sorted(options.items()))
 
 
 def get_options_from_enum_options(
@@ -284,7 +284,9 @@ def build_control_from_program(program: ApplianceProgram) -> Control:
     )
 
 
-def build_control_from_substate(sub_states: Optional[ApplianceSubState]):
+def build_control_from_substate(
+    sub_states: Optional[ApplianceSubState],
+) -> Optional[Control]:
     if sub_states is None:
         return None
     return EnumControl(
@@ -296,7 +298,7 @@ def build_control_from_substate(sub_states: Optional[ApplianceSubState]):
 
 def build_controls_from_monitorings(
     monitorings: Optional[list[ApplianceFeature]],
-):
+) -> Iterable[Optional[Control]]:
     if monitorings is None:
         return []
     return map(build_read_control_from_feature, monitorings)
@@ -323,10 +325,10 @@ def build_control_from_state(state: Optional[ApplianceState]) -> Optional[Contro
 
 def build_controls_from_progress_variables(
     progress_variables: Optional[ApplianceProgress],
-):
+) -> list[Control]:
     if progress_variables is None:
         return []
-    result = []
+    result: list[Control] = []
     for field in fields(progress_variables):
         feature: Optional[ApplianceProgressFeature] = getattr(
             progress_variables, field.name
@@ -344,7 +346,9 @@ def build_controls_from_progress_variables(
     return result
 
 
-def build_control_from_remote_control(remote_control: Optional[ApplianceRemoteControl]):
+def build_control_from_remote_control(
+    remote_control: Optional[ApplianceRemoteControl],
+) -> Optional[Control]:
     if remote_control is None:
         return None
     return BooleanCompareControl(
@@ -354,7 +358,7 @@ def build_control_from_remote_control(remote_control: Optional[ApplianceRemoteCo
     )
 
 
-def build_controls_from_warnings(warnings: Optional[ApplianceWarning]):
+def build_controls_from_warnings(warnings: Optional[ApplianceWarning]) -> list[Control]:
     if warnings is None:
         return []
 
@@ -366,7 +370,9 @@ def build_controls_from_warnings(warnings: Optional[ApplianceWarning]):
     ]
 
 
-def build_controls_from_features(settings: Optional[list[ApplianceFeature]]):
+def build_controls_from_features(
+    settings: Optional[list[ApplianceFeature]],
+) -> list[Optional[Control]]:
     if settings is None:
         return []
 

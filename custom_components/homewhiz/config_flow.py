@@ -72,7 +72,9 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
         self._bt_name = discovery_info.name
         return await self.async_step_bluetooth_connect()
 
-    async def async_step_user(self, user_input: dict[str, Any] | None = None):
+    async def async_step_user(
+        self, user_input: dict[str, Any] | None = None
+    ) -> FlowResult:
         return self.async_show_menu(
             step_id="user",
             menu_options=["select_bluetooth_device", "provide_cloud_credentials"],
