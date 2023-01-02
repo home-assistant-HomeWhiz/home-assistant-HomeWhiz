@@ -1,4 +1,6 @@
+import abc
 import logging
+from abc import ABC
 from collections import defaultdict
 from dataclasses import dataclass
 
@@ -14,16 +16,19 @@ class Command:
 
 
 class HomewhizCoordinator(
-    DataUpdateCoordinator[bytearray | None]  # type: ignore[type-arg]
+    ABC, DataUpdateCoordinator[bytearray | None]  # type: ignore[type-arg]
 ):
-    def connect(self):
+    @abc.abstractmethod
+    async def connect(self) -> bool:
         pass
 
     @property
-    def is_connected(self):
-        return False
+    @abc.abstractmethod
+    def is_connected(self) -> bool:
+        pass
 
-    async def send_command(self, command: Command):
+    @abc.abstractmethod
+    async def send_command(self, command: Command) -> None:
         pass
 
 

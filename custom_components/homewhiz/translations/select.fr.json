@@ -59,6 +59,18 @@
       "FAST_PLUS_ON_FAST": "Rapide",
       "FAST_PLUS_ON_FAST_PLUS": "Rapide Plus"
     },
+    "homewhiz__CUSTOM_DURATION_LEVEL": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6"
+    },
+    "homewhiz__SETTINGS_VOLUME": {
+      "VOLUME_LOW": "Bas",
+      "VOLUME_HIGH": "Haut"
+    },
     "homewhiz__OVEN_PROGRAM": {
       "PROGRAM_STATIC": "Convection naturelle",
       "PROGRAM_STATIC_FAN": "Chaleur brass\u00e9e",
@@ -89,6 +101,11 @@
       "PROGRAM_SILENT": "Silence Nuit",
       "PROGRAM_MAKINE_TEMIZLEME": "Nettoyage cuve"
     },
+    "homewhiz__SETTING_DETERGENT_TYPE": {
+      "SETTING_DETERGENT_TYPE_POWDER": "D\u00e9tergent poudre",
+      "SETTING_DETERGENT_TYPE_TABLET": "D\u00e9tergent tablette",
+      "SETTING_DETERGENT_TYPE_LIQUID": "D\u00e9tergent liquide"
+    },
     "homewhiz__WASHER_DRY": {
       "DRY_OFF": "Arr\u00eat",
       "DRY_EXTRA": "Extra sec",
@@ -101,6 +118,32 @@
       "DRY_90": "90\u00a0min",
       "DRY_120": "15\u00a0min",
       "DRY_150": "150\u00a0min"
+    },
+    "homewhiz__AIR_CONDITIONER_SOFT_AIR": {
+      "AIR_CONDITIONER_SOFT_AIR_OFF": "Arr\u00eat",
+      "AIR_CONDITIONER_SOFT_AIR_UP": "Haut",
+      "AIR_CONDITIONER_SOFT_AIR_DOWN": "Bas"
+    },
+    "homewhiz__AIR_CONDITIONER_UP_DOWN_VANE_CONTROL": {
+      "UP_DOWN_VANE_CONTROL_OFF": "D\u00e9sactiv\u00e9e",
+      "UP_DOWN_VANE_CONTROL_1": "1",
+      "UP_DOWN_VANE_CONTROL_2": "2",
+      "UP_DOWN_VANE_CONTROL_3": "3",
+      "UP_DOWN_VANE_CONTROL_4": "4",
+      "UP_DOWN_VANE_CONTROL_5": "5",
+      "UP_DOWN_VANE_CONTROL_6": "6",
+      "UP_DOWN_VANE_CONTROL_AUTO": "Activ\u00e9e"
+    },
+    "homewhiz__AIR_CONDITIONER_LEFT_RIGHT_VANE_CONTROL": {
+      "LEFT_RIGHT_VANE_CONTROL_OFF": "Arr\u00eat",
+      "LEFT_RIGHT_VANE_CONTROL_1": "1",
+      "LEFT_RIGHT_VANE_CONTROL_2": "2",
+      "LEFT_RIGHT_VANE_CONTROL_3": "3",
+      "LEFT_RIGHT_VANE_CONTROL_4": "4",
+      "LEFT_RIGHT_VANE_CONTROL_5": "5",
+      "LEFT_RIGHT_VANE_CONTROL_LEFT": "Gauche",
+      "LEFT_RIGHT_VANE_CONTROL_RIGHT": "Droite",
+      "LEFT_RIGHT_VANE_CONTROL_AUTO": "Automatique"
     }
   }
 }

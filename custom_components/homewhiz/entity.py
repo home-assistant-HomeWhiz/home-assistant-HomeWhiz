@@ -6,7 +6,7 @@ from .const import DOMAIN
 from .homewhiz import HomewhizCoordinator, brand_name_by_code
 
 
-def build_device_info(unique_name: str, data: EntryData):
+def build_device_info(unique_name: str, data: EntryData) -> DeviceInfo:
     friendly_name = (
         data.appliance_info.name if data.appliance_info is not None else unique_name
     )
@@ -52,4 +52,10 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator]):  # type: ignore[ty
             return "State"
         if key == "SUB_STATE":
             return "Sub-state"
+        if key == "REMOTE_CONTROL":
+            return "Remote control"
+        if key == "SETTINGS_VOLUME":
+            return "Volume"
+        if "WARNING" in key:
+            return "Warning: " + self._localization.get(key, key)
         return self._localization.get(key, key)

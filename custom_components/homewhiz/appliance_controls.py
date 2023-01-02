@@ -1,6 +1,6 @@
 import logging
-from abc import ABC
-from collections.abc import Mapping, Sequence
+from abc import ABC, abstractmethod
+from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass, fields
 from typing import Any, Generic, Optional, TypeVar
 
@@ -14,8 +14,10 @@ from custom_components.homewhiz.appliance_config import (
     ApplianceProgram,
     ApplianceProgress,
     ApplianceProgressFeature,
+    ApplianceRemoteControl,
     ApplianceState,
     ApplianceSubState,
+    ApplianceWarning,
 )
 from custom_components.homewhiz.helper import unit_for_key
 
@@ -24,7 +26,7 @@ from .homewhiz import Command
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
 
-def clamp(value: int):
+def clamp(value: int) -> int:
     return value if value < 128 else value - 128
 
 
@@ -33,6 +35,15 @@ class Control(ABC):
 
     def get_value(self, data: bytearray) -> Any:
         pass
+
+
+class DebugControl(Control):
+    def __init__(self, key: str, read_index: int):
+        self.key = key
+        self.read_index = read_index
+
+    def get_value(self, data: bytearray) -> Any:
+        return data[self.read_index]
 
 
 _Options = TypeVar("_Options", bound=Mapping[int, str])
@@ -103,8 +114,34 @@ class TimeControl(Control):
         return hours * 60 + minutes
 
 
+class BooleanControl(Control):
+    @abstractmethod
+    def get_value(self, data: bytearray) -> bool:
+        pass
+
+
+class BooleanCompareControl(BooleanControl):
+    def __init__(self, key: str, read_index: int, compare_value: int):
+        self.key = key
+        self.read_index = read_index
+        self.compare_value = compare_value
+
+    def get_value(self, data: bytearray) -> bool:
+        return data[self.read_index] == self.compare_value
+
+
+class BooleanBitmaskControl(BooleanControl):
+    def __init__(self, key: str, read_index: int, bit: int):
+        self.key = key
+        self.read_index = read_index
+        self.bit = bit
+
+    def get_value(self, data: bytearray) -> bool:
+        return data[self.read_index] & (1 << self.bit) != 0
+
+
 @dataclass
-class WriteBooleanControl(Control):
+class WriteBooleanControl(BooleanControl):
     def __init__(
         self, key: str, read_index: int, write_index: int, value_on: int, value_off: int
     ):
@@ -148,7 +185,7 @@ class ClimateControl(Control):
             fan_mode,
         ]
 
-    def get_value(self, data: bytearray):
+    def get_value(self, data: bytearray) -> dict[str, Any]:
         return {c.key: c.get_value(data) for c in self.controls}
 
 
@@ -176,7 +213,7 @@ def get_options_from_feature(key: str, feature: ApplianceFeature) -> bidict[int,
     if feature.boundedValues is not None:
         for boundedValues in feature.boundedValues:
             options = get_bounded_values_options(key, boundedValues) | options
-    return options
+    return bidict(sorted(options.items()))
 
 
 def get_options_from_enum_options(
@@ -247,7 +284,9 @@ def build_control_from_program(program: ApplianceProgram) -> Control:
     )
 
 
-def build_control_from_substate(sub_states: Optional[ApplianceSubState]):
+def build_control_from_substate(
+    sub_states: Optional[ApplianceSubState],
+) -> Optional[Control]:
     if sub_states is None:
         return None
     return EnumControl(
@@ -259,7 +298,7 @@ def build_control_from_substate(sub_states: Optional[ApplianceSubState]):
 
 def build_controls_from_monitorings(
     monitorings: Optional[list[ApplianceFeature]],
-):
+) -> Iterable[Optional[Control]]:
     if monitorings is None:
         return []
     return map(build_read_control_from_feature, monitorings)
@@ -286,10 +325,10 @@ def build_control_from_state(state: Optional[ApplianceState]) -> Optional[Contro
 
 def build_controls_from_progress_variables(
     progress_variables: Optional[ApplianceProgress],
-):
+) -> list[Control]:
     if progress_variables is None:
         return []
-    result = []
+    result: list[Control] = []
     for field in fields(progress_variables):
         feature: Optional[ApplianceProgressFeature] = getattr(
             progress_variables, field.name
@@ -305,6 +344,39 @@ def build_controls_from_progress_variables(
                 )
             )
     return result
+
+
+def build_control_from_remote_control(
+    remote_control: Optional[ApplianceRemoteControl],
+) -> Optional[Control]:
+    if remote_control is None:
+        return None
+    return BooleanCompareControl(
+        key="REMOTE_CONTROL",
+        read_index=remote_control.wifiArrayReadIndex,
+        compare_value=remote_control.wifiArrayValue,
+    )
+
+
+def build_controls_from_warnings(warnings: Optional[ApplianceWarning]) -> list[Control]:
+    if warnings is None:
+        return []
+
+    return [
+        BooleanBitmaskControl(
+            key=warn.strKey, read_index=warnings.wifiArrayReadIndex, bit=warn.bitIndex
+        )
+        for warn in warnings.warnings
+    ]
+
+
+def build_controls_from_features(
+    settings: Optional[list[ApplianceFeature]],
+) -> list[Optional[Control]]:
+    if settings is None:
+        return []
+
+    return [build_write_control_from_feature(s) for s in settings]
 
 
 def convert_to_bool_control_if_possible(control: Control) -> Control:
@@ -356,17 +428,22 @@ def extract_ac_control(controls: list[Control]) -> list[Control]:
 def generate_controls_from_config(
     config: ApplianceConfiguration,
 ) -> list[Control]:
-    controls = [
+    possible_controls: list[Control | None] = [
         build_control_from_state(config.deviceStates),
         build_control_from_program(config.program),
         build_control_from_substate(config.deviceSubStates),
-        *map(build_write_control_from_feature, config.subPrograms),
+        *build_controls_from_features(config.subPrograms),
+        *build_controls_from_features(config.customSubPrograms),
         *build_controls_from_monitorings(config.monitorings),
         *build_controls_from_progress_variables(config.progressVariables),
+        build_control_from_remote_control(config.remoteControl),
+        *build_controls_from_warnings(config.deviceWarnings),
+        *build_controls_from_warnings(config.warnings),
+        *build_controls_from_features(config.settings),
     ]
     controls = [
         convert_to_bool_control_if_possible(control)
-        for control in controls
+        for control in possible_controls
         if control is not None
     ]
     controls = extract_ac_control(controls)

@@ -60,6 +60,18 @@
       "FAST_PLUS_ON_FAST": "Fast",
       "FAST_PLUS_ON_FAST_PLUS": "Fast+"
     },
+    "homewhiz__CUSTOM_DURATION_LEVEL": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6"
+    },
+    "homewhiz__SETTINGS_VOLUME": {
+      "VOLUME_LOW": "Low",
+      "VOLUME_HIGH": "High"
+    },
     "homewhiz__OVEN_PROGRAM": {
       "PROGRAM_STATIC": "Static",
       "PROGRAM_STATIC_FAN": "Static + Fan",
@@ -91,6 +103,11 @@
       "PROGRAM_SILENT": "SilentWash",
       "PROGRAM_MAKINE_TEMIZLEME": "Inner Clean"
     },
+    "homewhiz__SETTING_DETERGENT_TYPE": {
+      "SETTING_DETERGENT_TYPE_POWDER": "Powder Detergent",
+      "SETTING_DETERGENT_TYPE_TABLET": "Tablet Detergent",
+      "SETTING_DETERGENT_TYPE_LIQUID": "Liquid Detergent"
+    },
     "homewhiz__WASHER_DRY": {
       "DRY_OFF": "Off",
       "DRY_EXTRA": "Extra Dry",
@@ -103,6 +120,32 @@
       "DRY_90": "90 Min",
       "DRY_120": "15 Min",
       "DRY_150": "150 Min"
+    },
+    "homewhiz__AIR_CONDITIONER_SOFT_AIR": {
+      "AIR_CONDITIONER_SOFT_AIR_OFF": "Off",
+      "AIR_CONDITIONER_SOFT_AIR_UP": "Up",
+      "AIR_CONDITIONER_SOFT_AIR_DOWN": "Down"
+    },
+    "homewhiz__AIR_CONDITIONER_UP_DOWN_VANE_CONTROL": {
+      "UP_DOWN_VANE_CONTROL_OFF": "Off",
+      "UP_DOWN_VANE_CONTROL_1": "1",
+      "UP_DOWN_VANE_CONTROL_2": "2",
+      "UP_DOWN_VANE_CONTROL_3": "3",
+      "UP_DOWN_VANE_CONTROL_4": "4",
+      "UP_DOWN_VANE_CONTROL_5": "5",
+      "UP_DOWN_VANE_CONTROL_6": "6",
+      "UP_DOWN_VANE_CONTROL_AUTO": "Auto"
+    },
+    "homewhiz__AIR_CONDITIONER_LEFT_RIGHT_VANE_CONTROL": {
+      "LEFT_RIGHT_VANE_CONTROL_OFF": "Off",
+      "LEFT_RIGHT_VANE_CONTROL_1": "1",
+      "LEFT_RIGHT_VANE_CONTROL_2": "2",
+      "LEFT_RIGHT_VANE_CONTROL_3": "3",
+      "LEFT_RIGHT_VANE_CONTROL_4": "4",
+      "LEFT_RIGHT_VANE_CONTROL_5": "5",
+      "LEFT_RIGHT_VANE_CONTROL_LEFT": "Left",
+      "LEFT_RIGHT_VANE_CONTROL_RIGHT": "Right",
+      "LEFT_RIGHT_VANE_CONTROL_AUTO": "Auto"
     }
   }
 }

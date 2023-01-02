@@ -13,7 +13,7 @@ test_case.maxDiff = None
 
 
 @pytest.fixture
-def config():
+def config() -> ApplianceConfiguration:
     dirname = os.path.dirname(__file__)
     file_path = os.path.join(
         dirname, "fixtures/example_washing_machine_with_dryer_config.json"
@@ -23,7 +23,7 @@ def config():
         return from_dict(ApplianceConfiguration, json_content)
 
 
-def test_off(config):
+def test_off(config: ApplianceConfiguration) -> None:
     data = bytearray(
         b"\x00\xb8d\x13\xab\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
         b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\x00\x00\x00"
@@ -31,10 +31,8 @@ def test_off(config):
         b"\x00\x80\x80\x07\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
         b"\x00\x00\x00\x00\x01\x00\x00\x00\x00\x13\x00\x00\x00\x00\x00\x00"
     )
-    descriptions = generate_controls_from_config(config)
-    values = {
-        description.key: description.get_value(data) for description in descriptions
-    }
+    controls = generate_controls_from_config(config)
+    values = {control.key: control.get_value(data) for control in controls}
 
     test_case.assertDictEqual(
         values,
@@ -53,5 +51,16 @@ def test_off(config):
             "WASHER_DURATION": 140,
             "WASHER_REMAINING": 0,
             "WASHER_DELAY": 0,
+            "REMOTE_CONTROL": False,
+            "WASHER_WARNING_DOOR_IS_OPEN": False,
+            "WASHER_WARNING_NO_WATER": False,
+            "WASHER_WARNING_SECURITY": False,
+            "SETTINGS_VOLUME": "VOLUME_LOW",
+            "WASHER_SOAKING": False,
+            "WASHER_NIGHT": False,
+            "WASHER_RINSE_COUNT": 0,
+            "WASHER_ANTICREASE": False,
+            "WASHER_ADD_WATER": False,
+            "CUSTOM_DURATION_LEVEL": "DURATION_LEVEL_0",
         },
     )

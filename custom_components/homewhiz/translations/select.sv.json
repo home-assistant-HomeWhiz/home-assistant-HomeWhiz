@@ -59,6 +59,18 @@
       "FAST_PLUS_ON_FAST": "Snabb",
       "FAST_PLUS_ON_FAST_PLUS": "Snabb+"
     },
+    "homewhiz__CUSTOM_DURATION_LEVEL": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6"
+    },
+    "homewhiz__SETTINGS_VOLUME": {
+      "VOLUME_LOW": "L\u00e5g",
+      "VOLUME_HIGH": "H\u00f6g"
+    },
     "homewhiz__OVEN_PROGRAM": {
       "PROGRAM_STATIC": "Statisk",
       "PROGRAM_STATIC_FAN": "Statisk + varmluft",
@@ -89,6 +101,11 @@
       "PROGRAM_SILENT": "Tyst tv\u00e4tt",
       "PROGRAM_MAKINE_TEMIZLEME": "Innerreng\u00f6ring"
     },
+    "homewhiz__SETTING_DETERGENT_TYPE": {
+      "SETTING_DETERGENT_TYPE_POWDER": "Pulverdiskmedel",
+      "SETTING_DETERGENT_TYPE_TABLET": "Tablettdiskmedel",
+      "SETTING_DETERGENT_TYPE_LIQUID": "Flytande diskmedel"
+    },
     "homewhiz__WASHER_DRY": {
       "DRY_OFF": "Av",
       "DRY_EXTRA": "Helt torrt",
@@ -101,6 +118,32 @@
       "DRY_90": "90 minuter",
       "DRY_120": "15 min.",
       "DRY_150": "150 minuter"
+    },
+    "homewhiz__AIR_CONDITIONER_SOFT_AIR": {
+      "AIR_CONDITIONER_SOFT_AIR_OFF": "Av",
+      "AIR_CONDITIONER_SOFT_AIR_UP": "Upp\u00e5t",
+      "AIR_CONDITIONER_SOFT_AIR_DOWN": "Ned\u00e5t"
+    },
+    "homewhiz__AIR_CONDITIONER_UP_DOWN_VANE_CONTROL": {
+      "UP_DOWN_VANE_CONTROL_OFF": "Av",
+      "UP_DOWN_VANE_CONTROL_1": "1",
+      "UP_DOWN_VANE_CONTROL_2": "2",
+      "UP_DOWN_VANE_CONTROL_3": "3",
+      "UP_DOWN_VANE_CONTROL_4": "4",
+      "UP_DOWN_VANE_CONTROL_5": "5",
+      "UP_DOWN_VANE_CONTROL_6": "6",
+      "UP_DOWN_VANE_CONTROL_AUTO": "Auto"
+    },
+    "homewhiz__AIR_CONDITIONER_LEFT_RIGHT_VANE_CONTROL": {
+      "LEFT_RIGHT_VANE_CONTROL_OFF": "Av",
+      "LEFT_RIGHT_VANE_CONTROL_1": "1",
+      "LEFT_RIGHT_VANE_CONTROL_2": "2",
+      "LEFT_RIGHT_VANE_CONTROL_3": "3",
+      "LEFT_RIGHT_VANE_CONTROL_4": "4",
+      "LEFT_RIGHT_VANE_CONTROL_5": "5",
+      "LEFT_RIGHT_VANE_CONTROL_LEFT": "Kvar",
+      "LEFT_RIGHT_VANE_CONTROL_RIGHT": "H\u00f6ger",
+      "LEFT_RIGHT_VANE_CONTROL_AUTO": "Auto"
     }
   }
 }

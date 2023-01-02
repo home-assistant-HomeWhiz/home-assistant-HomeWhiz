@@ -8,6 +8,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .appliance_controls import (
+    DebugControl,
     EnumControl,
     NumericControl,
     TimeControl,
@@ -28,7 +29,7 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
     def __init__(
         self,
         coordinator: HomewhizCoordinator,
-        control: TimeControl | EnumControl | NumericControl,
+        control: TimeControl | EnumControl | NumericControl | DebugControl,
         device_name: str,
         data: EntryData,
     ):
@@ -58,6 +59,7 @@ async def async_setup_entry(
         if isinstance(c, TimeControl)
         or (isinstance(c, EnumControl) and not isinstance(c, WriteEnumControl))
         or (isinstance(c, NumericControl) and not isinstance(c, WriteNumericControl))
+        or isinstance(c, DebugControl)
     ]
     _LOGGER.debug(f"Sensors: {[c.key for c in sensor_controls]}")
     async_add_entities(

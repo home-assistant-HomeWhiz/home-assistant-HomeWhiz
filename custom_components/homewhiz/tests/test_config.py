@@ -38,7 +38,7 @@ file_names = [
 
 
 @pytest.mark.parametrize("file_name", file_names)
-def test_all_configs(file_name: str):
+def test_all_configs(file_name: str) -> None:
     dirname = os.path.dirname(__file__)
     file_path = os.path.join(dirname, f"./fixtures/{file_name}")
 

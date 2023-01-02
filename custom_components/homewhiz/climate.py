@@ -1,7 +1,7 @@
 import logging
 
 from bidict import bidict
-from homeassistant.components.climate import (
+from homeassistant.components.climate import (  # type: ignore[import]
     FAN_AUTO,
     FAN_HIGH,
     FAN_LOW,
@@ -66,11 +66,11 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
         return list(program_dict.values()) + [HVACMode.OFF]
 
     @property
-    def is_off(self):
+    def is_off(self) -> bool:
         return self._control.state.get_value(self.coordinator.data)
 
     @property
-    def hvac_mode_raw(self):
+    def hvac_mode_raw(self) -> HVACMode | None:
         option = self._control.program.get_value(self.coordinator.data)
         if option is None:
             return None
@@ -84,7 +84,7 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
             return HVACMode.OFF
         return self.hvac_mode_raw
 
-    async def async_set_hvac_mode(self, hvac_mode: HVACMode):
+    async def async_set_hvac_mode(self, hvac_mode: HVACMode) -> None:
         _LOGGER.debug(f"Changing HVAC mode {hvac_mode}")
         if hvac_mode == HVACMode.OFF:
             await self.coordinator.send_command(self._control.state.set_value(False))
@@ -117,18 +117,18 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
             return None
         return self._control.target_temperature.get_value(self.coordinator.data)
 
-    async def async_set_temperature(self, temperature: float, **kwargs):
+    async def async_set_temperature(self, temperature: float) -> None:
         _LOGGER.debug(f"Changing temperature {temperature}")
         await self.coordinator.send_command(
             self._control.target_temperature.set_value(temperature)
         )
 
     @property
-    def current_temperature(self):
+    def current_temperature(self) -> float | None:
         return self._control.current_temperature.get_value(self.coordinator.data)
 
     @property
-    def fan_modes(self):
+    def fan_modes(self) -> list[str]:
         return list(wind_strength_dict.values())
 
     @property
@@ -138,7 +138,7 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
             return None
         return wind_strength_dict[option]
 
-    async def async_set_fan_mode(self, fan_mode: str):
+    async def async_set_fan_mode(self, fan_mode: str) -> None:
         _LOGGER.debug(f"Changing fan mode {fan_mode}")
         wind_strength_key = wind_strength_dict.inverse.get(fan_mode)
         if wind_strength_key is None:

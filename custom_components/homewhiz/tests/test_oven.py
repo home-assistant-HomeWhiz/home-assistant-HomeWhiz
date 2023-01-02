@@ -13,7 +13,7 @@ test_case.maxDiff = None
 
 
 @pytest.fixture
-def config():
+def config() -> ApplianceConfiguration:
     dirname = os.path.dirname(__file__)
     file_path = os.path.join(dirname, "fixtures/example_oven_config.json")
     with open(file_path) as file:
@@ -21,7 +21,7 @@ def config():
         return from_dict(ApplianceConfiguration, json_content)
 
 
-def test_off(config):
+def test_off(config: ApplianceConfiguration) -> None:
     data = bytearray(
         b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
         b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
@@ -39,10 +39,8 @@ def test_off(config):
         b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
     )
 
-    descriptions = generate_controls_from_config(config)
-    values = {
-        description.key: description.get_value(data) for description in descriptions
-    }
+    controls = generate_controls_from_config(config)
+    values = {control.key: control.get_value(data) for control in controls}
 
     test_case.assertDictEqual(
         values,
@@ -56,5 +54,11 @@ def test_off(config):
             "VARIABLE_DELAY": 98,
             "VARIABLE_OVEN_DURATION": 0,
             "VARIABLE_REMAINING": 6,
+            "REMOTE_CONTROL": True,
+            "OVEN_WARNING_DOOR_IS_OPEN": False,
+            "OVEN_WARNING_DOOR_LOCKED": False,
+            "OVEN_WARNING_ERROR": False,
+            "SETTINGS_BRIGHTNESS": 3,
+            "SETTINGS_VOLUME": "VOLUME_HIGH",
         },
     )
