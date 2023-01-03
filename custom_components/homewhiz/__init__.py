@@ -1,5 +1,4 @@
 import logging
-from pprint import pprint
 
 from dacite import from_dict
 from homeassistant.components.bluetooth import (
@@ -83,7 +82,6 @@ async def setup_cloud(entry: ConfigEntry, hass: HomeAssistant) -> bool:
         entry.entry_id
     ] = HomewhizCloudUpdateCoordinator(hass, ids.appId, cloud_config, entry)
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
-    pprint(hass.config.components)
     hass.async_create_task(coordinator.connect())
     return True
 

@@ -1,11 +1,6 @@
 import logging
 
-from bidict import bidict
 from homeassistant.components.climate import (  # type: ignore[import]
-    FAN_AUTO,
-    FAN_HIGH,
-    FAN_LOW,
-    FAN_MEDIUM,
     ClimateEntity,
     ClimateEntityFeature,
     HVACMode,
@@ -24,25 +19,6 @@ from .homewhiz import HomewhizCoordinator
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
-program_dict: bidict[str, HVACMode] = bidict(
-    {
-        "AIR_CONDITIONER_MODE_COOLING": HVACMode.COOL,
-        "AIR_CONDITIONER_MODE_AUTO": HVACMode.AUTO,
-        "AIR_CONDITIONER_MODE_DRY": HVACMode.DRY,
-        "AIR_CONDITIONER_MODE_HEATING": HVACMode.HEAT,
-        "AIR_CONDITIONER_MODE_FAN": HVACMode.FAN_ONLY,
-    }
-)
-
-wind_strength_dict: bidict[str, str] = bidict(
-    {
-        "WIND_STRENGTH_LOW": FAN_LOW,
-        "WIND_STRENGTH_MID": FAN_MEDIUM,
-        "WIND_STRENGTH_HIGH": FAN_HIGH,
-        "WIND_STRENGTH_AUTO": FAN_AUTO,
-    }
-)
-
 
 class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
     _attr_temperature_unit = TEMP_CELSIUS
@@ -59,45 +35,32 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
 
     @property
     def supported_features(self) -> ClimateEntityFeature:
-        return ClimateEntityFeature.TARGET_TEMPERATURE | ClimateEntityFeature.FAN_MODE
+        features = (
+            ClimateEntityFeature.TARGET_TEMPERATURE | ClimateEntityFeature.FAN_MODE
+        )
+        if self._control.swing.enabled:
+            features |= ClimateEntityFeature.SWING_MODE
+        return features
 
     @property
     def hvac_modes(self) -> list[HVACMode]:
-        return list(program_dict.values()) + [HVACMode.OFF]
-
-    @property
-    def is_off(self) -> bool:
-        return self._control.state.get_value(self.coordinator.data)
-
-    @property
-    def hvac_mode_raw(self) -> HVACMode | None:
-        option = self._control.program.get_value(self.coordinator.data)
-        if option is None:
-            return None
-        return program_dict[option]
+        return self._control.hvac_mode.options
 
     @property
     def hvac_mode(self) -> HVACMode | None:
-        if self.coordinator.data is None:
+        data = self.coordinator.data
+        if data is None:
             return None
-        if self.is_off:
-            return HVACMode.OFF
-        return self.hvac_mode_raw
+        return self._control.hvac_mode.get_value(data)
 
     async def async_set_hvac_mode(self, hvac_mode: HVACMode) -> None:
         _LOGGER.debug(f"Changing HVAC mode {hvac_mode}")
-        if hvac_mode == HVACMode.OFF:
-            await self.coordinator.send_command(self._control.state.set_value(False))
-            return
-        if self.is_off:
-            await self.coordinator.send_command(self._control.state.set_value(True))
-        if self.hvac_mode_raw != hvac_mode:
-            program_key = program_dict.inverse.get(hvac_mode)
-            if program_key is None:
-                raise Exception(f"Unrecognized fan mode {hvac_mode}")
-            await self.coordinator.send_command(
-                self._control.program.set_value(program_key)
-            )
+        data = self.coordinator.data
+        if data is None:
+            return None
+        commands = self._control.hvac_mode.set_value(hvac_mode, data)
+        for command in commands:
+            await self.coordinator.send_command(command)
 
     @property
     def target_temperature_step(self) -> float:
@@ -129,23 +92,33 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
 
     @property
     def fan_modes(self) -> list[str]:
-        return list(wind_strength_dict.values())
+        return list(self._control.fan_mode.options.values())
 
     @property
     def fan_mode(self) -> str | None:
-        option = self._control.fan_mode.get_value(self.coordinator.data)
-        if option is None:
-            return None
-        return wind_strength_dict[option]
+        return self._control.fan_mode.get_value(self.coordinator.data)
 
     async def async_set_fan_mode(self, fan_mode: str) -> None:
         _LOGGER.debug(f"Changing fan mode {fan_mode}")
-        wind_strength_key = wind_strength_dict.inverse.get(fan_mode)
-        if wind_strength_key is None:
-            raise Exception(f"Unrecognized fan mode {fan_mode}")
-        await self.coordinator.send_command(
-            self._control.fan_mode.set_value(wind_strength_key)
-        )
+        await self.coordinator.send_command(self._control.fan_mode.set_value(fan_mode))
+
+    @property
+    def swing_modes(self) -> list[str] | None:
+        return self._control.swing.options
+
+    @property
+    def swing_mode(self) -> str | None:
+        if self.coordinator.data is None:
+            return None
+        return self._control.swing.get_value(self.coordinator.data)
+
+    async def async_set_swing_mode(self, swing_mode: str) -> None:
+        _LOGGER.debug(f"Changing swing mode {swing_mode}")
+        if self.coordinator.data is None:
+            return None
+        commands = self._control.swing.set_value(swing_mode, self.coordinator.data)
+        for command in commands:
+            await self.coordinator.send_command(command)
 
 
 async def async_setup_entry(

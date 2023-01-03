@@ -20,7 +20,7 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 
 @dataclass
 class Reported:
-    connected: bool
+    connected: Optional[bool]
     wfaStartOffset: str
     wfaSize: str
     brand: str
