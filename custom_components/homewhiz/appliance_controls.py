@@ -5,6 +5,13 @@ from dataclasses import dataclass, fields
 from typing import Any, Generic, Optional, TypeVar
 
 from bidict import bidict
+from homeassistant.components.climate import (  # type: ignore[import]
+    SWING_BOTH,
+    SWING_HORIZONTAL,
+    SWING_OFF,
+    SWING_VERTICAL,
+    HVACMode,
+)
 
 from custom_components.homewhiz.appliance_config import (
     ApplianceConfiguration,
@@ -161,32 +168,182 @@ class WriteBooleanControl(BooleanControl):
         )
 
 
+class DisabledSwingAxisControl(Control):
+    key = "DISABLED"
+    enabled = False
+
+    def get_value(self, data: bytearray) -> bool:
+        return False
+
+    def set_value(self, value: bool, current_data: bytearray) -> list[Command]:
+        return []
+
+
+class SwingAxisControl(Control):
+    enabled = True
+
+    def __init__(self, parent: WriteEnumControl):
+        self.key = parent.key
+        self.parent = parent
+
+    def get_value(self, data: bytearray) -> bool:
+        option = self.parent.get_value(data)
+        return option is not None and not option.endswith("_OFF")
+
+    def _option_with_suffix(self, suffix: str) -> Optional[str]:
+        return next(
+            (
+                option
+                for option in self.parent.options.values()
+                if option.endswith(suffix)
+            ),
+            None,
+        )
+
+    def set_value(self, value: bool, current_data: bytearray) -> list[Command]:
+        current_value = self.get_value(current_data)
+        if current_value == value:
+            return []
+        selected_option = (
+            self._option_with_suffix("_AUTO")
+            if value
+            else self._option_with_suffix("_OFF")
+        )
+        if selected_option is None:
+            raise Exception(f"Cannot change swing for axis {self.key}")
+        return [self.parent.set_value(selected_option)]
+
+
+def build_swing_control_from_optional(
+    parent: Optional[WriteEnumControl],
+) -> DisabledSwingAxisControl | SwingAxisControl:
+    if parent is None:
+        return DisabledSwingAxisControl()
+    return SwingAxisControl(parent)
+
+
+class SwingControl(Control):
+    key = "SWING"
+
+    def __init__(
+        self,
+        horizontal: Optional[WriteEnumControl],
+        vertical: Optional[WriteEnumControl],
+    ):
+        self.horizontal = build_swing_control_from_optional(horizontal)
+        self.vertical = build_swing_control_from_optional(vertical)
+        self.enabled = self.horizontal.enabled or self.vertical.enabled
+
+    @property
+    def options(self) -> list[str]:
+        result: list[str] = [SWING_OFF]
+        if self.horizontal.enabled:
+            result.append(SWING_HORIZONTAL)
+        if self.vertical.enabled:
+            result.append(SWING_VERTICAL)
+        if self.horizontal.enabled and self.vertical.enabled:
+            result.append(SWING_BOTH)
+        return result
+
+    def get_value(self, data: bytearray) -> str:
+        value_horizontal = self.horizontal.get_value(data)
+        value_vertical = self.vertical.get_value(data)
+        if value_horizontal and value_vertical:
+            return SWING_BOTH
+        if value_horizontal:
+            return SWING_HORIZONTAL
+        if value_vertical:
+            return SWING_VERTICAL
+        return SWING_OFF
+
+    def set_value(self, value: str, current_data: bytearray) -> list[Command]:
+        value_horizontal = value == SWING_HORIZONTAL or value == SWING_BOTH
+        value_vertical = value == SWING_VERTICAL or value == SWING_BOTH
+        return self.horizontal.set_value(
+            value_horizontal, current_data
+        ) + self.vertical.set_value(value_vertical, current_data)
+
+
+program_suffix_to_hvac_mode = {
+    "COOLING": HVACMode.COOL,
+    "AUTO": HVACMode.AUTO,
+    "DRY": HVACMode.DRY,
+    "DEHUMIDIFICATION": HVACMode.DRY,
+    "HEATING": HVACMode.HEAT,
+    "FAN": HVACMode.FAN_ONLY,
+}
+
+
+class HvacControl(Control):
+    key = "HVAC"
+
+    def __init__(self, program: WriteEnumControl, state: WriteBooleanControl):
+        self.program = program
+        self.state = state
+        self._program_dict = bidict(
+            {
+                option: program_suffix_to_hvac_mode[option.split("_")[-1]]
+                for option in program.options.values()
+            }
+        )
+
+    def _hvac_mode_raw(self, data: bytearray) -> HVACMode | None:
+        option = self.program.get_value(data)
+        if option is None:
+            return None
+        return self._program_dict[option]
+
+    def get_value(self, data: bytearray) -> HVACMode | None:
+        if not self.state.get_value(data):
+            return HVACMode.OFF
+        return self._hvac_mode_raw(data)
+
+    def set_value(self, hvac_mode: HVACMode, current_data: bytearray) -> list[Command]:
+        if hvac_mode == HVACMode.OFF:
+            return [self.state.set_value(False)]
+        result: list[Command] = []
+        if not self.state.get_value(current_data):
+            result.append(self.state.set_value(True))
+        if self._hvac_mode_raw(current_data) != hvac_mode:
+            program_key = self._program_dict.inverse.get(hvac_mode)
+            if program_key is None:
+                raise Exception(f"Unrecognized fan mode {hvac_mode}")
+            result.append(self.program.set_value(program_key))
+        return result
+
+    @property
+    def options(self) -> list[HVACMode]:
+        return [
+            self._program_dict[program] for program in self.program.options.values()
+        ] + [HVACMode.OFF]
+
+
 class ClimateControl(Control):
     key = "AC"
 
     def __init__(
         self,
-        state: WriteBooleanControl,
-        program: WriteEnumControl,
+        hvac_mode: HvacControl,
         target_temperature: WriteNumericControl,
         current_temperature: NumericControl,
         fan_mode: WriteEnumControl,
+        swing: SwingControl,
     ):
-        self.state = state
-        self.program = program
+        self.hvac_mode = hvac_mode
         self.target_temperature = target_temperature
         self.current_temperature = current_temperature
         self.fan_mode = fan_mode
-        self.controls = [
-            state,
-            program,
+        self.swing = swing
+        self._controls = [
+            hvac_mode,
             target_temperature,
             current_temperature,
             fan_mode,
+            swing,
         ]
 
     def get_value(self, data: bytearray) -> dict[str, Any]:
-        return {c.key: c.get_value(data) for c in self.controls}
+        return {c.key: c.get_value(data) for c in self._controls}
 
 
 def get_bounded_values_options(
@@ -414,14 +571,34 @@ def extract_ac_control(controls: list[Control]) -> list[Control]:
         assert isinstance(target_temperature, WriteNumericControl)
         fan_mode = controls_dict["AIR_CONDITIONER_WIND_STRENGTH"]
         assert isinstance(fan_mode, WriteEnumControl)
+        vertical_swing_control = controls_dict.get(
+            "AIR_CONDITIONER_UP_DOWN_VANE_CONTROL"
+        )
+        assert vertical_swing_control is None or isinstance(
+            vertical_swing_control, WriteEnumControl
+        )
+        horizontal_swing_control = controls_dict.get(
+            "AIR_CONDITIONER_LEFT_RIGHT_VANE_CONTROL"
+        )
+        assert horizontal_swing_control is None or isinstance(
+            horizontal_swing_control, WriteEnumControl
+        )
+
         climate = ClimateControl(
-            state=state,
-            program=program,
+            hvac_mode=HvacControl(program, state),
             current_temperature=current_temperature,
             target_temperature=target_temperature,
             fan_mode=fan_mode,
+            swing=SwingControl(horizontal_swing_control, vertical_swing_control),
         )
-        return [c for c in controls if c not in climate.controls] + [climate]
+        excluded_controls = [
+            program,
+            state,
+            current_temperature,
+            target_temperature,
+            fan_mode,
+        ]
+        return [c for c in controls if c not in excluded_controls] + [climate]
     return controls
 
 
