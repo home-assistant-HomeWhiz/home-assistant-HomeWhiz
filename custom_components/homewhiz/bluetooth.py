@@ -57,9 +57,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
 
     async def try_reconnect(self) -> None:
         _LOGGER.debug(f"[{self.address}] Trying to reconnect")
-        while self.alive and (
-            self._connection is None or not self._connection.is_connected
-        ):
+        while self.alive and not self.is_connected:
             if not bluetooth.async_address_present(
                 self.hass, self.address, connectable=True
             ):
