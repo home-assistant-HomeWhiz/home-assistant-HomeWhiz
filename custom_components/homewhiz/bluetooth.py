@@ -56,9 +56,8 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         return True
 
     async def try_reconnect(self) -> None:
-        while self.alive and (
-            self._connection is None or not self._connection.is_connected
-        ):
+        _LOGGER.debug(f"[{self.address}] Trying to reconnect")
+        while self.alive and not self.is_connected:
             if not bluetooth.async_address_present(
                 self.hass, self.address, connectable=True
             ):
@@ -68,6 +67,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                 )
                 return
             try:
+                _LOGGER.debug(f"[{self.address}] Establish connection from reconnect")
                 await self.connect()
             except Exception:
                 _LOGGER.info("Can't reconnect. Waiting a minute to try again")
@@ -102,15 +102,18 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
             "0000ac01-0000-1000-8000-00805F9B34FB",
             payload,
         )
+        _LOGGER.debug("Command sent")
 
     @property
     def is_connected(self) -> bool:
         return self._connection is not None and self._connection.is_connected
 
     async def kill(self) -> None:
+        _LOGGER.debug(f"[{self.address}] Killing connection")
         self.alive = False
         if self._connection is not None:
             await self._connection.disconnect()
+        _LOGGER.debug(f"[{self.address}] Connection killed")
 
 
 class MessageAccumulator:
