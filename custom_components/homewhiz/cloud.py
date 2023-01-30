@@ -21,13 +21,13 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 @dataclass
 class Reported:
     connected: Optional[bool]
-    wfaStartOffset: str
-    wfaSize: str
-    brand: str
-    applianceType: str
-    model: str
-    applianceId: str
-    macAddr: str
+    wfaStartOffset: Optional[str]
+    wfaSize: Optional[str]
+    brand: Optional[str]
+    applianceType: Optional[str]
+    model: Optional[str]
+    applianceId: Optional[str]
+    macAddr: Optional[str]
     wfa: list[int]
     modifiedTime: Optional[int]
     wfaSizeModifiedTime: Optional[int]
@@ -67,6 +67,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         self._is_connected = False
         self._entry = entry
         self._is_tuya = self._appliance_id.startswith("T")
+        self._last_wfaStartOffset = None
 
         super().__init__(hass, _LOGGER, name=DOMAIN)
 
@@ -190,7 +191,13 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
     @callback
     def handle_notify(self, payload: str) -> None:
         message = from_dict(MqttPayload, json.loads(payload))
-        offset = int(message.state.reported.wfaStartOffset)
+        if message.state.reported.wfaStartOffset:
+          offset = int(message.state.reported.wfaStartOffset)
+          self._last_wfaStartOffset = offset
+        elif self._last_wfaStartOffset:
+          offset = self._last_wfaStartOffset
+        else:
+          return
         padding = [0 for _ in range(0, offset)]
         data = bytearray(padding + message.state.reported.wfa)
         _LOGGER.debug(f"Message received: {data}")
