@@ -1,6 +1,6 @@
 import logging
 from dataclasses import asdict, dataclass
-from typing import Any, Optional
+from typing import Any
 
 import voluptuous as vol
 from homeassistant.components.bluetooth import (
@@ -42,8 +42,8 @@ class CloudConfig:
 class EntryData:
     ids: IdExchangeResponse
     contents: ApplianceContents
-    appliance_info: Optional[ApplianceInfo]
-    cloud_config: Optional[CloudConfig]
+    appliance_info: ApplianceInfo | None
+    cloud_config: CloudConfig | None
 
 
 class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
