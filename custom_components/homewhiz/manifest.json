@@ -16,7 +16,7 @@
     "bidict"
   ],
   "dependencies": [
-    "bluetooth"
+    "bluetooth_adapters"
   ],
   "version": "0.0.6",
   "bluetooth": [
