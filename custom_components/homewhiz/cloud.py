@@ -3,7 +3,7 @@ import logging
 import uuid
 from dataclasses import dataclass
 from datetime import datetime, timedelta
-from typing import Any, Optional
+from typing import Any, Callable, Optional
 
 from dacite import from_dict
 from homeassistant.config_entries import ConfigEntry
@@ -70,7 +70,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         self._is_connected = False
         self._entry = entry
         self._is_tuya = self._appliance_id.startswith("T")
-        self._update_timer_not_set = True
+        self._update_timer_task: Callable | None = None
 
         super().__init__(hass, _LOGGER, name=DOMAIN)
 
@@ -129,13 +129,13 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             )
         )
 
-        if self._update_timer_not_set:
+        if not self._update_timer_task:
             # Set hass task to update the HomeWhiz device data periodically
-            async_track_time_interval(
-                hass=self.hass, action=self.force_read, interval=timedelta(minutes=5)
+            # Returns a callable to remove the task
+            self._update_timer_task = async_track_time_interval(
+                hass=self.hass, action=self.force_read, interval=timedelta(minutes=1)
             )
             self.get_shadow()
-            self._update_timer_not_set = False
             _LOGGER.debug("Set hass time interval update")
 
         return True
@@ -218,3 +218,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         self.alive = False
         if self._connection is not None:
             self._connection.disconnect()
+        if self._update_timer_task:
+            # Remove update timer task
+            self._update_timer_task()
+            self._update_timer_task = None
