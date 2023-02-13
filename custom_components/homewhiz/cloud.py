@@ -8,7 +8,10 @@ from typing import Any, Optional
 from dacite import from_dict
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
-from homeassistant.helpers.event import async_track_point_in_time, async_track_time_interval
+from homeassistant.helpers.event import (
+    async_track_point_in_time,
+    async_track_time_interval,
+)
 
 from .api import login
 from .config_flow import CloudConfig
@@ -125,16 +128,15 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
                 point_in_time=expiration,
             )
         )
-        
+
         if self._update_timer_not_set:
-            async_track_time_interval(     # set hass task to update the HomeWhiz device data periodically
-                hass=self.hass,
-                action=self.force_read,
-                interval=timedelta(minutes=5)
+            # Set hass task to update the HomeWhiz device data periodically
+            async_track_time_interval(
+                hass=self.hass, action=self.force_read, interval=timedelta(minutes=5)
             )
             self.get_shadow()
             self._update_timer_not_set = False
-            _LOGGER.debug(f"Set hass time interval update")
+            _LOGGER.debug("Set hass time interval update")
 
         return True
 
