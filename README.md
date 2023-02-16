@@ -42,15 +42,15 @@ Please note that the constant internet connection is required. Support for local
 ## Supported device types
 
 The integration should theoretically work with all device types but was tested only with washing machines (Bluetooth) and Air Conditioning units (Wi-Fi). 
-If you have other device type like Oven or Refigerator, please let us know.
+If you have other device type like oven or refrigerator, please let us know.
 
-If your device is missing some information, transtaltion or not working at all, please create an issue. 
+If your device is missing some information, translations or not working at all, please create an issue. 
 Don't forget to include your device digital ID that can be found either in the HomeWhiz app or the integration logs. 
 
 ## Troubleshooting
 
 ### Bluetooth
-Integration should work with all devices connected via Blueooth. Remember that the range of Bluetooth can be limited. If your device is out of range, you could try using an [ESPHome Bluetooth Proxy](https://esphome.github.io/bluetooth-proxies/).  
+Integration should work with all devices connected via Bluetooth. Remember that the range of Bluetooth can be limited. If your device is out of range, you could try using an [ESPHome Bluetooth Proxy](https://esphome.github.io/bluetooth-proxies/).  
 
 If you are using custom Home Assistant installation method like Virtual Machine, please make sure your system is configured properly and Bluetooth is available for the Home Assistant
 
