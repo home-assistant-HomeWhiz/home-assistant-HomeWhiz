@@ -33,16 +33,23 @@ Integration for devices that can connect to HomeWhiz mobile app (Beko, Grundig, 
 ### Wi-Fi
 
 1. Connect the device to the HomeWhiz app on your smartphone
-4. In the HA UI go to "Configuration" -> "Integrations". Click "+" and search for "HomeWhiz"
-5. Select the "Cloud" connection type 
-6. Provide the HomeWhiz username and password.
+2. In the HA UI go to "Configuration" -> "Integrations". Click "+" and search for "HomeWhiz"
+3. Select the "Cloud" connection type 
+4. Provide the HomeWhiz username and password.
 
 Please note that the constant internet connection is required. Support for local connection is coming soon ([#52](https://github.com/rowysock/home-assistant-HomeWhiz/issues/52))
 
 ## Supported device types
 
-The integration should theoretically work with all device types but was tested only with washing machines (Bluetooth) and Air Conditioning units (Wi-Fi). 
-If you have other device type like oven or refrigerator, please let us know.
+| Device           | Supported          | Comments                                           |
+| ---------------- | ------------------ | -------------------------------------------------- |
+| Washing machines | :heavy_check_mark: | Also includes washing machine / dryer combinations |
+| Dryer            | :heavy_check_mark: | Also includes washing machine / dryer combinations |
+| Dishwasher       | :heavy_check_mark: |                                                    |
+| Air conditioner  | :heavy_check_mark: |                                                    |
+| Oven             | :question: :x:     | Not tested                                         |
+
+If you have other device types not listed yet, please let us know.
 
 If your device is missing some information, translations or not working at all, please create an issue. 
 Don't forget to include your device digital ID that can be found either in the HomeWhiz app or the integration logs. 
