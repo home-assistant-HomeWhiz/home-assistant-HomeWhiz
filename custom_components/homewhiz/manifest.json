@@ -1,13 +1,23 @@
 {
   "domain": "homewhiz",
   "name": "HomeWhiz",
-  "documentation": "https://github.com/rowysock/home-assistant-HomeWhiz",
-  "issue_tracker": "https://github.com/rowysock/home-assistant-HomeWhiz/issues",
-  "config_flow": true,
+  "bluetooth": [
+    {
+      "connectable": false,
+      "local_name": "HwZ*"
+    }
+  ],
   "codeowners": [
     "@rowysock",
     "@TechHummel"
   ],
+  "config_flow": true,
+  "dependencies": [
+    "bluetooth"
+  ],
+  "documentation": "https://github.com/rowysock/home-assistant-HomeWhiz",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/rowysock/home-assistant-HomeWhiz/issues",
   "requirements": [
     "bleak",
     "bleak_retry_connector",
@@ -15,15 +25,5 @@
     "aiohttp",
     "bidict"
   ],
-  "dependencies": [
-    "bluetooth"
-  ],
-  "version": "0.0.6",
-  "bluetooth": [
-    {
-      "connectable": false,
-      "local_name": "HwZ*"
-    }
-  ],
-  "iot_class": "local_push"
+  "version": "0.0.6"
 }
