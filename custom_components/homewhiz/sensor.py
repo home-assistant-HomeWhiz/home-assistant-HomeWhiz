@@ -12,8 +12,6 @@ from .appliance_controls import (
     EnumControl,
     NumericControl,
     TimeControl,
-    WriteEnumControl,
-    WriteNumericControl,
     generate_controls_from_config,
 )
 from .config_flow import EntryData
@@ -39,6 +37,9 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
             self._attr_icon = "mdi:clock-outline"
             self._attr_native_unit_of_measurement = "min"
             self._attr_device_class = SensorDeviceClass.DURATION
+        if isinstance(control, EnumControl):
+            self._attr_device_class = SensorDeviceClass.ENUM  # type:ignore
+            self._attr_options = list(self._control.options.values())  # type:ignore
 
     @property
     def native_value(self) -> float | int | str | None:
@@ -57,8 +58,8 @@ async def async_setup_entry(
         c
         for c in controls
         if isinstance(c, TimeControl)
-        or (isinstance(c, EnumControl) and not isinstance(c, WriteEnumControl))
-        or (isinstance(c, NumericControl) and not isinstance(c, WriteNumericControl))
+        or isinstance(c, EnumControl)
+        or isinstance(c, NumericControl)
         or isinstance(c, DebugControl)
     ]
     _LOGGER.debug(f"Sensors: {[c.key for c in sensor_controls]}")

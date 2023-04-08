@@ -127,12 +127,12 @@
     },
     "homewhiz__AIR_CONDITIONER_UP_DOWN_VANE_CONTROL": {
       "UP_DOWN_VANE_CONTROL_OFF": "Wy\u0142.",
-      "UP_DOWN_VANE_CONTROL_1": "1",
-      "UP_DOWN_VANE_CONTROL_2": "2",
-      "UP_DOWN_VANE_CONTROL_3": "3",
-      "UP_DOWN_VANE_CONTROL_4": "4",
-      "UP_DOWN_VANE_CONTROL_5": "5",
       "UP_DOWN_VANE_CONTROL_6": "6",
+      "UP_DOWN_VANE_CONTROL_5": "5",
+      "UP_DOWN_VANE_CONTROL_4": "4",
+      "UP_DOWN_VANE_CONTROL_3": "3",
+      "UP_DOWN_VANE_CONTROL_2": "2",
+      "UP_DOWN_VANE_CONTROL_1": "1",
       "UP_DOWN_VANE_CONTROL_AUTO": "Automatyczny"
     },
     "homewhiz__AIR_CONDITIONER_LEFT_RIGHT_VANE_CONTROL": {
