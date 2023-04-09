@@ -15,8 +15,8 @@ Integration for devices that can connect to HomeWhiz mobile app (Beko, Grundig, 
 
 1. Using the tool of choice, open the directory (folder) for your HA configuration (where you find `configuration.yaml`).
 2. If you do not have a `custom_components` directory there, you need to create it.
-3. In the `custom_components` directory create a new folder called `HomeWhiz`.
-4. Download _all_ files from the `custom_components/HomeWhiz/` directory in this repository.
+3. In the `custom_components` directory create a new folder called `homewhiz`.
+4. Download _all_ files from the `custom_components/homewhiz/` directory in this repository.
 5. Place the files you downloaded in the new directory you created.
 6. Restart Home Assistant
 
@@ -33,24 +33,31 @@ Integration for devices that can connect to HomeWhiz mobile app (Beko, Grundig, 
 ### Wi-Fi
 
 1. Connect the device to the HomeWhiz app on your smartphone
-4. In the HA UI go to "Configuration" -> "Integrations". Click "+" and search for "HomeWhiz"
-5. Select the "Cloud" connection type 
-6. Provide the HomeWhiz username and password.
+2. In the HA UI go to "Configuration" -> "Integrations". Click "+" and search for "HomeWhiz"
+3. Select the "Cloud" connection type 
+4. Provide the HomeWhiz username and password.
 
 Please note that the constant internet connection is required. Support for local connection is coming soon ([#52](https://github.com/rowysock/home-assistant-HomeWhiz/issues/52))
 
 ## Supported device types
 
-The integration should theoretically work with all device types but was tested only with washing machines (Bluetooth) and Air Conditioning units (Wi-Fi). 
-If you have other device type like Oven or Refigerator, please let us know.
+| Device           | Supported          | Comments                                           |
+| ---------------- | ------------------ | -------------------------------------------------- |
+| Washing machines | :heavy_check_mark: | Also includes washing machine / dryer combinations |
+| Dryer            | :heavy_check_mark: | Also includes washing machine / dryer combinations |
+| Dishwasher       | :heavy_check_mark: |                                                    |
+| Air conditioner  | :heavy_check_mark: |                                                    |
+| Oven             | :question: :x:     | Not tested                                         |
 
-If your device is missing some information, transtaltion or not working at all, please create an issue. 
+If you have other device types not listed yet, please let us know.
+
+If your device is missing some information, translations or not working at all, please create an issue. 
 Don't forget to include your device digital ID that can be found either in the HomeWhiz app or the integration logs. 
 
 ## Troubleshooting
 
 ### Bluetooth
-Integration should work with all devices connected via Blueooth. Remember that the range of Bluetooth can be limited. If your device is out of range, you could try using an [ESPHome Bluetooth Proxy](https://esphome.github.io/bluetooth-proxies/).  
+Integration should work with all devices connected via Bluetooth. Remember that the range of Bluetooth can be limited. If your device is out of range, you could try using an [ESPHome Bluetooth Proxy](https://esphome.github.io/bluetooth-proxies/).  
 
 If you are using custom Home Assistant installation method like Virtual Machine, please make sure your system is configured properly and Bluetooth is available for the Home Assistant
 

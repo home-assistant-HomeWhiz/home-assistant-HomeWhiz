@@ -2,13 +2,16 @@ import json
 import logging
 import uuid
 from dataclasses import dataclass
-from datetime import datetime
-from typing import Any
+from datetime import datetime, timedelta
+from typing import Any, Callable, Optional
 
 from dacite import from_dict
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
-from homeassistant.helpers.event import async_track_point_in_time
+from homeassistant.helpers.event import (
+    async_track_point_in_time,
+    async_track_time_interval,
+)
 
 from .api import login
 from .config_flow import CloudConfig
@@ -67,6 +70,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         self._is_connected = False
         self._entry = entry
         self._is_tuya = self._appliance_id.startswith("T")
+        self._update_timer_task: Callable | None = None
 
         super().__init__(hass, _LOGGER, name=DOMAIN)
 
@@ -116,7 +120,6 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         _LOGGER.debug(f"Subscribe to get result: {subscribe_get.result()}")
 
         self.force_read()
-        self.get_shadow()
 
         self._entry.async_on_unload(
             async_track_point_in_time(
@@ -125,6 +128,16 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
                 point_in_time=expiration,
             )
         )
+
+        if not self._update_timer_task:
+            # Set hass task to update the HomeWhiz device data periodically
+            # Returns a callable to remove the task
+            self._update_timer_task = async_track_time_interval(
+                hass=self.hass, action=self.force_read, interval=timedelta(minutes=1)
+            )
+            self.get_shadow()
+            _LOGGER.debug("Set hass time interval update")
+
         return True
 
     @callback
@@ -138,14 +151,14 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         self._is_connected = True
 
     @callback
-    async def refresh_connection(self, **kwargs: Any) -> None:
+    async def refresh_connection(self, *args: Any) -> None:
         _LOGGER.debug("Refreshing connection")
         assert self._connection is not None
         old_connection = self._connection
         await self.connect()
         old_connection.disconnect()
 
-    def force_read(self) -> None:
+    def force_read(self, *args: Any) -> None:
         assert self._connection is not None
         suffix = "/tuyacommand" if self._is_tuya else "/command"
         force_read = {
@@ -160,7 +173,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         )
         _LOGGER.debug(f"Force read result: {publish.result()}")
 
-    def get_shadow(self) -> None:
+    def get_shadow(self, *args: Any) -> None:
         assert self._connection is not None
         [publish, _] = self._connection.publish(
             f"$aws/things/{self._appliance_id}/shadow/get",
@@ -205,3 +218,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         self.alive = False
         if self._connection is not None:
             self._connection.disconnect()
+        if self._update_timer_task:
+            # Remove update timer task
+            self._update_timer_task()
+            self._update_timer_task = None

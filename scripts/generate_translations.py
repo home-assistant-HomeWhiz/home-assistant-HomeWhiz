@@ -9,6 +9,7 @@ from mergedeep import Strategy, mergedeep  # type: ignore[import]
 
 from custom_components.homewhiz import DOMAIN
 from custom_components.homewhiz.api import (
+    LoginResponse,
     fetch_appliance_contents,
     fetch_base_contents_index,
     fetch_localizations,
@@ -29,7 +30,7 @@ async def get_file(address: str) -> Any:
             return json.loads(await response.text())
 
 
-api_languages = {
+API_LANGUAGES = {
     "en": "en-GB",
     "tr": "tr-TR",
     "sv": "sv-SE",
@@ -48,7 +49,7 @@ api_languages = {
     "sr": "sr-RS",
 }
 
-known_appliance_ids = [
+KNOWN_APPLIANCE_IDS = [
     "F999935286050711425369",  # Washing machine
     "F999904668828549174231",  # Oven
     "F999961730155826793828",  # Dishwasher
@@ -72,72 +73,83 @@ async def write_translations_file(
     print(f"{file_path} Updated")
 
 
-async def generate() -> None:
+async def generate_translations(credentials: LoginResponse, short_code: str) -> None:
+    language = API_LANGUAGES[short_code]
+    print(f"language {language}")
+    base_contents_index = await fetch_base_contents_index(credentials, language)
+    base_localizations = await fetch_localizations(base_contents_index)
+    select_translations: MutableMapping[str, Mapping[str, str]] = {}
+    # Use list and not dict because merge won't work
+    # (All translation dicts share the key 'enum' and override each other)
+    sensor_translations_list: list[Mapping[str, str]] = []
+
+    def localize_key(key: str) -> str | None:
+        if key in localizations:
+            return localizations[key]
+        return None
+
+    for appliance_id in KNOWN_APPLIANCE_IDS:
+        contents = await fetch_appliance_contents(credentials, appliance_id, language)
+        appliance_localizations = contents.localization
+        appliance_config = contents.config
+        print(f"{appliance_id} localizations: {len(appliance_localizations.keys())}")
+        localizations = base_localizations | appliance_localizations
+        controls = generate_controls_from_config(appliance_config)
+        select_controls = [
+            control for control in controls if isinstance(control, WriteEnumControl)
+        ]
+        sensor_controls = [
+            control
+            for control in controls
+            if isinstance(control, EnumControl)
+            and not isinstance(control, WriteEnumControl)
+        ]
+
+        def localize(control: EnumControl) -> dict[str, str]:
+            entity_result: dict[str, str] = {}
+            for option in control.options.values():
+                localized = localize_key(option)
+                if localized is not None:
+                    entity_result[option] = str(localized)
+            return entity_result
+
+        select_translations = mergedeep.merge(
+            select_translations,
+            {
+                f"{DOMAIN}__{control.key}": localize(control)
+                for control in select_controls
+            },
+            strategy=Strategy.TYPESAFE_ADDITIVE,
+        )
+        # Create list of translations and merge later
+        sensor_translations_list.extend(
+            # Use enum as class for all sensor entities and select entities
+            [localize(control) for control in (select_controls + sensor_controls)]
+        )
+
+    # Merge all translations into one dictionary (value of enum key)
+    sensor_translations_dict: dict[str, str] = {}
+    for translation in sensor_translations_list:
+        sensor_translations_dict.update(translation)
+
+    await write_translations_file(f"select.{short_code}", select_translations)
+    await write_translations_file(
+        f"sensor.{short_code}", {"enum": sensor_translations_dict}
+    )
+
+
+async def start_generate() -> None:
     username = input("Username: ")
     password = input("Password: ")
     credentials = await login(username, password)
 
-    for short_code in api_languages:
-        language = api_languages[short_code]
-        print(f"language {language}")
-        base_contents_index = await fetch_base_contents_index(credentials, language)
-        base_localizations = await fetch_localizations(base_contents_index)
-        select_translations: MutableMapping[str, Mapping[str, str]] = {}
-        sensor_translations: MutableMapping[str, Mapping[str, str]] = {}
-        for appliance_id in known_appliance_ids:
-            contents = await fetch_appliance_contents(
-                credentials, appliance_id, language
-            )
-            appliance_localizations = contents.localization
-            appliance_config = contents.config
-            print(
-                f"{appliance_id} localizations: {len(appliance_localizations.keys())}"
-            )
-            localizations = base_localizations | appliance_localizations
-            controls = generate_controls_from_config(appliance_config)
-            select_controls = [
-                control for control in controls if isinstance(control, WriteEnumControl)
-            ]
-            sensor_controls = [
-                control
-                for control in controls
-                if isinstance(control, EnumControl)
-                and not isinstance(control, WriteEnumControl)
-            ]
-
-            def localize_key(key: str) -> str | None:
-                if key in localizations:
-                    return localizations[key]
-                return None
-
-            def localize(control: EnumControl) -> dict[str, str]:
-                entity_result: dict[str, str] = {}
-                for option in control.options.values():
-                    localized = localize_key(option)
-                    if localized is not None:
-                        entity_result[option] = str(localized)
-                return entity_result
-
-            select_translations = mergedeep.merge(
-                select_translations,
-                {
-                    f"{DOMAIN}__{control.key}": localize(control)
-                    for control in select_controls
-                },
-                strategy=Strategy.TYPESAFE_ADDITIVE,
-            )
-            sensor_translations = mergedeep.merge(
-                sensor_translations,
-                {
-                    f"{DOMAIN}__{control.key}": localize(control)
-                    for control in sensor_controls
-                },
-                strategy=Strategy.TYPESAFE_ADDITIVE,
-            )
-
-        await write_translations_file(f"select.{short_code}", select_translations)
-        await write_translations_file(f"sensor.{short_code}", sensor_translations)
+    await asyncio.gather(
+        *[
+            generate_translations(credentials, short_code)
+            for short_code in API_LANGUAGES
+        ]
+    )
 
 
 if __name__ == "__main__":
-    asyncio.run(generate())
+    asyncio.run(start_generate())
