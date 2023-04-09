@@ -15,8 +15,8 @@ Integration for devices that can connect to HomeWhiz mobile app (Beko, Grundig, 
 
 1. Using the tool of choice, open the directory (folder) for your HA configuration (where you find `configuration.yaml`).
 2. If you do not have a `custom_components` directory there, you need to create it.
-3. In the `custom_components` directory create a new folder called `HomeWhiz`.
-4. Download _all_ files from the `custom_components/HomeWhiz/` directory in this repository.
+3. In the `custom_components` directory create a new folder called `homewhiz`.
+4. Download _all_ files from the `custom_components/homewhiz/` directory in this repository.
 5. Place the files you downloaded in the new directory you created.
 6. Restart Home Assistant
 
