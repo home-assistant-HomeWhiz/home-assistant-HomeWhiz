@@ -1,6 +1,7 @@
 import asyncio
 import json
 import os
+import re
 from collections.abc import Mapping, MutableMapping
 from typing import Any
 
@@ -105,18 +106,30 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
             and not isinstance(control, WriteEnumControl)
         ]
 
+        # To filter out forbidden characters
+        # https://stackoverflow.com/questions/15754587/keeping-only-certain-characters-in-a-string-using-python
+
+        def filter_key(key: str) -> str:
+            # "need to be [a-z0-9-_]+"
+            key = key.lower()
+            key = re.sub("[^a-z0-9-_]", "", key)
+            # "cannot start or end with a hyphen or underscore
+            if key[-1] == "_":
+                key = key[:-1]
+            return key
+
         def localize(control: EnumControl) -> dict[str, str]:
             entity_result: dict[str, str] = {}
             for option in control.options.values():
                 localized = localize_key(option)
                 if localized is not None:
-                    entity_result[option.lower()] = str(localized)
+                    entity_result[filter_key(option)] = str(localized)
             return entity_result
 
         select_translations = mergedeep.merge(
             select_translations,
             {
-                f"{DOMAIN}__{control.key.lower()}": localize(control)
+                f"{DOMAIN}__{filter_key(control.key)}": localize(control)
                 for control in select_controls
             },
             strategy=Strategy.TYPESAFE_ADDITIVE,
