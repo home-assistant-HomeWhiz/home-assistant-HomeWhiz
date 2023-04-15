@@ -110,13 +110,13 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
             for option in control.options.values():
                 localized = localize_key(option)
                 if localized is not None:
-                    entity_result[option] = str(localized)
+                    entity_result[option.lower()] = str(localized)
             return entity_result
 
         select_translations = mergedeep.merge(
             select_translations,
             {
-                f"{DOMAIN}__{control.key}": localize(control)
+                f"{DOMAIN}__{control.key.lower()}": localize(control)
                 for control in select_controls
             },
             strategy=Strategy.TYPESAFE_ADDITIVE,
@@ -134,7 +134,7 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
 
     await write_translations_file(f"select.{short_code}", select_translations)
     await write_translations_file(
-        f"sensor.{short_code}", {"enum": sensor_translations_dict}
+        f"sensor.{short_code}", {"homewhiz__enum": sensor_translations_dict}
     )
 
 

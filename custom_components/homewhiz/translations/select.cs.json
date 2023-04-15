@@ -1,130 +1,144 @@
 {
   "state": {
-    "homewhiz__STATE": {
-      "DEVICE_STATE_ON": "Zapnuto",
-      "DEVICE_STATE_OFF": "Vypnuto",
-      "DEVICE_STATE_RUNNING": "Spu\u0161t\u011bno",
-      "DEVICE_STATE_PAUSED": "Pozastaveno",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "\u010casov\u00e1 prodleva je aktivn\u00ed",
-      "DEVICE_STATE_CANCELLING": "Zru\u0161en\u00ed",
-      "DEVICE_STATE_DOOR_OPEN": "Dv\u00ed\u0159ka jsou otev\u0159en\u00e1!",
-      "DEVICE_STATE_SETTINGS": "Nastaven\u00ed"
+    "homewhiz__state": {
+      "device_state_on": "Zapnuto",
+      "device_state_off": "Vypnuto",
+      "device_state_running": "Spu\u0161t\u011bno",
+      "device_state_paused": "Pozastaveno",
+      "device_state_time_delay_active": "\u010casov\u00e1 prodleva je aktivn\u00ed",
+      "device_state_cancelling": "Zru\u0161en\u00ed",
+      "device_state_door_open": "Dv\u00ed\u0159ka jsou otev\u0159en\u00e1!",
+      "device_state_settings": "Nastaven\u00ed"
     },
-    "homewhiz__WASHER_PROGRAM": {
-      "PROGRAM_ECO_40_60": "Eco 40\u201360",
-      "PROGRAM_MINI_MINI14": "Xpress",
-      "PROGRAM_WOOL_HANDWASH": "Woollens",
-      "PROGRAM_SPIN_PUMP": "Spin+Drain",
-      "PROGRAM_DARKWASH": "Tmav\u00e9 (D\u017e\u00edny)",
-      "PROGRAM_OUTDOOR_SPORTS_GORETEX": "Sportovn\u00ed oble\u010den\u00ed",
-      "PROGRAM_STAIN": "Syntetick\u00e9 \u2013 \u017eehlen\u00ed na sucho",
-      "PROGRAM_HYGEINE": "Hygiena+",
-      "PROGRAM_DUVET": "Pe\u0159ina / Opot\u0159eben\u00ed",
-      "PROGRAM_DRUM_CLEAN": "\u010ci\u0161t\u011bn\u00ed bubnu",
-      "PROGRAM_MIX": "Prom\u00edchat",
-      "PROGRAM_CURTAIN": "Z\u00e1clony",
-      "PROGRAM_LINGERIE": "D\u00e1msk\u00e9 pr\u00e1dlo",
-      "PROGRAM_SOFT_TOYS": "M\u011bkk\u00e9 hra\u010dky",
-      "PROGRAM_TOWEL": "Ru\u010dn\u00edk",
-      "PROGRAM_DRYER_COTTON": "Su\u0161en\u00ed bavlny",
-      "PROGRAM_DRYER_SYNTHETICS": "Su\u0161en\u00ed syntetick\u00e9ho pr\u00e1dla",
-      "PROGRAM_HYGIENE_WASH_DRY": "Pran\u00ed a\u00a0su\u0161en\u00ed Hygiena+",
-      "PROGRAM_4KG_WASH_DRY": "Pran\u00ed a\u00a0su\u0161en\u00ed 4\u00a0kg",
-      "PROGRAM_WASH_WEAR": "Pran\u00ed bez pot\u0159eby \u017eehlen\u00ed",
-      "PROGRAM_DARK_WASH": "Tmav\u00e9 pr\u00e1dlo",
-      "PROGRAM_OUTDOOR": "Venku",
-      "PROGRAM_DRUM_CLEAN_PLUS": "\u010ci\u0161t\u011bn\u00ed bubnu+"
+    "homewhiz__washer_program": {
+      "program_eco_40_60": "Eco 40\u201360",
+      "program_mini_mini14": "Xpress",
+      "program_wool_handwash": "Woollens",
+      "program_spin_pump": "Spin+Drain",
+      "program_darkwash": "Tmav\u00e9 (D\u017e\u00edny)",
+      "program_outdoor_sports_goretex": "Sportovn\u00ed oble\u010den\u00ed",
+      "program_stain": "Syntetick\u00e9 \u2013 \u017eehlen\u00ed na sucho",
+      "program_hygeine": "Hygiena+",
+      "program_duvet": "Pe\u0159ina / Opot\u0159eben\u00ed",
+      "program_drum_clean": "\u010ci\u0161t\u011bn\u00ed bubnu",
+      "program_mix": "Prom\u00edchat",
+      "program_curtain": "Z\u00e1clony",
+      "program_lingerie": "D\u00e1msk\u00e9 pr\u00e1dlo",
+      "program_soft_toys": "M\u011bkk\u00e9 hra\u010dky",
+      "program_towel": "Ru\u010dn\u00edk",
+      "program_dryer_cotton": "Su\u0161en\u00ed bavlny",
+      "program_dryer_synthetics": "Su\u0161en\u00ed syntetick\u00e9ho pr\u00e1dla",
+      "program_hygiene_wash_dry": "Pran\u00ed a\u00a0su\u0161en\u00ed Hygiena+",
+      "program_4kg_wash_dry": "Pran\u00ed a\u00a0su\u0161en\u00ed 4\u00a0kg",
+      "program_wash_wear": "Pran\u00ed bez pot\u0159eby \u017eehlen\u00ed",
+      "program_dark_wash": "Tmav\u00e9 pr\u00e1dlo",
+      "program_outdoor": "Venku",
+      "program_drum_clean_plus": "\u010ci\u0161t\u011bn\u00ed bubnu+"
     },
-    "homewhiz__WASHER_TEMPERATURE": {
-      "TEMPERATURE_COLD_WASH": "Pran\u00ed za studena"
+    "homewhiz__washer_temperature": {
+      "temperature_cold_wash": "Pran\u00ed za studena",
+      "temperature_20": "20\u00b0C",
+      "temperature_30": "30\u00b0C",
+      "temperature_40": "40\u00b0C"
     },
-    "homewhiz__WASHER_SPIN": {
-      "SPIN_NO_SPIN": "Bez \u017ed\u00edm\u00e1n\u00ed",
-      "SPIN_RINSE_HOLD": "Pozastaven\u00ed m\u00e1ch\u00e1n\u00ed"
+    "homewhiz__washer_spin": {
+      "spin_no_spin": "Bez \u017ed\u00edm\u00e1n\u00ed",
+      "spin_rinse_hold": "Pozastaven\u00ed m\u00e1ch\u00e1n\u00ed",
+      "spin_600": "600",
+      "spin_800": "800",
+      "spin_1200": "1200",
+      "spin_1400": "1400"
     },
-    "homewhiz__WASHER_FAST_PLUS": {
-      "FAST_PLUS_OFF": "Vypnuto",
-      "FAST_PLUS_ON_FAST": "Rychl\u00fd",
-      "FAST_PLUS_ON_FAST_PLUS": "Rychl\u00fd+"
+    "homewhiz__washer_fast_plus": {
+      "fast_plus_off": "Vypnuto",
+      "fast_plus_on_fast": "Rychl\u00fd",
+      "fast_plus_on_fast_plus": "Rychl\u00fd+"
     },
-    "homewhiz__CUSTOM_DURATION_LEVEL": {},
-    "homewhiz__SETTINGS_VOLUME": {
-      "VOLUME_LOW": "N\u00edzk\u00fd",
-      "VOLUME_HIGH": "Vysok\u00fd"
+    "homewhiz__custom_duration_level": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6"
     },
-    "homewhiz__OVEN_PROGRAM": {
-      "PROGRAM_STATIC": "Statick\u00fd oh\u0159ev",
-      "PROGRAM_STATIC_FAN": "Statick\u00fd oh\u0159ev + ventil\u00e1tor",
-      "PROGRAM_FAN_HEATING": "Horkovzdu\u0161n\u00fd oh\u0159ev",
-      "PROGRAM_MULTI_COOKING": "V\u00edcen\u00e1sobn\u00e9 (3D) va\u0159en\u00ed",
-      "PROGRAM_FAN_HEAT_BOTTOM": "Horkovzdu\u0161n\u00fd + spodn\u00ed oh\u0159ev",
-      "PROGRAM_ECO_GRILL": "Gril Eco",
-      "PROGRAM_FULL_GRILL": "Cel\u00fd gril",
-      "PROGRAM_FULL_GRILL_FAN": "Cel\u00fd gril + ventil\u00e1tor",
-      "PROGRAM_BOTTOM_HEATING": "Spodn\u00ed oh\u0159ev",
-      "PROGRAM_DEFROST": "Rozmrazov\u00e1n\u00ed",
-      "PROGRAM_WARM_KEEPING": "Udr\u017eet tepl\u00e9",
-      "PROGRAM_ECO_FAN_HEATING": "Horkovzdu\u0161n\u00fd oh\u0159ev Eco",
-      "PROGRAM_STEAM_CLEANING": "Parn\u00ed \u010di\u0161t\u011bn\u00ed",
-      "PROGRAM_ECO_PYRO": "\u010ci\u0161t\u011bn\u00ed Eco",
-      "PROGRAM_PYRO": "\u010ci\u0161t\u011bn\u00ed"
+    "homewhiz__settings_volume": {
+      "volume_low": "N\u00edzk\u00fd",
+      "volume_high": "Vysok\u00fd"
     },
-    "homewhiz__PROGRAM": {
-      "PROGRAM_AUTO": "Autom. 40\u201365\u00a0\u00b0C",
-      "PROGRAM_MIX_WASH_+": "M\u00fdt v\u0161e spole\u010dn\u011b",
-      "PROGRAM_INTENSIVE_70": "Intenzivn\u00ed 70\u00a0\u00b0C",
-      "PROGRAM_ECO_50": "Eco 50\u00a0\u00b0C",
-      "PROGRAM_GLASSCARE": "P\u00e9\u010de o sklo",
-      "PROGRAM_NEW58MIN": "Rychl\u00e9 myt\u00ed 58\u00a0s",
-      "PROGRAM_30MIN": "Mini 30\u00a0s",
-      "PROGRAM_PREWASH": "P\u0159edmyt\u00ed",
-      "PROGRAM_HYGIENE": "Hygienick\u00e1 p\u00e9\u010de",
-      "PROGRAM_SILENT": "Tich\u00e9 myt\u00ed",
-      "PROGRAM_MAKINE_TEMIZLEME": "Vnit\u0159n\u00ed \u010di\u0161t\u011bn\u00ed"
+    "homewhiz__oven_program": {
+      "program_static": "Statick\u00fd oh\u0159ev",
+      "program_static_fan": "Statick\u00fd oh\u0159ev + ventil\u00e1tor",
+      "program_fan_heating": "Horkovzdu\u0161n\u00fd oh\u0159ev",
+      "program_multi_cooking": "V\u00edcen\u00e1sobn\u00e9 (3D) va\u0159en\u00ed",
+      "program_fan_heat_bottom": "Horkovzdu\u0161n\u00fd + spodn\u00ed oh\u0159ev",
+      "program_eco_grill": "Gril Eco",
+      "program_full_grill": "Cel\u00fd gril",
+      "program_full_grill_fan": "Cel\u00fd gril + ventil\u00e1tor",
+      "program_bottom_heating": "Spodn\u00ed oh\u0159ev",
+      "program_defrost": "Rozmrazov\u00e1n\u00ed",
+      "program_warm_keeping": "Udr\u017eet tepl\u00e9",
+      "program_eco_fan_heating": "Horkovzdu\u0161n\u00fd oh\u0159ev Eco",
+      "program_steam_cleaning": "Parn\u00ed \u010di\u0161t\u011bn\u00ed",
+      "program_eco_pyro": "\u010ci\u0161t\u011bn\u00ed Eco",
+      "program_pyro": "\u010ci\u0161t\u011bn\u00ed"
     },
-    "homewhiz__SETTING_DETERGENT_TYPE": {
-      "SETTING_DETERGENT_TYPE_POWDER": "Pr\u00e1\u0161kov\u00fd detergent",
-      "SETTING_DETERGENT_TYPE_TABLET": "Detergent v\u00a0tablet\u00e1ch",
-      "SETTING_DETERGENT_TYPE_LIQUID": "Tekut\u00fd detergent"
+    "homewhiz__program": {
+      "program_auto": "Autom. 40\u201365\u00a0\u00b0C",
+      "program_mix_wash_+": "M\u00fdt v\u0161e spole\u010dn\u011b",
+      "program_intensive_70": "Intenzivn\u00ed 70\u00a0\u00b0C",
+      "program_eco_50": "Eco 50\u00a0\u00b0C",
+      "program_glasscare": "P\u00e9\u010de o sklo",
+      "program_new58min": "Rychl\u00e9 myt\u00ed 58\u00a0s",
+      "program_30min": "Mini 30\u00a0s",
+      "program_prewash": "P\u0159edmyt\u00ed",
+      "program_hygiene": "Hygienick\u00e1 p\u00e9\u010de",
+      "program_silent": "Tich\u00e9 myt\u00ed",
+      "program_makine_temizleme": "Vnit\u0159n\u00ed \u010di\u0161t\u011bn\u00ed"
     },
-    "homewhiz__WASHER_DRY": {
-      "DRY_OFF": "Vypnuto",
-      "DRY_EXTRA": "Dodate\u010dn\u00e9 su\u0161en\u00ed",
-      "DRY_CABINET": "Wardrobe Dry",
-      "DRY_IRON": "Su\u0161en\u00ed pr\u00e1dla k\u00a0\u017eehlen\u00ed",
-      "DRY_10": "45 min",
-      "DRY_20": "20 min",
-      "DRY_30": "30\u00a0min",
-      "DRY_60": "60 min",
-      "DRY_90": "90\u00a0min",
-      "DRY_120": "15 min",
-      "DRY_150": "150\u00a0min"
+    "homewhiz__setting_detergent_type": {
+      "setting_detergent_type_powder": "Pr\u00e1\u0161kov\u00fd detergent",
+      "setting_detergent_type_tablet": "Detergent v\u00a0tablet\u00e1ch",
+      "setting_detergent_type_liquid": "Tekut\u00fd detergent"
     },
-    "homewhiz__AIR_CONDITIONER_SOFT_AIR": {
-      "AIR_CONDITIONER_SOFT_AIR_OFF": "Vypnuto",
-      "AIR_CONDITIONER_SOFT_AIR_UP": "Nahoru",
-      "AIR_CONDITIONER_SOFT_AIR_DOWN": "Dol\u016f"
+    "homewhiz__washer_dry": {
+      "dry_off": "Vypnuto",
+      "dry_extra": "Dodate\u010dn\u00e9 su\u0161en\u00ed",
+      "dry_cabinet": "Wardrobe Dry",
+      "dry_iron": "Su\u0161en\u00ed pr\u00e1dla k\u00a0\u017eehlen\u00ed",
+      "dry_10": "45 min",
+      "dry_20": "20 min",
+      "dry_30": "30\u00a0min",
+      "dry_60": "60 min",
+      "dry_90": "90\u00a0min",
+      "dry_120": "15 min",
+      "dry_150": "150\u00a0min"
     },
-    "homewhiz__AIR_CONDITIONER_UP_DOWN_VANE_CONTROL": {
-      "UP_DOWN_VANE_CONTROL_OFF": "Vypnuto",
-      "UP_DOWN_VANE_CONTROL_6": "6",
-      "UP_DOWN_VANE_CONTROL_5": "5",
-      "UP_DOWN_VANE_CONTROL_4": "4",
-      "UP_DOWN_VANE_CONTROL_3": "3",
-      "UP_DOWN_VANE_CONTROL_2": "2",
-      "UP_DOWN_VANE_CONTROL_1": "1",
-      "UP_DOWN_VANE_CONTROL_AUTO": "Auto"
+    "homewhiz__air_conditioner_soft_air": {
+      "air_conditioner_soft_air_off": "Vypnuto",
+      "air_conditioner_soft_air_up": "Nahoru",
+      "air_conditioner_soft_air_down": "Dol\u016f"
     },
-    "homewhiz__AIR_CONDITIONER_LEFT_RIGHT_VANE_CONTROL": {
-      "LEFT_RIGHT_VANE_CONTROL_OFF": "Vypnuto",
-      "LEFT_RIGHT_VANE_CONTROL_1": "1",
-      "LEFT_RIGHT_VANE_CONTROL_2": "2",
-      "LEFT_RIGHT_VANE_CONTROL_3": "3",
-      "LEFT_RIGHT_VANE_CONTROL_4": "4",
-      "LEFT_RIGHT_VANE_CONTROL_5": "5",
-      "LEFT_RIGHT_VANE_CONTROL_LEFT": "Lev\u00fd",
-      "LEFT_RIGHT_VANE_CONTROL_RIGHT": "Prav\u00fd",
-      "LEFT_RIGHT_VANE_CONTROL_AUTO": "Auto"
+    "homewhiz__air_conditioner_up_down_vane_control": {
+      "up_down_vane_control_off": "Vypnuto",
+      "up_down_vane_control_6": "6",
+      "up_down_vane_control_5": "5",
+      "up_down_vane_control_4": "4",
+      "up_down_vane_control_3": "3",
+      "up_down_vane_control_2": "2",
+      "up_down_vane_control_1": "1",
+      "up_down_vane_control_auto": "Auto"
+    },
+    "homewhiz__air_conditioner_left_right_vane_control": {
+      "left_right_vane_control_off": "Vypnuto",
+      "left_right_vane_control_1": "1",
+      "left_right_vane_control_2": "2",
+      "left_right_vane_control_3": "3",
+      "left_right_vane_control_4": "4",
+      "left_right_vane_control_5": "5",
+      "left_right_vane_control_left": "Lev\u00fd",
+      "left_right_vane_control_right": "Prav\u00fd",
+      "left_right_vane_control_auto": "Auto"
     }
   }
 }

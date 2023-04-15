@@ -1,65 +1,65 @@
 {
   "state": {
-    "homewhiz__STATE": {
-      "DEVICE_STATE_ON": "K\u00e4yt\u00f6ss\u00e4",
-      "DEVICE_STATE_OFF": "Ei k\u00e4yt\u00f6ss\u00e4",
-      "DEVICE_STATE_RUNNING": "K\u00e4ynniss\u00e4",
-      "DEVICE_STATE_PAUSED": "Pys\u00e4ytetty",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Aikaviive k\u00e4yt\u00f6ss\u00e4",
-      "DEVICE_STATE_CANCELLING": "Peruutetaan",
-      "DEVICE_STATE_DOOR_OPEN": "Ovi on auki!",
-      "DEVICE_STATE_SETTINGS": "Asetukset"
+    "homewhiz__state": {
+      "device_state_on": "K\u00e4yt\u00f6ss\u00e4",
+      "device_state_off": "Ei k\u00e4yt\u00f6ss\u00e4",
+      "device_state_running": "K\u00e4ynniss\u00e4",
+      "device_state_paused": "Pys\u00e4ytetty",
+      "device_state_time_delay_active": "Aikaviive k\u00e4yt\u00f6ss\u00e4",
+      "device_state_cancelling": "Peruutetaan",
+      "device_state_door_open": "Ovi on auki!",
+      "device_state_settings": "Asetukset"
     },
-    "homewhiz__WASHER_PROGRAM": {
-      "PROGRAM_COTTONS": "Puuvillat",
-      "PROGRAM_ECO_40_60": "Eco 40-60",
-      "PROGRAM_SYNTHETICS": "Synteettinen",
-      "PROGRAM_MINI_MINI14": "Xpress",
-      "PROGRAM_WOOL_HANDWASH": "Woollens",
-      "PROGRAM_SPIN_PUMP": "Spin+Drain",
-      "PROGRAM_RINSING": "Huuhtelu",
-      "PROGRAM_DARKWASH": "Tummat (farkut)",
-      "PROGRAM_OUTDOOR_SPORTS_GORETEX": "Urheilu",
-      "PROGRAM_STAIN": "Tahrahoito",
-      "PROGRAM_HYGEINE": "Hygienia+",
-      "PROGRAM_DUVET": "Peitto",
-      "PROGRAM_SHIRTS": "Paidat",
-      "PROGRAM_DRUM_CLEAN": "Rumpupuhdistus",
-      "PROGRAM_MIX": "Sekoita",
-      "PROGRAM_CURTAIN": "Verhot",
-      "PROGRAM_LINGERIE": "Alusasut",
-      "PROGRAM_SOFT_TOYS": "Pehmolelut",
-      "PROGRAM_TOWEL": "Pyyhkeet",
-      "PROGRAM_COTTONS_ECO": "Puuvillat \u2013 Eco",
-      "PROGRAM_DRYER_COTTON": "Puuvillan kuivaus",
-      "PROGRAM_DRYER_SYNTHETICS": "Synteettinen \u2013 kuivaus",
-      "PROGRAM_HYGIENE_WASH_DRY": "Hygienia+ \u2013 pesu ja kuivaus",
-      "PROGRAM_4KG_WASH_DRY": "4 kg:n pesu ja kuivaus",
-      "PROGRAM_WASH_WEAR": "Vaatteiden pesu ja kuivaus",
-      "PROGRAM_DARK_WASH": "Tumma",
-      "PROGRAM_OUTDOOR": "Ulkoilu",
-      "PROGRAM_DRUM_CLEAN_PLUS": "Rumpupuhdistus+"
+    "homewhiz__washer_program": {
+      "program_cottons": "Puuvillat",
+      "program_eco_40_60": "Eco 40-60",
+      "program_synthetics": "Synteettinen",
+      "program_mini_mini14": "Xpress",
+      "program_wool_handwash": "Woollens",
+      "program_spin_pump": "Spin+Drain",
+      "program_rinsing": "Huuhtelu",
+      "program_darkwash": "Tummat (farkut)",
+      "program_outdoor_sports_goretex": "Urheilu",
+      "program_stain": "Tahrahoito",
+      "program_hygeine": "Hygienia+",
+      "program_duvet": "Peitto",
+      "program_shirts": "Paidat",
+      "program_drum_clean": "Rumpupuhdistus",
+      "program_mix": "Sekoita",
+      "program_curtain": "Verhot",
+      "program_lingerie": "Alusasut",
+      "program_soft_toys": "Pehmolelut",
+      "program_towel": "Pyyhkeet",
+      "program_cottons_eco": "Puuvillat \u2013 Eco",
+      "program_dryer_cotton": "Puuvillan kuivaus",
+      "program_dryer_synthetics": "Synteettinen \u2013 kuivaus",
+      "program_hygiene_wash_dry": "Hygienia+ \u2013 pesu ja kuivaus",
+      "program_4kg_wash_dry": "4 kg:n pesu ja kuivaus",
+      "program_wash_wear": "Vaatteiden pesu ja kuivaus",
+      "program_dark_wash": "Tumma",
+      "program_outdoor": "Ulkoilu",
+      "program_drum_clean_plus": "Rumpupuhdistus+"
     },
-    "homewhiz__WASHER_TEMPERATURE": {
-      "TEMPERATURE_COLD_WASH": "Kylm\u00e4pesu",
-      "TEMPERATURE_20": "20 \u00b0C",
-      "TEMPERATURE_30": "30 \u00b0C",
-      "TEMPERATURE_40": "40 \u00b0C"
+    "homewhiz__washer_temperature": {
+      "temperature_cold_wash": "Kylm\u00e4pesu",
+      "temperature_20": "20 \u00b0C",
+      "temperature_30": "30 \u00b0C",
+      "temperature_40": "40 \u00b0C"
     },
-    "homewhiz__WASHER_SPIN": {
-      "SPIN_NO_SPIN": "Ei linkousta",
-      "SPIN_RINSE_HOLD": "Huuhtelupito",
-      "SPIN_600": "600",
-      "SPIN_800": "800",
-      "SPIN_1200": "1200",
-      "SPIN_1400": "1400"
+    "homewhiz__washer_spin": {
+      "spin_no_spin": "Ei linkousta",
+      "spin_rinse_hold": "Huuhtelupito",
+      "spin_600": "600",
+      "spin_800": "800",
+      "spin_1200": "1200",
+      "spin_1400": "1400"
     },
-    "homewhiz__WASHER_FAST_PLUS": {
-      "FAST_PLUS_OFF": "Nopea + pois",
-      "FAST_PLUS_ON_FAST": "Nopea",
-      "FAST_PLUS_ON_FAST_PLUS": "Nopea+"
+    "homewhiz__washer_fast_plus": {
+      "fast_plus_off": "Nopea + pois",
+      "fast_plus_on_fast": "Nopea",
+      "fast_plus_on_fast_plus": "Nopea+"
     },
-    "homewhiz__CUSTOM_DURATION_LEVEL": {
+    "homewhiz__custom_duration_level": {
       "1": "1",
       "2": "2",
       "3": "3",
@@ -67,83 +67,83 @@
       "5": "5",
       "6": "6"
     },
-    "homewhiz__SETTINGS_VOLUME": {
-      "VOLUME_LOW": "Pieni",
-      "VOLUME_HIGH": "Suuri"
+    "homewhiz__settings_volume": {
+      "volume_low": "Pieni",
+      "volume_high": "Suuri"
     },
-    "homewhiz__OVEN_PROGRAM": {
-      "PROGRAM_STATIC": "Kiinte\u00e4",
-      "PROGRAM_STATIC_FAN": "Kiinte\u00e4+kiertoilma",
-      "PROGRAM_FAN_HEATING": "Kiertoilma",
-      "PROGRAM_MULTI_COOKING": "Monitoimikypsennys (3D)",
-      "PROGRAM_FAN_HEAT_BOTTOM": "Kiertoilma+alal\u00e4mp\u00f6",
-      "PROGRAM_ECO_GRILL": "Eco-grillaus",
-      "PROGRAM_FULL_GRILL": "T\u00e4ysi grillaus",
-      "PROGRAM_FULL_GRILL_FAN": "T\u00e4ysi grillaus + kiertoilma",
-      "PROGRAM_BOTTOM_HEATING": "Alal\u00e4mp\u00f6",
-      "PROGRAM_DEFROST": "Sulatus",
-      "PROGRAM_WARM_KEEPING": "Pid\u00e4 l\u00e4mpim\u00e4n\u00e4",
-      "PROGRAM_ECO_FAN_HEATING": "Eco-kiertoilma",
-      "PROGRAM_STEAM_CLEANING": "H\u00f6yrypuhdistus",
-      "PROGRAM_ECO_PYRO": "Eco-puhdistus",
-      "PROGRAM_PYRO": "Puhdistus"
+    "homewhiz__oven_program": {
+      "program_static": "Kiinte\u00e4",
+      "program_static_fan": "Kiinte\u00e4+kiertoilma",
+      "program_fan_heating": "Kiertoilma",
+      "program_multi_cooking": "Monitoimikypsennys (3D)",
+      "program_fan_heat_bottom": "Kiertoilma+alal\u00e4mp\u00f6",
+      "program_eco_grill": "Eco-grillaus",
+      "program_full_grill": "T\u00e4ysi grillaus",
+      "program_full_grill_fan": "T\u00e4ysi grillaus + kiertoilma",
+      "program_bottom_heating": "Alal\u00e4mp\u00f6",
+      "program_defrost": "Sulatus",
+      "program_warm_keeping": "Pid\u00e4 l\u00e4mpim\u00e4n\u00e4",
+      "program_eco_fan_heating": "Eco-kiertoilma",
+      "program_steam_cleaning": "H\u00f6yrypuhdistus",
+      "program_eco_pyro": "Eco-puhdistus",
+      "program_pyro": "Puhdistus"
     },
-    "homewhiz__PROGRAM": {
-      "PROGRAM_AUTO": "Automaattinen 40\u201365 \u00b0C",
-      "PROGRAM_MIX_WASH_+": "Kokonaispesu",
-      "PROGRAM_INTENSIVE_70": "Tehopesu 70 \u00b0C",
-      "PROGRAM_ECO_50": "Eco 50 \u00b0C",
-      "PROGRAM_GLASSCARE": "Lasinhoito",
-      "PROGRAM_NEW58MIN": "Pikapesu 58'",
-      "PROGRAM_30MIN": "Mini 30'",
-      "PROGRAM_PREWASH": "Esipesu",
-      "PROGRAM_HYGIENE": "Hygienia",
-      "PROGRAM_SILENT": "Hiljainen pesu",
-      "PROGRAM_MAKINE_TEMIZLEME": "Sis\u00e4inen puhdistus"
+    "homewhiz__program": {
+      "program_auto": "Automaattinen 40\u201365 \u00b0C",
+      "program_mix_wash_+": "Kokonaispesu",
+      "program_intensive_70": "Tehopesu 70 \u00b0C",
+      "program_eco_50": "Eco 50 \u00b0C",
+      "program_glasscare": "Lasinhoito",
+      "program_new58min": "Pikapesu 58'",
+      "program_30min": "Mini 30'",
+      "program_prewash": "Esipesu",
+      "program_hygiene": "Hygienia",
+      "program_silent": "Hiljainen pesu",
+      "program_makine_temizleme": "Sis\u00e4inen puhdistus"
     },
-    "homewhiz__SETTING_DETERGENT_TYPE": {
-      "SETTING_DETERGENT_TYPE_POWDER": "Pesuainejauhe",
-      "SETTING_DETERGENT_TYPE_TABLET": "Tablettipuhdistusaine",
-      "SETTING_DETERGENT_TYPE_LIQUID": "Nestem\u00e4inen puhdistusaine"
+    "homewhiz__setting_detergent_type": {
+      "setting_detergent_type_powder": "Pesuainejauhe",
+      "setting_detergent_type_tablet": "Tablettipuhdistusaine",
+      "setting_detergent_type_liquid": "Nestem\u00e4inen puhdistusaine"
     },
-    "homewhiz__WASHER_DRY": {
-      "DRY_OFF": "Ei p\u00e4\u00e4ll\u00e4",
-      "DRY_EXTRA": "Eritt\u00e4in kuiva",
-      "DRY_CABINET": "Wardrobe Dry",
-      "DRY_IRON": "Silityskuiva",
-      "DRY_10": "45 min",
-      "DRY_20": "20\u00a0min",
-      "DRY_30": "30 min",
-      "DRY_60": "60 min",
-      "DRY_90": "90 min",
-      "DRY_120": "15 min",
-      "DRY_150": "150 min"
+    "homewhiz__washer_dry": {
+      "dry_off": "Ei p\u00e4\u00e4ll\u00e4",
+      "dry_extra": "Eritt\u00e4in kuiva",
+      "dry_cabinet": "Wardrobe Dry",
+      "dry_iron": "Silityskuiva",
+      "dry_10": "45 min",
+      "dry_20": "20\u00a0min",
+      "dry_30": "30 min",
+      "dry_60": "60 min",
+      "dry_90": "90 min",
+      "dry_120": "15 min",
+      "dry_150": "150 min"
     },
-    "homewhiz__AIR_CONDITIONER_SOFT_AIR": {
-      "AIR_CONDITIONER_SOFT_AIR_OFF": "Poissa k\u00e4yt\u00f6st\u00e4",
-      "AIR_CONDITIONER_SOFT_AIR_UP": "Yl\u00f6s",
-      "AIR_CONDITIONER_SOFT_AIR_DOWN": "Alas"
+    "homewhiz__air_conditioner_soft_air": {
+      "air_conditioner_soft_air_off": "Poissa k\u00e4yt\u00f6st\u00e4",
+      "air_conditioner_soft_air_up": "Yl\u00f6s",
+      "air_conditioner_soft_air_down": "Alas"
     },
-    "homewhiz__AIR_CONDITIONER_UP_DOWN_VANE_CONTROL": {
-      "UP_DOWN_VANE_CONTROL_OFF": "Poissa k\u00e4yt\u00f6st\u00e4",
-      "UP_DOWN_VANE_CONTROL_6": "6",
-      "UP_DOWN_VANE_CONTROL_5": "5",
-      "UP_DOWN_VANE_CONTROL_4": "4",
-      "UP_DOWN_VANE_CONTROL_3": "3",
-      "UP_DOWN_VANE_CONTROL_2": "2",
-      "UP_DOWN_VANE_CONTROL_1": "1",
-      "UP_DOWN_VANE_CONTROL_AUTO": "Auto"
+    "homewhiz__air_conditioner_up_down_vane_control": {
+      "up_down_vane_control_off": "Poissa k\u00e4yt\u00f6st\u00e4",
+      "up_down_vane_control_6": "6",
+      "up_down_vane_control_5": "5",
+      "up_down_vane_control_4": "4",
+      "up_down_vane_control_3": "3",
+      "up_down_vane_control_2": "2",
+      "up_down_vane_control_1": "1",
+      "up_down_vane_control_auto": "Auto"
     },
-    "homewhiz__AIR_CONDITIONER_LEFT_RIGHT_VANE_CONTROL": {
-      "LEFT_RIGHT_VANE_CONTROL_OFF": "Poissa k\u00e4yt\u00f6st\u00e4",
-      "LEFT_RIGHT_VANE_CONTROL_1": "1",
-      "LEFT_RIGHT_VANE_CONTROL_2": "2",
-      "LEFT_RIGHT_VANE_CONTROL_3": "3",
-      "LEFT_RIGHT_VANE_CONTROL_4": "4",
-      "LEFT_RIGHT_VANE_CONTROL_5": "5",
-      "LEFT_RIGHT_VANE_CONTROL_LEFT": "Vasen",
-      "LEFT_RIGHT_VANE_CONTROL_RIGHT": "Oikea",
-      "LEFT_RIGHT_VANE_CONTROL_AUTO": "Auto"
+    "homewhiz__air_conditioner_left_right_vane_control": {
+      "left_right_vane_control_off": "Poissa k\u00e4yt\u00f6st\u00e4",
+      "left_right_vane_control_1": "1",
+      "left_right_vane_control_2": "2",
+      "left_right_vane_control_3": "3",
+      "left_right_vane_control_4": "4",
+      "left_right_vane_control_5": "5",
+      "left_right_vane_control_left": "Vasen",
+      "left_right_vane_control_right": "Oikea",
+      "left_right_vane_control_auto": "Auto"
     }
   }
 }

@@ -1,65 +1,65 @@
 {
   "state": {
-    "homewhiz__STATE": {
-      "DEVICE_STATE_ON": "Marche",
-      "DEVICE_STATE_OFF": "Arr\u00eat",
-      "DEVICE_STATE_RUNNING": "En marche",
-      "DEVICE_STATE_PAUSED": "En pause",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Temporisation activ\u00e9e",
-      "DEVICE_STATE_CANCELLING": "Annulation",
-      "DEVICE_STATE_DOOR_OPEN": "La porte est ouverte\u00a0!",
-      "DEVICE_STATE_SETTINGS": "Param\u00e8tres"
+    "homewhiz__state": {
+      "device_state_on": "Marche",
+      "device_state_off": "Arr\u00eat",
+      "device_state_running": "En marche",
+      "device_state_paused": "En pause",
+      "device_state_time_delay_active": "Temporisation activ\u00e9e",
+      "device_state_cancelling": "Annulation",
+      "device_state_door_open": "La porte est ouverte\u00a0!",
+      "device_state_settings": "Param\u00e8tres"
     },
-    "homewhiz__WASHER_PROGRAM": {
-      "PROGRAM_COTTONS": "Coton",
-      "PROGRAM_ECO_40_60": "\u00c9co 40-60",
-      "PROGRAM_SYNTHETICS": "Synth\u00e9tique",
-      "PROGRAM_MINI_MINI14": "Xpress",
-      "PROGRAM_WOOL_HANDWASH": "Woollens",
-      "PROGRAM_SPIN_PUMP": "Spin+Drain",
-      "PROGRAM_RINSING": "Rin\u00e7age",
-      "PROGRAM_DARKWASH": "Jeans",
-      "PROGRAM_OUTDOOR_SPORTS_GORETEX": "Sport",
-      "PROGRAM_STAIN": "Expert taches Synth\u00e9tique",
-      "PROGRAM_HYGEINE": "Hygi\u00e8ne +",
-      "PROGRAM_DUVET": "Couette / Doudoune",
-      "PROGRAM_SHIRTS": "Chemises",
-      "PROGRAM_DRUM_CLEAN": "Nettoyage du tambour",
-      "PROGRAM_MIX": "Mixte",
-      "PROGRAM_CURTAIN": "Rideaux",
-      "PROGRAM_LINGERIE": "Lingerie",
-      "PROGRAM_SOFT_TOYS": "Peluches",
-      "PROGRAM_TOWEL": "Serviette",
-      "PROGRAM_COTTONS_ECO": "Coton \u00c9co",
-      "PROGRAM_DRYER_COTTON": "S\u00e9chage Coton",
-      "PROGRAM_DRYER_SYNTHETICS": "S\u00e9chage Synth\u00e9tique",
-      "PROGRAM_HYGIENE_WASH_DRY": "Lavage et s\u00e9chage Hygi\u00e8ne+",
-      "PROGRAM_4KG_WASH_DRY": "Lavage et s\u00e9chage 4\u00a0kg",
-      "PROGRAM_WASH_WEAR": "Lavage&S\u00e9chage Express",
-      "PROGRAM_DARK_WASH": "Textiles fonc\u00e9s",
-      "PROGRAM_OUTDOOR": "Imperm\u00e9able",
-      "PROGRAM_DRUM_CLEAN_PLUS": "Nettoyage du tambour Plus"
+    "homewhiz__washer_program": {
+      "program_cottons": "Coton",
+      "program_eco_40_60": "\u00c9co 40-60",
+      "program_synthetics": "Synth\u00e9tique",
+      "program_mini_mini14": "Xpress",
+      "program_wool_handwash": "Woollens",
+      "program_spin_pump": "Spin+Drain",
+      "program_rinsing": "Rin\u00e7age",
+      "program_darkwash": "Jeans",
+      "program_outdoor_sports_goretex": "Sport",
+      "program_stain": "Expert taches Synth\u00e9tique",
+      "program_hygeine": "Hygi\u00e8ne +",
+      "program_duvet": "Couette / Doudoune",
+      "program_shirts": "Chemises",
+      "program_drum_clean": "Nettoyage du tambour",
+      "program_mix": "Mixte",
+      "program_curtain": "Rideaux",
+      "program_lingerie": "Lingerie",
+      "program_soft_toys": "Peluches",
+      "program_towel": "Serviette",
+      "program_cottons_eco": "Coton \u00c9co",
+      "program_dryer_cotton": "S\u00e9chage Coton",
+      "program_dryer_synthetics": "S\u00e9chage Synth\u00e9tique",
+      "program_hygiene_wash_dry": "Lavage et s\u00e9chage Hygi\u00e8ne+",
+      "program_4kg_wash_dry": "Lavage et s\u00e9chage 4\u00a0kg",
+      "program_wash_wear": "Lavage&S\u00e9chage Express",
+      "program_dark_wash": "Textiles fonc\u00e9s",
+      "program_outdoor": "Imperm\u00e9able",
+      "program_drum_clean_plus": "Nettoyage du tambour Plus"
     },
-    "homewhiz__WASHER_TEMPERATURE": {
-      "TEMPERATURE_COLD_WASH": "Lavage \u00e0 froid",
-      "TEMPERATURE_20": "20\u00a0\u00b0C",
-      "TEMPERATURE_30": "30\u00a0\u00b0C",
-      "TEMPERATURE_40": "40\u00a0\u00b0C"
+    "homewhiz__washer_temperature": {
+      "temperature_cold_wash": "Lavage \u00e0 froid",
+      "temperature_20": "20\u00a0\u00b0C",
+      "temperature_30": "30\u00a0\u00b0C",
+      "temperature_40": "40\u00a0\u00b0C"
     },
-    "homewhiz__WASHER_SPIN": {
-      "SPIN_NO_SPIN": "Pas d\u2019essorage",
-      "SPIN_RINSE_HOLD": "Arr\u00eat cuve pleine",
-      "SPIN_600": "600",
-      "SPIN_800": "800",
-      "SPIN_1200": "1200",
-      "SPIN_1400": "1400"
+    "homewhiz__washer_spin": {
+      "spin_no_spin": "Pas d\u2019essorage",
+      "spin_rinse_hold": "Arr\u00eat cuve pleine",
+      "spin_600": "600",
+      "spin_800": "800",
+      "spin_1200": "1200",
+      "spin_1400": "1400"
     },
-    "homewhiz__WASHER_FAST_PLUS": {
-      "FAST_PLUS_OFF": "Rapide Plus D\u00e9sactiv\u00e9",
-      "FAST_PLUS_ON_FAST": "Rapide",
-      "FAST_PLUS_ON_FAST_PLUS": "Rapide Plus"
+    "homewhiz__washer_fast_plus": {
+      "fast_plus_off": "Rapide Plus D\u00e9sactiv\u00e9",
+      "fast_plus_on_fast": "Rapide",
+      "fast_plus_on_fast_plus": "Rapide Plus"
     },
-    "homewhiz__CUSTOM_DURATION_LEVEL": {
+    "homewhiz__custom_duration_level": {
       "1": "1",
       "2": "2",
       "3": "3",
@@ -67,83 +67,83 @@
       "5": "5",
       "6": "6"
     },
-    "homewhiz__SETTINGS_VOLUME": {
-      "VOLUME_LOW": "Bas",
-      "VOLUME_HIGH": "Haut"
+    "homewhiz__settings_volume": {
+      "volume_low": "Bas",
+      "volume_high": "Haut"
     },
-    "homewhiz__OVEN_PROGRAM": {
-      "PROGRAM_STATIC": "Convection naturelle",
-      "PROGRAM_STATIC_FAN": "Chaleur brass\u00e9e",
-      "PROGRAM_FAN_HEATING": "Chaleur tournante",
-      "PROGRAM_MULTI_COOKING": "Cuisson 3D",
-      "PROGRAM_FAN_HEAT_BOTTOM": "Chaleur tournante + r\u00e9sistance de sole",
-      "PROGRAM_ECO_GRILL": "Grill \u00c9co",
-      "PROGRAM_FULL_GRILL": "Grill fort ",
-      "PROGRAM_FULL_GRILL_FAN": "Grill fort ventil\u00e9",
-      "PROGRAM_BOTTOM_HEATING": "R\u00e9sistance de sole",
-      "PROGRAM_DEFROST": "D\u00e9cong\u00e9lation",
-      "PROGRAM_WARM_KEEPING": "Maintien au chaud",
-      "PROGRAM_ECO_FAN_HEATING": "Chaleur tournante Eco",
-      "PROGRAM_STEAM_CLEANING": "Nettoyage vapeur",
-      "PROGRAM_ECO_PYRO": "Nettoyage Pyrolyse \u00c9co",
-      "PROGRAM_PYRO": "Nettoyage Pyrolyse"
+    "homewhiz__oven_program": {
+      "program_static": "Convection naturelle",
+      "program_static_fan": "Chaleur brass\u00e9e",
+      "program_fan_heating": "Chaleur tournante",
+      "program_multi_cooking": "Cuisson 3D",
+      "program_fan_heat_bottom": "Chaleur tournante + r\u00e9sistance de sole",
+      "program_eco_grill": "Grill \u00c9co",
+      "program_full_grill": "Grill fort ",
+      "program_full_grill_fan": "Grill fort ventil\u00e9",
+      "program_bottom_heating": "R\u00e9sistance de sole",
+      "program_defrost": "D\u00e9cong\u00e9lation",
+      "program_warm_keeping": "Maintien au chaud",
+      "program_eco_fan_heating": "Chaleur tournante Eco",
+      "program_steam_cleaning": "Nettoyage vapeur",
+      "program_eco_pyro": "Nettoyage Pyrolyse \u00c9co",
+      "program_pyro": "Nettoyage Pyrolyse"
     },
-    "homewhiz__PROGRAM": {
-      "PROGRAM_AUTO": "Auto 40-65\u00a0\u00b0C",
-      "PROGRAM_MIX_WASH_+": "AquaFlex",
-      "PROGRAM_INTENSIVE_70": "Intensif 70\u00a0\u00b0C",
-      "PROGRAM_ECO_50": "\u00c9co 50\u00a0\u00b0C",
-      "PROGRAM_GLASSCARE": "GlassCare",
-      "PROGRAM_NEW58MIN": "QuickWash 58'",
-      "PROGRAM_30MIN": "Mini 30'",
-      "PROGRAM_PREWASH": "Pr\u00e9lavage",
-      "PROGRAM_HYGIENE": "Hygi\u00e8ne +",
-      "PROGRAM_SILENT": "Silence Nuit",
-      "PROGRAM_MAKINE_TEMIZLEME": "Nettoyage cuve"
+    "homewhiz__program": {
+      "program_auto": "Auto 40-65\u00a0\u00b0C",
+      "program_mix_wash_+": "AquaFlex",
+      "program_intensive_70": "Intensif 70\u00a0\u00b0C",
+      "program_eco_50": "\u00c9co 50\u00a0\u00b0C",
+      "program_glasscare": "GlassCare",
+      "program_new58min": "QuickWash 58'",
+      "program_30min": "Mini 30'",
+      "program_prewash": "Pr\u00e9lavage",
+      "program_hygiene": "Hygi\u00e8ne +",
+      "program_silent": "Silence Nuit",
+      "program_makine_temizleme": "Nettoyage cuve"
     },
-    "homewhiz__SETTING_DETERGENT_TYPE": {
-      "SETTING_DETERGENT_TYPE_POWDER": "D\u00e9tergent poudre",
-      "SETTING_DETERGENT_TYPE_TABLET": "D\u00e9tergent tablette",
-      "SETTING_DETERGENT_TYPE_LIQUID": "D\u00e9tergent liquide"
+    "homewhiz__setting_detergent_type": {
+      "setting_detergent_type_powder": "D\u00e9tergent poudre",
+      "setting_detergent_type_tablet": "D\u00e9tergent tablette",
+      "setting_detergent_type_liquid": "D\u00e9tergent liquide"
     },
-    "homewhiz__WASHER_DRY": {
-      "DRY_OFF": "Arr\u00eat",
-      "DRY_EXTRA": "Extra sec",
-      "DRY_CABINET": "Wardrobe Dry",
-      "DRY_IRON": "Pr\u00eat \u00e0 repasser",
-      "DRY_10": "45\u00a0min",
-      "DRY_20": "20\u00a0min",
-      "DRY_30": "30\u00a0min",
-      "DRY_60": "60\u00a0min",
-      "DRY_90": "90\u00a0min",
-      "DRY_120": "15\u00a0min",
-      "DRY_150": "150\u00a0min"
+    "homewhiz__washer_dry": {
+      "dry_off": "Arr\u00eat",
+      "dry_extra": "Extra sec",
+      "dry_cabinet": "Wardrobe Dry",
+      "dry_iron": "Pr\u00eat \u00e0 repasser",
+      "dry_10": "45\u00a0min",
+      "dry_20": "20\u00a0min",
+      "dry_30": "30\u00a0min",
+      "dry_60": "60\u00a0min",
+      "dry_90": "90\u00a0min",
+      "dry_120": "15\u00a0min",
+      "dry_150": "150\u00a0min"
     },
-    "homewhiz__AIR_CONDITIONER_SOFT_AIR": {
-      "AIR_CONDITIONER_SOFT_AIR_OFF": "Arr\u00eat",
-      "AIR_CONDITIONER_SOFT_AIR_UP": "Haut",
-      "AIR_CONDITIONER_SOFT_AIR_DOWN": "Bas"
+    "homewhiz__air_conditioner_soft_air": {
+      "air_conditioner_soft_air_off": "Arr\u00eat",
+      "air_conditioner_soft_air_up": "Haut",
+      "air_conditioner_soft_air_down": "Bas"
     },
-    "homewhiz__AIR_CONDITIONER_UP_DOWN_VANE_CONTROL": {
-      "UP_DOWN_VANE_CONTROL_OFF": "D\u00e9sactiv\u00e9e",
-      "UP_DOWN_VANE_CONTROL_6": "6",
-      "UP_DOWN_VANE_CONTROL_5": "5",
-      "UP_DOWN_VANE_CONTROL_4": "4",
-      "UP_DOWN_VANE_CONTROL_3": "3",
-      "UP_DOWN_VANE_CONTROL_2": "2",
-      "UP_DOWN_VANE_CONTROL_1": "1",
-      "UP_DOWN_VANE_CONTROL_AUTO": "Activ\u00e9e"
+    "homewhiz__air_conditioner_up_down_vane_control": {
+      "up_down_vane_control_off": "D\u00e9sactiv\u00e9e",
+      "up_down_vane_control_6": "6",
+      "up_down_vane_control_5": "5",
+      "up_down_vane_control_4": "4",
+      "up_down_vane_control_3": "3",
+      "up_down_vane_control_2": "2",
+      "up_down_vane_control_1": "1",
+      "up_down_vane_control_auto": "Activ\u00e9e"
     },
-    "homewhiz__AIR_CONDITIONER_LEFT_RIGHT_VANE_CONTROL": {
-      "LEFT_RIGHT_VANE_CONTROL_OFF": "Arr\u00eat",
-      "LEFT_RIGHT_VANE_CONTROL_1": "1",
-      "LEFT_RIGHT_VANE_CONTROL_2": "2",
-      "LEFT_RIGHT_VANE_CONTROL_3": "3",
-      "LEFT_RIGHT_VANE_CONTROL_4": "4",
-      "LEFT_RIGHT_VANE_CONTROL_5": "5",
-      "LEFT_RIGHT_VANE_CONTROL_LEFT": "Gauche",
-      "LEFT_RIGHT_VANE_CONTROL_RIGHT": "Droite",
-      "LEFT_RIGHT_VANE_CONTROL_AUTO": "Automatique"
+    "homewhiz__air_conditioner_left_right_vane_control": {
+      "left_right_vane_control_off": "Arr\u00eat",
+      "left_right_vane_control_1": "1",
+      "left_right_vane_control_2": "2",
+      "left_right_vane_control_3": "3",
+      "left_right_vane_control_4": "4",
+      "left_right_vane_control_5": "5",
+      "left_right_vane_control_left": "Gauche",
+      "left_right_vane_control_right": "Droite",
+      "left_right_vane_control_auto": "Automatique"
     }
   }
 }

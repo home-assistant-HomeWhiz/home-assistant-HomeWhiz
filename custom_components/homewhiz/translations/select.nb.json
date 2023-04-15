@@ -1,64 +1,64 @@
 {
   "state": {
-    "homewhiz__STATE": {
-      "DEVICE_STATE_ON": "P\u00e5",
-      "DEVICE_STATE_OFF": "Av",
-      "DEVICE_STATE_RUNNING": "Kj\u00f8rer",
-      "DEVICE_STATE_PAUSED": "P\u00e5 pause",
-      "DEVICE_STATE_TIME_DELAY_ACTIVE": "Forsinkelsen er aktivert",
-      "DEVICE_STATE_CANCELLING": "Avbryter",
-      "DEVICE_STATE_DOOR_OPEN": "D\u00f8ren er \u00e5pen!",
-      "DEVICE_STATE_SETTINGS": "Innstillinger"
+    "homewhiz__state": {
+      "device_state_on": "P\u00e5",
+      "device_state_off": "Av",
+      "device_state_running": "Kj\u00f8rer",
+      "device_state_paused": "P\u00e5 pause",
+      "device_state_time_delay_active": "Forsinkelsen er aktivert",
+      "device_state_cancelling": "Avbryter",
+      "device_state_door_open": "D\u00f8ren er \u00e5pen!",
+      "device_state_settings": "Innstillinger"
     },
-    "homewhiz__WASHER_PROGRAM": {
-      "PROGRAM_COTTONS": "Bomull",
-      "PROGRAM_ECO_40_60": "\u00d8ko 40\u201360",
-      "PROGRAM_SYNTHETICS": "Syntetisk",
-      "PROGRAM_MINI_MINI14": "Xpress",
-      "PROGRAM_WOOL_HANDWASH": "Woollens",
-      "PROGRAM_SPIN_PUMP": "Spin+Drain",
-      "PROGRAM_RINSING": "Skylling",
-      "PROGRAM_DARKWASH": "M\u00f8rkt t\u00f8y (dongeribukser)",
-      "PROGRAM_OUTDOOR_SPORTS_GORETEX": "Sport",
-      "PROGRAM_STAIN": "Flekkfjerning",
-      "PROGRAM_HYGEINE": "Hygiene+",
-      "PROGRAM_DUVET": "Dyne",
-      "PROGRAM_SHIRTS": "Skjorter",
-      "PROGRAM_DRUM_CLEAN": "Trommelrengj\u00f8ring",
-      "PROGRAM_CURTAIN": "Gardiner",
-      "PROGRAM_LINGERIE": "Dameundert\u00f8y",
-      "PROGRAM_SOFT_TOYS": "Myke leker",
-      "PROGRAM_TOWEL": "H\u00e5ndkle",
-      "PROGRAM_COTTONS_ECO": "Bomull \u2013 \u00f8ko",
-      "PROGRAM_DRYER_COTTON": "Bomull \u2013 t\u00f8rt",
-      "PROGRAM_DRYER_SYNTHETICS": "Syntetisk t\u00f8rt",
-      "PROGRAM_HYGIENE_WASH_DRY": "Hygiene+ Vask og t\u00f8rk",
-      "PROGRAM_4KG_WASH_DRY": "4\u00a0kg vask og t\u00f8rk",
-      "PROGRAM_WASH_WEAR": "Strykefritt",
-      "PROGRAM_DARK_WASH": "M\u00f8rkt t\u00f8y",
-      "PROGRAM_OUTDOOR": "Friluftskl\u00e6r",
-      "PROGRAM_DRUM_CLEAN_PLUS": "Trommelrengj\u00f8ring+"
+    "homewhiz__washer_program": {
+      "program_cottons": "Bomull",
+      "program_eco_40_60": "\u00d8ko 40\u201360",
+      "program_synthetics": "Syntetisk",
+      "program_mini_mini14": "Xpress",
+      "program_wool_handwash": "Woollens",
+      "program_spin_pump": "Spin+Drain",
+      "program_rinsing": "Skylling",
+      "program_darkwash": "M\u00f8rkt t\u00f8y (dongeribukser)",
+      "program_outdoor_sports_goretex": "Sport",
+      "program_stain": "Flekkfjerning",
+      "program_hygeine": "Hygiene+",
+      "program_duvet": "Dyne",
+      "program_shirts": "Skjorter",
+      "program_drum_clean": "Trommelrengj\u00f8ring",
+      "program_curtain": "Gardiner",
+      "program_lingerie": "Dameundert\u00f8y",
+      "program_soft_toys": "Myke leker",
+      "program_towel": "H\u00e5ndkle",
+      "program_cottons_eco": "Bomull \u2013 \u00f8ko",
+      "program_dryer_cotton": "Bomull \u2013 t\u00f8rt",
+      "program_dryer_synthetics": "Syntetisk t\u00f8rt",
+      "program_hygiene_wash_dry": "Hygiene+ Vask og t\u00f8rk",
+      "program_4kg_wash_dry": "4\u00a0kg vask og t\u00f8rk",
+      "program_wash_wear": "Strykefritt",
+      "program_dark_wash": "M\u00f8rkt t\u00f8y",
+      "program_outdoor": "Friluftskl\u00e6r",
+      "program_drum_clean_plus": "Trommelrengj\u00f8ring+"
     },
-    "homewhiz__WASHER_TEMPERATURE": {
-      "TEMPERATURE_COLD_WASH": "Kaldvask",
-      "TEMPERATURE_20": "20\u00a0\u00b0C",
-      "TEMPERATURE_30": "30\u00a0\u00b0C",
-      "TEMPERATURE_40": "40\u00a0\u00b0C"
+    "homewhiz__washer_temperature": {
+      "temperature_cold_wash": "Kaldvask",
+      "temperature_20": "20\u00a0\u00b0C",
+      "temperature_30": "30\u00a0\u00b0C",
+      "temperature_40": "40\u00a0\u00b0C"
     },
-    "homewhiz__WASHER_SPIN": {
-      "SPIN_NO_SPIN": "Uten sentrifugering",
-      "SPIN_RINSE_HOLD": "Skyllestopp",
-      "SPIN_600": "600",
-      "SPIN_800": "800",
-      "SPIN_1200": "1200",
-      "SPIN_1400": "1400"
+    "homewhiz__washer_spin": {
+      "spin_no_spin": "Uten sentrifugering",
+      "spin_rinse_hold": "Skyllestopp",
+      "spin_600": "600",
+      "spin_800": "800",
+      "spin_1200": "1200",
+      "spin_1400": "1400"
     },
-    "homewhiz__WASHER_FAST_PLUS": {
-      "FAST_PLUS_OFF": "Rask+ av",
-      "FAST_PLUS_ON_FAST": "Hurtig",
-      "FAST_PLUS_ON_FAST_PLUS": "Hurtig+"
+    "homewhiz__washer_fast_plus": {
+      "fast_plus_off": "Rask+ av",
+      "fast_plus_on_fast": "Hurtig",
+      "fast_plus_on_fast_plus": "Hurtig+"
     },
-    "homewhiz__CUSTOM_DURATION_LEVEL": {
+    "homewhiz__custom_duration_level": {
       "1": "1",
       "2": "2",
       "3": "3",
@@ -66,83 +66,83 @@
       "5": "5",
       "6": "6"
     },
-    "homewhiz__SETTINGS_VOLUME": {
-      "VOLUME_LOW": "Lavt",
-      "VOLUME_HIGH": "H\u00f8yt"
+    "homewhiz__settings_volume": {
+      "volume_low": "Lavt",
+      "volume_high": "H\u00f8yt"
     },
-    "homewhiz__OVEN_PROGRAM": {
-      "PROGRAM_STATIC": "Statisk",
-      "PROGRAM_STATIC_FAN": "Statisk + varmluft",
-      "PROGRAM_FAN_HEATING": "Varmluft",
-      "PROGRAM_MULTI_COOKING": "Multisteking (3D)",
-      "PROGRAM_FAN_HEAT_BOTTOM": "Varmluft + undervarme",
-      "PROGRAM_ECO_GRILL": "\u00d8kogrill",
-      "PROGRAM_FULL_GRILL": "Full grill",
-      "PROGRAM_FULL_GRILL_FAN": "Full grill + varmluft",
-      "PROGRAM_BOTTOM_HEATING": "Undervarme",
-      "PROGRAM_DEFROST": "Opptining",
-      "PROGRAM_WARM_KEEPING": "Hold varmt",
-      "PROGRAM_ECO_FAN_HEATING": "\u00d8kovarmluft",
-      "PROGRAM_STEAM_CLEANING": "Damprengj\u00f8ring",
-      "PROGRAM_ECO_PYRO": "\u00d8korengj\u00f8ring",
-      "PROGRAM_PYRO": "Rengj\u00f8ring"
+    "homewhiz__oven_program": {
+      "program_static": "Statisk",
+      "program_static_fan": "Statisk + varmluft",
+      "program_fan_heating": "Varmluft",
+      "program_multi_cooking": "Multisteking (3D)",
+      "program_fan_heat_bottom": "Varmluft + undervarme",
+      "program_eco_grill": "\u00d8kogrill",
+      "program_full_grill": "Full grill",
+      "program_full_grill_fan": "Full grill + varmluft",
+      "program_bottom_heating": "Undervarme",
+      "program_defrost": "Opptining",
+      "program_warm_keeping": "Hold varmt",
+      "program_eco_fan_heating": "\u00d8kovarmluft",
+      "program_steam_cleaning": "Damprengj\u00f8ring",
+      "program_eco_pyro": "\u00d8korengj\u00f8ring",
+      "program_pyro": "Rengj\u00f8ring"
     },
-    "homewhiz__PROGRAM": {
-      "PROGRAM_AUTO": "Auto. 40\u201365\u00a0\u00b0C",
-      "PROGRAM_MIX_WASH_+": "All-in-Wash",
-      "PROGRAM_INTENSIVE_70": "Intensivt: 70\u00a0\u00b0C",
-      "PROGRAM_ECO_50": "\u00d8ko: 50\u00a0\u00b0C",
-      "PROGRAM_GLASSCARE": "Sk\u00e5nsomt mot glass",
-      "PROGRAM_NEW58MIN": "QuickWash 58'",
-      "PROGRAM_30MIN": "Mini 30'",
-      "PROGRAM_PREWASH": "Forvask",
-      "PROGRAM_HYGIENE": "HygieneCare",
-      "PROGRAM_SILENT": "Stillevask",
-      "PROGRAM_MAKINE_TEMIZLEME": "Innvendig rengj\u00f8ring"
+    "homewhiz__program": {
+      "program_auto": "Auto. 40\u201365\u00a0\u00b0C",
+      "program_mix_wash_+": "All-in-Wash",
+      "program_intensive_70": "Intensivt: 70\u00a0\u00b0C",
+      "program_eco_50": "\u00d8ko: 50\u00a0\u00b0C",
+      "program_glasscare": "Sk\u00e5nsomt mot glass",
+      "program_new58min": "QuickWash 58'",
+      "program_30min": "Mini 30'",
+      "program_prewash": "Forvask",
+      "program_hygiene": "HygieneCare",
+      "program_silent": "Stillevask",
+      "program_makine_temizleme": "Innvendig rengj\u00f8ring"
     },
-    "homewhiz__SETTING_DETERGENT_TYPE": {
-      "SETTING_DETERGENT_TYPE_POWDER": "Pulvervaskemiddel",
-      "SETTING_DETERGENT_TYPE_TABLET": "Tablettvaskemiddel",
-      "SETTING_DETERGENT_TYPE_LIQUID": "Flytende vaskemiddel"
+    "homewhiz__setting_detergent_type": {
+      "setting_detergent_type_powder": "Pulvervaskemiddel",
+      "setting_detergent_type_tablet": "Tablettvaskemiddel",
+      "setting_detergent_type_liquid": "Flytende vaskemiddel"
     },
-    "homewhiz__WASHER_DRY": {
-      "DRY_OFF": "Av",
-      "DRY_EXTRA": "Ekstra t\u00f8rt",
-      "DRY_CABINET": "Wardrobe Dry",
-      "DRY_IRON": "Stryket\u00f8rt",
-      "DRY_10": "45\u00a0min",
-      "DRY_20": "20 min",
-      "DRY_30": "30\u00a0minutter",
-      "DRY_60": "60\u00a0min",
-      "DRY_90": "90\u00a0minutter",
-      "DRY_120": "15\u00a0min",
-      "DRY_150": "150\u00a0minutter"
+    "homewhiz__washer_dry": {
+      "dry_off": "Av",
+      "dry_extra": "Ekstra t\u00f8rt",
+      "dry_cabinet": "Wardrobe Dry",
+      "dry_iron": "Stryket\u00f8rt",
+      "dry_10": "45\u00a0min",
+      "dry_20": "20 min",
+      "dry_30": "30\u00a0minutter",
+      "dry_60": "60\u00a0min",
+      "dry_90": "90\u00a0minutter",
+      "dry_120": "15\u00a0min",
+      "dry_150": "150\u00a0minutter"
     },
-    "homewhiz__AIR_CONDITIONER_SOFT_AIR": {
-      "AIR_CONDITIONER_SOFT_AIR_OFF": "Av",
-      "AIR_CONDITIONER_SOFT_AIR_UP": "Opp",
-      "AIR_CONDITIONER_SOFT_AIR_DOWN": "Ned"
+    "homewhiz__air_conditioner_soft_air": {
+      "air_conditioner_soft_air_off": "Av",
+      "air_conditioner_soft_air_up": "Opp",
+      "air_conditioner_soft_air_down": "Ned"
     },
-    "homewhiz__AIR_CONDITIONER_UP_DOWN_VANE_CONTROL": {
-      "UP_DOWN_VANE_CONTROL_OFF": "Av",
-      "UP_DOWN_VANE_CONTROL_6": "6",
-      "UP_DOWN_VANE_CONTROL_5": "5",
-      "UP_DOWN_VANE_CONTROL_4": "4",
-      "UP_DOWN_VANE_CONTROL_3": "3",
-      "UP_DOWN_VANE_CONTROL_2": "2",
-      "UP_DOWN_VANE_CONTROL_1": "1",
-      "UP_DOWN_VANE_CONTROL_AUTO": "Auto"
+    "homewhiz__air_conditioner_up_down_vane_control": {
+      "up_down_vane_control_off": "Av",
+      "up_down_vane_control_6": "6",
+      "up_down_vane_control_5": "5",
+      "up_down_vane_control_4": "4",
+      "up_down_vane_control_3": "3",
+      "up_down_vane_control_2": "2",
+      "up_down_vane_control_1": "1",
+      "up_down_vane_control_auto": "Auto"
     },
-    "homewhiz__AIR_CONDITIONER_LEFT_RIGHT_VANE_CONTROL": {
-      "LEFT_RIGHT_VANE_CONTROL_OFF": "Av",
-      "LEFT_RIGHT_VANE_CONTROL_1": "1",
-      "LEFT_RIGHT_VANE_CONTROL_2": "2",
-      "LEFT_RIGHT_VANE_CONTROL_3": "3",
-      "LEFT_RIGHT_VANE_CONTROL_4": "4",
-      "LEFT_RIGHT_VANE_CONTROL_5": "5",
-      "LEFT_RIGHT_VANE_CONTROL_LEFT": "Venstre",
-      "LEFT_RIGHT_VANE_CONTROL_RIGHT": "H\u00f8yre",
-      "LEFT_RIGHT_VANE_CONTROL_AUTO": "Auto"
+    "homewhiz__air_conditioner_left_right_vane_control": {
+      "left_right_vane_control_off": "Av",
+      "left_right_vane_control_1": "1",
+      "left_right_vane_control_2": "2",
+      "left_right_vane_control_3": "3",
+      "left_right_vane_control_4": "4",
+      "left_right_vane_control_5": "5",
+      "left_right_vane_control_left": "Venstre",
+      "left_right_vane_control_right": "H\u00f8yre",
+      "left_right_vane_control_auto": "Auto"
     }
   }
 }
