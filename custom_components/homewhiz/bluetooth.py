@@ -1,6 +1,5 @@
 import asyncio
 import logging
-from typing import Optional
 
 from bleak import BleakClient, BLEDevice
 from bleak_retry_connector import establish_connection
@@ -120,7 +119,7 @@ class MessageAccumulator:
     expected_index = 0
     accumulated: bytearray = bytearray()
 
-    def accumulate_message(self, message: bytearray) -> Optional[bytearray]:
+    def accumulate_message(self, message: bytearray) -> bytearray | None:
         message_index = message[4]
         _LOGGER.debug("Message index: %d", message_index)
         if message_index == 0:

@@ -1,18 +1,17 @@
 from dataclasses import dataclass
-from typing import Optional
 
 
 @dataclass
 class ApplianceSubprogramOverride:
-    allowedValueIndices: Optional[list[int]]
-    isDisabled: Optional[int]
-    strKeyRef: Optional[str]
+    allowedValueIndices: list[int] | None
+    isDisabled: int | None
+    strKeyRef: str | None
 
 
 @dataclass
 class ApplianceProgressFeatureOverride:
     hour: ApplianceSubprogramOverride
-    minute: Optional[ApplianceSubprogramOverride]
+    minute: ApplianceSubprogramOverride | None
     strKeyRef: str
 
 
@@ -24,11 +23,11 @@ class ApplianceFeatureEnumOption:
 
 @dataclass
 class ApplianceProgramOption(ApplianceFeatureEnumOption):
-    customSubProgramOverrides: Optional[list[ApplianceSubprogramOverride]]
-    isDownloadableCycle: Optional[bool]
-    progressVariableOverrides: Optional[list[ApplianceProgressFeatureOverride]]
+    customSubProgramOverrides: list[ApplianceSubprogramOverride] | None
+    isDownloadableCycle: bool | None
+    progressVariableOverrides: list[ApplianceProgressFeatureOverride] | None
     strKey: str
-    subProgramOverrides: Optional[list[ApplianceSubprogramOverride]]
+    subProgramOverrides: list[ApplianceSubprogramOverride] | None
     wifiArrayValue: int
     isVisible: int = 1
 
@@ -36,10 +35,10 @@ class ApplianceProgramOption(ApplianceFeatureEnumOption):
 @dataclass()
 class ApplianceProgram:
     strKey: str
-    isSwitch: Optional[int]
+    isSwitch: int | None
     values: list[ApplianceProgramOption]
     wifiArrayIndex: int
-    wfaWriteIndex: Optional[int]
+    wfaWriteIndex: int | None
     isVisible: int = 1
 
 
@@ -49,48 +48,48 @@ class ApplianceFeatureBoundedOption:
     lowerLimit: int
     step: float
     strKey: str
-    unit: Optional[str]
+    unit: str | None
     upperLimit: int
 
 
 @dataclass
 class ApplianceFeature:
-    boundedValues: Optional[list[ApplianceFeatureBoundedOption]]
-    enumValues: Optional[list[ApplianceFeatureEnumOption]]
-    isSwitch: Optional[int]
-    strKey: Optional[str]
+    boundedValues: list[ApplianceFeatureBoundedOption] | None
+    enumValues: list[ApplianceFeatureEnumOption] | None
+    isSwitch: int | None
+    strKey: str | None
     wifiArrayIndex: int
-    wfaWriteIndex: Optional[int]
+    wfaWriteIndex: int | None
     isVisible: int = 1
 
 
 @dataclass
 class ApplianceProgressFeature:
     hour: ApplianceFeature
-    isExpandableBySwitch: Optional[int]
+    isExpandableBySwitch: int | None
     minute: ApplianceFeature
     strKey: str
-    wfaIndex: Optional[int]
-    wfaWriteIndex: Optional[int]
-    isCalculatedToStart: Optional[int]
+    wfaIndex: int | None
+    wfaWriteIndex: int | None
+    isCalculatedToStart: int | None
     isVisible: int = 1
 
 
 @dataclass
 class ApplianceProgress:
-    autoOff: Optional[ApplianceProgressFeature]
-    autoOn: Optional[ApplianceProgressFeature]
-    delay: Optional[ApplianceProgressFeature]
-    duration: Optional[ApplianceProgressFeature]
-    elapsed: Optional[ApplianceProgressFeature]
-    fermentedremaining: Optional[ApplianceProgressFeature]
-    remaining: Optional[ApplianceProgressFeature]
-    remainingOrElapsed: Optional[ApplianceProgressFeature]
+    autoOff: ApplianceProgressFeature | None
+    autoOn: ApplianceProgressFeature | None
+    delay: ApplianceProgressFeature | None
+    duration: ApplianceProgressFeature | None
+    elapsed: ApplianceProgressFeature | None
+    fermentedremaining: ApplianceProgressFeature | None
+    remaining: ApplianceProgressFeature | None
+    remainingOrElapsed: ApplianceProgressFeature | None
 
 
 @dataclass
 class ApplianceFeatureNotificationInfo:
-    necessity: Optional[str]
+    necessity: str | None
     priority: str
     strKey: str
 
@@ -104,9 +103,9 @@ class ApplianceStateOption(ApplianceFeatureEnumOption):
 @dataclass
 class ApplianceState:
     states: list[ApplianceStateOption]
-    wfaIndex: Optional[int]
-    wifiArrayWriteIndex: Optional[int]
-    wifiArrayReadIndex: Optional[int]
+    wfaIndex: int | None
+    wifiArrayWriteIndex: int | None
+    wifiArrayReadIndex: int | None
 
 
 @dataclass
@@ -141,10 +140,10 @@ class ConsumableWarningSetting:
 
 @dataclass
 class ConsumableForm:
-    autoDosingAmountSetting: Optional[ApplianceFeature]
+    autoDosingAmountSetting: ApplianceFeature | None
     consumableForm: str
     lastCycleConsumptionAmountDataArrayReadIndex: int
-    warningSetting: Optional[ConsumableWarningSetting]
+    warningSetting: ConsumableWarningSetting | None
 
 
 @dataclass
@@ -187,13 +186,13 @@ class ApplianceWarningReason:
 class ApplianceWarningOption:
     bitIndex: int
     notificationInfo: ApplianceFeatureNotificationInfo
-    reasonInfo: Optional[ApplianceWarningReason]
+    reasonInfo: ApplianceWarningReason | None
     strKey: str
 
 
 @dataclass
 class ApplianceWarning:
-    wifiArrayByteCount: Optional[int]
+    wifiArrayByteCount: int | None
     warnings: list[ApplianceWarningOption]
     wifiArrayReadIndex: int
 
@@ -228,12 +227,12 @@ class AutoBakeDownloadedFood:
 class ApplianceOvenRecipe:
     cookingTypeRecipeWifiArrayValue: int
     cookingTypeWifiArrayIndex: int
-    isRecipeUIHidden: Optional[str]
+    isRecipeUIHidden: str | None
     recipeCommandLength: int
     recipeCommandWifiArrayStartIndex: int
-    recipeFormatVersion: Optional[str]
-    cookingTypeRecipeFromOvenStartedWifiArrayValue: Optional[int]
-    cookingTypeRecipeFromOvenWifiArrayValue: Optional[int]
+    recipeFormatVersion: str | None
+    cookingTypeRecipeFromOvenStartedWifiArrayValue: int | None
+    cookingTypeRecipeFromOvenWifiArrayValue: int | None
     recipeIdHighWifiArrayIndex: int
     recipeIdLowWifiArrayIndex: int
 
@@ -342,28 +341,28 @@ class ApplianceTeaMachineRecipe:
 class ApplianceConfiguration:
     program: ApplianceProgram
     subPrograms: list[ApplianceFeature]
-    progressVariables: Optional[ApplianceProgress]
-    deviceStates: Optional[ApplianceState]
-    deviceSubStates: Optional[ApplianceSubState]
-    ovenMeatProbeAccessory: Optional[ApplianceOvenMeatProbe]
-    autoController: Optional[AutoController]
-    commands: Optional[list[ApplianceFeature]]
-    consumableSettings: Optional[ApplianceConsumableSettings]
-    customSubPrograms: Optional[list[ApplianceFeature]]
-    downloadCycleSettingsModel: Optional[ApplianceProgramDownloadSettings]
-    clock: Optional[ApplianceClock]
-    zones: Optional[ApplianceHobZones]
-    monitorings: Optional[list[ApplianceFeature]]
-    ovenClockWifiArrayIndexes: Optional[ApplianceClock]
-    ovenDownloadedAutoBakeInformation: Optional[AutoBakeDownloadedFood]
-    ovenRecipeInformation: Optional[ApplianceOvenRecipe]
-    stepCooking: Optional[ApplianceOvenStepCooking]
-    ovenTemperatureInfo: Optional[OvenTemperatureInfo]
-    refrigeratorDefrostInformation: Optional[ApplianceRefrigeratorDefrost]
-    remoteControl: Optional[ApplianceRemoteControl]
-    screenSaver: Optional[ApplianceScreenSaver]
-    settings: Optional[list[ApplianceFeature]]
-    teaRecipeInformation: Optional[ApplianceTeaMachineRecipe]
-    deviceWarningsExtra: Optional[ApplianceWarning]
-    deviceWarnings: Optional[ApplianceWarning]
-    warnings: Optional[ApplianceWarning]
+    progressVariables: ApplianceProgress | None
+    deviceStates: ApplianceState | None
+    deviceSubStates: ApplianceSubState | None
+    ovenMeatProbeAccessory: ApplianceOvenMeatProbe | None
+    autoController: AutoController | None
+    commands: list[ApplianceFeature] | None
+    consumableSettings: ApplianceConsumableSettings | None
+    customSubPrograms: list[ApplianceFeature] | None
+    downloadCycleSettingsModel: ApplianceProgramDownloadSettings | None
+    clock: ApplianceClock | None
+    zones: ApplianceHobZones | None
+    monitorings: list[ApplianceFeature] | None
+    ovenClockWifiArrayIndexes: ApplianceClock | None
+    ovenDownloadedAutoBakeInformation: AutoBakeDownloadedFood | None
+    ovenRecipeInformation: ApplianceOvenRecipe | None
+    stepCooking: ApplianceOvenStepCooking | None
+    ovenTemperatureInfo: OvenTemperatureInfo | None
+    refrigeratorDefrostInformation: ApplianceRefrigeratorDefrost | None
+    remoteControl: ApplianceRemoteControl | None
+    screenSaver: ApplianceScreenSaver | None
+    settings: list[ApplianceFeature] | None
+    teaRecipeInformation: ApplianceTeaMachineRecipe | None
+    deviceWarningsExtra: ApplianceWarning | None
+    deviceWarnings: ApplianceWarning | None
+    warnings: ApplianceWarning | None

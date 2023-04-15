@@ -2,7 +2,7 @@ import logging
 from abc import ABC, abstractmethod
 from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass, fields
-from typing import Any, Generic, Optional, TypeVar
+from typing import Any, Generic, TypeVar
 
 from bidict import bidict
 from homeassistant.components.climate import (  # type: ignore[import]
@@ -110,7 +110,7 @@ class WriteNumericControl(NumericControl):
 
 
 class TimeControl(Control):
-    def __init__(self, key: str, hour_index: int, minute_index: Optional[int]):
+    def __init__(self, key: str, hour_index: int, minute_index: int | None):
         self.key = key
         self.hour_index = hour_index
         self.minute_index = minute_index
@@ -190,7 +190,7 @@ class SwingAxisControl(Control):
         option = self.parent.get_value(data)
         return option is not None and not option.endswith("_OFF")
 
-    def _option_with_suffix(self, suffix: str) -> Optional[str]:
+    def _option_with_suffix(self, suffix: str) -> str | None:
         return next(
             (
                 option
@@ -215,7 +215,7 @@ class SwingAxisControl(Control):
 
 
 def build_swing_control_from_optional(
-    parent: Optional[WriteEnumControl],
+    parent: WriteEnumControl | None,
 ) -> DisabledSwingAxisControl | SwingAxisControl:
     if parent is None:
         return DisabledSwingAxisControl()
@@ -227,8 +227,8 @@ class SwingControl(Control):
 
     def __init__(
         self,
-        horizontal: Optional[WriteEnumControl],
-        vertical: Optional[WriteEnumControl],
+        horizontal: WriteEnumControl | None,
+        vertical: WriteEnumControl | None,
     ):
         self.horizontal = build_swing_control_from_optional(horizontal)
         self.vertical = build_swing_control_from_optional(vertical)
@@ -379,7 +379,7 @@ def get_options_from_enum_options(
     return {option.wifiArrayValue: option.strKey for option in options}
 
 
-def build_read_control_from_feature(feature: ApplianceFeature) -> Optional[Control]:
+def build_read_control_from_feature(feature: ApplianceFeature) -> Control | None:
     key = feature.strKey
     if key is None:
         return None
@@ -400,7 +400,7 @@ def build_read_control_from_feature(feature: ApplianceFeature) -> Optional[Contr
     )
 
 
-def build_write_control_from_feature(feature: ApplianceFeature) -> Optional[Control]:
+def build_write_control_from_feature(feature: ApplianceFeature) -> Control | None:
     write_index = (
         feature.wfaWriteIndex
         if feature.wfaWriteIndex is not None
@@ -442,8 +442,8 @@ def build_control_from_program(program: ApplianceProgram) -> Control:
 
 
 def build_control_from_substate(
-    sub_states: Optional[ApplianceSubState],
-) -> Optional[Control]:
+    sub_states: ApplianceSubState | None,
+) -> Control | None:
     if sub_states is None:
         return None
     return EnumControl(
@@ -454,14 +454,14 @@ def build_control_from_substate(
 
 
 def build_controls_from_monitorings(
-    monitorings: Optional[list[ApplianceFeature]],
-) -> Iterable[Optional[Control]]:
+    monitorings: list[ApplianceFeature] | None,
+) -> Iterable[Control | None]:
     if monitorings is None:
         return []
     return map(build_read_control_from_feature, monitorings)
 
 
-def build_control_from_state(state: Optional[ApplianceState]) -> Optional[Control]:
+def build_control_from_state(state: ApplianceState | None) -> Control | None:
     if state is None:
         return None
     read_index = state.wifiArrayReadIndex
@@ -481,13 +481,13 @@ def build_control_from_state(state: Optional[ApplianceState]) -> Optional[Contro
 
 
 def build_controls_from_progress_variables(
-    progress_variables: Optional[ApplianceProgress],
+    progress_variables: ApplianceProgress | None,
 ) -> list[Control]:
     if progress_variables is None:
         return []
     result: list[Control] = []
     for field in fields(progress_variables):
-        feature: Optional[ApplianceProgressFeature] = getattr(
+        feature: ApplianceProgressFeature | None = getattr(
             progress_variables, field.name
         )
         if feature is not None:
@@ -504,8 +504,8 @@ def build_controls_from_progress_variables(
 
 
 def build_control_from_remote_control(
-    remote_control: Optional[ApplianceRemoteControl],
-) -> Optional[Control]:
+    remote_control: ApplianceRemoteControl | None,
+) -> Control | None:
     if remote_control is None:
         return None
     return BooleanCompareControl(
@@ -515,7 +515,7 @@ def build_control_from_remote_control(
     )
 
 
-def build_controls_from_warnings(warnings: Optional[ApplianceWarning]) -> list[Control]:
+def build_controls_from_warnings(warnings: ApplianceWarning | None) -> list[Control]:
     if warnings is None:
         return []
 
@@ -528,8 +528,8 @@ def build_controls_from_warnings(warnings: Optional[ApplianceWarning]) -> list[C
 
 
 def build_controls_from_features(
-    settings: Optional[list[ApplianceFeature]],
-) -> list[Optional[Control]]:
+    settings: list[ApplianceFeature] | None,
+) -> list[Control | None]:
     if settings is None:
         return []
 

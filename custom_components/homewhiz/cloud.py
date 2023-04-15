@@ -1,9 +1,10 @@
 import json
 import logging
 import uuid
+from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import datetime, timedelta
-from typing import Any, Callable, Optional
+from typing import Any
 
 from dacite import from_dict
 from homeassistant.config_entries import ConfigEntry
@@ -23,7 +24,7 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 
 @dataclass
 class Reported:
-    connected: Optional[bool]
+    connected: bool | None
     wfaStartOffset: str
     wfaSize: str
     brand: str
@@ -32,8 +33,8 @@ class Reported:
     applianceId: str
     macAddr: str
     wfa: list[int]
-    modifiedTime: Optional[int]
-    wfaSizeModifiedTime: Optional[int]
+    modifiedTime: int | None
+    wfaSizeModifiedTime: int | None
 
 
 @dataclass
