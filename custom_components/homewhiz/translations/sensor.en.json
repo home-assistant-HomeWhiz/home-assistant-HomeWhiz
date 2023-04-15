@@ -1,6 +1,6 @@
 {
   "state": {
-    "enum": {
+    "homewhiz__enum": {
       "DEVICE_STATE_ON": "On",
       "DEVICE_STATE_OFF": "Off",
       "DEVICE_STATE_RUNNING": "Running",
