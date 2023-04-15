@@ -1,9 +1,10 @@
 import json
 import logging
 import uuid
+from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import datetime, timedelta
-from typing import Any, Callable, Optional
+from typing import Any
 
 from dacite import from_dict
 from homeassistant.config_entries import ConfigEntry
