@@ -44,20 +44,42 @@
       "temperature_cold_wash": "Kylm\u00e4pesu",
       "temperature_20": "20 \u00b0C",
       "temperature_30": "30 \u00b0C",
-      "temperature_40": "40 \u00b0C"
+      "temperature_40": "40 \u00b0C",
+      "60": "60'"
     },
     "homewhiz__washer_spin": {
       "spin_no_spin": "Ei linkousta",
+      "600": "600",
+      "800": "800",
+      "1000": "1000",
+      "1200": "1200",
       "spin_rinse_hold": "Huuhtelupito",
       "spin_600": "600",
       "spin_800": "800",
       "spin_1200": "1200",
       "spin_1400": "1400"
     },
+    "homewhiz__washer_prewash": {
+      "prewash_off": "Ei k\u00e4yt\u00f6ss\u00e4",
+      "prewash_on": "K\u00e4yt\u00f6ss\u00e4"
+    },
+    "homewhiz__washer_extrarinse": {
+      "extra_rinse_off": "Lis\u00e4huuhtelu pois",
+      "extra_rinse_on": "Lis\u00e4huuhtelu k\u00e4yt\u00f6ss\u00e4"
+    },
     "homewhiz__washer_fast_plus": {
       "fast_plus_off": "Nopea + pois",
       "fast_plus_on_fast": "Nopea",
       "fast_plus_on_fast_plus": "Nopea+"
+    },
+    "homewhiz__washer_hidden_anti_crease": {
+      "hidden_anti_crease_off": "Ei k\u00e4yt\u00f6ss\u00e4",
+      "hidden_anti_crease_on": "K\u00e4yt\u00f6ss\u00e4"
+    },
+    "homewhiz__washer_steam": {},
+    "homewhiz__washer_phr": {
+      "phr_off": "Ei p\u00e4\u00e4ll\u00e4",
+      "phr_on": "P\u00e4\u00e4ll\u00e4"
     },
     "homewhiz__custom_duration_level": {
       "1": "1",
@@ -67,6 +89,10 @@
       "5": "5",
       "6": "6"
     },
+    "homewhiz__washer_add_water": {},
+    "homewhiz__washer_soaking": {},
+    "homewhiz__washer_night": {},
+    "homewhiz__washer_anticrease": {},
     "homewhiz__settings_volume": {
       "volume_low": "Pieni",
       "volume_high": "Suuri"
@@ -88,6 +114,11 @@
       "program_eco_pyro": "Eco-puhdistus",
       "program_pyro": "Puhdistus"
     },
+    "homewhiz__oven_booster": {
+      "booster_off": "Ei k\u00e4yt\u00f6ss\u00e4",
+      "booster_on": "K\u00e4yt\u00f6ss\u00e4"
+    },
+    "homewhiz__oven_skip_preheating": {},
     "homewhiz__program": {
       "program_auto": "Automaattinen 40\u201365 \u00b0C",
       "program_mix_wash": "Kokonaispesu",
@@ -101,10 +132,38 @@
       "program_silent": "Hiljainen pesu",
       "program_makine_temizleme": "Sis\u00e4inen puhdistus"
     },
+    "homewhiz__dishwasher_traywash": {
+      "tray_wash_off": "Pois",
+      "tray_wash_on": "K\u00e4yt\u00f6ss\u00e4"
+    },
+    "homewhiz__dishwasher_fast": {
+      "fast_off": "Pika pois",
+      "fast_on": "Pika k\u00e4yt\u00f6ss\u00e4"
+    },
+    "homewhiz__dishwasher_steamgloss": {
+      "steamgloss_off": "Ei k\u00e4yt\u00f6ss\u00e4",
+      "steamgloss_on": "K\u00e4yt\u00f6ss\u00e4"
+    },
+    "homewhiz__dishwasher_extrarinse": {
+      "extrarinse_off": "Lis\u00e4huuhtelu pois",
+      "extrarinse_on": "Lis\u00e4huuhtelu k\u00e4yt\u00f6ss\u00e4"
+    },
+    "homewhiz__dishwasher_halfload": {
+      "halfload_off": "Ei k\u00e4yt\u00f6ss\u00e4",
+      "halfload_on": "K\u00e4yt\u00f6ss\u00e4"
+    },
+    "homewhiz__setting_auto_door": {
+      "setting_auto_door_off": "Automaattiovi pois",
+      "setting_auto_door_on": "Automaattiovi k\u00e4yt\u00f6ss\u00e4"
+    },
     "homewhiz__setting_detergent_type": {
       "setting_detergent_type_powder": "Pesuainejauhe",
       "setting_detergent_type_tablet": "Tablettipuhdistusaine",
       "setting_detergent_type_liquid": "Nestem\u00e4inen puhdistusaine"
+    },
+    "homewhiz__setting_inner_illumination": {
+      "setting_inner_illumination_off": "Sis\u00e4valaistus pois",
+      "setting_inner_illumination_on": "Sis\u00e4valaistus k\u00e4yt\u00f6ss\u00e4"
     },
     "homewhiz__washer_dry": {
       "dry_off": "Ei p\u00e4\u00e4ll\u00e4",
@@ -118,6 +177,30 @@
       "dry_90": "90 min",
       "dry_120": "15 min",
       "dry_150": "150 min"
+    },
+    "homewhiz__air_conditioner_program": {
+      "air_conditioner_mode_cooling": "J\u00e4\u00e4hdytys",
+      "air_conditioner_mode_auto": "Automaattinen vaihto",
+      "air_conditioner_mode_dry": "Kuivaus",
+      "air_conditioner_mode_heating": "L\u00e4mmitys",
+      "air_conditioner_mode_fan": "Puhallin",
+      "air_conditioner_mode_dehumidification": "Kosteudenpoisto"
+    },
+    "homewhiz__air_conditioner_wind_strength": {
+      "wind_strength_low": "Matala",
+      "wind_strength_mid": "Keskitaso",
+      "wind_strength_high": "Korkea",
+      "wind_strength_auto": "Auto",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "wind_strength_chaos_swing": "Auto"
+    },
+    "homewhiz__air_conditioner_jet_mode": {
+      "air_conditioner_jet_mode_off": "Poissa k\u00e4yt\u00f6st\u00e4",
+      "air_conditioner_jet_mode_on": "K\u00e4yt\u00f6ss\u00e4"
     },
     "homewhiz__air_conditioner_soft_air": {
       "air_conditioner_soft_air_off": "Poissa k\u00e4yt\u00f6st\u00e4",

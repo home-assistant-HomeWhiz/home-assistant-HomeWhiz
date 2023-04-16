@@ -43,20 +43,42 @@
       "temperature_cold_wash": "Kaldvask",
       "temperature_20": "20\u00a0\u00b0C",
       "temperature_30": "30\u00a0\u00b0C",
-      "temperature_40": "40\u00a0\u00b0C"
+      "temperature_40": "40\u00a0\u00b0C",
+      "60": "60'"
     },
     "homewhiz__washer_spin": {
       "spin_no_spin": "Uten sentrifugering",
+      "600": "600",
+      "800": "800",
+      "1000": "1000",
+      "1200": "1200",
       "spin_rinse_hold": "Skyllestopp",
       "spin_600": "600",
       "spin_800": "800",
       "spin_1200": "1200",
       "spin_1400": "1400"
     },
+    "homewhiz__washer_prewash": {
+      "prewash_off": "Av",
+      "prewash_on": "P\u00e5"
+    },
+    "homewhiz__washer_extrarinse": {
+      "extra_rinse_off": "Ekstra skylling av",
+      "extra_rinse_on": "Ekstra skylling p\u00e5"
+    },
     "homewhiz__washer_fast_plus": {
       "fast_plus_off": "Rask+ av",
       "fast_plus_on_fast": "Hurtig",
       "fast_plus_on_fast_plus": "Hurtig+"
+    },
+    "homewhiz__washer_hidden_anti_crease": {
+      "hidden_anti_crease_off": "Av",
+      "hidden_anti_crease_on": "P\u00e5"
+    },
+    "homewhiz__washer_steam": {},
+    "homewhiz__washer_phr": {
+      "phr_off": "Av",
+      "phr_on": "P\u00e5"
     },
     "homewhiz__custom_duration_level": {
       "1": "1",
@@ -66,6 +88,10 @@
       "5": "5",
       "6": "6"
     },
+    "homewhiz__washer_add_water": {},
+    "homewhiz__washer_soaking": {},
+    "homewhiz__washer_night": {},
+    "homewhiz__washer_anticrease": {},
     "homewhiz__settings_volume": {
       "volume_low": "Lavt",
       "volume_high": "H\u00f8yt"
@@ -87,6 +113,11 @@
       "program_eco_pyro": "\u00d8korengj\u00f8ring",
       "program_pyro": "Rengj\u00f8ring"
     },
+    "homewhiz__oven_booster": {
+      "booster_off": "Av",
+      "booster_on": "P\u00e5"
+    },
+    "homewhiz__oven_skip_preheating": {},
     "homewhiz__program": {
       "program_auto": "Auto. 40\u201365\u00a0\u00b0C",
       "program_mix_wash": "All-in-Wash",
@@ -100,10 +131,38 @@
       "program_silent": "Stillevask",
       "program_makine_temizleme": "Innvendig rengj\u00f8ring"
     },
+    "homewhiz__dishwasher_traywash": {
+      "tray_wash_off": "Av",
+      "tray_wash_on": "P\u00e5"
+    },
+    "homewhiz__dishwasher_fast": {
+      "fast_off": "Ekspress av",
+      "fast_on": "Ekspress p\u00e5"
+    },
+    "homewhiz__dishwasher_steamgloss": {
+      "steamgloss_off": "Av",
+      "steamgloss_on": "P\u00e5"
+    },
+    "homewhiz__dishwasher_extrarinse": {
+      "extrarinse_off": "Ekstra skylling av",
+      "extrarinse_on": "Ekstra skylling p\u00e5"
+    },
+    "homewhiz__dishwasher_halfload": {
+      "halfload_off": "Av",
+      "halfload_on": "P\u00e5"
+    },
+    "homewhiz__setting_auto_door": {
+      "setting_auto_door_off": "Doormatic av",
+      "setting_auto_door_on": "Doormatic p\u00e5"
+    },
     "homewhiz__setting_detergent_type": {
       "setting_detergent_type_powder": "Pulvervaskemiddel",
       "setting_detergent_type_tablet": "Tablettvaskemiddel",
       "setting_detergent_type_liquid": "Flytende vaskemiddel"
+    },
+    "homewhiz__setting_inner_illumination": {
+      "setting_inner_illumination_off": "Innvendig lys av",
+      "setting_inner_illumination_on": "Innvendig lys p\u00e5"
     },
     "homewhiz__washer_dry": {
       "dry_off": "Av",
@@ -117,6 +176,30 @@
       "dry_90": "90\u00a0minutter",
       "dry_120": "15\u00a0min",
       "dry_150": "150\u00a0minutter"
+    },
+    "homewhiz__air_conditioner_program": {
+      "air_conditioner_mode_cooling": "Nedkj\u00f8ling",
+      "air_conditioner_mode_auto": "Automatisk endring",
+      "air_conditioner_mode_dry": "T\u00f8rk",
+      "air_conditioner_mode_heating": "Oppvarming",
+      "air_conditioner_mode_fan": "Vifte",
+      "air_conditioner_mode_dehumidification": "Avfukting"
+    },
+    "homewhiz__air_conditioner_wind_strength": {
+      "wind_strength_low": "Lav",
+      "wind_strength_mid": "Middels",
+      "wind_strength_high": "H\u00f8y",
+      "wind_strength_auto": "Auto",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "wind_strength_chaos_swing": "Auto"
+    },
+    "homewhiz__air_conditioner_jet_mode": {
+      "air_conditioner_jet_mode_off": "Av",
+      "air_conditioner_jet_mode_on": "P\u00e5"
     },
     "homewhiz__air_conditioner_soft_air": {
       "air_conditioner_soft_air_off": "Av",

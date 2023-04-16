@@ -45,20 +45,42 @@
       "temperature_cold_wash": "Kalt waschen",
       "temperature_20": "20 \u00b0C",
       "temperature_30": "30 \u00b0C",
-      "temperature_40": "40 \u00b0C"
+      "temperature_40": "40 \u00b0C",
+      "60": "60'"
     },
     "homewhiz__washer_spin": {
       "spin_no_spin": "Nicht schleudern",
+      "600": "600",
+      "800": "800",
+      "1000": "1000",
+      "1200": "1200",
       "spin_rinse_hold": "Sp\u00fclstopp",
       "spin_600": "600",
       "spin_800": "800",
       "spin_1200": "1200",
       "spin_1400": "1400"
     },
+    "homewhiz__washer_prewash": {
+      "prewash_off": "Aus",
+      "prewash_on": "Ein"
+    },
+    "homewhiz__washer_extrarinse": {
+      "extra_rinse_off": "Nachsp\u00fclen aus",
+      "extra_rinse_on": "Nachsp\u00fclen ein"
+    },
     "homewhiz__washer_fast_plus": {
       "fast_plus_off": "Fast+ aus",
       "fast_plus_on_fast": "Schnell",
       "fast_plus_on_fast_plus": "Schnell+"
+    },
+    "homewhiz__washer_hidden_anti_crease": {
+      "hidden_anti_crease_off": "Aus",
+      "hidden_anti_crease_on": "Ein"
+    },
+    "homewhiz__washer_steam": {},
+    "homewhiz__washer_phr": {
+      "phr_off": "Aus",
+      "phr_on": "Ein"
     },
     "homewhiz__custom_duration_level": {
       "1": "1",
@@ -68,6 +90,10 @@
       "5": "5",
       "6": "6"
     },
+    "homewhiz__washer_add_water": {},
+    "homewhiz__washer_soaking": {},
+    "homewhiz__washer_night": {},
+    "homewhiz__washer_anticrease": {},
     "homewhiz__settings_volume": {
       "volume_low": "Tief",
       "volume_high": "Hoch"
@@ -89,6 +115,11 @@
       "program_eco_pyro": "Umweltfreundlich reinigen",
       "program_pyro": "Reinigen"
     },
+    "homewhiz__oven_booster": {
+      "booster_off": "Aus",
+      "booster_on": "Ein"
+    },
+    "homewhiz__oven_skip_preheating": {},
     "homewhiz__program": {
       "program_auto": "Auto 40-65\u00b0C",
       "program_mix_wash": "All-in-Wash",
@@ -103,10 +134,38 @@
       "program_silent": "SilentWash",
       "program_makine_temizleme": "Inner Clean"
     },
+    "homewhiz__dishwasher_traywash": {
+      "tray_wash_off": "Aus",
+      "tray_wash_on": "Ein"
+    },
+    "homewhiz__dishwasher_fast": {
+      "fast_off": "Schnell+ Aus",
+      "fast_on": "Schnell+ Ein"
+    },
+    "homewhiz__dishwasher_steamgloss": {
+      "steamgloss_off": "Aus",
+      "steamgloss_on": "Ein"
+    },
+    "homewhiz__dishwasher_extrarinse": {
+      "extrarinse_off": "Nachsp\u00fclen aus",
+      "extrarinse_on": "Nachsp\u00fclen ein"
+    },
+    "homewhiz__dishwasher_halfload": {
+      "halfload_off": "Aus",
+      "halfload_on": "Ein"
+    },
+    "homewhiz__setting_auto_door": {
+      "setting_auto_door_off": "Aus",
+      "setting_auto_door_on": "Ein"
+    },
     "homewhiz__setting_detergent_type": {
       "setting_detergent_type_powder": "Waschpulver",
       "setting_detergent_type_tablet": "Reinigungstabletten",
       "setting_detergent_type_liquid": "Fl\u00fcssigwaschmittel"
+    },
+    "homewhiz__setting_inner_illumination": {
+      "setting_inner_illumination_off": "Innenbeleuchtung aus",
+      "setting_inner_illumination_on": "Innenbeleuchtung ein"
     },
     "homewhiz__washer_dry": {
       "dry_off": "Aus",
@@ -120,6 +179,30 @@
       "dry_90": "90\u00a0Min.",
       "dry_120": "15\u00a0Min.",
       "dry_150": "150\u00a0Min."
+    },
+    "homewhiz__air_conditioner_program": {
+      "air_conditioner_mode_cooling": "K\u00fchlen und Gefrieren",
+      "air_conditioner_mode_auto": "Automatische \u00c4nderung",
+      "air_conditioner_mode_dry": "Trocknen",
+      "air_conditioner_mode_heating": "Heizung",
+      "air_conditioner_mode_fan": "Ventilator",
+      "air_conditioner_mode_dehumidification": "Luftentfeuchtung"
+    },
+    "homewhiz__air_conditioner_wind_strength": {
+      "wind_strength_low": "Niedrig",
+      "wind_strength_mid": "Mittel",
+      "wind_strength_high": "Hoch",
+      "wind_strength_auto": "Auto",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "wind_strength_chaos_swing": "Auto"
+    },
+    "homewhiz__air_conditioner_jet_mode": {
+      "air_conditioner_jet_mode_off": "Aus",
+      "air_conditioner_jet_mode_on": "Ein"
     },
     "homewhiz__air_conditioner_soft_air": {
       "air_conditioner_soft_air_off": "Aus",

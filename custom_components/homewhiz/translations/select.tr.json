@@ -45,20 +45,42 @@
       "temperature_cold_wash": "So\u011fuk Y\u0131kama",
       "temperature_20": "20 \u00b0C",
       "temperature_30": "30 \u00b0C",
-      "temperature_40": "40 \u00b0C"
+      "temperature_40": "40 \u00b0C",
+      "60": "60'"
     },
     "homewhiz__washer_spin": {
       "spin_no_spin": "S\u0131kma Yok",
+      "600": "600",
+      "800": "800",
+      "1000": "1000",
+      "1200": "1200",
       "spin_rinse_hold": "Suda B\u0131rakma",
       "spin_600": "600",
       "spin_800": "800",
       "spin_1200": "1200",
       "spin_1400": "1400"
     },
+    "homewhiz__washer_prewash": {
+      "prewash_off": "Kapal\u0131",
+      "prewash_on": "A\u00e7\u0131k"
+    },
+    "homewhiz__washer_extrarinse": {
+      "extra_rinse_off": "\u0130lave Durulama Pasif",
+      "extra_rinse_on": "\u0130lave Durulama Aktif"
+    },
     "homewhiz__washer_fast_plus": {
       "fast_plus_off": "Kapal\u0131",
       "fast_plus_on_fast": "H\u0131zl\u0131",
       "fast_plus_on_fast_plus": "\u00c7ok H\u0131zl\u0131"
+    },
+    "homewhiz__washer_hidden_anti_crease": {
+      "hidden_anti_crease_off": "Kapal\u0131",
+      "hidden_anti_crease_on": "A\u00e7\u0131k"
+    },
+    "homewhiz__washer_steam": {},
+    "homewhiz__washer_phr": {
+      "phr_off": "Kapal\u0131",
+      "phr_on": "A\u00e7\u0131k"
     },
     "homewhiz__custom_duration_level": {
       "1": "1",
@@ -68,6 +90,10 @@
       "5": "5",
       "6": "6"
     },
+    "homewhiz__washer_add_water": {},
+    "homewhiz__washer_soaking": {},
+    "homewhiz__washer_night": {},
+    "homewhiz__washer_anticrease": {},
     "homewhiz__settings_volume": {
       "volume_low": "D\u00fc\u015f\u00fck",
       "volume_high": "Y\u00fcksek"
@@ -89,6 +115,11 @@
       "program_eco_pyro": "Eko Temizleme",
       "program_pyro": "Temizleme"
     },
+    "homewhiz__oven_booster": {
+      "booster_off": "Kapal\u0131",
+      "booster_on": "A\u00e7\u0131k"
+    },
+    "homewhiz__oven_skip_preheating": {},
     "homewhiz__program": {
       "program_auto": "Otomatik",
       "program_mix_wash": "Karma",
@@ -98,15 +129,43 @@
       "program_new58min": "H\u0131zl\u0131 58'",
       "program_30min": "Mini 30'",
       "program_prewash": "\u00d6n Y\u0131kama",
-      "program_hygiene": "Ekstra Hijyen",
+      "program_hygiene": "Hijyen+",
       "program_daily": "G\u00fcnl\u00fck Y\u0131kama",
       "program_silent": "Ekstra Sessiz",
       "program_makine_temizleme": "Makine Y\u0131kama"
+    },
+    "homewhiz__dishwasher_traywash": {
+      "tray_wash_off": "Kapal\u0131",
+      "tray_wash_on": "A\u00e7\u0131k"
+    },
+    "homewhiz__dishwasher_fast": {
+      "fast_off": "H\u0131zl\u0131 Kapal\u0131",
+      "fast_on": "H\u0131zl\u0131 A\u00e7\u0131k"
+    },
+    "homewhiz__dishwasher_steamgloss": {
+      "steamgloss_off": "Kapal\u0131",
+      "steamgloss_on": "A\u00e7\u0131k"
+    },
+    "homewhiz__dishwasher_extrarinse": {
+      "extrarinse_off": "Ekstra Durulama Kapal\u0131",
+      "extrarinse_on": "Ekstra Durulama A\u00e7\u0131k"
+    },
+    "homewhiz__dishwasher_halfload": {
+      "halfload_off": "Kapal\u0131",
+      "halfload_on": "A\u00e7\u0131k"
+    },
+    "homewhiz__setting_auto_door": {
+      "setting_auto_door_off": "Kapal\u0131",
+      "setting_auto_door_on": "A\u00e7\u0131k"
     },
     "homewhiz__setting_detergent_type": {
       "setting_detergent_type_powder": "Toz Deterjan",
       "setting_detergent_type_tablet": "Tablet Deterjan",
       "setting_detergent_type_liquid": "S\u0131v\u0131/Jel Deterjan"
+    },
+    "homewhiz__setting_inner_illumination": {
+      "setting_inner_illumination_off": "\u0130\u00e7 Ayd\u0131nlatma Kapal\u0131",
+      "setting_inner_illumination_on": "\u0130\u00e7 Ayd\u0131nlatma A\u00e7\u0131k"
     },
     "homewhiz__washer_dry": {
       "dry_off": "Kapal\u0131",
@@ -120,6 +179,30 @@
       "dry_90": "90 dk",
       "dry_120": "15 dk",
       "dry_150": "150 dk"
+    },
+    "homewhiz__air_conditioner_program": {
+      "air_conditioner_mode_cooling": "So\u011futma",
+      "air_conditioner_mode_auto": "Otomatik De\u011fi\u015fim",
+      "air_conditioner_mode_dry": "Kurutma",
+      "air_conditioner_mode_heating": "Is\u0131tma",
+      "air_conditioner_mode_fan": "Fan",
+      "air_conditioner_mode_dehumidification": "Nem alma"
+    },
+    "homewhiz__air_conditioner_wind_strength": {
+      "wind_strength_low": "D\u00fc\u015f\u00fck",
+      "wind_strength_mid": "Orta",
+      "wind_strength_high": "H\u0131zl\u0131",
+      "wind_strength_auto": "Otomatik",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "wind_strength_chaos_swing": "Otomatik"
+    },
+    "homewhiz__air_conditioner_jet_mode": {
+      "air_conditioner_jet_mode_off": "Kapal\u0131",
+      "air_conditioner_jet_mode_on": "A\u00e7\u0131k"
     },
     "homewhiz__air_conditioner_soft_air": {
       "air_conditioner_soft_air_off": "Kapal\u0131",

@@ -43,20 +43,42 @@
       "temperature_cold_wash": "Lavaggio a freddo",
       "temperature_20": "20\u00b0C",
       "temperature_30": "30\u00b0C",
-      "temperature_40": "40\u00b0C"
+      "temperature_40": "40\u00b0C",
+      "60": "60'"
     },
     "homewhiz__washer_spin": {
       "spin_no_spin": "Nessuna centrifuga",
+      "600": "600",
+      "800": "800",
+      "1000": "1000",
+      "1200": "1200",
       "spin_rinse_hold": "Risciacquo aggiuntivo",
       "spin_600": "600",
       "spin_800": "800",
       "spin_1200": "1200",
       "spin_1400": "1400"
     },
+    "homewhiz__washer_prewash": {
+      "prewash_off": "Spento",
+      "prewash_on": "Acceso"
+    },
+    "homewhiz__washer_extrarinse": {
+      "extra_rinse_off": "Extra risciacquo disattivato",
+      "extra_rinse_on": "Extra risciacquo attivo"
+    },
     "homewhiz__washer_fast_plus": {
       "fast_plus_off": "Fast+ attivo",
       "fast_plus_on_fast": "Fast",
       "fast_plus_on_fast_plus": "Fast+"
+    },
+    "homewhiz__washer_hidden_anti_crease": {
+      "hidden_anti_crease_off": "Spento",
+      "hidden_anti_crease_on": "Acceso"
+    },
+    "homewhiz__washer_steam": {},
+    "homewhiz__washer_phr": {
+      "phr_off": "Spento",
+      "phr_on": "Acceso"
     },
     "homewhiz__custom_duration_level": {
       "1": "1",
@@ -66,6 +88,10 @@
       "5": "5",
       "6": "6"
     },
+    "homewhiz__washer_add_water": {},
+    "homewhiz__washer_soaking": {},
+    "homewhiz__washer_night": {},
+    "homewhiz__washer_anticrease": {},
     "homewhiz__settings_volume": {
       "volume_low": "Basso",
       "volume_high": "Alto"
@@ -87,6 +113,11 @@
       "program_eco_pyro": "Pulizia Eco",
       "program_pyro": "Pulizia"
     },
+    "homewhiz__oven_booster": {
+      "booster_off": "Spento",
+      "booster_on": "Acceso"
+    },
+    "homewhiz__oven_skip_preheating": {},
     "homewhiz__program": {
       "program_auto": "Auto 40-65\u00c2 \u00c2\u00b0C",
       "program_mix_wash": "All in Wash",
@@ -99,10 +130,38 @@
       "program_silent": "SilentWash",
       "program_makine_temizleme": "Inner Clean"
     },
+    "homewhiz__dishwasher_traywash": {
+      "tray_wash_off": "Disattivato",
+      "tray_wash_on": "Attivato"
+    },
+    "homewhiz__dishwasher_fast": {
+      "fast_off": "Funzione Express disattivata",
+      "fast_on": "Funzione Express attivata"
+    },
+    "homewhiz__dishwasher_steamgloss": {
+      "steamgloss_off": "Disattivato",
+      "steamgloss_on": "Attivato"
+    },
+    "homewhiz__dishwasher_extrarinse": {
+      "extrarinse_off": "Funzione Risciacquo extra disattivata",
+      "extrarinse_on": "Funzione Risciacquo extra attivata"
+    },
+    "homewhiz__dishwasher_halfload": {
+      "halfload_off": "Disattivato",
+      "halfload_on": "Attivato"
+    },
+    "homewhiz__setting_auto_door": {
+      "setting_auto_door_off": "Disattivato",
+      "setting_auto_door_on": "Attivato"
+    },
     "homewhiz__setting_detergent_type": {
       "setting_detergent_type_powder": "Detergente in polvere",
       "setting_detergent_type_tablet": "Detergente in pastiglie",
       "setting_detergent_type_liquid": "Detergente liquido"
+    },
+    "homewhiz__setting_inner_illumination": {
+      "setting_inner_illumination_off": "Illuminazione interna disattivata",
+      "setting_inner_illumination_on": "Illuminazione interna attivata"
     },
     "homewhiz__washer_dry": {
       "dry_off": "Spento",
@@ -116,6 +175,30 @@
       "dry_90": "90 min",
       "dry_120": "15\\'",
       "dry_150": "150 min"
+    },
+    "homewhiz__air_conditioner_program": {
+      "air_conditioner_mode_cooling": "Raffreddamento",
+      "air_conditioner_mode_auto": "Modifica automatica",
+      "air_conditioner_mode_dry": "Deumidifica",
+      "air_conditioner_mode_heating": "Riscaldamento",
+      "air_conditioner_mode_fan": "Ventola",
+      "air_conditioner_mode_dehumidification": "Deumidificazione"
+    },
+    "homewhiz__air_conditioner_wind_strength": {
+      "wind_strength_low": "Bassa",
+      "wind_strength_mid": "Medio",
+      "wind_strength_high": "Alto",
+      "wind_strength_auto": "Auto",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "wind_strength_chaos_swing": "Auto"
+    },
+    "homewhiz__air_conditioner_jet_mode": {
+      "air_conditioner_jet_mode_off": "Spento",
+      "air_conditioner_jet_mode_on": "Acceso"
     },
     "homewhiz__air_conditioner_soft_air": {
       "air_conditioner_soft_air_off": "Spento",

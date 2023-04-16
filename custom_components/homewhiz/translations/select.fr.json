@@ -44,20 +44,42 @@
       "temperature_cold_wash": "Lavage \u00e0 froid",
       "temperature_20": "20\u00a0\u00b0C",
       "temperature_30": "30\u00a0\u00b0C",
-      "temperature_40": "40\u00a0\u00b0C"
+      "temperature_40": "40\u00a0\u00b0C",
+      "60": "60'"
     },
     "homewhiz__washer_spin": {
       "spin_no_spin": "Pas d\u2019essorage",
+      "600": "600",
+      "800": "800",
+      "1000": "1000",
+      "1200": "1200",
       "spin_rinse_hold": "Arr\u00eat cuve pleine",
       "spin_600": "600",
       "spin_800": "800",
       "spin_1200": "1200",
       "spin_1400": "1400"
     },
+    "homewhiz__washer_prewash": {
+      "prewash_off": "Arr\u00eat",
+      "prewash_on": "Marche"
+    },
+    "homewhiz__washer_extrarinse": {
+      "extra_rinse_off": "Rin\u00e7age suppl\u00e9mentaire D\u00e9sactiv\u00e9",
+      "extra_rinse_on": "Rin\u00e7age suppl\u00e9mentaire Activ\u00e9"
+    },
     "homewhiz__washer_fast_plus": {
       "fast_plus_off": "Rapide Plus D\u00e9sactiv\u00e9",
       "fast_plus_on_fast": "Rapide",
       "fast_plus_on_fast_plus": "Rapide Plus"
+    },
+    "homewhiz__washer_hidden_anti_crease": {
+      "hidden_anti_crease_off": "Arr\u00eat",
+      "hidden_anti_crease_on": "Marche"
+    },
+    "homewhiz__washer_steam": {},
+    "homewhiz__washer_phr": {
+      "phr_off": "Arr\u00eat",
+      "phr_on": "Marche"
     },
     "homewhiz__custom_duration_level": {
       "1": "1",
@@ -67,6 +89,10 @@
       "5": "5",
       "6": "6"
     },
+    "homewhiz__washer_add_water": {},
+    "homewhiz__washer_soaking": {},
+    "homewhiz__washer_night": {},
+    "homewhiz__washer_anticrease": {},
     "homewhiz__settings_volume": {
       "volume_low": "Bas",
       "volume_high": "Haut"
@@ -88,6 +114,11 @@
       "program_eco_pyro": "Nettoyage Pyrolyse \u00c9co",
       "program_pyro": "Nettoyage Pyrolyse"
     },
+    "homewhiz__oven_booster": {
+      "booster_off": "Arr\u00eat",
+      "booster_on": "Marche"
+    },
+    "homewhiz__oven_skip_preheating": {},
     "homewhiz__program": {
       "program_auto": "Auto 40-65\u00a0\u00b0C",
       "program_mix_wash": "AquaFlex",
@@ -101,10 +132,38 @@
       "program_silent": "Silence Nuit",
       "program_makine_temizleme": "Nettoyage cuve"
     },
+    "homewhiz__dishwasher_traywash": {
+      "tray_wash_off": "Arr\u00eat",
+      "tray_wash_on": "Marche"
+    },
+    "homewhiz__dishwasher_fast": {
+      "fast_off": "Express D\u00e9sactiv\u00e9",
+      "fast_on": "Express Activ\u00e9"
+    },
+    "homewhiz__dishwasher_steamgloss": {
+      "steamgloss_off": "Arr\u00eat",
+      "steamgloss_on": "Marche"
+    },
+    "homewhiz__dishwasher_extrarinse": {
+      "extrarinse_off": "Rin\u00e7age Plus D\u00e9sactiv\u00e9",
+      "extrarinse_on": "Rin\u00e7age Plus Activ\u00e9"
+    },
+    "homewhiz__dishwasher_halfload": {
+      "halfload_off": "Arr\u00eat",
+      "halfload_on": "Marche"
+    },
+    "homewhiz__setting_auto_door": {
+      "setting_auto_door_off": "Arr\u00eat",
+      "setting_auto_door_on": "Marche"
+    },
     "homewhiz__setting_detergent_type": {
       "setting_detergent_type_powder": "D\u00e9tergent poudre",
       "setting_detergent_type_tablet": "D\u00e9tergent tablette",
       "setting_detergent_type_liquid": "D\u00e9tergent liquide"
+    },
+    "homewhiz__setting_inner_illumination": {
+      "setting_inner_illumination_off": "\u00c9clairage int\u00e9rieur D\u00e9sactiv\u00e9",
+      "setting_inner_illumination_on": "\u00c9clairage int\u00e9rieur Activ\u00e9"
     },
     "homewhiz__washer_dry": {
       "dry_off": "Arr\u00eat",
@@ -118,6 +177,30 @@
       "dry_90": "90\u00a0min",
       "dry_120": "15\u00a0min",
       "dry_150": "150\u00a0min"
+    },
+    "homewhiz__air_conditioner_program": {
+      "air_conditioner_mode_cooling": "Refroidissement",
+      "air_conditioner_mode_auto": "Automatique",
+      "air_conditioner_mode_dry": "D\u00e9shumidificateur",
+      "air_conditioner_mode_heating": "Chauffage",
+      "air_conditioner_mode_fan": "Ventilateur",
+      "air_conditioner_mode_dehumidification": "D\u00e9shumidification"
+    },
+    "homewhiz__air_conditioner_wind_strength": {
+      "wind_strength_low": "Faible",
+      "wind_strength_mid": "Moyenne",
+      "wind_strength_high": "\u00c9lev\u00e9e",
+      "wind_strength_auto": "Automatique",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "wind_strength_chaos_swing": "Automatique"
+    },
+    "homewhiz__air_conditioner_jet_mode": {
+      "air_conditioner_jet_mode_off": "Arr\u00eat",
+      "air_conditioner_jet_mode_on": "Activ\u00e9"
     },
     "homewhiz__air_conditioner_soft_air": {
       "air_conditioner_soft_air_off": "Arr\u00eat",

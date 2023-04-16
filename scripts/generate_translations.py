@@ -1,7 +1,6 @@
 import asyncio
 import json
 import os
-import re
 from collections.abc import Mapping, MutableMapping
 from typing import Any
 
@@ -20,6 +19,7 @@ from custom_components.homewhiz.appliance_controls import (
     EnumControl,
     WriteEnumControl,
     generate_controls_from_config,
+    to_friendly_name,
 )
 
 
@@ -93,8 +93,15 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
         contents = await fetch_appliance_contents(credentials, appliance_id, language)
         appliance_localizations = contents.localization
         appliance_config = contents.config
-        print(f"{appliance_id} localizations: {len(appliance_localizations.keys())}")
+        print(
+            f"{appliance_id} localizations: {len(appliance_localizations.keys())}"
+            f" - {short_code}"
+        )
         localizations = base_localizations | appliance_localizations
+        # Convert localizations to translation friendly names
+        localizations = {
+            to_friendly_name(key): value for key, value in localizations.items()
+        }
         controls = generate_controls_from_config(appliance_config)
         select_controls = [
             control for control in controls if isinstance(control, WriteEnumControl)
@@ -106,30 +113,19 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
             and not isinstance(control, WriteEnumControl)
         ]
 
-        # To filter out forbidden characters
-        # https://stackoverflow.com/questions/15754587/keeping-only-certain-characters-in-a-string-using-python
-
-        def filter_key(key: str) -> str:
-            # "need to be [a-z0-9-_]+"
-            key = key.lower()
-            key = re.sub("[^a-z0-9-_]", "", key)
-            # "cannot start or end with a hyphen or underscore
-            if key[-1] == "_":
-                key = key[:-1]
-            return key
-
         def localize(control: EnumControl) -> dict[str, str]:
             entity_result: dict[str, str] = {}
             for option in control.options.values():
                 localized = localize_key(option)
+                option = option
                 if localized is not None:
-                    entity_result[filter_key(option)] = str(localized)
+                    entity_result[option] = str(localized)
             return entity_result
 
         select_translations = mergedeep.merge(
             select_translations,
             {
-                f"{DOMAIN}__{filter_key(control.key)}": localize(control)
+                f"{DOMAIN}__{control.key}": localize(control)
                 for control in select_controls
             },
             strategy=Strategy.TYPESAFE_ADDITIVE,

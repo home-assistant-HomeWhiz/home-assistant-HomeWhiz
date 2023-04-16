@@ -44,20 +44,42 @@
       "temperature_cold_wash": "Pranie w zimnej wodzie",
       "temperature_20": "20\u00b0C",
       "temperature_30": "30\u00b0C",
-      "temperature_40": "40\u00b0C"
+      "temperature_40": "40\u00b0C",
+      "60": "60'"
     },
     "homewhiz__washer_spin": {
       "spin_no_spin": "Bez wirowania",
+      "600": "600",
+      "800": "800",
+      "1000": "1000",
+      "1200": "1200",
       "spin_rinse_hold": "Wstrzymanie p\u0142ukania",
       "spin_600": "600",
       "spin_800": "800",
       "spin_1200": "1200",
       "spin_1400": "1400"
     },
+    "homewhiz__washer_prewash": {
+      "prewash_off": "Wy\u0142.",
+      "prewash_on": "W\u0142."
+    },
+    "homewhiz__washer_extrarinse": {
+      "extra_rinse_off": "Dodatkowe p\u0142ukanie wy\u0142.",
+      "extra_rinse_on": "Dodatkowe p\u0142ukanie w\u0142."
+    },
     "homewhiz__washer_fast_plus": {
       "fast_plus_off": "Fast+ wy\u0142.",
       "fast_plus_on_fast": "Szybki",
       "fast_plus_on_fast_plus": "Fast+"
+    },
+    "homewhiz__washer_hidden_anti_crease": {
+      "hidden_anti_crease_off": "Wy\u0142.",
+      "hidden_anti_crease_on": "W\u0142."
+    },
+    "homewhiz__washer_steam": {},
+    "homewhiz__washer_phr": {
+      "phr_off": "Wy\u0142.",
+      "phr_on": "W\u0142."
     },
     "homewhiz__custom_duration_level": {
       "1": "1",
@@ -67,6 +89,10 @@
       "5": "5",
       "6": "6"
     },
+    "homewhiz__washer_add_water": {},
+    "homewhiz__washer_soaking": {},
+    "homewhiz__washer_night": {},
+    "homewhiz__washer_anticrease": {},
     "homewhiz__settings_volume": {
       "volume_low": "Niska",
       "volume_high": "Wysoka"
@@ -88,6 +114,11 @@
       "program_eco_pyro": "Czyszczenie eko",
       "program_pyro": "Czyszczenie"
     },
+    "homewhiz__oven_booster": {
+      "booster_off": "Wy\u0142.",
+      "booster_on": "W\u0142."
+    },
+    "homewhiz__oven_skip_preheating": {},
     "homewhiz__program": {
       "program_auto": "Auto 40-65\u00b0C",
       "program_mix_wash": "All-in-Wash\nAquaFlex",
@@ -102,10 +133,38 @@
       "program_silent": "SilentWash",
       "program_makine_temizleme": "Inner Clean"
     },
+    "homewhiz__dishwasher_traywash": {
+      "tray_wash_off": "Wy\u0142.",
+      "tray_wash_on": "W\u0142."
+    },
+    "homewhiz__dishwasher_fast": {
+      "fast_off": "Express Wy\u0142.",
+      "fast_on": "Express W\u0142."
+    },
+    "homewhiz__dishwasher_steamgloss": {
+      "steamgloss_off": "Wy\u0142.",
+      "steamgloss_on": "W\u0142."
+    },
+    "homewhiz__dishwasher_extrarinse": {
+      "extrarinse_off": "Extra P\u0142ukanie Wy\u0142.",
+      "extrarinse_on": "Extra P\u0142ukanie W\u0142."
+    },
+    "homewhiz__dishwasher_halfload": {
+      "halfload_off": "Wy\u0142.",
+      "halfload_on": "W\u0142."
+    },
+    "homewhiz__setting_auto_door": {
+      "setting_auto_door_off": "Doormatic Wy\u0142.",
+      "setting_auto_door_on": "Doormatic W\u0142."
+    },
     "homewhiz__setting_detergent_type": {
       "setting_detergent_type_powder": "Detergent w proszku",
       "setting_detergent_type_tablet": "Detergent w tabletce",
       "setting_detergent_type_liquid": "Detergent w p\u0142ynie"
+    },
+    "homewhiz__setting_inner_illumination": {
+      "setting_inner_illumination_off": "O\u015bwietlenie wn\u0119trza Wy\u0142.",
+      "setting_inner_illumination_on": "O\u015bwietlenie wn\u0119trza W\u0142."
     },
     "homewhiz__washer_dry": {
       "dry_off": "Wy\u0142.",
@@ -119,6 +178,30 @@
       "dry_90": "90 min",
       "dry_120": "15 min.",
       "dry_150": "150 min"
+    },
+    "homewhiz__air_conditioner_program": {
+      "air_conditioner_mode_cooling": "Ch\u0142odzenie",
+      "air_conditioner_mode_auto": "Automatyczna zmiana",
+      "air_conditioner_mode_dry": "Suchy",
+      "air_conditioner_mode_heating": "Ogrzewanie",
+      "air_conditioner_mode_fan": "Wentylator",
+      "air_conditioner_mode_dehumidification": "Usuwanie wilgoci"
+    },
+    "homewhiz__air_conditioner_wind_strength": {
+      "wind_strength_low": "Niska",
+      "wind_strength_mid": "\u015aredni",
+      "wind_strength_high": "Wysoki",
+      "wind_strength_auto": "Automatyczny",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "wind_strength_chaos_swing": "Automatyczny"
+    },
+    "homewhiz__air_conditioner_jet_mode": {
+      "air_conditioner_jet_mode_off": "Wy\u0142.",
+      "air_conditioner_jet_mode_on": "W\u0142."
     },
     "homewhiz__air_conditioner_soft_air": {
       "air_conditioner_soft_air_off": "Wy\u0142.",
