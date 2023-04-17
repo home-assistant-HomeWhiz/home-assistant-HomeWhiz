@@ -68,4 +68,6 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator]):  # type: ignore[ty
         _LOGGER.debug(
             "Returning name %s for key %s", self._localization.get(key, key), key
         )
+        # TODO: Workaround
+        key = key.upper()
         return self._localization.get(key, key)
