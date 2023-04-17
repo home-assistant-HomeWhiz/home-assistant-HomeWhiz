@@ -1,9 +1,13 @@
+import logging
+
 from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .config_flow import EntryData
 from .const import DOMAIN
 from .homewhiz import HomewhizCoordinator, brand_name_by_code
+
+_LOGGER: logging.Logger = logging.getLogger(__package__)
 
 
 def build_device_info(unique_name: str, data: EntryData) -> DeviceInfo:
@@ -48,6 +52,9 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator]):  # type: ignore[ty
     @property
     def name(self) -> str | None:
         key = self.entity_key
+        _LOGGER.debug(
+            "Retrieving name property from HomeWhiz Entity, using key %s", key
+        )
         if key == "STATE":
             return "State"
         if key == "SUB_STATE":
@@ -58,4 +65,7 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator]):  # type: ignore[ty
             return "Volume"
         if "WARNING" in key:
             return "Warning: " + self._localization.get(key, key)
+        _LOGGER.debug(
+            "Returning name %s for key %s", self._localization.get(key, key), key
+        )
         return self._localization.get(key, key)
