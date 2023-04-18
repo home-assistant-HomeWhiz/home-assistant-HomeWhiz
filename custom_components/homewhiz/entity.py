@@ -43,7 +43,6 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator]):  # type: ignore[ty
         self._attr_unique_id = f"{device_name}_{entity_key}"
         self._attr_device_info = build_device_info(device_name, data)
         self._attr_device_class = f"{DOMAIN}__{entity_key}"
-        self._localization = data.contents.localization
 
     @property
     def available(self) -> bool:
@@ -51,23 +50,4 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator]):  # type: ignore[ty
 
     @property
     def name(self) -> str | None:
-        key = self.entity_key
-        _LOGGER.debug(
-            "Retrieving name property from HomeWhiz Entity, using key %s", key
-        )
-        if key == "STATE":
-            return "State"
-        if key == "SUB_STATE":
-            return "Sub-state"
-        if key == "REMOTE_CONTROL":
-            return "Remote control"
-        if key == "SETTINGS_VOLUME":
-            return "Volume"
-        if "WARNING" in key:
-            return "Warning: " + self._localization.get(key, key)
-        _LOGGER.debug(
-            "Returning name %s for key %s", self._localization.get(key, key), key
-        )
-        # TODO: Workaround
-        key = key.upper()
-        return self._localization.get(key, key)
+        return self.entity_key
