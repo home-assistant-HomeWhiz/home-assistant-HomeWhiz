@@ -1,4 +1,5 @@
 import logging
+from typing import Any
 
 from homeassistant.components.climate import (  # type: ignore[import]
     ClimateEntity,
@@ -80,7 +81,7 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
             return None
         return self._control.target_temperature.get_value(self.coordinator.data)
 
-    async def async_set_temperature(self, temperature: float) -> None:
+    async def async_set_temperature(self, temperature: float, **kwargs: Any) -> None:
         _LOGGER.debug(f"Changing temperature {temperature}")
         await self.coordinator.send_command(
             self._control.target_temperature.set_value(temperature)
