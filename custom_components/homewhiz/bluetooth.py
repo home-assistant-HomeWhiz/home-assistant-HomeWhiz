@@ -50,7 +50,13 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
             bytearray.fromhex("02 04 00 04 00 1a 01 03"),
             response=False,
         )
-        _LOGGER.info(f"Successfully connected. RSSI: {self._device.rssi}")
+
+        # To retrieve RSSI value
+        # https://developers.home-assistant.io/docs/core/bluetooth/api/#fetching-the-latest-bluetoothserviceinfobleak-for-a-device
+        service_info = bluetooth.async_last_service_info(
+            self.hass, self.address, connectable=True
+        )
+        _LOGGER.info(f"Successfully connected. RSSI: {service_info.rssi}")
 
         return True
 
