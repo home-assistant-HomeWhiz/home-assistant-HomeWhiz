@@ -56,6 +56,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         service_info = bluetooth.async_last_service_info(
             self.hass, self.address, connectable=True
         )
+        assert service_info is not None
         _LOGGER.info(f"Successfully connected. RSSI: {service_info.rssi}")
 
         return True
