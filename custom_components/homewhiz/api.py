@@ -71,7 +71,7 @@ class ApplianceInfo:
     model: str
     applianceType: int
     platformType: str
-    applianceSerialNumber: str
+    applianceSerialNumber: str | None
     name: str
     hsmId: str | None
     connectivity: str = "BT"

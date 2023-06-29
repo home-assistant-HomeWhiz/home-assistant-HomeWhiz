@@ -60,6 +60,8 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         cloud_config: CloudConfig,
         entry: ConfigEntry,
     ) -> None:
+        # Place awscrt imports within class
+        # (awscrt module can sometimes not be installed automatically)
         from awscrt import mqtt
 
         self._appliance_id = appliance_id
@@ -77,6 +79,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
 
     async def connect(self) -> bool:
         from awscrt.auth import AwsCredentialsProvider
+        from awscrt.exceptions import AwsCrtError
         from awsiot import mqtt_connection_builder  # type: ignore[import]
 
         _LOGGER.info(f"Connecting to {self._appliance_id}")
@@ -100,7 +103,23 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             on_connection_resumed=self.on_connection_resumed,
         )
         self._connection = connection
-        connection.connect().result()
+        try:
+            connection.connect().result()
+        # If exception occurs, retry in one minute
+        # (to be more resilient against e.g., DNS issues)
+        except AwsCrtError:
+            _LOGGER.exception(
+                "Exception during connection to AWS occurred. Will retry in one minute."
+            )
+            self._entry.async_on_unload(
+                async_track_point_in_time(
+                    hass=self.hass,
+                    action=self.refresh_connection,  # type: ignore[arg-type]
+                    point_in_time=datetime.today() + timedelta(minutes=1),
+                )
+            )
+            return False
+
         self._is_connected = True
         [subscribe_update, _] = connection.subscribe(
             f"$aws/things/{self._appliance_id}/shadow/update/accepted",
@@ -122,6 +141,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
 
         self.force_read()
 
+        # Trigger refresh connection when credentials expired
         self._entry.async_on_unload(
             async_track_point_in_time(
                 hass=self.hass,
