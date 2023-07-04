@@ -25,7 +25,7 @@
   },
   "entity": {
     "select": {
-      "homewhiz__washer_program": {
+      "homewhiz_washer_program": {
         "name": "Waschmaschinenprogramm",
         "state": {
           "program_4kg_wash_dry": "Waschen und Trocknen 4\u00a0kg",
