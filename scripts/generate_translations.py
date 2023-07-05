@@ -22,10 +22,11 @@ from custom_components.homewhiz.appliance_controls import (
 )
 
 
-async def get_file(address: str) -> Any:
+async def get_file(url: str) -> Any:
+    """Get JSON file from url"""
     async with aiohttp.ClientSession() as session:
         async with session.get(
-            address,
+            url,
         ) as response:
             return json.loads(await response.text())
 
@@ -60,16 +61,19 @@ KNOWN_APPLIANCE_IDS = [
 
 
 async def write_translations_file(
-    name: str, translations: Mapping[str, Mapping[str, str]]
+    language_code: str, translations: Mapping[str, Mapping[str, str]]
 ) -> None:
+    """Writes translation data for a specific language to a file"""
     dirname = os.path.dirname(__file__)
     translations_path = os.path.join(
         dirname, "../custom_components/homewhiz/translations/"
     )
-    file_path = os.path.join(translations_path, f"{name}.json")
+    file_path = os.path.join(translations_path, f"{language_code}.json")
+
     with open(file_path, "w") as outfile:
         json.dump({"state": translations}, outfile, indent=2)
         outfile.write("\n")
+
     print(f"{file_path} Updated")
 
 
@@ -83,16 +87,13 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
     # (All translation dicts share the key 'enum' and override each other)
     sensor_translations_list: list[Mapping[str, str]] = []
 
-    def localize_key(key: str) -> str | None:
-        if key in localizations:
-            return localizations[key]
-        return None
-
     for appliance_id in KNOWN_APPLIANCE_IDS:
         contents = await fetch_appliance_contents(credentials, appliance_id, language)
         appliance_localizations = contents.localization
         appliance_config = contents.config
         print(f"{appliance_id} localizations: {len(appliance_localizations.keys())}")
+
+        # Merge localizations
         localizations = base_localizations | appliance_localizations
         controls = generate_controls_from_config(appliance_config)
         select_controls = [
@@ -108,7 +109,7 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
         def localize(control: EnumControl) -> dict[str, str]:
             entity_result: dict[str, str] = {}
             for option in control.options.values():
-                localized = localize_key(option)
+                localized = localizations.get(option, None)
                 if localized is not None:
                     entity_result[option] = str(localized)
             return entity_result
