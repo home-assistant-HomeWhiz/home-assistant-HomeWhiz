@@ -41,6 +41,7 @@
           "program_synthetics": "Sintetici",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
+          "program_delicates": "PROGRAM_DELICATES",
           "program_spin_pump": "Spin+Drain",
           "program_rinsing": "Risciacquo",
           "program_darkwash": "Colori scuri (jeans)",
@@ -50,6 +51,7 @@
           "program_duvet": "Piumone/piumino",
           "program_shirts": "Camicie",
           "program_drum_clean": "Pulizia cestello",
+          "program_mix": "PROGRAM_MIX",
           "program_curtain": "Tende",
           "program_lingerie": "Lingerie",
           "program_soft_toys": "Peluche",
@@ -71,13 +73,19 @@
           "temperature_cold_wash": "Lavaggio a freddo",
           "temperature_20": "20\u00b0C",
           "temperature_30": "30\u00b0C",
-          "temperature_40": "40\u00b0C"
+          "temperature_40": "40\u00b0C",
+          "60c": "60C",
+          "90c": "90C"
         }
       },
       "washer_spin": {
         "name": "Centrifuga",
         "state": {
           "spin_no_spin": "Nessuna centrifuga",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
           "spin_rinse_hold": "Risciacquo aggiuntivo",
           "spin_600": "600",
           "spin_800": "800",
@@ -96,12 +104,18 @@
       "custom_duration_level": {
         "name": "Livello durata personalizzato",
         "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
           "2": "2",
           "3": "3",
           "4": "4",
           "5": "5",
-          "6": "6"
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
         }
       },
       "washer_extra_rinse_count": {
@@ -115,7 +129,7 @@
         }
       },
       "remote_control": {
-        "name": "Telecomando"
+        "name": "Telecomando "
       },
       "washer_warning_door_is_open": {
         "name": "Obl\u00f2 aperto"
@@ -172,6 +186,8 @@
           "program_new58min": "QuickWash 58'",
           "program_30min": "Mini 30\\'",
           "program_prewash": "Prelavaggio",
+          "program_hygiene": "PROGRAM_HYGIENE",
+          "program_daily": "PROGRAM_DAILY",
           "program_silent": "SilentWash",
           "program_makine_temizleme": "Inner Clean"
         }
@@ -288,6 +304,7 @@
           "program_synthetics": "Sintetici",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
+          "program_delicates": "PROGRAM_DELICATES",
           "program_spin_pump": "Spin+Drain",
           "program_rinsing": "Risciacquo",
           "program_darkwash": "Colori scuri (jeans)",
@@ -297,6 +314,7 @@
           "program_duvet": "Piumone/piumino",
           "program_shirts": "Camicie",
           "program_drum_clean": "Pulizia cestello",
+          "program_mix": "PROGRAM_MIX",
           "program_curtain": "Tende",
           "program_lingerie": "Lingerie",
           "program_soft_toys": "Peluche",
@@ -318,13 +336,19 @@
           "temperature_cold_wash": "Lavaggio a freddo",
           "temperature_20": "20\u00b0C",
           "temperature_30": "30\u00b0C",
-          "temperature_40": "40\u00b0C"
+          "temperature_40": "40\u00b0C",
+          "60c": "60C",
+          "90c": "90C"
         }
       },
       "washer_spin": {
         "name": "Centrifuga",
         "state": {
           "spin_no_spin": "Nessuna centrifuga",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
           "spin_rinse_hold": "Risciacquo aggiuntivo",
           "spin_600": "600",
           "spin_800": "800",
@@ -343,12 +367,18 @@
       "custom_duration_level": {
         "name": "Livello durata personalizzato",
         "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
           "2": "2",
           "3": "3",
           "4": "4",
           "5": "5",
-          "6": "6"
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
         }
       },
       "washer_extra_rinse_count": {
@@ -414,7 +444,7 @@
         "name": "Rimanente"
       },
       "remote_control": {
-        "name": "Telecomando"
+        "name": "Telecomando "
       },
       "washer_warning_door_is_open": {
         "name": "Obl\u00f2 aperto"
@@ -513,6 +543,8 @@
           "program_new58min": "QuickWash 58'",
           "program_30min": "Mini 30\\'",
           "program_prewash": "Prelavaggio",
+          "program_hygiene": "PROGRAM_HYGIENE",
+          "program_daily": "PROGRAM_DAILY",
           "program_silent": "SilentWash",
           "program_makine_temizleme": "Inner Clean"
         }
@@ -564,8 +596,8 @@
       "dishwasher_traywash": {
         "name": "Lavaggio vassoio"
       },
-      "dishwasher_fast+": {
-        "name": "Express"
+      "dishwasher_fastplus": {
+        "name": "Lavastoviglie fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "SteamGloss"
@@ -651,7 +683,7 @@
     },
     "binary_sensor": {
       "remote_control": {
-        "name": "Telecomando"
+        "name": "Telecomando "
       },
       "washer_warning_door_is_open": {
         "name": "Obl\u00f2 aperto"
@@ -735,8 +767,8 @@
       "dishwasher_traywash": {
         "name": "Lavaggio vassoio"
       },
-      "dishwasher_fast+": {
-        "name": "Express"
+      "dishwasher_fastplus": {
+        "name": "Lavastoviglie fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "SteamGloss"

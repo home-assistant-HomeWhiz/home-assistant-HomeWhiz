@@ -22,6 +22,7 @@
           "program_synthetics": "Sintetice",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
+          "program_delicates": "PROGRAM_DELICATES",
           "program_spin_pump": "Spin+Drain",
           "program_rinsing": "Se cl\u0103te\u0219te",
           "program_darkwash": "Culori \u00eenchise (jeans)",
@@ -53,13 +54,19 @@
           "temperature_cold_wash": "Ap\u0103 rece",
           "temperature_20": "20 \u00b0C",
           "temperature_30": "30 \u00b0C",
-          "temperature_40": "40 \u00b0C"
+          "temperature_40": "40 \u00b0C",
+          "60c": "60C",
+          "90c": "90C"
         }
       },
       "washer_spin": {
         "name": "Rotire",
         "state": {
           "spin_no_spin": "F\u0103r\u0103 rotire",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
           "spin_rinse_hold": "Am\u00e2nare cl\u0103tire",
           "spin_600": "600",
           "spin_800": "800",
@@ -78,12 +85,18 @@
       "custom_duration_level": {
         "name": "Nivel durat\u0103 personalizat\u0103",
         "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
           "2": "2",
           "3": "3",
           "4": "4",
           "5": "5",
-          "6": "6"
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
         }
       },
       "washer_extra_rinse_count": {
@@ -97,7 +110,7 @@
         }
       },
       "remote_control": {
-        "name": "Telecomand\u0103"
+        "name": "Control de la distan\u021b\u0103"
       },
       "washer_warning_door_is_open": {
         "name": "U\u0219a este deschis\u0103"
@@ -155,6 +168,7 @@
           "program_30min": "Mini 30'",
           "program_prewash": "Presp\u0103lare",
           "program_hygiene": "HygieneCare",
+          "program_daily": "PROGRAM_DAILY",
           "program_silent": "SilentWash",
           "program_makine_temizleme": "Cur\u0103\u021bare interioar\u0103"
         }
@@ -271,6 +285,7 @@
           "program_synthetics": "Sintetice",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
+          "program_delicates": "PROGRAM_DELICATES",
           "program_spin_pump": "Spin+Drain",
           "program_rinsing": "Se cl\u0103te\u0219te",
           "program_darkwash": "Culori \u00eenchise (jeans)",
@@ -302,13 +317,19 @@
           "temperature_cold_wash": "Ap\u0103 rece",
           "temperature_20": "20 \u00b0C",
           "temperature_30": "30 \u00b0C",
-          "temperature_40": "40 \u00b0C"
+          "temperature_40": "40 \u00b0C",
+          "60c": "60C",
+          "90c": "90C"
         }
       },
       "washer_spin": {
         "name": "Rotire",
         "state": {
           "spin_no_spin": "F\u0103r\u0103 rotire",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
           "spin_rinse_hold": "Am\u00e2nare cl\u0103tire",
           "spin_600": "600",
           "spin_800": "800",
@@ -327,12 +348,18 @@
       "custom_duration_level": {
         "name": "Nivel durat\u0103 personalizat\u0103",
         "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
           "2": "2",
           "3": "3",
           "4": "4",
           "5": "5",
-          "6": "6"
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
         }
       },
       "washer_extra_rinse_count": {
@@ -398,7 +425,7 @@
         "name": "R\u0103mas"
       },
       "remote_control": {
-        "name": "Telecomand\u0103"
+        "name": "Control de la distan\u021b\u0103"
       },
       "washer_warning_door_is_open": {
         "name": "U\u0219a este deschis\u0103"
@@ -498,6 +525,7 @@
           "program_30min": "Mini 30'",
           "program_prewash": "Presp\u0103lare",
           "program_hygiene": "HygieneCare",
+          "program_daily": "PROGRAM_DAILY",
           "program_silent": "SilentWash",
           "program_makine_temizleme": "Cur\u0103\u021bare interioar\u0103"
         }
@@ -549,8 +577,8 @@
       "dishwasher_traywash": {
         "name": "Sp\u0103lare tav\u0103"
       },
-      "dishwasher_fast+": {
-        "name": "Express"
+      "dishwasher_fastplus": {
+        "name": "Ma\u0219in\u0103 de sp\u0103lat vase fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "Steamgloss"
@@ -636,7 +664,7 @@
     },
     "binary_sensor": {
       "remote_control": {
-        "name": "Telecomand\u0103"
+        "name": "Control de la distan\u021b\u0103"
       },
       "washer_warning_door_is_open": {
         "name": "U\u0219a este deschis\u0103"
@@ -720,8 +748,8 @@
       "dishwasher_traywash": {
         "name": "Sp\u0103lare tav\u0103"
       },
-      "dishwasher_fast+": {
-        "name": "Express"
+      "dishwasher_fastplus": {
+        "name": "Ma\u0219in\u0103 de sp\u0103lat vase fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "Steamgloss"

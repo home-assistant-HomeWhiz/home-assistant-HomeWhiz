@@ -73,13 +73,19 @@
           "temperature_cold_wash": "So\u011fuk Y\u0131kama",
           "temperature_20": "20 \u00b0C",
           "temperature_30": "30 \u00b0C",
-          "temperature_40": "40 \u00b0C"
+          "temperature_40": "40 \u00b0C",
+          "60c": "60C",
+          "90c": "90C"
         }
       },
       "washer_spin": {
         "name": "Devir",
         "state": {
           "spin_no_spin": "S\u0131kma Yok",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
           "spin_rinse_hold": "Suda B\u0131rakma",
           "spin_600": "600",
           "spin_800": "800",
@@ -98,12 +104,18 @@
       "custom_duration_level": {
         "name": "Ki\u015fiselle\u015fmi\u015f S\u00fcre Seviyesi",
         "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
           "2": "2",
           "3": "3",
           "4": "4",
           "5": "5",
-          "6": "6"
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
         }
       },
       "washer_extra_rinse_count": {
@@ -117,7 +129,7 @@
         }
       },
       "remote_control": {
-        "name": "Uzaktan Kontrol"
+        "name": "Uzaktan kumanda"
       },
       "washer_warning_door_is_open": {
         "name": "Kapak a\u00e7\u0131k"
@@ -324,13 +336,19 @@
           "temperature_cold_wash": "So\u011fuk Y\u0131kama",
           "temperature_20": "20 \u00b0C",
           "temperature_30": "30 \u00b0C",
-          "temperature_40": "40 \u00b0C"
+          "temperature_40": "40 \u00b0C",
+          "60c": "60C",
+          "90c": "90C"
         }
       },
       "washer_spin": {
         "name": "Devir",
         "state": {
           "spin_no_spin": "S\u0131kma Yok",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
           "spin_rinse_hold": "Suda B\u0131rakma",
           "spin_600": "600",
           "spin_800": "800",
@@ -349,12 +367,18 @@
       "custom_duration_level": {
         "name": "Ki\u015fiselle\u015fmi\u015f S\u00fcre Seviyesi",
         "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
           "2": "2",
           "3": "3",
           "4": "4",
           "5": "5",
-          "6": "6"
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
         }
       },
       "washer_extra_rinse_count": {
@@ -420,7 +444,7 @@
         "name": "Kalan S\u00fcre"
       },
       "remote_control": {
-        "name": "Uzaktan Kontrol"
+        "name": "Uzaktan kumanda"
       },
       "washer_warning_door_is_open": {
         "name": "Kapak a\u00e7\u0131k"
@@ -572,8 +596,8 @@
       "dishwasher_traywash": {
         "name": "Tepsi Y\u0131kama"
       },
-      "dishwasher_fast+": {
-        "name": "H\u0131zl\u0131"
+      "dishwasher_fastplus": {
+        "name": "Bula\u015f\u0131k makinesi fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "Buharl\u0131 parlat"
@@ -659,7 +683,7 @@
     },
     "binary_sensor": {
       "remote_control": {
-        "name": "Uzaktan Kontrol"
+        "name": "Uzaktan kumanda"
       },
       "washer_warning_door_is_open": {
         "name": "Kapak a\u00e7\u0131k"
@@ -743,8 +767,8 @@
       "dishwasher_traywash": {
         "name": "Tepsi Y\u0131kama"
       },
-      "dishwasher_fast+": {
-        "name": "H\u0131zl\u0131"
+      "dishwasher_fastplus": {
+        "name": "Bula\u015f\u0131k makinesi fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "Buharl\u0131 parlat"

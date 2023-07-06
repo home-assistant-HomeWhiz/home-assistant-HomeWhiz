@@ -41,11 +41,8 @@ def clamp(value: int) -> int:
 def to_friendly_name(name: str) -> str:
     # Generates a translation friendly name based on the key
     # To filter out forbidden characters
+    name = name.replace("+", "plus")
     # https://stackoverflow.com/questions/15754587/keeping-only-certain-characters-in-a-string-using-python
-
-    # "need to be [a-z0-9-_]+"
-    # name = name.lower()
-    # name = re.sub("[^a-z0-9-_]", "", name)
     name = re.sub("[^A-z0-9-_]", "", name)
     # "cannot start or end with a hyphen or underscore
     if name[-1] == "_":
@@ -396,7 +393,7 @@ def get_bounded_values_options(
         unit = unit_for_key(key)
         value_str = f"{value:g}"
         name = f"{value_str} {unit}" if unit is not None else value_str
-        result[wifiValue] = name
+        result[wifiValue] = to_friendly_name(name)
         value += values.step
     return result
 
@@ -521,7 +518,7 @@ def build_control_from_state(state: ApplianceState | None) -> Control | None:
     if read_index is None or write_index is None:
         return None
     return WriteEnumControl(
-        key="state",
+        key="STATE",
         read_index=read_index,
         write_index=write_index,
         options=bidict(get_options_from_enum_options(state.states)),

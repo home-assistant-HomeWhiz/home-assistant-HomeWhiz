@@ -36,21 +36,27 @@
       "washer_program": {
         "name": "Program",
         "state": {
+          "program_cottons": "PROGRAM_COTTONS",
           "program_eco_40_60": "Eco 40\u201360",
+          "program_synthetics": "PROGRAM_SYNTHETICS",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
+          "program_delicates": "PROGRAM_DELICATES",
           "program_spin_pump": "Spin+Drain",
+          "program_rinsing": "PROGRAM_RINSING",
           "program_darkwash": "Tmav\u00e9 (D\u017e\u00edny)",
           "program_outdoor_sports_goretex": "Sportovn\u00ed oble\u010den\u00ed",
           "program_stain": "Syntetick\u00e9 \u2013 \u017eehlen\u00ed na sucho",
           "program_hygeine": "Hygiena+",
           "program_duvet": "Pe\u0159ina / Opot\u0159eben\u00ed",
+          "program_shirts": "PROGRAM_SHIRTS",
           "program_drum_clean": "\u010ci\u0161t\u011bn\u00ed bubnu",
           "program_mix": "Prom\u00edchat",
           "program_curtain": "Z\u00e1clony",
           "program_lingerie": "D\u00e1msk\u00e9 pr\u00e1dlo",
           "program_soft_toys": "M\u011bkk\u00e9 hra\u010dky",
           "program_towel": "Ru\u010dn\u00edk",
+          "program_cottons_eco": "PROGRAM_COTTONS_ECO",
           "program_dryer_cotton": "Su\u0161en\u00ed bavlny",
           "program_dryer_synthetics": "Su\u0161en\u00ed syntetick\u00e9ho pr\u00e1dla",
           "program_hygiene_wash_dry": "Pran\u00ed a\u00a0su\u0161en\u00ed Hygiena+",
@@ -67,13 +73,19 @@
           "temperature_cold_wash": "Pran\u00ed za studena",
           "temperature_20": "20\u00b0C",
           "temperature_30": "30\u00b0C",
-          "temperature_40": "40\u00b0C"
+          "temperature_40": "40\u00b0C",
+          "60c": "60C",
+          "90c": "90C"
         }
       },
       "washer_spin": {
         "name": "\u017dd\u00edm\u00e1n\u00ed",
         "state": {
           "spin_no_spin": "Bez \u017ed\u00edm\u00e1n\u00ed",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
           "spin_rinse_hold": "Pozastaven\u00ed m\u00e1ch\u00e1n\u00ed",
           "spin_600": "600",
           "spin_800": "800",
@@ -92,12 +104,18 @@
       "custom_duration_level": {
         "name": "Vlastn\u00ed \u00farove\u0148 doby trv\u00e1n\u00ed",
         "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
           "2": "2",
           "3": "3",
           "4": "4",
           "5": "5",
-          "6": "6"
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
         }
       },
       "washer_extra_rinse_count": {
@@ -169,6 +187,7 @@
           "program_30min": "Mini 30\u00a0s",
           "program_prewash": "P\u0159edmyt\u00ed",
           "program_hygiene": "Hygienick\u00e1 p\u00e9\u010de",
+          "program_daily": "PROGRAM_DAILY",
           "program_silent": "Tich\u00e9 myt\u00ed",
           "program_makine_temizleme": "Vnit\u0159n\u00ed \u010di\u0161t\u011bn\u00ed"
         }
@@ -280,21 +299,27 @@
       "washer_program": {
         "name": "Program",
         "state": {
+          "program_cottons": "PROGRAM_COTTONS",
           "program_eco_40_60": "Eco 40\u201360",
+          "program_synthetics": "PROGRAM_SYNTHETICS",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
+          "program_delicates": "PROGRAM_DELICATES",
           "program_spin_pump": "Spin+Drain",
+          "program_rinsing": "PROGRAM_RINSING",
           "program_darkwash": "Tmav\u00e9 (D\u017e\u00edny)",
           "program_outdoor_sports_goretex": "Sportovn\u00ed oble\u010den\u00ed",
           "program_stain": "Syntetick\u00e9 \u2013 \u017eehlen\u00ed na sucho",
           "program_hygeine": "Hygiena+",
           "program_duvet": "Pe\u0159ina / Opot\u0159eben\u00ed",
+          "program_shirts": "PROGRAM_SHIRTS",
           "program_drum_clean": "\u010ci\u0161t\u011bn\u00ed bubnu",
           "program_mix": "Prom\u00edchat",
           "program_curtain": "Z\u00e1clony",
           "program_lingerie": "D\u00e1msk\u00e9 pr\u00e1dlo",
           "program_soft_toys": "M\u011bkk\u00e9 hra\u010dky",
           "program_towel": "Ru\u010dn\u00edk",
+          "program_cottons_eco": "PROGRAM_COTTONS_ECO",
           "program_dryer_cotton": "Su\u0161en\u00ed bavlny",
           "program_dryer_synthetics": "Su\u0161en\u00ed syntetick\u00e9ho pr\u00e1dla",
           "program_hygiene_wash_dry": "Pran\u00ed a\u00a0su\u0161en\u00ed Hygiena+",
@@ -311,13 +336,19 @@
           "temperature_cold_wash": "Pran\u00ed za studena",
           "temperature_20": "20\u00b0C",
           "temperature_30": "30\u00b0C",
-          "temperature_40": "40\u00b0C"
+          "temperature_40": "40\u00b0C",
+          "60c": "60C",
+          "90c": "90C"
         }
       },
       "washer_spin": {
         "name": "\u017dd\u00edm\u00e1n\u00ed",
         "state": {
           "spin_no_spin": "Bez \u017ed\u00edm\u00e1n\u00ed",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
           "spin_rinse_hold": "Pozastaven\u00ed m\u00e1ch\u00e1n\u00ed",
           "spin_600": "600",
           "spin_800": "800",
@@ -336,12 +367,18 @@
       "custom_duration_level": {
         "name": "Vlastn\u00ed \u00farove\u0148 doby trv\u00e1n\u00ed",
         "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
           "2": "2",
           "3": "3",
           "4": "4",
           "5": "5",
-          "6": "6"
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
         }
       },
       "washer_extra_rinse_count": {
@@ -507,6 +544,7 @@
           "program_30min": "Mini 30\u00a0s",
           "program_prewash": "P\u0159edmyt\u00ed",
           "program_hygiene": "Hygienick\u00e1 p\u00e9\u010de",
+          "program_daily": "PROGRAM_DAILY",
           "program_silent": "Tich\u00e9 myt\u00ed",
           "program_makine_temizleme": "Vnit\u0159n\u00ed \u010di\u0161t\u011bn\u00ed"
         }
@@ -558,8 +596,8 @@
       "dishwasher_traywash": {
         "name": "Myt\u00ed plech\u016f"
       },
-      "dishwasher_fast+": {
-        "name": "Expresn\u00ed"
+      "dishwasher_fastplus": {
+        "name": "My\u010dka fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "Le\u0161t\u011bn\u00ed p\u00e1rou"
@@ -729,8 +767,8 @@
       "dishwasher_traywash": {
         "name": "Myt\u00ed plech\u016f"
       },
-      "dishwasher_fast+": {
-        "name": "Expresn\u00ed"
+      "dishwasher_fastplus": {
+        "name": "My\u010dka fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "Le\u0161t\u011bn\u00ed p\u00e1rou"

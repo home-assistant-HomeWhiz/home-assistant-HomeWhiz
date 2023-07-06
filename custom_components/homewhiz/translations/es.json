@@ -41,6 +41,7 @@
           "program_synthetics": "Sint\u00e9ticos",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
+          "program_delicates": "PROGRAM_DELICATES",
           "program_spin_pump": "Spin+Drain",
           "program_rinsing": "Aclarado",
           "program_darkwash": "Ropa oscura (vaqueros)",
@@ -72,13 +73,19 @@
           "temperature_cold_wash": "Lavado en fr\u00edo",
           "temperature_20": "20 \u00b0C",
           "temperature_30": "30 \u00b0C",
-          "temperature_40": "40 \u00b0C"
+          "temperature_40": "40 \u00b0C",
+          "60c": "60C",
+          "90c": "90C"
         }
       },
       "washer_spin": {
         "name": "Centrifugado",
         "state": {
           "spin_no_spin": "Sin centrifugado",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
           "spin_rinse_hold": "Remojo",
           "spin_600": "600",
           "spin_800": "800",
@@ -97,12 +104,18 @@
       "custom_duration_level": {
         "name": "Nivel de duraci\u00f3n personalizado",
         "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
           "2": "2",
           "3": "3",
           "4": "4",
           "5": "5",
-          "6": "6"
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
         }
       },
       "washer_extra_rinse_count": {
@@ -116,7 +129,7 @@
         }
       },
       "remote_control": {
-        "name": "Mando a distancia"
+        "name": "Control remoto"
       },
       "washer_warning_door_is_open": {
         "name": "La puerta est\u00e1 abierta"
@@ -291,6 +304,7 @@
           "program_synthetics": "Sint\u00e9ticos",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
+          "program_delicates": "PROGRAM_DELICATES",
           "program_spin_pump": "Spin+Drain",
           "program_rinsing": "Aclarado",
           "program_darkwash": "Ropa oscura (vaqueros)",
@@ -322,13 +336,19 @@
           "temperature_cold_wash": "Lavado en fr\u00edo",
           "temperature_20": "20 \u00b0C",
           "temperature_30": "30 \u00b0C",
-          "temperature_40": "40 \u00b0C"
+          "temperature_40": "40 \u00b0C",
+          "60c": "60C",
+          "90c": "90C"
         }
       },
       "washer_spin": {
         "name": "Centrifugado",
         "state": {
           "spin_no_spin": "Sin centrifugado",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
           "spin_rinse_hold": "Remojo",
           "spin_600": "600",
           "spin_800": "800",
@@ -347,12 +367,18 @@
       "custom_duration_level": {
         "name": "Nivel de duraci\u00f3n personalizado",
         "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
           "2": "2",
           "3": "3",
           "4": "4",
           "5": "5",
-          "6": "6"
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
         }
       },
       "washer_extra_rinse_count": {
@@ -418,7 +444,7 @@
         "name": "Restante"
       },
       "remote_control": {
-        "name": "Mando a distancia"
+        "name": "Control remoto"
       },
       "washer_warning_door_is_open": {
         "name": "La puerta est\u00e1 abierta"
@@ -570,8 +596,8 @@
       "dishwasher_traywash": {
         "name": "TrayWash"
       },
-      "dishwasher_fast+": {
-        "name": "R\u00e1pido"
+      "dishwasher_fastplus": {
+        "name": "Lavavajillas Fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "SteamGloss"
@@ -657,7 +683,7 @@
     },
     "binary_sensor": {
       "remote_control": {
-        "name": "Mando a distancia"
+        "name": "Control remoto"
       },
       "washer_warning_door_is_open": {
         "name": "La puerta est\u00e1 abierta"
@@ -741,8 +767,8 @@
       "dishwasher_traywash": {
         "name": "TrayWash"
       },
-      "dishwasher_fast+": {
-        "name": "R\u00e1pido"
+      "dishwasher_fastplus": {
+        "name": "Lavavajillas Fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "SteamGloss"

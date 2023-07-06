@@ -171,13 +171,24 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
             # Localizes all options for a control
             entity_result: dict[str, str] = {}
             for option in control.options.values():
-                localized = localizations.get(option, None)
+                # Replace plus (needed for homeassistant friendly name) with +
+                # else translation cannot be looked up
+                option = option.replace("plus", "+")
+                localized = localizations.get(option, option)
+                localized = str(localized)
+
+                # Separate values from unites
+                # For keys generated in get_bounded_values_options
+                # localized = re.sub(r"(\d+)([^0-9\ \-\']+)", r"\1 \2", localized)
+
                 if localized is not None:
                     entity_result[option.lower()] = str(localized)
             return entity_result
 
         # Translator for localize_name function
-        translator = Translator(from_lang="en", to_lang=short_code)
+        translator = Translator(to_lang=short_code, from_lang="en")
+        # Unsure if translator caches translations
+        translator_cache: dict[str, str] = {}
 
         async def localize_name(key: str) -> str:
             # Localizes the entity name
@@ -194,10 +205,15 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
 
             # Try to translate name
             # Translate is not asyncio friendly, therefore executor
-            translation = await loop.run_in_executor(None, translator.translate, key)
-            print(
-                f"Translating key '{key}' to language '{short_code}' as: '{translation}'"  # noqa: E501
-            )
+            if key not in translator_cache:
+                translation = await loop.run_in_executor(
+                    None, translator.translate, key
+                )
+                print(
+                    f"Translating key '{key}' to language '{short_code}' as: '{translation}'"  # noqa: E501
+                )
+            else:
+                translation = translator_cache[key]
             return translation
 
         async def create_and_merge_localization(

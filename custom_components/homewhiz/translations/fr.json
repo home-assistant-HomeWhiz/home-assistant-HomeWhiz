@@ -41,6 +41,7 @@
           "program_synthetics": "Synth\u00e9tique",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
+          "program_delicates": "PROGRAM_DELICATES",
           "program_spin_pump": "Spin+Drain",
           "program_rinsing": "Rin\u00e7age",
           "program_darkwash": "Jeans",
@@ -72,13 +73,19 @@
           "temperature_cold_wash": "Lavage \u00e0 froid",
           "temperature_20": "20\u00a0\u00b0C",
           "temperature_30": "30\u00a0\u00b0C",
-          "temperature_40": "40\u00a0\u00b0C"
+          "temperature_40": "40\u00a0\u00b0C",
+          "60c": "60C",
+          "90c": "90C"
         }
       },
       "washer_spin": {
         "name": "Essorage",
         "state": {
           "spin_no_spin": "Pas d\u2019essorage",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
           "spin_rinse_hold": "Arr\u00eat cuve pleine",
           "spin_600": "600",
           "spin_800": "800",
@@ -97,12 +104,18 @@
       "custom_duration_level": {
         "name": "Dur\u00e9e personnalis\u00e9e",
         "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
           "2": "2",
           "3": "3",
           "4": "4",
           "5": "5",
-          "6": "6"
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
         }
       },
       "washer_extra_rinse_count": {
@@ -116,7 +129,7 @@
         }
       },
       "remote_control": {
-        "name": "D\u00e9marrage \u00e0 distance"
+        "name": "T\u00e9l\u00e9commande"
       },
       "washer_warning_door_is_open": {
         "name": "Porte ouverte"
@@ -174,6 +187,7 @@
           "program_30min": "Mini 30'",
           "program_prewash": "Pr\u00e9lavage",
           "program_hygiene": "Hygi\u00e8ne +",
+          "program_daily": "PROGRAM_DAILY",
           "program_silent": "Silence Nuit",
           "program_makine_temizleme": "Nettoyage cuve"
         }
@@ -290,6 +304,7 @@
           "program_synthetics": "Synth\u00e9tique",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
+          "program_delicates": "PROGRAM_DELICATES",
           "program_spin_pump": "Spin+Drain",
           "program_rinsing": "Rin\u00e7age",
           "program_darkwash": "Jeans",
@@ -321,13 +336,19 @@
           "temperature_cold_wash": "Lavage \u00e0 froid",
           "temperature_20": "20\u00a0\u00b0C",
           "temperature_30": "30\u00a0\u00b0C",
-          "temperature_40": "40\u00a0\u00b0C"
+          "temperature_40": "40\u00a0\u00b0C",
+          "60c": "60C",
+          "90c": "90C"
         }
       },
       "washer_spin": {
         "name": "Essorage",
         "state": {
           "spin_no_spin": "Pas d\u2019essorage",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
           "spin_rinse_hold": "Arr\u00eat cuve pleine",
           "spin_600": "600",
           "spin_800": "800",
@@ -346,12 +367,18 @@
       "custom_duration_level": {
         "name": "Dur\u00e9e personnalis\u00e9e",
         "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
           "2": "2",
           "3": "3",
           "4": "4",
           "5": "5",
-          "6": "6"
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
         }
       },
       "washer_extra_rinse_count": {
@@ -417,7 +444,7 @@
         "name": "Reste"
       },
       "remote_control": {
-        "name": "D\u00e9marrage \u00e0 distance"
+        "name": "T\u00e9l\u00e9commande"
       },
       "washer_warning_door_is_open": {
         "name": "Porte ouverte"
@@ -517,6 +544,7 @@
           "program_30min": "Mini 30'",
           "program_prewash": "Pr\u00e9lavage",
           "program_hygiene": "Hygi\u00e8ne +",
+          "program_daily": "PROGRAM_DAILY",
           "program_silent": "Silence Nuit",
           "program_makine_temizleme": "Nettoyage cuve"
         }
@@ -568,8 +596,8 @@
       "dishwasher_traywash": {
         "name": "Lavage l\u00e8chefrite"
       },
-      "dishwasher_fast+": {
-        "name": "Express"
+      "dishwasher_fastplus": {
+        "name": "Lave-vaisselle fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "SteamGloss"
@@ -655,7 +683,7 @@
     },
     "binary_sensor": {
       "remote_control": {
-        "name": "D\u00e9marrage \u00e0 distance"
+        "name": "T\u00e9l\u00e9commande"
       },
       "washer_warning_door_is_open": {
         "name": "Porte ouverte"
@@ -739,8 +767,8 @@
       "dishwasher_traywash": {
         "name": "Lavage l\u00e8chefrite"
       },
-      "dishwasher_fast+": {
-        "name": "Express"
+      "dishwasher_fastplus": {
+        "name": "Lave-vaisselle fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "SteamGloss"

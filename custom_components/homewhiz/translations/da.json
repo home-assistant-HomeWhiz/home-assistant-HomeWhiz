@@ -22,6 +22,7 @@
           "program_synthetics": "Syntetisk",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
+          "program_delicates": "PROGRAM_DELICATES",
           "program_spin_pump": "Spin+Drain",
           "program_rinsing": "Skylning",
           "program_darkwash": "M\u00f8rk vask (Jeans)",
@@ -53,13 +54,19 @@
           "temperature_cold_wash": "Kold vask",
           "temperature_20": "20\u00a0\u00b0C",
           "temperature_30": "30\u00a0\u00b0C",
-          "temperature_40": "40\u00a0\u00b0C"
+          "temperature_40": "40\u00a0\u00b0C",
+          "60c": "60C",
+          "90c": "90C"
         }
       },
       "washer_spin": {
         "name": "Centrifugering",
         "state": {
           "spin_no_spin": "Ingen centrifugering",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
           "spin_rinse_hold": "Skyllestop",
           "spin_600": "600",
           "spin_800": "800",
@@ -78,12 +85,18 @@
       "custom_duration_level": {
         "name": "Brugerdefineret varighed",
         "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
           "2": "2",
           "3": "3",
           "4": "4",
           "5": "5",
-          "6": "6"
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
         }
       },
       "washer_extra_rinse_count": {
@@ -155,6 +168,7 @@
           "program_30min": "Mini 30'",
           "program_prewash": "Forvask",
           "program_hygiene": "HygieneCare",
+          "program_daily": "PROGRAM_DAILY",
           "program_silent": "SilentWash",
           "program_makine_temizleme": "Indvendig reng\u00f8ring"
         }
@@ -271,6 +285,7 @@
           "program_synthetics": "Syntetisk",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
+          "program_delicates": "PROGRAM_DELICATES",
           "program_spin_pump": "Spin+Drain",
           "program_rinsing": "Skylning",
           "program_darkwash": "M\u00f8rk vask (Jeans)",
@@ -302,13 +317,19 @@
           "temperature_cold_wash": "Kold vask",
           "temperature_20": "20\u00a0\u00b0C",
           "temperature_30": "30\u00a0\u00b0C",
-          "temperature_40": "40\u00a0\u00b0C"
+          "temperature_40": "40\u00a0\u00b0C",
+          "60c": "60C",
+          "90c": "90C"
         }
       },
       "washer_spin": {
         "name": "Centrifugering",
         "state": {
           "spin_no_spin": "Ingen centrifugering",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
           "spin_rinse_hold": "Skyllestop",
           "spin_600": "600",
           "spin_800": "800",
@@ -327,12 +348,18 @@
       "custom_duration_level": {
         "name": "Brugerdefineret varighed",
         "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
           "2": "2",
           "3": "3",
           "4": "4",
           "5": "5",
-          "6": "6"
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
         }
       },
       "washer_extra_rinse_count": {
@@ -498,6 +525,7 @@
           "program_30min": "Mini 30'",
           "program_prewash": "Forvask",
           "program_hygiene": "HygieneCare",
+          "program_daily": "PROGRAM_DAILY",
           "program_silent": "SilentWash",
           "program_makine_temizleme": "Indvendig reng\u00f8ring"
         }
@@ -549,8 +577,8 @@
       "dishwasher_traywash": {
         "name": "Bakkevask"
       },
-      "dishwasher_fast+": {
-        "name": "Express"
+      "dishwasher_fastplus": {
+        "name": "Opvaskemaskine fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "Steamgloss"
@@ -720,8 +748,8 @@
       "dishwasher_traywash": {
         "name": "Bakkevask"
       },
-      "dishwasher_fast+": {
-        "name": "Express"
+      "dishwasher_fastplus": {
+        "name": "Opvaskemaskine fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "Steamgloss"

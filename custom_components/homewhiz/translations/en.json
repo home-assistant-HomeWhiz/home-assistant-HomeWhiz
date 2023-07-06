@@ -100,13 +100,19 @@
           "temperature_cold_wash": "Cold Wash",
           "temperature_20": "20 \u00b0C",
           "temperature_30": "30 \u00b0C",
-          "temperature_40": "40 \u00b0C"
+          "temperature_40": "40 \u00b0C",
+          "60c": "60C",
+          "90c": "90C"
         }
       },
       "washer_spin": {
         "name": "Spin",
         "state": {
           "spin_no_spin": "No Spin",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
           "spin_rinse_hold": "Rinse Hold",
           "spin_600": "600",
           "spin_800": "800",
@@ -125,12 +131,18 @@
       "custom_duration_level": {
         "name": "Custom Duration Level",
         "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
           "2": "2",
           "3": "3",
           "4": "4",
           "5": "5",
-          "6": "6"
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
         }
       },
       "washer_extra_rinse_count": {
@@ -144,7 +156,7 @@
         }
       },
       "remote_control": {
-        "name": "Remote Control"
+        "name": "Remote control"
       },
       "washer_warning_door_is_open": {
         "name": "Door is open"
@@ -351,13 +363,19 @@
           "temperature_cold_wash": "Cold Wash",
           "temperature_20": "20 \u00b0C",
           "temperature_30": "30 \u00b0C",
-          "temperature_40": "40 \u00b0C"
+          "temperature_40": "40 \u00b0C",
+          "60c": "60C",
+          "90c": "90C"
         }
       },
       "washer_spin": {
         "name": "Spin",
         "state": {
           "spin_no_spin": "No Spin",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
           "spin_rinse_hold": "Rinse Hold",
           "spin_600": "600",
           "spin_800": "800",
@@ -376,12 +394,18 @@
       "custom_duration_level": {
         "name": "Custom Duration Level",
         "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
           "2": "2",
           "3": "3",
           "4": "4",
           "5": "5",
-          "6": "6"
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
         }
       },
       "washer_extra_rinse_count": {
@@ -447,7 +471,7 @@
         "name": "Remaining"
       },
       "remote_control": {
-        "name": "Remote Control"
+        "name": "Remote control"
       },
       "washer_warning_door_is_open": {
         "name": "Door is open"
@@ -599,8 +623,8 @@
       "dishwasher_traywash": {
         "name": "Tray Wash"
       },
-      "dishwasher_fast+": {
-        "name": "Fast+"
+      "dishwasher_fastplus": {
+        "name": "Dishwasher fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "Steamgloss"
@@ -686,7 +710,7 @@
     },
     "binary_sensor": {
       "remote_control": {
-        "name": "Remote Control"
+        "name": "Remote control"
       },
       "washer_warning_door_is_open": {
         "name": "Door is open"
@@ -770,8 +794,8 @@
       "dishwasher_traywash": {
         "name": "Tray Wash"
       },
-      "dishwasher_fast+": {
-        "name": "Fast+"
+      "dishwasher_fastplus": {
+        "name": "Dishwasher fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "Steamgloss"

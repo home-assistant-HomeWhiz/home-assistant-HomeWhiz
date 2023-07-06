@@ -22,6 +22,7 @@
           "program_synthetics": "Syntetisk",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
+          "program_delicates": "PROGRAM_DELICATES",
           "program_spin_pump": "Spin+Drain",
           "program_rinsing": "Skylling",
           "program_darkwash": "M\u00f8rkt t\u00f8y (dongeribukser)",
@@ -31,6 +32,7 @@
           "program_duvet": "Dyne",
           "program_shirts": "Skjorter",
           "program_drum_clean": "Trommelrengj\u00f8ring",
+          "program_mix": "PROGRAM_MIX",
           "program_curtain": "Gardiner",
           "program_lingerie": "Dameundert\u00f8y",
           "program_soft_toys": "Myke leker",
@@ -52,13 +54,19 @@
           "temperature_cold_wash": "Kaldvask",
           "temperature_20": "20\u00a0\u00b0C",
           "temperature_30": "30\u00a0\u00b0C",
-          "temperature_40": "40\u00a0\u00b0C"
+          "temperature_40": "40\u00a0\u00b0C",
+          "60c": "60C",
+          "90c": "90C"
         }
       },
       "washer_spin": {
         "name": "Sentrifugering",
         "state": {
           "spin_no_spin": "Uten sentrifugering",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
           "spin_rinse_hold": "Skyllestopp",
           "spin_600": "600",
           "spin_800": "800",
@@ -77,12 +85,18 @@
       "custom_duration_level": {
         "name": "Egendefinert varighetsniv\u00e5",
         "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
           "2": "2",
           "3": "3",
           "4": "4",
           "5": "5",
-          "6": "6"
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
         }
       },
       "washer_extra_rinse_count": {
@@ -96,7 +110,7 @@
         }
       },
       "remote_control": {
-        "name": "Fjernstyring"
+        "name": "Fjernkontroll"
       },
       "washer_warning_door_is_open": {
         "name": "D\u00f8ren er \u00e5pen"
@@ -154,6 +168,7 @@
           "program_30min": "Mini 30'",
           "program_prewash": "Forvask",
           "program_hygiene": "HygieneCare",
+          "program_daily": "PROGRAM_DAILY",
           "program_silent": "Stillevask",
           "program_makine_temizleme": "Innvendig rengj\u00f8ring"
         }
@@ -270,6 +285,7 @@
           "program_synthetics": "Syntetisk",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
+          "program_delicates": "PROGRAM_DELICATES",
           "program_spin_pump": "Spin+Drain",
           "program_rinsing": "Skylling",
           "program_darkwash": "M\u00f8rkt t\u00f8y (dongeribukser)",
@@ -279,6 +295,7 @@
           "program_duvet": "Dyne",
           "program_shirts": "Skjorter",
           "program_drum_clean": "Trommelrengj\u00f8ring",
+          "program_mix": "PROGRAM_MIX",
           "program_curtain": "Gardiner",
           "program_lingerie": "Dameundert\u00f8y",
           "program_soft_toys": "Myke leker",
@@ -300,13 +317,19 @@
           "temperature_cold_wash": "Kaldvask",
           "temperature_20": "20\u00a0\u00b0C",
           "temperature_30": "30\u00a0\u00b0C",
-          "temperature_40": "40\u00a0\u00b0C"
+          "temperature_40": "40\u00a0\u00b0C",
+          "60c": "60C",
+          "90c": "90C"
         }
       },
       "washer_spin": {
         "name": "Sentrifugering",
         "state": {
           "spin_no_spin": "Uten sentrifugering",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
           "spin_rinse_hold": "Skyllestopp",
           "spin_600": "600",
           "spin_800": "800",
@@ -325,12 +348,18 @@
       "custom_duration_level": {
         "name": "Egendefinert varighetsniv\u00e5",
         "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
           "2": "2",
           "3": "3",
           "4": "4",
           "5": "5",
-          "6": "6"
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
         }
       },
       "washer_extra_rinse_count": {
@@ -396,7 +425,7 @@
         "name": "Igjen"
       },
       "remote_control": {
-        "name": "Fjernstyring"
+        "name": "Fjernkontroll"
       },
       "washer_warning_door_is_open": {
         "name": "D\u00f8ren er \u00e5pen"
@@ -496,6 +525,7 @@
           "program_30min": "Mini 30'",
           "program_prewash": "Forvask",
           "program_hygiene": "HygieneCare",
+          "program_daily": "PROGRAM_DAILY",
           "program_silent": "Stillevask",
           "program_makine_temizleme": "Innvendig rengj\u00f8ring"
         }
@@ -547,8 +577,8 @@
       "dishwasher_traywash": {
         "name": "Brettvask"
       },
-      "dishwasher_fast+": {
-        "name": "Ekspress"
+      "dishwasher_fastplus": {
+        "name": "Oppvaskmaskin fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "SteamGloss"
@@ -634,7 +664,7 @@
     },
     "binary_sensor": {
       "remote_control": {
-        "name": "Fjernstyring"
+        "name": "Fjernkontroll"
       },
       "washer_warning_door_is_open": {
         "name": "D\u00f8ren er \u00e5pen"
@@ -718,8 +748,8 @@
       "dishwasher_traywash": {
         "name": "Brettvask"
       },
-      "dishwasher_fast+": {
-        "name": "Ekspress"
+      "dishwasher_fastplus": {
+        "name": "Oppvaskmaskin fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "SteamGloss"

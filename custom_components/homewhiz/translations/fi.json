@@ -22,6 +22,7 @@
           "program_synthetics": "Synteettinen",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
+          "program_delicates": "PROGRAM_DELICATES",
           "program_spin_pump": "Spin+Drain",
           "program_rinsing": "Huuhtelu",
           "program_darkwash": "Tummat (farkut)",
@@ -53,13 +54,19 @@
           "temperature_cold_wash": "Kylm\u00e4pesu",
           "temperature_20": "20 \u00b0C",
           "temperature_30": "30 \u00b0C",
-          "temperature_40": "40 \u00b0C"
+          "temperature_40": "40 \u00b0C",
+          "60c": "60C",
+          "90c": "90C"
         }
       },
       "washer_spin": {
         "name": "Linkous",
         "state": {
           "spin_no_spin": "Ei linkousta",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
           "spin_rinse_hold": "Huuhtelupito",
           "spin_600": "600",
           "spin_800": "800",
@@ -78,12 +85,18 @@
       "custom_duration_level": {
         "name": "Oletuskestotaso",
         "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
           "2": "2",
           "3": "3",
           "4": "4",
           "5": "5",
-          "6": "6"
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
         }
       },
       "washer_extra_rinse_count": {
@@ -97,7 +110,7 @@
         }
       },
       "remote_control": {
-        "name": "Kauko-ohjain"
+        "name": "Et\u00e4ohjaus"
       },
       "washer_warning_door_is_open": {
         "name": "Luukku on auki"
@@ -155,6 +168,7 @@
           "program_30min": "Mini 30'",
           "program_prewash": "Esipesu",
           "program_hygiene": "Hygienia",
+          "program_daily": "PROGRAM_DAILY",
           "program_silent": "Hiljainen pesu",
           "program_makine_temizleme": "Sis\u00e4inen puhdistus"
         }
@@ -271,6 +285,7 @@
           "program_synthetics": "Synteettinen",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
+          "program_delicates": "PROGRAM_DELICATES",
           "program_spin_pump": "Spin+Drain",
           "program_rinsing": "Huuhtelu",
           "program_darkwash": "Tummat (farkut)",
@@ -302,13 +317,19 @@
           "temperature_cold_wash": "Kylm\u00e4pesu",
           "temperature_20": "20 \u00b0C",
           "temperature_30": "30 \u00b0C",
-          "temperature_40": "40 \u00b0C"
+          "temperature_40": "40 \u00b0C",
+          "60c": "60C",
+          "90c": "90C"
         }
       },
       "washer_spin": {
         "name": "Linkous",
         "state": {
           "spin_no_spin": "Ei linkousta",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
           "spin_rinse_hold": "Huuhtelupito",
           "spin_600": "600",
           "spin_800": "800",
@@ -327,12 +348,18 @@
       "custom_duration_level": {
         "name": "Oletuskestotaso",
         "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
           "2": "2",
           "3": "3",
           "4": "4",
           "5": "5",
-          "6": "6"
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
         }
       },
       "washer_extra_rinse_count": {
@@ -398,7 +425,7 @@
         "name": "J\u00e4ljell\u00e4"
       },
       "remote_control": {
-        "name": "Kauko-ohjain"
+        "name": "Et\u00e4ohjaus"
       },
       "washer_warning_door_is_open": {
         "name": "Luukku on auki"
@@ -498,6 +525,7 @@
           "program_30min": "Mini 30'",
           "program_prewash": "Esipesu",
           "program_hygiene": "Hygienia",
+          "program_daily": "PROGRAM_DAILY",
           "program_silent": "Hiljainen pesu",
           "program_makine_temizleme": "Sis\u00e4inen puhdistus"
         }
@@ -549,8 +577,8 @@
       "dishwasher_traywash": {
         "name": "Tarjotinpesu"
       },
-      "dishwasher_fast+": {
-        "name": "Pika"
+      "dishwasher_fastplus": {
+        "name": "Astianpesukone fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "H\u00f6yrykiillotus"
@@ -636,7 +664,7 @@
     },
     "binary_sensor": {
       "remote_control": {
-        "name": "Kauko-ohjain"
+        "name": "Et\u00e4ohjaus"
       },
       "washer_warning_door_is_open": {
         "name": "Luukku on auki"
@@ -720,8 +748,8 @@
       "dishwasher_traywash": {
         "name": "Tarjotinpesu"
       },
-      "dishwasher_fast+": {
-        "name": "Pika"
+      "dishwasher_fastplus": {
+        "name": "Astianpesukone fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "H\u00f6yrykiillotus"
