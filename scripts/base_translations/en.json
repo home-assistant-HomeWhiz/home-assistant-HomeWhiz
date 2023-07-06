@@ -1,0 +1,48 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "Device is already configured",
+      "already_in_progress": "Configuration flow is already in progress",
+      "no_devices_found": "No devices found on the network"
+    },
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "description": "Select a connection type",
+        "menu_options": {
+          "select_bluetooth_device": "Bluetooth",
+          "provide_cloud_credentials": "Cloud"
+        }
+      },
+      "select_bluetooth_device": {
+        "description": "Choose a device to setup",
+        "data": {
+          "address": "Device"
+        }
+      },
+      "bluetooth_connect": {
+        "description": "Provide HomeWhiz credentials",
+        "data": {
+          "username": "Username",
+          "password": "Password"
+        }
+      },
+      "provide_cloud_credentials": {
+        "description": "Provide HomeWhiz credentials",
+        "data": {
+          "username": "Username",
+          "password": "Password"
+        }
+      },
+      "select_cloud_device": {
+        "description": "Choose a device to setup",
+        "data": {
+          "id": "Device"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Invalid authentication"
+    }
+  }
+}

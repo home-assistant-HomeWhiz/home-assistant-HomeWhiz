@@ -17,5 +17,750 @@
         "description": "Kurulum i\u00e7in bir cihaz se\u00e7in"
       }
     }
+  },
+  "entity": {
+    "select": {
+      "state": {
+        "name": "Devlet",
+        "state": {
+          "device_state_on": "A\u00e7\u0131k",
+          "device_state_off": "Kapal\u0131",
+          "device_state_running": "\u00c7al\u0131\u015f\u0131yor",
+          "device_state_paused": "Duraklat\u0131ld\u0131",
+          "device_state_time_delay_active": "Zaman Erteleme Aktif",
+          "device_state_cancelling": "\u0130ptal ediliyor",
+          "device_state_door_open": "Kap\u0131 a\u00e7\u0131k !",
+          "device_state_settings": "Ayarlar"
+        }
+      },
+      "washer_program": {
+        "name": "Program",
+        "state": {
+          "program_cottons": "Pamuklu",
+          "program_eco_40_60": "Eco 40-60",
+          "program_synthetics": "Sentetik",
+          "program_mini_mini14": "Xpress",
+          "program_wool_handwash": "Woollens",
+          "program_delicates": "Narin",
+          "program_spin_pump": "Spin+Drain",
+          "program_rinsing": "Durulama",
+          "program_darkwash": "Koyu Renkliler (Kot)",
+          "program_outdoor_sports_goretex": "Spor",
+          "program_stain": "Leke Program\u0131",
+          "program_hygeine": "Bebek+",
+          "program_duvet": "Yorgan/Ku\u015ft\u00fcy\u00fc",
+          "program_shirts": "G\u00f6mlek",
+          "program_drum_clean": "Makine Temizleme",
+          "program_mix": "Karma",
+          "program_curtain": "Perde",
+          "program_lingerie": "\u0130\u00e7 \u00c7ama\u015f\u0131r\u0131",
+          "program_soft_toys": "Yumu\u015fak Oyuncaklar",
+          "program_towel": "Havlu",
+          "program_cottons_eco": "Pamuklu Ekonomik",
+          "program_dryer_cotton": "Pamuklu Kurutma",
+          "program_dryer_synthetics": "Sentetik Kurutma",
+          "program_hygiene_wash_dry": "Bebek+ Y\u0131ka & Kurut",
+          "program_4kg_wash_dry": "4 kg Y\u0131ka & Kurut",
+          "program_wash_wear": "Y\u0131ka & Giy",
+          "program_dark_wash": "Koyu Renkliler",
+          "program_outdoor": "Spor",
+          "program_drum_clean_plus": "Kazan Temizleme+"
+        }
+      },
+      "washer_temperature": {
+        "name": "S\u0131cakl\u0131k",
+        "state": {
+          "temperature_cold_wash": "So\u011fuk Y\u0131kama",
+          "temperature_20": "20 \u00b0C",
+          "temperature_30": "30 \u00b0C",
+          "temperature_40": "40 \u00b0C"
+        }
+      },
+      "washer_spin": {
+        "name": "Devir",
+        "state": {
+          "spin_no_spin": "S\u0131kma Yok",
+          "spin_rinse_hold": "Suda B\u0131rakma",
+          "spin_600": "600",
+          "spin_800": "800",
+          "spin_1200": "1200",
+          "spin_1400": "1400"
+        }
+      },
+      "washer_fast_plus": {
+        "name": "Fast+",
+        "state": {
+          "fast_plus_off": "Kapal\u0131",
+          "fast_plus_on_fast": "H\u0131zl\u0131",
+          "fast_plus_on_fast_plus": "\u00c7ok H\u0131zl\u0131"
+        }
+      },
+      "custom_duration_level": {
+        "name": "Ki\u015fiselle\u015fmi\u015f S\u00fcre Seviyesi",
+        "state": {
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "4",
+          "5": "5",
+          "6": "6"
+        }
+      },
+      "washer_extra_rinse_count": {
+        "name": "Ekstra Durulama Say\u0131s\u0131"
+      },
+      "settings_volume": {
+        "name": "Tu\u015f Sesi",
+        "state": {
+          "volume_low": "D\u00fc\u015f\u00fck",
+          "volume_high": "Y\u00fcksek"
+        }
+      },
+      "remote_control": {
+        "name": "Uzaktan Kontrol"
+      },
+      "washer_warning_door_is_open": {
+        "name": "Kapak a\u00e7\u0131k"
+      },
+      "washer_warning_no_water": {
+        "name": "Su kesik"
+      },
+      "washer_warning_security": {
+        "name": "G\u00fcvenlik"
+      },
+      "oven_program": {
+        "name": "Program",
+        "state": {
+          "program_static": "Statik",
+          "program_static_fan": "Statik + Fan",
+          "program_fan_heating": "Fan Destekli",
+          "program_multi_cooking": "Multi (3D) Pi\u015firme",
+          "program_fan_heat_bottom": "Pizza",
+          "program_eco_grill": "K\u00fc\u00e7\u00fck Izgara",
+          "program_full_grill": "Izgara",
+          "program_full_grill_fan": "Izgara+Fan",
+          "program_bottom_heating": "Alt Is\u0131t\u0131c\u0131",
+          "program_defrost": "Buz \u00c7\u00f6zme",
+          "program_warm_keeping": "S\u0131cak Tutma",
+          "program_eco_fan_heating": "Ekonomik Fanl\u0131",
+          "program_steam_cleaning": "Buharl\u0131 Temizleme",
+          "program_eco_pyro": "Eko Temizleme",
+          "program_pyro": "Temizleme"
+        }
+      },
+      "oven_temperature": {
+        "name": "S\u0131cakl\u0131k"
+      },
+      "settings_brightness": {
+        "name": "Parlakl\u0131k"
+      },
+      "oven_warning_door_is_open": {
+        "name": "Kapak a\u00e7\u0131k"
+      },
+      "oven_warning_door_locked": {
+        "name": "Kapak kilitli"
+      },
+      "oven_warning_error": {
+        "name": "\u00dcr\u00fcnde beklenmedik bir hata olu\u015ftu.L\u00fctfen kullanma k\u0131lavuzunu kontrol ediniz."
+      },
+      "program": {
+        "name": "\u00e9",
+        "state": {
+          "program_auto": "Otomatik",
+          "program_mix_wash_+": "Karma",
+          "program_intensive_70": "Yo\u011fun 70\u00b0C",
+          "program_eco_50": "Eko 50\u00b0C",
+          "program_glasscare": "Hassas",
+          "program_new58min": "H\u0131zl\u0131 58'",
+          "program_30min": "Mini 30'",
+          "program_prewash": "\u00d6n Y\u0131kama",
+          "program_hygiene": "Ekstra Hijyen",
+          "program_daily": "G\u00fcnl\u00fck Y\u0131kama",
+          "program_silent": "Ekstra Sessiz",
+          "program_makine_temizleme": "Makine Y\u0131kama"
+        }
+      },
+      "setting_detergent_type": {
+        "name": "Deterjan Tipi",
+        "state": {
+          "setting_detergent_type_powder": "Toz Deterjan",
+          "setting_detergent_type_tablet": "Tablet Deterjan",
+          "setting_detergent_type_liquid": "S\u0131v\u0131/Jel Deterjan"
+        }
+      },
+      "dishwasher_rinse_aid_level": {
+        "name": "Parlat\u0131c\u0131 Seviyesi"
+      },
+      "dishwasher_water_hardness": {
+        "name": "Su sertli\u011fi"
+      },
+      "dishwasher_warning_no_rinse_aid": {
+        "name": "Parlat\u0131c\u0131 yok"
+      },
+      "dishwasher_warning_no_salt": {
+        "name": "Tuz yok"
+      },
+      "dishwasher_warning_no_water": {
+        "name": "Su kesik"
+      },
+      "dishwasher_warning_check_the_filter": {
+        "name": "Filtreyi kontrol edin"
+      },
+      "dishwasher_warning_door_is_open": {
+        "name": "Kap\u0131 a\u00e7\u0131k"
+      },
+      "dishwasher_warning_call_service": {
+        "name": "Servisi aray\u0131n"
+      },
+      "dishwasher_liquid_detergent_low": {
+        "name": "S\u0131v\u0131/Jel Deterjan Az"
+      },
+      "washer_dry": {
+        "name": "Kurutma",
+        "state": {
+          "dry_off": "Kapal\u0131",
+          "dry_extra": "Ekstra Kuru",
+          "dry_cabinet": "Wardrobe Dry",
+          "dry_iron": "\u00dct\u00fc Kurulu\u011fu",
+          "dry_10": "45 dk",
+          "dry_20": "20 dk",
+          "dry_30": "30 dk",
+          "dry_60": "60 dk",
+          "dry_90": "90 dk",
+          "dry_120": "15 dk",
+          "dry_150": "150 dk"
+        }
+      },
+      "washer_rinse_count": {
+        "name": "Durulama Miktar\u0131"
+      },
+      "air_conditioner_soft_air": {
+        "name": "Yumu\u015fak Hava",
+        "state": {
+          "air_conditioner_soft_air_off": "Kapal\u0131",
+          "air_conditioner_soft_air_up": "Yukar\u0131",
+          "air_conditioner_soft_air_down": "A\u015fa\u011f\u0131"
+        }
+      },
+      "air_conditioner_up_down_vane_control": {
+        "name": "Dikey Hava Ak\u0131\u015f\u0131",
+        "state": {
+          "up_down_vane_control_off": "Kapal\u0131",
+          "up_down_vane_control_6": "6",
+          "up_down_vane_control_5": "5",
+          "up_down_vane_control_4": "4",
+          "up_down_vane_control_3": "3",
+          "up_down_vane_control_2": "2",
+          "up_down_vane_control_1": "1",
+          "up_down_vane_control_auto": "Otomatik"
+        }
+      },
+      "air_conditioner_left_right_vane_control": {
+        "name": "Yatay Hava Ak\u0131\u015f\u0131",
+        "state": {
+          "left_right_vane_control_off": "Kapal\u0131",
+          "left_right_vane_control_1": "1",
+          "left_right_vane_control_2": "2",
+          "left_right_vane_control_3": "3",
+          "left_right_vane_control_4": "4",
+          "left_right_vane_control_5": "5",
+          "left_right_vane_control_left": "Sol",
+          "left_right_vane_control_right": "Sa\u011f",
+          "left_right_vane_control_auto": "Otomatik"
+        }
+      }
+    },
+    "sensor": {
+      "state": {
+        "name": "Devlet",
+        "state": {
+          "device_state_on": "A\u00e7\u0131k",
+          "device_state_off": "Kapal\u0131",
+          "device_state_running": "\u00c7al\u0131\u015f\u0131yor",
+          "device_state_paused": "Duraklat\u0131ld\u0131",
+          "device_state_time_delay_active": "Zaman Erteleme Aktif",
+          "device_state_cancelling": "\u0130ptal ediliyor",
+          "device_state_door_open": "Kap\u0131 a\u00e7\u0131k !",
+          "device_state_settings": "Ayarlar"
+        }
+      },
+      "washer_program": {
+        "name": "Program",
+        "state": {
+          "program_cottons": "Pamuklu",
+          "program_eco_40_60": "Eco 40-60",
+          "program_synthetics": "Sentetik",
+          "program_mini_mini14": "Xpress",
+          "program_wool_handwash": "Woollens",
+          "program_delicates": "Narin",
+          "program_spin_pump": "Spin+Drain",
+          "program_rinsing": "Durulama",
+          "program_darkwash": "Koyu Renkliler (Kot)",
+          "program_outdoor_sports_goretex": "Spor",
+          "program_stain": "Leke Program\u0131",
+          "program_hygeine": "Bebek+",
+          "program_duvet": "Yorgan/Ku\u015ft\u00fcy\u00fc",
+          "program_shirts": "G\u00f6mlek",
+          "program_drum_clean": "Makine Temizleme",
+          "program_mix": "Karma",
+          "program_curtain": "Perde",
+          "program_lingerie": "\u0130\u00e7 \u00c7ama\u015f\u0131r\u0131",
+          "program_soft_toys": "Yumu\u015fak Oyuncaklar",
+          "program_towel": "Havlu",
+          "program_cottons_eco": "Pamuklu Ekonomik",
+          "program_dryer_cotton": "Pamuklu Kurutma",
+          "program_dryer_synthetics": "Sentetik Kurutma",
+          "program_hygiene_wash_dry": "Bebek+ Y\u0131ka & Kurut",
+          "program_4kg_wash_dry": "4 kg Y\u0131ka & Kurut",
+          "program_wash_wear": "Y\u0131ka & Giy",
+          "program_dark_wash": "Koyu Renkliler",
+          "program_outdoor": "Spor",
+          "program_drum_clean_plus": "Kazan Temizleme+"
+        }
+      },
+      "washer_temperature": {
+        "name": "S\u0131cakl\u0131k",
+        "state": {
+          "temperature_cold_wash": "So\u011fuk Y\u0131kama",
+          "temperature_20": "20 \u00b0C",
+          "temperature_30": "30 \u00b0C",
+          "temperature_40": "40 \u00b0C"
+        }
+      },
+      "washer_spin": {
+        "name": "Devir",
+        "state": {
+          "spin_no_spin": "S\u0131kma Yok",
+          "spin_rinse_hold": "Suda B\u0131rakma",
+          "spin_600": "600",
+          "spin_800": "800",
+          "spin_1200": "1200",
+          "spin_1400": "1400"
+        }
+      },
+      "washer_fast_plus": {
+        "name": "Fast+",
+        "state": {
+          "fast_plus_off": "Kapal\u0131",
+          "fast_plus_on_fast": "H\u0131zl\u0131",
+          "fast_plus_on_fast_plus": "\u00c7ok H\u0131zl\u0131"
+        }
+      },
+      "custom_duration_level": {
+        "name": "Ki\u015fiselle\u015fmi\u015f S\u00fcre Seviyesi",
+        "state": {
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "4",
+          "5": "5",
+          "6": "6"
+        }
+      },
+      "washer_extra_rinse_count": {
+        "name": "Ekstra Durulama Say\u0131s\u0131"
+      },
+      "settings_volume": {
+        "name": "Tu\u015f Sesi",
+        "state": {
+          "volume_low": "D\u00fc\u015f\u00fck",
+          "volume_high": "Y\u00fcksek"
+        }
+      },
+      "sub_state": {
+        "name": "Alt durum",
+        "state": {
+          "washer_substate_washing": "Y\u0131kama",
+          "washer_substate_spin": "S\u0131kma",
+          "washer_water_intake": "Su al\u0131n\u0131yor",
+          "washer_substate_prewash": "\u00d6n y\u0131kama",
+          "washer_substate_rinsing": "Durulama",
+          "washer_substate_softener": "Yumu\u015fat\u0131c\u0131",
+          "washer_substate_program_started": "Program ba\u015fl\u0131yor",
+          "washer_substate_time_delay_enabled": "Biti\u015f zaman\u0131 aktif",
+          "washer_substate_paused": "Duraklat\u0131ld\u0131",
+          "washer_substate_analysing": "Analiz yap\u0131l\u0131yor",
+          "washer_substate_door_locked": "Kapak kilitli",
+          "washer_substate_opening_door": "Kapak a\u00e7\u0131l\u0131yor",
+          "washer_substate_locking_door": "Kapak kilitleniyor",
+          "washer_substate_remove_laundry": "Y\u0131kama bitti; \u00e7ama\u015f\u0131rlar\u0131n\u0131z\u0131 al\u0131n",
+          "washer_substate_add_laundry": "\u00c7ama\u015f\u0131r koyabilirsiniz",
+          "washer_substate_rinse_hold": "Suda bekletme devrede; devir h\u0131z\u0131 se\u00e7iniz",
+          "washer_substate_remote_anticrease": "Ak\u0131ll\u0131 k\u0131r\u0131\u015f\u0131k azaltma \u00e7al\u0131\u015f\u0131yor",
+          "washer_substate_drying": "Kurutma",
+          "oven_message_good_appetite": "Afiyet Olsun",
+          "oven_message_cooking": "Pi\u015firiliyor",
+          "oven_message_paused": "Durduruldu",
+          "oven_message_waiting": "Bekliyor",
+          "oven_message_defrosting": "Buz \u00c7\u00f6zme",
+          "operation_completed": "\u0130\u015flem tamamland\u0131",
+          "oven_message_preheating": "\u00d6n Is\u0131tma",
+          "oven_message_preheating_completed": "\u00d6n \u0131s\u0131tma tamamland\u0131",
+          "oven_message_cleaning": "Temizleniyor",
+          "oven_message_cleaning_completed": "Temizlenme bitti",
+          "dishwasher_message_time_delay_started": "Biti\u015f zaman\u0131 etkin",
+          "dishwasher_message_paused": "Program duraklat\u0131ld\u0131",
+          "dishwasher_message_program_finished": "Program bitti",
+          "dishwasher_message_program_sanitized": "Program bitti ve dezenfekte edildi",
+          "dishwasher_message_cancelling": "\u0130ptal ediliyor...",
+          "dishwasher_message_time_delay_cancelled": "Gecikme iptal edildi",
+          "dishwasher_message_program_started": "Program ba\u015flad\u0131",
+          "dishwasher_message_washing": "Y\u0131k\u0131yor",
+          "dishwasher_message_rinsing": "Duruluyor",
+          "dishwasher_message_drying": "Kurutuluyor"
+        }
+      },
+      "washer_delay": {
+        "name": "Program Biti\u015f Zaman\u0131"
+      },
+      "washer_duration": {
+        "name": "Program S\u00fcresi"
+      },
+      "washer_remaining": {
+        "name": "Kalan S\u00fcre"
+      },
+      "remote_control": {
+        "name": "Uzaktan Kontrol"
+      },
+      "washer_warning_door_is_open": {
+        "name": "Kapak a\u00e7\u0131k"
+      },
+      "washer_warning_no_water": {
+        "name": "Su kesik"
+      },
+      "washer_warning_security": {
+        "name": "G\u00fcvenlik"
+      },
+      "washer_prewash": {
+        "name": "\u00d6n y\u0131kama"
+      },
+      "washer_extrarinse": {
+        "name": "\u0130lave Durulama"
+      },
+      "washer_hidden_anti_crease": {
+        "name": "Ak\u0131ll\u0131 K\u0131r\u0131\u015f\u0131k Azaltma"
+      },
+      "washer_steam": {
+        "name": "Buhar"
+      },
+      "washer_phr": {
+        "name": "Hayvan T\u00fcy\u00fc Uzakla\u015ft\u0131rma"
+      },
+      "washer_add_water": {
+        "name": "\u0130lave Su"
+      },
+      "washer_soaking": {
+        "name": "Suda bast\u0131rma"
+      },
+      "washer_night": {
+        "name": "Gece Modu"
+      },
+      "washer_anticrease": {
+        "name": "K\u0131r\u0131\u015f\u0131k Azaltma"
+      },
+      "oven_program": {
+        "name": "Program",
+        "state": {
+          "program_static": "Statik",
+          "program_static_fan": "Statik + Fan",
+          "program_fan_heating": "Fan Destekli",
+          "program_multi_cooking": "Multi (3D) Pi\u015firme",
+          "program_fan_heat_bottom": "Pizza",
+          "program_eco_grill": "K\u00fc\u00e7\u00fck Izgara",
+          "program_full_grill": "Izgara",
+          "program_full_grill_fan": "Izgara+Fan",
+          "program_bottom_heating": "Alt Is\u0131t\u0131c\u0131",
+          "program_defrost": "Buz \u00c7\u00f6zme",
+          "program_warm_keeping": "S\u0131cak Tutma",
+          "program_eco_fan_heating": "Ekonomik Fanl\u0131",
+          "program_steam_cleaning": "Buharl\u0131 Temizleme",
+          "program_eco_pyro": "Eko Temizleme",
+          "program_pyro": "Temizleme"
+        }
+      },
+      "oven_temperature": {
+        "name": "S\u0131cakl\u0131k"
+      },
+      "settings_brightness": {
+        "name": "Parlakl\u0131k"
+      },
+      "variable_delay": {
+        "name": "Program Biti\u015f Zaman\u0131"
+      },
+      "variable_oven_duration": {
+        "name": "Pi\u015firme S\u00fcresi (Saat : Dakika)"
+      },
+      "variable_remaining": {
+        "name": "Kalan s\u00fcre"
+      },
+      "oven_warning_door_is_open": {
+        "name": "Kapak a\u00e7\u0131k"
+      },
+      "oven_warning_door_locked": {
+        "name": "Kapak kilitli"
+      },
+      "oven_warning_error": {
+        "name": "\u00dcr\u00fcnde beklenmedik bir hata olu\u015ftu.L\u00fctfen kullanma k\u0131lavuzunu kontrol ediniz."
+      },
+      "oven_booster": {
+        "name": "H\u0131zl\u0131 Is\u0131tma"
+      },
+      "oven_skip_preheating": {
+        "name": "Atla >"
+      },
+      "program": {
+        "name": "\u00e9",
+        "state": {
+          "program_auto": "Otomatik",
+          "program_mix_wash_+": "Karma",
+          "program_intensive_70": "Yo\u011fun 70\u00b0C",
+          "program_eco_50": "Eko 50\u00b0C",
+          "program_glasscare": "Hassas",
+          "program_new58min": "H\u0131zl\u0131 58'",
+          "program_30min": "Mini 30'",
+          "program_prewash": "\u00d6n Y\u0131kama",
+          "program_hygiene": "Ekstra Hijyen",
+          "program_daily": "G\u00fcnl\u00fck Y\u0131kama",
+          "program_silent": "Ekstra Sessiz",
+          "program_makine_temizleme": "Makine Y\u0131kama"
+        }
+      },
+      "setting_detergent_type": {
+        "name": "Deterjan Tipi",
+        "state": {
+          "setting_detergent_type_powder": "Toz Deterjan",
+          "setting_detergent_type_tablet": "Tablet Deterjan",
+          "setting_detergent_type_liquid": "S\u0131v\u0131/Jel Deterjan"
+        }
+      },
+      "dishwasher_rinse_aid_level": {
+        "name": "Parlat\u0131c\u0131 Seviyesi"
+      },
+      "dishwasher_water_hardness": {
+        "name": "Su sertli\u011fi"
+      },
+      "dishwasher_delay": {
+        "name": "Program Biti\u015f Zaman\u0131"
+      },
+      "dishwasher_duration": {
+        "name": "S\u00fcre"
+      },
+      "dishwasher_remaining": {
+        "name": "Kalan Zaman"
+      },
+      "dishwasher_warning_no_rinse_aid": {
+        "name": "Parlat\u0131c\u0131 yok"
+      },
+      "dishwasher_warning_no_salt": {
+        "name": "Tuz yok"
+      },
+      "dishwasher_warning_no_water": {
+        "name": "Su kesik"
+      },
+      "dishwasher_warning_check_the_filter": {
+        "name": "Filtreyi kontrol edin"
+      },
+      "dishwasher_warning_door_is_open": {
+        "name": "Kap\u0131 a\u00e7\u0131k"
+      },
+      "dishwasher_warning_call_service": {
+        "name": "Servisi aray\u0131n"
+      },
+      "dishwasher_liquid_detergent_low": {
+        "name": "S\u0131v\u0131/Jel Deterjan Az"
+      },
+      "dishwasher_traywash": {
+        "name": "Tepsi Y\u0131kama"
+      },
+      "dishwasher_fast+": {
+        "name": "H\u0131zl\u0131"
+      },
+      "dishwasher_steamgloss": {
+        "name": "Buharl\u0131 parlat"
+      },
+      "dishwasher_extrarinse": {
+        "name": "Ekstra Durulama"
+      },
+      "dishwasher_halfload": {
+        "name": "Yar\u0131m Y\u00fck"
+      },
+      "setting_auto_door": {
+        "name": "Otomatik Kap\u0131 A\u00e7ma"
+      },
+      "setting_inner_illumination": {
+        "name": "\u0130\u00e7 Ayd\u0131nlatma"
+      },
+      "washer_dry": {
+        "name": "Kurutma",
+        "state": {
+          "dry_off": "Kapal\u0131",
+          "dry_extra": "Ekstra Kuru",
+          "dry_cabinet": "Wardrobe Dry",
+          "dry_iron": "\u00dct\u00fc Kurulu\u011fu",
+          "dry_10": "45 dk",
+          "dry_20": "20 dk",
+          "dry_30": "30 dk",
+          "dry_60": "60 dk",
+          "dry_90": "90 dk",
+          "dry_120": "15 dk",
+          "dry_150": "150 dk"
+        }
+      },
+      "washer_rinse_count": {
+        "name": "Durulama Miktar\u0131"
+      },
+      "air_conditioner_soft_air": {
+        "name": "Yumu\u015fak Hava",
+        "state": {
+          "air_conditioner_soft_air_off": "Kapal\u0131",
+          "air_conditioner_soft_air_up": "Yukar\u0131",
+          "air_conditioner_soft_air_down": "A\u015fa\u011f\u0131"
+        }
+      },
+      "air_conditioner_up_down_vane_control": {
+        "name": "Dikey Hava Ak\u0131\u015f\u0131",
+        "state": {
+          "up_down_vane_control_off": "Kapal\u0131",
+          "up_down_vane_control_6": "6",
+          "up_down_vane_control_5": "5",
+          "up_down_vane_control_4": "4",
+          "up_down_vane_control_3": "3",
+          "up_down_vane_control_2": "2",
+          "up_down_vane_control_1": "1",
+          "up_down_vane_control_auto": "Otomatik"
+        }
+      },
+      "air_conditioner_left_right_vane_control": {
+        "name": "Yatay Hava Ak\u0131\u015f\u0131",
+        "state": {
+          "left_right_vane_control_off": "Kapal\u0131",
+          "left_right_vane_control_1": "1",
+          "left_right_vane_control_2": "2",
+          "left_right_vane_control_3": "3",
+          "left_right_vane_control_4": "4",
+          "left_right_vane_control_5": "5",
+          "left_right_vane_control_left": "Sol",
+          "left_right_vane_control_right": "Sa\u011f",
+          "left_right_vane_control_auto": "Otomatik"
+        }
+      },
+      "air_conditioner_instant_consumption": {
+        "name": "Klima anl\u0131k t\u00fcketimi"
+      },
+      "air_conditioner_sleep_mode_minute": {
+        "name": "Klima uyku modu dakika"
+      },
+      "air_conditioner_auto_switch_off": {
+        "name": "Otomatik Kapanma"
+      },
+      "air_conditioner_auto_switch_on": {
+        "name": "Otomatik A\u00e7\u0131lma"
+      }
+    },
+    "binary_sensor": {
+      "remote_control": {
+        "name": "Uzaktan Kontrol"
+      },
+      "washer_warning_door_is_open": {
+        "name": "Kapak a\u00e7\u0131k"
+      },
+      "washer_warning_no_water": {
+        "name": "Su kesik"
+      },
+      "washer_warning_security": {
+        "name": "G\u00fcvenlik"
+      },
+      "oven_warning_door_is_open": {
+        "name": "Kapak a\u00e7\u0131k"
+      },
+      "oven_warning_door_locked": {
+        "name": "Kapak kilitli"
+      },
+      "oven_warning_error": {
+        "name": "\u00dcr\u00fcnde beklenmedik bir hata olu\u015ftu.L\u00fctfen kullanma k\u0131lavuzunu kontrol ediniz."
+      },
+      "dishwasher_warning_no_rinse_aid": {
+        "name": "Parlat\u0131c\u0131 yok"
+      },
+      "dishwasher_warning_no_salt": {
+        "name": "Tuz yok"
+      },
+      "dishwasher_warning_no_water": {
+        "name": "Su kesik"
+      },
+      "dishwasher_warning_check_the_filter": {
+        "name": "Filtreyi kontrol edin"
+      },
+      "dishwasher_warning_door_is_open": {
+        "name": "Kap\u0131 a\u00e7\u0131k"
+      },
+      "dishwasher_warning_call_service": {
+        "name": "Servisi aray\u0131n"
+      },
+      "dishwasher_liquid_detergent_low": {
+        "name": "S\u0131v\u0131/Jel Deterjan Az"
+      }
+    },
+    "climate": {
+      "ac": {
+        "name": "AC"
+      }
+    },
+    "switch": {
+      "washer_prewash": {
+        "name": "\u00d6n y\u0131kama"
+      },
+      "washer_extrarinse": {
+        "name": "\u0130lave Durulama"
+      },
+      "washer_hidden_anti_crease": {
+        "name": "Ak\u0131ll\u0131 K\u0131r\u0131\u015f\u0131k Azaltma"
+      },
+      "washer_steam": {
+        "name": "Buhar"
+      },
+      "washer_phr": {
+        "name": "Hayvan T\u00fcy\u00fc Uzakla\u015ft\u0131rma"
+      },
+      "washer_add_water": {
+        "name": "\u0130lave Su"
+      },
+      "washer_soaking": {
+        "name": "Suda bast\u0131rma"
+      },
+      "washer_night": {
+        "name": "Gece Modu"
+      },
+      "washer_anticrease": {
+        "name": "K\u0131r\u0131\u015f\u0131k Azaltma"
+      },
+      "oven_booster": {
+        "name": "H\u0131zl\u0131 Is\u0131tma"
+      },
+      "oven_skip_preheating": {
+        "name": "Atla >"
+      },
+      "dishwasher_traywash": {
+        "name": "Tepsi Y\u0131kama"
+      },
+      "dishwasher_fast+": {
+        "name": "H\u0131zl\u0131"
+      },
+      "dishwasher_steamgloss": {
+        "name": "Buharl\u0131 parlat"
+      },
+      "dishwasher_extrarinse": {
+        "name": "Ekstra Durulama"
+      },
+      "dishwasher_halfload": {
+        "name": "Yar\u0131m Y\u00fck"
+      },
+      "setting_auto_door": {
+        "name": "Otomatik Kap\u0131 A\u00e7ma"
+      },
+      "setting_inner_illumination": {
+        "name": "\u0130\u00e7 Ayd\u0131nlatma"
+      }
+    }
   }
 }

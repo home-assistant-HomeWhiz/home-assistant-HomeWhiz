@@ -1,54 +1,8 @@
 {
-  "config": {
-    "abort": {
-      "already_configured": "Device is already configured",
-      "already_in_progress": "Configuration flow is already in progress",
-      "no_devices_found": "No devices found on the network"
-    },
-    "flow_title": "{name}",
-    "step": {
-      "user": {
-        "description": "Select a connection type",
-        "menu_options": {
-          "select_bluetooth_device": "Bluetooth",
-          "provide_cloud_credentials": "Cloud"
-        }
-      },
-      "select_bluetooth_device": {
-        "description": "Choose a device to setup",
-        "data": {
-          "address": "Device"
-        }
-      },
-      "bluetooth_connect": {
-        "description": "Provide HomeWhiz credentials",
-        "data": {
-          "username": "Username",
-          "password": "Password"
-        }
-      },
-      "provide_cloud_credentials": {
-        "description": "Provide HomeWhiz credentials",
-        "data": {
-          "username": "Username",
-          "password": "Password"
-        }
-      },
-      "select_cloud_device": {
-        "description": "Choose a device to setup",
-        "data": {
-          "id": "Device"
-        }
-      }
-    },
-    "error": {
-      "invalid_auth": "Invalid authentication"
-    }
-  },
   "entity": {
     "select": {
       "state": {
-        "name": "State",
+        "name": "Stanje",
         "state": {
           "device_state_on": "On",
           "device_state_off": "Off",
@@ -299,7 +253,7 @@
     },
     "sensor": {
       "state": {
-        "name": "State",
+        "name": "Stanje",
         "state": {
           "device_state_on": "On",
           "device_state_off": "Off",
@@ -395,7 +349,7 @@
         }
       },
       "sub_state": {
-        "name": "Sub state",
+        "name": "Podstanje",
         "state": {
           "washer_substate_washing": "Wash",
           "washer_substate_spin": "Spin",
@@ -672,10 +626,10 @@
         }
       },
       "air_conditioner_instant_consumption": {
-        "name": "Air conditioner instant consumption"
+        "name": "Trenutna poraba klimatske naprave"
       },
       "air_conditioner_sleep_mode_minute": {
-        "name": "Air conditioner sleep mode minute"
+        "name": "Na\u010din mirovanja klimatske naprave v minuti"
       },
       "air_conditioner_auto_switch_off": {
         "name": "Auto turn off"
@@ -730,7 +684,7 @@
     },
     "climate": {
       "ac": {
-        "name": "Ac"
+        "name": "ac"
       }
     },
     "switch": {
