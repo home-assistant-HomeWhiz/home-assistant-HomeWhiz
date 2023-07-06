@@ -1,4 +1,5 @@
 import logging
+import re
 from abc import ABC, abstractmethod
 from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass, fields
@@ -37,11 +38,46 @@ def clamp(value: int) -> int:
     return value if value < 128 else value - 128
 
 
+def to_friendly_name(name: str) -> str:
+    # Generates a translation friendly name based on the key
+    # To filter out forbidden characters
+    # https://stackoverflow.com/questions/15754587/keeping-only-certain-characters-in-a-string-using-python
+
+    # "need to be [a-z0-9-_]+"
+    # name = name.lower()
+    # name = re.sub("[^a-z0-9-_]", "", name)
+    name = re.sub("[^A-z0-9-_]", "", name)
+    # "cannot start or end with a hyphen or underscore
+    if name[-1] == "_":
+        name = name[:-1]
+    return name
+
+
 class Control(ABC):
+    """Parent control class"""
+
     key: str
 
     def get_value(self, data: bytearray) -> Any:
         pass
+
+    @property
+    def friendly_name(self) -> str:
+        return to_friendly_name(self.key)
+
+
+class Option(ABC):
+    """General option class"""
+
+    value: int
+    name: str
+
+    def get_value(self, data: bytearray) -> Any:
+        pass
+
+    @property
+    def friendly_name(self) -> str:
+        return to_friendly_name(self.name)
 
 
 class DebugControl(Control):
@@ -57,6 +93,8 @@ _Options = TypeVar("_Options", bound=Mapping[int, str])
 
 
 class EnumControl(Control, Generic[_Options]):
+    """Control class for enum sensors"""
+
     def __init__(self, key: str, read_index: int, options: _Options):
         self.key = key
         self.read_index = read_index
@@ -70,6 +108,8 @@ class EnumControl(Control, Generic[_Options]):
 
 
 class WriteEnumControl(EnumControl[bidict[int, str]]):
+    """Control class for enum selectors"""
+
     def __init__(
         self, key: str, read_index: int, write_index: int, options: bidict[int, str]
     ):
@@ -365,24 +405,31 @@ def get_options_from_feature(key: str, feature: ApplianceFeature) -> bidict[int,
     options: bidict[int, str] = bidict()
     if feature.enumValues is not None:
         options = options | {
-            option.wifiArrayValue: option.strKey for option in feature.enumValues
+            option.wifiArrayValue: to_friendly_name(option.strKey)
+            for option in feature.enumValues
         }
     if feature.boundedValues is not None:
         for boundedValues in feature.boundedValues:
-            options = get_bounded_values_options(key, boundedValues) | options
+            options = (
+                get_bounded_values_options(to_friendly_name(key), boundedValues)
+                | options
+            )
     return bidict(sorted(options.items()))
 
 
 def get_options_from_enum_options(
     options: Sequence[ApplianceFeatureEnumOption],
 ) -> dict[int, str]:
-    return {option.wifiArrayValue: option.strKey for option in options}
+    return {
+        option.wifiArrayValue: to_friendly_name(option.strKey) for option in options
+    }
 
 
 def build_read_control_from_feature(feature: ApplianceFeature) -> Control | None:
     key = feature.strKey
     if key is None:
         return None
+    key = to_friendly_name(key)
     if (
         feature.enumValues is None
         and feature.boundedValues is not None
@@ -409,6 +456,7 @@ def build_write_control_from_feature(feature: ApplianceFeature) -> Control | Non
     key = feature.strKey
     if key is None:
         return None
+    key = to_friendly_name(key)
     if (
         feature.enumValues is None
         and feature.boundedValues is not None
@@ -430,7 +478,7 @@ def build_write_control_from_feature(feature: ApplianceFeature) -> Control | Non
 
 def build_control_from_program(program: ApplianceProgram) -> Control:
     return WriteEnumControl(
-        key=program.strKey,
+        key=to_friendly_name(program.strKey),
         read_index=program.wifiArrayIndex,
         write_index=(
             program.wfaWriteIndex
@@ -447,7 +495,7 @@ def build_control_from_substate(
     if sub_states is None:
         return None
     return EnumControl(
-        key="SUB_STATE",
+        key="sub_state",
         read_index=sub_states.wifiArrayReadIndex,
         options=get_options_from_enum_options(sub_states.subStates),
     )
@@ -473,7 +521,7 @@ def build_control_from_state(state: ApplianceState | None) -> Control | None:
     if read_index is None or write_index is None:
         return None
     return WriteEnumControl(
-        key="STATE",
+        key="state",
         read_index=read_index,
         write_index=write_index,
         options=bidict(get_options_from_enum_options(state.states)),
@@ -493,7 +541,7 @@ def build_controls_from_progress_variables(
         if feature is not None:
             result.append(
                 TimeControl(
-                    key=feature.strKey,
+                    key=to_friendly_name(feature.strKey),
                     hour_index=feature.hour.wifiArrayIndex,
                     minute_index=feature.minute.wifiArrayIndex
                     if feature.minute is not None
@@ -509,7 +557,7 @@ def build_control_from_remote_control(
     if remote_control is None:
         return None
     return BooleanCompareControl(
-        key="REMOTE_CONTROL",
+        key="remote_control",
         read_index=remote_control.wifiArrayReadIndex,
         compare_value=remote_control.wifiArrayValue,
     )
@@ -521,7 +569,9 @@ def build_controls_from_warnings(warnings: ApplianceWarning | None) -> list[Cont
 
     return [
         BooleanBitmaskControl(
-            key=warn.strKey, read_index=warnings.wifiArrayReadIndex, bit=warn.bitIndex
+            key=to_friendly_name(warn.strKey),
+            read_index=warnings.wifiArrayReadIndex,
+            bit=warn.bitIndex,
         )
         for warn in warnings.warnings
     ]
@@ -618,6 +668,7 @@ def generate_controls_from_config(
         *build_controls_from_warnings(config.warnings),
         *build_controls_from_features(config.settings),
     ]
+
     controls = [
         convert_to_bool_control_if_possible(control)
         for control in possible_controls
