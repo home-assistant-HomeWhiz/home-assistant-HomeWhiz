@@ -32,7 +32,7 @@ def test(config: ApplianceConfiguration) -> None:
             "PROGRAM",
             "SUB_STATE",
             "DISHWASHER_TRAYWASH",
-            "DISHWASHER_FAST+",
+            "DISHWASHER_FASTPLUS",
             "DISHWASHER_STEAMGLOSS",
             "DISHWASHER_EXTRARINSE",
             "DISHWASHER_HALFLOAD",

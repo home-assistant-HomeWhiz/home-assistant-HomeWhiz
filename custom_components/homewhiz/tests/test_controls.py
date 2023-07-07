@@ -37,7 +37,7 @@ def test_options_order(config: ApplianceConfiguration) -> None:
             "TEMPERATURE_20",
             "TEMPERATURE_30",
             "TEMPERATURE_40",
-            "60 °C",
-            "90 °C",
+            "60C",
+            "90C",
         ],
     )

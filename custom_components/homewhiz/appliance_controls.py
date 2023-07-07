@@ -40,8 +40,8 @@ def clamp(value: int) -> int:
 
 def to_friendly_name(name: str) -> str:
     # Generates a translation friendly name based on the key
-    # To filter out forbidden characters
-    name = name.replace("+", "plus")
+    # To filter out characters not supported by homeassistant
+    name = name.replace("+", "PLUS")
     # https://stackoverflow.com/questions/15754587/keeping-only-certain-characters-in-a-string-using-python
     name = re.sub("[^A-z0-9-_]", "", name)
     # "cannot start or end with a hyphen or underscore
@@ -392,7 +392,7 @@ def get_bounded_values_options(
         wifiValue = int(value / values.factor)
         unit = unit_for_key(key)
         value_str = f"{value:g}"
-        name = f"{value_str} {unit}" if unit is not None else value_str
+        name = f"{value_str}{unit}" if unit is not None else value_str
         result[wifiValue] = to_friendly_name(name)
         value += values.step
     return result
@@ -492,7 +492,7 @@ def build_control_from_substate(
     if sub_states is None:
         return None
     return EnumControl(
-        key="sub_state",
+        key="SUB_STATE",
         read_index=sub_states.wifiArrayReadIndex,
         options=get_options_from_enum_options(sub_states.subStates),
     )
@@ -554,7 +554,7 @@ def build_control_from_remote_control(
     if remote_control is None:
         return None
     return BooleanCompareControl(
-        key="remote_control",
+        key="REMOTE_CONTROL",
         read_index=remote_control.wifiArrayReadIndex,
         compare_value=remote_control.wifiArrayValue,
     )
