@@ -160,7 +160,7 @@
         "name": "Ohjelma",
         "state": {
           "program_auto": "Automaattinen 40\u201365 \u00b0C",
-          "program_mix_wash_+": "Kokonaispesu",
+          "program_mix_wash_plus": "Kokonaispesu",
           "program_intensive_70": "Tehopesu 70 \u00b0C",
           "program_eco_50": "Eco 50 \u00b0C",
           "program_glasscare": "Lasinhoito",
@@ -517,7 +517,7 @@
         "name": "Ohjelma",
         "state": {
           "program_auto": "Automaattinen 40\u201365 \u00b0C",
-          "program_mix_wash_+": "Kokonaispesu",
+          "program_mix_wash_plus": "Kokonaispesu",
           "program_intensive_70": "Tehopesu 70 \u00b0C",
           "program_eco_50": "Eco 50 \u00b0C",
           "program_glasscare": "Lasinhoito",

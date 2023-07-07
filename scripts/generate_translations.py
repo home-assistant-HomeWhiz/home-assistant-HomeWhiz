@@ -176,6 +176,7 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
                 option = option.replace("plus", "+")
                 localized = localizations.get(option, option)
                 localized = str(localized)
+                option = option.replace("+", "plus")
 
                 # Separate values from unites
                 # For keys generated in get_bounded_values_options

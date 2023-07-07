@@ -206,7 +206,7 @@
         "name": "Program",
         "state": {
           "program_auto": "Auto",
-          "program_mix_wash_+": "MixWash+",
+          "program_mix_wash_plus": "MixWash+",
           "program_intensive_70": "Intensive 70\u00b0C",
           "program_eco_50": "Eco 50\u00b0C",
           "program_glasscare": "GlassCare",
@@ -563,7 +563,7 @@
         "name": "Program",
         "state": {
           "program_auto": "Auto",
-          "program_mix_wash_+": "MixWash+",
+          "program_mix_wash_plus": "MixWash+",
           "program_intensive_70": "Intensive 70\u00b0C",
           "program_eco_50": "Eco 50\u00b0C",
           "program_glasscare": "GlassCare",

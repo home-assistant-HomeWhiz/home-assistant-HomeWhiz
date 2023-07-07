@@ -179,7 +179,7 @@
         "name": "Programa",
         "state": {
           "program_auto": "40-65\u00a0\u00b0C autom\u00e1tico",
-          "program_mix_wash_+": "All-in-Wash",
+          "program_mix_wash_plus": "All-in-Wash",
           "program_intensive_70": "Intensivo 70\u00a0\u00b0C",
           "program_eco_50": "Eco 50\u00a0\u00b0C",
           "program_glasscare": "GlassCare",
@@ -536,7 +536,7 @@
         "name": "Programa",
         "state": {
           "program_auto": "40-65\u00a0\u00b0C autom\u00e1tico",
-          "program_mix_wash_+": "All-in-Wash",
+          "program_mix_wash_plus": "All-in-Wash",
           "program_intensive_70": "Intensivo 70\u00a0\u00b0C",
           "program_eco_50": "Eco 50\u00a0\u00b0C",
           "program_glasscare": "GlassCare",

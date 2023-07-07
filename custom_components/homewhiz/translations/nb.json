@@ -160,7 +160,7 @@
         "name": "Utdanningsprogram",
         "state": {
           "program_auto": "Auto. 40\u201365\u00a0\u00b0C",
-          "program_mix_wash_+": "All-in-Wash",
+          "program_mix_wash_plus": "All-in-Wash",
           "program_intensive_70": "Intensivt: 70\u00a0\u00b0C",
           "program_eco_50": "\u00d8ko: 50\u00a0\u00b0C",
           "program_glasscare": "Sk\u00e5nsomt mot glass",
@@ -517,7 +517,7 @@
         "name": "Utdanningsprogram",
         "state": {
           "program_auto": "Auto. 40\u201365\u00a0\u00b0C",
-          "program_mix_wash_+": "All-in-Wash",
+          "program_mix_wash_plus": "All-in-Wash",
           "program_intensive_70": "Intensivt: 70\u00a0\u00b0C",
           "program_eco_50": "\u00d8ko: 50\u00a0\u00b0C",
           "program_glasscare": "Sk\u00e5nsomt mot glass",
