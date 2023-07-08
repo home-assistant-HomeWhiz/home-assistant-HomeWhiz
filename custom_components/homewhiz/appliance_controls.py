@@ -41,9 +41,10 @@ def clamp(value: int) -> int:
 def to_friendly_name(name: str) -> str:
     # Generates a translation friendly name based on the key
     # To filter out characters not supported by homeassistant
-    name = name.replace("+", "PLUS")
+    name = name.replace("+", "plus")
+    name = name.lower()
     # https://stackoverflow.com/questions/15754587/keeping-only-certain-characters-in-a-string-using-python
-    name = re.sub("[^A-z0-9-_]", "", name)
+    name = re.sub("[^a-z0-9-_]", "", name)
     # "cannot start or end with a hyphen or underscore
     if name[-1] == "_":
         name = name[:-1]
@@ -206,7 +207,7 @@ class WriteBooleanControl(BooleanControl):
 
 
 class DisabledSwingAxisControl(Control):
-    key = "DISABLED"
+    key = "disabled"
     enabled = False
 
     def get_value(self, data: bytearray) -> bool:
@@ -225,7 +226,7 @@ class SwingAxisControl(Control):
 
     def get_value(self, data: bytearray) -> bool:
         option = self.parent.get_value(data)
-        return option is not None and not option.endswith("_OFF")
+        return option is not None and not option.endswith("_off")
 
     def _option_with_suffix(self, suffix: str) -> str | None:
         return next(
@@ -242,9 +243,9 @@ class SwingAxisControl(Control):
         if current_value == value:
             return []
         selected_option = (
-            self._option_with_suffix("_AUTO")
+            self._option_with_suffix("_auto")
             if value
-            else self._option_with_suffix("_OFF")
+            else self._option_with_suffix("_off")
         )
         if selected_option is None:
             raise Exception(f"Cannot change swing for axis {self.key}")
@@ -260,7 +261,7 @@ def build_swing_control_from_optional(
 
 
 class SwingControl(Control):
-    key = "SWING"
+    key = "swing"
 
     def __init__(
         self,
@@ -302,17 +303,17 @@ class SwingControl(Control):
 
 
 program_suffix_to_hvac_mode = {
-    "COOLING": HVACMode.COOL,
-    "AUTO": HVACMode.AUTO,
-    "DRY": HVACMode.DRY,
-    "DEHUMIDIFICATION": HVACMode.DRY,
-    "HEATING": HVACMode.HEAT,
-    "FAN": HVACMode.FAN_ONLY,
+    "cooling": HVACMode.COOL,
+    "auto": HVACMode.AUTO,
+    "dry": HVACMode.DRY,
+    "dehumidification": HVACMode.DRY,
+    "heating": HVACMode.HEAT,
+    "fan": HVACMode.FAN_ONLY,
 }
 
 
 class HvacControl(Control):
-    key = "HVAC"
+    key = "hvac"
 
     def __init__(self, program: WriteEnumControl, state: WriteBooleanControl):
         self.program = program
@@ -356,7 +357,7 @@ class HvacControl(Control):
 
 
 class ClimateControl(Control):
-    key = "AC"
+    key = "ac"
 
     def __init__(
         self,
@@ -492,7 +493,7 @@ def build_control_from_substate(
     if sub_states is None:
         return None
     return EnumControl(
-        key="SUB_STATE",
+        key="sub_state",
         read_index=sub_states.wifiArrayReadIndex,
         options=get_options_from_enum_options(sub_states.subStates),
     )
@@ -518,7 +519,7 @@ def build_control_from_state(state: ApplianceState | None) -> Control | None:
     if read_index is None or write_index is None:
         return None
     return WriteEnumControl(
-        key="STATE",
+        key="state",
         read_index=read_index,
         write_index=write_index,
         options=bidict(get_options_from_enum_options(state.states)),
@@ -554,7 +555,7 @@ def build_control_from_remote_control(
     if remote_control is None:
         return None
     return BooleanCompareControl(
-        key="REMOTE_CONTROL",
+        key="remote_control",
         read_index=remote_control.wifiArrayReadIndex,
         compare_value=remote_control.wifiArrayValue,
     )
@@ -591,8 +592,8 @@ def convert_to_bool_control_if_possible(control: Control) -> Control:
     option_keys.sort()
     if (
         len(option_keys) == 2
-        and option_keys[0].endswith("_OFF")
-        and option_keys[1].endswith("_ON")
+        and option_keys[0].endswith("_off")
+        and option_keys[1].endswith("_on")
     ):
         return WriteBooleanControl(
             key=control.key,
@@ -607,25 +608,25 @@ def convert_to_bool_control_if_possible(control: Control) -> Control:
 def extract_ac_control(controls: list[Control]) -> list[Control]:
     controls_dict = {control.key: control for control in controls}
     keys = controls_dict.keys()
-    if "AIR_CONDITIONER_PROGRAM" in keys:
-        state = controls_dict["STATE"]
+    if "air_conditioner_program" in keys:
+        state = controls_dict["state"]
         assert isinstance(state, WriteBooleanControl)
-        program = controls_dict["AIR_CONDITIONER_PROGRAM"]
+        program = controls_dict["air_conditioner_program"]
         assert isinstance(program, WriteEnumControl)
-        current_temperature = controls_dict["AIR_CONDITIONER_ROOM_TEMPERATURE"]
+        current_temperature = controls_dict["air_conditioner_room_temperature"]
         assert isinstance(current_temperature, NumericControl)
-        target_temperature = controls_dict["AIR_CONDITIONER_TARGET_TEMPERATURE"]
+        target_temperature = controls_dict["air_conditioner_target_temperature"]
         assert isinstance(target_temperature, WriteNumericControl)
-        fan_mode = controls_dict["AIR_CONDITIONER_WIND_STRENGTH"]
+        fan_mode = controls_dict["air_conditioner_wind_strength"]
         assert isinstance(fan_mode, WriteEnumControl)
         vertical_swing_control = controls_dict.get(
-            "AIR_CONDITIONER_UP_DOWN_VANE_CONTROL"
+            "air_conditioner_up_down_vane_control"
         )
         assert vertical_swing_control is None or isinstance(
             vertical_swing_control, WriteEnumControl
         )
         horizontal_swing_control = controls_dict.get(
-            "AIR_CONDITIONER_LEFT_RIGHT_VANE_CONTROL"
+            "air_conditioner_left_right_vane_control"
         )
         assert horizontal_swing_control is None or isinstance(
             horizontal_swing_control, WriteEnumControl

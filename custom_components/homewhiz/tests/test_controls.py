@@ -27,17 +27,17 @@ def config() -> ApplianceConfiguration:
 def test_options_order(config: ApplianceConfiguration) -> None:
     controls = generate_controls_from_config(config)
     controls_map = {control.key: control for control in controls}
-    assert "WASHER_TEMPERATURE" in controls_map
-    temp_control = controls_map["WASHER_TEMPERATURE"]
+    assert "washer_temperature" in controls_map
+    temp_control = controls_map["washer_temperature"]
     assert isinstance(temp_control, EnumControl)
     test_case.assertListEqual(
         list(temp_control.options.values()),
         [
-            "TEMPERATURE_COLD_WASH",
-            "TEMPERATURE_20",
-            "TEMPERATURE_30",
-            "TEMPERATURE_40",
-            "60C",
-            "90C",
+            "temperature_cold_wash",
+            "temperature_20",
+            "temperature_30",
+            "temperature_40",
+            "60c",
+            "90c",
         ],
     )
