@@ -227,6 +227,25 @@
       "dishwasher_liquid_detergent_low": {
         "name": "Niski poziom detergnetu w p\u0142ynie"
       },
+      "dishwasher_program": {
+        "name": "Program",
+        "state": {
+          "program_auto": "Auto 40-65\u00b0C",
+          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_intensive_70": "Intensywny 70\u00b0C",
+          "program_eco_50": "Eco 50\u00b0C",
+          "program_delicate": "Delicate",
+          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
+          "program_mini": "PROGRAM_MINI",
+          "program_prewash": "Mycie wst\u0119pne",
+          "program_quiet": "PROGRAM_QUIET",
+          "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
+          "program_innerclean": "InnerClean"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "Detergent w p\u0142ynie"
+      },
       "washer_dry": {
         "name": "Suszenie",
         "state": {
@@ -614,6 +633,31 @@
       "setting_inner_illumination": {
         "name": "O\u015bwietlenie wn\u0119trza"
       },
+      "dishwasher_program": {
+        "name": "Program",
+        "state": {
+          "program_auto": "Auto 40-65\u00b0C",
+          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_intensive_70": "Intensywny 70\u00b0C",
+          "program_eco_50": "Eco 50\u00b0C",
+          "program_delicate": "Delicate",
+          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
+          "program_mini": "PROGRAM_MINI",
+          "program_prewash": "Mycie wst\u0119pne",
+          "program_quiet": "PROGRAM_QUIET",
+          "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
+          "program_innerclean": "InnerClean"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "Detergent w p\u0142ynie"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Intensywna higiena zmywarki"
+      },
+      "dishwasher_deepwash": {
+        "name": "G\u0142\u0119bokie pranie"
+      },
       "washer_dry": {
         "name": "Suszenie",
         "state": {
@@ -784,6 +828,12 @@
       },
       "setting_inner_illumination": {
         "name": "O\u015bwietlenie wn\u0119trza"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Intensywna higiena zmywarki"
+      },
+      "dishwasher_deepwash": {
+        "name": "G\u0142\u0119bokie pranie"
       }
     }
   }

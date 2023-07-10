@@ -208,6 +208,25 @@
       "dishwasher_liquid_detergent_low": {
         "name": "Nestem\u00e4inen puhdistusaine v\u00e4hiss\u00e4"
       },
+      "dishwasher_program": {
+        "name": "Ohjelma",
+        "state": {
+          "program_auto": "Automaattinen 40\u201365 \u00b0C",
+          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_intensive_70": "Tehopesu 70 \u00b0C",
+          "program_eco_50": "Eco 50 \u00b0C",
+          "program_delicate": "Helposti s\u00e4rkyv\u00e4",
+          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
+          "program_mini": "PROGRAM_MINI",
+          "program_prewash": "Esipesu",
+          "program_quiet": "PROGRAM_QUIET",
+          "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
+          "program_innerclean": "K\u00e4vi koulua InnerClean"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "Nestem\u00e4inen pesuaine"
+      },
       "washer_dry": {
         "name": "Kuivaus",
         "state": {
@@ -595,6 +614,31 @@
       "setting_inner_illumination": {
         "name": "Sis\u00e4valaistus"
       },
+      "dishwasher_program": {
+        "name": "Ohjelma",
+        "state": {
+          "program_auto": "Automaattinen 40\u201365 \u00b0C",
+          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_intensive_70": "Tehopesu 70 \u00b0C",
+          "program_eco_50": "Eco 50 \u00b0C",
+          "program_delicate": "Helposti s\u00e4rkyv\u00e4",
+          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
+          "program_mini": "PROGRAM_MINI",
+          "program_prewash": "Esipesu",
+          "program_quiet": "PROGRAM_QUIET",
+          "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
+          "program_innerclean": "K\u00e4vi koulua InnerClean"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "Nestem\u00e4inen pesuaine"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Astianpesukoneen hygieniaintensiivinen"
+      },
+      "dishwasher_deepwash": {
+        "name": "Syv\u00e4 pest\u00e4"
+      },
       "washer_dry": {
         "name": "Kuivaus",
         "state": {
@@ -765,6 +809,12 @@
       },
       "setting_inner_illumination": {
         "name": "Sis\u00e4valaistus"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Astianpesukoneen hygieniaintensiivinen"
+      },
+      "dishwasher_deepwash": {
+        "name": "Syv\u00e4 pest\u00e4"
       }
     }
   }

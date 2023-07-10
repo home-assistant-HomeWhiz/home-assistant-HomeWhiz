@@ -208,6 +208,25 @@
       "dishwasher_liquid_detergent_low": {
         "name": "Lite flytende vaskemiddel"
       },
+      "dishwasher_program": {
+        "name": "Program",
+        "state": {
+          "program_auto": "Auto. 40\u201365\u00a0\u00b0C",
+          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_intensive_70": "Intensivt: 70\u00a0\u00b0C",
+          "program_eco_50": "\u00d8ko: 50\u00a0\u00b0C",
+          "program_delicate": "\u00d8mfintlig",
+          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
+          "program_mini": "PROGRAM_MINI",
+          "program_prewash": "Forvask",
+          "program_quiet": "PROGRAM_QUIET",
+          "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
+          "program_innerclean": "InnerClean"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "Flytende vaskemiddel"
+      },
       "washer_dry": {
         "name": "T\u00f8rker",
         "state": {
@@ -595,6 +614,31 @@
       "setting_inner_illumination": {
         "name": "Innvendig lys"
       },
+      "dishwasher_program": {
+        "name": "Program",
+        "state": {
+          "program_auto": "Auto. 40\u201365\u00a0\u00b0C",
+          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_intensive_70": "Intensivt: 70\u00a0\u00b0C",
+          "program_eco_50": "\u00d8ko: 50\u00a0\u00b0C",
+          "program_delicate": "\u00d8mfintlig",
+          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
+          "program_mini": "PROGRAM_MINI",
+          "program_prewash": "Forvask",
+          "program_quiet": "PROGRAM_QUIET",
+          "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
+          "program_innerclean": "InnerClean"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "Flytende vaskemiddel"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Oppvaskmaskin hygiene intens"
+      },
+      "dishwasher_deepwash": {
+        "name": "Dyp vask"
+      },
       "washer_dry": {
         "name": "T\u00f8rker",
         "state": {
@@ -765,6 +809,12 @@
       },
       "setting_inner_illumination": {
         "name": "Innvendig lys"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Oppvaskmaskin hygiene intens"
+      },
+      "dishwasher_deepwash": {
+        "name": "Dyp vask"
       }
     }
   }

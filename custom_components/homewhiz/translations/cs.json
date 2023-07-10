@@ -227,6 +227,25 @@
       "dishwasher_liquid_detergent_low": {
         "name": "Nedostatek tekut\u00e9ho detergentu"
       },
+      "dishwasher_program": {
+        "name": "Program",
+        "state": {
+          "program_auto": "Autom. 40\u201365\u00a0\u00b0C",
+          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_intensive_70": "Intenzivn\u00ed 70\u00a0\u00b0C",
+          "program_eco_50": "Eco 50\u00a0\u00b0C",
+          "program_delicate": "Choulostiv\u00e9",
+          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
+          "program_mini": "PROGRAM_MINI",
+          "program_prewash": "P\u0159edmyt\u00ed",
+          "program_quiet": "PROGRAM_QUIET",
+          "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
+          "program_innerclean": "InnerClean"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "Tekut\u00fd prac\u00ed prost\u0159edek"
+      },
       "washer_dry": {
         "name": "Su\u0161en\u00ed",
         "state": {
@@ -614,6 +633,31 @@
       "setting_inner_illumination": {
         "name": "Vnit\u0159n\u00ed osv\u011btlen\u00ed"
       },
+      "dishwasher_program": {
+        "name": "Program",
+        "state": {
+          "program_auto": "Autom. 40\u201365\u00a0\u00b0C",
+          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_intensive_70": "Intenzivn\u00ed 70\u00a0\u00b0C",
+          "program_eco_50": "Eco 50\u00a0\u00b0C",
+          "program_delicate": "Choulostiv\u00e9",
+          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
+          "program_mini": "PROGRAM_MINI",
+          "program_prewash": "P\u0159edmyt\u00ed",
+          "program_quiet": "PROGRAM_QUIET",
+          "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
+          "program_innerclean": "InnerClean"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "Tekut\u00fd prac\u00ed prost\u0159edek"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Intenzivn\u00ed hygiena my\u010dky n\u00e1dob\u00ed"
+      },
+      "dishwasher_deepwash": {
+        "name": "D\u016fkladn\u00e9 promyt\u00ed"
+      },
       "washer_dry": {
         "name": "Su\u0161en\u00ed",
         "state": {
@@ -784,6 +828,12 @@
       },
       "setting_inner_illumination": {
         "name": "Vnit\u0159n\u00ed osv\u011btlen\u00ed"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Intenzivn\u00ed hygiena my\u010dky n\u00e1dob\u00ed"
+      },
+      "dishwasher_deepwash": {
+        "name": "D\u016fkladn\u00e9 promyt\u00ed"
       }
     }
   }

@@ -227,6 +227,25 @@
       "dishwasher_liquid_detergent_low": {
         "name": "S\u0131v\u0131/Jel Deterjan Az"
       },
+      "dishwasher_program": {
+        "name": "Program",
+        "state": {
+          "program_auto": "Otomatik",
+          "program_aqua_flex": "Karma",
+          "program_intensive_70": "Yo\u011fun 70\u00b0C",
+          "program_eco_50": "Eko 50\u00b0C",
+          "program_delicate": "Hassas",
+          "program_quick_and_shine": "H\u0131zl\u013158",
+          "program_mini": "Mini",
+          "program_prewash": "\u00d6n Y\u0131kama",
+          "program_quiet": "Sessiz",
+          "program_clean_and_shine": "G\u00fcnl\u00fck",
+          "program_innerclean": "Makine Y\u0131kama"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "S\u0131v\u0131 Deterjan Seviyesi"
+      },
       "washer_dry": {
         "name": "Kurutma",
         "state": {
@@ -614,6 +633,31 @@
       "setting_inner_illumination": {
         "name": "\u0130\u00e7 Ayd\u0131nlatma"
       },
+      "dishwasher_program": {
+        "name": "Program",
+        "state": {
+          "program_auto": "Otomatik",
+          "program_aqua_flex": "Karma",
+          "program_intensive_70": "Yo\u011fun 70\u00b0C",
+          "program_eco_50": "Eko 50\u00b0C",
+          "program_delicate": "Hassas",
+          "program_quick_and_shine": "H\u0131zl\u013158",
+          "program_mini": "Mini",
+          "program_prewash": "\u00d6n Y\u0131kama",
+          "program_quiet": "Sessiz",
+          "program_clean_and_shine": "G\u00fcnl\u00fck",
+          "program_innerclean": "Makine Y\u0131kama"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "S\u0131v\u0131 Deterjan Seviyesi"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Bula\u015f\u0131k makinesi hijyeni yo\u011fun"
+      },
+      "dishwasher_deepwash": {
+        "name": "\u015ei\u015fe Y\u0131kama"
+      },
       "washer_dry": {
         "name": "Kurutma",
         "state": {
@@ -784,6 +828,12 @@
       },
       "setting_inner_illumination": {
         "name": "\u0130\u00e7 Ayd\u0131nlatma"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Bula\u015f\u0131k makinesi hijyeni yo\u011fun"
+      },
+      "dishwasher_deepwash": {
+        "name": "\u015ei\u015fe Y\u0131kama"
       }
     }
   }

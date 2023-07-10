@@ -208,6 +208,25 @@
       "dishwasher_liquid_detergent_low": {
         "name": "Liquid Detergent Low"
       },
+      "dishwasher_program": {
+        "name": "Programme",
+        "state": {
+          "program_auto": "Auto",
+          "program_aqua_flex": "AquaFlex",
+          "program_intensive_70": "Intensive 70\u00b0C",
+          "program_eco_50": "Eco 50\u00b0C",
+          "program_delicate": "Delicate",
+          "program_quick_and_shine": "Quick&Shine",
+          "program_mini": "Mini",
+          "program_prewash": "Prewash",
+          "program_quiet": "QuietWash",
+          "program_clean_and_shine": "Clean&Shine",
+          "program_innerclean": "InnerClean"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "Liquid Detergent"
+      },
       "washer_dry": {
         "name": "Drying",
         "state": {
@@ -595,6 +614,31 @@
       "setting_inner_illumination": {
         "name": "Inner Illumination"
       },
+      "dishwasher_program": {
+        "name": "Programme",
+        "state": {
+          "program_auto": "Auto",
+          "program_aqua_flex": "AquaFlex",
+          "program_intensive_70": "Intensive 70\u00b0C",
+          "program_eco_50": "Eco 50\u00b0C",
+          "program_delicate": "Delicate",
+          "program_quick_and_shine": "Quick&Shine",
+          "program_mini": "Mini",
+          "program_prewash": "Prewash",
+          "program_quiet": "QuietWash",
+          "program_clean_and_shine": "Clean&Shine",
+          "program_innerclean": "InnerClean"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "Liquid Detergent"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Hygiene Intense"
+      },
+      "dishwasher_deepwash": {
+        "name": "Deep Wash"
+      },
       "washer_dry": {
         "name": "Drying",
         "state": {
@@ -765,6 +809,12 @@
       },
       "setting_inner_illumination": {
         "name": "Inner Illumination"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Hygiene Intense"
+      },
+      "dishwasher_deepwash": {
+        "name": "Deep Wash"
       }
     }
   }

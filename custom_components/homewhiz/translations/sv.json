@@ -227,6 +227,25 @@
       "dishwasher_liquid_detergent_low": {
         "name": "Lite flytande diskmedel"
       },
+      "dishwasher_program": {
+        "name": "Program",
+        "state": {
+          "program_auto": "Auto 40-65\u00b0C",
+          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_intensive_70": "Intensiv 70 \u00b0C",
+          "program_eco_50": "Eco 50 \u00b0C",
+          "program_delicate": "Skondisk",
+          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
+          "program_mini": "PROGRAM_MINI",
+          "program_prewash": "F\u00f6rtv\u00e4tt",
+          "program_quiet": "PROGRAM_QUIET",
+          "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
+          "program_innerclean": "InnerClean"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "Flytande tv\u00e4ttmedel"
+      },
       "washer_dry": {
         "name": "Torkar",
         "state": {
@@ -614,6 +633,31 @@
       "setting_inner_illumination": {
         "name": "Innerbelysning"
       },
+      "dishwasher_program": {
+        "name": "Program",
+        "state": {
+          "program_auto": "Auto 40-65\u00b0C",
+          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_intensive_70": "Intensiv 70 \u00b0C",
+          "program_eco_50": "Eco 50 \u00b0C",
+          "program_delicate": "Skondisk",
+          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
+          "program_mini": "PROGRAM_MINI",
+          "program_prewash": "F\u00f6rtv\u00e4tt",
+          "program_quiet": "PROGRAM_QUIET",
+          "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
+          "program_innerclean": "InnerClean"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "Flytande tv\u00e4ttmedel"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Diskmaskinshygien intensiv"
+      },
+      "dishwasher_deepwash": {
+        "name": "Djuptv\u00e4tt"
+      },
       "washer_dry": {
         "name": "Torkar",
         "state": {
@@ -784,6 +828,12 @@
       },
       "setting_inner_illumination": {
         "name": "Innerbelysning"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Diskmaskinshygien intensiv"
+      },
+      "dishwasher_deepwash": {
+        "name": "Djuptv\u00e4tt"
       }
     }
   }

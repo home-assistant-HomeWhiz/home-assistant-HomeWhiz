@@ -227,6 +227,25 @@
       "dishwasher_liquid_detergent_low": {
         "name": "Livello detergente basso."
       },
+      "dishwasher_program": {
+        "name": "Programma/Programmi",
+        "state": {
+          "program_auto": "Auto 40-65\u00c2 \u00c2\u00b0C",
+          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_intensive_70": "Intensivo 70\u00c2 \u00c2\u00b0C",
+          "program_eco_50": "Eco 50\u00c2 \u00c2\u00b0C",
+          "program_delicate": "Delicato",
+          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
+          "program_mini": "PROGRAM_MINI",
+          "program_prewash": "Prelavaggio",
+          "program_quiet": "PROGRAM_QUIET",
+          "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
+          "program_innerclean": "InnerClean"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "detersivo liquido"
+      },
       "washer_dry": {
         "name": "Asciugatura",
         "state": {
@@ -614,6 +633,31 @@
       "setting_inner_illumination": {
         "name": "Illuminazione interna"
       },
+      "dishwasher_program": {
+        "name": "Programma/Programmi",
+        "state": {
+          "program_auto": "Auto 40-65\u00c2 \u00c2\u00b0C",
+          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_intensive_70": "Intensivo 70\u00c2 \u00c2\u00b0C",
+          "program_eco_50": "Eco 50\u00c2 \u00c2\u00b0C",
+          "program_delicate": "Delicato",
+          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
+          "program_mini": "PROGRAM_MINI",
+          "program_prewash": "Prelavaggio",
+          "program_quiet": "PROGRAM_QUIET",
+          "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
+          "program_innerclean": "InnerClean"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "detersivo liquido"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Igiene lavastoviglie intensa"
+      },
+      "dishwasher_deepwash": {
+        "name": "Lavaggio profondo"
+      },
       "washer_dry": {
         "name": "Asciugatura",
         "state": {
@@ -784,6 +828,12 @@
       },
       "setting_inner_illumination": {
         "name": "Illuminazione interna"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Igiene lavastoviglie intensa"
+      },
+      "dishwasher_deepwash": {
+        "name": "Lavaggio profondo"
       }
     }
   }

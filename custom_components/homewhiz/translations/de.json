@@ -227,6 +227,25 @@
       "dishwasher_liquid_detergent_low": {
         "name": "Wenig Fl\u00fcssigwaschmittel"
       },
+      "dishwasher_program": {
+        "name": "Programm",
+        "state": {
+          "program_auto": "Auto 40-65\u00b0C",
+          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_intensive_70": "Intensiv 70\u00b0C",
+          "program_eco_50": "Eco 50\u00b0C",
+          "program_delicate": "Feinw\u00e4sche",
+          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
+          "program_mini": "Mini",
+          "program_prewash": "Vorsp\u00fclen",
+          "program_quiet": "PROGRAM_QUIET",
+          "program_clean_and_shine": "Clean&Shine",
+          "program_innerclean": "Innenreinigung"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "Fl\u00fcssigwaschmittel"
+      },
       "washer_dry": {
         "name": "Trocknung",
         "state": {
@@ -614,6 +633,31 @@
       "setting_inner_illumination": {
         "name": "Innenbeleuchtung"
       },
+      "dishwasher_program": {
+        "name": "Programm",
+        "state": {
+          "program_auto": "Auto 40-65\u00b0C",
+          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_intensive_70": "Intensiv 70\u00b0C",
+          "program_eco_50": "Eco 50\u00b0C",
+          "program_delicate": "Feinw\u00e4sche",
+          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
+          "program_mini": "Mini",
+          "program_prewash": "Vorsp\u00fclen",
+          "program_quiet": "PROGRAM_QUIET",
+          "program_clean_and_shine": "Clean&Shine",
+          "program_innerclean": "Innenreinigung"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "Fl\u00fcssigwaschmittel"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Sp\u00fclmaschinenhygiene intensiv"
+      },
+      "dishwasher_deepwash": {
+        "name": "Deep Wash"
+      },
       "washer_dry": {
         "name": "Trocknung",
         "state": {
@@ -784,6 +828,12 @@
       },
       "setting_inner_illumination": {
         "name": "Innenbeleuchtung"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Sp\u00fclmaschinenhygiene intensiv"
+      },
+      "dishwasher_deepwash": {
+        "name": "Deep Wash"
       }
     }
   }

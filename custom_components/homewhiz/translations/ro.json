@@ -208,6 +208,25 @@
       "dishwasher_liquid_detergent_low": {
         "name": "Nivel sc\u0103zut detergent lichid"
       },
+      "dishwasher_program": {
+        "name": "Program",
+        "state": {
+          "program_auto": "Auto 40-65\u00b0C",
+          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_intensive_70": "Intensiv 70 \u00b0C",
+          "program_eco_50": "Eco 50 \u00b0C",
+          "program_delicate": "Delicat",
+          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
+          "program_mini": "PROGRAM_MINI",
+          "program_prewash": "Presp\u0103lare",
+          "program_quiet": "PROGRAM_QUIET",
+          "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
+          "program_innerclean": "InnerClean"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "Detergent lichid"
+      },
       "washer_dry": {
         "name": "Uscare",
         "state": {
@@ -595,6 +614,31 @@
       "setting_inner_illumination": {
         "name": "Iluminare interioar\u0103"
       },
+      "dishwasher_program": {
+        "name": "Program",
+        "state": {
+          "program_auto": "Auto 40-65\u00b0C",
+          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_intensive_70": "Intensiv 70 \u00b0C",
+          "program_eco_50": "Eco 50 \u00b0C",
+          "program_delicate": "Delicat",
+          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
+          "program_mini": "PROGRAM_MINI",
+          "program_prewash": "Presp\u0103lare",
+          "program_quiet": "PROGRAM_QUIET",
+          "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
+          "program_innerclean": "InnerClean"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "Detergent lichid"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Igiena intens\u0103 A ma\u0219inii DE sp\u0103lat vase"
+      },
+      "dishwasher_deepwash": {
+        "name": "Sp\u0103lare profund\u0103"
+      },
       "washer_dry": {
         "name": "Uscare",
         "state": {
@@ -765,6 +809,12 @@
       },
       "setting_inner_illumination": {
         "name": "Iluminare interioar\u0103"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Igiena intens\u0103 A ma\u0219inii DE sp\u0103lat vase"
+      },
+      "dishwasher_deepwash": {
+        "name": "Sp\u0103lare profund\u0103"
       }
     }
   }
