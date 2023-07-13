@@ -69,19 +69,19 @@ def test(config: ApplianceConfiguration) -> None:
     test_case.assertDictEqual(
         control_values,
         {
-            "AIR_CONDITIONER_SOFT_AIR": "AIR_CONDITIONER_SOFT_AIR_OFF",
-            "AIR_CONDITIONER_INSTANT_CONSUMPTION": 0,
-            "AIR_CONDITIONER_SLEEP_MODE_MINUTE": 0,
-            "AIR_CONDITIONER_AUTO_SWITCH_OFF": 0,
-            "AIR_CONDITIONER_AUTO_SWITCH_ON": 0,
-            "AIR_CONDITIONER_LEFT_RIGHT_VANE_CONTROL": "LEFT_RIGHT_VANE_CONTROL_5",
-            "AIR_CONDITIONER_UP_DOWN_VANE_CONTROL": "UP_DOWN_VANE_CONTROL_AUTO",
-            "AC": {
-                "AIR_CONDITIONER_ROOM_TEMPERATURE": 15.0,
-                "AIR_CONDITIONER_TARGET_TEMPERATURE": 30.0,
-                "AIR_CONDITIONER_WIND_STRENGTH": "6",
-                "HVAC": HVACMode.OFF,
-                "SWING": SWING_BOTH,
+            "air_conditioner_soft_air": "air_conditioner_soft_air_off",
+            "air_conditioner_instant_consumption": 0,
+            "air_conditioner_sleep_mode_minute": 0,
+            "air_conditioner_auto_switch_off": 0,
+            "air_conditioner_auto_switch_on": 0,
+            "air_conditioner_left_right_vane_control": "left_right_vane_control_5",
+            "air_conditioner_up_down_vane_control": "up_down_vane_control_auto",
+            "ac": {
+                "air_conditioner_room_temperature": 15.0,
+                "air_conditioner_target_temperature": 30.0,
+                "air_conditioner_wind_strength": "6",
+                "hvac": HVACMode.OFF,
+                "swing": SWING_BOTH,
             },
         },
     )
@@ -90,8 +90,8 @@ def test(config: ApplianceConfiguration) -> None:
 def test_hvac_control(config: ApplianceConfiguration) -> None:
     controls = generate_controls_from_config(config)
     controls_map = {control.key: control for control in controls}
-    assert "AC" in controls_map
-    ac_control = controls_map["AC"]
+    assert "ac" in controls_map
+    ac_control = controls_map["ac"]
     assert isinstance(ac_control, ClimateControl)
     hvac_control = ac_control.hvac_mode
 
@@ -112,8 +112,8 @@ def test_hvac_control(config: ApplianceConfiguration) -> None:
 def test_swing_control(config: ApplianceConfiguration) -> None:
     controls = generate_controls_from_config(config)
     controls_map = {control.key: control for control in controls}
-    assert "AC" in controls_map
-    ac_control = controls_map["AC"]
+    assert "ac" in controls_map
+    ac_control = controls_map["ac"]
     assert isinstance(ac_control, ClimateControl)
     swing_control = ac_control.swing
 

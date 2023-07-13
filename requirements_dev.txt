@@ -11,3 +11,4 @@ bidict
 homeassistant-stubs
 types-awscrt
 voluptuous-stubs
+translate

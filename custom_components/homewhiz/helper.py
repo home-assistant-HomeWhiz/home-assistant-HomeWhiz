@@ -21,16 +21,16 @@ def build_entry_data(entry: ConfigEntry) -> EntryData:
 
 
 def unit_for_key(key: str) -> str | None:
-    if "TEMP" in key:
+    if "temp" in key:
         return TEMP_CELSIUS
-    if "SPIN" in key:
+    if "spin" in key:
         return "RPM"
     return None
 
 
 def icon_for_key(key: str) -> str | None:
-    if "TEMP" in key:
+    if "temp" in key:
         return "mdi:thermometer"
-    if "SPIN" in key:
+    if "spin" in key:
         return "mdi:rotate-3d-variant"
     return None

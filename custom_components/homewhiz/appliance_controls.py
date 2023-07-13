@@ -1,4 +1,5 @@
 import logging
+import re
 from abc import ABC, abstractmethod
 from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass, fields
@@ -37,11 +38,44 @@ def clamp(value: int) -> int:
     return value if value < 128 else value - 128
 
 
+def to_friendly_name(name: str) -> str:
+    # Generates a translation friendly name based on the key
+    # To filter out characters not supported by homeassistant
+    name = name.replace("+", "plus")
+    name = name.lower()
+    # https://stackoverflow.com/questions/15754587/keeping-only-certain-characters-in-a-string-using-python
+    name = re.sub("[^a-z0-9-_]", "", name)
+    # "cannot start or end with a hyphen or underscore
+    if name[-1] == "_":
+        name = name[:-1]
+    return name
+
+
 class Control(ABC):
+    """Parent control class"""
+
     key: str
 
     def get_value(self, data: bytearray) -> Any:
         pass
+
+    @property
+    def friendly_name(self) -> str:
+        return to_friendly_name(self.key)
+
+
+class Option(ABC):
+    """General option class"""
+
+    value: int
+    name: str
+
+    def get_value(self, data: bytearray) -> Any:
+        pass
+
+    @property
+    def friendly_name(self) -> str:
+        return to_friendly_name(self.name)
 
 
 class DebugControl(Control):
@@ -57,6 +91,8 @@ _Options = TypeVar("_Options", bound=Mapping[int, str])
 
 
 class EnumControl(Control, Generic[_Options]):
+    """Control class for enum sensors"""
+
     def __init__(self, key: str, read_index: int, options: _Options):
         self.key = key
         self.read_index = read_index
@@ -70,6 +106,8 @@ class EnumControl(Control, Generic[_Options]):
 
 
 class WriteEnumControl(EnumControl[bidict[int, str]]):
+    """Control class for enum selectors"""
+
     def __init__(
         self, key: str, read_index: int, write_index: int, options: bidict[int, str]
     ):
@@ -169,7 +207,7 @@ class WriteBooleanControl(BooleanControl):
 
 
 class DisabledSwingAxisControl(Control):
-    key = "DISABLED"
+    key = "disabled"
     enabled = False
 
     def get_value(self, data: bytearray) -> bool:
@@ -188,7 +226,7 @@ class SwingAxisControl(Control):
 
     def get_value(self, data: bytearray) -> bool:
         option = self.parent.get_value(data)
-        return option is not None and not option.endswith("_OFF")
+        return option is not None and not option.endswith("_off")
 
     def _option_with_suffix(self, suffix: str) -> str | None:
         return next(
@@ -205,9 +243,9 @@ class SwingAxisControl(Control):
         if current_value == value:
             return []
         selected_option = (
-            self._option_with_suffix("_AUTO")
+            self._option_with_suffix("_auto")
             if value
-            else self._option_with_suffix("_OFF")
+            else self._option_with_suffix("_off")
         )
         if selected_option is None:
             raise Exception(f"Cannot change swing for axis {self.key}")
@@ -223,7 +261,7 @@ def build_swing_control_from_optional(
 
 
 class SwingControl(Control):
-    key = "SWING"
+    key = "swing"
 
     def __init__(
         self,
@@ -265,17 +303,17 @@ class SwingControl(Control):
 
 
 program_suffix_to_hvac_mode = {
-    "COOLING": HVACMode.COOL,
-    "AUTO": HVACMode.AUTO,
-    "DRY": HVACMode.DRY,
-    "DEHUMIDIFICATION": HVACMode.DRY,
-    "HEATING": HVACMode.HEAT,
-    "FAN": HVACMode.FAN_ONLY,
+    "cooling": HVACMode.COOL,
+    "auto": HVACMode.AUTO,
+    "dry": HVACMode.DRY,
+    "dehumidification": HVACMode.DRY,
+    "heating": HVACMode.HEAT,
+    "fan": HVACMode.FAN_ONLY,
 }
 
 
 class HvacControl(Control):
-    key = "HVAC"
+    key = "hvac"
 
     def __init__(self, program: WriteEnumControl, state: WriteBooleanControl):
         self.program = program
@@ -319,7 +357,7 @@ class HvacControl(Control):
 
 
 class ClimateControl(Control):
-    key = "AC"
+    key = "ac"
 
     def __init__(
         self,
@@ -355,8 +393,8 @@ def get_bounded_values_options(
         wifiValue = int(value / values.factor)
         unit = unit_for_key(key)
         value_str = f"{value:g}"
-        name = f"{value_str} {unit}" if unit is not None else value_str
-        result[wifiValue] = name
+        name = f"{value_str}{unit}" if unit is not None else value_str
+        result[wifiValue] = to_friendly_name(name)
         value += values.step
     return result
 
@@ -365,24 +403,31 @@ def get_options_from_feature(key: str, feature: ApplianceFeature) -> bidict[int,
     options: bidict[int, str] = bidict()
     if feature.enumValues is not None:
         options = options | {
-            option.wifiArrayValue: option.strKey for option in feature.enumValues
+            option.wifiArrayValue: to_friendly_name(option.strKey)
+            for option in feature.enumValues
         }
     if feature.boundedValues is not None:
         for boundedValues in feature.boundedValues:
-            options = get_bounded_values_options(key, boundedValues) | options
+            options = (
+                get_bounded_values_options(to_friendly_name(key), boundedValues)
+                | options
+            )
     return bidict(sorted(options.items()))
 
 
 def get_options_from_enum_options(
     options: Sequence[ApplianceFeatureEnumOption],
 ) -> dict[int, str]:
-    return {option.wifiArrayValue: option.strKey for option in options}
+    return {
+        option.wifiArrayValue: to_friendly_name(option.strKey) for option in options
+    }
 
 
 def build_read_control_from_feature(feature: ApplianceFeature) -> Control | None:
     key = feature.strKey
     if key is None:
         return None
+    key = to_friendly_name(key)
     if (
         feature.enumValues is None
         and feature.boundedValues is not None
@@ -409,6 +454,7 @@ def build_write_control_from_feature(feature: ApplianceFeature) -> Control | Non
     key = feature.strKey
     if key is None:
         return None
+    key = to_friendly_name(key)
     if (
         feature.enumValues is None
         and feature.boundedValues is not None
@@ -430,7 +476,7 @@ def build_write_control_from_feature(feature: ApplianceFeature) -> Control | Non
 
 def build_control_from_program(program: ApplianceProgram) -> Control:
     return WriteEnumControl(
-        key=program.strKey,
+        key=to_friendly_name(program.strKey),
         read_index=program.wifiArrayIndex,
         write_index=(
             program.wfaWriteIndex
@@ -447,7 +493,7 @@ def build_control_from_substate(
     if sub_states is None:
         return None
     return EnumControl(
-        key="SUB_STATE",
+        key="sub_state",
         read_index=sub_states.wifiArrayReadIndex,
         options=get_options_from_enum_options(sub_states.subStates),
     )
@@ -473,7 +519,7 @@ def build_control_from_state(state: ApplianceState | None) -> Control | None:
     if read_index is None or write_index is None:
         return None
     return WriteEnumControl(
-        key="STATE",
+        key="state",
         read_index=read_index,
         write_index=write_index,
         options=bidict(get_options_from_enum_options(state.states)),
@@ -493,7 +539,7 @@ def build_controls_from_progress_variables(
         if feature is not None:
             result.append(
                 TimeControl(
-                    key=feature.strKey,
+                    key=to_friendly_name(feature.strKey),
                     hour_index=feature.hour.wifiArrayIndex,
                     minute_index=feature.minute.wifiArrayIndex
                     if feature.minute is not None
@@ -509,7 +555,7 @@ def build_control_from_remote_control(
     if remote_control is None:
         return None
     return BooleanCompareControl(
-        key="REMOTE_CONTROL",
+        key="remote_control",
         read_index=remote_control.wifiArrayReadIndex,
         compare_value=remote_control.wifiArrayValue,
     )
@@ -521,7 +567,9 @@ def build_controls_from_warnings(warnings: ApplianceWarning | None) -> list[Cont
 
     return [
         BooleanBitmaskControl(
-            key=warn.strKey, read_index=warnings.wifiArrayReadIndex, bit=warn.bitIndex
+            key=to_friendly_name(warn.strKey),
+            read_index=warnings.wifiArrayReadIndex,
+            bit=warn.bitIndex,
         )
         for warn in warnings.warnings
     ]
@@ -544,8 +592,8 @@ def convert_to_bool_control_if_possible(control: Control) -> Control:
     option_keys.sort()
     if (
         len(option_keys) == 2
-        and option_keys[0].endswith("_OFF")
-        and option_keys[1].endswith("_ON")
+        and option_keys[0].endswith("_off")
+        and option_keys[1].endswith("_on")
     ):
         return WriteBooleanControl(
             key=control.key,
@@ -560,25 +608,25 @@ def convert_to_bool_control_if_possible(control: Control) -> Control:
 def extract_ac_control(controls: list[Control]) -> list[Control]:
     controls_dict = {control.key: control for control in controls}
     keys = controls_dict.keys()
-    if "AIR_CONDITIONER_PROGRAM" in keys:
-        state = controls_dict["STATE"]
+    if "air_conditioner_program" in keys:
+        state = controls_dict["state"]
         assert isinstance(state, WriteBooleanControl)
-        program = controls_dict["AIR_CONDITIONER_PROGRAM"]
+        program = controls_dict["air_conditioner_program"]
         assert isinstance(program, WriteEnumControl)
-        current_temperature = controls_dict["AIR_CONDITIONER_ROOM_TEMPERATURE"]
+        current_temperature = controls_dict["air_conditioner_room_temperature"]
         assert isinstance(current_temperature, NumericControl)
-        target_temperature = controls_dict["AIR_CONDITIONER_TARGET_TEMPERATURE"]
+        target_temperature = controls_dict["air_conditioner_target_temperature"]
         assert isinstance(target_temperature, WriteNumericControl)
-        fan_mode = controls_dict["AIR_CONDITIONER_WIND_STRENGTH"]
+        fan_mode = controls_dict["air_conditioner_wind_strength"]
         assert isinstance(fan_mode, WriteEnumControl)
         vertical_swing_control = controls_dict.get(
-            "AIR_CONDITIONER_UP_DOWN_VANE_CONTROL"
+            "air_conditioner_up_down_vane_control"
         )
         assert vertical_swing_control is None or isinstance(
             vertical_swing_control, WriteEnumControl
         )
         horizontal_swing_control = controls_dict.get(
-            "AIR_CONDITIONER_LEFT_RIGHT_VANE_CONTROL"
+            "air_conditioner_left_right_vane_control"
         )
         assert horizontal_swing_control is None or isinstance(
             horizontal_swing_control, WriteEnumControl
@@ -618,6 +666,7 @@ def generate_controls_from_config(
         *build_controls_from_warnings(config.warnings),
         *build_controls_from_features(config.settings),
     ]
+
     controls = [
         convert_to_bool_control_if_possible(control)
         for control in possible_controls
