@@ -1,0 +1,840 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "\u042d\u0442\u043e \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u0443\u0436\u0435 \u0434\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u043e \u0432 Home Assistant.",
+      "already_in_progress": "\u041f\u0440\u043e\u0446\u0435\u0441\u0441 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0443\u0436\u0435 \u0432\u044b\u043f\u043e\u043b\u043d\u044f\u0435\u0442\u0441\u044f.",
+      "no_devices_found": "\u0423\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u044b \u0432 \u0441\u0435\u0442\u0438."
+    },
+    "flow_title": "{name}",
+    "step": {
+      "bluetooth_confirm": {
+        "description": "\u0425\u043e\u0442\u0438\u0442\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0438\u0442\u044c {name}?"
+      },
+      "user": {
+        "data": {
+          "address": "\u0423\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e"
+        },
+        "description": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u0434\u043b\u044f \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438"
+      }
+    }
+  },
+  "entity": {
+    "select": {
+      "state": {
+        "name": "\u0413\u043e\u0441\u0443\u0434\u0430\u0440\u0441\u0442\u0432\u043e",
+        "state": {
+          "device_state_on": "\u0412\u043a\u043b",
+          "device_state_off": "\u0412\u044b\u043a\u043b",
+          "device_state_running": "\u0412\u044b\u043f\u043e\u043b\u043d\u044f\u0435\u0442\u0441\u044f",
+          "device_state_paused": "\u041f\u0440\u0438\u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e",
+          "device_state_time_delay_active": "\u041e\u0442\u0441\u0440\u043e\u0447\u043a\u0430 \u0432\u0440\u0435\u043c\u0435\u043d\u0438 \u0430\u043a\u0442\u0438\u0432\u043d\u0430",
+          "device_state_cancelling": "\u041e\u0442\u043c\u0435\u043d\u0430",
+          "device_state_door_open": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430!",
+          "device_state_settings": "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438"
+        }
+      },
+      "washer_program": {
+        "name": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430",
+        "state": {
+          "program_cottons": "\u0425\u043b\u043e\u043f\u043e\u043a",
+          "program_eco_40_60": "Eco 40-60",
+          "program_synthetics": "\u0421\u0438\u043d\u0442\u0435\u0442\u0438\u043a\u0430",
+          "program_mini_mini14": "Xpress",
+          "program_wool_handwash": "Woollens",
+          "program_delicates": "PROGRAM_DELICATES",
+          "program_spin_pump": "Spin+Drain",
+          "program_rinsing": "\u041f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0435",
+          "program_darkwash": "\u0422\u0435\u043c\u043d\u044b\u0435 \u0432\u0435\u0449\u0438 (\u0434\u0436\u0438\u043d\u0441\u044b)",
+          "program_outdoor_sports_goretex": "\u0421\u043f\u043e\u0440\u0442\u0438\u0432\u043d\u0430\u044f \u043e\u0434\u0435\u0436\u0434\u0430",
+          "program_stain": "\u0421\u0443\u0448\u043a\u0430 \u0441\u0438\u043d\u0442\u0435\u0442\u0438\u043a\u0438 \u0434\u043b\u044f \u043b\u0435\u0433\u043a\u043e\u0439 \u0433\u043b\u0430\u0436\u043a\u0438",
+          "program_hygeine": "\u0420\u0435\u0436\u0438\u043c Hygiene+",
+          "program_duvet": "\u041f\u0443\u0445\u043e\u0432\u043e\u0435 \u043e\u0434\u0435\u044f\u043b\u043e/\u0442\u0435\u043f\u043b\u0430\u044f \u043e\u0434\u0435\u0436\u0434\u0430",
+          "program_shirts": "\u0420\u0443\u0431\u0430\u0448\u043a\u0438",
+          "program_drum_clean": "\u0420\u0435\u0436\u0438\u043c Drum Clean",
+          "program_mix": "\u0421\u043c\u0435\u0448\u0430\u043d\u043d\u0430\u044f",
+          "program_curtain": "\u0417\u0430\u043d\u0430\u0432\u0435\u0441\u043a\u0438/\u0448\u0442\u043e\u0440\u044b",
+          "program_lingerie": "\u041d\u0438\u0436\u043d\u0435\u0435 \u0431\u0435\u043b\u044c\u0435",
+          "program_soft_toys": "\u041c\u044f\u0433\u043a\u0438\u0435 \u0438\u0433\u0440\u0443\u0448\u043a\u0438",
+          "program_towel": "\u041f\u043e\u043b\u043e\u0442\u0435\u043d\u0446\u0435",
+          "program_cottons_eco": "\u0425\u043b\u043e\u043f\u043e\u043a, \u044d\u043a\u043e",
+          "program_dryer_cotton": "\u0421\u0443\u0448\u043a\u0430 \u0445\u043b\u043e\u043f\u043a\u0430",
+          "program_dryer_synthetics": "\u0421\u0443\u0448\u043a\u0430 \u0441\u0438\u043d\u0442\u0435\u0442\u0438\u043a\u0438",
+          "program_hygiene_wash_dry": "\u0420\u0435\u0436\u0438\u043c \u0441\u0442\u0438\u0440\u043a\u0438 \u0438 \u0441\u0443\u0448\u043a\u0438 Hygiene+",
+          "program_4kg_wash_dry": "\u0441\u0442\u0438\u0440\u043a\u0430 \u0438 \u0441\u0443\u0448\u043a\u0430: 4\u00a0\u043a\u0433",
+          "program_wash_wear": "\u0420\u0435\u0436\u0438\u043c Wash & Wear",
+          "program_dark_wash": "\u0421\u0442\u0438\u0440\u043a\u0430 \u0442\u0435\u043c\u043d\u044b\u0445 \u0432\u0435\u0449\u0435\u0439",
+          "program_outdoor": "\u041d\u0430 \u0443\u043b\u0438\u0446\u0435",
+          "program_drum_clean_plus": "\u0420\u0435\u0436\u0438\u043c Drum Clean+"
+        }
+      },
+      "washer_temperature": {
+        "name": "\u0422\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430",
+        "state": {
+          "temperature_cold_wash": "\u041c\u044b\u0442\u044c\u0435/\u0441\u0442\u0438\u0440\u043a\u0430 \u0432 \u0445\u043e\u043b\u043e\u0434\u043d\u043e\u0439 \u0432\u043e\u0434\u0435",
+          "temperature_20": "20 \u00b0C",
+          "temperature_30": "30 \u00b0C",
+          "temperature_40": "40 \u00b0C",
+          "60c": "60C",
+          "90c": "90C"
+        }
+      },
+      "washer_spin": {
+        "name": "\u041e\u0442\u0436\u0438\u043c",
+        "state": {
+          "spin_no_spin": "\u0411\u0435\u0437 \u043e\u0442\u0436\u0438\u043c\u0430",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
+          "spin_rinse_hold": "\u0417\u0430\u0434\u0435\u0440\u0436\u043a\u0430 \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u044f",
+          "spin_600": "600",
+          "spin_800": "800",
+          "spin_1200": "1200",
+          "spin_1400": "1400"
+        }
+      },
+      "washer_fast_plus": {
+        "name": "Fast+",
+        "state": {
+          "fast_plus_off": "\u0420\u0435\u0436\u0438\u043c Fast+ \u0432\u044b\u043a\u043b\u044e\u0447\u0435\u043d",
+          "fast_plus_on_fast": "\u0420\u0435\u0436\u0438\u043c Fast",
+          "fast_plus_on_fast_plus": "\u0420\u0435\u0436\u0438\u043c Fast+"
+        }
+      },
+      "custom_duration_level": {
+        "name": "\u041f\u0440\u043e\u0434\u043e\u043b\u0436\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c \u0432 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u043e\u043c \u0440\u0435\u0436\u0438\u043c\u0435",
+        "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "4",
+          "5": "5",
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
+        }
+      },
+      "washer_extra_rinse_count": {
+        "name": "\u041a\u043e\u043b-\u0432\u043e \u0434\u043e\u043f. \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0439"
+      },
+      "settings_volume": {
+        "name": "\u0413\u0440\u043e\u043c\u043a\u043e\u0441\u0442\u044c \u043a\u043d\u043e\u043f\u043a\u0438",
+        "state": {
+          "volume_low": "\u041d\u0438\u0437\u043a\u0438\u0439",
+          "volume_high": "\u0412\u044b\u0441\u043e\u043a\u0438\u0439"
+        }
+      },
+      "remote_control": {
+        "name": "\u041f\u0443\u043b\u044c\u0442"
+      },
+      "washer_warning_door_is_open": {
+        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430"
+      },
+      "washer_warning_no_water": {
+        "name": "\u041d\u0435\u0442 \u0432\u043e\u0434\u044b"
+      },
+      "washer_warning_security": {
+        "name": "\u0411\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c"
+      },
+      "oven_program": {
+        "name": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430",
+        "state": {
+          "program_static": "\u0421\u0442\u0430\u0442\u0438\u0447\u043d\u044b\u0439",
+          "program_static_fan": "\u0421\u0442\u0430\u0442\u0438\u0447\u043d\u044b\u0439 + \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440",
+          "program_fan_heating": "\u041d\u0430\u0433\u0440\u0435\u0432 \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440\u043e\u043c",
+          "program_multi_cooking": "\u041c\u0443\u043b\u044c\u0442\u0438\u0440\u0435\u0436\u0438\u043c (3D-\u043f\u0440\u0438\u0433\u043e\u0442\u043e\u0432\u043b\u0435\u043d\u0438\u0435)",
+          "program_fan_heat_bottom": "\u041d\u0430\u0433\u0440\u0435\u0432 \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440\u043e\u043c + \u0441\u043d\u0438\u0437\u0443",
+          "program_eco_grill": "\u0413\u0440\u0438\u043b\u044c Eco",
+          "program_full_grill": "\u0413\u0440\u0438\u043b\u044c",
+          "program_full_grill_fan": "\u0413\u0440\u0438\u043b\u044c + \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440",
+          "program_bottom_heating": "\u041d\u0438\u0436\u043d\u0438\u0439 \u043d\u0430\u0433\u0440\u0435\u0432",
+          "program_defrost": "lorem ipsum",
+          "program_warm_keeping": "\u041f\u043e\u0434\u0434\u0435\u0440\u0436\u0430\u043d\u0438\u0435 \u0442\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u044b",
+          "program_eco_fan_heating": "\u0420\u0435\u0436\u0438\u043c \u043d\u0430\u0433\u0440\u0435\u0432\u0430 \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440\u043e\u043c Eco",
+          "program_steam_cleaning": "\u041e\u0447\u0438\u0441\u0442\u043a\u0430 \u043f\u0430\u0440\u043e\u043c",
+          "program_eco_pyro": "\u042d\u043a\u043e\u043d\u043e\u043c\u0438\u0447\u043d\u0430\u044f \u0441\u0442\u0438\u0440\u043a\u0430",
+          "program_pyro": "\u041e\u0447\u0438\u0441\u0442\u043a\u0430"
+        }
+      },
+      "oven_temperature": {
+        "name": "\u0422\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430"
+      },
+      "settings_brightness": {
+        "name": "\u042f\u0440\u043a\u043e\u0441\u0442\u044c"
+      },
+      "oven_warning_door_is_open": {
+        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430"
+      },
+      "oven_warning_door_locked": {
+        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u0437\u0430\u043f\u0435\u0440\u0442\u0430"
+      },
+      "oven_warning_error": {
+        "name": "\u0412 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0435 \u043f\u0440\u043e\u0438\u0437\u043e\u0448\u043b\u0430 \u043d\u0435\u043f\u0440\u0435\u0434\u0432\u0438\u0434\u0435\u043d\u043d\u0430\u044f \u043e\u0448\u0438\u0431\u043a\u0430. \u0421\u043c. \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f."
+      },
+      "program": {
+        "name": "\u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435",
+        "state": {
+          "program_auto": "\u0410\u0432\u0442\u043e, 40\u201365\u00a0\u00b0C",
+          "program_mix_wash_plus": "\u0420\u0435\u0436\u0438\u043c All-in-Wash",
+          "program_intensive_70": "\u0418\u043d\u0442\u0435\u043d\u0441\u0438\u0432\u043d\u044b\u0439, 70\u00a0\u00b0C",
+          "program_eco_50": "\u042d\u043a\u043e, 50\u00a0\u00b0C",
+          "program_glasscare": "\u0420\u0435\u0436\u0438\u043c GlassCare",
+          "program_new58min": "\u0420\u0435\u0436\u0438\u043c Quick&Clean",
+          "program_30min": "\u041c\u0438\u043d\u0438, 30\u00a0\u043c\u0438\u043d",
+          "program_prewash": "\u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043c\u043e\u0439\u043a\u0430",
+          "program_hygiene": "\u0420\u0435\u0436\u0438\u043c Hygiene",
+          "program_daily": "\u0415\u0436\u0435\u0434\u043d\u0435\u0432\u043d\u043e",
+          "program_silent": "\u0420\u0435\u0436\u0438\u043c SilentWash",
+          "program_makine_temizleme": "\u0420\u0435\u0436\u0438\u043c ProCare"
+        }
+      },
+      "setting_detergent_type": {
+        "name": "\u0422\u0438\u043f \u043c\u043e\u044e\u0449\u0435\u0433\u043e \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430",
+        "state": {
+          "setting_detergent_type_powder": "\u041f\u043e\u0440\u043e\u0448\u043a\u043e\u0432\u043e\u0435 \u043c\u043e\u044e\u0449\u0435\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u043e",
+          "setting_detergent_type_tablet": "\u041c\u043e\u044e\u0449\u0435\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u043e \u0432 \u0442\u0430\u0431\u043b\u0435\u0442\u043a\u0430\u0445",
+          "setting_detergent_type_liquid": "\u0416\u0438\u0434\u043a\u043e\u0435 \u043c\u043e\u044e\u0449\u0435\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u043e"
+        }
+      },
+      "dishwasher_rinse_aid_level": {
+        "name": "\u0423\u0440\u043e\u0432\u0435\u043d\u044c \u043a\u043e\u043d\u0434\u0438\u0446\u0438\u043e\u043d\u0435\u0440\u0430 \u0434\u043b\u044f \u0431\u0435\u043b\u044c\u044f"
+      },
+      "dishwasher_water_hardness": {
+        "name": "\u0416\u0435\u0441\u0442\u043a\u043e\u0441\u0442\u044c \u0432\u043e\u0434\u044b"
+      },
+      "dishwasher_warning_no_rinse_aid": {
+        "name": "\u0411\u0435\u0437 \u043a\u043e\u043d\u0434\u0438\u0446\u0438\u043e\u043d\u0435\u0440\u0430 \u0434\u043b\u044f \u0431\u0435\u043b\u044c\u044f"
+      },
+      "dishwasher_warning_no_salt": {
+        "name": "\u0411\u0435\u0437 \u0441\u043e\u043b\u0438"
+      },
+      "dishwasher_warning_no_water": {
+        "name": "\u041d\u0435\u0442 \u0432\u043e\u0434\u044b"
+      },
+      "dishwasher_warning_check_the_filter": {
+        "name": "\u041f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435 \u0444\u0438\u043b\u044c\u0442\u0440"
+      },
+      "dishwasher_warning_door_is_open": {
+        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430"
+      },
+      "dishwasher_warning_call_service": {
+        "name": "\u041f\u043e\u0437\u0432\u043e\u043d\u0438\u0442\u0435 \u0432 \u0441\u0435\u0440\u0432\u0438\u0441\u043d\u0443\u044e \u0441\u043b\u0443\u0436\u0431\u0443"
+      },
+      "dishwasher_liquid_detergent_low": {
+        "name": "\u041d\u0438\u0437\u043a\u0438\u0439 \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u0436\u0438\u0434\u043a\u043e\u0433\u043e \u043c\u043e\u044e\u0449\u0435\u0433\u043e \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430"
+      },
+      "dishwasher_program": {
+        "name": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430",
+        "state": {
+          "program_auto": "\u0410\u0432\u0442\u043e, 40\u201365\u00a0\u00b0C",
+          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_intensive_70": "\u0418\u043d\u0442\u0435\u043d\u0441\u0438\u0432\u043d\u044b\u0439, 70\u00a0\u00b0C",
+          "program_eco_50": "\u042d\u043a\u043e, 50\u00a0\u00b0C",
+          "program_delicate": "\u0414\u0435\u043b\u0438\u043a\u0430\u0442\u043d\u044b\u0439",
+          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
+          "program_mini": "PROGRAM_MINI",
+          "program_prewash": "\u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043c\u043e\u0439\u043a\u0430",
+          "program_quiet": "PROGRAM_QUIET",
+          "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
+          "program_innerclean": "\u0420\u0435\u0436\u0438\u043c InnerClean"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "\u0416\u0438\u0434\u043a\u043e\u0435 \u043c\u043e\u044e\u0449\u0435\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u043e"
+      },
+      "washer_dry": {
+        "name": "\u0421\u0443\u0448\u043a\u0430",
+        "state": {
+          "dry_off": "\u0412\u044b\u043a\u043b",
+          "dry_extra": "\u0421\u0438\u043b\u044c\u043d\u0430\u044f \u0441\u0443\u0448\u043a\u0430",
+          "dry_cabinet": "Wardrobe Dry",
+          "dry_iron": "\u0421\u0443\u0448\u043a\u0430 \u0434\u043b\u044f \u043b\u0435\u0433\u043a\u043e\u0439 \u0433\u043b\u0430\u0436\u043a\u0438",
+          "dry_10": "45\u00a0\u043c\u0438\u043d",
+          "dry_20": "20\u00a0\u043c\u0438\u043d",
+          "dry_30": "30\u00a0\u043c\u0438\u043d",
+          "dry_60": "60\u00a0\u043c\u0438\u043d",
+          "dry_90": "90\u00a0\u043c\u0438\u043d",
+          "dry_120": "15\u00a0\u043c\u0438\u043d",
+          "dry_150": "150\u00a0\u043c\u0438\u043d"
+        }
+      },
+      "washer_rinse_count": {
+        "name": "\u0427\u0438\u0441\u043b\u043e \u0446\u0438\u043a\u043b\u043e\u0432 \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u044f"
+      },
+      "air_conditioner_soft_air": {
+        "name": "\u041c\u044f\u0433\u043a\u0438\u0439 \u0432\u043e\u0437\u0434\u0443\u0445",
+        "state": {
+          "air_conditioner_soft_air_off": "\u0412\u044b\u043a\u043b",
+          "air_conditioner_soft_air_up": "\u0412\u0432\u0435\u0440\u0445",
+          "air_conditioner_soft_air_down": "\u0412\u043d\u0438\u0437"
+        }
+      },
+      "air_conditioner_up_down_vane_control": {
+        "name": "\u0412\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u044c\u043d\u043e\u0435 \u043a\u0430\u0447\u0435\u043d\u0438\u0435",
+        "state": {
+          "up_down_vane_control_off": "\u0412\u044b\u043a\u043b",
+          "up_down_vane_control_6": "6",
+          "up_down_vane_control_5": "5",
+          "up_down_vane_control_4": "4",
+          "up_down_vane_control_3": "3",
+          "up_down_vane_control_2": "2",
+          "up_down_vane_control_1": "1",
+          "up_down_vane_control_auto": "\u0410\u0432\u0442\u043e"
+        }
+      },
+      "air_conditioner_left_right_vane_control": {
+        "name": "\u0413\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u0430\u043b\u044c\u043d\u043e\u0435 \u043a\u0430\u0447\u0430\u043d\u0438\u0435",
+        "state": {
+          "left_right_vane_control_off": "\u0412\u044b\u043a\u043b",
+          "left_right_vane_control_1": "1",
+          "left_right_vane_control_2": "2",
+          "left_right_vane_control_3": "3",
+          "left_right_vane_control_4": "4",
+          "left_right_vane_control_5": "5",
+          "left_right_vane_control_left": "\u0421\u043b\u0435\u0432\u0430",
+          "left_right_vane_control_right": "\u0421\u043f\u0440\u0430\u0432\u0430",
+          "left_right_vane_control_auto": "\u0410\u0432\u0442\u043e"
+        }
+      }
+    },
+    "sensor": {
+      "state": {
+        "name": "\u0413\u043e\u0441\u0443\u0434\u0430\u0440\u0441\u0442\u0432\u043e",
+        "state": {
+          "device_state_on": "\u0412\u043a\u043b",
+          "device_state_off": "\u0412\u044b\u043a\u043b",
+          "device_state_running": "\u0412\u044b\u043f\u043e\u043b\u043d\u044f\u0435\u0442\u0441\u044f",
+          "device_state_paused": "\u041f\u0440\u0438\u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e",
+          "device_state_time_delay_active": "\u041e\u0442\u0441\u0440\u043e\u0447\u043a\u0430 \u0432\u0440\u0435\u043c\u0435\u043d\u0438 \u0430\u043a\u0442\u0438\u0432\u043d\u0430",
+          "device_state_cancelling": "\u041e\u0442\u043c\u0435\u043d\u0430",
+          "device_state_door_open": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430!",
+          "device_state_settings": "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438"
+        }
+      },
+      "washer_program": {
+        "name": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430",
+        "state": {
+          "program_cottons": "\u0425\u043b\u043e\u043f\u043e\u043a",
+          "program_eco_40_60": "Eco 40-60",
+          "program_synthetics": "\u0421\u0438\u043d\u0442\u0435\u0442\u0438\u043a\u0430",
+          "program_mini_mini14": "Xpress",
+          "program_wool_handwash": "Woollens",
+          "program_delicates": "PROGRAM_DELICATES",
+          "program_spin_pump": "Spin+Drain",
+          "program_rinsing": "\u041f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0435",
+          "program_darkwash": "\u0422\u0435\u043c\u043d\u044b\u0435 \u0432\u0435\u0449\u0438 (\u0434\u0436\u0438\u043d\u0441\u044b)",
+          "program_outdoor_sports_goretex": "\u0421\u043f\u043e\u0440\u0442\u0438\u0432\u043d\u0430\u044f \u043e\u0434\u0435\u0436\u0434\u0430",
+          "program_stain": "\u0421\u0443\u0448\u043a\u0430 \u0441\u0438\u043d\u0442\u0435\u0442\u0438\u043a\u0438 \u0434\u043b\u044f \u043b\u0435\u0433\u043a\u043e\u0439 \u0433\u043b\u0430\u0436\u043a\u0438",
+          "program_hygeine": "\u0420\u0435\u0436\u0438\u043c Hygiene+",
+          "program_duvet": "\u041f\u0443\u0445\u043e\u0432\u043e\u0435 \u043e\u0434\u0435\u044f\u043b\u043e/\u0442\u0435\u043f\u043b\u0430\u044f \u043e\u0434\u0435\u0436\u0434\u0430",
+          "program_shirts": "\u0420\u0443\u0431\u0430\u0448\u043a\u0438",
+          "program_drum_clean": "\u0420\u0435\u0436\u0438\u043c Drum Clean",
+          "program_mix": "\u0421\u043c\u0435\u0448\u0430\u043d\u043d\u0430\u044f",
+          "program_curtain": "\u0417\u0430\u043d\u0430\u0432\u0435\u0441\u043a\u0438/\u0448\u0442\u043e\u0440\u044b",
+          "program_lingerie": "\u041d\u0438\u0436\u043d\u0435\u0435 \u0431\u0435\u043b\u044c\u0435",
+          "program_soft_toys": "\u041c\u044f\u0433\u043a\u0438\u0435 \u0438\u0433\u0440\u0443\u0448\u043a\u0438",
+          "program_towel": "\u041f\u043e\u043b\u043e\u0442\u0435\u043d\u0446\u0435",
+          "program_cottons_eco": "\u0425\u043b\u043e\u043f\u043e\u043a, \u044d\u043a\u043e",
+          "program_dryer_cotton": "\u0421\u0443\u0448\u043a\u0430 \u0445\u043b\u043e\u043f\u043a\u0430",
+          "program_dryer_synthetics": "\u0421\u0443\u0448\u043a\u0430 \u0441\u0438\u043d\u0442\u0435\u0442\u0438\u043a\u0438",
+          "program_hygiene_wash_dry": "\u0420\u0435\u0436\u0438\u043c \u0441\u0442\u0438\u0440\u043a\u0438 \u0438 \u0441\u0443\u0448\u043a\u0438 Hygiene+",
+          "program_4kg_wash_dry": "\u0441\u0442\u0438\u0440\u043a\u0430 \u0438 \u0441\u0443\u0448\u043a\u0430: 4\u00a0\u043a\u0433",
+          "program_wash_wear": "\u0420\u0435\u0436\u0438\u043c Wash & Wear",
+          "program_dark_wash": "\u0421\u0442\u0438\u0440\u043a\u0430 \u0442\u0435\u043c\u043d\u044b\u0445 \u0432\u0435\u0449\u0435\u0439",
+          "program_outdoor": "\u041d\u0430 \u0443\u043b\u0438\u0446\u0435",
+          "program_drum_clean_plus": "\u0420\u0435\u0436\u0438\u043c Drum Clean+"
+        }
+      },
+      "washer_temperature": {
+        "name": "\u0422\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430",
+        "state": {
+          "temperature_cold_wash": "\u041c\u044b\u0442\u044c\u0435/\u0441\u0442\u0438\u0440\u043a\u0430 \u0432 \u0445\u043e\u043b\u043e\u0434\u043d\u043e\u0439 \u0432\u043e\u0434\u0435",
+          "temperature_20": "20 \u00b0C",
+          "temperature_30": "30 \u00b0C",
+          "temperature_40": "40 \u00b0C",
+          "60c": "60C",
+          "90c": "90C"
+        }
+      },
+      "washer_spin": {
+        "name": "\u041e\u0442\u0436\u0438\u043c",
+        "state": {
+          "spin_no_spin": "\u0411\u0435\u0437 \u043e\u0442\u0436\u0438\u043c\u0430",
+          "600rpm": "600RPM",
+          "800rpm": "800RPM",
+          "1000rpm": "1000RPM",
+          "1200rpm": "1200RPM",
+          "spin_rinse_hold": "\u0417\u0430\u0434\u0435\u0440\u0436\u043a\u0430 \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u044f",
+          "spin_600": "600",
+          "spin_800": "800",
+          "spin_1200": "1200",
+          "spin_1400": "1400"
+        }
+      },
+      "washer_fast_plus": {
+        "name": "Fast+",
+        "state": {
+          "fast_plus_off": "\u0420\u0435\u0436\u0438\u043c Fast+ \u0432\u044b\u043a\u043b\u044e\u0447\u0435\u043d",
+          "fast_plus_on_fast": "\u0420\u0435\u0436\u0438\u043c Fast",
+          "fast_plus_on_fast_plus": "\u0420\u0435\u0436\u0438\u043c Fast+"
+        }
+      },
+      "custom_duration_level": {
+        "name": "\u041f\u0440\u043e\u0434\u043e\u043b\u0436\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c \u0432 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u043e\u043c \u0440\u0435\u0436\u0438\u043c\u0435",
+        "state": {
+          "duration_level_0": "DURATION_LEVEL_0",
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "4",
+          "5": "5",
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "11"
+        }
+      },
+      "washer_extra_rinse_count": {
+        "name": "\u041a\u043e\u043b-\u0432\u043e \u0434\u043e\u043f. \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0439"
+      },
+      "settings_volume": {
+        "name": "\u0413\u0440\u043e\u043c\u043a\u043e\u0441\u0442\u044c \u043a\u043d\u043e\u043f\u043a\u0438",
+        "state": {
+          "volume_low": "\u041d\u0438\u0437\u043a\u0438\u0439",
+          "volume_high": "\u0412\u044b\u0441\u043e\u043a\u0438\u0439"
+        }
+      },
+      "sub_state": {
+        "name": "\u041f\u043e\u0434\u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0435",
+        "state": {
+          "washer_substate_washing": "\u041c\u043e\u0439\u043a\u0430/\u0441\u0442\u0438\u0440\u043a\u0430",
+          "washer_substate_spin": "\u041e\u0442\u0436\u0438\u043c",
+          "washer_water_intake": "\u0417\u0430\u0431\u043e\u0440 \u0432\u043e\u0434\u044b",
+          "washer_substate_prewash": "\u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043c\u043e\u0439\u043a\u0430",
+          "washer_substate_rinsing": "\u041f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0435",
+          "washer_substate_softener": "\u0423\u043c\u044f\u0433\u0447\u0438\u0442\u0435\u043b\u044c",
+          "washer_substate_program_started": "\u0417\u0430\u043f\u0443\u0441\u043a \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b",
+          "washer_substate_time_delay_enabled": "\u0412\u0440\u0435\u043c\u044f \u043e\u043a\u043e\u043d\u0447\u0430\u043d\u0438\u044f \u0432\u043a\u043b\u044e\u0447\u0435\u043d\u043e",
+          "washer_substate_paused": "\u041f\u0430\u0443\u0437\u0430",
+          "washer_substate_analysing": "\u0410\u043d\u0430\u043b\u0438\u0437",
+          "washer_substate_door_locked": "\u0414\u0432\u0435\u0440\u0446\u0430 \u0437\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d\u0430",
+          "washer_substate_opening_door": "\u041e\u0442\u043a\u0440\u044b\u0432\u0430\u043d\u0438\u0435 \u0434\u0432\u0435\u0440\u0446\u044b",
+          "washer_substate_locking_door": "\u0411\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u043a\u0430 \u0434\u0432\u0435\u0440\u0446\u044b",
+          "washer_substate_remove_laundry": "\u0426\u0438\u043a\u043b \u0441\u0442\u0438\u0440\u043a\u0438 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d; \u043c\u043e\u0436\u043d\u043e \u0434\u043e\u0441\u0442\u0430\u0432\u0430\u0442\u044c \u0431\u0435\u043b\u044c\u0435",
+          "washer_substate_add_laundry": "\u041c\u043e\u0436\u043d\u043e \u0434\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0431\u0435\u043b\u044c\u0435",
+          "washer_substate_rinse_hold": "\u0412\u043a\u043b\u044e\u0447\u0435\u043d\u0430 \u0437\u0430\u0434\u0435\u0440\u0436\u043a\u0430 \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u044f; \u0432\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0441\u043a\u043e\u0440\u043e\u0441\u0442\u044c \u043e\u0442\u0436\u0438\u043c\u0430",
+          "washer_substate_remote_anticrease": "\u0412\u044b\u043f\u043e\u043b\u043d\u044f\u0435\u0442\u0441\u044f \u0440\u0430\u0437\u0433\u043b\u0430\u0436\u0438\u0432\u0430\u043d\u0438\u0435 \u0441\u043a\u043b\u0430\u0434\u043e\u043a (\u0437\u0430\u043f\u0443\u0441\u043a \u0441 \u0443\u0434\u0430\u043b\u0435\u043d\u043d\u043e\u0433\u043e \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430).",
+          "washer_substate_drying": "\u0421\u0443\u0448\u043a\u0430",
+          "oven_message_good_appetite": "\u041f\u0440\u0438\u044f\u0442\u043d\u043e\u0433\u043e \u0430\u043f\u043f\u0435\u0442\u0438\u0442\u0430",
+          "oven_message_cooking": "\u0422\u0435\u0445\u043d\u0438\u043a\u0430 \u0434\u043b\u044f \u043f\u0440\u0438\u0433\u043e\u0442\u043e\u0432\u043b\u0435\u043d\u0438\u044f \u043f\u0438\u0449\u0438",
+          "oven_message_paused": "\u041f\u0440\u0438\u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e",
+          "oven_message_waiting": "\u041e\u0436\u0438\u0434\u0430\u043d\u0438\u0435",
+          "oven_message_defrosting": "\u0420\u0430\u0437\u043c\u043e\u0440\u043e\u0437\u043a\u0430",
+          "operation_completed": "\u041e\u043f\u0435\u0440\u0430\u0446\u0438\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430",
+          "oven_message_preheating": "\u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0440\u0430\u0437\u043e\u0433\u0440\u0435\u0432",
+          "oven_message_preheating_completed": "\u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0440\u0430\u0437\u043e\u0433\u0440\u0435\u0432 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d",
+          "oven_message_cleaning": "\u041e\u0447\u0438\u0441\u0442\u043a\u0430",
+          "oven_message_cleaning_completed": "\u041e\u0447\u0438\u0441\u0442\u043a\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430",
+          "dishwasher_message_time_delay_started": "\u0412\u0440\u0435\u043c\u044f \u043e\u043a\u043e\u043d\u0447\u0430\u043d\u0438\u044f \u0432\u043a\u043b\u044e\u0447\u0435\u043d\u043e",
+          "dishwasher_message_paused": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430 \u043f\u0440\u0438\u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0430",
+          "dishwasher_message_program_finished": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430",
+          "dishwasher_message_program_sanitized": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430, \u0414\u0415\u0417\u0418\u041d\u0424\u0415\u041a\u0426\u0418\u042f \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0430",
+          "dishwasher_message_cancelling": "\u041e\u0442\u043c\u0435\u043d\u0430...",
+          "dishwasher_message_time_delay_cancelled": "\u041e\u0442\u0441\u0440\u043e\u0447\u043a\u0430 \u043e\u0442\u043c\u0435\u043d\u0435\u043d\u0430",
+          "dishwasher_message_program_started": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430",
+          "dishwasher_message_washing": "\u041c\u043e\u0439\u043a\u0430",
+          "dishwasher_message_rinsing": "\u041f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0435",
+          "dishwasher_message_drying": "\u0421\u0443\u0448\u043a\u0430"
+        }
+      },
+      "washer_delay": {
+        "name": "\u0412\u0440\u0435\u043c\u044f \u043e\u043a\u043e\u043d\u0447\u0430\u043d\u0438\u044f \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b"
+      },
+      "washer_duration": {
+        "name": "\u0414\u043b\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c"
+      },
+      "washer_remaining": {
+        "name": "\u041e\u0441\u0442\u0430\u043b\u043e\u0441\u044c"
+      },
+      "remote_control": {
+        "name": "\u041f\u0443\u043b\u044c\u0442"
+      },
+      "washer_warning_door_is_open": {
+        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430"
+      },
+      "washer_warning_no_water": {
+        "name": "\u041d\u0435\u0442 \u0432\u043e\u0434\u044b"
+      },
+      "washer_warning_security": {
+        "name": "\u0411\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c"
+      },
+      "washer_prewash": {
+        "name": "\u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043c\u043e\u0439\u043a\u0430"
+      },
+      "washer_extrarinse": {
+        "name": "\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0435"
+      },
+      "washer_hidden_anti_crease": {
+        "name": "\u0418\u043d\u0442\u0435\u043b\u043b\u0435\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u043e\u0435 \u0440\u0430\u0437\u0433\u043b\u0430\u0436\u0438\u0432\u0430\u043d\u0438\u0435 \u0441\u043a\u043b\u0430\u0434\u043e\u043a"
+      },
+      "washer_steam": {
+        "name": "\u041f\u0430\u0440"
+      },
+      "washer_phr": {
+        "name": "\u0423\u0434\u0430\u043b\u0435\u043d\u0438\u0435 \u0448\u0435\u0440\u0441\u0442\u0438 \u0436\u0438\u0432\u043e\u0442\u043d\u044b\u0445"
+      },
+      "washer_add_water": {
+        "name": "\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043f\u043e\u0434\u0430\u0447\u0430 \u0432\u043e\u0434\u044b"
+      },
+      "washer_soaking": {
+        "name": "\u0417\u0430\u043c\u0430\u0447\u0438\u0432\u0430\u043d\u0438\u0435"
+      },
+      "washer_night": {
+        "name": "\u041d\u043e\u0447\u043d\u043e\u0439 \u0440\u0435\u0436\u0438\u043c"
+      },
+      "washer_anticrease": {
+        "name": "\u0420\u0435\u0436\u0438\u043c AntiCrease"
+      },
+      "oven_program": {
+        "name": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430",
+        "state": {
+          "program_static": "\u0421\u0442\u0430\u0442\u0438\u0447\u043d\u044b\u0439",
+          "program_static_fan": "\u0421\u0442\u0430\u0442\u0438\u0447\u043d\u044b\u0439 + \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440",
+          "program_fan_heating": "\u041d\u0430\u0433\u0440\u0435\u0432 \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440\u043e\u043c",
+          "program_multi_cooking": "\u041c\u0443\u043b\u044c\u0442\u0438\u0440\u0435\u0436\u0438\u043c (3D-\u043f\u0440\u0438\u0433\u043e\u0442\u043e\u0432\u043b\u0435\u043d\u0438\u0435)",
+          "program_fan_heat_bottom": "\u041d\u0430\u0433\u0440\u0435\u0432 \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440\u043e\u043c + \u0441\u043d\u0438\u0437\u0443",
+          "program_eco_grill": "\u0413\u0440\u0438\u043b\u044c Eco",
+          "program_full_grill": "\u0413\u0440\u0438\u043b\u044c",
+          "program_full_grill_fan": "\u0413\u0440\u0438\u043b\u044c + \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440",
+          "program_bottom_heating": "\u041d\u0438\u0436\u043d\u0438\u0439 \u043d\u0430\u0433\u0440\u0435\u0432",
+          "program_defrost": "lorem ipsum",
+          "program_warm_keeping": "\u041f\u043e\u0434\u0434\u0435\u0440\u0436\u0430\u043d\u0438\u0435 \u0442\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u044b",
+          "program_eco_fan_heating": "\u0420\u0435\u0436\u0438\u043c \u043d\u0430\u0433\u0440\u0435\u0432\u0430 \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440\u043e\u043c Eco",
+          "program_steam_cleaning": "\u041e\u0447\u0438\u0441\u0442\u043a\u0430 \u043f\u0430\u0440\u043e\u043c",
+          "program_eco_pyro": "\u042d\u043a\u043e\u043d\u043e\u043c\u0438\u0447\u043d\u0430\u044f \u0441\u0442\u0438\u0440\u043a\u0430",
+          "program_pyro": "\u041e\u0447\u0438\u0441\u0442\u043a\u0430"
+        }
+      },
+      "oven_temperature": {
+        "name": "\u0422\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430"
+      },
+      "settings_brightness": {
+        "name": "\u042f\u0440\u043a\u043e\u0441\u0442\u044c"
+      },
+      "variable_delay": {
+        "name": "\u041f\u0435\u0440\u0435\u043c\u0435\u043d\u043d\u0430\u044f \u0437\u0430\u0434\u0435\u0440\u0436\u043a\u0430"
+      },
+      "variable_oven_duration": {
+        "name": "\u0412\u0440\u0435\u043c\u044f \u043f\u0440\u0438\u0433\u043e\u0442\u043e\u0432\u043b\u0435\u043d\u0438\u044f (\u0447\u0430\u0441\u044b : \u043c\u0438\u043d\u0443\u0442\u044b)"
+      },
+      "variable_remaining": {
+        "name": "\u041e\u0441\u0442\u0430\u0432\u0448\u0430\u044f\u0441\u044f \u043f\u0435\u0440\u0435\u043c\u0435\u043d\u043d\u0430\u044f"
+      },
+      "oven_warning_door_is_open": {
+        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430"
+      },
+      "oven_warning_door_locked": {
+        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u0437\u0430\u043f\u0435\u0440\u0442\u0430"
+      },
+      "oven_warning_error": {
+        "name": "\u0412 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0435 \u043f\u0440\u043e\u0438\u0437\u043e\u0448\u043b\u0430 \u043d\u0435\u043f\u0440\u0435\u0434\u0432\u0438\u0434\u0435\u043d\u043d\u0430\u044f \u043e\u0448\u0438\u0431\u043a\u0430. \u0421\u043c. \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f."
+      },
+      "oven_booster": {
+        "name": "\u0411\u0443\u0441\u0442\u0435\u0440"
+      },
+      "oven_skip_preheating": {
+        "name": "\u041f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u044c >"
+      },
+      "program": {
+        "name": "\u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435",
+        "state": {
+          "program_auto": "\u0410\u0432\u0442\u043e, 40\u201365\u00a0\u00b0C",
+          "program_mix_wash_plus": "\u0420\u0435\u0436\u0438\u043c All-in-Wash",
+          "program_intensive_70": "\u0418\u043d\u0442\u0435\u043d\u0441\u0438\u0432\u043d\u044b\u0439, 70\u00a0\u00b0C",
+          "program_eco_50": "\u042d\u043a\u043e, 50\u00a0\u00b0C",
+          "program_glasscare": "\u0420\u0435\u0436\u0438\u043c GlassCare",
+          "program_new58min": "\u0420\u0435\u0436\u0438\u043c Quick&Clean",
+          "program_30min": "\u041c\u0438\u043d\u0438, 30\u00a0\u043c\u0438\u043d",
+          "program_prewash": "\u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043c\u043e\u0439\u043a\u0430",
+          "program_hygiene": "\u0420\u0435\u0436\u0438\u043c Hygiene",
+          "program_daily": "\u0415\u0436\u0435\u0434\u043d\u0435\u0432\u043d\u043e",
+          "program_silent": "\u0420\u0435\u0436\u0438\u043c SilentWash",
+          "program_makine_temizleme": "\u0420\u0435\u0436\u0438\u043c ProCare"
+        }
+      },
+      "setting_detergent_type": {
+        "name": "\u0422\u0438\u043f \u043c\u043e\u044e\u0449\u0435\u0433\u043e \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430",
+        "state": {
+          "setting_detergent_type_powder": "\u041f\u043e\u0440\u043e\u0448\u043a\u043e\u0432\u043e\u0435 \u043c\u043e\u044e\u0449\u0435\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u043e",
+          "setting_detergent_type_tablet": "\u041c\u043e\u044e\u0449\u0435\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u043e \u0432 \u0442\u0430\u0431\u043b\u0435\u0442\u043a\u0430\u0445",
+          "setting_detergent_type_liquid": "\u0416\u0438\u0434\u043a\u043e\u0435 \u043c\u043e\u044e\u0449\u0435\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u043e"
+        }
+      },
+      "dishwasher_rinse_aid_level": {
+        "name": "\u0423\u0440\u043e\u0432\u0435\u043d\u044c \u043a\u043e\u043d\u0434\u0438\u0446\u0438\u043e\u043d\u0435\u0440\u0430 \u0434\u043b\u044f \u0431\u0435\u043b\u044c\u044f"
+      },
+      "dishwasher_water_hardness": {
+        "name": "\u0416\u0435\u0441\u0442\u043a\u043e\u0441\u0442\u044c \u0432\u043e\u0434\u044b"
+      },
+      "dishwasher_delay": {
+        "name": "\u0412\u0440\u0435\u043c\u044f \u043e\u043a\u043e\u043d\u0447\u0430\u043d\u0438\u044f \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b"
+      },
+      "dishwasher_duration": {
+        "name": "\u0414\u043b\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c"
+      },
+      "dishwasher_remaining": {
+        "name": "\u041e\u0441\u0442\u0430\u043b\u043e\u0441\u044c \u0432\u0440\u0435\u043c\u0435\u043d\u0438"
+      },
+      "dishwasher_warning_no_rinse_aid": {
+        "name": "\u0411\u0435\u0437 \u043a\u043e\u043d\u0434\u0438\u0446\u0438\u043e\u043d\u0435\u0440\u0430 \u0434\u043b\u044f \u0431\u0435\u043b\u044c\u044f"
+      },
+      "dishwasher_warning_no_salt": {
+        "name": "\u0411\u0435\u0437 \u0441\u043e\u043b\u0438"
+      },
+      "dishwasher_warning_no_water": {
+        "name": "\u041d\u0435\u0442 \u0432\u043e\u0434\u044b"
+      },
+      "dishwasher_warning_check_the_filter": {
+        "name": "\u041f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435 \u0444\u0438\u043b\u044c\u0442\u0440"
+      },
+      "dishwasher_warning_door_is_open": {
+        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430"
+      },
+      "dishwasher_warning_call_service": {
+        "name": "\u041f\u043e\u0437\u0432\u043e\u043d\u0438\u0442\u0435 \u0432 \u0441\u0435\u0440\u0432\u0438\u0441\u043d\u0443\u044e \u0441\u043b\u0443\u0436\u0431\u0443"
+      },
+      "dishwasher_liquid_detergent_low": {
+        "name": "\u041d\u0438\u0437\u043a\u0438\u0439 \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u0436\u0438\u0434\u043a\u043e\u0433\u043e \u043c\u043e\u044e\u0449\u0435\u0433\u043e \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430"
+      },
+      "dishwasher_traywash": {
+        "name": "\u041c\u044b\u0442\u044c\u0435 \u043f\u0440\u043e\u0442\u0438\u0432\u0435\u043d\u044f"
+      },
+      "dishwasher_fastplus": {
+        "name": "\u041f\u043e\u0441\u0443\u0434\u043e\u043c\u043e\u0435\u0447\u043d\u0430\u044f \u043c\u0430\u0448\u0438\u043d\u0430 Fastplus"
+      },
+      "dishwasher_steamgloss": {
+        "name": "\u0420\u0435\u0436\u0438\u043c Steamgloss"
+      },
+      "dishwasher_extrarinse": {
+        "name": "\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0435"
+      },
+      "dishwasher_halfload": {
+        "name": "\u041f\u043e\u043b\u043e\u0432\u0438\u043d\u043d\u0430\u044f \u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0430"
+      },
+      "setting_auto_door": {
+        "name": "\u0424\u0443\u043d\u043a\u0446\u0438\u044f Doormatic"
+      },
+      "setting_inner_illumination": {
+        "name": "\u0412\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0435\u0435 \u043e\u0441\u0432\u0435\u0449\u0435\u043d\u0438\u0435"
+      },
+      "dishwasher_program": {
+        "name": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430",
+        "state": {
+          "program_auto": "\u0410\u0432\u0442\u043e, 40\u201365\u00a0\u00b0C",
+          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_intensive_70": "\u0418\u043d\u0442\u0435\u043d\u0441\u0438\u0432\u043d\u044b\u0439, 70\u00a0\u00b0C",
+          "program_eco_50": "\u042d\u043a\u043e, 50\u00a0\u00b0C",
+          "program_delicate": "\u0414\u0435\u043b\u0438\u043a\u0430\u0442\u043d\u044b\u0439",
+          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
+          "program_mini": "PROGRAM_MINI",
+          "program_prewash": "\u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043c\u043e\u0439\u043a\u0430",
+          "program_quiet": "PROGRAM_QUIET",
+          "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
+          "program_innerclean": "\u0420\u0435\u0436\u0438\u043c InnerClean"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "\u0416\u0438\u0434\u043a\u043e\u0435 \u043c\u043e\u044e\u0449\u0435\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u043e"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "\u0418\u043d\u0442\u0435\u043d\u0441\u0438\u0432\u043d\u0430\u044f \u0433\u0438\u0433\u0438\u0435\u043d\u0430 \u043f\u043e\u0441\u0443\u0434\u043e\u043c\u043e\u0435\u0447\u043d\u043e\u0439 \u043c\u0430\u0448\u0438\u043d\u044b"
+      },
+      "dishwasher_deepwash": {
+        "name": "\u0413\u043b\u0443\u0431\u043e\u043a\u0430\u044f \u0441\u0442\u0438\u0440\u043a\u0430"
+      },
+      "washer_dry": {
+        "name": "\u0421\u0443\u0448\u043a\u0430",
+        "state": {
+          "dry_off": "\u0412\u044b\u043a\u043b",
+          "dry_extra": "\u0421\u0438\u043b\u044c\u043d\u0430\u044f \u0441\u0443\u0448\u043a\u0430",
+          "dry_cabinet": "Wardrobe Dry",
+          "dry_iron": "\u0421\u0443\u0448\u043a\u0430 \u0434\u043b\u044f \u043b\u0435\u0433\u043a\u043e\u0439 \u0433\u043b\u0430\u0436\u043a\u0438",
+          "dry_10": "45\u00a0\u043c\u0438\u043d",
+          "dry_20": "20\u00a0\u043c\u0438\u043d",
+          "dry_30": "30\u00a0\u043c\u0438\u043d",
+          "dry_60": "60\u00a0\u043c\u0438\u043d",
+          "dry_90": "90\u00a0\u043c\u0438\u043d",
+          "dry_120": "15\u00a0\u043c\u0438\u043d",
+          "dry_150": "150\u00a0\u043c\u0438\u043d"
+        }
+      },
+      "washer_rinse_count": {
+        "name": "\u0427\u0438\u0441\u043b\u043e \u0446\u0438\u043a\u043b\u043e\u0432 \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u044f"
+      },
+      "air_conditioner_soft_air": {
+        "name": "\u041c\u044f\u0433\u043a\u0438\u0439 \u0432\u043e\u0437\u0434\u0443\u0445",
+        "state": {
+          "air_conditioner_soft_air_off": "\u0412\u044b\u043a\u043b",
+          "air_conditioner_soft_air_up": "\u0412\u0432\u0435\u0440\u0445",
+          "air_conditioner_soft_air_down": "\u0412\u043d\u0438\u0437"
+        }
+      },
+      "air_conditioner_up_down_vane_control": {
+        "name": "\u0412\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u044c\u043d\u043e\u0435 \u043a\u0430\u0447\u0435\u043d\u0438\u0435",
+        "state": {
+          "up_down_vane_control_off": "\u0412\u044b\u043a\u043b",
+          "up_down_vane_control_6": "6",
+          "up_down_vane_control_5": "5",
+          "up_down_vane_control_4": "4",
+          "up_down_vane_control_3": "3",
+          "up_down_vane_control_2": "2",
+          "up_down_vane_control_1": "1",
+          "up_down_vane_control_auto": "\u0410\u0432\u0442\u043e"
+        }
+      },
+      "air_conditioner_left_right_vane_control": {
+        "name": "\u0413\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u0430\u043b\u044c\u043d\u043e\u0435 \u043a\u0430\u0447\u0430\u043d\u0438\u0435",
+        "state": {
+          "left_right_vane_control_off": "\u0412\u044b\u043a\u043b",
+          "left_right_vane_control_1": "1",
+          "left_right_vane_control_2": "2",
+          "left_right_vane_control_3": "3",
+          "left_right_vane_control_4": "4",
+          "left_right_vane_control_5": "5",
+          "left_right_vane_control_left": "\u0421\u043b\u0435\u0432\u0430",
+          "left_right_vane_control_right": "\u0421\u043f\u0440\u0430\u0432\u0430",
+          "left_right_vane_control_auto": "\u0410\u0432\u0442\u043e"
+        }
+      },
+      "air_conditioner_instant_consumption": {
+        "name": "\u041c\u0433\u043d\u043e\u0432\u0435\u043d\u043d\u043e\u0435 \u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0432\u043e\u0437\u0434\u0443\u0445\u0430 \u043a\u043e\u043d\u0434\u0438\u0446\u0438\u043e\u043d\u0435\u0440\u043e\u043c"
+      },
+      "air_conditioner_sleep_mode_minute": {
+        "name": "\u041c\u0438\u043d\u0443\u0442\u0430 \u0441\u043f\u044f\u0449\u0435\u0433\u043e \u0440\u0435\u0436\u0438\u043c\u0430 \u043a\u043e\u043d\u0434\u0438\u0446\u0438\u043e\u043d\u0435\u0440\u0430"
+      },
+      "air_conditioner_auto_switch_off": {
+        "name": "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u0437\u0430\u043a\u0440\u044b\u0432\u0430\u043d\u0438\u0435"
+      },
+      "air_conditioner_auto_switch_on": {
+        "name": "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u043e\u0442\u043a\u0440\u044b\u0432\u0430\u043d\u0438\u0435"
+      }
+    },
+    "binary_sensor": {
+      "remote_control": {
+        "name": "\u041f\u0443\u043b\u044c\u0442"
+      },
+      "washer_warning_door_is_open": {
+        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430"
+      },
+      "washer_warning_no_water": {
+        "name": "\u041d\u0435\u0442 \u0432\u043e\u0434\u044b"
+      },
+      "washer_warning_security": {
+        "name": "\u0411\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c"
+      },
+      "oven_warning_door_is_open": {
+        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430"
+      },
+      "oven_warning_door_locked": {
+        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u0437\u0430\u043f\u0435\u0440\u0442\u0430"
+      },
+      "oven_warning_error": {
+        "name": "\u0412 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0435 \u043f\u0440\u043e\u0438\u0437\u043e\u0448\u043b\u0430 \u043d\u0435\u043f\u0440\u0435\u0434\u0432\u0438\u0434\u0435\u043d\u043d\u0430\u044f \u043e\u0448\u0438\u0431\u043a\u0430. \u0421\u043c. \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f."
+      },
+      "dishwasher_warning_no_rinse_aid": {
+        "name": "\u0411\u0435\u0437 \u043a\u043e\u043d\u0434\u0438\u0446\u0438\u043e\u043d\u0435\u0440\u0430 \u0434\u043b\u044f \u0431\u0435\u043b\u044c\u044f"
+      },
+      "dishwasher_warning_no_salt": {
+        "name": "\u0411\u0435\u0437 \u0441\u043e\u043b\u0438"
+      },
+      "dishwasher_warning_no_water": {
+        "name": "\u041d\u0435\u0442 \u0432\u043e\u0434\u044b"
+      },
+      "dishwasher_warning_check_the_filter": {
+        "name": "\u041f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435 \u0444\u0438\u043b\u044c\u0442\u0440"
+      },
+      "dishwasher_warning_door_is_open": {
+        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430"
+      },
+      "dishwasher_warning_call_service": {
+        "name": "\u041f\u043e\u0437\u0432\u043e\u043d\u0438\u0442\u0435 \u0432 \u0441\u0435\u0440\u0432\u0438\u0441\u043d\u0443\u044e \u0441\u043b\u0443\u0436\u0431\u0443"
+      },
+      "dishwasher_liquid_detergent_low": {
+        "name": "\u041d\u0438\u0437\u043a\u0438\u0439 \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u0436\u0438\u0434\u043a\u043e\u0433\u043e \u043c\u043e\u044e\u0449\u0435\u0433\u043e \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430"
+      }
+    },
+    "climate": {
+      "ac": {
+        "name": "Ac"
+      }
+    },
+    "switch": {
+      "washer_prewash": {
+        "name": "\u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043c\u043e\u0439\u043a\u0430"
+      },
+      "washer_extrarinse": {
+        "name": "\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0435"
+      },
+      "washer_hidden_anti_crease": {
+        "name": "\u0418\u043d\u0442\u0435\u043b\u043b\u0435\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u043e\u0435 \u0440\u0430\u0437\u0433\u043b\u0430\u0436\u0438\u0432\u0430\u043d\u0438\u0435 \u0441\u043a\u043b\u0430\u0434\u043e\u043a"
+      },
+      "washer_steam": {
+        "name": "\u041f\u0430\u0440"
+      },
+      "washer_phr": {
+        "name": "\u0423\u0434\u0430\u043b\u0435\u043d\u0438\u0435 \u0448\u0435\u0440\u0441\u0442\u0438 \u0436\u0438\u0432\u043e\u0442\u043d\u044b\u0445"
+      },
+      "washer_add_water": {
+        "name": "\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043f\u043e\u0434\u0430\u0447\u0430 \u0432\u043e\u0434\u044b"
+      },
+      "washer_soaking": {
+        "name": "\u0417\u0430\u043c\u0430\u0447\u0438\u0432\u0430\u043d\u0438\u0435"
+      },
+      "washer_night": {
+        "name": "\u041d\u043e\u0447\u043d\u043e\u0439 \u0440\u0435\u0436\u0438\u043c"
+      },
+      "washer_anticrease": {
+        "name": "\u0420\u0435\u0436\u0438\u043c AntiCrease"
+      },
+      "oven_booster": {
+        "name": "\u0411\u0443\u0441\u0442\u0435\u0440"
+      },
+      "oven_skip_preheating": {
+        "name": "\u041f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u044c >"
+      },
+      "dishwasher_traywash": {
+        "name": "\u041c\u044b\u0442\u044c\u0435 \u043f\u0440\u043e\u0442\u0438\u0432\u0435\u043d\u044f"
+      },
+      "dishwasher_fastplus": {
+        "name": "\u041f\u043e\u0441\u0443\u0434\u043e\u043c\u043e\u0435\u0447\u043d\u0430\u044f \u043c\u0430\u0448\u0438\u043d\u0430 Fastplus"
+      },
+      "dishwasher_steamgloss": {
+        "name": "\u0420\u0435\u0436\u0438\u043c Steamgloss"
+      },
+      "dishwasher_extrarinse": {
+        "name": "\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0435"
+      },
+      "dishwasher_halfload": {
+        "name": "\u041f\u043e\u043b\u043e\u0432\u0438\u043d\u043d\u0430\u044f \u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0430"
+      },
+      "setting_auto_door": {
+        "name": "\u0424\u0443\u043d\u043a\u0446\u0438\u044f Doormatic"
+      },
+      "setting_inner_illumination": {
+        "name": "\u0412\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0435\u0435 \u043e\u0441\u0432\u0435\u0449\u0435\u043d\u0438\u0435"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "\u0418\u043d\u0442\u0435\u043d\u0441\u0438\u0432\u043d\u0430\u044f \u0433\u0438\u0433\u0438\u0435\u043d\u0430 \u043f\u043e\u0441\u0443\u0434\u043e\u043c\u043e\u0435\u0447\u043d\u043e\u0439 \u043c\u0430\u0448\u0438\u043d\u044b"
+      },
+      "dishwasher_deepwash": {
+        "name": "\u0413\u043b\u0443\u0431\u043e\u043a\u0430\u044f \u0441\u0442\u0438\u0440\u043a\u0430"
+      }
+    }
+  }
+}
