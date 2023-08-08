@@ -21,7 +21,7 @@
   "entity": {
     "select": {
       "state": {
-        "name": "Stan/wojew\u00f3dztwo",
+        "name": "Stan",
         "state": {
           "device_state_on": "W\u0142.",
           "device_state_off": "Wy\u0142.",
@@ -40,9 +40,9 @@
           "program_eco_40_60": "ECO 40-60",
           "program_synthetics": "Syntetyki",
           "program_mini_mini14": "Xpress",
-          "program_wool_handwash": "Woollens",
-          "program_delicates": "PROGRAM_DELICATES",
-          "program_spin_pump": "Spin+Drain",
+          "program_wool_handwash": "We\u0142niane",
+          "program_delicates": "Delikatne",
+          "program_spin_pump": "Wirowanie",
           "program_rinsing": "P\u0142ukanie",
           "program_darkwash": "Ciemne (d\u017cinsowe)",
           "program_outdoor_sports_goretex": "Sport",
@@ -51,11 +51,11 @@
           "program_duvet": "Ko\u0142dra",
           "program_shirts": "Koszule",
           "program_drum_clean": "Czyszczenie b\u0119bna",
-          "program_mix": "Mieszanie",
+          "program_mix": "Mieszane",
           "program_curtain": "Zas\u0142ony",
           "program_lingerie": "Bielizna damska",
           "program_soft_toys": "Pluszowe zabawki",
-          "program_towel": "R\u0119cznik",
+          "program_towel": "R\u0119czniki",
           "program_cottons_eco": "Bawe\u0142na eko",
           "program_dryer_cotton": "Suszenie: bawe\u0142na",
           "program_dryer_synthetics": "Suszenie: syntetyki",
@@ -74,8 +74,8 @@
           "temperature_20": "20\u00b0C",
           "temperature_30": "30\u00b0C",
           "temperature_40": "40\u00b0C",
-          "60c": "60C",
-          "90c": "90C"
+          "60c": "60\u00b0C",
+          "90c": "90\u00b0C"
         }
       },
       "washer_spin": {
@@ -104,7 +104,7 @@
       "custom_duration_level": {
         "name": "Poziom dostosowanego czasu trwania",
         "state": {
-          "duration_level_0": "DURATION_LEVEL_0",
+          "duration_level_0": "0",
           "1": "1",
           "2": "2",
           "3": "3",
@@ -193,7 +193,7 @@
         }
       },
       "setting_detergent_type": {
-        "name": "Typ Detergentu",
+        "name": "Typ detergentu",
         "state": {
           "setting_detergent_type_powder": "Detergent w proszku",
           "setting_detergent_type_tablet": "Detergent w tabletce",
@@ -216,7 +216,7 @@
         "name": "Brak wody"
       },
       "dishwasher_warning_check_the_filter": {
-        "name": "Sprawd\u017a Filtr"
+        "name": "Sprawd\u017a filtr"
       },
       "dishwasher_warning_door_is_open": {
         "name": "Drzwi s\u0105 otwarte"
@@ -231,15 +231,15 @@
         "name": "Program",
         "state": {
           "program_auto": "Auto 40-65\u00b0C",
-          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_aqua_flex": "Aqua Flex",
           "program_intensive_70": "Intensywny 70\u00b0C",
           "program_eco_50": "Eco 50\u00b0C",
-          "program_delicate": "Delicate",
-          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
-          "program_mini": "PROGRAM_MINI",
+          "program_delicate": "Delikatny",
+          "program_quick_and_shine": "Quick&shine",
+          "program_mini": "Mini",
           "program_prewash": "Mycie wst\u0119pne",
-          "program_quiet": "PROGRAM_QUIET",
-          "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
+          "program_quiet": "Cichy",
+          "program_clean_and_shine": "Clean&shine",
           "program_innerclean": "InnerClean"
         }
       },
@@ -251,7 +251,7 @@
         "state": {
           "dry_off": "Wy\u0142.",
           "dry_extra": "Ekstra suche",
-          "dry_cabinet": "Wardrobe Dry",
+          "dry_cabinet": "Do szafy",
           "dry_iron": "Do prasowania",
           "dry_10": "45 min.",
           "dry_20": "20 min",
@@ -263,7 +263,7 @@
         }
       },
       "washer_rinse_count": {
-        "name": "Liczba cykl\u00f3w p\u0142ukania"
+        "name": "Liczba cykli p\u0142ukania"
       },
       "air_conditioner_soft_air": {
         "name": "Mi\u0119kkie powietrze",
@@ -303,7 +303,7 @@
     },
     "sensor": {
       "state": {
-        "name": "Stan/wojew\u00f3dztwo",
+        "name": "Stan",
         "state": {
           "device_state_on": "W\u0142.",
           "device_state_off": "Wy\u0142.",
@@ -322,9 +322,9 @@
           "program_eco_40_60": "ECO 40-60",
           "program_synthetics": "Syntetyki",
           "program_mini_mini14": "Xpress",
-          "program_wool_handwash": "Woollens",
-          "program_delicates": "PROGRAM_DELICATES",
-          "program_spin_pump": "Spin+Drain",
+          "program_wool_handwash": "We\u0142niane",
+          "program_delicates": "Delikatne",
+          "program_spin_pump": "Wirowanie",
           "program_rinsing": "P\u0142ukanie",
           "program_darkwash": "Ciemne (d\u017cinsowe)",
           "program_outdoor_sports_goretex": "Sport",
@@ -333,7 +333,7 @@
           "program_duvet": "Ko\u0142dra",
           "program_shirts": "Koszule",
           "program_drum_clean": "Czyszczenie b\u0119bna",
-          "program_mix": "Mieszanie",
+          "program_mix": "Mieszane",
           "program_curtain": "Zas\u0142ony",
           "program_lingerie": "Bielizna damska",
           "program_soft_toys": "Pluszowe zabawki",
@@ -356,8 +356,8 @@
           "temperature_20": "20\u00b0C",
           "temperature_30": "30\u00b0C",
           "temperature_40": "40\u00b0C",
-          "60c": "60C",
-          "90c": "90C"
+          "60c": "60\u00b0C",
+          "90c": "90\u00b0C"
         }
       },
       "washer_spin": {
@@ -386,7 +386,7 @@
       "custom_duration_level": {
         "name": "Poziom dostosowanego czasu trwania",
         "state": {
-          "duration_level_0": "DURATION_LEVEL_0",
+          "duration_level_0": "0",
           "1": "1",
           "2": "2",
           "3": "3",
@@ -443,8 +443,8 @@
           "oven_message_cleaning_completed": "Czyszczenie zako\u0144czone",
           "dishwasher_message_time_delay_started": "Czas zako\u0144czenia ustawiony",
           "dishwasher_message_paused": "Program zosta\u0142 wstrzymany",
-          "dishwasher_message_program_finished": "Programy zako\u0144czony",
-          "dishwasher_message_program_sanitized": "Programy zako\u0144czony i ZDEZYNFEKOWANY",
+          "dishwasher_message_program_finished": "Program zako\u0144czony",
+          "dishwasher_message_program_sanitized": "Program zako\u0144czony i ZDEZYNFEKOWANO",
           "dishwasher_message_cancelling": "Anulowanie\u2026",
           "dishwasher_message_time_delay_cancelled": "Op\u00f3\u017anienie anulowane",
           "dishwasher_message_program_started": "Program uruchomiony",
@@ -622,7 +622,7 @@
         "name": "Steamgloss"
       },
       "dishwasher_extrarinse": {
-        "name": "Extra P\u0142ukanie"
+        "name": "Dodatkowe p\u0142ukanie"
       },
       "dishwasher_halfload": {
         "name": "Po\u0142owa za\u0142adunku"
@@ -637,15 +637,15 @@
         "name": "Program",
         "state": {
           "program_auto": "Auto 40-65\u00b0C",
-          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_aqua_flex": "Aqua Flex",
           "program_intensive_70": "Intensywny 70\u00b0C",
           "program_eco_50": "Eco 50\u00b0C",
           "program_delicate": "Delicate",
-          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
-          "program_mini": "PROGRAM_MINI",
+          "program_quick_and_shine": "Quick&shine",
+          "program_mini": "Mini",
           "program_prewash": "Mycie wst\u0119pne",
-          "program_quiet": "PROGRAM_QUIET",
-          "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
+          "program_quiet": "Cichy",
+          "program_clean_and_shine": "Clean&shine",
           "program_innerclean": "InnerClean"
         }
       },
@@ -663,7 +663,7 @@
         "state": {
           "dry_off": "Wy\u0142.",
           "dry_extra": "Ekstra suche",
-          "dry_cabinet": "Wardrobe Dry",
+          "dry_cabinet": "Do szafy",
           "dry_iron": "Do prasowania",
           "dry_10": "45 min.",
           "dry_20": "20 min",
@@ -675,7 +675,7 @@
         }
       },
       "washer_rinse_count": {
-        "name": "Liczba cykl\u00f3w p\u0142ukania"
+        "name": "Liczba cykli p\u0142ukania"
       },
       "air_conditioner_soft_air": {
         "name": "Mi\u0119kkie powietrze",
@@ -757,7 +757,7 @@
         "name": "Brak wody"
       },
       "dishwasher_warning_check_the_filter": {
-        "name": "Sprawd\u017a Filtr"
+        "name": "Sprawd\u017a filtr"
       },
       "dishwasher_warning_door_is_open": {
         "name": "Drzwi s\u0105 otwarte"
@@ -818,7 +818,7 @@
         "name": "Steamgloss"
       },
       "dishwasher_extrarinse": {
-        "name": "Extra P\u0142ukanie"
+        "name": "Extra p\u0142ukanie"
       },
       "dishwasher_halfload": {
         "name": "Po\u0142owa za\u0142adunku"
