@@ -6,10 +6,10 @@
         "state": {
           "device_state_on": "On",
           "device_state_off": "Off",
-          "device_state_running": "funcionando",
+          "device_state_running": "Execução",
           "device_state_paused": "Pausa",
-          "device_state_time_delay_active": "Atraso de tempo ativo",
-          "device_state_cancelling": "Cancelamento",
+          "device_state_time_delay_active": "Atraso de incio",
+          "device_state_cancelling": "A Cancelar",
           "device_state_door_open": "A porta est\u00e1 aberta!",
           "device_state_settings": "Defini\u00e7\u00f5es"
         }
@@ -23,7 +23,7 @@
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
           "program_delicates": "Delicadas\r\nDelicado",
-          "program_spin_pump": "Spin+Drain",
+          "program_spin_pump": "Rodar e Secar",
           "program_rinsing": "Enxaguamento",
           "program_darkwash": "Escuro (Jeans)",
           "program_outdoor_sports_goretex": "Desporto",
@@ -31,7 +31,7 @@
           "program_hygeine": "Higiene+",
           "program_duvet": "Edred\u00e3o/Down Wear",
           "program_shirts": "Camisas",
-          "program_drum_clean": "Drum Clean",
+          "program_drum_clean": "Limpeza de Tambor",
           "program_mix": "Mistura",
           "program_curtain": "Cortinas",
           "program_lingerie": "Lingerie",
@@ -41,11 +41,11 @@
           "program_dryer_cotton": "Algod\u00e3o seco",
           "program_dryer_synthetics": "Sint\u00e9tico Seco",
           "program_hygiene_wash_dry": "Higiene+ Lavar e Secar",
-          "program_4kg_wash_dry": "4 Kg Wash & Dry",
+          "program_4kg_wash_dry": "4 Kg Lavar e Secar",
           "program_wash_wear": "Lavar & Desgastar",
           "program_dark_wash": "Lavagem \u00e0s escuras",
           "program_outdoor": "Ao ar livre",
-          "program_drum_clean_plus": "Drum Clean+"
+          "program_drum_clean_plus": "Limpar tambor +"
         }
       },
       "washer_temperature": {
@@ -55,12 +55,12 @@
           "temperature_20": "20 \u00b0C",
           "temperature_30": "30 \u00b0C",
           "temperature_40": "40 \u00b0C",
-          "60c": "60C",
-          "90c": "90C"
+          "60c": "60c",
+          "90c": "90c"
         }
       },
       "washer_spin": {
-        "name": "Giro",
+        "name": "Rotações",
         "state": {
           "spin_no_spin": "Sem rota\u00e7\u00e3o",
           "600rpm": "600RPM",
@@ -313,7 +313,7 @@
           "program_hygeine": "Higiene+",
           "program_duvet": "Edred\u00e3o/Down Wear",
           "program_shirts": "Camisas",
-          "program_drum_clean": "Drum Clean",
+          "program_drum_clean": "Limpar Tambor",
           "program_mix": "Mistura",
           "program_curtain": "Cortinas",
           "program_lingerie": "Lingerie",
@@ -327,7 +327,7 @@
           "program_wash_wear": "Lavar & Desgastar",
           "program_dark_wash": "Lavagem \u00e0s escuras",
           "program_outdoor": "Ao ar livre",
-          "program_drum_clean_plus": "Drum Clean+"
+          "program_drum_clean_plus": "Limpar Tambor+"
         }
       },
       "washer_temperature": {
