@@ -1,8 +1,48 @@
 {
   "config": {
     "abort": {
-      "already_configured": "Zariadenie u\u017e je nakonfigurovan\u00e9",
-      "no_devices_found": "V sieti sa nena\u0161li \u017eiadne zariadenia"
+      "already_configured": "Device is already configured",
+      "already_in_progress": "Configuration flow is already in progress",
+      "no_devices_found": "No devices found on the network"
+    },
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "description": "Výber typu pripojenia",
+        "menu_options": {
+          "select_bluetooth_device": "Bluetooth",
+          "provide_cloud_credentials": "Cloud"
+        }
+      },
+      "select_bluetooth_device": {
+        "description": "Výber zariadenia na nastavenie",
+        "data": {
+          "address": "Zariadenie"
+        }
+      },
+      "bluetooth_connect": {
+        "description": "Poskytnite poverenia HomeWhiz",
+        "data": {
+          "username": "Používateľské meno",
+          "password": "Heslo"
+        }
+      },
+      "provide_cloud_credentials": {
+        "description": "Poskytnite poverenia HomeWhiz",
+        "data": {
+          "username": "Používateľské meno",
+          "password": "Heslo"
+        }
+      },
+      "select_cloud_device": {
+        "description": "Výber zariadenia na nastavenie",
+        "data": {
+          "id": "Zariadenie"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Neplatné overenie"
     }
   }
 }
