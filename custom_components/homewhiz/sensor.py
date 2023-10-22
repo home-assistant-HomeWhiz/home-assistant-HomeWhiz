@@ -22,6 +22,8 @@ from .homewhiz import HomewhizCoordinator
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
+entities: dict[str, HomeWhizSensorEntity] = {}
+
 
 class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
     def __init__(
@@ -43,6 +45,19 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
 
     @property
     def native_value(self) -> float | int | str | None:
+        _LOGGER.debug(
+            "Native value for entity %s, id: %s, info: %s, class:%s,  is %s",
+            self.entity_key,
+            self._attr_unique_id,
+            self._attr_device_info,
+            self._attr_device_class,
+            self.coordinator.data,
+        )
+
+        # Workaround for issue #73
+        if self.entity_key == "washer_delay":
+            return None
+
         if self.coordinator.data is None:
             return None
         return self._control.get_value(self.coordinator.data)
@@ -54,6 +69,7 @@ async def async_setup_entry(
     data = build_entry_data(entry)
     coordinator = hass.data[DOMAIN][entry.entry_id]
     controls = generate_controls_from_config(data.contents.config)
+    _LOGGER.debug("Generated controls: %s", controls)
     sensor_controls = [
         c
         for c in controls
@@ -69,3 +85,8 @@ async def async_setup_entry(
             for control in sensor_controls
         ]
     )
+    entities = {
+        entry.title: HomeWhizSensorEntity(coordinator, control, entry.title, data)
+        for control in sensor_controls
+    }
+    _LOGGER.debug("Entities %s", entities)
