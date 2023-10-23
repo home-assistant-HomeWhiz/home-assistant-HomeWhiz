@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import datetime
 import logging
 
 from homeassistant.components.sensor import SensorDeviceClass, SensorEntity
@@ -46,7 +47,7 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
     @property
     def native_value(self) -> float | int | str | None:
         _LOGGER.debug(
-            "Native value for entity %s, id: %s, info: %s, class:%s,  is %s",
+            "Native value for entity %s, id: %s, info: %s, class:%s, is %s",
             self.entity_key,
             self._attr_unique_id,
             self._attr_device_info,
@@ -56,7 +57,17 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
 
         # Workaround for issue #73
         if self.entity_key == "washer_delay":
-            return None
+            washer_remaining = entities["washer_remaining"]._control.get_value(
+                self.coordinator.data
+            )
+            _LOGGER.debug(
+                "Calculating washer delay with washer remaining value: %s, type: %s",
+                washer_remaining,
+                type(washer_remaining),
+            )
+            return int(datetime.datetime.utcnow().timestamp()) + entities[
+                "washer_remaining"
+            ]._control.get_value(self.coordinator.data)
 
         if self.coordinator.data is None:
             return None
@@ -79,14 +90,10 @@ async def async_setup_entry(
         or isinstance(c, DebugControl)
     ]
     _LOGGER.debug(f"Sensors: {[c.key for c in sensor_controls]}")
-    async_add_entities(
-        [
-            HomeWhizSensorEntity(coordinator, control, entry.title, data)
-            for control in sensor_controls
-        ]
-    )
-    entities = {
-        entry.title: HomeWhizSensorEntity(coordinator, control, entry.title, data)
+    homewhiz_sensor_entities = [
+        HomeWhizSensorEntity(coordinator, control, entry.title, data)
         for control in sensor_controls
-    }
-    _LOGGER.debug("Entities %s", entities)
+    ]
+    entities = {entity.entity_key: entity for entity in homewhiz_sensor_entities}
+    _LOGGER.debug("Entities: %s", entities)
+    async_add_entities(homewhiz_sensor_entities)
