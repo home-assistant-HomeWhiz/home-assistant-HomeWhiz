@@ -64,6 +64,7 @@ API_LANGUAGES = {
     "pt": "pt-PT",
     "sl": "sl-SI",
     "sr": "sr-RS",
+    "ru": "ru-RU",
 }
 
 KNOWN_APPLIANCE_IDS = [

@@ -6,7 +6,7 @@
         "state": {
           "device_state_on": "On",
           "device_state_off": "Off",
-          "device_state_running": "Execução",
+          "device_state_running": "Execu\u00e7\u00e3o",
           "device_state_paused": "Pausa",
           "device_state_time_delay_active": "Atraso de incio",
           "device_state_cancelling": "A Cancelar",
@@ -60,7 +60,7 @@
         }
       },
       "washer_spin": {
-        "name": "Rotações",
+        "name": "Rota\u00e7\u00f5es",
         "state": {
           "spin_no_spin": "Sem rota\u00e7\u00e3o",
           "600rpm": "600RPM",
