@@ -1,63 +1,63 @@
 {
   "config": {
     "abort": {
-      "already_configured": "Az eszköz már konfigurálva van",
-      "already_in_progress": "A konfigurációs folyamat már folyamatban van",
-      "no_devices_found": "Nem található eszköz a hálózaton"
+      "already_configured": "Az eszk\u00f6z m\u00e1r konfigur\u00e1lva van",
+      "already_in_progress": "A konfigur\u00e1ci\u00f3s folyamat m\u00e1r folyamatban van",
+      "no_devices_found": "Nem tal\u00e1lhat\u00f3 eszk\u00f6z a h\u00e1l\u00f3zaton"
     },
     "flow_title": "{name}",
     "step": {
       "user": {
-        "description": "Válassza ki a kapcsolat típusát",
+        "description": "V\u00e1lassza ki a kapcsolat t\u00edpus\u00e1t",
         "menu_options": {
           "select_bluetooth_device": "Bluetooth",
-          "provide_cloud_credentials": "Felhő"
+          "provide_cloud_credentials": "Felh\u0151"
         }
       },
       "select_bluetooth_device": {
-        "description": "Válassza ki a beállítani kívánt eszközt",
+        "description": "V\u00e1lassza ki a be\u00e1ll\u00edtani k\u00edv\u00e1nt eszk\u00f6zt",
         "data": {
-          "address": "Eszköz"
+          "address": "Eszk\u00f6z"
         }
       },
       "bluetooth_connect": {
-        "description": "Adja meg a HomeWhiz hitelesítő adatait",
+        "description": "Adja meg a HomeWhiz hiteles\u00edt\u0151 adatait",
         "data": {
-          "username": "Felhasználónév",
-          "password": "Jelszó"
+          "username": "Felhaszn\u00e1l\u00f3n\u00e9v",
+          "password": "Jelsz\u00f3"
         }
       },
       "provide_cloud_credentials": {
-        "description": "Adja meg a HomeWhiz hitelesítő adatait",
+        "description": "Adja meg a HomeWhiz hiteles\u00edt\u0151 adatait",
         "data": {
-          "username": "Felhasználónév",
-          "password": "Jelszó"
+          "username": "Felhaszn\u00e1l\u00f3n\u00e9v",
+          "password": "Jelsz\u00f3"
         }
       },
       "select_cloud_device": {
-        "description": "Válassza ki a beállítani kívánt eszközt",
+        "description": "V\u00e1lassza ki a be\u00e1ll\u00edtani k\u00edv\u00e1nt eszk\u00f6zt",
         "data": {
-          "id": "Eszköz"
+          "id": "Eszk\u00f6z"
         }
       }
     },
     "error": {
-      "invalid_auth": "Érvénytelen hitelesítés"
+      "invalid_auth": "\u00c9rv\u00e9nytelen hiteles\u00edt\u00e9s"
     }
   },
   "entity": {
     "select": {
       "state": {
-        "name": "Állapot",
+        "name": "\u00c1llapot",
         "state": {
           "device_state_on": "Be",
           "device_state_off": "Ki",
           "device_state_running": "Megy",
-          "device_state_paused": "Szünet",
-          "device_state_time_delay_active": "Időzítve",
-          "device_state_cancelling": "Törölve",
-          "device_state_door_open": "Az ajtó nyítva!",
-          "device_state_settings": "Beállítások"
+          "device_state_paused": "Sz\u00fcnet",
+          "device_state_time_delay_active": "Id\u0151z\u00edtve",
+          "device_state_cancelling": "T\u00f6r\u00f6lve",
+          "device_state_door_open": "Az ajt\u00f3 ny\u00edtva!",
+          "device_state_settings": "Be\u00e1ll\u00edt\u00e1sok"
         }
       },
       "washer_program": {
@@ -67,37 +67,37 @@
           "program_eco_40_60": "Eco 40-60",
           "program_synthetics": "Szintetikus",
           "program_mini_mini14": "Expressz",
-          "program_wool_handwash": "Gyapjú",
-          "program_delicates": "Kímélő/gyenge",
-          "program_spin_pump": "Centrifugálás+Leeresztés",
-          "program_rinsing": "Öblítés",
-          "program_darkwash": "Sötét / Farmer",
-          "program_outdoor_sports_goretex": "Kültéri / Sport",
+          "program_wool_handwash": "Gyapj\u00fa",
+          "program_delicates": "K\u00edm\u00e9l\u0151/gyenge",
+          "program_spin_pump": "Centrifug\u00e1l\u00e1s+Leereszt\u00e9s",
+          "program_rinsing": "\u00d6bl\u00edt\u00e9s",
+          "program_darkwash": "S\u00f6t\u00e9t / Farmer",
+          "program_outdoor_sports_goretex": "K\u00fclt\u00e9ri / Sport",
           "program_stain": "Foltmester",
-          "program_hygeine": "Higiénia+",
+          "program_hygeine": "Higi\u00e9nia+",
           "program_duvet": "Paplan/Pehely ruha",
           "program_shirts": "Ingek",
-          "program_drum_clean": "Dob tisztítás",
+          "program_drum_clean": "Dob tiszt\u00edt\u00e1s",
           "program_mix": "Vegyes",
-          "program_curtain": "Függöny",
-          "program_lingerie": "Fehérnemű",
-          "program_soft_toys": "Plüss játékok",
-          "program_towel": "Törölköző",
+          "program_curtain": "F\u00fcgg\u00f6ny",
+          "program_lingerie": "Feh\u00e9rnem\u0171",
+          "program_soft_toys": "Pl\u00fcss j\u00e1t\u00e9kok",
+          "program_towel": "T\u00f6r\u00f6lk\u00f6z\u0151",
           "program_cottons_eco": "Pamut Eco",
-          "program_dryer_cotton": "Pamut szárítás",
-          "program_dryer_synthetics": "Szintetikus szárítás",
-          "program_hygiene_wash_dry": "Higiénia+ Mosás és szárítás",
-          "program_4kg_wash_dry": "4 Kg Mosás és szárítás",
-          "program_wash_wear": "Mosás és viselet",
-          "program_dark_wash": "Sötés mosás",
-          "program_outdoor": "Kültéri",
-          "program_drum_clean_plus": "Dobtisztítás+"
+          "program_dryer_cotton": "Pamut sz\u00e1r\u00edt\u00e1s",
+          "program_dryer_synthetics": "Szintetikus sz\u00e1r\u00edt\u00e1s",
+          "program_hygiene_wash_dry": "Higi\u00e9nia+ Mos\u00e1s \u00e9s sz\u00e1r\u00edt\u00e1s",
+          "program_4kg_wash_dry": "4 Kg Mos\u00e1s \u00e9s sz\u00e1r\u00edt\u00e1s",
+          "program_wash_wear": "Mos\u00e1s \u00e9s viselet",
+          "program_dark_wash": "S\u00f6t\u00e9s mos\u00e1s",
+          "program_outdoor": "K\u00fclt\u00e9ri",
+          "program_drum_clean_plus": "Dobtiszt\u00edt\u00e1s+"
         }
       },
       "washer_temperature": {
-        "name": "Hőmérséklet",
+        "name": "H\u0151m\u00e9rs\u00e9klet",
         "state": {
-          "temperature_cold_wash": "Hideg mosás",
+          "temperature_cold_wash": "Hideg mos\u00e1s",
           "temperature_20": "20 \u00b0C",
           "temperature_30": "30 \u00b0C",
           "temperature_40": "40 \u00b0C",
@@ -106,14 +106,14 @@
         }
       },
       "washer_spin": {
-        "name": "Centrifugálás",
+        "name": "Centrifug\u00e1l\u00e1s",
         "state": {
-          "spin_no_spin": "Centrifugálás nélkül",
+          "spin_no_spin": "Centrifug\u00e1l\u00e1s n\u00e9lk\u00fcl",
           "600rpm": "600RPM",
           "800rpm": "800RPM",
           "1000rpm": "1000RPM",
           "1200rpm": "1200RPM",
-          "spin_rinse_hold": "Öblítés tartása",
+          "spin_rinse_hold": "\u00d6bl\u00edt\u00e9s tart\u00e1sa",
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
@@ -129,7 +129,7 @@
         }
       },
       "custom_duration_level": {
-        "name": "Egyéni időtartam",
+        "name": "Egy\u00e9ni id\u0151tartam",
         "state": {
           "duration_level_0": "0",
           "1": "1",
@@ -146,7 +146,7 @@
         }
       },
       "washer_extra_rinse_count": {
-        "name": "Extra öblítések száma"
+        "name": "Extra \u00f6bl\u00edt\u00e9sek sz\u00e1ma"
       },
       "settings_volume": {
         "name": "Gomb hangereje",
@@ -156,130 +156,130 @@
         }
       },
       "remote_control": {
-        "name": "Távirányítás"
+        "name": "T\u00e1vir\u00e1ny\u00edt\u00e1s"
       },
       "washer_warning_door_is_open": {
-        "name": "Az ajtó nyitva"
+        "name": "Az ajt\u00f3 nyitva"
       },
       "washer_warning_no_water": {
-        "name": "Nincs víz"
+        "name": "Nincs v\u00edz"
       },
       "washer_warning_security": {
-        "name": "Biztonság"
+        "name": "Biztons\u00e1g"
       },
       "oven_program": {
         "name": "Program",
         "state": {
           "program_static": "Statikus",
-          "program_static_fan": "Statikus + légkeverés",
-          "program_fan_heating": "Légkeverés",
-          "program_multi_cooking": "Multi (3D) Sűtés",
-          "program_fan_heat_bottom": "Légkeverés + Alsó",
+          "program_static_fan": "Statikus + l\u00e9gkever\u00e9s",
+          "program_fan_heating": "L\u00e9gkever\u00e9s",
+          "program_multi_cooking": "Multi (3D) S\u0171t\u00e9s",
+          "program_fan_heat_bottom": "L\u00e9gkever\u00e9s + Als\u00f3",
           "program_eco_grill": "Eco Grill",
           "program_full_grill": "Teljes Grill",
-          "program_full_grill_fan": "Teljes Grill + Légkeverés",
-          "program_bottom_heating": "Alsó sűtés",
-          "program_defrost": "Olvasztás",
-          "program_warm_keeping": "Melegen tartás",
-          "program_eco_fan_heating": "Eco Légkeverés",
-          "program_steam_cleaning": "Gőztisztítás",
-          "program_eco_pyro": "Eco Tisztítás",
-          "program_pyro": "Tisztítás"
+          "program_full_grill_fan": "Teljes Grill + L\u00e9gkever\u00e9s",
+          "program_bottom_heating": "Als\u00f3 s\u0171t\u00e9s",
+          "program_defrost": "Olvaszt\u00e1s",
+          "program_warm_keeping": "Melegen tart\u00e1s",
+          "program_eco_fan_heating": "Eco L\u00e9gkever\u00e9s",
+          "program_steam_cleaning": "G\u0151ztiszt\u00edt\u00e1s",
+          "program_eco_pyro": "Eco Tiszt\u00edt\u00e1s",
+          "program_pyro": "Tiszt\u00edt\u00e1s"
         }
       },
       "oven_temperature": {
-        "name": "Hőfok"
+        "name": "H\u0151fok"
       },
       "settings_brightness": {
-        "name": "Fényerősség"
+        "name": "F\u00e9nyer\u0151ss\u00e9g"
       },
       "oven_warning_door_is_open": {
-        "name": "Az ajtó nyitva"
+        "name": "Az ajt\u00f3 nyitva"
       },
       "oven_warning_door_locked": {
-        "name": "Az ajtó zárva"
+        "name": "Az ajt\u00f3 z\u00e1rva"
       },
       "oven_warning_error": {
-        "name": "Váratlan hiba történt a termékben. Kérjük, ellenőrizze a használati útmutatót."
+        "name": "V\u00e1ratlan hiba t\u00f6rt\u00e9nt a term\u00e9kben. K\u00e9rj\u00fck, ellen\u0151rizze a haszn\u00e1lati \u00fatmutat\u00f3t."
       },
       "program": {
         "name": "Program",
         "state": {
           "program_auto": "Auto",
-          "program_mix_wash_plus": "Vegyesmosás+",
-          "program_intensive_70": "Intenzív 70\u00b0C",
+          "program_mix_wash_plus": "Vegyesmos\u00e1s+",
+          "program_intensive_70": "Intenz\u00edv 70\u00b0C",
           "program_eco_50": "Eco 50\u00b0C",
-          "program_glasscare": "Üvegápolás",
-          "program_new58min": "Gyorsmosás 58'",
+          "program_glasscare": "\u00dcveg\u00e1pol\u00e1s",
+          "program_new58min": "Gyorsmos\u00e1s 58'",
           "program_30min": "Mini 30'",
-          "program_prewash": "Előmosás",
-          "program_hygiene": "Higénia Ápollás",
-          "program_daily": "Napi mosás",
-          "program_silent": "Csendes mosás",
-          "program_makine_temizleme": "Belső tisztítás"
+          "program_prewash": "El\u0151mos\u00e1s",
+          "program_hygiene": "Hig\u00e9nia \u00c1poll\u00e1s",
+          "program_daily": "Napi mos\u00e1s",
+          "program_silent": "Csendes mos\u00e1s",
+          "program_makine_temizleme": "Bels\u0151 tiszt\u00edt\u00e1s"
         }
       },
       "setting_detergent_type": {
-        "name": "Mosószer típusa",
+        "name": "Mos\u00f3szer t\u00edpusa",
         "state": {
-          "setting_detergent_type_powder": "Mosópor",
-          "setting_detergent_type_tablet": "Mosótabletta",
-          "setting_detergent_type_liquid": "Folyékony mosószer"
+          "setting_detergent_type_powder": "Mos\u00f3por",
+          "setting_detergent_type_tablet": "Mos\u00f3tabletta",
+          "setting_detergent_type_liquid": "Foly\u00e9kony mos\u00f3szer"
         }
       },
       "dishwasher_rinse_aid_level": {
-        "name": "Öblítőszer szint"
+        "name": "\u00d6bl\u00edt\u0151szer szint"
       },
       "dishwasher_water_hardness": {
-        "name": "A víz keménysége"
+        "name": "A v\u00edz kem\u00e9nys\u00e9ge"
       },
       "dishwasher_warning_no_rinse_aid": {
-        "name": "Nincs öblítőszer"
+        "name": "Nincs \u00f6bl\u00edt\u0151szer"
       },
       "dishwasher_warning_no_salt": {
-        "name": "Nincs só"
+        "name": "Nincs s\u00f3"
       },
       "dishwasher_warning_no_water": {
-        "name": "Nincs víz"
+        "name": "Nincs v\u00edz"
       },
       "dishwasher_warning_check_the_filter": {
-        "name": "Ellenőrizze a szűrőt"
+        "name": "Ellen\u0151rizze a sz\u0171r\u0151t"
       },
       "dishwasher_warning_door_is_open": {
-        "name": "Az ajtó nyítva"
+        "name": "Az ajt\u00f3 ny\u00edtva"
       },
       "dishwasher_warning_call_service": {
-        "name": "Hívja a szervizt"
+        "name": "H\u00edvja a szervizt"
       },
       "dishwasher_liquid_detergent_low": {
-        "name": "Folyékony mosószer kevés"
+        "name": "Foly\u00e9kony mos\u00f3szer kev\u00e9s"
       },
       "dishwasher_program": {
         "name": "Program",
         "state": {
           "program_auto": "Auto",
           "program_aqua_flex": "AquaFlex",
-          "program_intensive_70": "Intenzív 70\u00b0C",
+          "program_intensive_70": "Intenz\u00edv 70\u00b0C",
           "program_eco_50": "Eco 50\u00b0C",
-          "program_delicate": "Törékeny",
-          "program_quick_and_shine": "Gyors és ragyogó",
+          "program_delicate": "T\u00f6r\u00e9keny",
+          "program_quick_and_shine": "Gyors \u00e9s ragyog\u00f3",
           "program_mini": "Mini",
-          "program_prewash": "Előmosás",
-          "program_quiet": "Csendes mosás",
-          "program_clean_and_shine": "Tiszta és ragyogó",
-          "program_innerclean": "Belső tisztítás"
+          "program_prewash": "El\u0151mos\u00e1s",
+          "program_quiet": "Csendes mos\u00e1s",
+          "program_clean_and_shine": "Tiszta \u00e9s ragyog\u00f3",
+          "program_innerclean": "Bels\u0151 tiszt\u00edt\u00e1s"
         }
       },
       "dishwasher_liquid_detergent_level": {
-        "name": "Folyékony mosószer"
+        "name": "Foly\u00e9kony mos\u00f3szer"
       },
       "washer_dry": {
-        "name": "Szárítás",
+        "name": "Sz\u00e1r\u00edt\u00e1s",
         "state": {
           "dry_off": "Ki",
-          "dry_extra": "Extra száraz",
-          "dry_cabinet": "Gardrób száraz",
-          "dry_iron": "Vasalás száraz",
+          "dry_extra": "Extra sz\u00e1raz",
+          "dry_cabinet": "Gardr\u00f3b sz\u00e1raz",
+          "dry_iron": "Vasal\u00e1s sz\u00e1raz",
           "dry_10": "45 perc",
           "dry_20": "20 perc",
           "dry_30": "30 perc",
@@ -290,10 +290,10 @@
         }
       },
       "washer_rinse_count": {
-        "name": "Öblítések száma"
+        "name": "\u00d6bl\u00edt\u00e9sek sz\u00e1ma"
       },
       "air_conditioner_soft_air": {
-        "name": "Lágy levegő",
+        "name": "L\u00e1gy leveg\u0151",
         "state": {
           "air_conditioner_soft_air_off": "Ki",
           "air_conditioner_soft_air_up": "Fel",
@@ -301,7 +301,7 @@
         }
       },
       "air_conditioner_up_down_vane_control": {
-        "name": "Függőleges légáramlás",
+        "name": "F\u00fcgg\u0151leges l\u00e9g\u00e1raml\u00e1s",
         "state": {
           "up_down_vane_control_off": "Ki",
           "up_down_vane_control_6": "6",
@@ -314,7 +314,7 @@
         }
       },
       "air_conditioner_left_right_vane_control": {
-        "name": "Vízszintes légáramlás",
+        "name": "V\u00edzszintes l\u00e9g\u00e1raml\u00e1s",
         "state": {
           "left_right_vane_control_off": "Ki",
           "left_right_vane_control_1": "1",
@@ -330,16 +330,16 @@
     },
     "sensor": {
       "state": {
-        "name": "Állapot",
+        "name": "\u00c1llapot",
         "state": {
           "device_state_on": "Be",
           "device_state_off": "Ki",
           "device_state_running": "Megy",
-          "device_state_paused": "Szünet",
-          "device_state_time_delay_active": "Időzítve",
-          "device_state_cancelling": "Törölve",
-          "device_state_door_open": "Az ajtó nyítva!",
-          "device_state_settings": "Beállítások"
+          "device_state_paused": "Sz\u00fcnet",
+          "device_state_time_delay_active": "Id\u0151z\u00edtve",
+          "device_state_cancelling": "T\u00f6r\u00f6lve",
+          "device_state_door_open": "Az ajt\u00f3 ny\u00edtva!",
+          "device_state_settings": "Be\u00e1ll\u00edt\u00e1sok"
         }
       },
       "washer_program": {
@@ -349,37 +349,37 @@
           "program_eco_40_60": "Eco 40-60",
           "program_synthetics": "Szintetikus",
           "program_mini_mini14": "Expressz",
-          "program_wool_handwash": "Gyapjú",
-          "program_delicates": "Kímélő/gyenge",
-          "program_spin_pump": "Centrifugálás+Leeresztés",
-          "program_rinsing": "Öblítés",
-          "program_darkwash": "Sötét / Farmer",
-          "program_outdoor_sports_goretex": "Kültéri / Sport",
+          "program_wool_handwash": "Gyapj\u00fa",
+          "program_delicates": "K\u00edm\u00e9l\u0151/gyenge",
+          "program_spin_pump": "Centrifug\u00e1l\u00e1s+Leereszt\u00e9s",
+          "program_rinsing": "\u00d6bl\u00edt\u00e9s",
+          "program_darkwash": "S\u00f6t\u00e9t / Farmer",
+          "program_outdoor_sports_goretex": "K\u00fclt\u00e9ri / Sport",
           "program_stain": "Foltmester",
-          "program_hygeine": "Higiénia+",
+          "program_hygeine": "Higi\u00e9nia+",
           "program_duvet": "Paplan/Pehely ruha",
           "program_shirts": "Ingek",
-          "program_drum_clean": "Dob tisztítás",
+          "program_drum_clean": "Dob tiszt\u00edt\u00e1s",
           "program_mix": "Vegyes",
-          "program_curtain": "Függöny",
-          "program_lingerie": "Fehérnemű",
-          "program_soft_toys": "Plüss játékok",
-          "program_towel": "Törölköző",
+          "program_curtain": "F\u00fcgg\u00f6ny",
+          "program_lingerie": "Feh\u00e9rnem\u0171",
+          "program_soft_toys": "Pl\u00fcss j\u00e1t\u00e9kok",
+          "program_towel": "T\u00f6r\u00f6lk\u00f6z\u0151",
           "program_cottons_eco": "Pamut Eco",
-          "program_dryer_cotton": "Pamut szárítás",
-          "program_dryer_synthetics": "Szintetikus szárítás",
-          "program_hygiene_wash_dry": "Higiénia+ Mosás és szárítás",
-          "program_4kg_wash_dry": "4 Kg Mosás és szárítás",
-          "program_wash_wear": "Mosás és viselet",
-          "program_dark_wash": "Sötés mosás",
-          "program_outdoor": "Kültéri",
-          "program_drum_clean_plus": "Dobtisztítás+"
+          "program_dryer_cotton": "Pamut sz\u00e1r\u00edt\u00e1s",
+          "program_dryer_synthetics": "Szintetikus sz\u00e1r\u00edt\u00e1s",
+          "program_hygiene_wash_dry": "Higi\u00e9nia+ Mos\u00e1s \u00e9s sz\u00e1r\u00edt\u00e1s",
+          "program_4kg_wash_dry": "4 Kg Mos\u00e1s \u00e9s sz\u00e1r\u00edt\u00e1s",
+          "program_wash_wear": "Mos\u00e1s \u00e9s viselet",
+          "program_dark_wash": "S\u00f6t\u00e9s mos\u00e1s",
+          "program_outdoor": "K\u00fclt\u00e9ri",
+          "program_drum_clean_plus": "Dobtiszt\u00edt\u00e1s+"
         }
       },
       "washer_temperature": {
-        "name": "Hőmérséklet",
+        "name": "H\u0151m\u00e9rs\u00e9klet",
         "state": {
-          "temperature_cold_wash": "Hideg mosás",
+          "temperature_cold_wash": "Hideg mos\u00e1s",
           "temperature_20": "20 \u00b0C",
           "temperature_30": "30 \u00b0C",
           "temperature_40": "40 \u00b0C",
@@ -390,12 +390,12 @@
       "washer_spin": {
         "name": "Centrifuga",
         "state": {
-          "spin_no_spin": "Centrifuga nélkül",
+          "spin_no_spin": "Centrifuga n\u00e9lk\u00fcl",
           "600rpm": "600RPM",
           "800rpm": "800RPM",
           "1000rpm": "1000RPM",
           "1200rpm": "1200RPM",
-          "spin_rinse_hold": "Öblítés tartása",
+          "spin_rinse_hold": "\u00d6bl\u00edt\u00e9s tart\u00e1sa",
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
@@ -411,7 +411,7 @@
         }
       },
       "custom_duration_level": {
-        "name": "Egyedi időtartam",
+        "name": "Egyedi id\u0151tartam",
         "state": {
           "duration_level_0": "0",
           "1": "1",
@@ -428,7 +428,7 @@
         }
       },
       "washer_extra_rinse_count": {
-        "name": "Extra öblítések száma"
+        "name": "Extra \u00f6bl\u00edt\u00e9sek sz\u00e1ma"
       },
       "settings_volume": {
         "name": "Gomb hangereje",
@@ -438,260 +438,260 @@
         }
       },
       "sub_state": {
-        "name": "Művelet",
+        "name": "M\u0171velet",
         "state": {
-          "washer_substate_washing": "Mosás",
-          "washer_substate_spin": "Centrifugálás",
-          "washer_water_intake": "Vízvétel",
-          "washer_substate_prewash": "Előmosás",
-          "washer_substate_rinsing": "Öblítés",
-          "washer_substate_softener": "Lágyítás",
+          "washer_substate_washing": "Mos\u00e1s",
+          "washer_substate_spin": "Centrifug\u00e1l\u00e1s",
+          "washer_water_intake": "V\u00edzv\u00e9tel",
+          "washer_substate_prewash": "El\u0151mos\u00e1s",
+          "washer_substate_rinsing": "\u00d6bl\u00edt\u00e9s",
+          "washer_substate_softener": "L\u00e1gy\u00edt\u00e1s",
           "washer_substate_program_started": "Program indul",
-          "washer_substate_time_delay_enabled": "Befejezési idő beállítva",
-          "washer_substate_paused": "Szünet",
-          "washer_substate_analysing": "Elemzés",
-          "washer_substate_door_locked": "Ajtó bezárva",
-          "washer_substate_opening_door": "Ajtó záródik",
-          "washer_substate_locking_door": "Ajtó nyílik",
-          "washer_substate_remove_laundry": "A mosási ciklus befejeződött; vegye ki a ruhaneműt",
-          "washer_substate_add_laundry": "Hozzáadhat mosnivalót",
-          "washer_substate_rinse_hold": "Öblítőstop aktív; válassza ki a centrifugálási sebességet",
-          "washer_substate_remote_anticrease": "A távoli gyűrődés elleni védelem folyamatban van.",
-          "washer_substate_drying": "Szárítás",
-          "oven_message_good_appetite": "Jó étvágyat",
-          "oven_message_cooking": "Főzés",
-          "oven_message_paused": "Szüneteltetve",
-          "oven_message_waiting": "Várakozás",
-          "oven_message_defrosting": "Kiolvasztás",
-          "operation_completed": "A művelet megtörtént",
-          "oven_message_preheating": "Előmelegítés",
-          "oven_message_preheating_completed": "Az előmelegítés befejeződött",
-          "oven_message_cleaning": "Tisztítás",
-          "oven_message_cleaning_completed": "A tisztítás befejeződött",
-          "dishwasher_message_time_delay_started": "Befejezési idő beállítva",
-          "dishwasher_message_paused": "A program szünetel",
-          "dishwasher_message_program_finished": "A program kész",
-          "dishwasher_message_program_sanitized": "A program kész és fetőtlenítve",
-          "dishwasher_message_cancelling": "Törlés\u2026",
-          "dishwasher_message_time_delay_cancelled": "Késleltetés törölve",
+          "washer_substate_time_delay_enabled": "Befejez\u00e9si id\u0151 be\u00e1ll\u00edtva",
+          "washer_substate_paused": "Sz\u00fcnet",
+          "washer_substate_analysing": "Elemz\u00e9s",
+          "washer_substate_door_locked": "Ajt\u00f3 bez\u00e1rva",
+          "washer_substate_opening_door": "Ajt\u00f3 z\u00e1r\u00f3dik",
+          "washer_substate_locking_door": "Ajt\u00f3 ny\u00edlik",
+          "washer_substate_remove_laundry": "A mos\u00e1si ciklus befejez\u0151d\u00f6tt; vegye ki a ruhanem\u0171t",
+          "washer_substate_add_laundry": "Hozz\u00e1adhat mosnival\u00f3t",
+          "washer_substate_rinse_hold": "\u00d6bl\u00edt\u0151stop akt\u00edv; v\u00e1lassza ki a centrifug\u00e1l\u00e1si sebess\u00e9get",
+          "washer_substate_remote_anticrease": "A t\u00e1voli gy\u0171r\u0151d\u00e9s elleni v\u00e9delem folyamatban van.",
+          "washer_substate_drying": "Sz\u00e1r\u00edt\u00e1s",
+          "oven_message_good_appetite": "J\u00f3 \u00e9tv\u00e1gyat",
+          "oven_message_cooking": "F\u0151z\u00e9s",
+          "oven_message_paused": "Sz\u00fcneteltetve",
+          "oven_message_waiting": "V\u00e1rakoz\u00e1s",
+          "oven_message_defrosting": "Kiolvaszt\u00e1s",
+          "operation_completed": "A m\u0171velet megt\u00f6rt\u00e9nt",
+          "oven_message_preheating": "El\u0151meleg\u00edt\u00e9s",
+          "oven_message_preheating_completed": "Az el\u0151meleg\u00edt\u00e9s befejez\u0151d\u00f6tt",
+          "oven_message_cleaning": "Tiszt\u00edt\u00e1s",
+          "oven_message_cleaning_completed": "A tiszt\u00edt\u00e1s befejez\u0151d\u00f6tt",
+          "dishwasher_message_time_delay_started": "Befejez\u00e9si id\u0151 be\u00e1ll\u00edtva",
+          "dishwasher_message_paused": "A program sz\u00fcnetel",
+          "dishwasher_message_program_finished": "A program k\u00e9sz",
+          "dishwasher_message_program_sanitized": "A program k\u00e9sz \u00e9s fet\u0151tlen\u00edtve",
+          "dishwasher_message_cancelling": "T\u00f6rl\u00e9s\u2026",
+          "dishwasher_message_time_delay_cancelled": "K\u00e9sleltet\u00e9s t\u00f6r\u00f6lve",
           "dishwasher_message_program_started": "A program elindult",
-          "dishwasher_message_washing": "Mosás",
-          "dishwasher_message_rinsing": "Öblítés",
-          "dishwasher_message_drying": "Szárítás"
+          "dishwasher_message_washing": "Mos\u00e1s",
+          "dishwasher_message_rinsing": "\u00d6bl\u00edt\u00e9s",
+          "dishwasher_message_drying": "Sz\u00e1r\u00edt\u00e1s"
         }
       },
       "washer_delay": {
-        "name": "Program vége"
+        "name": "Program v\u00e9ge"
       },
       "washer_duration": {
-        "name": "Időtartam"
+        "name": "Id\u0151tartam"
       },
       "washer_remaining": {
-        "name": "Hátralevő"
+        "name": "H\u00e1tralev\u0151"
       },
       "remote_control": {
-        "name": "Távírányítás"
+        "name": "T\u00e1v\u00edr\u00e1ny\u00edt\u00e1s"
       },
       "washer_warning_door_is_open": {
-        "name": "Az ajtó nyítva"
+        "name": "Az ajt\u00f3 ny\u00edtva"
       },
       "washer_warning_no_water": {
-        "name": "Nincs víz"
+        "name": "Nincs v\u00edz"
       },
       "washer_warning_security": {
-        "name": "Biztonság"
+        "name": "Biztons\u00e1g"
       },
       "washer_prewash": {
-        "name": "Előmosás"
+        "name": "El\u0151mos\u00e1s"
       },
       "washer_extrarinse": {
-        "name": "Extra őblítés"
+        "name": "Extra \u0151bl\u00edt\u00e9s"
       },
       "washer_hidden_anti_crease": {
-        "name": "Okos gyűrődésgátló"
+        "name": "Okos gy\u0171r\u0151d\u00e9sg\u00e1tl\u00f3"
       },
       "washer_steam": {
-        "name": "Gőz"
+        "name": "G\u0151z"
       },
       "washer_phr": {
-        "name": "Kisállat szőr eltávolítás"
+        "name": "Kis\u00e1llat sz\u0151r elt\u00e1vol\u00edt\u00e1s"
       },
       "washer_add_water": {
-        "name": "Extra víz"
+        "name": "Extra v\u00edz"
       },
       "washer_soaking": {
-        "name": "Áztatás"
+        "name": "\u00c1ztat\u00e1s"
       },
       "washer_night": {
-        "name": "Éjszakai mód"
+        "name": "\u00c9jszakai m\u00f3d"
       },
       "washer_anticrease": {
-        "name": "Gyűrődésgátló"
+        "name": "Gy\u0171r\u0151d\u00e9sg\u00e1tl\u00f3"
       },
       "oven_program": {
         "name": "Program",
         "state": {
           "program_static": "Statikus",
-          "program_static_fan": "Statikus + légkeverés",
-          "program_fan_heating": "Légkeverés",
-          "program_multi_cooking": "Multi (3D) Sűtés",
-          "program_fan_heat_bottom": "Légkeverés + Alsó",
+          "program_static_fan": "Statikus + l\u00e9gkever\u00e9s",
+          "program_fan_heating": "L\u00e9gkever\u00e9s",
+          "program_multi_cooking": "Multi (3D) S\u0171t\u00e9s",
+          "program_fan_heat_bottom": "L\u00e9gkever\u00e9s + Als\u00f3",
           "program_eco_grill": "Eco Grill",
           "program_full_grill": "Teljes Grill",
-          "program_full_grill_fan": "Teljes Grill + Légkeverés",
-          "program_bottom_heating": "Alsó sűtés",
-          "program_defrost": "Olvasztás",
-          "program_warm_keeping": "Melegen tartás",
-          "program_eco_fan_heating": "Eco Légkeverés",
-          "program_steam_cleaning": "Gőztisztítás",
-          "program_eco_pyro": "Eco Tisztítás",
-          "program_pyro": "Tisztítás"
+          "program_full_grill_fan": "Teljes Grill + L\u00e9gkever\u00e9s",
+          "program_bottom_heating": "Als\u00f3 s\u0171t\u00e9s",
+          "program_defrost": "Olvaszt\u00e1s",
+          "program_warm_keeping": "Melegen tart\u00e1s",
+          "program_eco_fan_heating": "Eco L\u00e9gkever\u00e9s",
+          "program_steam_cleaning": "G\u0151ztiszt\u00edt\u00e1s",
+          "program_eco_pyro": "Eco Tiszt\u00edt\u00e1s",
+          "program_pyro": "Tiszt\u00edt\u00e1s"
         }
       },
       "oven_temperature": {
-        "name": "Hőfok"
+        "name": "H\u0151fok"
       },
       "settings_brightness": {
-        "name": "Fényerősség"
+        "name": "F\u00e9nyer\u0151ss\u00e9g"
       },
       "variable_delay": {
-        "name": "Program vége"
+        "name": "Program v\u00e9ge"
       },
       "variable_oven_duration": {
-        "name": "Főzési idő (óra: perc)"
+        "name": "F\u0151z\u00e9si id\u0151 (\u00f3ra: perc)"
       },
       "variable_remaining": {
-        "name": "Hátralevő"
+        "name": "H\u00e1tralev\u0151"
       },
       "oven_warning_door_is_open": {
-        "name": "Az ajtó nyítva"
+        "name": "Az ajt\u00f3 ny\u00edtva"
       },
       "oven_warning_door_locked": {
-        "name": "Az ajtó zárva"
+        "name": "Az ajt\u00f3 z\u00e1rva"
       },
       "oven_warning_error": {
-        "name": "Váratlan hiba történt a termékben. Kérjük, ellenőrizze a használati útmutatót."
+        "name": "V\u00e1ratlan hiba t\u00f6rt\u00e9nt a term\u00e9kben. K\u00e9rj\u00fck, ellen\u0151rizze a haszn\u00e1lati \u00fatmutat\u00f3t."
       },
       "oven_booster": {
-        "name": "Gyorsító"
+        "name": "Gyors\u00edt\u00f3"
       },
       "oven_skip_preheating": {
-        "name": "Kihagyás >"
+        "name": "Kihagy\u00e1s >"
       },
       "program": {
         "name": "Program",
         "state": {
           "program_auto": "Auto",
-          "program_mix_wash_plus": "Vegyesmosás+",
-          "program_intensive_70": "Intenzív 70\u00b0C",
+          "program_mix_wash_plus": "Vegyesmos\u00e1s+",
+          "program_intensive_70": "Intenz\u00edv 70\u00b0C",
           "program_eco_50": "Eco 50\u00b0C",
-          "program_glasscare": "Üvegápolás",
-          "program_new58min": "Gyorsmosás 58'",
+          "program_glasscare": "\u00dcveg\u00e1pol\u00e1s",
+          "program_new58min": "Gyorsmos\u00e1s 58'",
           "program_30min": "Mini 30'",
-          "program_prewash": "Előmosás",
-          "program_hygiene": "Higénia Ápollás",
-          "program_daily": "Napi mosás",
-          "program_silent": "Csendes mosás",
-          "program_makine_temizleme": "Belső tisztítás"
+          "program_prewash": "El\u0151mos\u00e1s",
+          "program_hygiene": "Hig\u00e9nia \u00c1poll\u00e1s",
+          "program_daily": "Napi mos\u00e1s",
+          "program_silent": "Csendes mos\u00e1s",
+          "program_makine_temizleme": "Bels\u0151 tiszt\u00edt\u00e1s"
         }
       },
       "setting_detergent_type": {
-        "name": "Mosószer típusa",
+        "name": "Mos\u00f3szer t\u00edpusa",
         "state": {
-          "setting_detergent_type_powder": "Mosópor",
-          "setting_detergent_type_tablet": "Mosótabletta",
-          "setting_detergent_type_liquid": "Folyékony mosószer"
+          "setting_detergent_type_powder": "Mos\u00f3por",
+          "setting_detergent_type_tablet": "Mos\u00f3tabletta",
+          "setting_detergent_type_liquid": "Foly\u00e9kony mos\u00f3szer"
         }
       },
       "dishwasher_rinse_aid_level": {
-        "name": "Öblítőszer szint"
+        "name": "\u00d6bl\u00edt\u0151szer szint"
       },
       "dishwasher_water_hardness": {
-        "name": "A víz keménysége"
+        "name": "A v\u00edz kem\u00e9nys\u00e9ge"
       },
       "dishwasher_delay": {
-        "name": "Program vége"
+        "name": "Program v\u00e9ge"
       },
       "dishwasher_duration": {
-        "name": "Időtartam"
+        "name": "Id\u0151tartam"
       },
       "dishwasher_remaining": {
-        "name": "Hátralevő idő"
+        "name": "H\u00e1tralev\u0151 id\u0151"
       },
       "dishwasher_warning_no_rinse_aid": {
-        "name": "Nincs öblítőszer"
+        "name": "Nincs \u00f6bl\u00edt\u0151szer"
       },
       "dishwasher_warning_no_salt": {
-        "name": "Nincs só"
+        "name": "Nincs s\u00f3"
       },
       "dishwasher_warning_no_water": {
-        "name": "Nincs víz"
+        "name": "Nincs v\u00edz"
       },
       "dishwasher_warning_check_the_filter": {
-        "name": "Ellenőrizze a szűrőt"
+        "name": "Ellen\u0151rizze a sz\u0171r\u0151t"
       },
       "dishwasher_warning_door_is_open": {
-        "name": "Az ajtó nyítva"
+        "name": "Az ajt\u00f3 ny\u00edtva"
       },
       "dishwasher_warning_call_service": {
-        "name": "Hívja a szervizt"
+        "name": "H\u00edvja a szervizt"
       },
       "dishwasher_liquid_detergent_low": {
-        "name": "Folyékony mosószer kevés"
+        "name": "Foly\u00e9kony mos\u00f3szer kev\u00e9s"
       },
       "dishwasher_traywash": {
-        "name": "Tálcamosás"
+        "name": "T\u00e1lcamos\u00e1s"
       },
       "dishwasher_fastplus": {
-        "name": "Mosogatógép gyors+"
+        "name": "Mosogat\u00f3g\u00e9p gyors+"
       },
       "dishwasher_steamgloss": {
-        "name": "Gőzfényes"
+        "name": "G\u0151zf\u00e9nyes"
       },
       "dishwasher_extrarinse": {
-        "name": "Extra öblítés"
+        "name": "Extra \u00f6bl\u00edt\u00e9s"
       },
       "dishwasher_halfload": {
-        "name": "Félterhelés"
+        "name": "F\u00e9lterhel\u00e9s"
       },
       "setting_auto_door": {
-        "name": "Automata ajtó"
+        "name": "Automata ajt\u00f3"
       },
       "setting_inner_illumination": {
-        "name": "Belső megvilágítás"
+        "name": "Bels\u0151 megvil\u00e1g\u00edt\u00e1s"
       },
       "dishwasher_program": {
         "name": "Program",
         "state": {
           "program_auto": "Auto",
           "program_aqua_flex": "AquaFlex",
-          "program_intensive_70": "Intenzív 70\u00b0C",
+          "program_intensive_70": "Intenz\u00edv 70\u00b0C",
           "program_eco_50": "Eco 50\u00b0C",
-          "program_delicate": "Törékeny",
-          "program_quick_and_shine": "Gyors és ragyogó",
+          "program_delicate": "T\u00f6r\u00e9keny",
+          "program_quick_and_shine": "Gyors \u00e9s ragyog\u00f3",
           "program_mini": "Mini",
-          "program_prewash": "Előmosás",
-          "program_quiet": "Csendes mosás",
-          "program_clean_and_shine": "Tiszta és ragyogó",
-          "program_innerclean": "Belső tisztítás"
+          "program_prewash": "El\u0151mos\u00e1s",
+          "program_quiet": "Csendes mos\u00e1s",
+          "program_clean_and_shine": "Tiszta \u00e9s ragyog\u00f3",
+          "program_innerclean": "Bels\u0151 tiszt\u00edt\u00e1s"
         }
       },
       "dishwasher_liquid_detergent_level": {
-        "name": "Folyékony mosószer"
+        "name": "Foly\u00e9kony mos\u00f3szer"
       },
       "dishwasher_hygiene_intense": {
-        "name": "Higiénia intenzív"
+        "name": "Higi\u00e9nia intenz\u00edv"
       },
       "dishwasher_deepwash": {
-        "name": "Mélymosás"
+        "name": "M\u00e9lymos\u00e1s"
       },
       "washer_dry": {
-        "name": "Szárítás",
+        "name": "Sz\u00e1r\u00edt\u00e1s",
         "state": {
           "dry_off": "Ki",
-          "dry_extra": "Extra száraz",
-          "dry_cabinet": "Gardrób száraz",
-          "dry_iron": "Vasalás száraz",
+          "dry_extra": "Extra sz\u00e1raz",
+          "dry_cabinet": "Gardr\u00f3b sz\u00e1raz",
+          "dry_iron": "Vasal\u00e1s sz\u00e1raz",
           "dry_10": "45 perc",
           "dry_20": "20 perc",
           "dry_30": "30 perc",
@@ -702,10 +702,10 @@
         }
       },
       "washer_rinse_count": {
-        "name": "Öblítések száma"
+        "name": "\u00d6bl\u00edt\u00e9sek sz\u00e1ma"
       },
       "air_conditioner_soft_air": {
-        "name": "Lágy levegő",
+        "name": "L\u00e1gy leveg\u0151",
         "state": {
           "air_conditioner_soft_air_off": "Ki",
           "air_conditioner_soft_air_up": "Fel",
@@ -713,7 +713,7 @@
         }
       },
       "air_conditioner_up_down_vane_control": {
-        "name": "Függőleges légáramlás",
+        "name": "F\u00fcgg\u0151leges l\u00e9g\u00e1raml\u00e1s",
         "state": {
           "up_down_vane_control_off": "Ki",
           "up_down_vane_control_6": "6",
@@ -726,7 +726,7 @@
         }
       },
       "air_conditioner_left_right_vane_control": {
-        "name": "Vízszintes légáramlás",
+        "name": "V\u00edzszintes l\u00e9g\u00e1raml\u00e1s",
         "state": {
           "left_right_vane_control_off": "Ki",
           "left_right_vane_control_1": "1",
@@ -740,127 +740,127 @@
         }
       },
       "air_conditioner_instant_consumption": {
-        "name": "Klíma azonnali fogyasztás"
+        "name": "Kl\u00edma azonnali fogyaszt\u00e1s"
       },
       "air_conditioner_sleep_mode_minute": {
-        "name": "Légkondicionáló alvó üzemmód perce"
+        "name": "L\u00e9gkondicion\u00e1l\u00f3 alv\u00f3 \u00fczemm\u00f3d perce"
       },
       "air_conditioner_auto_switch_off": {
-        "name": "Automatikus kikapcsolás"
+        "name": "Automatikus kikapcsol\u00e1s"
       },
       "air_conditioner_auto_switch_on": {
-        "name": "Automatikus bekapcsolás"
+        "name": "Automatikus bekapcsol\u00e1s"
       }
     },
     "binary_sensor": {
       "remote_control": {
-        "name": "Távírányítás"
+        "name": "T\u00e1v\u00edr\u00e1ny\u00edt\u00e1s"
       },
       "washer_warning_door_is_open": {
-        "name": "Az ajtó nyítva"
+        "name": "Az ajt\u00f3 ny\u00edtva"
       },
       "washer_warning_no_water": {
-        "name": "Nincs víz"
+        "name": "Nincs v\u00edz"
       },
       "washer_warning_security": {
-        "name": "Biztonság"
+        "name": "Biztons\u00e1g"
       },
       "oven_warning_door_is_open": {
-        "name": "Az ajtó nyítva"
+        "name": "Az ajt\u00f3 ny\u00edtva"
       },
       "oven_warning_door_locked": {
-        "name": "Az ajtó zárva"
+        "name": "Az ajt\u00f3 z\u00e1rva"
       },
       "oven_warning_error": {
-        "name": "Váratlan hiba történt a termékben. Kérjük, ellenőrizze a használati útmutatót."
+        "name": "V\u00e1ratlan hiba t\u00f6rt\u00e9nt a term\u00e9kben. K\u00e9rj\u00fck, ellen\u0151rizze a haszn\u00e1lati \u00fatmutat\u00f3t."
       },
       "dishwasher_warning_no_rinse_aid": {
-        "name": "Nincs öblítőszer"
+        "name": "Nincs \u00f6bl\u00edt\u0151szer"
       },
       "dishwasher_warning_no_salt": {
-        "name": "Nincs só"
+        "name": "Nincs s\u00f3"
       },
       "dishwasher_warning_no_water": {
-        "name": "Nincs víz"
+        "name": "Nincs v\u00edz"
       },
       "dishwasher_warning_check_the_filter": {
-        "name": "Ellenőrizze a szűrőt"
+        "name": "Ellen\u0151rizze a sz\u0171r\u0151t"
       },
       "dishwasher_warning_door_is_open": {
-        "name": "Az ajtó nyítva"
+        "name": "Az ajt\u00f3 ny\u00edtva"
       },
       "dishwasher_warning_call_service": {
-        "name": "Hívja a szervizt"
+        "name": "H\u00edvja a szervizt"
       },
       "dishwasher_liquid_detergent_low": {
-        "name": "Folyékony mosószer kevés"
+        "name": "Foly\u00e9kony mos\u00f3szer kev\u00e9s"
       }
     },
     "climate": {
       "ac": {
-        "name": "Klíma"
+        "name": "Kl\u00edma"
       }
     },
     "switch": {
       "washer_prewash": {
-        "name": "Előmosás"
+        "name": "El\u0151mos\u00e1s"
       },
       "washer_extrarinse": {
-        "name": "Extra őblítés"
+        "name": "Extra \u0151bl\u00edt\u00e9s"
       },
       "washer_hidden_anti_crease": {
-        "name": "Okos gyűrődésgátló"
+        "name": "Okos gy\u0171r\u0151d\u00e9sg\u00e1tl\u00f3"
       },
       "washer_steam": {
-        "name": "Gőz"
+        "name": "G\u0151z"
       },
       "washer_phr": {
-        "name": "Kisállat szőr eltávolítás"
+        "name": "Kis\u00e1llat sz\u0151r elt\u00e1vol\u00edt\u00e1s"
       },
       "washer_add_water": {
-        "name": "Extra víz"
+        "name": "Extra v\u00edz"
       },
       "washer_soaking": {
-        "name": "Áztatás"
+        "name": "\u00c1ztat\u00e1s"
       },
       "washer_night": {
-        "name": "Éjszakai mód"
+        "name": "\u00c9jszakai m\u00f3d"
       },
       "washer_anticrease": {
-        "name": "Gyűrődésgátló"
+        "name": "Gy\u0171r\u0151d\u00e9sg\u00e1tl\u00f3"
       },
       "oven_booster": {
-        "name": "Gyorsító"
+        "name": "Gyors\u00edt\u00f3"
       },
       "oven_skip_preheating": {
-        "name": "Kihagyás >"
+        "name": "Kihagy\u00e1s >"
       },
       "dishwasher_traywash": {
-        "name": "Tálcamosás"
+        "name": "T\u00e1lcamos\u00e1s"
       },
       "dishwasher_fastplus": {
-        "name": "Mosogatógép gyors+"
+        "name": "Mosogat\u00f3g\u00e9p gyors+"
       },
       "dishwasher_steamgloss": {
-        "name": "Gőzfényes"
+        "name": "G\u0151zf\u00e9nyes"
       },
       "dishwasher_extrarinse": {
-        "name": "Extra öblítés"
+        "name": "Extra \u00f6bl\u00edt\u00e9s"
       },
       "dishwasher_halfload": {
-        "name": "Félterhelés"
+        "name": "F\u00e9lterhel\u00e9s"
       },
       "setting_auto_door": {
-        "name": "Automata ajtó"
+        "name": "Automata ajt\u00f3"
       },
       "setting_inner_illumination": {
-        "name": "Belső megvilágítás"
+        "name": "Bels\u0151 megvil\u00e1g\u00edt\u00e1s"
       },
       "dishwasher_hygiene_intense": {
-        "name": "Higiénia intenzív"
+        "name": "Higi\u00e9nia intenz\u00edv"
       },
       "dishwasher_deepwash": {
-        "name": "Mélymosás"
+        "name": "M\u00e9lymos\u00e1s"
       }
     }
   }
