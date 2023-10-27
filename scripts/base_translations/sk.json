@@ -8,14 +8,14 @@
     "flow_title": "{name}",
     "step": {
       "user": {
-        "description": "Výber typu pripojenia",
+        "description": "V\u00fdber typu pripojenia",
         "menu_options": {
           "select_bluetooth_device": "Bluetooth",
           "provide_cloud_credentials": "Cloud"
         }
       },
       "select_bluetooth_device": {
-        "description": "Výber zariadenia na nastavenie",
+        "description": "V\u00fdber zariadenia na nastavenie",
         "data": {
           "address": "Zariadenie"
         }
@@ -23,26 +23,26 @@
       "bluetooth_connect": {
         "description": "Poskytnite poverenia HomeWhiz",
         "data": {
-          "username": "Používateľské meno",
+          "username": "Pou\u017e\u00edvate\u013esk\u00e9 meno",
           "password": "Heslo"
         }
       },
       "provide_cloud_credentials": {
         "description": "Poskytnite poverenia HomeWhiz",
         "data": {
-          "username": "Používateľské meno",
+          "username": "Pou\u017e\u00edvate\u013esk\u00e9 meno",
           "password": "Heslo"
         }
       },
       "select_cloud_device": {
-        "description": "Výber zariadenia na nastavenie",
+        "description": "V\u00fdber zariadenia na nastavenie",
         "data": {
           "id": "Zariadenie"
         }
       }
     },
     "error": {
-      "invalid_auth": "Neplatné overenie"
+      "invalid_auth": "Neplatn\u00e9 overenie"
     }
   }
 }
