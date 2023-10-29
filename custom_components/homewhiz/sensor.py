@@ -1,12 +1,13 @@
 from __future__ import annotations
 
-import datetime
 import logging
+from datetime import datetime
 
 from homeassistant.components.sensor import SensorDeviceClass, SensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
+
 
 from .appliance_controls import (
     DebugControl,
@@ -14,6 +15,9 @@ from .appliance_controls import (
     NumericControl,
     TimeControl,
     generate_controls_from_config,
+
+    SummedTimestampControl
+
 )
 from .config_flow import EntryData
 from .const import DOMAIN
@@ -25,12 +29,11 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 
 entities: dict[str, HomeWhizSensorEntity] = {}
 
-
 class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
     def __init__(
         self,
         coordinator: HomewhizCoordinator,
-        control: TimeControl | EnumControl | NumericControl | DebugControl,
+        control: TimeControl | EnumControl | NumericControl | DebugControl | SummedTimestampControl,
         device_name: str,
         data: EntryData,
     ):
@@ -40,12 +43,15 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
             self._attr_icon = "mdi:clock-outline"
             self._attr_native_unit_of_measurement = "min"
             self._attr_device_class = SensorDeviceClass.DURATION
-        if isinstance(control, EnumControl):
+        elif isinstance(control, EnumControl):
             self._attr_device_class = SensorDeviceClass.ENUM  # type:ignore
             self._attr_options = list(self._control.options.values())  # type:ignore
+        elif isinstance(control, SummedTimestampControl):
+            self._attr_icon = "mdi:camera-timer"
+            self._attr_device_class = SensorDeviceClass.TIMESTAMP
 
     @property
-    def native_value(self) -> float | int | str | None:
+    def native_value(self) -> float | int | str | datetime | None:
         _LOGGER.debug(
             "Native value for entity %s, id: %s, info: %s, class:%s, is %s",
             self.entity_key,
@@ -55,24 +61,9 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
             self.coordinator.data,
         )
 
-        # Workaround for issue #73
-        if self.entity_key == "washer_delay":
-            washer_remaining = entities["washer_remaining"]._control.get_value(
-                self.coordinator.data
-            )
-            _LOGGER.debug(
-                "Calculating washer delay with washer remaining value: %s, type: %s",
-                washer_remaining,
-                type(washer_remaining),
-            )
-            return int(datetime.datetime.utcnow().timestamp()) + entities[
-                "washer_remaining"
-            ]._control.get_value(self.coordinator.data)
-
         if self.coordinator.data is None:
             return None
         return self._control.get_value(self.coordinator.data)
-
 
 async def async_setup_entry(
     hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
@@ -89,7 +80,29 @@ async def async_setup_entry(
         or isinstance(c, NumericControl)
         or isinstance(c, DebugControl)
     ]
+    
+    timestamp_sensors = {
+        "est_end_time": [
+            c for c in sensor_controls if c.key in [
+                "washer_remaining",
+                "washer_delay"
+            ]
+        ],
+        "est_start_time": [ 
+            c for c in sensor_controls if c.key in [
+                "washer_delay"
+            ]
+        ],
+    }
+
+    sensor_controls.extend(
+        [ SummedTimestampControl(key=name, sensors=sensors)
+            for name, sensors in timestamp_sensors.items() if len(sensors) > 0
+        ]
+    )
+
     _LOGGER.debug(f"Sensors: {[c.key for c in sensor_controls]}")
+
     homewhiz_sensor_entities = [
         HomeWhizSensorEntity(coordinator, control, entry.title, data)
         for control in sensor_controls

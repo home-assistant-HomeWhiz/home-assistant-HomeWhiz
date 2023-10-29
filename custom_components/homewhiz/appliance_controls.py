@@ -4,6 +4,7 @@ from abc import ABC, abstractmethod
 from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass, fields
 from typing import Any, Generic, TypeVar
+from datetime import datetime, timedelta, timezone
 
 from bidict import bidict
 from homeassistant.components.climate import (  # type: ignore[import]
@@ -158,6 +159,25 @@ class TimeControl(Control):
         minutes = clamp(data[self.minute_index]) if self.minute_index is not None else 0
         return hours * 60 + minutes
 
+class SummedTimestampControl(Control):
+    def __init__(self, key: str, sensors: list[TimeControl | None]):
+        self.key = to_friendly_name(key)
+        self.sensors = sensors
+
+    def get_value(self, data: bytearray) -> datetime:
+        _LOGGER.debug( 
+            "Calculating Program End Time from %s",
+            [ sensor.key for sensor in self.sensors ]
+        )
+        return (
+            datetime.now(timezone.utc).replace(second=0, microsecond=0)
+            + 
+            timedelta(
+                minutes=sum(
+                    [sensor.get_value(data) for sensor in self.sensors]
+                )
+            )
+        )
 
 class BooleanControl(Control):
     @abstractmethod
