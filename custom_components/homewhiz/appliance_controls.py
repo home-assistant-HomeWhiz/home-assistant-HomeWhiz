@@ -169,14 +169,15 @@ class SummedTimestampControl(Control):
             "Calculating Program End Time from %s",
             [ sensor.key for sensor in self.sensors ]
         )
-        return (
-            datetime.now(timezone.utc).replace(second=0, microsecond=0)
-            + 
-            timedelta(
-                minutes=sum(
-                    [sensor.get_value(data) for sensor in self.sensors]
-                )
+        time_delta = timedelta(
+            minutes=sum([sensor.get_value(data) for sensor in self.sensors])
+        )
+        _LOGGER.debug("Calculated time delta of %s", time_delta)
+        if time_delta:
+            return (
+                datetime.now(timezone.utc).replace(second=0, microsecond=0) + time_delta
             )
+        return None
         )
 
 class BooleanControl(Control):
