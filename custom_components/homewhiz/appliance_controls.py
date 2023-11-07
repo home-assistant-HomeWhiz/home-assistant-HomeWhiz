@@ -166,19 +166,19 @@ class SummedTimestampControl(Control):
 
     def get_value(self, data: bytearray) -> datetime:
         _LOGGER.debug( 
-            "Calculating Program End Time from %s",
+            "Calculating Time for %s from %s",
+            self.key,
             [ sensor.key for sensor in self.sensors ]
         )
-        time_delta = timedelta(
-            minutes=sum([sensor.get_value(data) for sensor in self.sensors])
-        )
+        minute_delta = sum([sensor.get_value(data) for sensor in self.sensors])
+        if minute_delta < 1
+            _LOGGER.debug("Device Running or No Delay Active")
+            return None
+        time_delta = timedelta( minutes=minute_delta )
         _LOGGER.debug("Calculated time delta of %s", time_delta)
-        if time_delta:
-            return (
-                datetime.now(timezone.utc).replace(second=0, microsecond=0) + time_delta
-            )
-        return None
-        )
+        time_est = datetime.now(timezone.utc).replace(second=0, microsecond=0) + time_delta
+        _LOGGER.debug("Calculated time of %s", time_est )
+        return time_est
 
 class BooleanControl(Control):
     @abstractmethod
