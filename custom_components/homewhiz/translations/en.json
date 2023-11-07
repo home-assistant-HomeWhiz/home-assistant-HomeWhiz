@@ -561,7 +561,7 @@
         "name": "Brightness"
       },
       "variable_delay": {
-        "name": "Programme End Time"
+        "name": "Delay Start"
       },
       "variable_oven_duration": {
         "name": "Cooking duration (Hour : Minute)"
@@ -616,7 +616,7 @@
         "name": "Water hardness"
       },
       "dishwasher_delay": {
-        "name": "Programme End Time"
+        "name": "Delay Start"
       },
       "dishwasher_duration": {
         "name": "Duration"

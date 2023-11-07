@@ -14,10 +14,8 @@ from .appliance_controls import (
     EnumControl,
     NumericControl,
     TimeControl,
+    SummedTimestampControl,
     generate_controls_from_config,
-
-    SummedTimestampControl
-
 )
 from .config_flow import EntryData
 from .const import DOMAIN
@@ -79,27 +77,8 @@ async def async_setup_entry(
         or isinstance(c, EnumControl)
         or isinstance(c, NumericControl)
         or isinstance(c, DebugControl)
+        or isinstance(c, SummedTimestampControl)
     ]
-    
-    timestamp_sensors = {
-        "est_end_time": [
-            c for c in sensor_controls if c.key in [
-                "washer_remaining",
-                "washer_delay"
-            ]
-        ],
-        "est_start_time": [ 
-            c for c in sensor_controls if c.key in [
-                "washer_delay"
-            ]
-        ],
-    }
-
-    sensor_controls.extend(
-        [ SummedTimestampControl(key=name, sensors=sensors)
-            for name, sensors in timestamp_sensors.items() if len(sensors) > 0
-        ]
-    )
 
     _LOGGER.debug(f"Sensors: {[c.key for c in sensor_controls]}")
 

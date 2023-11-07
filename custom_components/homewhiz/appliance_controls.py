@@ -171,7 +171,7 @@ class SummedTimestampControl(Control):
             [ sensor.key for sensor in self.sensors ]
         )
         minute_delta = sum([sensor.get_value(data) for sensor in self.sensors])
-        if minute_delta < 1
+        if minute_delta < 1:
             _LOGGER.debug("Device Running or No Delay Active")
             return None
         time_delta = timedelta( minutes=minute_delta )
@@ -553,6 +553,7 @@ def build_controls_from_progress_variables(
     if progress_variables is None:
         return []
     result: list[Control] = []
+    delay_key: string | None = None
     for field in fields(progress_variables):
         feature: ApplianceProgressFeature | None = getattr(
             progress_variables, field.name
@@ -567,6 +568,38 @@ def build_controls_from_progress_variables(
                     else None,
                 )
             )
+            if feature.isCalculatedToStart is not None:
+#            Or to restrict this to specific controls
+#            if result[-1].key in [ "washer_delay" ]:
+                delay_key = result[-1].key
+
+    if delay_key is not None:
+        remaining_key: string | None = "_".join(delay_key.split("_")[:-1] + ["remaining"])
+        _LOGGER.debug( 
+            "Detected time based calculated feature %s end time calculations will based on %s",
+            delay_key,
+            remaining_key
+        ) 
+
+        timestamp_sensors = {
+            "est_end_time": [
+                c for c in result if c.key in [
+                    delay_key,
+                    remaining_key
+                ]
+            ],
+            "est_start_time": [ 
+                c for c in result if c.key in [
+                    delay_key
+                ]
+            ],
+        }
+
+        result.extend(
+            [ SummedTimestampControl(key=name, sensors=sensors)
+                for name, sensors in timestamp_sensors.items() if len(sensors) > 0
+            ]
+        )
     return result
 
 
