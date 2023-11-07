@@ -171,7 +171,7 @@ class SummedTimestampControl(Control):
             [ sensor.key for sensor in self.sensors ]
         )
         minute_delta = sum([sensor.get_value(data) for sensor in self.sensors])
-        if minute_delta < 1
+        if minute_delta < 1:
             _LOGGER.debug("Device Running or No Delay Active")
             return None
         time_delta = timedelta( minutes=minute_delta )
