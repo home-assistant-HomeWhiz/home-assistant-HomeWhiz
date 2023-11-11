@@ -49,6 +49,17 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
             self._attr_device_class = SensorDeviceClass.TIMESTAMP
 
     @property
+    def extra_state_attributes(self) -> Mapping[str, Any] | None:
+        if isinstance(self._control, SummedTimestampControl):
+            return {
+                "sources": [
+                    getattr(x,"my_entity_ids") for x in self._control.sensors
+                    if hasattr(x,"my_entity_ids")
+                ]
+            }
+        return None
+
+    @property
     def native_value(self) -> float | int | str | datetime | None:
         _LOGGER.debug(
             "Native value for entity %s, id: %s, info: %s, class:%s, is %s",

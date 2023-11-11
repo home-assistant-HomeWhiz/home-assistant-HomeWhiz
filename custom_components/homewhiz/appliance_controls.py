@@ -161,7 +161,7 @@ class TimeControl(Control):
 
 class SummedTimestampControl(Control):
     def __init__(self, key: str, sensors: list[TimeControl | None]):
-        self.key = to_friendly_name(key)
+        self.key = key
         self.sensors = sensors
 
     def get_value(self, data: bytearray) -> datetime:
@@ -553,51 +553,62 @@ def build_controls_from_progress_variables(
     if progress_variables is None:
         return []
     result: list[Control] = []
-    delay_key: string | None = None
+    delay_keys = {}
     for field in fields(progress_variables):
         feature: ApplianceProgressFeature | None = getattr(
             progress_variables, field.name
         )
         if feature is not None:
+            feature_key = to_friendly_name(feature.strKey)
+            if feature.isCalculatedToStart is not None:
+#            Or to restrict this to specific controls
+#            if feature_key in [ "washer_delay" ]:
+                calculation_key = feature_key
+                feature_key = "delay_start#" + str(len(delay_keys))
+                delay_keys.update({calculation_key: [feature_key,feature.isCalculatedToStart]})
             result.append(
                 TimeControl(
-                    key=to_friendly_name(feature.strKey),
+                    key=feature_key,
                     hour_index=feature.hour.wifiArrayIndex,
                     minute_index=feature.minute.wifiArrayIndex
                     if feature.minute is not None
                     else None,
                 )
             )
-            if feature.isCalculatedToStart is not None:
-#            Or to restrict this to specific controls
-#            if result[-1].key in [ "washer_delay" ]:
-                delay_key = result[-1].key
 
-    if delay_key is not None:
-        remaining_key: string | None = "_".join(delay_key.split("_")[:-1] + ["remaining"])
+    for calculation_key, feature_key in delay_keys.items():
+        remaining_key: string | None = "_".join(calculation_key.split("_")[:-1] + ["remaining"])
         _LOGGER.debug( 
             "Detected time based calculated feature %s end time calculations will based on %s",
-            delay_key,
+            calculation_key,
             remaining_key
-        ) 
+        )
+
+        end_time_key = calculation_key
+        start_time_key = feature_key[0].replace("delay_start", "delay_start_time", 1)
+        if feature_key[1]  == 1:
+            end_time_key = feature_key[0].replace("delay_start", "delay_end_time", 1)
+            start_time_key = calculation_key
 
         timestamp_sensors = {
-            "est_end_time": [
-                c for c in result if c.key in [
-                    delay_key,
-                    remaining_key
-                ]
-            ],
-            "est_start_time": [ 
-                c for c in result if c.key in [
-                    delay_key
-                ]
-            ],
+            end_time_key: (
+                [
+                    c for c in result if c.key in [
+                        feature_key[0],
+                        remaining_key
+                    ]
+                ], 1),
+            start_time_key: (
+                [ 
+                    c for c in result if c.key in [
+                        feature_key[0]
+                    ]
+                ], 0)
         }
-
+        _LOGGER.debug( "adding sensor info %s:", timestamp_sensors.keys() )
         result.extend(
-            [ SummedTimestampControl(key=name, sensors=sensors)
-                for name, sensors in timestamp_sensors.items() if len(sensors) > 0
+            [ SummedTimestampControl(key=name, sensors=sensors[0])
+                for name, sensors in timestamp_sensors.items() if len(sensors[0]) > sensors[1]
             ]
         )
     return result
@@ -703,29 +714,31 @@ def extract_ac_control(controls: list[Control]) -> list[Control]:
         return [c for c in controls if c not in excluded_controls] + [climate]
     return controls
 
-
+controls: list[Control] = []
 def generate_controls_from_config(
     config: ApplianceConfiguration,
 ) -> list[Control]:
-    possible_controls: list[Control | None] = [
-        build_control_from_state(config.deviceStates),
-        build_control_from_program(config.program),
-        build_control_from_substate(config.deviceSubStates),
-        *build_controls_from_features(config.subPrograms),
-        *build_controls_from_features(config.customSubPrograms),
-        *build_controls_from_monitorings(config.monitorings),
-        *build_controls_from_progress_variables(config.progressVariables),
-        build_control_from_remote_control(config.remoteControl),
-        *build_controls_from_warnings(config.deviceWarnings),
-        *build_controls_from_warnings(config.warnings),
-        *build_controls_from_features(config.settings),
-    ]
+    global controls
+    if not controls:
+        possible_controls: list[Control | None] = [
+            build_control_from_state(config.deviceStates),
+            build_control_from_program(config.program),
+            build_control_from_substate(config.deviceSubStates),
+            *build_controls_from_features(config.subPrograms),
+            *build_controls_from_features(config.customSubPrograms),
+            *build_controls_from_monitorings(config.monitorings),
+            *build_controls_from_progress_variables(config.progressVariables),
+            build_control_from_remote_control(config.remoteControl),
+            *build_controls_from_warnings(config.deviceWarnings),
+            *build_controls_from_warnings(config.warnings),
+            *build_controls_from_features(config.settings),
+        ]
 
-    controls = [
-        convert_to_bool_control_if_possible(control)
-        for control in possible_controls
-        if control is not None
-    ]
-    controls = extract_ac_control(controls)
+        controls = [
+            convert_to_bool_control_if_possible(control)
+            for control in possible_controls
+            if control is not None
+        ]
+        controls = extract_ac_control(controls)
 
     return controls

@@ -66,8 +66,9 @@ async def setup_bluetooth(
 
 def _lazy_install_awsiotsdk() -> None:
     custom_required_packages = ["awsiotsdk"]
+    links = "https://qqaatw.github.io/aws-crt-python-musllinux/"
     for pkg in custom_required_packages:
-        if not is_installed(pkg) and not install_package(pkg):
+        if not is_installed(pkg) and not install_package(pkg, find_links=links):
             raise RequirementsNotFound(DOMAIN, [pkg])
 
 
