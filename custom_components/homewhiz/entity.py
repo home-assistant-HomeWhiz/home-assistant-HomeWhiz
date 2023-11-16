@@ -48,10 +48,11 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator]):  # type: ignore[ty
     async def async_added_to_hass(self) -> None:
         """Call when the entity is added to hass."""
         await super().async_added_to_hass()
-        if hasattr(self._control, "my_entity_ids"):
-            self._control.my_entity_ids.update({self.entity_id: self.name})
-        else:
-            setattr(self._control, "my_entity_ids", {self.entity_id: self.name})
+        if hasattr(self, "_control"):
+            if hasattr(self._control, "my_entity_ids"):
+                self._control.my_entity_ids.update({self.entity_id: self.name})
+            else:
+                setattr(self._control, "my_entity_ids", {self.entity_id: self.name})
 
     @property
     def available(self) -> bool:
@@ -63,4 +64,4 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator]):  # type: ignore[ty
 
         _LOGGER.debug("Retrieving translation_key %s", self.entity_key.lower())
 
-        return self.entity_key.lower().split("#")[0] #rstrip("_1234567890")
+        return self.entity_key.lower().split("#")[0]  # rstrip("_1234567890")

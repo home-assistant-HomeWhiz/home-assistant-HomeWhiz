@@ -1,20 +1,21 @@
 from __future__ import annotations
 
 import logging
+from collections.abc import Mapping
 from datetime import datetime
+from typing import Any
 
 from homeassistant.components.sensor import SensorDeviceClass, SensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
-
 from .appliance_controls import (
     DebugControl,
     EnumControl,
     NumericControl,
-    TimeControl,
     SummedTimestampControl,
+    TimeControl,
     generate_controls_from_config,
 )
 from .config_flow import EntryData
@@ -27,11 +28,16 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 
 entities: dict[str, HomeWhizSensorEntity] = {}
 
+
 class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
     def __init__(
         self,
         coordinator: HomewhizCoordinator,
-        control: TimeControl | EnumControl | NumericControl | DebugControl | SummedTimestampControl,
+        control: TimeControl
+        | EnumControl
+        | NumericControl
+        | DebugControl
+        | SummedTimestampControl,
         device_name: str,
         data: EntryData,
     ):
@@ -53,8 +59,9 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
         if isinstance(self._control, SummedTimestampControl):
             return {
                 "sources": [
-                    getattr(x,"my_entity_ids") for x in self._control.sensors
-                    if hasattr(x,"my_entity_ids")
+                    getattr(x, "my_entity_ids")
+                    for x in self._control.sensors
+                    if hasattr(x, "my_entity_ids")
                 ]
             }
         return None
@@ -73,6 +80,7 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
         if self.coordinator.data is None:
             return None
         return self._control.get_value(self.coordinator.data)
+
 
 async def async_setup_entry(
     hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback

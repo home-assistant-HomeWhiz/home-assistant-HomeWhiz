@@ -3,8 +3,8 @@ import re
 from abc import ABC, abstractmethod
 from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass, fields
-from typing import Any, Generic, TypeVar
 from datetime import datetime, timedelta, timezone
+from typing import Any, Generic, TypeVar
 
 from bidict import bidict
 from homeassistant.components.climate import (  # type: ignore[import]
@@ -159,26 +159,30 @@ class TimeControl(Control):
         minutes = clamp(data[self.minute_index]) if self.minute_index is not None else 0
         return hours * 60 + minutes
 
+
 class SummedTimestampControl(Control):
-    def __init__(self, key: str, sensors: list[TimeControl | None]):
+    def __init__(self, key: str, sensors: list[Control]):
         self.key = key
         self.sensors = sensors
 
-    def get_value(self, data: bytearray) -> datetime:
-        _LOGGER.debug( 
+    def get_value(self, data: bytearray) -> datetime | None:
+        _LOGGER.debug(
             "Calculating Time for %s from %s",
             self.key,
-            [ sensor.key for sensor in self.sensors ]
+            [sensor.key for sensor in self.sensors],
         )
         minute_delta = sum([sensor.get_value(data) for sensor in self.sensors])
         if minute_delta < 1:
             _LOGGER.debug("Device Running or No Delay Active")
             return None
-        time_delta = timedelta( minutes=minute_delta )
+        time_delta = timedelta(minutes=minute_delta)
         _LOGGER.debug("Calculated time delta of %s", time_delta)
-        time_est = datetime.now(timezone.utc).replace(second=0, microsecond=0) + time_delta
-        _LOGGER.debug("Calculated time of %s", time_est )
+        time_est = (
+            datetime.now(timezone.utc).replace(second=0, microsecond=0) + time_delta
+        )
+        _LOGGER.debug("Calculated time of %s", time_est)
         return time_est
+
 
 class BooleanControl(Control):
     @abstractmethod
@@ -553,7 +557,7 @@ def build_controls_from_progress_variables(
     if progress_variables is None:
         return []
     result: list[Control] = []
-    delay_keys = {}
+    delay_keys: dict[str, tuple[str, int]] = {}
     for field in fields(progress_variables):
         feature: ApplianceProgressFeature | None = getattr(
             progress_variables, field.name
@@ -561,11 +565,13 @@ def build_controls_from_progress_variables(
         if feature is not None:
             feature_key = to_friendly_name(feature.strKey)
             if feature.isCalculatedToStart is not None:
-#            Or to restrict this to specific controls
-#            if feature_key in [ "washer_delay" ]:
+                #            Or to restrict this to specific controls
+                #            if feature_key in [ "washer_delay" ]:
                 calculation_key = feature_key
                 feature_key = "delay_start#" + str(len(delay_keys))
-                delay_keys.update({calculation_key: [feature_key,feature.isCalculatedToStart]})
+                delay_keys.update(
+                    {calculation_key: (feature_key, feature.isCalculatedToStart)}
+                )
             result.append(
                 TimeControl(
                     key=feature_key,
@@ -576,39 +582,40 @@ def build_controls_from_progress_variables(
                 )
             )
 
-    for calculation_key, feature_key in delay_keys.items():
-        remaining_key: string | None = "_".join(calculation_key.split("_")[:-1] + ["remaining"])
-        _LOGGER.debug( 
-            "Detected time based calculated feature %s end time calculations will based on %s",
+    for calculation_key, feature_key_tuple in delay_keys.items():
+        remaining_key: str | None = "_".join(
+            calculation_key.split("_")[:-1] + ["remaining"]
+        )
+        _LOGGER.debug(
+            "Detected time based calculated feature %s "
+            "end time calculations will based on %s",
             calculation_key,
-            remaining_key
+            remaining_key,
         )
 
         end_time_key = calculation_key
-        start_time_key = feature_key[0].replace("delay_start", "delay_start_time", 1)
-        if feature_key[1]  == 1:
-            end_time_key = feature_key[0].replace("delay_start", "delay_end_time", 1)
+        start_time_key = feature_key_tuple[0].replace(
+            "delay_start", "delay_start_time", 1
+        )
+        if feature_key_tuple[1] == 1:
+            end_time_key = feature_key_tuple[0].replace(
+                "delay_start", "delay_end_time", 1
+            )
             start_time_key = calculation_key
 
         timestamp_sensors = {
             end_time_key: (
-                [
-                    c for c in result if c.key in [
-                        feature_key[0],
-                        remaining_key
-                    ]
-                ], 1),
-            start_time_key: (
-                [ 
-                    c for c in result if c.key in [
-                        feature_key[0]
-                    ]
-                ], 0)
+                [c for c in result if c.key in [feature_key_tuple[0], remaining_key]],
+                1,
+            ),
+            start_time_key: ([c for c in result if c.key in [feature_key_tuple[0]]], 0),
         }
-        _LOGGER.debug( "adding sensor info %s:", timestamp_sensors.keys() )
+        _LOGGER.debug("adding sensor info %s:", timestamp_sensors.keys())
         result.extend(
-            [ SummedTimestampControl(key=name, sensors=sensors[0])
-                for name, sensors in timestamp_sensors.items() if len(sensors[0]) > sensors[1]
+            [
+                SummedTimestampControl(key=name, sensors=sensors[0])
+                for name, sensors in timestamp_sensors.items()
+                if len(sensors[0]) > sensors[1]
             ]
         )
     return result
@@ -714,7 +721,10 @@ def extract_ac_control(controls: list[Control]) -> list[Control]:
         return [c for c in controls if c not in excluded_controls] + [climate]
     return controls
 
+
 controls: list[Control] = []
+
+
 def generate_controls_from_config(
     config: ApplianceConfiguration,
 ) -> list[Control]:
