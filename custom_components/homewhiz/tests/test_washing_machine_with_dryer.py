@@ -50,7 +50,7 @@ def test_off(config: ApplianceConfiguration) -> None:
             "washer_steam": False,
             "washer_duration": 140,
             "washer_remaining": 0,
-            "washer_delay": 0,
+            "washer_delay": None,
             "remote_control": False,
             "washer_warning_door_is_open": False,
             "washer_warning_no_water": False,
@@ -62,5 +62,7 @@ def test_off(config: ApplianceConfiguration) -> None:
             "washer_anticrease": False,
             "washer_add_water": False,
             "custom_duration_level": "duration_level_0",
+            "delay_start#0": 0,
+            "delay_start_time#0": None,
         },
     )
