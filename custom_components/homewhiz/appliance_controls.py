@@ -161,8 +161,11 @@ class TimeControl(Control):
 
 
 class SummedTimestampControl(Control):
+    """Uses different sensors to calculate a timestamp"""
+
     def __init__(self, key: str, sensors: list[Control]):
         self.key = key
+        # Sensors used for timestamp calculation
         self.sensors = sensors
 
     def get_value(self, data: bytearray) -> datetime | None:
@@ -171,10 +174,14 @@ class SummedTimestampControl(Control):
             self.key,
             [sensor.key for sensor in self.sensors],
         )
+        # Calculate timnestamps for delay_start_time and delay_end_time
+        # delay_start_time: Sensors are washer_delay and washer_remaining
+        # delay_end_time: Sensors are washer_delay
         minute_delta = sum([sensor.get_value(data) for sensor in self.sensors])
         if minute_delta < 1:
             _LOGGER.debug("Device Running or No Delay Active")
             return None
+
         time_delta = timedelta(minutes=minute_delta)
         _LOGGER.debug("Calculated time delta of %s", time_delta)
         time_est = (
