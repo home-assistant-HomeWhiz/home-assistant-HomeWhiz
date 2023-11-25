@@ -92,11 +92,16 @@ async def async_setup_entry(
     sensor_controls = [
         c
         for c in controls
-        if isinstance(c, TimeControl)
-        or isinstance(c, EnumControl)
-        or isinstance(c, NumericControl)
-        or isinstance(c, DebugControl)
-        or isinstance(c, SummedTimestampControl)
+        if isinstance(
+            c,
+            (
+                TimeControl,
+                EnumControl,
+                NumericControl,
+                DebugControl,
+                SummedTimestampControl,
+            ),
+        )
     ]
 
     _LOGGER.debug(f"Sensors: {[c.key for c in sensor_controls]}")
