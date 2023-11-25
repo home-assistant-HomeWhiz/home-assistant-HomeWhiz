@@ -556,23 +556,27 @@ def build_controls_from_progress_variables(
 ) -> list[Control]:
     if progress_variables is None:
         return []
-    result: list[Control] = []
+
+    results: list[Control] = []
+    # To keep track of keys for which a calculated control will be built
     delay_keys: dict[str, tuple[str, int]] = {}
+
     for field in fields(progress_variables):
         feature: ApplianceProgressFeature | None = getattr(
             progress_variables, field.name
         )
         if feature is not None:
             feature_key = to_friendly_name(feature.strKey)
-            if feature.isCalculatedToStart is not None:
-                #            Or to restrict this to specific controls
-                #            if feature_key in [ "washer_delay" ]:
+            # Restrict this to washing machine only
+            if feature.isCalculatedToStart is not None and feature_key in [
+                "washer_delay"
+            ]:
                 calculation_key = feature_key
                 feature_key = "delay_start#" + str(len(delay_keys))
                 delay_keys.update(
                     {calculation_key: (feature_key, feature.isCalculatedToStart)}
                 )
-            result.append(
+            results.append(
                 TimeControl(
                     key=feature_key,
                     hour_index=feature.hour.wifiArrayIndex,
@@ -582,10 +586,12 @@ def build_controls_from_progress_variables(
                 )
             )
 
+    # Build calculated controls
     for calculation_key, feature_key_tuple in delay_keys.items():
-        remaining_key: str | None = "_".join(
-            calculation_key.split("_")[:-1] + ["remaining"]
-        )
+        feature_key = feature_key_tuple[0]
+
+        # Key for the new remaining time control
+        remaining_key: str = "_".join(calculation_key.split("_")[:-1] + ["remaining"])
         _LOGGER.debug(
             "Detected time based calculated feature %s "
             "end time calculations will based on %s",
@@ -593,32 +599,40 @@ def build_controls_from_progress_variables(
             remaining_key,
         )
 
-        end_time_key = calculation_key
-        start_time_key = feature_key_tuple[0].replace(
-            "delay_start", "delay_start_time", 1
-        )
         if feature_key_tuple[1] == 1:
-            end_time_key = feature_key_tuple[0].replace(
-                "delay_start", "delay_end_time", 1
-            )
+            end_time_key = feature_key.replace("delay_start", "delay_end_time", 1)
             start_time_key = calculation_key
+        else:
+            end_time_key = calculation_key
+            start_time_key = feature_key.replace("delay_start", "delay_start_time", 1)
 
         timestamp_sensors = {
-            end_time_key: (
-                [c for c in result if c.key in [feature_key_tuple[0], remaining_key]],
-                1,
-            ),
-            start_time_key: ([c for c in result if c.key in [feature_key_tuple[0]]], 0),
+            end_time_key: [
+                control
+                for control in results
+                if control.key in [feature_key, remaining_key]
+            ],
+            start_time_key: [
+                control for control in results if control.key in [feature_key]
+            ],
         }
-        _LOGGER.debug("adding sensor info %s:", timestamp_sensors.keys())
-        result.extend(
+
+        # Calculations based on end_time need booth feature_key and remining_key
+        if len(timestamp_sensors[end_time_key]) <= 1:
+            del timestamp_sensors[end_time_key]
+        # Remove sensor if no control is present
+        if len(timestamp_sensors[start_time_key]) == 0:
+            del timestamp_sensors[start_time_key]
+
+        _LOGGER.debug("Adding sensor info %s:", timestamp_sensors.keys())
+
+        results.extend(
             [
-                SummedTimestampControl(key=name, sensors=sensors[0])
+                SummedTimestampControl(key=name, sensors=sensors)
                 for name, sensors in timestamp_sensors.items()
-                if len(sensors[0]) > sensors[1]
             ]
         )
-    return result
+    return results
 
 
 def build_control_from_remote_control(
