@@ -743,6 +743,7 @@ def extract_ac_control(controls: list[Control]) -> list[Control]:
     return controls
 
 
+# Only generate controls once to allow basic inter-Control communication
 controls: list[Control] = []
 
 

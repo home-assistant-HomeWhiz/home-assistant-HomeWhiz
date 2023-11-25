@@ -54,6 +54,7 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
 
     @property
     def extra_state_attributes(self) -> Mapping[str, Any] | None:
+        """Attribute to identify the origin of the data used"""
         if isinstance(self._control, SummedTimestampControl):
             return {
                 "sources": [

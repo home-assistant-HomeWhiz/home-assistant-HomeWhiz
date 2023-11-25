@@ -47,6 +47,7 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator]):  # type: ignore[ty
 
     async def async_added_to_hass(self) -> None:
         """Call when the entity is added to hass."""
+        # Provide an attribute to identify the origin of the data used
         await super().async_added_to_hass()
         if hasattr(self, "_control"):
             if hasattr(self._control, "my_entity_ids"):
