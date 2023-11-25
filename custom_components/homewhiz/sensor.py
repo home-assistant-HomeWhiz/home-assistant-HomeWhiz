@@ -26,8 +26,6 @@ from .homewhiz import HomewhizCoordinator
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
-entities: dict[str, HomeWhizSensorEntity] = {}
-
 
 class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
     def __init__(
@@ -110,6 +108,8 @@ async def async_setup_entry(
         HomeWhizSensorEntity(coordinator, control, entry.title, data)
         for control in sensor_controls
     ]
-    entities = {entity.entity_key: entity for entity in homewhiz_sensor_entities}
-    _LOGGER.debug("Entities: %s", entities)
+    _LOGGER.debug(
+        "Entities: %s",
+        {entity.entity_key: entity for entity in homewhiz_sensor_entities},
+    )
     async_add_entities(homewhiz_sensor_entities)
