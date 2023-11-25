@@ -744,14 +744,17 @@ def extract_ac_control(controls: list[Control]) -> list[Control]:
 
 
 # Only generate controls once to allow basic inter-Control communication
-controls: list[Control] = []
+# Use entry id as key to avoid issues when multiple homewhiz devices are used
+controls: dict[str, list[Control]] = {}
 
 
 def generate_controls_from_config(
+    key: str,
     config: ApplianceConfiguration,
 ) -> list[Control]:
     global controls
-    if not controls:
+
+    if key not in controls:
         possible_controls: list[Control | None] = [
             build_control_from_state(config.deviceStates),
             build_control_from_program(config.program),
@@ -766,11 +769,11 @@ def generate_controls_from_config(
             *build_controls_from_features(config.settings),
         ]
 
-        controls = [
+        tmp_controls = [
             convert_to_bool_control_if_possible(control)
             for control in possible_controls
             if control is not None
         ]
-        controls = extract_ac_control(controls)
+        controls[key] = extract_ac_control(tmp_controls)
 
-    return controls
+    return controls[key]

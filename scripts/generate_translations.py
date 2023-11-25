@@ -124,7 +124,7 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
 
         # Merge localizations
         localizations = base_localizations | appliance_localizations
-        controls = generate_controls_from_config(appliance_config)
+        controls = generate_controls_from_config(appliance_id, appliance_config)
 
         # Filter controls
         #  .select          WriteEnumControl,WriteNumericControl

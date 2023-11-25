@@ -22,7 +22,7 @@ def config() -> ApplianceConfiguration:
 
 
 def test(config: ApplianceConfiguration) -> None:
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config("test_dishwasher", config)
     control_keys = [control.key for control in controls]
 
     test_case.assertListEqual(

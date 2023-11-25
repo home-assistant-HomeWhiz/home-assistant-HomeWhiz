@@ -46,7 +46,7 @@ def config() -> ApplianceConfiguration:
 
 
 def test_off(config: ApplianceConfiguration) -> None:
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config("ac_test_off", config)
     values = {control.key: control.get_value(data_off) for control in controls}
 
     test_case.assertDictEqual(
@@ -64,7 +64,7 @@ def test_off(config: ApplianceConfiguration) -> None:
 
 
 def test_mode_auto(config: ApplianceConfiguration) -> None:
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config("ac_test_mode_auto", config)
     values = {control.key: control.get_value(data_auto) for control in controls}
 
     test_case.assertDictEqual(
@@ -82,7 +82,7 @@ def test_mode_auto(config: ApplianceConfiguration) -> None:
 
 
 def test_hvac_control(config: ApplianceConfiguration) -> None:
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config("ac_test_hvac_control", config)
     controls_map = {control.key: control for control in controls}
     assert "ac" in controls_map
     ac_control = controls_map["ac"]

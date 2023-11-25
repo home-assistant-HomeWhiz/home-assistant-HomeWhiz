@@ -25,7 +25,7 @@ def config() -> ApplianceConfiguration:
 
 
 def test_options_order(config: ApplianceConfiguration) -> None:
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config("test_controls", config)
     controls_map = {control.key: control for control in controls}
     assert "washer_temperature" in controls_map
     temp_control = controls_map["washer_temperature"]

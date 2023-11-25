@@ -61,7 +61,7 @@ def config() -> ApplianceConfiguration:
 
 
 def test(config: ApplianceConfiguration) -> None:
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config("ac_advanced_test", config)
     control_values = {
         control.key: control.get_value(data_swing_both) for control in controls
     }
@@ -88,7 +88,7 @@ def test(config: ApplianceConfiguration) -> None:
 
 
 def test_hvac_control(config: ApplianceConfiguration) -> None:
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config("ac_advanced_test_hvac_control", config)
     controls_map = {control.key: control for control in controls}
     assert "ac" in controls_map
     ac_control = controls_map["ac"]
@@ -110,7 +110,7 @@ def test_hvac_control(config: ApplianceConfiguration) -> None:
 
 
 def test_swing_control(config: ApplianceConfiguration) -> None:
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config("ac_advanced_test_swing_control", config)
     controls_map = {control.key: control for control in controls}
     assert "ac" in controls_map
     ac_control = controls_map["ac"]

@@ -26,7 +26,7 @@ def test_on(config: ApplianceConfiguration) -> None:
         "002f4a45a10100000000000000000000000000000000000000000200000000000000000a011e0c"
         "0000000080021102110000000000000000000000000000000100000000000001070000000000"
     )
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config("test_washing_machine_test_on", config)
     values = {control.key: control.get_value(data) for control in controls}
 
     test_case.assertDictEqual(
@@ -66,7 +66,9 @@ def test_running(config: ApplianceConfiguration) -> None:
         "002f4a45a10100000000000000000000000000000000000000000200000000000000001e819e0c"
         "0080000080021100398080010000000000000000000080808100800000008001078000808000"
     )
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config(
+        "test_washing_machine_test_running", config
+    )
     values = {control.key: control.get_value(data) for control in controls}
     test_case.assertDictEqual(
         values,
@@ -105,7 +107,9 @@ def test_spinning(config: ApplianceConfiguration) -> None:
         "002f4a45a10100000000000000000000000000000000000000000200000000000000001e819e8c"
         "00808080800211000a8080020000000000000000008080808180800000008081078000808000"
     )
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config(
+        "test_washing_machine_test_spinning", config
+    )
     values = {control.key: control.get_value(data) for control in controls}
     test_case.assertDictEqual(
         values,
@@ -144,7 +148,9 @@ def test_delay_defined(config: ApplianceConfiguration) -> None:
         "003853e0ab0100000000000000000000000000000000000000000300000000000000000a01280e"
         "000000008002100210012c000000000000000000010000000100000000000001078000000000"
     )
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config(
+        "test_washing_machine_test_delayed", config
+    )
     values = {control.key: control.get_value(data) for control in controls}
     test_case.assertDictEqual(
         values,
@@ -186,7 +192,9 @@ def test_warning(config: ApplianceConfiguration) -> None:
         b"\x81\x00\x00\x01\x80\x80\x00\x00\x00\x00\x01\x07\x00\x00\x00\x00\x00"
     )
 
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config(
+        "test_washing_machine_test_warning", config
+    )
     values = {control.key: control.get_value(data) for control in controls}
     test_case.assertDictEqual(
         values,
@@ -229,7 +237,9 @@ def test_remote_control_custom_settings(config: ApplianceConfiguration) -> None:
         b"\x00\x01\x07\x00\x00\x00\x01\x00"
     )
 
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config(
+        "test_washing_machine_test_remote_control_custom_settings", config
+    )
     values = {control.key: control.get_value(data) for control in controls}
     test_case.assertDictEqual(
         values,

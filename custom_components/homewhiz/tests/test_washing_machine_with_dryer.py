@@ -31,7 +31,7 @@ def test_off(config: ApplianceConfiguration) -> None:
         b"\x00\x80\x80\x07\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
         b"\x00\x00\x00\x00\x01\x00\x00\x00\x00\x13\x00\x00\x00\x00\x00\x00"
     )
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config("test_washing_machine_with_dryer", config)
     values = {control.key: control.get_value(data) for control in controls}
 
     test_case.assertDictEqual(
