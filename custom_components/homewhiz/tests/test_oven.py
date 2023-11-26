@@ -39,7 +39,7 @@ def test_off(config: ApplianceConfiguration) -> None:
         b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
     )
 
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config("test_oven", config)
     values = {control.key: control.get_value(data) for control in controls}
 
     test_case.assertDictEqual(

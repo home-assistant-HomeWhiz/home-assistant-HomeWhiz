@@ -1,3 +1,4 @@
+import datetime
 import json
 import os
 from unittest import TestCase
@@ -26,7 +27,7 @@ def test_on(config: ApplianceConfiguration) -> None:
         "002f4a45a10100000000000000000000000000000000000000000200000000000000000a011e0c"
         "0000000080021102110000000000000000000000000000000100000000000001070000000000"
     )
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config("test_washing_machine_test_on", config)
     values = {control.key: control.get_value(data) for control in controls}
 
     test_case.assertDictEqual(
@@ -44,7 +45,10 @@ def test_on(config: ApplianceConfiguration) -> None:
             "washer_temperature": "temperature_30",
             "washer_steam": False,
             "washer_duration": 137,
-            "washer_delay": 0,
+            "washer_delay": datetime.datetime.now(tz=datetime.UTC).replace(
+                second=0, microsecond=0
+            )
+            + datetime.timedelta(minutes=137),
             "washer_remaining": 137,
             "remote_control": False,
             "washer_warning_door_is_open": False,
@@ -57,6 +61,8 @@ def test_on(config: ApplianceConfiguration) -> None:
             "washer_anticrease": False,
             "washer_add_water": False,
             "custom_duration_level": "duration_level_0",
+            "delay_start#0": 0,
+            "delay_start_time#0": None,
         },
     )
 
@@ -66,7 +72,9 @@ def test_running(config: ApplianceConfiguration) -> None:
         "002f4a45a10100000000000000000000000000000000000000000200000000000000001e819e0c"
         "0080000080021100398080010000000000000000000080808100800000008001078000808000"
     )
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config(
+        "test_washing_machine_test_running", config
+    )
     values = {control.key: control.get_value(data) for control in controls}
     test_case.assertDictEqual(
         values,
@@ -83,7 +91,10 @@ def test_running(config: ApplianceConfiguration) -> None:
             "washer_temperature": "temperature_30",
             "washer_steam": False,
             "washer_duration": 137,
-            "washer_delay": 0,
+            "washer_delay": datetime.datetime.now(tz=datetime.UTC).replace(
+                second=0, microsecond=0
+            )
+            + datetime.timedelta(minutes=57),
             "washer_remaining": 57,
             "remote_control": False,
             "washer_warning_door_is_open": False,
@@ -96,6 +107,8 @@ def test_running(config: ApplianceConfiguration) -> None:
             "washer_anticrease": False,
             "washer_add_water": False,
             "custom_duration_level": "duration_level_0",
+            "delay_start#0": 0,
+            "delay_start_time#0": None,
         },
     )
 
@@ -105,7 +118,9 @@ def test_spinning(config: ApplianceConfiguration) -> None:
         "002f4a45a10100000000000000000000000000000000000000000200000000000000001e819e8c"
         "00808080800211000a8080020000000000000000008080808180800000008081078000808000"
     )
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config(
+        "test_washing_machine_test_spinning", config
+    )
     values = {control.key: control.get_value(data) for control in controls}
     test_case.assertDictEqual(
         values,
@@ -122,7 +137,10 @@ def test_spinning(config: ApplianceConfiguration) -> None:
             "washer_temperature": "temperature_30",
             "washer_steam": False,
             "washer_duration": 137,
-            "washer_delay": 0,
+            "washer_delay": datetime.datetime.now(tz=datetime.UTC).replace(
+                second=0, microsecond=0
+            )
+            + datetime.timedelta(minutes=10),
             "washer_remaining": 10,
             "remote_control": False,
             "washer_warning_door_is_open": False,
@@ -135,6 +153,8 @@ def test_spinning(config: ApplianceConfiguration) -> None:
             "washer_anticrease": False,
             "washer_add_water": False,
             "custom_duration_level": "duration_level_0",
+            "delay_start#0": 0,
+            "delay_start_time#0": None,
         },
     )
 
@@ -144,7 +164,9 @@ def test_delay_defined(config: ApplianceConfiguration) -> None:
         "003853e0ab0100000000000000000000000000000000000000000300000000000000000a01280e"
         "000000008002100210012c000000000000000000010000000100000000000001078000000000"
     )
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config(
+        "test_washing_machine_test_delayed", config
+    )
     values = {control.key: control.get_value(data) for control in controls}
     test_case.assertDictEqual(
         values,
@@ -161,7 +183,10 @@ def test_delay_defined(config: ApplianceConfiguration) -> None:
             "washer_temperature": "temperature_40",
             "washer_steam": False,
             "washer_remaining": 136,
-            "washer_delay": 104,
+            "washer_delay": datetime.datetime.now(tz=datetime.UTC).replace(
+                second=0, microsecond=0
+            )
+            + datetime.timedelta(minutes=104 + 136),
             "washer_duration": 136,
             "remote_control": False,
             "washer_warning_door_is_open": True,
@@ -174,6 +199,11 @@ def test_delay_defined(config: ApplianceConfiguration) -> None:
             "washer_anticrease": False,
             "washer_add_water": False,
             "custom_duration_level": "duration_level_0",
+            "delay_start#0": 104,
+            "delay_start_time#0": datetime.datetime.now(tz=datetime.UTC).replace(
+                second=0, microsecond=0
+            )
+            + datetime.timedelta(minutes=104),
         },
     )
 
@@ -186,7 +216,9 @@ def test_warning(config: ApplianceConfiguration) -> None:
         b"\x81\x00\x00\x01\x80\x80\x00\x00\x00\x00\x01\x07\x00\x00\x00\x00\x00"
     )
 
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config(
+        "test_washing_machine_test_warning", config
+    )
     values = {control.key: control.get_value(data) for control in controls}
     test_case.assertDictEqual(
         values,
@@ -203,7 +235,10 @@ def test_warning(config: ApplianceConfiguration) -> None:
             "washer_temperature": "temperature_40",
             "washer_steam": False,
             "washer_remaining": 126,
-            "washer_delay": 0,
+            "washer_delay": datetime.datetime.now(tz=datetime.UTC).replace(
+                second=0, microsecond=0
+            )
+            + datetime.timedelta(minutes=126),
             "washer_duration": 126,
             "remote_control": False,
             "washer_warning_door_is_open": True,
@@ -216,6 +251,8 @@ def test_warning(config: ApplianceConfiguration) -> None:
             "washer_anticrease": False,
             "washer_add_water": True,
             "custom_duration_level": "duration_level_0",
+            "delay_start#0": 0,
+            "delay_start_time#0": None,
         },
     )
 
@@ -229,7 +266,9 @@ def test_remote_control_custom_settings(config: ApplianceConfiguration) -> None:
         b"\x00\x01\x07\x00\x00\x00\x01\x00"
     )
 
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config(
+        "test_washing_machine_test_remote_control_custom_settings", config
+    )
     values = {control.key: control.get_value(data) for control in controls}
     test_case.assertDictEqual(
         values,
@@ -246,7 +285,10 @@ def test_remote_control_custom_settings(config: ApplianceConfiguration) -> None:
             "washer_temperature": "temperature_40",
             "washer_steam": False,
             "washer_duration": 113,
-            "washer_delay": 0,
+            "washer_delay": datetime.datetime.now(tz=datetime.UTC).replace(
+                second=0, microsecond=0
+            )
+            + datetime.timedelta(minutes=113),
             "washer_remaining": 113,
             "remote_control": True,
             "washer_warning_door_is_open": False,
@@ -259,5 +301,7 @@ def test_remote_control_custom_settings(config: ApplianceConfiguration) -> None:
             "washer_anticrease": False,
             "washer_add_water": True,
             "custom_duration_level": "duration_level_0",
+            "delay_start#0": 0,
+            "delay_start_time#0": None,
         },
     )

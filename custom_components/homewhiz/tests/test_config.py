@@ -45,4 +45,4 @@ def test_all_configs(file_name: str) -> None:
     with open(file_path) as file:
         json_content = json.load(file)
         config = from_dict(ApplianceConfiguration, json_content)
-        generate_controls_from_config(config)
+        generate_controls_from_config("test_config", config)

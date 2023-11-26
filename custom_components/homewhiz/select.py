@@ -68,7 +68,7 @@ async def async_setup_entry(
 ) -> None:
     data = build_entry_data(entry)
     coordinator = hass.data[DOMAIN][entry.entry_id]
-    controls = generate_controls_from_config(data.contents.config)
+    controls = generate_controls_from_config(entry.entry_id, data.contents.config)
     write_enum_controls = [
         c
         for c in controls

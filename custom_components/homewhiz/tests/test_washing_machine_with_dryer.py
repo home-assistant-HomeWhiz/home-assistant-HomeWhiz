@@ -31,7 +31,7 @@ def test_off(config: ApplianceConfiguration) -> None:
         b"\x00\x80\x80\x07\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
         b"\x00\x00\x00\x00\x01\x00\x00\x00\x00\x13\x00\x00\x00\x00\x00\x00"
     )
-    controls = generate_controls_from_config(config)
+    controls = generate_controls_from_config("test_washing_machine_with_dryer", config)
     values = {control.key: control.get_value(data) for control in controls}
 
     test_case.assertDictEqual(
@@ -50,7 +50,7 @@ def test_off(config: ApplianceConfiguration) -> None:
             "washer_steam": False,
             "washer_duration": 140,
             "washer_remaining": 0,
-            "washer_delay": 0,
+            "washer_delay": None,
             "remote_control": False,
             "washer_warning_door_is_open": False,
             "washer_warning_no_water": False,
@@ -62,5 +62,7 @@ def test_off(config: ApplianceConfiguration) -> None:
             "washer_anticrease": False,
             "washer_add_water": False,
             "custom_duration_level": "duration_level_0",
+            "delay_start#0": 0,
+            "delay_start_time#0": None,
         },
     )

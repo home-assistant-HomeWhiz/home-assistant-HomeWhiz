@@ -45,6 +45,16 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator]):  # type: ignore[ty
         self._attr_device_class = f"{DOMAIN}__{entity_key}"
         self._localization = data.contents.localization
 
+    async def async_added_to_hass(self) -> None:
+        """Call when the entity is added to hass."""
+        # Provide an attribute to identify the origin of the data used
+        await super().async_added_to_hass()
+        if hasattr(self, "_control"):
+            if hasattr(self._control, "my_entity_ids"):
+                self._control.my_entity_ids.update({self.entity_id: self.name})
+            else:
+                setattr(self._control, "my_entity_ids", {self.entity_id: self.name})
+
     @property
     def available(self) -> bool:
         return self.coordinator.is_connected
@@ -55,4 +65,4 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator]):  # type: ignore[ty
 
         _LOGGER.debug("Retrieving translation_key %s", self.entity_key.lower())
 
-        return self.entity_key.lower()
+        return self.entity_key.lower().split("#")[0]

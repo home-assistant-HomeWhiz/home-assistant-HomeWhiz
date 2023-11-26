@@ -483,6 +483,15 @@
       "washer_delay": {
         "name": "Programme End Time"
       },
+      "delay_start": {
+        "name": "Start Delay"
+      },
+      "delay_start_time": {
+        "name": "Delay Start Time"
+      },
+      "delay_end_time": {
+        "name": "Delay End Time"
+      },
       "washer_duration": {
         "name": "Duration"
       },

@@ -3,6 +3,7 @@ import re
 from abc import ABC, abstractmethod
 from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass, fields
+from datetime import datetime, timedelta, timezone
 from typing import Any, Generic, TypeVar
 
 from bidict import bidict
@@ -157,6 +158,37 @@ class TimeControl(Control):
         hours = clamp(data[self.hour_index])
         minutes = clamp(data[self.minute_index]) if self.minute_index is not None else 0
         return hours * 60 + minutes
+
+
+class SummedTimestampControl(Control):
+    """Uses different sensors to calculate a timestamp"""
+
+    def __init__(self, key: str, sensors: list[Control]):
+        self.key = key
+        # Sensors used for timestamp calculation
+        self.sensors = sensors
+
+    def get_value(self, data: bytearray) -> datetime | None:
+        _LOGGER.debug(
+            "Calculating Time for %s from %s",
+            self.key,
+            [sensor.key for sensor in self.sensors],
+        )
+        # Calculate timestamps for delay_start_time and delay_end_time
+        # delay_start_time: Sensors are washer_delay and washer_remaining
+        # delay_end_time: Sensors are washer_delay
+        minute_delta = sum([sensor.get_value(data) for sensor in self.sensors])
+        if minute_delta < 1:
+            _LOGGER.debug("Device Running or No Delay Active")
+            return None
+
+        time_delta = timedelta(minutes=minute_delta)
+        _LOGGER.debug("Calculated time delta of %s", time_delta)
+        time_est = (
+            datetime.now(timezone.utc).replace(second=0, microsecond=0) + time_delta
+        )
+        _LOGGER.debug("Calculated time of %s", time_est)
+        return time_est
 
 
 class BooleanControl(Control):
@@ -531,22 +563,84 @@ def build_controls_from_progress_variables(
 ) -> list[Control]:
     if progress_variables is None:
         return []
-    result: list[Control] = []
+
+    results: list[Control] = []
+    # To keep track of keys for which a calculated control will be built
+    delay_keys: dict[str, tuple[str, int]] = {}
+
     for field in fields(progress_variables):
         feature: ApplianceProgressFeature | None = getattr(
             progress_variables, field.name
         )
         if feature is not None:
-            result.append(
+            feature_key = to_friendly_name(feature.strKey)
+            # Restrict this to washing machine only
+            # Replaces washer_delay feature with SummedTimestampControl feature
+            if feature.isCalculatedToStart is not None and feature_key in [
+                "washer_delay"
+            ]:
+                calculation_key = feature_key
+                feature_key = "delay_start#" + str(len(delay_keys))
+                delay_keys.update(
+                    {calculation_key: (feature_key, feature.isCalculatedToStart)}
+                )
+            results.append(
                 TimeControl(
-                    key=to_friendly_name(feature.strKey),
+                    key=feature_key,
                     hour_index=feature.hour.wifiArrayIndex,
                     minute_index=feature.minute.wifiArrayIndex
                     if feature.minute is not None
                     else None,
                 )
             )
-    return result
+
+    # Build calculated controls
+    for calculation_key, feature_key_tuple in delay_keys.items():
+        feature_key = feature_key_tuple[0]
+
+        # Key for the new remaining time control
+        remaining_key: str = "_".join(calculation_key.split("_")[:-1] + ["remaining"])
+        _LOGGER.debug(
+            "Detected time based calculated feature %s "
+            "end time calculations will based on %s",
+            calculation_key,
+            remaining_key,
+        )
+
+        if feature_key_tuple[1] == 1:
+            end_time_key = feature_key.replace("delay_start", "delay_end_time", 1)
+            start_time_key = calculation_key
+        else:
+            end_time_key = calculation_key
+            start_time_key = feature_key.replace("delay_start", "delay_start_time", 1)
+
+        timestamp_sensors = {
+            end_time_key: [
+                control
+                for control in results
+                if control.key in [feature_key, remaining_key]
+            ],
+            start_time_key: [
+                control for control in results if control.key in [feature_key]
+            ],
+        }
+
+        # Calculations based on end_time need both feature_key and remaining_key
+        if len(timestamp_sensors[end_time_key]) <= 1:
+            del timestamp_sensors[end_time_key]
+        # Remove sensor if no control is present
+        if len(timestamp_sensors[start_time_key]) == 0:
+            del timestamp_sensors[start_time_key]
+
+        _LOGGER.debug("Adding sensor info %s:", timestamp_sensors.keys())
+
+        results.extend(
+            [
+                SummedTimestampControl(key=name, sensors=sensors)
+                for name, sensors in timestamp_sensors.items()
+            ]
+        )
+    return results
 
 
 def build_control_from_remote_control(
@@ -650,28 +744,37 @@ def extract_ac_control(controls: list[Control]) -> list[Control]:
     return controls
 
 
+# Only generate controls once to allow basic inter-Control communication
+# Use entry id as key to avoid issues when multiple homewhiz devices are used
+controls: dict[str, list[Control]] = {}
+
+
 def generate_controls_from_config(
+    key: str,
     config: ApplianceConfiguration,
 ) -> list[Control]:
-    possible_controls: list[Control | None] = [
-        build_control_from_state(config.deviceStates),
-        build_control_from_program(config.program),
-        build_control_from_substate(config.deviceSubStates),
-        *build_controls_from_features(config.subPrograms),
-        *build_controls_from_features(config.customSubPrograms),
-        *build_controls_from_monitorings(config.monitorings),
-        *build_controls_from_progress_variables(config.progressVariables),
-        build_control_from_remote_control(config.remoteControl),
-        *build_controls_from_warnings(config.deviceWarnings),
-        *build_controls_from_warnings(config.warnings),
-        *build_controls_from_features(config.settings),
-    ]
+    global controls
 
-    controls = [
-        convert_to_bool_control_if_possible(control)
-        for control in possible_controls
-        if control is not None
-    ]
-    controls = extract_ac_control(controls)
+    if key not in controls:
+        possible_controls: list[Control | None] = [
+            build_control_from_state(config.deviceStates),
+            build_control_from_program(config.program),
+            build_control_from_substate(config.deviceSubStates),
+            *build_controls_from_features(config.subPrograms),
+            *build_controls_from_features(config.customSubPrograms),
+            *build_controls_from_monitorings(config.monitorings),
+            *build_controls_from_progress_variables(config.progressVariables),
+            build_control_from_remote_control(config.remoteControl),
+            *build_controls_from_warnings(config.deviceWarnings),
+            *build_controls_from_warnings(config.warnings),
+            *build_controls_from_features(config.settings),
+        ]
 
-    return controls
+        tmp_controls = [
+            convert_to_bool_control_if_possible(control)
+            for control in possible_controls
+            if control is not None
+        ]
+        controls[key] = extract_ac_control(tmp_controls)
+
+    return controls[key]
