@@ -174,7 +174,7 @@ class SummedTimestampControl(Control):
             self.key,
             [sensor.key for sensor in self.sensors],
         )
-        # Calculate timnestamps for delay_start_time and delay_end_time
+        # Calculate timestamps for delay_start_time and delay_end_time
         # delay_start_time: Sensors are washer_delay and washer_remaining
         # delay_end_time: Sensors are washer_delay
         minute_delta = sum([sensor.get_value(data) for sensor in self.sensors])
@@ -625,7 +625,7 @@ def build_controls_from_progress_variables(
             ],
         }
 
-        # Calculations based on end_time need booth feature_key and remining_key
+        # Calculations based on end_time need both feature_key and remaining_key
         if len(timestamp_sensors[end_time_key]) <= 1:
             del timestamp_sensors[end_time_key]
         # Remove sensor if no control is present

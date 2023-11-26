@@ -65,4 +65,4 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator]):  # type: ignore[ty
 
         _LOGGER.debug("Retrieving translation_key %s", self.entity_key.lower())
 
-        return self.entity_key.lower().split("#")[0]  # rstrip("_1234567890")
+        return self.entity_key.lower().split("#")[0]
