@@ -575,7 +575,7 @@ def build_controls_from_progress_variables(
         if feature is not None:
             feature_key = to_friendly_name(feature.strKey)
             # Restrict this to washing machine only
-            # Replaces washer_delay feature with SummedTimestampControl featre
+            # Replaces washer_delay feature with SummedTimestampControl feature
             if feature.isCalculatedToStart is not None and feature_key in [
                 "washer_delay"
             ]:
