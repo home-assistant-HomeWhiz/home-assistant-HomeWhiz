@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dacite import from_dict
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import TEMP_CELSIUS
+from homeassistant.const import UnitOfTemperature
 
 from custom_components.homewhiz import IdExchangeResponse
 from custom_components.homewhiz.api import ApplianceContents, ApplianceInfo
@@ -22,7 +22,7 @@ def build_entry_data(entry: ConfigEntry) -> EntryData:
 
 def unit_for_key(key: str) -> str | None:
     if "temp" in key:
-        return TEMP_CELSIUS
+        return UnitOfTemperature.CELSIUS
     if "spin" in key:
         return "RPM"
     return None
