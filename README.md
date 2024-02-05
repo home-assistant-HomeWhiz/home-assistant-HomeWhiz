@@ -6,6 +6,8 @@ Integration for devices that can connect to HomeWhiz mobile app (Beko, Grundig, 
 
 ## Installation
 
+⚠️ This integration depends on the awscrt Python package. This package is not directly available for ARM devices with 32 bit OS. More information can be found [here](https://github.com/home-assistant-HomeWhiz/home-assistant-HomeWhiz/issues/97).
+
 ### Option 1. Using HACS (Recommended)
 
 1. Search for `HomeWhiz` on the HACS integration page (this integration is part of the HACS default repository meaning it is not necessary to add this integration manually via custom repositories)
