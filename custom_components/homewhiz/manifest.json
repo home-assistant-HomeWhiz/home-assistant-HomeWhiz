@@ -15,10 +15,11 @@
   "dependencies": [
     "bluetooth_adapters"
   ],
-  "documentation": "https://github.com/rowysock/home-assistant-HomeWhiz",
+  "documentation": "https://github.com/home-assistant-HomeWhiz/home-assistant-HomeWhiz",
   "iot_class": "local_push",
-  "issue_tracker": "https://github.com/rowysock/home-assistant-HomeWhiz/issues",
+  "issue_tracker": "https://github.com/home-assistant-HomeWhiz/home-assistant-HomeWhiz/issues",
   "requirements": [
+    "awsiotsdk",
     "bleak",
     "bleak_retry_connector",
     "dacite",
