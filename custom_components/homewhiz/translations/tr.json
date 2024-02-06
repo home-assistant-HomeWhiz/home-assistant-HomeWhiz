@@ -21,7 +21,7 @@
   "entity": {
     "select": {
       "state": {
-        "name": "Devlet",
+        "name": "Durum",
         "state": {
           "device_state_on": "A\u00e7\u0131k",
           "device_state_off": "Kapal\u0131",
@@ -303,7 +303,7 @@
     },
     "sensor": {
       "state": {
-        "name": "Devlet",
+        "name": "Durum",
         "state": {
           "device_state_on": "A\u00e7\u0131k",
           "device_state_off": "Kapal\u0131",
