@@ -64,7 +64,8 @@
           "program_wash_wear": "Y\u0131ka & Giy",
           "program_dark_wash": "Koyu Renkliler",
           "program_outdoor": "Spor",
-          "program_drum_clean_plus": "Kazan Temizleme+"
+          "program_drum_clean_plus": "Kazan Temizleme+",
+          "program_steam_refresh": "Havaland\u0131rma"
         }
       },
       "washer_temperature": {
@@ -90,7 +91,8 @@
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
-          "spin_1400": "1400"
+          "spin_1400": "1400",
+          "1400rpm": "1400RPM"
         }
       },
       "washer_fast_plus": {
@@ -346,7 +348,8 @@
           "program_wash_wear": "Y\u0131ka & Giy",
           "program_dark_wash": "Koyu Renkliler",
           "program_outdoor": "Spor",
-          "program_drum_clean_plus": "Kazan Temizleme+"
+          "program_drum_clean_plus": "Kazan Temizleme+",
+          "program_steam_refresh": "Havaland\u0131rma"
         }
       },
       "washer_temperature": {
@@ -372,7 +375,8 @@
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
-          "spin_1400": "1400"
+          "spin_1400": "1400",
+          "1400rpm": "1400RPM"
         }
       },
       "washer_fast_plus": {

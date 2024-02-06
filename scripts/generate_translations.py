@@ -75,6 +75,8 @@ KNOWN_APPLIANCE_IDS = [
     "F999906704284043631839",  # Washing machine with dryer
     "T999902890777401659617",  # AC
     "F999936350554254966477",  # Advanced AC
+    "F999928451536694788117",  # Washing machine with steam
+    "F999922618407970479337",  # Washing machine
 ]
 
 
@@ -106,14 +108,28 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
     # Needed for translate module
     loop = asyncio.get_event_loop()
 
-    # Load base translation from base_translations
-    base_translation = {}
+    # Load already existing translations
+    # (only add new translations so that existing translations are not overwritten)
+    existing_translation = {}
     try:
-        with open(f"base_translations/{short_code}.json") as fh:
-            base_translation = json.load(fh)
+        with open(f"custom_components/homewhiz/translations/{short_code}.json") as fh:
+            existing_translation = json.load(fh)
     except FileNotFoundError:
-        print(f"Could not find {language}.json in folder base_translations!")
+        print(f"Could not find {short_code}.json in folder homewhiz/translations!")
 
+    # Load base translations if config_key not present in existing translations
+    base_translation = {}
+    if "config" in existing_translation:
+        base_translation["config"] = existing_translation["config"]
+    else:
+        print(f"Retrieving base translations for {language}.")
+        try:
+            with open(f"base_translations/{short_code}.json") as fh:
+                base_translation = json.load(fh)
+        except FileNotFoundError:
+            print(f"Could not find {short_code}.json in folder base_translations!")
+
+    # Iterate through known appliance ids and gather all translations
     for appliance_id in KNOWN_APPLIANCE_IDS:
         contents = await fetch_appliance_contents(credentials, appliance_id, language)
         appliance_localizations = contents.localization
@@ -169,10 +185,20 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
             control for control in controls if isinstance(control, WriteBooleanControl)
         ]
 
-        def localize_options(control: EnumControl) -> dict[str, str]:
+        def localize_options(
+            control: EnumControl, existing_options: None | dict[str, str] = None
+        ) -> dict[str, str]:
+            if not existing_options:
+                existing_options = {}
+
             # Localizes all options for a control
             entity_result: dict[str, str] = {}
             for option in control.options.values():
+                # Skip already existing translations
+                if option.lower() in existing_options:
+                    entity_result[option.lower()] = existing_options[option.lower()]
+                    continue
+
                 # Replace plus (needed for homeassistant friendly name) with +
                 # else translation cannot be looked up
                 option = option.replace("plus", "+")
@@ -185,7 +211,7 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
                 # localized = re.sub(r"(\d+)([^0-9\ \-\']+)", r"\1 \2", localized)
 
                 if localized is not None:
-                    entity_result[option.lower()] = str(localized)
+                    entity_result[option.lower()] = localized
             return entity_result
 
         # Translator for localize_name function
@@ -222,18 +248,46 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
         async def create_and_merge_localization(
             localization: MutableMapping[str, Mapping[str, str]],
             controls: list,  # list[Control]
+            key_for_existing_translations: str,
         ) -> MutableMapping[str, Mapping[str, str]]:
-            # Localizes all controls and merges them with the localization mapping
-            data = {
-                f"{control.key.lower()}": {
-                    "name": await localize_name(control.key),
-                    "state": localize_options(control),
-                }
-                if hasattr(control, "options")
-                else {"name": await localize_name(control.key)}
-                for control in controls
-            }
+            # Find existing translations
+            if (
+                "entity" in existing_translation
+                and key_for_existing_translations in existing_translation["entity"]
+            ):
+                existing_data: dict = existing_translation["entity"][
+                    key_for_existing_translations
+                ]
 
+            # Localizes all controls and merges them with the localization mapping
+            data = {}
+            for control in controls:
+                # Check if control exists in current translations
+                control_key = control.key.lower()
+                if control_key in existing_data:
+                    # If control key exists, there can only be new options
+                    # (name will already exist)
+                    if hasattr(control, "options"):
+                        data[control_key] = {
+                            "name": existing_data[control_key]["name"],
+                            "state": localize_options(
+                                control, existing_data[control_key]["state"]
+                            ),
+                        }
+                    else:
+                        data[control_key] = {
+                            "name": existing_data[control_key]["name"],
+                        }
+                    continue
+
+                if hasattr(control, "options"):
+                    data[control_key] = {
+                        "name": await localize_name(control.key),
+                        "state": localize_options(control),
+                    }
+                else:
+                    data[control_key] = {"name": await localize_name(control.key)}
+            # Merges the already translated controls with the newly translated control
             return mergedeep.merge(
                 localization,
                 data,
@@ -241,7 +295,7 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
             )
 
         select_translations = await create_and_merge_localization(
-            select_translations, select_controls + binary_sensor_controls
+            select_translations, select_controls + binary_sensor_controls, "select"
         )
         sensor_translations = await create_and_merge_localization(
             sensor_translations,
@@ -249,15 +303,16 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
             + sensor_controls
             + binary_sensor_controls
             + switch_controls,
+            "sensor",
         )
         binary_sensor_translations = await create_and_merge_localization(
-            binary_sensor_translations, binary_sensor_controls
+            binary_sensor_translations, binary_sensor_controls, "binary_sensor"
         )
         climate_translations = await create_and_merge_localization(
-            climate_translations, climate_controls
+            climate_translations, climate_controls, "climate"
         )
         switch_translations = await create_and_merge_localization(
-            switch_translations, switch_controls
+            switch_translations, switch_controls, "switch"
         )
 
     # Base translations for config flow
