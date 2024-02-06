@@ -45,7 +45,8 @@
           "program_wash_wear": "Sp\u0103lare \u0219i purtare",
           "program_dark_wash": "Culori \u00eenchise",
           "program_outdoor": "Aer liber",
-          "program_drum_clean_plus": "Cur\u0103\u021bare tambur+"
+          "program_drum_clean_plus": "Cur\u0103\u021bare tambur+",
+          "program_steam_refresh": "\u00cemprosp\u0103tare aburi"
         }
       },
       "washer_temperature": {
@@ -71,7 +72,8 @@
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
-          "spin_1400": "1400"
+          "spin_1400": "1400",
+          "1400rpm": "1400rpm"
         }
       },
       "washer_fast_plus": {
@@ -327,7 +329,8 @@
           "program_wash_wear": "Sp\u0103lare \u0219i purtare",
           "program_dark_wash": "Culori \u00eenchise",
           "program_outdoor": "Aer liber",
-          "program_drum_clean_plus": "Cur\u0103\u021bare tambur+"
+          "program_drum_clean_plus": "Cur\u0103\u021bare tambur+",
+          "program_steam_refresh": "\u00cemprosp\u0103tare aburi"
         }
       },
       "washer_temperature": {
@@ -353,7 +356,8 @@
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
-          "spin_1400": "1400"
+          "spin_1400": "1400",
+          "1400rpm": "1400"
         }
       },
       "washer_fast_plus": {

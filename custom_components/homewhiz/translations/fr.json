@@ -64,7 +64,8 @@
           "program_wash_wear": "Lavage&S\u00e9chage Express",
           "program_dark_wash": "Textiles fonc\u00e9s",
           "program_outdoor": "Imperm\u00e9able",
-          "program_drum_clean_plus": "Nettoyage du tambour Plus"
+          "program_drum_clean_plus": "Nettoyage du tambour Plus",
+          "program_steam_refresh": "Fra\u00eecheur vapeur"
         }
       },
       "washer_temperature": {
@@ -90,7 +91,8 @@
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
-          "spin_1400": "1400"
+          "spin_1400": "1400",
+          "1400rpm": "1400rpm"
         }
       },
       "washer_fast_plus": {
@@ -346,7 +348,8 @@
           "program_wash_wear": "Lavage&S\u00e9chage Express",
           "program_dark_wash": "Textiles fonc\u00e9s",
           "program_outdoor": "Imperm\u00e9able",
-          "program_drum_clean_plus": "Nettoyage du tambour Plus"
+          "program_drum_clean_plus": "Nettoyage du tambour Plus",
+          "program_steam_refresh": "Fra\u00eecheur vapeur"
         }
       },
       "washer_temperature": {
@@ -372,7 +375,8 @@
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
-          "spin_1400": "1400"
+          "spin_1400": "1400",
+          "1400rpm": "1400"
         }
       },
       "washer_fast_plus": {

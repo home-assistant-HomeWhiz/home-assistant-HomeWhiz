@@ -45,7 +45,8 @@
           "program_wash_wear": "Strykefritt",
           "program_dark_wash": "M\u00f8rkt t\u00f8y",
           "program_outdoor": "Friluftskl\u00e6r",
-          "program_drum_clean_plus": "Trommelrengj\u00f8ring+"
+          "program_drum_clean_plus": "Trommelrengj\u00f8ring+",
+          "program_steam_refresh": "Oppfrisking med damp"
         }
       },
       "washer_temperature": {
@@ -71,7 +72,8 @@
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
-          "spin_1400": "1400"
+          "spin_1400": "1400",
+          "1400rpm": "1400rpm"
         }
       },
       "washer_fast_plus": {
@@ -327,7 +329,8 @@
           "program_wash_wear": "Strykefritt",
           "program_dark_wash": "M\u00f8rkt t\u00f8y",
           "program_outdoor": "Friluftskl\u00e6r",
-          "program_drum_clean_plus": "Trommelrengj\u00f8ring+"
+          "program_drum_clean_plus": "Trommelrengj\u00f8ring+",
+          "program_steam_refresh": "Oppfrisking med damp"
         }
       },
       "washer_temperature": {
@@ -353,7 +356,8 @@
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
-          "spin_1400": "1400"
+          "spin_1400": "1400",
+          "1400rpm": "1400"
         }
       },
       "washer_fast_plus": {
