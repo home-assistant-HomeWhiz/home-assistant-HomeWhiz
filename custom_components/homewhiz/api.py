@@ -259,9 +259,15 @@ async def fetch_localizations(contents_index: ContentsIndexResponse) -> dict[str
         content for content in contents_index.results if content.ctype == "LOCALIZATION"
     ]
     localizations = [
-        (await make_get_contents_request(localization))["localizations"]
+        {
+            key.lower(): value
+            for key, value in (await make_get_contents_request(localization))[
+                "localizations"
+            ].items()
+        }
         for localization in localization_contents
     ]
+
     return reduce(lambda a, b: a | b, localizations)
 
 
