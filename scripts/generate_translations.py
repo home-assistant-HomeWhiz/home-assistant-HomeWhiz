@@ -62,6 +62,7 @@ API_LANGUAGES = {
     "cs": "cs-CZ",
     "es": "es-ES",
     "pt": "pt-PT",
+    "sk": "sk-SK",
     "sl": "sl-SI",
     "sr": "sr-RS",
     "ru": "ru-RU",
@@ -243,6 +244,23 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
         select_translations = await create_and_merge_localization(
             select_translations, select_controls + binary_sensor_controls
         )
+
+        # Workaround for washing machine delay calculation
+        delay_index = None
+        for i, sensor_control in enumerate(sensor_controls):
+            if sensor_control.key == "delay_start#0":
+                delay_index = i
+
+        if delay_index is not None:
+            del sensor_controls[delay_index]
+            print("Adding sensors for calculated washer delay")
+            sensor_controls += [
+                DebugControl(key="washer_delay", read_index=0),
+                DebugControl(key="delay_start", read_index=0),
+                DebugControl(key="delay_start_time", read_index=0),
+                DebugControl(key="delay_end_time", read_index=0),
+            ]
+
         sensor_translations = await create_and_merge_localization(
             sensor_translations,
             select_controls
