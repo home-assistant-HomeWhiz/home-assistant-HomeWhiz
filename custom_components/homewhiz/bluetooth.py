@@ -72,6 +72,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         _LOGGER.debug(f"[{self.address}] Trying to reconnect")
         if self._reconnecting:
             _LOGGER.warning("Stopping reconnect as reconnect is already in progress")
+            return
         while self.alive and not self.is_connected:
             self._reconnecting = True
             if not bluetooth.async_address_present(
