@@ -4,6 +4,7 @@ import logging
 from bleak import BleakClient, BLEDevice
 from bleak_retry_connector import establish_connection
 from homeassistant.components import bluetooth
+from homeassistant.const import EVENT_HOMEASSISTANT_STOP
 from homeassistant.core import HomeAssistant, callback
 
 from .const import DOMAIN
@@ -27,6 +28,13 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         # To ensure that only one reconnect is performed at a time
         self._reconnecting = False
         super().__init__(hass, _LOGGER, name=DOMAIN)
+
+        # Set up listening to shutdown event
+        def disconnect_service() -> None:
+            _LOGGER.debug("Received shutdown event and triggering kill")
+            self.hass.create_task(self.kill())
+
+        hass.bus.listen_once(EVENT_HOMEASSISTANT_STOP, disconnect_service)
 
     async def connect(self) -> bool:
         _LOGGER.info(f"Connecting to {self.address}")
