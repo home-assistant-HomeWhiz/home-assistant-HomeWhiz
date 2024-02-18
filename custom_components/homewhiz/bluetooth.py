@@ -82,6 +82,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                     "Device not found. "
                     "Will reconnect automatically when the device becomes available"
                 )
+                self._reconnecting = False
                 return
             try:
                 _LOGGER.debug(f"[{self.address}] Establish connection from reconnect")
