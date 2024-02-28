@@ -333,7 +333,7 @@ class ApplianceScreenSaver:
 
 @dataclass
 class ApplianceTeaMachineRecipe:
-    recipeFormatVersion: str
+    recipeFormatVersion: str | None
     recipeIdWifiArrayIndex: int
 
 
