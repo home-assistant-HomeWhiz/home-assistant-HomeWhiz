@@ -178,16 +178,16 @@
       "program": {
         "name": "Programma",
         "state": {
-          "program_auto": "Auto 40-65\u00c2 \u00c2\u00b0C",
+          "program_auto": "Auto 40-65 \u00b0C",
           "program_mix_wash_plus": "All in Wash",
-          "program_intensive_70": "Intensivo 70\u00c2 \u00c2\u00b0C",
-          "program_eco_50": "Eco 50\u00c2 \u00c2\u00b0C",
+          "program_intensive_70": "Intensivo 70 \u00b0C",
+          "program_eco_50": "Eco 50 \u00b0C",
           "program_glasscare": "GlassCare",
           "program_new58min": "QuickWash 58'",
-          "program_30min": "Mini 30\\'",
+          "program_30min": "Mini 30'",
           "program_prewash": "Prelavaggio",
-          "program_hygiene": "PROGRAM_HYGIENE",
-          "program_daily": "PROGRAM_DAILY",
+          "program_hygiene": "Cura dell'igiene",
+          "program_daily": "LavaggioQuotidiano",
           "program_silent": "SilentWash",
           "program_makine_temizleme": "Inner Clean"
         }
@@ -230,10 +230,10 @@
       "dishwasher_program": {
         "name": "Programma/Programmi",
         "state": {
-          "program_auto": "Auto 40-65\u00c2 \u00c2\u00b0C",
+          "program_auto": "Auto 40-65 \u00b0C",
           "program_aqua_flex": "PROGRAM_AQUA_FLEX",
-          "program_intensive_70": "Intensivo 70\u00c2 \u00c2\u00b0C",
-          "program_eco_50": "Eco 50\u00c2 \u00c2\u00b0C",
+          "program_intensive_70": "Intensivo 70 \u00b0C",
+          "program_eco_50": "Eco 50 \u00b0C",
           "program_delicate": "Delicato",
           "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
           "program_mini": "PROGRAM_MINI",
@@ -554,16 +554,16 @@
       "program": {
         "name": "Programma",
         "state": {
-          "program_auto": "Auto 40-65\u00c2 \u00c2\u00b0C",
+          "program_auto": "Auto 40-65 \u00b0C",
           "program_mix_wash_plus": "All in Wash",
-          "program_intensive_70": "Intensivo 70\u00c2 \u00c2\u00b0C",
-          "program_eco_50": "Eco 50\u00c2 \u00c2\u00b0C",
+          "program_intensive_70": "Intensivo 70 \u00b0C",
+          "program_eco_50": "Eco 50 \u00b0C",
           "program_glasscare": "GlassCare",
           "program_new58min": "QuickWash 58'",
-          "program_30min": "Mini 30\\'",
+          "program_30min": "Mini 30'",
           "program_prewash": "Prelavaggio",
-          "program_hygiene": "PROGRAM_HYGIENE",
-          "program_daily": "PROGRAM_DAILY",
+          "program_hygiene": "Cura dell'igiene",
+          "program_daily": "LavaggioQuotidiano",
           "program_silent": "SilentWash",
           "program_makine_temizleme": "Inner Clean"
         }
@@ -636,10 +636,10 @@
       "dishwasher_program": {
         "name": "Programma/Programmi",
         "state": {
-          "program_auto": "Auto 40-65\u00c2 \u00c2\u00b0C",
+          "program_auto": "Auto 40-65 \u00b0C",
           "program_aqua_flex": "PROGRAM_AQUA_FLEX",
-          "program_intensive_70": "Intensivo 70\u00c2 \u00c2\u00b0C",
-          "program_eco_50": "Eco 50\u00c2 \u00c2\u00b0C",
+          "program_intensive_70": "Intensivo 70 \u00b0C",
+          "program_eco_50": "Eco 50 \u00b0C",
           "program_delicate": "Delicato",
           "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
           "program_mini": "PROGRAM_MINI",
