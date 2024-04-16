@@ -24,6 +24,8 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         self._device: BLEDevice | None = None
         self._connection: BleakClient | None = None
         self.alive = True
+        # To ensure that only one reconnect is performed at a time
+        self._reconnecting = False
         super().__init__(hass, _LOGGER, name=DOMAIN)
 
     async def connect(self) -> bool:
@@ -31,8 +33,13 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         self._device = bluetooth.async_ble_device_from_address(
             self._hass, self.address, connectable=True
         )
+        # Self connection should be None
+        if self._connection:
+            _LOGGER.warning("Trying to connect even though connection already exists!")
         if not self._device:
             raise Exception(f"Device not found for address {self.address}")
+
+        # How to clear disconnected_callback?
         self._connection = await establish_connection(
             client_class=BleakClient,
             device=self._device,
@@ -63,7 +70,11 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
 
     async def try_reconnect(self) -> None:
         _LOGGER.debug(f"[{self.address}] Trying to reconnect")
+        if self._reconnecting:
+            _LOGGER.warning("Stopping reconnect as reconnect is already in progress")
+            return
         while self.alive and not self.is_connected:
+            self._reconnecting = True
             if not bluetooth.async_address_present(
                 self.hass, self.address, connectable=True
             ):
@@ -71,17 +82,26 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                     "Device not found. "
                     "Will reconnect automatically when the device becomes available"
                 )
+                self._reconnecting = False
                 return
             try:
                 _LOGGER.debug(f"[{self.address}] Establish connection from reconnect")
                 await self.connect()
+                # Reconnect was successful!
+                _LOGGER.debug("Reconnecting was successful!")
+                self._reconnecting = False
             except Exception:
-                _LOGGER.info("Can't reconnect. Waiting a minute to try again")
-                await asyncio.sleep(60)
+                _LOGGER.exception("Can't reconnect. Waiting 30 seconds to try again")
+                await asyncio.sleep(30)
 
     @callback
     def handle_disconnect(self) -> None:
+        _LOGGER.debug("Hanndling disconnect...")
         self._device = None
+        # Ensure device is disconnected
+        if self._connection:
+            _LOGGER.info("Triggering disconnect")
+            self.hass.create_task(self._connection.disconnect())
         self._connection = None
         self.async_set_updated_data(None)
         _LOGGER.info(f"[{self.address}] Disconnected")
