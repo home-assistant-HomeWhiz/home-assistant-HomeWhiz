@@ -45,7 +45,8 @@
           "program_wash_wear": "Lavar & Desgastar",
           "program_dark_wash": "Lavagem \u00e0s escuras",
           "program_outdoor": "Ao ar livre",
-          "program_drum_clean_plus": "Limpar tambor +"
+          "program_drum_clean_plus": "Limpar tambor +",
+          "program_steam_refresh": "Atualiza\u00e7\u00e3o do vapor"
         }
       },
       "washer_temperature": {
@@ -71,7 +72,8 @@
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
-          "spin_1400": "1400"
+          "spin_1400": "1400",
+          "1400rpm": "1400RPM"
         }
       },
       "washer_fast_plus": {
@@ -327,7 +329,8 @@
           "program_wash_wear": "Lavar & Desgastar",
           "program_dark_wash": "Lavagem \u00e0s escuras",
           "program_outdoor": "Ao ar livre",
-          "program_drum_clean_plus": "Limpar Tambor+"
+          "program_drum_clean_plus": "Limpar Tambor+",
+          "program_steam_refresh": "Atualiza\u00e7\u00e3o do vapor"
         }
       },
       "washer_temperature": {
@@ -353,7 +356,8 @@
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
-          "spin_1400": "1400"
+          "spin_1400": "1400",
+          "1400rpm": "1400RPM"
         }
       },
       "washer_fast_plus": {

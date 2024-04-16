@@ -64,7 +64,8 @@
           "program_wash_wear": "Wypierz i za\u0142\u00f3\u017c",
           "program_dark_wash": "Ciemne",
           "program_outdoor": "Na zewn\u0105trz",
-          "program_drum_clean_plus": "Czyszczenie b\u0119bna+"
+          "program_drum_clean_plus": "Czyszczenie b\u0119bna+",
+          "program_steam_refresh": "Od\u015bwie\u017cenie parowe"
         }
       },
       "washer_temperature": {
@@ -90,7 +91,8 @@
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
-          "spin_1400": "1400"
+          "spin_1400": "1400",
+          "1400rpm": "1400RPM"
         }
       },
       "washer_fast_plus": {
@@ -346,7 +348,8 @@
           "program_wash_wear": "Wypierz i za\u0142\u00f3\u017c",
           "program_dark_wash": "Ciemne",
           "program_outdoor": "Na zewn\u0105trz",
-          "program_drum_clean_plus": "Czyszczenie b\u0119bna+"
+          "program_drum_clean_plus": "Czyszczenie b\u0119bna+",
+          "program_steam_refresh": "Od\u015bwie\u017cenie parowe"
         }
       },
       "washer_temperature": {
@@ -372,7 +375,8 @@
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
-          "spin_1400": "1400"
+          "spin_1400": "1400",
+          "1400rpm": "1400RPM"
         }
       },
       "washer_fast_plus": {
