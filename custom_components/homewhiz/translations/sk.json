@@ -91,7 +91,8 @@
           "program_wash_wear": "Oprať a obliecť",
           "program_dark_wash": "Tmavé pranie",
           "program_outdoor": "Outdoor",
-          "program_drum_clean_plus": "program_bubon_čistenie_+"
+          "program_drum_clean_plus": "program_bubon_čistenie_+",
+          "program_steam_refresh": "Obnovenie parou"
         }
       },
       "washer_temperature": {
@@ -117,7 +118,8 @@
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
-          "spin_1400": "1400"
+          "spin_1400": "1400",
+          "1400rpm": "1400RPM"
         }
       },
       "washer_fast_plus": {
@@ -216,7 +218,7 @@
           "program_hygiene": "HygienaStarostlivosť",
           "program_daily": "DennéUmytie",
           "program_silent": "TichéUmytie",
-          "program_makine_temizleme": "VnútornéČistenie"
+          "program_makine_temizleme": "Vnútorné Čistenie"
         }
       },
       "setting_detergent_type": {
@@ -373,7 +375,8 @@
           "program_wash_wear": "Prať & Obliecť",
           "program_dark_wash": "Tmavé pranie",
           "program_outdoor": "Outdoor",
-          "program_drum_clean_plus": "program_bubon_čistiť_+"
+          "program_drum_clean_plus": "program_bubon_čistiť_+",
+          "program_steam_refresh": "Obnovenie parou"
         }
       },
       "washer_temperature": {
@@ -399,7 +402,8 @@
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
-          "spin_1400": "1400"
+          "spin_1400": "1400",
+          "1400rpm": "1400RPM"
         }
       },
       "washer_fast_plus": {
@@ -480,12 +484,6 @@
           "dishwasher_message_drying": "Sušenie"
         }
       },
-      "washer_duration": {
-        "name": "Trvanie"
-      },
-      "washer_remaining": {
-        "name": "Zostávajúce"
-      },
       "washer_delay": {
         "name": "Čas ukončenia programu"
       },
@@ -497,6 +495,12 @@
       },
       "delay_end_time": {
         "name": "Oneskori\u0165 \u010das ukon\u010denia"
+      },
+      "washer_duration": {
+        "name": "Trvanie"
+      },
+      "washer_remaining": {
+        "name": "Zostávajúce"
       },
       "remote_control": {
         "name": "Diaľkové ovládanie"
