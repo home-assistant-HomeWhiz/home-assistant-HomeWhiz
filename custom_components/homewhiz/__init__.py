@@ -40,6 +40,9 @@ async def setup_bluetooth(
 ) -> bool:
     _LOGGER.info("Setting up bluetooth connection")
 
+    if not entry.unique_id:
+        return False
+
     coordinator = hass.data.setdefault(DOMAIN, {})[
         entry.entry_id
     ] = HomewhizBluetoothUpdateCoordinator(hass, entry.unique_id)

@@ -53,7 +53,7 @@ repos:
   hooks:
   - id: mypy
     additional_dependencies:
-    - aiohttp~=3.8.3
+    - aiohttp~=3.9.5
     - homeassistant-stubs
     - types-awscrt
     - voluptuous-stubs
