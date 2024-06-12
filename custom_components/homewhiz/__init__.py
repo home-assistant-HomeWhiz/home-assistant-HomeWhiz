@@ -1,3 +1,4 @@
+import asyncio
 import logging
 
 from dacite import from_dict
@@ -86,7 +87,10 @@ def _lazy_install_awsiotsdk() -> None:
 
 async def setup_cloud(entry: ConfigEntry, hass: HomeAssistant) -> bool:
     _LOGGER.info("Setting up cloud connection")
-    _lazy_install_awsiotsdk()
+
+    loop = asyncio.get_event_loop()
+    lazy_install_awsiotsdk_task = loop.run_in_executor(None, _lazy_install_awsiotsdk)
+    await lazy_install_awsiotsdk_task
 
     ids = from_dict(IdExchangeResponse, entry.data["ids"])
     cloud_config = from_dict(CloudConfig, entry.data["cloud_config"])
