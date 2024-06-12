@@ -1,3 +1,5 @@
+import asyncio
+import functools
 import json
 import logging
 import uuid
@@ -94,17 +96,24 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             session_token=credentials.sessionToken,
             secret_access_key=credentials.secretKey,
         )
-        connection = mqtt_connection_builder.websockets_with_default_aws_signing(
-            client_id=uuid.uuid1().hex,
-            endpoint="ajf7v9dcoe69w-ats.iot.eu-west-1.amazonaws.com",
-            region="eu-west-1",
-            credentials_provider=credentials_provider,
-            on_connection_interrupted=self.on_connection_interrupted,
-            on_connection_resumed=self.on_connection_resumed,
+        loop = asyncio.get_event_loop()
+        mqtt_connection_builder_task = loop.run_in_executor(
+            None,
+            functools.partial(
+                mqtt_connection_builder.websockets_with_default_aws_signing,
+                client_id=uuid.uuid1().hex,
+                endpoint="ajf7v9dcoe69w-ats.iot.eu-west-1.amazonaws.com",
+                region="eu-west-1",
+                credentials_provider=credentials_provider,
+                on_connection_interrupted=self.on_connection_interrupted,
+                on_connection_resumed=self.on_connection_resumed,
+            ),
         )
+        connection = await mqtt_connection_builder_task
         self._connection = connection
         try:
             connection.connect().result()
+            _LOGGER.debug("MQTT connection successful")
         # If exception occurs, retry in one minute
         # (to be more resilient against e.g., DNS issues)
         except AwsCrtError:
