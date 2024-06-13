@@ -112,7 +112,8 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         connection = await mqtt_connection_builder_task
         self._connection = connection
         try:
-            connection.connect().result()
+            connection_future = connection.connect()
+            await loop.run_in_executor(None, connection_future.result)
             _LOGGER.debug("MQTT connection successful")
         # If exception occurs, retry in one minute
         # (to be more resilient against e.g., DNS issues)
@@ -137,8 +138,6 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
                 payload
             ),
         )
-        _LOGGER.debug(f"Subscribe to update result: {subscribe_update.result()}")
-
         [subscribe_get, _] = connection.subscribe(
             f"$aws/things/{self._appliance_id}/shadow/get/accepted",
             self._mqtt.QoS.AT_LEAST_ONCE,
@@ -146,7 +145,13 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
                 payload
             ),
         )
-        _LOGGER.debug(f"Subscribe to get result: {subscribe_get.result()}")
+        loop = asyncio.get_event_loop()
+        subscribe_update_result = await loop.run_in_executor(
+            None, subscribe_update.result
+        )
+        subscribe_get_result = await loop.run_in_executor(None, subscribe_get.result)
+        _LOGGER.debug("Subscribe to update result: %s", subscribe_update_result)
+        _LOGGER.debug("Subscribe to get result: %s", subscribe_get_result)
 
         self.force_read()
 
