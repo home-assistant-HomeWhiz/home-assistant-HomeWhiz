@@ -5,7 +5,7 @@ import logging
 import uuid
 from collections.abc import Callable
 from dataclasses import dataclass
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from typing import Any
 
 from dacite import from_dict
@@ -13,6 +13,7 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.event import (
     async_track_point_in_time,
+    async_track_point_in_utc_time,
     async_track_time_interval,
 )
 
@@ -88,7 +89,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         credentials = await login(
             self._cloud_config.username, self._cloud_config.password
         )
-        expiration = datetime.fromtimestamp(credentials.expiration / 1000)
+        expiration = datetime.fromtimestamp(credentials.expiration / 1000, tz=UTC)
         _LOGGER.debug(f"Credentials expire at: {expiration}")
 
         credentials_provider = AwsCredentialsProvider.new_static(
@@ -156,12 +157,10 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         self.force_read()
 
         # Trigger refresh connection when credentials expired
-        self._entry.async_on_unload(
-            async_track_point_in_time(
-                hass=self.hass,
-                action=self.refresh_connection,  # type: ignore[arg-type]
-                point_in_time=expiration,
-            )
+        async_track_point_in_utc_time(
+            hass=self.hass,
+            action=self.refresh_connection,  # type: ignore[arg-type]
+            point_in_time=expiration - timedelta(minutes=1),
         )
 
         if not self._update_timer_task:
@@ -189,11 +188,11 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
     async def refresh_connection(self, *args: Any) -> None:
         _LOGGER.debug("Refreshing connection")
         assert self._connection is not None
-        old_connection = self._connection
+        self._connection.disconnect()
         await self.connect()
-        old_connection.disconnect()
 
     def force_read(self, *args: Any) -> None:
+        _LOGGER.debug("Forcing read")
         assert self._connection is not None
         suffix = "/tuyacommand" if self._is_tuya else "/command"
         force_read = {
