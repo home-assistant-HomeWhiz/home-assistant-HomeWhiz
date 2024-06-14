@@ -98,7 +98,8 @@ async def setup_cloud(entry: ConfigEntry, hass: HomeAssistant) -> bool:
         entry.entry_id
     ] = HomewhizCloudUpdateCoordinator(hass, ids.appId, cloud_config, entry)
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
-    hass.async_create_task(coordinator.connect())
+    entry.async_create_task(hass, coordinator.connect())
+    _LOGGER.info("Setup cloud connection successfully")
     return True
 
 
