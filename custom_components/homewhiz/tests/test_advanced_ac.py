@@ -125,9 +125,9 @@ def test_swing_control(config: ApplianceConfiguration) -> None:
         [SWING_OFF, SWING_HORIZONTAL, SWING_VERTICAL, SWING_BOTH],
     )
 
-    test_case.assertEquals(swing_control.get_value(data_swing_off), SWING_OFF)
-    test_case.assertEquals(swing_control.get_value(data_swing_both), SWING_BOTH)
-    test_case.assertEquals(
+    test_case.assertEqual(swing_control.get_value(data_swing_off), SWING_OFF)
+    test_case.assertEqual(swing_control.get_value(data_swing_both), SWING_BOTH)
+    test_case.assertEqual(
         swing_control.get_value(data_swing_horizontal), SWING_HORIZONTAL
     )
 

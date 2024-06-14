@@ -23,6 +23,8 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 
 class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
     _attr_temperature_unit = UnitOfTemperature.CELSIUS
+    # https://developers.home-assistant.io/blog/2024/01/24/climate-climateentityfeatures-expanded/
+    _enable_turn_on_off_backwards_compatibility = False
 
     def __init__(
         self,
@@ -37,7 +39,9 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
     @property
     def supported_features(self) -> ClimateEntityFeature:
         features = (
-            ClimateEntityFeature.TARGET_TEMPERATURE | ClimateEntityFeature.FAN_MODE
+            ClimateEntityFeature.TARGET_TEMPERATURE
+            | ClimateEntityFeature.FAN_MODE
+            | ClimateEntityFeature.TURN_OFF
         )
         if self._control.swing.enabled:
             features |= ClimateEntityFeature.SWING_MODE

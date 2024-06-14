@@ -1,9 +1,11 @@
+import asyncio
+import functools
 import json
 import logging
 import uuid
 from collections.abc import Callable
 from dataclasses import dataclass
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from typing import Any
 
 from dacite import from_dict
@@ -11,6 +13,7 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.event import (
     async_track_point_in_time,
+    async_track_point_in_utc_time,
     async_track_time_interval,
 )
 
@@ -86,7 +89,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         credentials = await login(
             self._cloud_config.username, self._cloud_config.password
         )
-        expiration = datetime.fromtimestamp(credentials.expiration / 1000)
+        expiration = datetime.fromtimestamp(credentials.expiration / 1000, tz=UTC)
         _LOGGER.debug(f"Credentials expire at: {expiration}")
 
         credentials_provider = AwsCredentialsProvider.new_static(
@@ -94,17 +97,25 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             session_token=credentials.sessionToken,
             secret_access_key=credentials.secretKey,
         )
-        connection = mqtt_connection_builder.websockets_with_default_aws_signing(
-            client_id=uuid.uuid1().hex,
-            endpoint="ajf7v9dcoe69w-ats.iot.eu-west-1.amazonaws.com",
-            region="eu-west-1",
-            credentials_provider=credentials_provider,
-            on_connection_interrupted=self.on_connection_interrupted,
-            on_connection_resumed=self.on_connection_resumed,
+        loop = asyncio.get_event_loop()
+        mqtt_connection_builder_task = loop.run_in_executor(
+            None,
+            functools.partial(
+                mqtt_connection_builder.websockets_with_default_aws_signing,
+                client_id=uuid.uuid1().hex,
+                endpoint="ajf7v9dcoe69w-ats.iot.eu-west-1.amazonaws.com",
+                region="eu-west-1",
+                credentials_provider=credentials_provider,
+                on_connection_interrupted=self.on_connection_interrupted,
+                on_connection_resumed=self.on_connection_resumed,
+            ),
         )
+        connection = await mqtt_connection_builder_task
         self._connection = connection
         try:
-            connection.connect().result()
+            connection_future = connection.connect()
+            await loop.run_in_executor(None, connection_future.result)
+            _LOGGER.debug("MQTT connection successful")
         # If exception occurs, retry in one minute
         # (to be more resilient against e.g., DNS issues)
         except AwsCrtError:
@@ -128,8 +139,6 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
                 payload
             ),
         )
-        _LOGGER.debug(f"Subscribe to update result: {subscribe_update.result()}")
-
         [subscribe_get, _] = connection.subscribe(
             f"$aws/things/{self._appliance_id}/shadow/get/accepted",
             self._mqtt.QoS.AT_LEAST_ONCE,
@@ -137,17 +146,21 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
                 payload
             ),
         )
-        _LOGGER.debug(f"Subscribe to get result: {subscribe_get.result()}")
+        loop = asyncio.get_event_loop()
+        subscribe_update_result = await loop.run_in_executor(
+            None, subscribe_update.result
+        )
+        subscribe_get_result = await loop.run_in_executor(None, subscribe_get.result)
+        _LOGGER.debug("Subscribe to update result: %s", subscribe_update_result)
+        _LOGGER.debug("Subscribe to get result: %s", subscribe_get_result)
 
         self.force_read()
 
         # Trigger refresh connection when credentials expired
-        self._entry.async_on_unload(
-            async_track_point_in_time(
-                hass=self.hass,
-                action=self.refresh_connection,  # type: ignore[arg-type]
-                point_in_time=expiration,
-            )
+        async_track_point_in_utc_time(
+            hass=self.hass,
+            action=self.refresh_connection,  # type: ignore[arg-type]
+            point_in_time=expiration - timedelta(minutes=1),
         )
 
         if not self._update_timer_task:
@@ -175,11 +188,11 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
     async def refresh_connection(self, *args: Any) -> None:
         _LOGGER.debug("Refreshing connection")
         assert self._connection is not None
-        old_connection = self._connection
+        self._connection.disconnect()
         await self.connect()
-        old_connection.disconnect()
 
     def force_read(self, *args: Any) -> None:
+        _LOGGER.debug("Forcing read")
         assert self._connection is not None
         suffix = "/tuyacommand" if self._is_tuya else "/command"
         force_read = {
@@ -223,12 +236,13 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
 
     @callback
     def handle_notify(self, payload: str) -> None:
+        _LOGGER.debug("Handling notify")
         message = from_dict(MqttPayload, json.loads(payload))
         offset = int(message.state.reported.wfaStartOffset)
         padding = [0 for _ in range(0, offset)]
         data = bytearray(padding + message.state.reported.wfa)
         _LOGGER.debug(f"Message received: {data}")
-        self.async_set_updated_data(data)
+        self.hass.loop.call_soon_threadsafe(self.async_set_updated_data, data)
 
     @property
     def is_connected(self) -> bool:

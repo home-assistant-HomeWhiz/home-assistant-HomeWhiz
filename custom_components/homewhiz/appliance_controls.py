@@ -252,15 +252,20 @@ class DisabledSwingAxisControl(Control):
 class SwingAxisControl(Control):
     enabled = True
 
-    def __init__(self, parent: WriteEnumControl):
+    def __init__(self, parent: WriteEnumControl | WriteBooleanControl):
         self.key = parent.key
         self.parent = parent
 
     def get_value(self, data: bytearray) -> bool:
         option = self.parent.get_value(data)
+        _LOGGER.debug("Option - type: %s value: %s", type(option), option)
+        if isinstance(option, bool):
+            return option
         return option is not None and not option.endswith("_off")
 
     def _option_with_suffix(self, suffix: str) -> str | None:
+        if isinstance(self.parent, WriteBooleanControl):
+            return None
         return next(
             (
                 option
@@ -274,6 +279,8 @@ class SwingAxisControl(Control):
         current_value = self.get_value(current_data)
         if current_value == value:
             return []
+        if isinstance(self.parent, WriteBooleanControl):
+            return [self.parent.set_value(value)]
         selected_option = (
             self._option_with_suffix("_auto")
             if value
@@ -285,7 +292,7 @@ class SwingAxisControl(Control):
 
 
 def build_swing_control_from_optional(
-    parent: WriteEnumControl | None,
+    parent: WriteEnumControl | WriteBooleanControl | None,
 ) -> DisabledSwingAxisControl | SwingAxisControl:
     if parent is None:
         return DisabledSwingAxisControl()
@@ -298,7 +305,7 @@ class SwingControl(Control):
     def __init__(
         self,
         horizontal: WriteEnumControl | None,
-        vertical: WriteEnumControl | None,
+        vertical: WriteEnumControl | WriteBooleanControl | None,
     ):
         self.horizontal = build_swing_control_from_optional(horizontal)
         self.vertical = build_swing_control_from_optional(vertical)
@@ -717,7 +724,7 @@ def extract_ac_control(controls: list[Control]) -> list[Control]:
             "air_conditioner_up_down_vane_control"
         )
         assert vertical_swing_control is None or isinstance(
-            vertical_swing_control, WriteEnumControl
+            vertical_swing_control, (WriteEnumControl, WriteBooleanControl)
         )
         horizontal_swing_control = controls_dict.get(
             "air_conditioner_left_right_vane_control"

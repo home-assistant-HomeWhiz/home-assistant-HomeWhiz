@@ -7,9 +7,8 @@ from homeassistant.components.bluetooth import (
     BluetoothServiceInfoBleak,
     async_discovered_service_info,
 )
-from homeassistant.config_entries import ConfigFlow
+from homeassistant.config_entries import ConfigFlow, ConfigFlowResult
 from homeassistant.const import CONF_ADDRESS, CONF_ID, CONF_PASSWORD, CONF_USERNAME
-from homeassistant.data_entry_flow import FlowResult
 from homeassistant.helpers.selector import (
     TextSelector,
     TextSelectorConfig,
@@ -62,7 +61,7 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
 
     async def async_step_bluetooth(
         self, discovery_info: BluetoothServiceInfoBleak
-    ) -> FlowResult:
+    ) -> ConfigFlowResult:
         """Handle the bluetooth discovery step."""
         await self.async_set_unique_id(discovery_info.address)
         self._abort_if_unique_id_configured()
@@ -74,7 +73,7 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
 
     async def async_step_user(
         self, user_input: dict[str, Any] | None = None
-    ) -> FlowResult:
+    ) -> ConfigFlowResult:
         return self.async_show_menu(
             step_id="user",
             menu_options=["select_bluetooth_device", "provide_cloud_credentials"],
@@ -82,7 +81,7 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
 
     async def async_step_select_bluetooth_device(
         self, user_input: dict[str, Any] | None = None
-    ) -> FlowResult:
+    ) -> ConfigFlowResult:
         """Handle the user step to pick discovered device."""
         if user_input is not None:
             address = user_input[CONF_ADDRESS]
@@ -110,7 +109,7 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
 
     async def async_step_bluetooth_connect(
         self, user_input: dict[str, Any] | None = None
-    ) -> FlowResult:
+    ) -> ConfigFlowResult:
         """
         Handle the user step to provide HomeWhiz credentials.
         Credentials are used to fetch appliance config
@@ -170,7 +169,7 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
 
     async def async_step_provide_cloud_credentials(
         self, user_input: dict[str, Any] | None = None
-    ) -> FlowResult:
+    ) -> ConfigFlowResult:
         errors = {}
         if user_input is not None:
             username = user_input[CONF_USERNAME]
@@ -200,7 +199,7 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
 
     async def async_step_select_cloud_device(
         self, user_input: dict[str, Any] | None = None
-    ) -> FlowResult:
+    ) -> ConfigFlowResult:
         assert self._cloud_credentials is not None
         if user_input is not None:
             assert self._cloud_appliances is not None

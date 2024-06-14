@@ -90,10 +90,10 @@ def test_hvac_control(config: ApplianceConfiguration) -> None:
     hvac_control = ac_control.hvac_mode
 
     # Get mode when off
-    test_case.assertEquals(hvac_control.get_value(data_off), HVACMode.OFF)
+    test_case.assertEqual(hvac_control.get_value(data_off), HVACMode.OFF)
 
     # Get mode when in auto state
-    test_case.assertEquals(hvac_control.get_value(data_auto), HVACMode.AUTO)
+    test_case.assertEqual(hvac_control.get_value(data_auto), HVACMode.AUTO)
 
     # Turn on with the same mode
     test_case.assertListEqual(
