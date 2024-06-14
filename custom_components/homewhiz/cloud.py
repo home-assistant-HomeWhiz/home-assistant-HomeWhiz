@@ -237,12 +237,13 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
 
     @callback
     def handle_notify(self, payload: str) -> None:
+        _LOGGER.debug("Handling notify")
         message = from_dict(MqttPayload, json.loads(payload))
         offset = int(message.state.reported.wfaStartOffset)
         padding = [0 for _ in range(0, offset)]
         data = bytearray(padding + message.state.reported.wfa)
         _LOGGER.debug(f"Message received: {data}")
-        self.async_set_updated_data(data)
+        self.hass.loop.call_soon_threadsafe(self.async_set_updated_data, data)
 
     @property
     def is_connected(self) -> bool:
