@@ -42,6 +42,7 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
             ClimateEntityFeature.TARGET_TEMPERATURE
             | ClimateEntityFeature.FAN_MODE
             | ClimateEntityFeature.TURN_OFF
+            | ClimateEntityFeature.TURN_ON
         )
         if self._control.swing.enabled:
             features |= ClimateEntityFeature.SWING_MODE
