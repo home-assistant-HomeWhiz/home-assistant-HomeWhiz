@@ -35,6 +35,7 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
     ):
         super().__init__(coordinator, device_name, control.key, data)
         self._control = control
+        self._previous_hvac_mode: HVACMode | None = None
 
     @property
     def supported_features(self) -> ClimateEntityFeature:
@@ -42,6 +43,7 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
             ClimateEntityFeature.TARGET_TEMPERATURE
             | ClimateEntityFeature.FAN_MODE
             | ClimateEntityFeature.TURN_OFF
+            | ClimateEntityFeature.TURN_ON
         )
         if self._control.swing.enabled:
             features |= ClimateEntityFeature.SWING_MODE
@@ -66,6 +68,15 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
         commands = self._control.hvac_mode.set_value(hvac_mode, data)
         for command in commands:
             await self.coordinator.send_command(command)
+
+    async def async_turn_off(self) -> None:
+        self._previous_hvac_mode = self.hvac_mode
+        await self.async_set_hvac_mode(HVACMode.OFF)
+
+    async def async_turn_on(self) -> None:
+        await self.async_set_hvac_mode(
+            self._previous_hvac_mode if self._previous_hvac_mode else HVACMode.HEAT_COOL
+        )
 
     @property
     def target_temperature_step(self) -> float:
