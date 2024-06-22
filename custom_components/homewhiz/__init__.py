@@ -44,6 +44,7 @@ async def setup_bluetooth(
     _LOGGER.info("Setting up bluetooth connection")
 
     if not entry.unique_id:
+        _LOGGER.info("No unique entry id")
         return False
 
     coordinator = hass.data.setdefault(DOMAIN, {})[
@@ -55,6 +56,7 @@ async def setup_bluetooth(
         service_info: BluetoothServiceInfoBleak,
         change: BluetoothChange,
     ) -> None:
+        _LOGGER.debug("Called connect callback in setup_bluetooth")
         hass.async_create_task(coordinator.connect())
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
