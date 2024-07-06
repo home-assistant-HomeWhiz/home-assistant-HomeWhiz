@@ -28,9 +28,9 @@ Integration for devices that support the HomeWhiz mobile app (Beko, Grundig, Arc
 
 1. Connect the device to the HomeWhiz app on your smartphone
 2. Close the app
-4. In the HA UI go to "Configuration" -> "Integrations". The device should be automatically discovered. If it's not click "+" and search for "HomeWhiz"
-5. Select the "Bluetooth" connection type
-6. Provide the HomeWhiz username and password. These will be used to fetch your device mapping from the HomeWhiz API during configuration. No internet connection is required after the initial configuration.
+3. In the HA UI go to "Configuration" -> "Integrations". The device should be automatically discovered. If it's not click "+" and search for "HomeWhiz"
+4. Select the "Bluetooth" connection type
+5. Provide the HomeWhiz username and password. These will be used to fetch your device mapping from the HomeWhiz API during configuration. No internet connection is required after the initial configuration.
 
 ### Wi-Fi
 
