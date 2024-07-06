@@ -2,7 +2,7 @@
 
 ![HomeWhiz icon](./icons/icon.png)
 
-Integration for devices that can connect to HomeWhiz mobile app (Beko, Grundig, Arcelik)
+Integration for devices that support the HomeWhiz mobile app (Beko, Grundig, Arcelik)
 
 ## Installation
 
@@ -24,19 +24,19 @@ Integration for devices that can connect to HomeWhiz mobile app (Beko, Grundig, 
 
 ## Configuration
 
-### Bluetooth 
+### Bluetooth
 
 1. Connect the device to the HomeWhiz app on your smartphone
 2. Close the app
 4. In the HA UI go to "Configuration" -> "Integrations". The device should be automatically discovered. If it's not click "+" and search for "HomeWhiz"
-5. Select the "Bluetooth" connection type 
-6. Provide the HomeWhiz username and password. These will be used to fetch your device mapping from the HomeWhiz API during configuration. No internet connection is required after the initial configuration. 
+5. Select the "Bluetooth" connection type
+6. Provide the HomeWhiz username and password. These will be used to fetch your device mapping from the HomeWhiz API during configuration. No internet connection is required after the initial configuration.
 
 ### Wi-Fi
 
 1. Connect the device to the HomeWhiz app on your smartphone
 2. In the HA UI go to "Configuration" -> "Integrations". Click "+" and search for "HomeWhiz"
-3. Select the "Cloud" connection type 
+3. Select the "Cloud" connection type
 4. Provide the HomeWhiz username and password.
 
 Please note that the constant internet connection is required. Support for local connection is coming soon ([#52](https://github.com/rowysock/home-assistant-HomeWhiz/issues/52))
@@ -49,21 +49,22 @@ Please note that the constant internet connection is required. Support for local
 | Dryer            | :heavy_check_mark: | Also includes washing machine / dryer combinations |
 | Dishwasher       | :heavy_check_mark: |                                                    |
 | Air conditioner  | :heavy_check_mark: |                                                    |
+| Extraction fan   | :heavy_check_mark: |                                                    |
 | Oven             | :question: :x:     | Not tested                                         |
 
 If you have other device types not listed yet, please let us know.
 
-If your device is missing some information, translations or not working at all, please create an issue. 
-Don't forget to include your device digital ID that can be found either in the HomeWhiz app or the integration logs. 
+If your device is missing some information, translations or not working at all, please create an issue.
+Don't forget to include your device digital ID that can be found either in the HomeWhiz app or the integration logs.
 
 ## Troubleshooting
 
 ### Bluetooth
-Integration should work with all devices connected via Bluetooth. Remember that the range of Bluetooth can be limited. If your device is out of range, you could try using an [ESPHome Bluetooth Proxy](https://esphome.github.io/bluetooth-proxies/).  
+The integration should work with all devices connected via Bluetooth. Remember that the range of Bluetooth is limited. If your device is out of range, try using an [ESPHome Bluetooth Proxy](https://esphome.github.io/bluetooth-proxies/).
 
-If you are using custom Home Assistant installation method like Virtual Machine, please make sure your system is configured properly and Bluetooth is available for the Home Assistant
+If you are using custom Home Assistant installation method like virtual machine, please make sure your system is configured properly and Bluetooth is available within Home Assistant.
 
-The devices can support only single Bluetooth connection at a time.
+The devices can support only single Bluetooth connections at a time.
 To connect the device to the original app, you have to disable the Home Assistant integration. Restart Home Assistant and wait a few minutes - this should be indicated on the device: E.g. the Bluetooth icon on a washing machine starts flashing.
 
 ### Retrieve Integration Logs
@@ -74,12 +75,12 @@ logger:
   logs:
     custom_components.homewhiz: debug
 ```
-To retrieve logs, navigate in Home Assistant to: settings -> system -> logs and retrieve logs by e.g. pressing the download button below the logs.  
+To retrieve logs, navigate in Home Assistant to: settings -> system -> logs and retrieve logs by e.g. pressing the download button below the logs.
 > :warning: Please review your logs and **delete personal and private information before posting** :warning:
 
 ## Contributing to the project
 
-Contributions are welcome. 
+Contributions are welcome.
 - Report problems by creating an issue [here](https://github.com/rowysock/home-assistant-HomeWhiz/issues)
 - [Get started developing](./linux_dev.md)
 - [Submit your code](https://github.com/rowysock/home-assistant-HomeWhiz/pulls)
