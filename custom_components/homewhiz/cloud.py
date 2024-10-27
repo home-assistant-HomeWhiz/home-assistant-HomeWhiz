@@ -27,11 +27,11 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 
 @dataclass
 class Reported:
-    connected: bool | None
+    connected: bool | str | None
     wfaStartOffset: str
-    wfaSize: str
-    brand: str
-    applianceType: str
+    wfaSize: str | int
+    brand: str | int
+    applianceType: str | int
     model: str
     applianceId: str
     macAddr: str
@@ -237,6 +237,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
     @callback
     def handle_notify(self, payload: str) -> None:
         _LOGGER.debug("Handling notify")
+        _LOGGER.debug("Payload: %s", payload)
         message = from_dict(MqttPayload, json.loads(payload))
         offset = int(message.state.reported.wfaStartOffset)
         padding = [0 for _ in range(0, offset)]
