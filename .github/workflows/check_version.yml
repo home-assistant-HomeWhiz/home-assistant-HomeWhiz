@@ -22,6 +22,6 @@ jobs:
       run: |
         TAG=$(echo $GITHUB_REF | sed 's/refs\/tags\///')
         if [ "$TAG" != "${{ steps.get_version.outputs.version }}" ]; then
-          echo "Version in manifest.json does not match tag"
+          echo "Version in manifest.json ${{ steps.get_version.outputs.version }} does not match tag $TAG"
           exit 1
         fi
