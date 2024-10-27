@@ -1,0 +1,27 @@
+name: Checks the version in custom_components/home-assistant-HomeWhiz/manifest.json and ensures it matches the current tag
+
+on:
+  push:
+    tags:
+    - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Install jq
+      run: sudo apt-get install -y jq
+    - name: Read version from manifest.json
+      id: get_version
+      run: |
+        VERSION=$(jq -r '.version' custom_components/home-assistant-HomeWhiz/manifest.json)
+        echo "::set-output name=version::$VERSION"
+    - name: Check version
+      run: |
+        TAG=$(echo $GITHUB_REF | sed 's/refs\/tags\///')
+        if [ "$TAG" != "${{ steps.get_version.outputs.version }}" ]; then
+          echo "Version in manifest.json does not match tag"
+          exit 1
+        fi
