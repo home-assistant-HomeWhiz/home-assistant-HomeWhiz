@@ -1,4 +1,4 @@
-name: Checks the version in custom_components/home-assistant-HomeWhiz/manifest.json and ensures it matches the current tag
+name: Checks manifest.json version matches tag
 
 on:
   push:
@@ -13,12 +13,10 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    - name: Install jq
-      run: sudo apt-get install -y jq
     - name: Read version from manifest.json
       id: get_version
       run: |
-        VERSION=$(jq -r '.version' custom_components/home-assistant-HomeWhiz/manifest.json)
+        VERSION=$(jq -r '.version' custom_components/homewhiz/manifest.json)
         echo "::set-output name=version::$VERSION"
     - name: Check version
       run: |
