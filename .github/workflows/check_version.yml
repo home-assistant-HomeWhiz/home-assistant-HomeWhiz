@@ -3,7 +3,9 @@ name: Checks the version in custom_components/home-assistant-HomeWhiz/manifest.j
 on:
   push:
     tags:
-    - '*'
+    - '**'
+    branches:
+    - '**'
 
 jobs:
   build:
