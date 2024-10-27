@@ -21,7 +21,7 @@
   "entity": {
     "select": {
       "state": {
-        "name": "St\u00e1t",
+        "name": "Stav",
         "state": {
           "device_state_on": "Zapnuto",
           "device_state_off": "Vypnuto",
@@ -305,7 +305,7 @@
     },
     "sensor": {
       "state": {
-        "name": "St\u00e1t",
+        "name": "Stav",
         "state": {
           "device_state_on": "Zapnuto",
           "device_state_off": "Vypnuto",
@@ -464,7 +464,7 @@
         "name": "Doba trv\u00e1n\u00ed"
       },
       "washer_remaining": {
-        "name": "Zb\u00fdvaj\u00edc\u00ed"
+        "name": "Zb\u00fdvaj\u00edc\u00ed \u010das"
       },
       "remote_control": {
         "name": "D\u00e1lkov\u00e9 ovl\u00e1d\u00e1n\u00ed"
