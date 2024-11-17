@@ -39,7 +39,7 @@ Integration for devices that support the HomeWhiz mobile app (Beko, Grundig, Arc
 3. Select the "Cloud" connection type
 4. Provide the HomeWhiz username and password.
 
-Please note that the constant internet connection is required. Support for local connection is coming soon ([#52](https://github.com/rowysock/home-assistant-HomeWhiz/issues/52))
+Please note that the constant internet connection is required. 
 
 ## Supported device types
 
@@ -81,6 +81,11 @@ To retrieve logs, navigate in Home Assistant to: settings -> system -> logs and 
 ## Contributing to the project
 
 Contributions are welcome.
-- Report problems by creating an issue [here](https://github.com/rowysock/home-assistant-HomeWhiz/issues)
+- Report problems by creating an issue [here](https://github.com/home-assistant-HomeWhiz/home-assistant-HomeWhiz/issues)
 - [Get started developing](./linux_dev.md)
-- [Submit your code](https://github.com/rowysock/home-assistant-HomeWhiz/pulls)
+- [Submit your code](https://github.com/home-assistant-HomeWhiz/home-assistant-HomeWhiz/pulls)
+
+### Contribute icon translations
+
+You can contribute icon translations. Icon translations map entities to icons, see [here](https://developers.home-assistant.io/docs/core/entity/#icon-translations) for more details.
+Feel free to open a pull request with your adjustments to the custom_components/homewhiz/icons.json file. Make sure to install pre-commit beforehand.

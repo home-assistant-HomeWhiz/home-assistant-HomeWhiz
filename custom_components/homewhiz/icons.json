@@ -1,0 +1,9 @@
+{
+  "entity": {
+    "switch": {
+      "washer_steam": {
+        "default": "mdi:weather-fog"
+      }
+    }
+  }
+}
