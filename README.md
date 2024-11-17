@@ -84,3 +84,8 @@ Contributions are welcome.
 - Report problems by creating an issue [here](https://github.com/rowysock/home-assistant-HomeWhiz/issues)
 - [Get started developing](./linux_dev.md)
 - [Submit your code](https://github.com/rowysock/home-assistant-HomeWhiz/pulls)
+
+### Contribute icon translations
+
+You can contribute icon translations. Icon translations map entities to icons, see [here](https://developers.home-assistant.io/docs/core/entity/#icon-translations) for more details.  
+Feel free to open a pull request with your adjustments to the custom_components/homewhiz/icons.json file. Make sure to install pre-commit beforehand.
