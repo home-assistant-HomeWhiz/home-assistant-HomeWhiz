@@ -1,10 +1,14 @@
 import asyncio
 import logging
+from collections.abc import Callable
+from datetime import datetime, timedelta
+from typing import Any
 
 from bleak import BleakClient, BLEDevice
 from bleak_retry_connector import establish_connection
 from homeassistant.components import bluetooth
 from homeassistant.core import HomeAssistant, callback
+from homeassistant.helpers.event import async_track_point_in_time
 
 from .const import DOMAIN
 from .homewhiz import Command, HomewhizCoordinator
@@ -26,6 +30,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         self.alive = True
         # To ensure that only one reconnect is performed at a time
         self._reconnecting = False
+        self._reconnect_after_24_hours_task: None | Callable = None
         super().__init__(hass, _LOGGER, name=DOMAIN)
 
     async def connect(self) -> bool:
@@ -66,6 +71,14 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         assert service_info is not None
         _LOGGER.info(f"Successfully connected. RSSI: {service_info.rssi}")
 
+        # Reconnect after 24 hours
+        self._reconnect_after_24_hours_task = async_track_point_in_time(
+            hass=self.hass,
+            action=self.handle_disconnect,
+            point_in_time=datetime.now() + timedelta(hours=24),
+        )
+        _LOGGER.debug("Reconnect after 24 hours task set")
+
         return True
 
     async def try_reconnect(self) -> None:
@@ -95,8 +108,8 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                 await asyncio.sleep(30)
 
     @callback
-    def handle_disconnect(self) -> None:
-        _LOGGER.debug("Hanndling disconnect...")
+    def handle_disconnect(self, *args: Any) -> None:
+        _LOGGER.debug("Hanndling disconnect%s...", " by time interval" if args else "")
         self._device = None
         # Ensure device is disconnected
         if self._connection:
@@ -105,6 +118,11 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         self._connection = None
         self.async_set_updated_data(None)
         _LOGGER.info(f"[{self.address}] Disconnected")
+
+        if self._reconnect_after_24_hours_task:
+            _LOGGER.debug("Cancelling reconnect after 24 hours task")
+            self._reconnect_after_24_hours_task()
+
         self.hass.create_task(self.try_reconnect())
 
     @callback
