@@ -53,7 +53,7 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
             self._attr_device_class = SensorDeviceClass.TIMESTAMP
 
     @property
-    def extra_state_attributes(self) -> Mapping[str, Any] | None:  # type: ignore[override] #noqa: E501
+    def extra_state_attributes(self) -> Mapping[str, Any] | None:  # type: ignore[override]
         """Attribute to identify the origin of the data used"""
         if isinstance(self._control, SummedTimestampControl):
             return {
