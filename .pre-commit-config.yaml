@@ -5,7 +5,7 @@ repos:
   rev: v3.15.0
   hooks:
   - id: pyupgrade
-    args: [--py311-plus]
+    args: [--py312-plus]
 - repo: https://github.com/PyCQA/autoflake
   rev: v2.2.1
   hooks:
@@ -41,10 +41,12 @@ repos:
   rev: v4.5.0
   hooks:
   - id: check-json
+    exclude: .devcontainer/devcontainer.json
   - id: pretty-format-json
     args:
     - --autofix
     - --no-sort-keys
+    exclude: .devcontainer/devcontainer.json
 - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
   rev: v2.11.0
   hooks:
