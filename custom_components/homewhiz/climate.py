@@ -38,7 +38,7 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
         self._previous_hvac_mode: HVACMode | None = None
 
     @property
-    def supported_features(self) -> ClimateEntityFeature:
+    def supported_features(self) -> ClimateEntityFeature:  # type: ignore[override]
         features = (
             ClimateEntityFeature.TARGET_TEMPERATURE
             | ClimateEntityFeature.FAN_MODE
@@ -50,11 +50,11 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
         return features
 
     @property
-    def hvac_modes(self) -> list[HVACMode]:
+    def hvac_modes(self) -> list[HVACMode]:  # type: ignore[override]
         return self._control.hvac_mode.options
 
     @property
-    def hvac_mode(self) -> HVACMode | None:
+    def hvac_mode(self) -> HVACMode | None:  # type: ignore[override]
         data = self.coordinator.data
         if data is None:
             return None
@@ -79,19 +79,19 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
         )
 
     @property
-    def target_temperature_step(self) -> float:
+    def target_temperature_step(self) -> float:  # type: ignore[override]
         return self._control.target_temperature.bounds.step
 
     @property
-    def target_temperature_low(self) -> float:
+    def target_temperature_low(self) -> float:  # type: ignore[override]
         return self._control.target_temperature.bounds.lowerLimit
 
     @property
-    def target_temperature_high(self) -> float:
+    def target_temperature_high(self) -> float:  # type: ignore[override]
         return self._control.target_temperature.bounds.upperLimit
 
     @property
-    def target_temperature(self) -> float | None:
+    def target_temperature(self) -> float | None:  # type: ignore[override]
         if self.coordinator.data is None:
             return None
         return self._control.target_temperature.get_value(self.coordinator.data)
@@ -103,15 +103,15 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
         )
 
     @property
-    def current_temperature(self) -> float | None:
+    def current_temperature(self) -> float | None:  # type: ignore[override]
         return self._control.current_temperature.get_value(self.coordinator.data)
 
     @property
-    def fan_modes(self) -> list[str]:
+    def fan_modes(self) -> list[str]:  # type: ignore[override]
         return list(self._control.fan_mode.options.values())
 
     @property
-    def fan_mode(self) -> str | None:
+    def fan_mode(self) -> str | None:  # type: ignore[override]
         return self._control.fan_mode.get_value(self.coordinator.data)
 
     async def async_set_fan_mode(self, fan_mode: str) -> None:
@@ -119,11 +119,11 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
         await self.coordinator.send_command(self._control.fan_mode.set_value(fan_mode))
 
     @property
-    def swing_modes(self) -> list[str] | None:
+    def swing_modes(self) -> list[str] | None:  # type: ignore[override]
         return self._control.swing.options
 
     @property
-    def swing_mode(self) -> str | None:
+    def swing_mode(self) -> str | None:  # type: ignore[override]
         if self.coordinator.data is None:
             return None
         return self._control.swing.get_value(self.coordinator.data)

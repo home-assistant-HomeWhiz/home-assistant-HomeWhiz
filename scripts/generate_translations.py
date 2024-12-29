@@ -3,6 +3,7 @@
 Copy the custom_components folder into the scripts folder before running.
 Authenticate with your HomeWhiz account (translations are retrieved from HomeWhiz API)
 """
+
 import asyncio
 import json
 import os

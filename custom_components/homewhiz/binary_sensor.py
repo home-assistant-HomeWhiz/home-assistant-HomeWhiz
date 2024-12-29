@@ -31,7 +31,7 @@ class HomeWhizBinarySensorEntity(HomeWhizEntity, BinarySensorEntity):
         self._control = control
 
     @property
-    def is_on(self) -> bool | None:
+    def is_on(self) -> bool | None:  # type: ignore[override]
         if self.coordinator.data is None:
             return None
         return self._control.get_value(self.coordinator.data)
