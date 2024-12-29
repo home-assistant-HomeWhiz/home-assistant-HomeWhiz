@@ -1,3 +1,5 @@
+default_language_version:
+  python: python3.12
 repos:
 - repo: https://github.com/asottile/pyupgrade
   rev: v3.15.0
@@ -53,7 +55,7 @@ repos:
   hooks:
   - id: mypy
     additional_dependencies:
-    - aiohttp~=3.9.5
+    - aiohttp
     - homeassistant-stubs
     - types-awscrt
     - voluptuous-stubs
@@ -61,4 +63,3 @@ repos:
     - pytest
     - bidict
     - bleak_retry_connector
-    args: []
