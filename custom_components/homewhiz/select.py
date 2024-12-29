@@ -52,7 +52,7 @@ class HomeWhizSelectEntity(HomeWhizEntity, SelectEntity):
         self._attr_options = list(self._control.options.values())
 
     @property
-    def current_option(self) -> str | None:
+    def current_option(self) -> str | None:  # type: ignore[override]
         if not self.available:
             return STATE_UNAVAILABLE
         if self.coordinator.data is None:

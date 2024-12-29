@@ -16,7 +16,8 @@ class Command:
 
 
 class HomewhizCoordinator(
-    ABC, DataUpdateCoordinator[bytearray | None]  # type: ignore[type-arg]
+    ABC,
+    DataUpdateCoordinator[bytearray | None],  # type: ignore[type-arg]
 ):
     @abc.abstractmethod
     async def connect(self) -> bool:

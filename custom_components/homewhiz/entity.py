@@ -56,11 +56,11 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator]):  # type: ignore[ty
                 setattr(self._control, "my_entity_ids", {self.entity_id: self.name})
 
     @property
-    def available(self) -> bool:
+    def available(self) -> bool:  # type: ignore[override]
         return self.coordinator.is_connected
 
     @property
-    def translation_key(self) -> str:
+    def translation_key(self) -> str | None:  # type: ignore[override]
         """Translation key for this entity."""
 
         _LOGGER.debug("Retrieving translation_key %s", self.entity_key.lower())
