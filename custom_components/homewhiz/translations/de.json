@@ -29,8 +29,8 @@
           "device_state_paused": "Pausiert",
           "device_state_time_delay_active": "Zeitverz\u00f6gerung aktiv",
           "device_state_cancelling": "Wird abgebrochen",
-          "device_state_door_open": "T\u00fcr Offen !",
-          "device_state_settings": "\u00a0Einstellungen"
+          "device_state_door_open": "T\u00fcr offen!",
+          "device_state_settings": "Einstellungen"
         }
       },
       "washer_program": {
@@ -40,12 +40,12 @@
           "program_eco_40_60": "ECO\u00a040\u201360",
           "program_synthetics": "Pflegeleicht",
           "program_mini_mini14": "Xpress",
-          "program_wool_handwash": "Woollens",
+          "program_wool_handwash": "Wolle/Handw\u00e4sche",
           "program_delicates": "Feinw\u00e4sche",
           "program_spin_pump": "Spin+Drain",
           "program_rinsing": "Sp\u00fclen",
           "program_darkwash": "Dunkel (Jeans)",
-          "program_outdoor_sports_goretex": "Sport",
+          "program_outdoor_sports_goretex": "Outdoor/Sport",
           "program_stain": "StainCare",
           "program_hygeine": "Hygiene+",
           "program_duvet": "Bettdecke",
