@@ -14,6 +14,9 @@ from homeassistant.helpers.selector import (
     TextSelectorConfig,
     TextSelectorType,
 )
+from homeassistant.core import callback
+from homeassistant.helpers import config_validation as cv
+from homeassistant.config_entries import ConfigEntry, OptionsFlow
 
 from .api import (
     ApplianceContents,
@@ -26,7 +29,7 @@ from .api import (
     login,
     make_id_exchange_request,
 )
-from .const import DOMAIN
+from .const import DOMAIN, CONF_BT_RECONNECT_INTERVAL
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
@@ -238,4 +241,68 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
         return self.async_show_form(
             step_id="select_cloud_device",
             data_schema=vol.Schema({vol.Required(CONF_ID): vol.In(options)}),
+        )
+
+    @staticmethod
+    @callback
+    def async_get_options_flow(
+        config_entry: ConfigEntry,
+    ) -> OptionsFlow:
+        """Create the options flow."""
+        # Cloud
+        if config_entry.data["cloud_config"] is not None:
+            return CloudOptionsFlowHandler(config_entry)
+        # Bluetooth
+        return BluetoothOptionsFlowHandler(config_entry)
+
+
+class CloudOptionsFlowHandler(OptionsFlow):
+    def __init__(self, config_entry: ConfigEntry) -> None:
+        """Initialize options flow."""
+        self.config_entry = config_entry
+
+    async def async_step_init(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
+        """Manage the options."""
+        if user_input is not None:
+            return self.async_create_entry(title="", data=user_input)
+
+        return self.async_show_form(
+            step_id="init",
+            data_schema=vol.Schema({}),
+        )
+
+
+class BluetoothOptionsFlowHandler(OptionsFlow):
+    def __init__(self, config_entry: ConfigEntry) -> None:
+        """Initialize options flow."""
+        self._config_entry = config_entry
+
+    async def async_step_init(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
+        """Manage the options."""
+        if user_input is not None:
+            _LOGGER.debug(f"Reloading entries after updating options: {user_input}")
+            self.hass.config_entries.async_update_entry(
+                self._config_entry, options=user_input
+            )
+            await self.hass.config_entries.async_reload(self._config_entry.entry_id)
+            return self.async_create_entry(title="", data=user_input)
+
+        return self.async_show_form(
+            step_id="init",
+            data_schema=vol.Schema(
+                {
+                    vol.Optional(
+                        CONF_BT_RECONNECT_INTERVAL,
+                        description={
+                            "suggested_value": self._config_entry.options.get(
+                                CONF_BT_RECONNECT_INTERVAL, None
+                            )
+                        },
+                    ): cv.positive_int,
+                }
+            ),
         )
