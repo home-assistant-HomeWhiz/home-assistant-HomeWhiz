@@ -62,7 +62,4 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator]):  # type: ignore[ty
     @property
     def translation_key(self) -> str | None:  # type: ignore[override]
         """Translation key for this entity."""
-
-        _LOGGER.debug("Retrieving translation_key %s", self.entity_key.lower())
-
         return self.entity_key.lower().split("#")[0]
