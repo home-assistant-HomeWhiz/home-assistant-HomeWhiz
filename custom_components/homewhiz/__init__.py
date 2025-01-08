@@ -19,7 +19,7 @@ from .api import IdExchangeResponse
 from .bluetooth import HomewhizBluetoothUpdateCoordinator
 from .cloud import HomewhizCloudUpdateCoordinator
 from .config_flow import CloudConfig
-from .const import DOMAIN, PLATFORMS
+from .const import CONF_BT_RECONNECT_INTERVAL, DOMAIN, PLATFORMS
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
@@ -48,7 +48,9 @@ async def setup_bluetooth(
         return False
 
     coordinator = hass.data.setdefault(DOMAIN, {})[entry.entry_id] = (
-        HomewhizBluetoothUpdateCoordinator(hass, entry.unique_id)
+        HomewhizBluetoothUpdateCoordinator(
+            hass, entry.unique_id, entry.options.get(CONF_BT_RECONNECT_INTERVAL)
+        )
     )
 
     @callback
