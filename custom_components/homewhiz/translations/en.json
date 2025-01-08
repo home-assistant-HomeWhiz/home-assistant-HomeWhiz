@@ -881,7 +881,7 @@
     "step": {
       "init": {
         "title": "Homewhiz Options",
-        "description": "Allows for advanced configuration of the integration. ",
+        "description": "Allows for advanced configuration of the integration.",
         "data": {
           "bt_reconnect_interval": "Interval at which to reconnect Bluetooth (in hours)"
         }
