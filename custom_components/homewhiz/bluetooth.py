@@ -117,17 +117,27 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
 
         self._reconnect_interval_task = async_track_point_in_time(
             hass=self.hass,
-            action=self.handle_disconnect,
+            action=self.reconnect_callback,
             point_in_time=datetime.now()
-            + timedelta(minutes=float(self._reconnect_interval)),
+            + timedelta(hours=float(self._reconnect_interval)),
         )
         _LOGGER.debug("Reconnect after %s hours task set", self._reconnect_interval)
 
     @callback
-    def disconnected_callback(self, client: BleakClient) -> None:
-        # This is only for logging purposes
+    def disconnected_callback(self, client: BleakClient | None = None) -> None:
         _LOGGER.debug("Disconnected callback")
-        self.handle_disconnect()
+        # Prevent locking when home assistant is shutting down
+        if not self.alive:
+            _LOGGER.debug("Disconnected callback called but not alive")
+            return
+        self.hass.create_task(self.handle_disconnect())
+
+    @callback
+    def reconnect_callback(self, *args: Any) -> None:
+        # Trigger a disconnect, the disconnected_callback will trigger the reconnect
+        _LOGGER.debug("Reconnect callback")
+        if self.alive and self._connection:
+            self.hass.create_task(self._connection.disconnect())
 
     async def try_reconnect(self) -> None:
         _LOGGER.debug(f"[{self.address}] Trying to reconnect")
@@ -155,17 +165,16 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                 _LOGGER.exception("Can't reconnect. Waiting 30 seconds to try again")
                 await asyncio.sleep(30)
 
-    def handle_disconnect(self, *args: Any) -> None:
+    async def handle_disconnect(self, *args: Any) -> None:
         _LOGGER.debug("Handling disconnect%s...", " by time interval" if args else "")
         self._device = None
+        # Ensure device is disconnected
+        if self._connection:
+            _LOGGER.info("Triggering disconnect")
+            await self._connection.disconnect()
+        self.hass.add_job(self.async_set_updated_data, None)
         self._connection = None
-        self.async_set_updated_data(None)
         _LOGGER.info(f"[{self.address}] Disconnected")
-
-        if self._reconnect_interval_task:
-            _LOGGER.debug("Recreating reconnect task")
-            self.create_reconnect_interval_task()
-
         self.hass.create_task(self.try_reconnect())
 
     @callback
