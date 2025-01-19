@@ -441,10 +441,12 @@ def get_bounded_values_options(
 def get_options_from_feature(key: str, feature: ApplianceFeature) -> bidict[int, str]:
     options: bidict[int, str] = bidict()
     if feature.enumValues is not None:
-        options = options | {
-            option.wifiArrayValue: to_friendly_name(option.strKey)
-            for option in feature.enumValues
-        }
+        for option in feature.enumValues:
+            friendly_name = to_friendly_name(option.strKey)
+            # Friendly names are not always unique
+            if friendly_name in options.inverse:
+                friendly_name = f"{friendly_name}_{option.wifiArrayValue}"
+            options[option.wifiArrayValue] = friendly_name
     if feature.boundedValues is not None:
         for boundedValues in feature.boundedValues:
             options = (
