@@ -6,7 +6,7 @@ import uuid
 from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
-from typing import Any
+from typing import List, Any
 
 from dacite import from_dict
 from homeassistant.config_entries import ConfigEntry
@@ -26,33 +26,45 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 
 
 @dataclass
-class Reported:
-    connected: bool | str | None
-    wfaStartOffset: str
-    wfaSize: str | int
-    brand: str | int
-    applianceType: str | int
-    model: str
-    applianceId: str
-    macAddr: str
-    wfa: list[int]
-    modifiedTime: int | None
-    wfaSizeModifiedTime: int | None
-
+class MetadataReported:
+    connected: MetadataTimestamp | None = None
+    netCardSWVersion: MetadataTimestamp | None = None
+    macAddr: MetadataTimestamp | None = None
+    model: MetadataTimestamp | None = None
+    applianceId: MetadataTimestamp | None = None
+    proxToken: MetadataTimestamp | None = None
+    applianceType: MetadataTimestamp | None = None
+    wfaSize: MetadataTimestamp | None = None
+    wfaStartOffset: MetadataTimestamp | None = None
+    wfa: List[MetadataTimestamp] | None = None
 
 @dataclass
-class Metadata:
-    reported: Reported
-
+class StateReported:
+    connected: str | None = None
+    netCardSWVersion: str | None = None
+    macAddr: str | None = None
+    model: str | None = None
+    applianceId: str | None = None
+    proxToken: str | None = None
+    applianceType: int | None = None
+    wfaSize: int | None = None
+    wfaStartOffset: int | None = None
+    wfa: List[int] | None = None
 
 @dataclass
 class State:
-    reported: Reported
+    reported: StateReported
 
+@dataclass
+class Metadata:
+    reported: MetadataReported
 
 @dataclass
 class MqttPayload:
     state: State
+    metadata: Metadata
+    version: int
+    timestamp: int
 
 
 class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
