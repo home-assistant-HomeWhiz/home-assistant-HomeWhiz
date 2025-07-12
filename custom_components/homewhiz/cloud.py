@@ -255,7 +255,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         _LOGGER.debug("Handling notify")
         _LOGGER.debug("Payload: %s", payload)
         message = from_dict(MqttPayload, json.loads(payload))
-        offset = int(message.state.reported.wfaStartOffset)
+        offset = int(message.state.reported.wfaStartOffset or 26)
         padding = [0 for _ in range(0, offset)]
         data = bytearray(padding + message.state.reported.wfa)
         _LOGGER.debug(f"Message received: {data}")
