@@ -287,7 +287,7 @@ class BluetoothOptionsFlowHandler(OptionsFlow):
     ) -> ConfigFlowResult:
         """Manage the options."""
         if user_input is not None:
-            _LOGGER.debug(f"Reloading entries after updating options: {user_input}")
+            _LOGGER.debug("Reloading entries after updating options: %s", user_input)
             self.hass.config_entries.async_update_entry(
                 self._config_entry, options=user_input
             )

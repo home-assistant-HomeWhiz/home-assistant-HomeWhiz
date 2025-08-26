@@ -48,7 +48,7 @@ async def async_setup_entry(
         for c in controls
         if isinstance(c, BooleanControl) and not isinstance(c, WriteBooleanControl)
     ]
-    _LOGGER.debug(f"Binary sensors: {[c.key for c in boolean_controls]}")
+    _LOGGER.debug("Binary sensors: %s", [c.key for c in boolean_controls])
     async_add_entities(
         [
             HomeWhizBinarySensorEntity(coordinator, control, entry.title, data)

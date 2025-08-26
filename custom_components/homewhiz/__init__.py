@@ -25,7 +25,7 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
-    _LOGGER.info(f"Setting up entry {entry.unique_id}")
+    _LOGGER.info("Setting up entry %s", entry.unique_id)
     address = entry.unique_id
     if "ids" not in entry.data:
         raise Exception(
@@ -107,7 +107,7 @@ async def setup_cloud(entry: ConfigEntry, hass: HomeAssistant) -> bool:
 
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
-    _LOGGER.info(f"Unloading entry {entry.unique_id}")
+    _LOGGER.info("Unloading entry %s", entry.unique_id)
     await hass.data[DOMAIN][entry.entry_id].kill()
     if unload_ok := await hass.config_entries.async_unload_platforms(entry, PLATFORMS):
         hass.data[DOMAIN].pop(entry.entry_id)

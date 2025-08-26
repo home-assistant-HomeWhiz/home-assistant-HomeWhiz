@@ -105,7 +105,7 @@ async def async_setup_entry(
         )
     ]
 
-    _LOGGER.debug(f"Sensors: {[c.key for c in sensor_controls]}")
+    _LOGGER.debug("Sensors: %s", [c.key for c in sensor_controls])
 
     homewhiz_sensor_entities = [
         HomeWhizSensorEntity(coordinator, control, entry.title, data)
