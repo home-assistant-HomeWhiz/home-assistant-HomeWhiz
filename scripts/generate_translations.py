@@ -137,7 +137,7 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
         appliance_localizations = contents.localization
         appliance_config = contents.config
         print(
-            f"{appliance_id} localizations: language {language}: {len(appliance_localizations.keys())}"  # noqa: E501
+            f"{appliance_id} localizations: language {language}: {len(appliance_localizations.keys())}"
         )
 
         # Merge localizations
@@ -150,7 +150,7 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
             control
             for control in controls
             if isinstance(control, WriteEnumControl)
-            or isinstance(control, WriteNumericControl)  # noqa: E501
+            or isinstance(control, WriteNumericControl)
             # Untested
             or isinstance(control, SwingAxisControl)
             or isinstance(control, SwingControl)
@@ -165,9 +165,11 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
             or isinstance(control, NumericControl)
             or isinstance(control, TimeControl)
             # Untested
-            or isinstance(control, DisabledSwingAxisControl)
-            and not isinstance(control, WriteEnumControl)
-            and not isinstance(control, WriteNumericControl)
+            or (
+                isinstance(control, DisabledSwingAxisControl)
+                and not isinstance(control, WriteEnumControl)
+                and not isinstance(control, WriteNumericControl)
+            )
         ]
         #  .binary_sensor   BooleanControl,WriteBooleanControl
         binary_sensor_controls = [
@@ -241,7 +243,7 @@ async def generate_translations(credentials: LoginResponse, short_code: str) -> 
                     None, translator.translate, key
                 )
                 print(
-                    f"Translating key '{key}' to language '{short_code}' as: '{translation}'"  # noqa: E501
+                    f"Translating key '{key}' to language '{short_code}' as: '{translation}'"
                 )
             else:
                 translation = translator_cache[key]

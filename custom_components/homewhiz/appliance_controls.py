@@ -3,7 +3,7 @@ import re
 from abc import ABC, abstractmethod
 from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass, fields
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from typing import Any, Generic, TypeVar
 
 from bidict import bidict
@@ -184,9 +184,7 @@ class SummedTimestampControl(Control):
 
         time_delta = timedelta(minutes=minute_delta)
         _LOGGER.debug("Calculated time delta of %s", time_delta)
-        time_est = (
-            datetime.now(timezone.utc).replace(second=0, microsecond=0) + time_delta
-        )
+        time_est = datetime.now(UTC).replace(second=0, microsecond=0) + time_delta
         _LOGGER.debug("Calculated time of %s", time_est)
         return time_est
 
@@ -334,8 +332,8 @@ class SwingControl(Control):
         return SWING_OFF
 
     def set_value(self, value: str, current_data: bytearray) -> list[Command]:
-        value_horizontal = value == SWING_HORIZONTAL or value == SWING_BOTH
-        value_vertical = value == SWING_VERTICAL or value == SWING_BOTH
+        value_horizontal = value in (SWING_HORIZONTAL, SWING_BOTH)
+        value_vertical = value in (SWING_VERTICAL, SWING_BOTH)
         return self.horizontal.set_value(
             value_horizontal, current_data
         ) + self.vertical.set_value(value_vertical, current_data)
@@ -608,7 +606,7 @@ def build_controls_from_progress_variables(
         feature_key = feature_key_tuple[0]
 
         # Key for the new remaining time control
-        remaining_key: str = "_".join(calculation_key.split("_")[:-1] + ["remaining"])
+        remaining_key: str = "_".join([*calculation_key.split("_")[:-1], "remaining"])
         _LOGGER.debug(
             "Detected time based calculated feature %s "
             "end time calculations will based on %s",
@@ -762,8 +760,6 @@ def generate_controls_from_config(
     key: str,
     config: ApplianceConfiguration,
 ) -> list[Control]:
-    global controls
-
     if key not in controls:
         possible_controls: list[Control | None] = [
             build_control_from_state(config.deviceStates),

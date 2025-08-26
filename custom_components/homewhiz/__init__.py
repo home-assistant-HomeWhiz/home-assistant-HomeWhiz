@@ -34,8 +34,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         )
     if entry.data["cloud_config"] is not None:
         return await setup_cloud(entry, hass)
-    else:
-        return await setup_bluetooth(address, entry, hass)
+    return await setup_bluetooth(address, entry, hass)
 
 
 async def setup_bluetooth(

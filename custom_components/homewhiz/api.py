@@ -77,7 +77,7 @@ class ApplianceInfo:
     connectivity: str = "BT"
 
     def is_bt(self) -> bool:
-        return self == "BT" or self == "BASICBT"
+        return self in {"BT", "BASICBT"}
 
 
 @dataclass
@@ -102,51 +102,57 @@ def get_signature_key(
     kRegion = sign(kDate, region_name)
     kService = sign(kRegion, service_name)
     kSigning = sign(kService, "aws4_request")
-    return kSigning
+    return kSigning  # noqa: RET504
 
 
 async def login(username: str, password: str) -> LoginResponse:
     request_parameters = {"password": password, "username": username}
 
-    async with aiohttp.ClientSession() as session:
-        async with session.post(
+    async with (
+        aiohttp.ClientSession() as session,
+        session.post(
             "https://api.arcelikiot.com/auth/login",
             json=request_parameters,
-        ) as response:
-            contents = await response.json()
-            if not contents["success"]:
-                _LOGGER.error(json.dumps(contents, indent=4))
-                raise LoginError(contents)
-            data = contents["data"]
-            return from_dict(LoginResponse, data["credentials"])
+        ) as response,
+    ):
+        contents = await response.json()
+        if not contents["success"]:
+            _LOGGER.error(json.dumps(contents, indent=4))
+            raise LoginError(contents)
+        data = contents["data"]
+        return from_dict(LoginResponse, data["credentials"])
 
 
 async def make_id_exchange_request(device_name: str) -> IdExchangeResponse:
     hsmid = device_name[4:]
     _LOGGER.debug(f"hsmid: {hsmid}")
-    async with aiohttp.ClientSession() as session:
-        async with session.get(
+    async with (
+        aiohttp.ClientSession() as session,
+        session.get(
             f"https://idexchange.arcelikiot.com/GetApplianceId?hsmid={hsmid}",
-        ) as response:
-            if not response.ok:
-                _LOGGER.error(await response.text())
-                raise RequestError()
-            contents = json.loads(await response.text())
-            return from_dict(IdExchangeResponse, contents)
+        ) as response,
+    ):
+        if not response.ok:
+            _LOGGER.error(await response.text())
+            raise RequestError
+        contents = json.loads(await response.text())
+        return from_dict(IdExchangeResponse, contents)
 
 
 async def make_get_contents_request(contents: ContentsDescription) -> Any:
-    async with aiohttp.ClientSession() as session:
-        async with session.get(
+    async with (
+        aiohttp.ClientSession() as session,
+        session.get(
             f"https://s3-eu-west-1.amazonaws.com/procam-contents"
             f"/{contents.ctype}S/{contents.cid}"
             f"/v{contents.ver}"
             f"/{contents.cid}.{contents.lang}.json",
-        ) as response:
-            if not response.ok:
-                _LOGGER.error(await response.text())
-                raise RequestError()
-            return json.loads(await response.text())
+        ) as response,
+    ):
+        if not response.ok:
+            _LOGGER.error(await response.text())
+            raise RequestError
+        return json.loads(await response.text())
 
 
 async def make_api_get_request(
@@ -155,13 +161,13 @@ async def make_api_get_request(
     canonical_uri: str,
     canonical_querystring: str = "",
 ) -> Any:
-    t = datetime.datetime.utcnow()
+    t = datetime.datetime.now(tz=datetime.UTC)
     amz_date = t.strftime("%Y%m%dT%H%M%SZ")
     date_stamp = t.strftime("%Y%m%d")  # Date w/o time, used in credential scope
     canonical_headers = (
         f"host:{host}\n"
-        + f"x-amz-date:{amz_date}\n"
-        + f"x-amz-security-token:{credentials.sessionToken}\n"
+        f"x-amz-date:{amz_date}\n"
+        f"x-amz-security-token:{credentials.sessionToken}\n"
     )
     signed_headers = "host;x-amz-date;x-amz-security-token"
     payload_hash = hashlib.sha256(b"").hexdigest()
@@ -176,7 +182,7 @@ async def make_api_get_request(
     )
 
     _LOGGER.debug(
-        "Actual canonical request: {}".format(canonical_request.replace("\n", "\\n"))
+        "Actual canonical request: {}".format(canonical_request.replace("\n", "\\n"))  # noqa: G001
     )
 
     credential_scope = f"{date_stamp}/{REGION}/{SERVICE}/aws4_request"
@@ -205,19 +211,21 @@ async def make_api_get_request(
         "Authorization": authorization_header,
     }
 
-    async with aiohttp.ClientSession() as session:
-        async with session.get(
+    async with (
+        aiohttp.ClientSession() as session,
+        session.get(
             f"https://{host}{canonical_uri}?{canonical_querystring}", headers=headers
-        ) as response:
-            try:
-                contents = await response.json()
-                if not contents["success"]:
-                    _LOGGER.error(json.dumps(contents, indent=4))
-                    raise RequestError(contents)
-                return contents
-            except ContentTypeError:
-                _LOGGER.error(await response.text())
+        ) as response,
+    ):
+        try:
+            contents = await response.json()
+            if not contents["success"]:
+                _LOGGER.error(json.dumps(contents, indent=4))
                 raise RequestError(contents)
+            return contents  # noqa: TRY300
+        except ContentTypeError as err:
+            _LOGGER.error(await response.text())
+            raise RequestError(contents) from err
 
 
 async def fetch_contents_index(
@@ -244,10 +252,7 @@ async def fetch_base_contents_index(
         host="api.arcelikiot.com",
         canonical_uri="/procam/contents/subtype",
         canonical_querystring=(
-            f"ctype=LOCALIZATION&"
-            f"lang={language}&"
-            f"subtype=NEW-HOMEWHIZ&"
-            f"testMode=false"
+            f"ctype=LOCALIZATION&lang={language}&subtype=NEW-HOMEWHIZ&testMode=false"
         ),
         credentials=credentials,
     )

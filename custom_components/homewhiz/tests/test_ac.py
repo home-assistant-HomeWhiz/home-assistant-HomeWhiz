@@ -1,7 +1,7 @@
 import json
-import os
-from unittest import TestCase
 from pathlib import Path
+from unittest import TestCase
+
 import pytest
 from dacite import from_dict
 from homeassistant.components.climate import SWING_OFF, HVACMode  # type: ignore[import]
