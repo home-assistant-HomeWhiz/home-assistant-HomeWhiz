@@ -3,3 +3,4 @@ serial
 pyserial
 bluetooth_auto_recovery
 dbus_fast
+aiousbwatcher

@@ -1,29 +1,19 @@
 default_language_version:
-  python: python3.12
+  python: python3.13
 repos:
-- repo: https://github.com/asottile/pyupgrade
-  rev: v3.19.1
-  hooks:
-  - id: pyupgrade
-    args: [--py312-plus]
-- repo: https://github.com/PyCQA/autoflake
-  rev: v2.3.1
-  hooks:
-  - id: autoflake
-    args:
-    - --in-place
-    - --remove-all-unused-imports
 - repo: https://github.com/astral-sh/ruff-pre-commit
   # Ruff version.
-  rev: v0.8.4
+  rev: v0.12.10
   hooks:
     # Run the linter.
   - id: ruff
     args: [--fix]
+    files: ^((custom_components)/.+)?[^/]+\.(py|pyi)$
     # Run the formatter.
   - id: ruff-format
+    files: ^((custom_components)/.+)?[^/]+\.(py|pyi)$
 - repo: https://github.com/codespell-project/codespell
-  rev: v2.3.0
+  rev: v2.4.1
   hooks:
   - id: codespell
     args:
@@ -32,7 +22,7 @@ repos:
     - --quiet-level=2
     exclude_types: [csv, json]
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v5.0.0
+  rev: v6.0.0
   hooks:
   - id: check-json
     exclude: .devcontainer/devcontainer.json
@@ -42,12 +32,12 @@ repos:
     - --no-sort-keys
     exclude: .devcontainer/devcontainer.json
 - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-  rev: v2.14.0
+  rev: v2.15.0
   hooks:
   - id: pretty-format-yaml
     args: [--autofix, --indent, '2']
 - repo: https://github.com/pre-commit/mirrors-mypy
-  rev: v1.14.0
+  rev: v1.17.1
   hooks:
   - id: mypy
     additional_dependencies:

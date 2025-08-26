@@ -65,7 +65,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
     ) -> None:
         # Place awscrt imports within class
         # (awscrt module can sometimes not be installed automatically)
-        from awscrt import mqtt
+        from awscrt import mqtt  # noqa: PLC0415
 
         self._appliance_id = appliance_id
         self._hass = hass
@@ -81,9 +81,11 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         super().__init__(hass, _LOGGER, name=DOMAIN)
 
     async def connect(self) -> bool:
-        from awscrt.auth import AwsCredentialsProvider
-        from awscrt.exceptions import AwsCrtError
-        from awsiot import mqtt_connection_builder  # type: ignore[import]
+        from awscrt.auth import AwsCredentialsProvider  # noqa: PLC0415
+        from awscrt.exceptions import AwsCrtError  # noqa: PLC0415
+        from awsiot import (  # noqa: PLC0415, # type: ignore[import],
+            mqtt_connection_builder,
+        )
 
         _LOGGER.info(f"Connecting to {self._appliance_id}")
         credentials = await login(
@@ -240,7 +242,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         _LOGGER.debug("Payload: %s", payload)
         message = from_dict(MqttPayload, json.loads(payload))
         offset = int(message.state.reported.wfaStartOffset)
-        padding = [0 for _ in range(0, offset)]
+        padding = [0 for _ in range(offset)]
         data = bytearray(padding + message.state.reported.wfa)
         _LOGGER.debug(f"Message received: {data}")
         self.hass.loop.call_soon_threadsafe(self.async_set_updated_data, data)

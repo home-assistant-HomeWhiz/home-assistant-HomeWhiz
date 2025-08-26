@@ -70,9 +70,7 @@ async def async_setup_entry(
     coordinator = hass.data[DOMAIN][entry.entry_id]
     controls = generate_controls_from_config(entry.entry_id, data.contents.config)
     write_enum_controls = [
-        c
-        for c in controls
-        if isinstance(c, WriteEnumControl) or isinstance(c, WriteNumericControl)
+        c for c in controls if isinstance(c, (WriteEnumControl, WriteNumericControl))
     ]
     _LOGGER.debug(f"Selects: {[c.key for c in write_enum_controls]}")
     async_add_entities(

@@ -7,16 +7,20 @@ from homeassistant.components.bluetooth import (
     BluetoothServiceInfoBleak,
     async_discovered_service_info,
 )
-from homeassistant.config_entries import ConfigFlow, ConfigFlowResult
+from homeassistant.config_entries import (
+    ConfigEntry,
+    ConfigFlow,
+    ConfigFlowResult,
+    OptionsFlow,
+)
 from homeassistant.const import CONF_ADDRESS, CONF_ID, CONF_PASSWORD, CONF_USERNAME
+from homeassistant.core import callback
+from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers.selector import (
     TextSelector,
     TextSelectorConfig,
     TextSelectorType,
 )
-from homeassistant.core import callback
-from homeassistant.helpers import config_validation as cv
-from homeassistant.config_entries import ConfigEntry, OptionsFlow
 
 from .api import (
     ApplianceContents,
@@ -29,7 +33,7 @@ from .api import (
     login,
     make_id_exchange_request,
 )
-from .const import DOMAIN, CONF_BT_RECONNECT_INTERVAL
+from .const import CONF_BT_RECONNECT_INTERVAL, DOMAIN
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
@@ -113,8 +117,7 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
     async def async_step_bluetooth_connect(
         self, user_input: dict[str, Any] | None = None
     ) -> ConfigFlowResult:
-        """
-        Handle the user step to provide HomeWhiz credentials.
+        """Handle the user step to provide HomeWhiz credentials.
         Credentials are used to fetch appliance config
         """
         errors = {}

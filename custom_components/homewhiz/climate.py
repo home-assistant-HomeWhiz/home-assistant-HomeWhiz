@@ -64,7 +64,7 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
         _LOGGER.debug(f"Changing HVAC mode {hvac_mode}")
         data = self.coordinator.data
         if data is None:
-            return None
+            return
         commands = self._control.hvac_mode.set_value(hvac_mode, data)
         for command in commands:
             await self.coordinator.send_command(command)
@@ -96,7 +96,7 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
             return None
         return self._control.target_temperature.get_value(self.coordinator.data)
 
-    async def async_set_temperature(self, temperature: float, **kwargs: Any) -> None:  # type: ignore[override] # noqa: E501
+    async def async_set_temperature(self, temperature: float, **kwargs: Any) -> None:  # type: ignore[override]
         _LOGGER.debug(f"Changing temperature {temperature}")
         await self.coordinator.send_command(
             self._control.target_temperature.set_value(temperature)
@@ -131,7 +131,7 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
     async def async_set_swing_mode(self, swing_mode: str) -> None:
         _LOGGER.debug(f"Changing swing mode {swing_mode}")
         if self.coordinator.data is None:
-            return None
+            return
         commands = self._control.swing.set_value(swing_mode, self.coordinator.data)
         for command in commands:
             await self.coordinator.send_command(command)

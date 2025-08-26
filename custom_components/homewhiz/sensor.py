@@ -58,7 +58,7 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
         if isinstance(self._control, SummedTimestampControl):
             return {
                 "sources": [
-                    getattr(x, "my_entity_ids")
+                    x.my_entity_ids
                     for x in self._control.sensors
                     if hasattr(x, "my_entity_ids")
                 ]

@@ -1,5 +1,5 @@
 import json
-import os
+from pathlib import Path
 from unittest import TestCase
 
 import pytest
@@ -38,9 +38,8 @@ data_auto = bytearray(
 
 @pytest.fixture
 def config() -> ApplianceConfiguration:
-    dirname = os.path.dirname(__file__)
-    file_path = os.path.join(dirname, "fixtures/example_ac_config.json")
-    with open(file_path) as file:
+    file_path = Path(__file__).parent / "fixtures/example_ac_config.json"
+    with file_path.open() as file:
         json_content = json.load(file)
         return from_dict(ApplianceConfiguration, json_content)
 
