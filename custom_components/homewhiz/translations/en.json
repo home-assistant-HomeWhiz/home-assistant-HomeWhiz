@@ -811,6 +811,17 @@
     },
     "climate": {
       "ac": {
+        "state_attributes": {
+          "fan_mode": {
+            "name": "Fan speed",
+            "state": {
+              "wind_strength_auto": "Auto",
+              "wind_strength_low": "Low",
+              "wind_strength_mid": "Medium",
+              "wind_strength_high": "High"
+            }
+          }
+        },
         "name": "Ac"
       }
     },
