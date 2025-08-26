@@ -4,6 +4,20 @@
       "washer_steam": {
         "default": "mdi:weather-fog"
       }
+    },
+    "climate": {
+      "ac": {
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "wind_strength_auto": "mdi:fan-auto",
+              "wind_strength_low": "mdi:fan-speed-1",
+              "wind_strength_mid": "mdi:fan-speed-2",
+              "wind_strength_high": "mdi:fan-speed-3"
+            }
+          }
+        }
+      }
     }
   }
 }
