@@ -87,12 +87,12 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             mqtt_connection_builder,
         )
 
-        _LOGGER.info(f"Connecting to {self._appliance_id}")
+        _LOGGER.info("Connecting to %s", self._appliance_id)
         credentials = await login(
             self._cloud_config.username, self._cloud_config.password
         )
         expiration = datetime.fromtimestamp(credentials.expiration / 1000, tz=UTC)
-        _LOGGER.debug(f"Credentials expire at: {expiration}")
+        _LOGGER.debug("Credentials expire at: %s", expiration)
 
         credentials_provider = AwsCredentialsProvider.new_static(
             access_key_id=credentials.accessKey,
@@ -178,7 +178,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
 
     @callback
     def on_connection_interrupted(self, error: str, **kwargs: Any) -> None:
-        _LOGGER.debug(f"Connection interrupted {error}")
+        _LOGGER.debug("Connection interrupted %s", error)
         self._is_connected = False
 
     @callback
@@ -207,7 +207,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             json.dumps(force_read),
             qos=self._mqtt.QoS.AT_MOST_ONCE,
         )
-        _LOGGER.debug(f"Force read result: {publish.result()}")
+        _LOGGER.debug("Force read result: %s", publish.result())
 
     def get_shadow(self, *args: Any) -> None:
         assert self._connection is not None
@@ -216,7 +216,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             "{}",
             qos=self._mqtt.QoS.AT_MOST_ONCE,
         )
-        _LOGGER.debug(f"Get shadow result: {publish.result()}")
+        _LOGGER.debug("Get shadow result: %s", publish.result())
 
     async def send_command(self, command: Command) -> None:
         suffix = "/tuyacommand" if self._is_tuya else "/command"
@@ -233,8 +233,8 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             message,
             qos=self._mqtt.QoS.AT_LEAST_ONCE,
         )
-        _LOGGER.debug(f"Sending command {command.index}:{command.value}")
-        _LOGGER.debug(f"Command result: {publish.result()}")
+        _LOGGER.debug("Sending command %s:%s", command.index, command.value)
+        _LOGGER.debug("Command result: %s", publish.result())
 
     @callback
     def handle_notify(self, payload: str) -> None:
@@ -244,7 +244,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         offset = int(message.state.reported.wfaStartOffset)
         padding = [0 for _ in range(offset)]
         data = bytearray(padding + message.state.reported.wfa)
-        _LOGGER.debug(f"Message received: {data}")
+        _LOGGER.debug("Message received: %s", data)
         self.hass.loop.call_soon_threadsafe(self.async_set_updated_data, data)
 
     @property

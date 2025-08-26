@@ -72,7 +72,7 @@ async def async_setup_entry(
     write_enum_controls = [
         c for c in controls if isinstance(c, (WriteEnumControl, WriteNumericControl))
     ]
-    _LOGGER.debug(f"Selects: {[c.key for c in write_enum_controls]}")
+    _LOGGER.debug("Selects: %s", [c.key for c in write_enum_controls])
     async_add_entities(
         [
             HomeWhizSelectEntity(coordinator, control, entry.title, data)

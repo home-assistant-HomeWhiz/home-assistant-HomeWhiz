@@ -125,7 +125,7 @@ async def login(username: str, password: str) -> LoginResponse:
 
 async def make_id_exchange_request(device_name: str) -> IdExchangeResponse:
     hsmid = device_name[4:]
-    _LOGGER.debug(f"hsmid: {hsmid}")
+    _LOGGER.debug("hsmid: %s", hsmid)
     async with (
         aiohttp.ClientSession() as session,
         session.get(
