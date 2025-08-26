@@ -819,9 +819,9 @@
               "wind_strength_low": "Low",
               "wind_strength_mid": "Medium",
               "wind_strength_high": "High"
-              }
             }
-          },
+          }
+        },
         "name": "Ac"
       }
     },
