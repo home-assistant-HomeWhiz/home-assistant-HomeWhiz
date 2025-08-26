@@ -28,7 +28,6 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 @dataclass
 class Reported:
     connected: bool | str | None
-    wfaStartOffset: str | int
     wfaSize: str | int
     brand: str | int
     applianceType: str | int
@@ -38,6 +37,7 @@ class Reported:
     wfa: list[int]
     modifiedTime: int | None
     wfaSizeModifiedTime: int | None
+    wfaStartOffset: str | int = 26
 
 
 @dataclass
