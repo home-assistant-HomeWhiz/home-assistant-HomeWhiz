@@ -28,7 +28,7 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 @dataclass
 class Reported:
     connected: bool | str | None
-    wfaStartOffset: str
+    wfaStartOffset: str | int
     wfaSize: str | int
     brand: str | int
     applianceType: str | int
