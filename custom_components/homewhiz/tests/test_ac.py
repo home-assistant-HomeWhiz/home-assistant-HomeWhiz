@@ -1,7 +1,7 @@
 import json
 import os
 from unittest import TestCase
-
+from pathlib import Path
 import pytest
 from dacite import from_dict
 from homeassistant.components.climate import SWING_OFF, HVACMode  # type: ignore[import]
@@ -38,9 +38,8 @@ data_auto = bytearray(
 
 @pytest.fixture
 def config() -> ApplianceConfiguration:
-    dirname = os.path.dirname(__file__)
-    file_path = os.path.join(dirname, "fixtures/example_ac_config.json")
-    with open(file_path) as file:
+    file_path = Path(__file__).parent / "fixtures/example_ac_config.json"
+    with file_path.open() as file:
         json_content = json.load(file)
         return from_dict(ApplianceConfiguration, json_content)
 
