@@ -254,15 +254,14 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
         """Create the options flow."""
         # Cloud
         if config_entry.data["cloud_config"] is not None:
-            return CloudOptionsFlowHandler(config_entry)
+            return CloudOptionsFlowHandler()
         # Bluetooth
-        return BluetoothOptionsFlowHandler(config_entry)
+        return BluetoothOptionsFlowHandler()
 
 
 class CloudOptionsFlowHandler(OptionsFlow):
-    def __init__(self, config_entry: ConfigEntry) -> None:
+    def __init__(self) -> None:
         """Initialize options flow."""
-        self.config_entry = config_entry
 
     async def async_step_init(
         self, user_input: dict[str, Any] | None = None
@@ -278,9 +277,8 @@ class CloudOptionsFlowHandler(OptionsFlow):
 
 
 class BluetoothOptionsFlowHandler(OptionsFlow):
-    def __init__(self, config_entry: ConfigEntry) -> None:
+    def __init__(self) -> None:
         """Initialize options flow."""
-        self._config_entry = config_entry
 
     async def async_step_init(
         self, user_input: dict[str, Any] | None = None
