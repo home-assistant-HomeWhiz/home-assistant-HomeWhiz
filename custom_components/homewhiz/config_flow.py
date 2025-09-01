@@ -289,7 +289,7 @@ class BluetoothOptionsFlowHandler(OptionsFlow):
             self.hass.config_entries.async_update_entry(
                 self._config_entry, options=user_input
             )
-            await self.hass.config_entries.async_reload(self._config_entry.entry_id)
+            await self.hass.config_entries.async_reload(self.config_entry.entry_id)
             return self.async_create_entry(title="", data=user_input)
 
         return self.async_show_form(
@@ -299,7 +299,7 @@ class BluetoothOptionsFlowHandler(OptionsFlow):
                     vol.Optional(
                         CONF_BT_RECONNECT_INTERVAL,
                         description={
-                            "suggested_value": self._config_entry.options.get(
+                            "suggested_value": self.config_entry.options.get(
                                 CONF_BT_RECONNECT_INTERVAL, None
                             )
                         },
