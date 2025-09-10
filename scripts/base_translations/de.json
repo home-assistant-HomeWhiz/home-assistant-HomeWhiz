@@ -1,20 +1,20 @@
 {
   "config": {
     "abort": {
-      "already_configured": "Ger\u00e4t ist bereits konfiguriert",
-      "already_in_progress": "Der Konfigurationsablauf wird bereits ausgef\u00fchrt",
-      "no_devices_found": "Keine Ger\u00e4te im Netzwerk gefunden"
+      "already_configured": "Gerät ist bereits konfiguriert",
+      "already_in_progress": "Der Konfigurationsablauf wird bereits ausgeführt",
+      "no_devices_found": "Keine Geräte im Netzwerk gefunden"
     },
     "flow_title": "{name}",
     "step": {
       "bluetooth_confirm": {
-        "description": "M\u00f6chtest du {name} einrichten?"
+        "description": "Möchtest du {name} einrichten?"
       },
       "user": {
         "data": {
-          "address": "Ger\u00e4t"
+          "address": "Gerät"
         },
-        "description": "W\u00e4hle ein Ger\u00e4t zum Einrichten aus"
+        "description": "Wähle ein Gerät zum Einrichten aus"
       }
     }
   }

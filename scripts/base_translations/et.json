@@ -1,9 +1,9 @@
 {
   "config": {
     "abort": {
-      "already_configured": "Seade on juba h\u00e4\u00e4lestatud",
-      "already_in_progress": "H\u00e4\u00e4lestamine on juba k\u00e4imas",
-      "no_devices_found": "V\u00f5rgust seadmeid ei leitud"
+      "already_configured": "Seade on juba häälestatud",
+      "already_in_progress": "Häälestamine on juba käimas",
+      "no_devices_found": "Võrgust seadmeid ei leitud"
     },
     "flow_title": "{name}",
     "step": {
@@ -14,7 +14,7 @@
         "data": {
           "address": "Seade"
         },
-        "description": "Vali h\u00e4\u00e4lestatav seade"
+        "description": "Vali häälestatav seade"
       }
     }
   }

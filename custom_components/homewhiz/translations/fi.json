@@ -4,11 +4,11 @@
       "state": {
         "name": "Tila",
         "state": {
-          "device_state_on": "K\u00e4yt\u00f6ss\u00e4",
-          "device_state_off": "Ei k\u00e4yt\u00f6ss\u00e4",
-          "device_state_running": "K\u00e4ynniss\u00e4",
-          "device_state_paused": "Pys\u00e4ytetty",
-          "device_state_time_delay_active": "Aikaviive k\u00e4yt\u00f6ss\u00e4",
+          "device_state_on": "Käytössä",
+          "device_state_off": "Ei käytössä",
+          "device_state_running": "Käynnissä",
+          "device_state_paused": "Pysäytetty",
+          "device_state_time_delay_active": "Aikaviive käytössä",
           "device_state_cancelling": "Peruutetaan",
           "device_state_door_open": "Ovi on auki!",
           "device_state_settings": "Asetukset"
@@ -37,25 +37,25 @@
           "program_lingerie": "Alusasut",
           "program_soft_toys": "Pehmolelut",
           "program_towel": "Pyyhkeet",
-          "program_cottons_eco": "Puuvillat \u2013 Eco",
+          "program_cottons_eco": "Puuvillat – Eco",
           "program_dryer_cotton": "Puuvillan kuivaus",
-          "program_dryer_synthetics": "Synteettinen \u2013 kuivaus",
-          "program_hygiene_wash_dry": "Hygienia+ \u2013 pesu ja kuivaus",
+          "program_dryer_synthetics": "Synteettinen – kuivaus",
+          "program_hygiene_wash_dry": "Hygienia+ – pesu ja kuivaus",
           "program_4kg_wash_dry": "4 kg:n pesu ja kuivaus",
           "program_wash_wear": "Vaatteiden pesu ja kuivaus",
           "program_dark_wash": "Tumma",
           "program_outdoor": "Ulkoilu",
           "program_drum_clean_plus": "Rumpupuhdistus+",
-          "program_steam_refresh": "H\u00f6yryk\u00e4sittely"
+          "program_steam_refresh": "Höyrykäsittely"
         }
       },
       "washer_temperature": {
-        "name": "L\u00e4mp\u00f6tila",
+        "name": "Lämpötila",
         "state": {
-          "temperature_cold_wash": "Kylm\u00e4pesu",
-          "temperature_20": "20 \u00b0C",
-          "temperature_30": "30 \u00b0C",
-          "temperature_40": "40 \u00b0C",
+          "temperature_cold_wash": "Kylmäpesu",
+          "temperature_20": "20 °C",
+          "temperature_30": "30 °C",
+          "temperature_40": "40 °C",
           "60c": "60C",
           "90c": "90C"
         }
@@ -102,23 +102,23 @@
         }
       },
       "washer_extra_rinse_count": {
-        "name": "Lis\u00e4huuhtelujen m\u00e4\u00e4r\u00e4"
+        "name": "Lisähuuhtelujen määrä"
       },
       "settings_volume": {
-        "name": "Painike\u00e4\u00e4net",
+        "name": "Painikeäänet",
         "state": {
           "volume_low": "Pieni",
           "volume_high": "Suuri"
         }
       },
       "remote_control": {
-        "name": "Et\u00e4ohjaus"
+        "name": "Etäohjaus"
       },
       "washer_warning_door_is_open": {
         "name": "Luukku on auki"
       },
       "washer_warning_no_water": {
-        "name": "Ei vett\u00e4"
+        "name": "Ei vettä"
       },
       "washer_warning_security": {
         "name": "Turvallisuus"
@@ -126,25 +126,25 @@
       "oven_program": {
         "name": "Ohjelma",
         "state": {
-          "program_static": "Kiinte\u00e4",
-          "program_static_fan": "Kiinte\u00e4+kiertoilma",
+          "program_static": "Kiinteä",
+          "program_static_fan": "Kiinteä+kiertoilma",
           "program_fan_heating": "Kiertoilma",
           "program_multi_cooking": "Monitoimikypsennys (3D)",
-          "program_fan_heat_bottom": "Kiertoilma+alal\u00e4mp\u00f6",
+          "program_fan_heat_bottom": "Kiertoilma+alalämpö",
           "program_eco_grill": "Eco-grillaus",
-          "program_full_grill": "T\u00e4ysi grillaus",
-          "program_full_grill_fan": "T\u00e4ysi grillaus + kiertoilma",
-          "program_bottom_heating": "Alal\u00e4mp\u00f6",
+          "program_full_grill": "Täysi grillaus",
+          "program_full_grill_fan": "Täysi grillaus + kiertoilma",
+          "program_bottom_heating": "Alalämpö",
           "program_defrost": "Sulatus",
-          "program_warm_keeping": "Pid\u00e4 l\u00e4mpim\u00e4n\u00e4",
+          "program_warm_keeping": "Pidä lämpimänä",
           "program_eco_fan_heating": "Eco-kiertoilma",
-          "program_steam_cleaning": "H\u00f6yrypuhdistus",
+          "program_steam_cleaning": "Höyrypuhdistus",
           "program_eco_pyro": "Eco-puhdistus",
           "program_pyro": "Puhdistus"
         }
       },
       "oven_temperature": {
-        "name": "L\u00e4mp\u00f6tila"
+        "name": "Lämpötila"
       },
       "settings_brightness": {
         "name": "Kirkkaus"
@@ -156,15 +156,15 @@
         "name": "Luukku lukossa"
       },
       "oven_warning_error": {
-        "name": "Tuotteessa on ilmennyt odottamaton virhe. Katso k\u00e4ytt\u00f6opas."
+        "name": "Tuotteessa on ilmennyt odottamaton virhe. Katso käyttöopas."
       },
       "program": {
         "name": "Ohjelma",
         "state": {
-          "program_auto": "Automaattinen 40\u201365 \u00b0C",
+          "program_auto": "Automaattinen 40–65 °C",
           "program_mix_wash_plus": "Kokonaispesu",
-          "program_intensive_70": "Tehopesu 70 \u00b0C",
-          "program_eco_50": "Eco 50 \u00b0C",
+          "program_intensive_70": "Tehopesu 70 °C",
+          "program_eco_50": "Eco 50 °C",
           "program_glasscare": "Lasinhoito",
           "program_new58min": "Pikapesu 58'",
           "program_30min": "Mini 30'",
@@ -172,7 +172,7 @@
           "program_hygiene": "Hygienia",
           "program_daily": "PROGRAM_DAILY",
           "program_silent": "Hiljainen pesu",
-          "program_makine_temizleme": "Sis\u00e4inen puhdistus"
+          "program_makine_temizleme": "Sisäinen puhdistus"
         }
       },
       "setting_detergent_type": {
@@ -180,7 +180,7 @@
         "state": {
           "setting_detergent_type_powder": "Pesuainejauhe",
           "setting_detergent_type_tablet": "Tablettipuhdistusaine",
-          "setting_detergent_type_liquid": "Nestem\u00e4inen puhdistusaine"
+          "setting_detergent_type_liquid": "Nestemäinen puhdistusaine"
         }
       },
       "dishwasher_rinse_aid_level": {
@@ -196,7 +196,7 @@
         "name": "Ei suolaa"
       },
       "dishwasher_warning_no_water": {
-        "name": "Ei vett\u00e4"
+        "name": "Ei vettä"
       },
       "dishwasher_warning_check_the_filter": {
         "name": "Tarkista suodatin"
@@ -208,36 +208,36 @@
         "name": "Soita huoltoon"
       },
       "dishwasher_liquid_detergent_low": {
-        "name": "Nestem\u00e4inen puhdistusaine v\u00e4hiss\u00e4"
+        "name": "Nestemäinen puhdistusaine vähissä"
       },
       "dishwasher_program": {
         "name": "Ohjelma",
         "state": {
-          "program_auto": "Automaattinen 40\u201365 \u00b0C",
+          "program_auto": "Automaattinen 40–65 °C",
           "program_aqua_flex": "PROGRAM_AQUA_FLEX",
-          "program_intensive_70": "Tehopesu 70 \u00b0C",
-          "program_eco_50": "Eco 50 \u00b0C",
-          "program_delicate": "Helposti s\u00e4rkyv\u00e4",
+          "program_intensive_70": "Tehopesu 70 °C",
+          "program_eco_50": "Eco 50 °C",
+          "program_delicate": "Helposti särkyvä",
           "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
           "program_mini": "PROGRAM_MINI",
           "program_prewash": "Esipesu",
           "program_quiet": "PROGRAM_QUIET",
           "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
-          "program_innerclean": "K\u00e4vi koulua InnerClean"
+          "program_innerclean": "Kävi koulua InnerClean"
         }
       },
       "dishwasher_liquid_detergent_level": {
-        "name": "Nestem\u00e4inen pesuaine"
+        "name": "Nestemäinen pesuaine"
       },
       "washer_dry": {
         "name": "Kuivaus",
         "state": {
-          "dry_off": "Ei p\u00e4\u00e4ll\u00e4",
-          "dry_extra": "Eritt\u00e4in kuiva",
+          "dry_off": "Ei päällä",
+          "dry_extra": "Erittäin kuiva",
           "dry_cabinet": "Wardrobe Dry",
           "dry_iron": "Silityskuiva",
           "dry_10": "45 min",
-          "dry_20": "20\u00a0min",
+          "dry_20": "20 min",
           "dry_30": "30 min",
           "dry_60": "60 min",
           "dry_90": "90 min",
@@ -246,20 +246,20 @@
         }
       },
       "washer_rinse_count": {
-        "name": "Huuhtelujen m\u00e4\u00e4r\u00e4"
+        "name": "Huuhtelujen määrä"
       },
       "air_conditioner_soft_air": {
         "name": "Soft Air",
         "state": {
-          "air_conditioner_soft_air_off": "Poissa k\u00e4yt\u00f6st\u00e4",
-          "air_conditioner_soft_air_up": "Yl\u00f6s",
+          "air_conditioner_soft_air_off": "Poissa käytöstä",
+          "air_conditioner_soft_air_up": "Ylös",
           "air_conditioner_soft_air_down": "Alas"
         }
       },
       "air_conditioner_up_down_vane_control": {
         "name": "Pystysuora ilmavirtaus",
         "state": {
-          "up_down_vane_control_off": "Poissa k\u00e4yt\u00f6st\u00e4",
+          "up_down_vane_control_off": "Poissa käytöstä",
           "up_down_vane_control_6": "6",
           "up_down_vane_control_5": "5",
           "up_down_vane_control_4": "4",
@@ -272,7 +272,7 @@
       "air_conditioner_left_right_vane_control": {
         "name": "Vaakasuora ilmavirtaus",
         "state": {
-          "left_right_vane_control_off": "Poissa k\u00e4yt\u00f6st\u00e4",
+          "left_right_vane_control_off": "Poissa käytöstä",
           "left_right_vane_control_1": "1",
           "left_right_vane_control_2": "2",
           "left_right_vane_control_3": "3",
@@ -288,11 +288,11 @@
       "state": {
         "name": "Tila",
         "state": {
-          "device_state_on": "K\u00e4yt\u00f6ss\u00e4",
-          "device_state_off": "Ei k\u00e4yt\u00f6ss\u00e4",
-          "device_state_running": "K\u00e4ynniss\u00e4",
-          "device_state_paused": "Pys\u00e4ytetty",
-          "device_state_time_delay_active": "Aikaviive k\u00e4yt\u00f6ss\u00e4",
+          "device_state_on": "Käytössä",
+          "device_state_off": "Ei käytössä",
+          "device_state_running": "Käynnissä",
+          "device_state_paused": "Pysäytetty",
+          "device_state_time_delay_active": "Aikaviive käytössä",
           "device_state_cancelling": "Peruutetaan",
           "device_state_door_open": "Ovi on auki!",
           "device_state_settings": "Asetukset"
@@ -321,25 +321,25 @@
           "program_lingerie": "Alusasut",
           "program_soft_toys": "Pehmolelut",
           "program_towel": "Pyyhkeet",
-          "program_cottons_eco": "Puuvillat \u2013 Eco",
+          "program_cottons_eco": "Puuvillat – Eco",
           "program_dryer_cotton": "Puuvillan kuivaus",
-          "program_dryer_synthetics": "Synteettinen \u2013 kuivaus",
-          "program_hygiene_wash_dry": "Hygienia+ \u2013 pesu ja kuivaus",
+          "program_dryer_synthetics": "Synteettinen – kuivaus",
+          "program_hygiene_wash_dry": "Hygienia+ – pesu ja kuivaus",
           "program_4kg_wash_dry": "4 kg:n pesu ja kuivaus",
           "program_wash_wear": "Vaatteiden pesu ja kuivaus",
           "program_dark_wash": "Tumma",
           "program_outdoor": "Ulkoilu",
           "program_drum_clean_plus": "Rumpupuhdistus+",
-          "program_steam_refresh": "H\u00f6yryk\u00e4sittely"
+          "program_steam_refresh": "Höyrykäsittely"
         }
       },
       "washer_temperature": {
-        "name": "L\u00e4mp\u00f6tila",
+        "name": "Lämpötila",
         "state": {
-          "temperature_cold_wash": "Kylm\u00e4pesu",
-          "temperature_20": "20 \u00b0C",
-          "temperature_30": "30 \u00b0C",
-          "temperature_40": "40 \u00b0C",
+          "temperature_cold_wash": "Kylmäpesu",
+          "temperature_20": "20 °C",
+          "temperature_30": "30 °C",
+          "temperature_40": "40 °C",
           "60c": "60C",
           "90c": "90C"
         }
@@ -386,10 +386,10 @@
         }
       },
       "washer_extra_rinse_count": {
-        "name": "Lis\u00e4huuhtelujen m\u00e4\u00e4r\u00e4"
+        "name": "Lisähuuhtelujen määrä"
       },
       "settings_volume": {
-        "name": "Painike\u00e4\u00e4net",
+        "name": "Painikeäänet",
         "state": {
           "volume_low": "Pieni",
           "volume_high": "Suuri"
@@ -405,29 +405,29 @@
           "washer_substate_rinsing": "Huuhtelu",
           "washer_substate_softener": "Huuhteluaine",
           "washer_substate_program_started": "Ohjelmaa aloitetaan",
-          "washer_substate_time_delay_enabled": "P\u00e4\u00e4ttymisaika k\u00e4yt\u00f6ss\u00e4",
-          "washer_substate_paused": "Pys\u00e4yt\u00e4",
+          "washer_substate_time_delay_enabled": "Päättymisaika käytössä",
+          "washer_substate_paused": "Pysäytä",
           "washer_substate_analysing": "Analysoidaan",
           "washer_substate_door_locked": "Luukku lukossa",
           "washer_substate_opening_door": "Luukkua avataan",
           "washer_substate_locking_door": "Luukkua lukitaan",
           "washer_substate_remove_laundry": "Pesuohjelma valmis, ota pyykit pois koneesta",
-          "washer_substate_add_laundry": "Voit lis\u00e4t\u00e4 pyykki\u00e4",
-          "washer_substate_rinse_hold": "Huuhtelupito on k\u00e4yt\u00f6ss\u00e4, valitse linkousnopeus",
-          "washer_substate_remote_anticrease": "Rypistymisen et\u00e4esto on k\u00e4ynniss\u00e4.",
+          "washer_substate_add_laundry": "Voit lisätä pyykkiä",
+          "washer_substate_rinse_hold": "Huuhtelupito on käytössä, valitse linkousnopeus",
+          "washer_substate_remote_anticrease": "Rypistymisen etäesto on käynnissä.",
           "washer_substate_drying": "Kuivaus",
           "oven_message_good_appetite": "Nauti ateriastasi",
           "oven_message_cooking": "Ruoanlaitto",
-          "oven_message_paused": "Pys\u00e4ytetty",
+          "oven_message_paused": "Pysäytetty",
           "oven_message_waiting": "Odottaa",
           "oven_message_defrosting": "Sulatus",
           "operation_completed": "Toiminto on valmis",
-          "oven_message_preheating": "Esil\u00e4mmitys",
-          "oven_message_preheating_completed": "Esil\u00e4mmitys valmis",
+          "oven_message_preheating": "Esilämmitys",
+          "oven_message_preheating_completed": "Esilämmitys valmis",
           "oven_message_cleaning": "Puhdistus",
           "oven_message_cleaning_completed": "Puhdistus valmis",
-          "dishwasher_message_time_delay_started": "P\u00e4\u00e4ttymisaika k\u00e4yt\u00f6ss\u00e4",
-          "dishwasher_message_paused": "Ohjelma pys\u00e4ytetty",
+          "dishwasher_message_time_delay_started": "Päättymisaika käytössä",
+          "dishwasher_message_paused": "Ohjelma pysäytetty",
           "dishwasher_message_program_finished": "Ohjelma valmis",
           "dishwasher_message_program_sanitized": "Ohjelma valmis ja puhdistettava",
           "dishwasher_message_cancelling": "Peruutetaan...",
@@ -439,22 +439,22 @@
         }
       },
       "washer_delay": {
-        "name": "Ohjelman p\u00e4\u00e4ttymisaika"
+        "name": "Ohjelman päättymisaika"
       },
       "washer_duration": {
         "name": "Kesto"
       },
       "washer_remaining": {
-        "name": "J\u00e4ljell\u00e4"
+        "name": "Jäljellä"
       },
       "remote_control": {
-        "name": "Et\u00e4ohjaus"
+        "name": "Etäohjaus"
       },
       "washer_warning_door_is_open": {
         "name": "Luukku on auki"
       },
       "washer_warning_no_water": {
-        "name": "Ei vett\u00e4"
+        "name": "Ei vettä"
       },
       "washer_warning_security": {
         "name": "Turvallisuus"
@@ -463,25 +463,25 @@
         "name": "Esipesu"
       },
       "washer_extrarinse": {
-        "name": "Lis\u00e4huuhtelu"
+        "name": "Lisähuuhtelu"
       },
       "washer_hidden_anti_crease": {
-        "name": "Rypistymisen et\u00e4esto"
+        "name": "Rypistymisen etäesto"
       },
       "washer_steam": {
-        "name": "H\u00f6yry"
+        "name": "Höyry"
       },
       "washer_phr": {
         "name": "Lemmikin karvojen poisto"
       },
       "washer_add_water": {
-        "name": "Lis\u00e4vesi"
+        "name": "Lisävesi"
       },
       "washer_soaking": {
         "name": "Liotus"
       },
       "washer_night": {
-        "name": "Y\u00f6tila"
+        "name": "Yötila"
       },
       "washer_anticrease": {
         "name": "Rypistymisen esto"
@@ -489,37 +489,37 @@
       "oven_program": {
         "name": "Ohjelma",
         "state": {
-          "program_static": "Kiinte\u00e4",
-          "program_static_fan": "Kiinte\u00e4+kiertoilma",
+          "program_static": "Kiinteä",
+          "program_static_fan": "Kiinteä+kiertoilma",
           "program_fan_heating": "Kiertoilma",
           "program_multi_cooking": "Monitoimikypsennys (3D)",
-          "program_fan_heat_bottom": "Kiertoilma+alal\u00e4mp\u00f6",
+          "program_fan_heat_bottom": "Kiertoilma+alalämpö",
           "program_eco_grill": "Eco-grillaus",
-          "program_full_grill": "T\u00e4ysi grillaus",
-          "program_full_grill_fan": "T\u00e4ysi grillaus + kiertoilma",
-          "program_bottom_heating": "Alal\u00e4mp\u00f6",
+          "program_full_grill": "Täysi grillaus",
+          "program_full_grill_fan": "Täysi grillaus + kiertoilma",
+          "program_bottom_heating": "Alalämpö",
           "program_defrost": "Sulatus",
-          "program_warm_keeping": "Pid\u00e4 l\u00e4mpim\u00e4n\u00e4",
+          "program_warm_keeping": "Pidä lämpimänä",
           "program_eco_fan_heating": "Eco-kiertoilma",
-          "program_steam_cleaning": "H\u00f6yrypuhdistus",
+          "program_steam_cleaning": "Höyrypuhdistus",
           "program_eco_pyro": "Eco-puhdistus",
           "program_pyro": "Puhdistus"
         }
       },
       "oven_temperature": {
-        "name": "L\u00e4mp\u00f6tila"
+        "name": "Lämpötila"
       },
       "settings_brightness": {
         "name": "Kirkkaus"
       },
       "variable_delay": {
-        "name": "Ohjelman p\u00e4\u00e4ttymisaika"
+        "name": "Ohjelman päättymisaika"
       },
       "variable_oven_duration": {
         "name": "Ruoanlaiton kesto (tunnit ja minuutit)"
       },
       "variable_remaining": {
-        "name": "J\u00e4ljell\u00e4"
+        "name": "Jäljellä"
       },
       "oven_warning_door_is_open": {
         "name": "Luukku on auki"
@@ -528,7 +528,7 @@
         "name": "Luukku lukossa"
       },
       "oven_warning_error": {
-        "name": "Tuotteessa on ilmennyt odottamaton virhe. Katso k\u00e4ytt\u00f6opas."
+        "name": "Tuotteessa on ilmennyt odottamaton virhe. Katso käyttöopas."
       },
       "oven_booster": {
         "name": "Tehostin"
@@ -539,10 +539,10 @@
       "program": {
         "name": "Ohjelma",
         "state": {
-          "program_auto": "Automaattinen 40\u201365 \u00b0C",
+          "program_auto": "Automaattinen 40–65 °C",
           "program_mix_wash_plus": "Kokonaispesu",
-          "program_intensive_70": "Tehopesu 70 \u00b0C",
-          "program_eco_50": "Eco 50 \u00b0C",
+          "program_intensive_70": "Tehopesu 70 °C",
+          "program_eco_50": "Eco 50 °C",
           "program_glasscare": "Lasinhoito",
           "program_new58min": "Pikapesu 58'",
           "program_30min": "Mini 30'",
@@ -550,7 +550,7 @@
           "program_hygiene": "Hygienia",
           "program_daily": "PROGRAM_DAILY",
           "program_silent": "Hiljainen pesu",
-          "program_makine_temizleme": "Sis\u00e4inen puhdistus"
+          "program_makine_temizleme": "Sisäinen puhdistus"
         }
       },
       "setting_detergent_type": {
@@ -558,7 +558,7 @@
         "state": {
           "setting_detergent_type_powder": "Pesuainejauhe",
           "setting_detergent_type_tablet": "Tablettipuhdistusaine",
-          "setting_detergent_type_liquid": "Nestem\u00e4inen puhdistusaine"
+          "setting_detergent_type_liquid": "Nestemäinen puhdistusaine"
         }
       },
       "dishwasher_rinse_aid_level": {
@@ -568,13 +568,13 @@
         "name": "Veden kovuus"
       },
       "dishwasher_delay": {
-        "name": "Aikaviiv\u00e4styksen aloitus"
+        "name": "Aikaviivästyksen aloitus"
       },
       "dishwasher_duration": {
         "name": "Kesto"
       },
       "dishwasher_remaining": {
-        "name": "J\u00e4ljell\u00e4 oleva aika"
+        "name": "Jäljellä oleva aika"
       },
       "dishwasher_warning_no_rinse_aid": {
         "name": "Ei huuhtelukirkastetta"
@@ -583,7 +583,7 @@
         "name": "Ei suolaa"
       },
       "dishwasher_warning_no_water": {
-        "name": "Ei vett\u00e4"
+        "name": "Ei vettä"
       },
       "dishwasher_warning_check_the_filter": {
         "name": "Tarkista suodatin"
@@ -595,7 +595,7 @@
         "name": "Soita huoltoon"
       },
       "dishwasher_liquid_detergent_low": {
-        "name": "Nestem\u00e4inen puhdistusaine v\u00e4hiss\u00e4"
+        "name": "Nestemäinen puhdistusaine vähissä"
       },
       "dishwasher_traywash": {
         "name": "Tarjotinpesu"
@@ -604,54 +604,54 @@
         "name": "Astianpesukone fastplus"
       },
       "dishwasher_steamgloss": {
-        "name": "H\u00f6yrykiillotus"
+        "name": "Höyrykiillotus"
       },
       "dishwasher_extrarinse": {
-        "name": "Lis\u00e4huuhtelu"
+        "name": "Lisähuuhtelu"
       },
       "dishwasher_halfload": {
-        "name": "Puoliksi t\u00e4ynn\u00e4"
+        "name": "Puoliksi täynnä"
       },
       "setting_auto_door": {
         "name": "Automaattiovi"
       },
       "setting_inner_illumination": {
-        "name": "Sis\u00e4valaistus"
+        "name": "Sisävalaistus"
       },
       "dishwasher_program": {
         "name": "Ohjelma",
         "state": {
-          "program_auto": "Automaattinen 40\u201365 \u00b0C",
+          "program_auto": "Automaattinen 40–65 °C",
           "program_aqua_flex": "PROGRAM_AQUA_FLEX",
-          "program_intensive_70": "Tehopesu 70 \u00b0C",
-          "program_eco_50": "Eco 50 \u00b0C",
-          "program_delicate": "Helposti s\u00e4rkyv\u00e4",
+          "program_intensive_70": "Tehopesu 70 °C",
+          "program_eco_50": "Eco 50 °C",
+          "program_delicate": "Helposti särkyvä",
           "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
           "program_mini": "PROGRAM_MINI",
           "program_prewash": "Esipesu",
           "program_quiet": "PROGRAM_QUIET",
           "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
-          "program_innerclean": "K\u00e4vi koulua InnerClean"
+          "program_innerclean": "Kävi koulua InnerClean"
         }
       },
       "dishwasher_liquid_detergent_level": {
-        "name": "Nestem\u00e4inen pesuaine"
+        "name": "Nestemäinen pesuaine"
       },
       "dishwasher_hygiene_intense": {
         "name": "Astianpesukoneen hygieniaintensiivinen"
       },
       "dishwasher_deepwash": {
-        "name": "Syv\u00e4 pest\u00e4"
+        "name": "Syvä pestä"
       },
       "washer_dry": {
         "name": "Kuivaus",
         "state": {
-          "dry_off": "Ei p\u00e4\u00e4ll\u00e4",
-          "dry_extra": "Eritt\u00e4in kuiva",
+          "dry_off": "Ei päällä",
+          "dry_extra": "Erittäin kuiva",
           "dry_cabinet": "Wardrobe Dry",
           "dry_iron": "Silityskuiva",
           "dry_10": "45 min",
-          "dry_20": "20\u00a0min",
+          "dry_20": "20 min",
           "dry_30": "30 min",
           "dry_60": "60 min",
           "dry_90": "90 min",
@@ -660,20 +660,20 @@
         }
       },
       "washer_rinse_count": {
-        "name": "Huuhtelujen m\u00e4\u00e4r\u00e4"
+        "name": "Huuhtelujen määrä"
       },
       "air_conditioner_soft_air": {
         "name": "Soft Air",
         "state": {
-          "air_conditioner_soft_air_off": "Poissa k\u00e4yt\u00f6st\u00e4",
-          "air_conditioner_soft_air_up": "Yl\u00f6s",
+          "air_conditioner_soft_air_off": "Poissa käytöstä",
+          "air_conditioner_soft_air_up": "Ylös",
           "air_conditioner_soft_air_down": "Alas"
         }
       },
       "air_conditioner_up_down_vane_control": {
         "name": "Pystysuora ilmavirtaus",
         "state": {
-          "up_down_vane_control_off": "Poissa k\u00e4yt\u00f6st\u00e4",
+          "up_down_vane_control_off": "Poissa käytöstä",
           "up_down_vane_control_6": "6",
           "up_down_vane_control_5": "5",
           "up_down_vane_control_4": "4",
@@ -686,7 +686,7 @@
       "air_conditioner_left_right_vane_control": {
         "name": "Vaakasuora ilmavirtaus",
         "state": {
-          "left_right_vane_control_off": "Poissa k\u00e4yt\u00f6st\u00e4",
+          "left_right_vane_control_off": "Poissa käytöstä",
           "left_right_vane_control_1": "1",
           "left_right_vane_control_2": "2",
           "left_right_vane_control_3": "3",
@@ -698,7 +698,7 @@
         }
       },
       "air_conditioner_instant_consumption": {
-        "name": "Ilmastointilaitteen v\u00e4lit\u00f6n kulutus"
+        "name": "Ilmastointilaitteen välitön kulutus"
       },
       "air_conditioner_sleep_mode_minute": {
         "name": "Ilmastointilaitteen lepotila minuutti"
@@ -707,18 +707,18 @@
         "name": "Automaattinen virrankatkaisu"
       },
       "air_conditioner_auto_switch_on": {
-        "name": "Automaattinen k\u00e4ynnistys"
+        "name": "Automaattinen käynnistys"
       }
     },
     "binary_sensor": {
       "remote_control": {
-        "name": "Et\u00e4ohjaus"
+        "name": "Etäohjaus"
       },
       "washer_warning_door_is_open": {
         "name": "Luukku on auki"
       },
       "washer_warning_no_water": {
-        "name": "Ei vett\u00e4"
+        "name": "Ei vettä"
       },
       "washer_warning_security": {
         "name": "Turvallisuus"
@@ -730,7 +730,7 @@
         "name": "Luukku lukossa"
       },
       "oven_warning_error": {
-        "name": "Tuotteessa on ilmennyt odottamaton virhe. Katso k\u00e4ytt\u00f6opas."
+        "name": "Tuotteessa on ilmennyt odottamaton virhe. Katso käyttöopas."
       },
       "dishwasher_warning_no_rinse_aid": {
         "name": "Ei huuhtelukirkastetta"
@@ -739,7 +739,7 @@
         "name": "Ei suolaa"
       },
       "dishwasher_warning_no_water": {
-        "name": "Ei vett\u00e4"
+        "name": "Ei vettä"
       },
       "dishwasher_warning_check_the_filter": {
         "name": "Tarkista suodatin"
@@ -751,7 +751,7 @@
         "name": "Soita huoltoon"
       },
       "dishwasher_liquid_detergent_low": {
-        "name": "Nestem\u00e4inen puhdistusaine v\u00e4hiss\u00e4"
+        "name": "Nestemäinen puhdistusaine vähissä"
       }
     },
     "climate": {
@@ -764,25 +764,25 @@
         "name": "Esipesu"
       },
       "washer_extrarinse": {
-        "name": "Lis\u00e4huuhtelu"
+        "name": "Lisähuuhtelu"
       },
       "washer_hidden_anti_crease": {
-        "name": "Rypistymisen et\u00e4esto"
+        "name": "Rypistymisen etäesto"
       },
       "washer_steam": {
-        "name": "H\u00f6yry"
+        "name": "Höyry"
       },
       "washer_phr": {
         "name": "Lemmikin karvojen poisto"
       },
       "washer_add_water": {
-        "name": "Lis\u00e4vesi"
+        "name": "Lisävesi"
       },
       "washer_soaking": {
         "name": "Liotus"
       },
       "washer_night": {
-        "name": "Y\u00f6tila"
+        "name": "Yötila"
       },
       "washer_anticrease": {
         "name": "Rypistymisen esto"
@@ -800,25 +800,25 @@
         "name": "Astianpesukone fastplus"
       },
       "dishwasher_steamgloss": {
-        "name": "H\u00f6yrykiillotus"
+        "name": "Höyrykiillotus"
       },
       "dishwasher_extrarinse": {
-        "name": "Lis\u00e4huuhtelu"
+        "name": "Lisähuuhtelu"
       },
       "dishwasher_halfload": {
-        "name": "Puoliksi t\u00e4ynn\u00e4"
+        "name": "Puoliksi täynnä"
       },
       "setting_auto_door": {
         "name": "Automaattiovi"
       },
       "setting_inner_illumination": {
-        "name": "Sis\u00e4valaistus"
+        "name": "Sisävalaistus"
       },
       "dishwasher_hygiene_intense": {
         "name": "Astianpesukoneen hygieniaintensiivinen"
       },
       "dishwasher_deepwash": {
-        "name": "Syv\u00e4 pest\u00e4"
+        "name": "Syvä pestä"
       }
     }
   }

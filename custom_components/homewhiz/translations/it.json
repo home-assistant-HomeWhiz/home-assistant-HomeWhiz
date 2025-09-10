@@ -1,8 +1,8 @@
 {
   "config": {
     "abort": {
-      "already_configured": "Il dispositivo \u00e8 gi\u00e0 configurato",
-      "already_in_progress": "Il flusso di configurazione \u00e8 gi\u00e0 in corso",
+      "already_configured": "Il dispositivo è già configurato",
+      "already_in_progress": "Il flusso di configurazione è già in corso",
       "no_devices_found": "Nessun dispositivo trovato sulla rete"
     },
     "flow_title": "{name}",
@@ -29,7 +29,7 @@
           "device_state_paused": "In pausa",
           "device_state_time_delay_active": "Partenza ritardata attiva",
           "device_state_cancelling": "Annullamento in corso",
-          "device_state_door_open": "Lo sportello \u00c3\u00a8 aperto.",
+          "device_state_door_open": "Lo sportello Ã¨ aperto.",
           "device_state_settings": "Impostazioni"
         }
       },
@@ -72,9 +72,9 @@
         "name": "Temperatura",
         "state": {
           "temperature_cold_wash": "Lavaggio a freddo",
-          "temperature_20": "20\u00b0C",
-          "temperature_30": "30\u00b0C",
-          "temperature_40": "40\u00b0C",
+          "temperature_20": "20°C",
+          "temperature_30": "30°C",
+          "temperature_40": "40°C",
           "60c": "60C",
           "90c": "90C"
         }
@@ -134,7 +134,7 @@
         "name": "Telecomando "
       },
       "washer_warning_door_is_open": {
-        "name": "Obl\u00f2 aperto"
+        "name": "Oblò aperto"
       },
       "washer_warning_no_water": {
         "name": "Manca l'acqua"
@@ -166,7 +166,7 @@
         "name": "Temperatura"
       },
       "settings_brightness": {
-        "name": "Luminosit\u00e0"
+        "name": "Luminosità"
       },
       "oven_warning_door_is_open": {
         "name": "Porta aperta"
@@ -180,10 +180,10 @@
       "program": {
         "name": "Programma",
         "state": {
-          "program_auto": "Auto 40-65 \u00b0C",
+          "program_auto": "Auto 40-65 °C",
           "program_mix_wash_plus": "All in Wash",
-          "program_intensive_70": "Intensivo 70 \u00b0C",
-          "program_eco_50": "Eco 50 \u00b0C",
+          "program_intensive_70": "Intensivo 70 °C",
+          "program_eco_50": "Eco 50 °C",
           "program_glasscare": "GlassCare",
           "program_new58min": "QuickWash 58'",
           "program_30min": "Mini 30'",
@@ -221,7 +221,7 @@
         "name": "Controlla il filtro"
       },
       "dishwasher_warning_door_is_open": {
-        "name": "Lo sportello \u00c3\u00a8 aperto"
+        "name": "Lo sportello Ã¨ aperto"
       },
       "dishwasher_warning_call_service": {
         "name": "Contatta l\\'assistenza"
@@ -232,10 +232,10 @@
       "dishwasher_program": {
         "name": "Programma/Programmi",
         "state": {
-          "program_auto": "Auto 40-65 \u00b0C",
+          "program_auto": "Auto 40-65 °C",
           "program_aqua_flex": "PROGRAM_AQUA_FLEX",
-          "program_intensive_70": "Intensivo 70 \u00b0C",
-          "program_eco_50": "Eco 50 \u00b0C",
+          "program_intensive_70": "Intensivo 70 °C",
+          "program_eco_50": "Eco 50 °C",
           "program_delicate": "Delicato",
           "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
           "program_mini": "PROGRAM_MINI",
@@ -313,7 +313,7 @@
           "device_state_paused": "In pausa",
           "device_state_time_delay_active": "Partenza ritardata attiva",
           "device_state_cancelling": "Annullamento in corso",
-          "device_state_door_open": "Lo sportello \u00c3\u00a8 aperto.",
+          "device_state_door_open": "Lo sportello Ã¨ aperto.",
           "device_state_settings": "Impostazioni"
         }
       },
@@ -356,9 +356,9 @@
         "name": "Temperatura",
         "state": {
           "temperature_cold_wash": "Lavaggio a freddo",
-          "temperature_20": "20\u00b0C",
-          "temperature_30": "30\u00b0C",
-          "temperature_40": "40\u00b0C",
+          "temperature_20": "20°C",
+          "temperature_30": "30°C",
+          "temperature_40": "40°C",
           "60c": "60C",
           "90c": "90C"
         }
@@ -427,12 +427,12 @@
           "washer_substate_time_delay_enabled": "Ora di fine abilitata",
           "washer_substate_paused": "Pausa",
           "washer_substate_analysing": "Analisi",
-          "washer_substate_door_locked": "Obl\u00f2 bloccato",
-          "washer_substate_opening_door": "Apertura obl\u00f2",
-          "washer_substate_locking_door": "Blocco dell'obl\u00f2",
+          "washer_substate_door_locked": "Oblò bloccato",
+          "washer_substate_opening_door": "Apertura oblò",
+          "washer_substate_locking_door": "Blocco dell'oblò",
           "washer_substate_remove_laundry": "Ciclo di lavaggio completato; rimuovere il bucato",
           "washer_substate_add_laundry": "Puoi aggiungere bucato",
-          "washer_substate_rinse_hold": "Risciacquo aggiuntivo attivo; seleziona velocit\u00e0 centrifuga",
+          "washer_substate_rinse_hold": "Risciacquo aggiuntivo attivo; seleziona velocità centrifuga",
           "washer_substate_remote_anticrease": "Antipiega remoto in corso.",
           "washer_substate_drying": "Asciugatura",
           "oven_message_good_appetite": "Buon appetito",
@@ -446,9 +446,9 @@
           "oven_message_cleaning": "Pulizia",
           "oven_message_cleaning_completed": "Pulizia completata",
           "dishwasher_message_time_delay_started": "Partenza Ritardata avviata",
-          "dishwasher_message_paused": "Il programma \u00c3\u00a8 in pausa",
-          "dishwasher_message_program_finished": "Il programma \u00c3\u00a8 terminato. I piatti sono pronti",
-          "dishwasher_message_program_sanitized": "Il programma \u00c3\u00a8 terminato e IGIENIZZATO. I piatti sono pronti",
+          "dishwasher_message_paused": "Il programma Ã¨ in pausa",
+          "dishwasher_message_program_finished": "Il programma Ã¨ terminato. I piatti sono pronti",
+          "dishwasher_message_program_sanitized": "Il programma Ã¨ terminato e IGIENIZZATO. I piatti sono pronti",
           "dishwasher_message_cancelling": "Annullamento del programma in corso",
           "dishwasher_message_time_delay_cancelled": "Partenza Ritardata annullata",
           "dishwasher_message_program_started": "Programma avviato",
@@ -470,7 +470,7 @@
         "name": "Telecomando "
       },
       "washer_warning_door_is_open": {
-        "name": "Obl\u00f2 aperto"
+        "name": "Oblò aperto"
       },
       "washer_warning_no_water": {
         "name": "Manca l'acqua"
@@ -500,7 +500,7 @@
         "name": "Ammollo"
       },
       "washer_night": {
-        "name": "Modalit\u00e0 notte"
+        "name": "Modalità notte"
       },
       "washer_anticrease": {
         "name": "Antipiega"
@@ -529,7 +529,7 @@
         "name": "Temperatura"
       },
       "settings_brightness": {
-        "name": "Luminosit\u00e0"
+        "name": "Luminosità"
       },
       "variable_delay": {
         "name": "Ora di fine programma"
@@ -558,10 +558,10 @@
       "program": {
         "name": "Programma",
         "state": {
-          "program_auto": "Auto 40-65 \u00b0C",
+          "program_auto": "Auto 40-65 °C",
           "program_mix_wash_plus": "All in Wash",
-          "program_intensive_70": "Intensivo 70 \u00b0C",
-          "program_eco_50": "Eco 50 \u00b0C",
+          "program_intensive_70": "Intensivo 70 °C",
+          "program_eco_50": "Eco 50 °C",
           "program_glasscare": "GlassCare",
           "program_new58min": "QuickWash 58'",
           "program_30min": "Mini 30'",
@@ -608,7 +608,7 @@
         "name": "Controlla il filtro"
       },
       "dishwasher_warning_door_is_open": {
-        "name": "Lo sportello \u00c3\u00a8 aperto"
+        "name": "Lo sportello Ã¨ aperto"
       },
       "dishwasher_warning_call_service": {
         "name": "Contatta l\\'assistenza"
@@ -640,10 +640,10 @@
       "dishwasher_program": {
         "name": "Programma/Programmi",
         "state": {
-          "program_auto": "Auto 40-65 \u00b0C",
+          "program_auto": "Auto 40-65 °C",
           "program_aqua_flex": "PROGRAM_AQUA_FLEX",
-          "program_intensive_70": "Intensivo 70 \u00b0C",
-          "program_eco_50": "Eco 50 \u00b0C",
+          "program_intensive_70": "Intensivo 70 °C",
+          "program_eco_50": "Eco 50 °C",
           "program_delicate": "Delicato",
           "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
           "program_mini": "PROGRAM_MINI",
@@ -720,7 +720,7 @@
         "name": "Consumo istantaneo condizionatore"
       },
       "air_conditioner_sleep_mode_minute": {
-        "name": "Modalit\u00e0 sleep del condizionatore d'aria minuto"
+        "name": "Modalità sleep del condizionatore d'aria minuto"
       },
       "air_conditioner_auto_switch_off": {
         "name": "Chiusura automatica"
@@ -734,7 +734,7 @@
         "name": "Telecomando "
       },
       "washer_warning_door_is_open": {
-        "name": "Obl\u00f2 aperto"
+        "name": "Oblò aperto"
       },
       "washer_warning_no_water": {
         "name": "Manca l'acqua"
@@ -764,7 +764,7 @@
         "name": "Controlla il filtro"
       },
       "dishwasher_warning_door_is_open": {
-        "name": "Lo sportello \u00c3\u00a8 aperto"
+        "name": "Lo sportello Ã¨ aperto"
       },
       "dishwasher_warning_call_service": {
         "name": "Contatta l\\'assistenza"
@@ -801,7 +801,7 @@
         "name": "Ammollo"
       },
       "washer_night": {
-        "name": "Modalit\u00e0 notte"
+        "name": "Modalità notte"
       },
       "washer_anticrease": {
         "name": "Antipiega"

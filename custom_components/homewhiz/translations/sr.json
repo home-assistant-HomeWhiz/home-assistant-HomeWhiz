@@ -53,9 +53,9 @@
         "name": "Temperature",
         "state": {
           "temperature_cold_wash": "Cold Wash",
-          "temperature_20": "20 \u00b0C",
-          "temperature_30": "30 \u00b0C",
-          "temperature_40": "40 \u00b0C",
+          "temperature_20": "20 °C",
+          "temperature_30": "30 °C",
+          "temperature_40": "40 °C",
           "60c": "60C",
           "90c": "90C"
         }
@@ -112,7 +112,7 @@
         }
       },
       "remote_control": {
-        "name": "\u0414\u0430\u0459\u0438\u043d\u0441\u043a\u0438 \u0443\u043f\u0440\u0430\u0432\u0459\u0430\u0447"
+        "name": "Даљински управљач"
       },
       "washer_warning_door_is_open": {
         "name": "Door is open"
@@ -163,8 +163,8 @@
         "state": {
           "program_auto": "Auto",
           "program_mix_wash_plus": "MixWash+",
-          "program_intensive_70": "Intensive 70\u00b0C",
-          "program_eco_50": "Eco 50\u00b0C",
+          "program_intensive_70": "Intensive 70°C",
+          "program_eco_50": "Eco 50°C",
           "program_glasscare": "GlassCare",
           "program_new58min": "QuickWash 58'",
           "program_30min": "Mini 30'",
@@ -215,8 +215,8 @@
         "state": {
           "program_auto": "Auto",
           "program_aqua_flex": "AquaFlex",
-          "program_intensive_70": "Intensive 70\u00b0C",
-          "program_eco_50": "Eco 50\u00b0C",
+          "program_intensive_70": "Intensive 70°C",
+          "program_eco_50": "Eco 50°C",
           "program_delicate": "Delicate",
           "program_quick_and_shine": "Quick&Shine",
           "program_mini": "Mini",
@@ -337,9 +337,9 @@
         "name": "Temperature",
         "state": {
           "temperature_cold_wash": "Cold Wash",
-          "temperature_20": "20 \u00b0C",
-          "temperature_30": "30 \u00b0C",
-          "temperature_40": "40 \u00b0C",
+          "temperature_20": "20 °C",
+          "temperature_30": "30 °C",
+          "temperature_40": "40 °C",
           "60c": "60C",
           "90c": "90C"
         }
@@ -396,7 +396,7 @@
         }
       },
       "sub_state": {
-        "name": "Poddr\u017eava",
+        "name": "Poddržava",
         "state": {
           "washer_substate_washing": "Wash",
           "washer_substate_spin": "Spin",
@@ -430,7 +430,7 @@
           "dishwasher_message_paused": "Programme paused",
           "dishwasher_message_program_finished": "Programme complete",
           "dishwasher_message_program_sanitized": "Programme complete and SANITIZED",
-          "dishwasher_message_cancelling": "Cancelling\u2026",
+          "dishwasher_message_cancelling": "Cancelling…",
           "dishwasher_message_time_delay_cancelled": "Delay cancelled",
           "dishwasher_message_program_started": "Programme started",
           "dishwasher_message_washing": "Washing",
@@ -448,7 +448,7 @@
         "name": "Remaining"
       },
       "remote_control": {
-        "name": "\u0414\u0430\u0459\u0438\u043d\u0441\u043a\u0438 \u0443\u043f\u0440\u0430\u0432\u0459\u0430\u0447"
+        "name": "Даљински управљач"
       },
       "washer_warning_door_is_open": {
         "name": "Door is open"
@@ -541,8 +541,8 @@
         "state": {
           "program_auto": "Auto",
           "program_mix_wash_plus": "MixWash+",
-          "program_intensive_70": "Intensive 70\u00b0C",
-          "program_eco_50": "Eco 50\u00b0C",
+          "program_intensive_70": "Intensive 70°C",
+          "program_eco_50": "Eco 50°C",
           "program_glasscare": "GlassCare",
           "program_new58min": "QuickWash 58'",
           "program_30min": "Mini 30'",
@@ -601,7 +601,7 @@
         "name": "Tray Wash"
       },
       "dishwasher_fastplus": {
-        "name": "Ma\u0161ina za pranje sudova fastplus"
+        "name": "Mašina za pranje sudova fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "Steamgloss"
@@ -623,8 +623,8 @@
         "state": {
           "program_auto": "Auto",
           "program_aqua_flex": "AquaFlex",
-          "program_intensive_70": "Intensive 70\u00b0C",
-          "program_eco_50": "Eco 50\u00b0C",
+          "program_intensive_70": "Intensive 70°C",
+          "program_eco_50": "Eco 50°C",
           "program_delicate": "Delicate",
           "program_quick_and_shine": "Quick&Shine",
           "program_mini": "Mini",
@@ -698,10 +698,10 @@
         }
       },
       "air_conditioner_instant_consumption": {
-        "name": "Trenutna potro\u0161nja klima ure\u0111aja"
+        "name": "Trenutna potrošnja klima uređaja"
       },
       "air_conditioner_sleep_mode_minute": {
-        "name": "Re\u017eim mirovanja klima-ure\u0111aja u minuti"
+        "name": "Režim mirovanja klima-uređaja u minuti"
       },
       "air_conditioner_auto_switch_off": {
         "name": "Auto turn off"
@@ -712,7 +712,7 @@
     },
     "binary_sensor": {
       "remote_control": {
-        "name": "\u0414\u0430\u0459\u0438\u043d\u0441\u043a\u0438 \u0443\u043f\u0440\u0430\u0432\u0459\u0430\u0447"
+        "name": "Даљински управљач"
       },
       "washer_warning_door_is_open": {
         "name": "Door is open"
@@ -797,7 +797,7 @@
         "name": "Tray Wash"
       },
       "dishwasher_fastplus": {
-        "name": "Ma\u0161ina za pranje sudova fastplus"
+        "name": "Mašina za pranje sudova fastplus"
       },
       "dishwasher_steamgloss": {
         "name": "Steamgloss"

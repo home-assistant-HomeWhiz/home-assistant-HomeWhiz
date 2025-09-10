@@ -1,120 +1,120 @@
 {
   "config": {
     "abort": {
-      "already_configured": "\u042d\u0442\u043e \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u0443\u0436\u0435 \u0434\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u043e \u0432 Home Assistant.",
-      "already_in_progress": "\u041f\u0440\u043e\u0446\u0435\u0441\u0441 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0443\u0436\u0435 \u0432\u044b\u043f\u043e\u043b\u043d\u044f\u0435\u0442\u0441\u044f.",
-      "no_devices_found": "\u0423\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u044b \u0432 \u0441\u0435\u0442\u0438."
+      "already_configured": "Это устройство уже добавлено в Home Assistant.",
+      "already_in_progress": "Процесс настройки уже выполняется.",
+      "no_devices_found": "Устройства не найдены в сети."
     },
     "flow_title": "{name}",
     "step": {
       "user": {
-        "description": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u0434\u043b\u044f \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438",
+        "description": "Выберите устройство для настройки",
         "menu_options": {
           "select_bluetooth_device": "Bluetooth",
           "provide_cloud_credentials": "Cloud"
         }
       },
       "select_bluetooth_device": {
-        "description": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e",
+        "description": "Выберите устройство",
         "data": {
-          "address": "\u0423\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e"
+          "address": "Устройство"
         }
       },
       "bluetooth_connect": {
-        "description": "\u041f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u044c\u0442\u0435 \u0443\u0447\u0435\u0442\u043d\u044b\u0435 \u0434\u0430\u043d\u043d\u044b\u0435 \u0434\u043b\u044f HomeWhiz",
+        "description": "Предоставьте учетные данные для HomeWhiz",
         "data": {
-          "username": "\u0418\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f",
-          "password": "\u041f\u0430\u0440\u043e\u043b\u044c"
+          "username": "Имя пользователя",
+          "password": "Пароль"
         }
       },
       "provide_cloud_credentials": {
-        "description": "\u041f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u044c\u0442\u0435 \u0443\u0447\u0435\u0442\u043d\u044b\u0435 \u0434\u0430\u043d\u043d\u044b\u0435 \u0434\u043b\u044f HomeWhiz",
+        "description": "Предоставьте учетные данные для HomeWhiz",
         "data": {
-          "username": "\u0418\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f",
-          "password": "\u041f\u0430\u0440\u043e\u043b\u044c"
+          "username": "Имя пользователя",
+          "password": "Пароль"
         }
       },
       "select_cloud_device": {
-        "description": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e",
+        "description": "Выберите устройство",
         "data": {
-          "id": "\u0423\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e"
+          "id": "Устройство"
         }
       }
     },
     "error": {
-      "invalid_auth": "\u041e\u0448\u0438\u0431\u043a\u0430 \u0430\u0432\u0442\u043e\u0440\u0438\u0437\u0430\u0446\u0438\u0438"
+      "invalid_auth": "Ошибка авторизации"
     }
   },
   "entity": {
     "select": {
       "state": {
-        "name": "\u0421\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0435",
+        "name": "Состояние",
         "state": {
-          "device_state_on": "\u0412\u043a\u043b",
-          "device_state_off": "\u0412\u044b\u043a\u043b",
-          "device_state_running": "\u0412\u044b\u043f\u043e\u043b\u043d\u044f\u0435\u0442\u0441\u044f",
-          "device_state_paused": "\u041f\u0440\u0438\u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e",
-          "device_state_time_delay_active": "\u041e\u0442\u0441\u0440\u043e\u0447\u043a\u0430 \u0432\u0440\u0435\u043c\u0435\u043d\u0438 \u0430\u043a\u0442\u0438\u0432\u043d\u0430",
-          "device_state_cancelling": "\u041e\u0442\u043c\u0435\u043d\u0430",
-          "device_state_door_open": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430!",
-          "device_state_settings": "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438"
+          "device_state_on": "Вкл",
+          "device_state_off": "Выкл",
+          "device_state_running": "Выполняется",
+          "device_state_paused": "Приостановлено",
+          "device_state_time_delay_active": "Отсрочка времени активна",
+          "device_state_cancelling": "Отмена",
+          "device_state_door_open": "Дверца открыта!",
+          "device_state_settings": "Настройки"
         }
       },
       "washer_program": {
-        "name": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430",
+        "name": "Программа",
         "state": {
-          "program_cottons": "\u0425\u043b\u043e\u043f\u043e\u043a",
+          "program_cottons": "Хлопок",
           "program_eco_40_60": "Eco 40-60",
-          "program_synthetics": "\u0421\u0438\u043d\u0442\u0435\u0442\u0438\u043a\u0430",
-          "program_mini_mini14": "Xpress/\u0421\u0443\u043f\u0435\u0440\u0431\u044b\u0441\u0442\u0440\u0430\u044f 14 \u043c\u0438\u043d",
-          "program_wool_handwash": "\u0428\u0435\u0440\u0441\u0442\u044c/\u0420\u0443\u0447\u043d\u0430\u044f \u0441\u0442\u0438\u0440\u043a\u0430",
-          "program_delicates": "\u0414\u0435\u043b\u0438\u043a\u0430\u0442\u043d\u044b\u0435 \u0442\u043a\u0430\u043d\u0438",
-          "program_spin_pump": "\u041e\u0442\u0436\u0438\u043c/\u0421\u043b\u0438\u0432",
-          "program_rinsing": "\u041f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0435",
-          "program_darkwash": "\u0422\u0435\u043c\u043d\u044b\u0435 \u0432\u0435\u0449\u0438",
-          "program_outdoor_sports_goretex": "\u0421\u043f\u043e\u0440\u0442\u0438\u0432\u043d\u0430\u044f \u043e\u0434\u0435\u0436\u0434\u0430",
-          "program_stain": "\u0423\u0434\u0430\u043b\u0435\u043d\u0438\u0435 \u043f\u044f\u0442\u0435\u043d",
-          "program_hygeine": "\u0413\u0438\u0433\u0438\u0435\u043d\u0430+",
-          "program_duvet": "\u041e\u0434\u0435\u044f\u043b\u0430/\u0412\u0435\u0440\u0445\u043d\u044f\u044f \u043e\u0434\u0435\u0436\u0434\u0430",
-          "program_shirts": "\u0420\u0443\u0431\u0430\u0448\u043a\u0438",
-          "program_drum_clean": "\u041e\u0447\u0438\u0441\u0442\u043a\u0430 \u0431\u0430\u0440\u0430\u0431\u0430\u043d\u0430",
-          "program_mix": "\u0421\u043c\u0435\u0448\u0430\u043d\u043d\u043e\u0435",
-          "program_curtain": "\u0428\u0442\u043e\u0440\u044b",
-          "program_lingerie": "\u041d\u0438\u0436\u043d\u0435\u0435 \u0431\u0435\u043b\u044c\u0435",
-          "program_soft_toys": "\u041c\u044f\u0433\u043a\u0438\u0435 \u0438\u0433\u0440\u0443\u0448\u043a\u0438",
-          "program_towel": "\u041f\u043e\u043b\u043e\u0442\u0435\u043d\u0446\u0430",
-          "program_cottons_eco": "\u0425\u043b\u043e\u043f\u043e\u043a Eco",
-          "program_dryer_cotton": "\u0421\u0443\u0448\u043a\u0430 \u0445\u043b\u043e\u043f\u043a\u0430",
-          "program_dryer_synthetics": "\u0421\u0443\u0448\u043a\u0430 \u0441\u0438\u043d\u0442\u0435\u0442\u0438\u043a\u0438",
-          "program_hygiene_wash_dry": "\u0413\u0438\u0433\u0438\u0435\u043d\u0430+ (\u0441\u0442\u0438\u0440\u043a\u0430 \u0438 \u0441\u0443\u0448\u043a\u0430)",
-          "program_4kg_wash_dry": "Wash&Dry 4 \u043a\u0433",
-          "program_wash_wear": "Wash&Wear/\u0421\u0442\u0438\u0440\u043a\u0430 \u0438 \u043d\u043e\u0441\u043a\u0430",
-          "program_dark_wash": "\u0422\u0435\u043c\u043d\u044b\u0435 \u0442\u043a\u0430\u043d\u0438",
-          "program_outdoor": "\u0423\u043b\u0438\u0447\u043d\u0430\u044f \u043e\u0434\u0435\u0436\u0434\u0430",
-          "program_drum_clean_plus": "\u041e\u0447\u0438\u0441\u0442\u043a\u0430 \u0431\u0430\u0440\u0430\u0431\u0430\u043d\u0430+",
-          "program_steam_refresh": "\u041e\u0441\u0432\u0435\u0436\u0435\u043d\u0438\u0435 \u043f\u0430\u0440\u043e\u043c"
+          "program_synthetics": "Синтетика",
+          "program_mini_mini14": "Xpress/Супербыстрая 14 мин",
+          "program_wool_handwash": "Шерсть/Ручная стирка",
+          "program_delicates": "Деликатные ткани",
+          "program_spin_pump": "Отжим/Слив",
+          "program_rinsing": "Полоскание",
+          "program_darkwash": "Темные вещи",
+          "program_outdoor_sports_goretex": "Спортивная одежда",
+          "program_stain": "Удаление пятен",
+          "program_hygeine": "Гигиена+",
+          "program_duvet": "Одеяла/Верхняя одежда",
+          "program_shirts": "Рубашки",
+          "program_drum_clean": "Очистка барабана",
+          "program_mix": "Смешанное",
+          "program_curtain": "Шторы",
+          "program_lingerie": "Нижнее белье",
+          "program_soft_toys": "Мягкие игрушки",
+          "program_towel": "Полотенца",
+          "program_cottons_eco": "Хлопок Eco",
+          "program_dryer_cotton": "Сушка хлопка",
+          "program_dryer_synthetics": "Сушка синтетики",
+          "program_hygiene_wash_dry": "Гигиена+ (стирка и сушка)",
+          "program_4kg_wash_dry": "Wash&Dry 4 кг",
+          "program_wash_wear": "Wash&Wear/Стирка и носка",
+          "program_dark_wash": "Темные ткани",
+          "program_outdoor": "Уличная одежда",
+          "program_drum_clean_plus": "Очистка барабана+",
+          "program_steam_refresh": "Освежение паром"
         }
       },
       "washer_temperature": {
-        "name": "\u0422\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430",
+        "name": "Температура",
         "state": {
-          "temperature_cold_wash": "\u0425\u043e\u043b\u043e\u0434\u043d\u0430\u044f \u0432\u043e\u0434\u0430",
-          "temperature_20": "20 \u00b0C",
-          "temperature_30": "30 \u00b0C",
-          "temperature_40": "40 \u00b0C",
-          "60c": "60 \u00b0C",
-          "90c": "90 \u00b0C"
+          "temperature_cold_wash": "Холодная вода",
+          "temperature_20": "20 °C",
+          "temperature_30": "30 °C",
+          "temperature_40": "40 °C",
+          "60c": "60 °C",
+          "90c": "90 °C"
         }
       },
       "washer_spin": {
-        "name": "\u041e\u0442\u0436\u0438\u043c",
+        "name": "Отжим",
         "state": {
-          "spin_no_spin": "\u0411\u0435\u0437 \u043e\u0442\u0436\u0438\u043c\u0430",
+          "spin_no_spin": "Без отжима",
           "600rpm": "600RPM",
           "800rpm": "800RPM",
           "1000rpm": "1000RPM",
           "1200rpm": "1200RPM",
-          "spin_rinse_hold": "\u0417\u0430\u0434\u0435\u0440\u0436\u043a\u0430 \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u044f",
+          "spin_rinse_hold": "Задержка полоскания",
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
@@ -125,13 +125,13 @@
       "washer_fast_plus": {
         "name": "Fast+",
         "state": {
-          "fast_plus_off": "\u0420\u0435\u0436\u0438\u043c Fast+ \u0432\u044b\u043a\u043b\u044e\u0447\u0435\u043d",
-          "fast_plus_on_fast": "\u0420\u0435\u0436\u0438\u043c Fast",
-          "fast_plus_on_fast_plus": "\u0420\u0435\u0436\u0438\u043c Fast+"
+          "fast_plus_off": "Режим Fast+ выключен",
+          "fast_plus_on_fast": "Режим Fast",
+          "fast_plus_on_fast_plus": "Режим Fast+"
         }
       },
       "custom_duration_level": {
-        "name": "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u0430\u044f \u0434\u043b\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c",
+        "name": "Пользовательская длительность",
         "state": {
           "1": "1",
           "2": "2",
@@ -148,257 +148,257 @@
         }
       },
       "washer_extra_rinse_count": {
-        "name": "\u041a\u043e\u043b-\u0432\u043e \u0434\u043e\u043f. \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0439"
+        "name": "Кол-во доп. полосканий"
       },
       "settings_volume": {
-        "name": "\u0413\u0440\u043e\u043c\u043a\u043e\u0441\u0442\u044c \u043a\u043d\u043e\u043f\u043a\u0438",
+        "name": "Громкость кнопки",
         "state": {
-          "volume_low": "\u041d\u0438\u0437\u043a\u0438\u0439",
-          "volume_high": "\u0412\u044b\u0441\u043e\u043a\u0438\u0439"
+          "volume_low": "Низкий",
+          "volume_high": "Высокий"
         }
       },
       "remote_control": {
-        "name": "\u0423\u0434\u0430\u043b\u0435\u043d\u043d\u043e\u0435 \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435"
+        "name": "Удаленное управление"
       },
       "washer_warning_door_is_open": {
-        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430"
+        "name": "Дверца открыта"
       },
       "washer_warning_no_water": {
-        "name": "\u041d\u0435\u0442 \u0432\u043e\u0434\u044b"
+        "name": "Нет воды"
       },
       "washer_warning_security": {
-        "name": "\u0411\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c"
+        "name": "Безопасность"
       },
       "oven_program": {
-        "name": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430",
+        "name": "Программа",
         "state": {
-          "program_static": "\u0421\u0442\u0430\u0442\u0438\u0447\u043d\u044b\u0439",
-          "program_static_fan": "\u0421\u0442\u0430\u0442\u0438\u0447\u043d\u044b\u0439 + \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440",
-          "program_fan_heating": "\u041d\u0430\u0433\u0440\u0435\u0432 \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440\u043e\u043c",
-          "program_multi_cooking": "\u041c\u0443\u043b\u044c\u0442\u0438\u0440\u0435\u0436\u0438\u043c (3D-\u043f\u0440\u0438\u0433\u043e\u0442\u043e\u0432\u043b\u0435\u043d\u0438\u0435)",
-          "program_fan_heat_bottom": "\u041d\u0430\u0433\u0440\u0435\u0432 \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440\u043e\u043c + \u0441\u043d\u0438\u0437\u0443",
-          "program_eco_grill": "\u0413\u0440\u0438\u043b\u044c Eco",
-          "program_full_grill": "\u0413\u0440\u0438\u043b\u044c",
-          "program_full_grill_fan": "\u0413\u0440\u0438\u043b\u044c + \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440",
-          "program_bottom_heating": "\u041d\u0438\u0436\u043d\u0438\u0439 \u043d\u0430\u0433\u0440\u0435\u0432",
-          "program_defrost": "\u0420\u0430\u0437\u043c\u043e\u0440\u043e\u0437\u043a\u0430",
-          "program_warm_keeping": "\u041f\u043e\u0434\u0434\u0435\u0440\u0436\u0430\u043d\u0438\u0435 \u0442\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u044b",
-          "program_eco_fan_heating": "\u041d\u0430\u0433\u0440\u0435\u0432 \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440\u043e\u043c Eco",
-          "program_steam_cleaning": "\u041e\u0447\u0438\u0441\u0442\u043a\u0430 \u043f\u0430\u0440\u043e\u043c",
-          "program_eco_pyro": "\u041e\u0447\u0438\u0441\u0442\u043a\u0430 Eco",
-          "program_pyro": "\u041e\u0447\u0438\u0441\u0442\u043a\u0430"
+          "program_static": "Статичный",
+          "program_static_fan": "Статичный + вентилятор",
+          "program_fan_heating": "Нагрев вентилятором",
+          "program_multi_cooking": "Мультирежим (3D-приготовление)",
+          "program_fan_heat_bottom": "Нагрев вентилятором + снизу",
+          "program_eco_grill": "Гриль Eco",
+          "program_full_grill": "Гриль",
+          "program_full_grill_fan": "Гриль + вентилятор",
+          "program_bottom_heating": "Нижний нагрев",
+          "program_defrost": "Разморозка",
+          "program_warm_keeping": "Поддержание температуры",
+          "program_eco_fan_heating": "Нагрев вентилятором Eco",
+          "program_steam_cleaning": "Очистка паром",
+          "program_eco_pyro": "Очистка Eco",
+          "program_pyro": "Очистка"
         }
       },
       "oven_temperature": {
-        "name": "\u0422\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430"
+        "name": "Температура"
       },
       "settings_brightness": {
-        "name": "\u042f\u0440\u043a\u043e\u0441\u0442\u044c"
+        "name": "Яркость"
       },
       "oven_warning_door_is_open": {
-        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430"
+        "name": "Дверца открыта"
       },
       "oven_warning_door_locked": {
-        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u0437\u0430\u043f\u0435\u0440\u0442\u0430"
+        "name": "Дверца заперта"
       },
       "oven_warning_error": {
-        "name": "\u0412 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0435 \u043f\u0440\u043e\u0438\u0437\u043e\u0448\u043b\u0430 \u043d\u0435\u043f\u0440\u0435\u0434\u0432\u0438\u0434\u0435\u043d\u043d\u0430\u044f \u043e\u0448\u0438\u0431\u043a\u0430. \u0421\u043c. \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f."
+        "name": "В устройстве произошла непредвиденная ошибка. См. руководство пользователя."
       },
       "program": {
-        "name": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430",
+        "name": "Программа",
         "state": {
-          "program_auto": "\u0410\u0432\u0442\u043e",
+          "program_auto": "Авто",
           "program_mix_wash_plus": "MixWash+",
-          "program_intensive_70": "\u0418\u043d\u0442\u0435\u043d\u0441\u0438\u0432 70\u00b0\u0421",
-          "program_eco_50": "Eco 50\u00b0\u0421",
+          "program_intensive_70": "Интенсив 70°С",
+          "program_eco_50": "Eco 50°С",
           "program_glasscare": "GlassCare",
-          "program_new58min": "QuickWash 58\u2019",
-          "program_30min": "\u041c\u0438\u043d\u0438 30\u2019",
-          "program_prewash": "\u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0435",
+          "program_new58min": "QuickWash 58’",
+          "program_30min": "Мини 30’",
+          "program_prewash": "Предварительное полоскание",
           "program_hygiene": "HygieneCare",
-          "program_daily": "\u0415\u0436\u0435\u0434\u043d\u0435\u0432\u043d\u0430\u044f \u043c\u043e\u0439\u043a\u0430",
-          "program_silent": "\u0422\u0438\u0445\u0430\u044f \u043c\u043e\u0439\u043a\u0430",
+          "program_daily": "Ежедневная мойка",
+          "program_silent": "Тихая мойка",
           "program_makine_temizleme": "Inner Clean"
         }
       },
       "setting_detergent_type": {
-        "name": "\u0422\u0438\u043f \u043c\u043e\u044e\u0449\u0435\u0433\u043e \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430",
+        "name": "Тип моющего средства",
         "state": {
-          "setting_detergent_type_powder": "\u041f\u043e\u0440\u043e\u0448\u043a\u043e\u0432\u043e\u0435 \u043c\u043e\u044e\u0449\u0435\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u043e",
-          "setting_detergent_type_tablet": "\u041c\u043e\u044e\u0449\u0435\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u043e \u0432 \u0442\u0430\u0431\u043b\u0435\u0442\u043a\u0430\u0445",
-          "setting_detergent_type_liquid": "\u0416\u0438\u0434\u043a\u043e\u0435 \u043c\u043e\u044e\u0449\u0435\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u043e"
+          "setting_detergent_type_powder": "Порошковое моющее средство",
+          "setting_detergent_type_tablet": "Моющее средство в таблетках",
+          "setting_detergent_type_liquid": "Жидкое моющее средство"
         }
       },
       "dishwasher_rinse_aid_level": {
-        "name": "\u0423\u0440\u043e\u0432\u0435\u043d\u044c \u043a\u043e\u043d\u0434\u0438\u0446\u0438\u043e\u043d\u0435\u0440\u0430 \u0434\u043b\u044f \u0431\u0435\u043b\u044c\u044f"
+        "name": "Уровень кондиционера для белья"
       },
       "dishwasher_water_hardness": {
-        "name": "\u0416\u0435\u0441\u0442\u043a\u043e\u0441\u0442\u044c \u0432\u043e\u0434\u044b"
+        "name": "Жесткость воды"
       },
       "dishwasher_warning_no_rinse_aid": {
-        "name": "\u0411\u0435\u0437 \u043a\u043e\u043d\u0434\u0438\u0446\u0438\u043e\u043d\u0435\u0440\u0430 \u0434\u043b\u044f \u0431\u0435\u043b\u044c\u044f"
+        "name": "Без кондиционера для белья"
       },
       "dishwasher_warning_no_salt": {
-        "name": "\u0411\u0435\u0437 \u0441\u043e\u043b\u0438"
+        "name": "Без соли"
       },
       "dishwasher_warning_no_water": {
-        "name": "\u041d\u0435\u0442 \u0432\u043e\u0434\u044b"
+        "name": "Нет воды"
       },
       "dishwasher_warning_check_the_filter": {
-        "name": "\u041f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435 \u0444\u0438\u043b\u044c\u0442\u0440"
+        "name": "Проверьте фильтр"
       },
       "dishwasher_warning_door_is_open": {
-        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430"
+        "name": "Дверца открыта"
       },
       "dishwasher_warning_call_service": {
-        "name": "\u041f\u043e\u0437\u0432\u043e\u043d\u0438\u0442\u0435 \u0432 \u0441\u0435\u0440\u0432\u0438\u0441\u043d\u0443\u044e \u0441\u043b\u0443\u0436\u0431\u0443"
+        "name": "Позвоните в сервисную службу"
       },
       "dishwasher_liquid_detergent_low": {
-        "name": "\u041d\u0438\u0437\u043a\u0438\u0439 \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u0436\u0438\u0434\u043a\u043e\u0433\u043e \u043c\u043e\u044e\u0449\u0435\u0433\u043e \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430"
+        "name": "Низкий уровень жидкого моющего средства"
       },
       "dishwasher_program": {
-        "name": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430",
+        "name": "Программа",
         "state": {
-          "program_auto": "\u0410\u0432\u0442\u043e",
+          "program_auto": "Авто",
           "program_aqua_flex": "AquaFlex",
-          "program_intensive_70": "\u0418\u043d\u0442\u0435\u043d\u0441\u0438\u0432 70\u00b0C",
-          "program_eco_50": "Eco 50 \u00b0C",
-          "program_delicate": "\u0414\u0435\u043b\u0438\u043a\u0430\u0442\u043d\u0430\u044f",
+          "program_intensive_70": "Интенсив 70°C",
+          "program_eco_50": "Eco 50 °C",
+          "program_delicate": "Деликатная",
           "program_quick_and_shine": "Quick&Shine",
-          "program_mini": "\u041c\u0438\u043d\u0438",
-          "program_prewash": "\u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043c\u043e\u0439\u043a\u0430",
+          "program_mini": "Мини",
+          "program_prewash": "Предварительная мойка",
           "program_quiet": "QuietWash",
           "program_clean_and_shine": "Clean&Shine",
           "program_innerclean": "InnerClean"
         }
       },
       "dishwasher_liquid_detergent_level": {
-        "name": "\u0416\u0438\u0434\u043a\u043e\u0435 \u043c\u043e\u044e\u0449\u0435\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u043e"
+        "name": "Жидкое моющее средство"
       },
       "washer_dry": {
-        "name": "\u0421\u0443\u0448\u043a\u0430",
+        "name": "Сушка",
         "state": {
-          "dry_off": "\u0412\u044b\u043a\u043b",
-          "dry_extra": "\u0421\u0438\u043b\u044c\u043d\u0430\u044f \u0441\u0443\u0448\u043a\u0430",
-          "dry_cabinet": "\u0413\u0430\u0440\u0434\u0435\u0440\u043e\u0431\u043d\u0430\u044f \u0441\u0443\u0448\u043a\u0430",
-          "dry_iron": "\u0421\u0443\u0448\u043a\u0430 \u0434\u043b\u044f \u043b\u0435\u0433\u043a\u043e\u0439 \u0433\u043b\u0430\u0436\u043a\u0438",
-          "dry_10": "45 \u043c\u0438\u043d",
-          "dry_20": "20 \u043c\u0438\u043d",
-          "dry_30": "30 \u043c\u0438\u043d",
-          "dry_60": "60 \u043c\u0438\u043d",
-          "dry_90": "90 \u043c\u0438\u043d",
-          "dry_120": "15 \u043c\u0438\u043d",
-          "dry_150": "150 \u043c\u0438\u043d"
+          "dry_off": "Выкл",
+          "dry_extra": "Сильная сушка",
+          "dry_cabinet": "Гардеробная сушка",
+          "dry_iron": "Сушка для легкой глажки",
+          "dry_10": "45 мин",
+          "dry_20": "20 мин",
+          "dry_30": "30 мин",
+          "dry_60": "60 мин",
+          "dry_90": "90 мин",
+          "dry_120": "15 мин",
+          "dry_150": "150 мин"
         }
       },
       "washer_rinse_count": {
-        "name": "\u0427\u0438\u0441\u043b\u043e \u0446\u0438\u043a\u043b\u043e\u0432 \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u044f"
+        "name": "Число циклов полоскания"
       },
       "air_conditioner_soft_air": {
-        "name": "\u041c\u044f\u0433\u043a\u0438\u0439 \u0432\u043e\u0437\u0434\u0443\u0445",
+        "name": "Мягкий воздух",
         "state": {
-          "air_conditioner_soft_air_off": "\u0412\u044b\u043a\u043b",
-          "air_conditioner_soft_air_up": "\u0412\u0432\u0435\u0440\u0445",
-          "air_conditioner_soft_air_down": "\u0412\u043d\u0438\u0437"
+          "air_conditioner_soft_air_off": "Выкл",
+          "air_conditioner_soft_air_up": "Вверх",
+          "air_conditioner_soft_air_down": "Вниз"
         }
       },
       "air_conditioner_up_down_vane_control": {
-        "name": "\u0412\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u044c\u043d\u043e\u0435 \u043a\u0430\u0447\u0435\u043d\u0438\u0435",
+        "name": "Вертикальное качение",
         "state": {
-          "up_down_vane_control_off": "\u0412\u044b\u043a\u043b",
+          "up_down_vane_control_off": "Выкл",
           "up_down_vane_control_6": "6",
           "up_down_vane_control_5": "5",
           "up_down_vane_control_4": "4",
           "up_down_vane_control_3": "3",
           "up_down_vane_control_2": "2",
           "up_down_vane_control_1": "1",
-          "up_down_vane_control_auto": "\u0410\u0432\u0442\u043e"
+          "up_down_vane_control_auto": "Авто"
         }
       },
       "air_conditioner_left_right_vane_control": {
-        "name": "\u0413\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u0430\u043b\u044c\u043d\u043e\u0435 \u043a\u0430\u0447\u0430\u043d\u0438\u0435",
+        "name": "Горизонтальное качание",
         "state": {
-          "left_right_vane_control_off": "\u0412\u044b\u043a\u043b",
+          "left_right_vane_control_off": "Выкл",
           "left_right_vane_control_1": "1",
           "left_right_vane_control_2": "2",
           "left_right_vane_control_3": "3",
           "left_right_vane_control_4": "4",
           "left_right_vane_control_5": "5",
-          "left_right_vane_control_left": "\u0421\u043b\u0435\u0432\u0430",
-          "left_right_vane_control_right": "\u0421\u043f\u0440\u0430\u0432\u0430",
-          "left_right_vane_control_auto": "\u0410\u0432\u0442\u043e"
+          "left_right_vane_control_left": "Слева",
+          "left_right_vane_control_right": "Справа",
+          "left_right_vane_control_auto": "Авто"
         }
       }
     },
     "sensor": {
       "state": {
-        "name": "\u0421\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0435",
+        "name": "Состояние",
         "state": {
-          "device_state_on": "\u0412\u043a\u043b",
-          "device_state_off": "\u0412\u044b\u043a\u043b",
-          "device_state_running": "\u0412\u044b\u043f\u043e\u043b\u043d\u044f\u0435\u0442\u0441\u044f",
-          "device_state_paused": "\u041f\u0440\u0438\u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e",
-          "device_state_time_delay_active": "\u041e\u0442\u0441\u0440\u043e\u0447\u043a\u0430 \u0432\u0440\u0435\u043c\u0435\u043d\u0438 \u0430\u043a\u0442\u0438\u0432\u043d\u0430",
-          "device_state_cancelling": "\u041e\u0442\u043c\u0435\u043d\u0430",
-          "device_state_door_open": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430!",
-          "device_state_settings": "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438"
+          "device_state_on": "Вкл",
+          "device_state_off": "Выкл",
+          "device_state_running": "Выполняется",
+          "device_state_paused": "Приостановлено",
+          "device_state_time_delay_active": "Отсрочка времени активна",
+          "device_state_cancelling": "Отмена",
+          "device_state_door_open": "Дверца открыта!",
+          "device_state_settings": "Настройки"
         }
       },
       "washer_program": {
-        "name": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430",
+        "name": "Программа",
         "state": {
-          "program_cottons": "\u0425\u043b\u043e\u043f\u043e\u043a",
+          "program_cottons": "Хлопок",
           "program_eco_40_60": "Eco 40-60",
-          "program_synthetics": "\u0421\u0438\u043d\u0442\u0435\u0442\u0438\u043a\u0430",
-          "program_mini_mini14": "Xpress/\u0421\u0443\u043f\u0435\u0440\u0431\u044b\u0441\u0442\u0440\u0430\u044f 14 \u043c\u0438\u043d",
-          "program_wool_handwash": "\u0428\u0435\u0440\u0441\u0442\u044c/\u0420\u0443\u0447\u043d\u0430\u044f \u0441\u0442\u0438\u0440\u043a\u0430",
-          "program_delicates": "\u0414\u0435\u043b\u0438\u043a\u0430\u0442\u043d\u044b\u0435 \u0442\u043a\u0430\u043d\u0438",
-          "program_spin_pump": "\u041e\u0442\u0436\u0438\u043c/\u0421\u043b\u0438\u0432",
-          "program_rinsing": "\u041f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0435",
-          "program_darkwash": "\u0422\u0435\u043c\u043d\u044b\u0435 \u0432\u0435\u0449\u0438",
-          "program_outdoor_sports_goretex": "\u0421\u043f\u043e\u0440\u0442\u0438\u0432\u043d\u0430\u044f \u043e\u0434\u0435\u0436\u0434\u0430",
-          "program_stain": "\u0423\u0434\u0430\u043b\u0435\u043d\u0438\u0435 \u043f\u044f\u0442\u0435\u043d",
-          "program_hygeine": "\u0413\u0438\u0433\u0438\u0435\u043d\u0430+",
-          "program_duvet": "\u041e\u0434\u0435\u044f\u043b\u0430/\u0412\u0435\u0440\u0445\u043d\u044f\u044f \u043e\u0434\u0435\u0436\u0434\u0430",
-          "program_shirts": "\u0420\u0443\u0431\u0430\u0448\u043a\u0438",
-          "program_drum_clean": "\u041e\u0447\u0438\u0441\u0442\u043a\u0430 \u0431\u0430\u0440\u0430\u0431\u0430\u043d\u0430",
-          "program_mix": "\u0421\u043c\u0435\u0448\u0430\u043d\u043d\u043e\u0435",
-          "program_curtain": "\u0428\u0442\u043e\u0440\u044b",
-          "program_lingerie": "\u041d\u0438\u0436\u043d\u0435\u0435 \u0431\u0435\u043b\u044c\u0435",
-          "program_soft_toys": "\u041c\u044f\u0433\u043a\u0438\u0435 \u0438\u0433\u0440\u0443\u0448\u043a\u0438",
-          "program_towel": "\u041f\u043e\u043b\u043e\u0442\u0435\u043d\u0446\u0430",
-          "program_cottons_eco": "\u0425\u043b\u043e\u043f\u043e\u043a Eco",
-          "program_dryer_cotton": "\u0421\u0443\u0448\u043a\u0430 \u0445\u043b\u043e\u043f\u043a\u0430",
-          "program_dryer_synthetics": "\u0421\u0443\u0448\u043a\u0430 \u0441\u0438\u043d\u0442\u0435\u0442\u0438\u043a\u0438",
-          "program_hygiene_wash_dry": "\u0413\u0438\u0433\u0438\u0435\u043d\u0430+ (\u0441\u0442\u0438\u0440\u043a\u0430 \u0438 \u0441\u0443\u0448\u043a\u0430)",
-          "program_4kg_wash_dry": "Wash&Dry 4 \u043a\u0433",
-          "program_wash_wear": "Wash&Wear/\u0421\u0442\u0438\u0440\u043a\u0430 \u0438 \u043d\u043e\u0441\u043a\u0430",
-          "program_dark_wash": "\u0422\u0435\u043c\u043d\u044b\u0435 \u0442\u043a\u0430\u043d\u0438",
-          "program_outdoor": "\u0423\u043b\u0438\u0447\u043d\u0430\u044f \u043e\u0434\u0435\u0436\u0434\u0430",
-          "program_drum_clean_plus": "\u041e\u0447\u0438\u0441\u0442\u043a\u0430 \u0431\u0430\u0440\u0430\u0431\u0430\u043d\u0430+",
-          "program_steam_refresh": "\u041e\u0441\u0432\u0435\u0436\u0435\u043d\u0438\u0435 \u043f\u0430\u0440\u043e\u043c"
+          "program_synthetics": "Синтетика",
+          "program_mini_mini14": "Xpress/Супербыстрая 14 мин",
+          "program_wool_handwash": "Шерсть/Ручная стирка",
+          "program_delicates": "Деликатные ткани",
+          "program_spin_pump": "Отжим/Слив",
+          "program_rinsing": "Полоскание",
+          "program_darkwash": "Темные вещи",
+          "program_outdoor_sports_goretex": "Спортивная одежда",
+          "program_stain": "Удаление пятен",
+          "program_hygeine": "Гигиена+",
+          "program_duvet": "Одеяла/Верхняя одежда",
+          "program_shirts": "Рубашки",
+          "program_drum_clean": "Очистка барабана",
+          "program_mix": "Смешанное",
+          "program_curtain": "Шторы",
+          "program_lingerie": "Нижнее белье",
+          "program_soft_toys": "Мягкие игрушки",
+          "program_towel": "Полотенца",
+          "program_cottons_eco": "Хлопок Eco",
+          "program_dryer_cotton": "Сушка хлопка",
+          "program_dryer_synthetics": "Сушка синтетики",
+          "program_hygiene_wash_dry": "Гигиена+ (стирка и сушка)",
+          "program_4kg_wash_dry": "Wash&Dry 4 кг",
+          "program_wash_wear": "Wash&Wear/Стирка и носка",
+          "program_dark_wash": "Темные ткани",
+          "program_outdoor": "Уличная одежда",
+          "program_drum_clean_plus": "Очистка барабана+",
+          "program_steam_refresh": "Освежение паром"
         }
       },
       "washer_temperature": {
-        "name": "\u0422\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430",
+        "name": "Температура",
         "state": {
-          "temperature_cold_wash": "\u041c\u044b\u0442\u044c\u0435/\u0441\u0442\u0438\u0440\u043a\u0430 \u0432 \u0445\u043e\u043b\u043e\u0434\u043d\u043e\u0439 \u0432\u043e\u0434\u0435",
-          "temperature_20": "20 \u00b0C",
-          "temperature_30": "30 \u00b0C",
-          "temperature_40": "40 \u00b0C",
-          "60c": "60 \u00b0C",
-          "90c": "90 \u00b0C"
+          "temperature_cold_wash": "Мытье/стирка в холодной воде",
+          "temperature_20": "20 °C",
+          "temperature_30": "30 °C",
+          "temperature_40": "40 °C",
+          "60c": "60 °C",
+          "90c": "90 °C"
         }
       },
       "washer_spin": {
-        "name": "\u041e\u0442\u0436\u0438\u043c",
+        "name": "Отжим",
         "state": {
-          "spin_no_spin": "\u0411\u0435\u0437 \u043e\u0442\u0436\u0438\u043c\u0430",
+          "spin_no_spin": "Без отжима",
           "600rpm": "600RPM",
           "800rpm": "800RPM",
           "1000rpm": "1000RPM",
           "1200rpm": "1200RPM",
-          "spin_rinse_hold": "\u0417\u0430\u0434\u0435\u0440\u0436\u043a\u0430 \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u044f",
+          "spin_rinse_hold": "Задержка полоскания",
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
@@ -409,13 +409,13 @@
       "washer_fast_plus": {
         "name": "Fast+",
         "state": {
-          "fast_plus_off": "\u0420\u0435\u0436\u0438\u043c Fast+ \u0432\u044b\u043a\u043b\u044e\u0447\u0435\u043d",
-          "fast_plus_on_fast": "\u0420\u0435\u0436\u0438\u043c Fast",
-          "fast_plus_on_fast_plus": "\u0420\u0435\u0436\u0438\u043c Fast+"
+          "fast_plus_off": "Режим Fast+ выключен",
+          "fast_plus_on_fast": "Режим Fast",
+          "fast_plus_on_fast_plus": "Режим Fast+"
         }
       },
       "custom_duration_level": {
-        "name": "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u0430\u044f \u0434\u043b\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c",
+        "name": "Пользовательская длительность",
         "state": {
           "1": "1",
           "2": "2",
@@ -432,469 +432,469 @@
         }
       },
       "washer_extra_rinse_count": {
-        "name": "\u041a\u043e\u043b-\u0432\u043e \u0434\u043e\u043f. \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0439"
+        "name": "Кол-во доп. полосканий"
       },
       "settings_volume": {
-        "name": "\u0413\u0440\u043e\u043c\u043a\u043e\u0441\u0442\u044c \u043a\u043d\u043e\u043f\u043a\u0438",
+        "name": "Громкость кнопки",
         "state": {
-          "volume_low": "\u0422\u0438\u0445\u043e",
-          "volume_high": "\u0413\u0440\u043e\u043c\u043a\u043e"
+          "volume_low": "Тихо",
+          "volume_high": "Громко"
         }
       },
       "sub_state": {
-        "name": "\u041f\u043e\u0434\u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0435",
+        "name": "Подсостояние",
         "state": {
-          "washer_substate_washing": "\u041c\u043e\u0439\u043a\u0430/\u0441\u0442\u0438\u0440\u043a\u0430",
-          "washer_substate_spin": "\u041e\u0442\u0436\u0438\u043c",
-          "washer_water_intake": "\u0417\u0430\u0431\u043e\u0440 \u0432\u043e\u0434\u044b",
-          "washer_substate_prewash": "\u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043c\u043e\u0439\u043a\u0430",
-          "washer_substate_rinsing": "\u041f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0435",
-          "washer_substate_softener": "\u0423\u043c\u044f\u0433\u0447\u0438\u0442\u0435\u043b\u044c",
-          "washer_substate_program_started": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0435\u0442\u0441\u044f",
-          "washer_substate_time_delay_enabled": "\u0412\u0440\u0435\u043c\u044f \u043e\u043a\u043e\u043d\u0447\u0430\u043d\u0438\u044f \u0432\u043a\u043b\u044e\u0447\u0435\u043d\u043e",
-          "washer_substate_paused": "\u041f\u0430\u0443\u0437\u0430",
-          "washer_substate_analysing": "\u0410\u043d\u0430\u043b\u0438\u0437",
-          "washer_substate_door_locked": "\u0414\u0432\u0435\u0440\u0446\u0430 \u0437\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d\u0430",
-          "washer_substate_opening_door": "\u041e\u0442\u043a\u0440\u044b\u0432\u0430\u043d\u0438\u0435 \u0434\u0432\u0435\u0440\u0446\u044b",
-          "washer_substate_locking_door": "\u0411\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u043a\u0430 \u0434\u0432\u0435\u0440\u0446\u044b",
-          "washer_substate_remove_laundry": "\u0426\u0438\u043a\u043b \u0441\u0442\u0438\u0440\u043a\u0438 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d; \u043c\u043e\u0436\u043d\u043e \u0434\u043e\u0441\u0442\u0430\u0432\u0430\u0442\u044c \u0431\u0435\u043b\u044c\u0435",
-          "washer_substate_add_laundry": "\u041c\u043e\u0436\u043d\u043e \u0434\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0431\u0435\u043b\u044c\u0435",
-          "washer_substate_rinse_hold": "\u0412\u043a\u043b\u044e\u0447\u0435\u043d\u0430 \u0437\u0430\u0434\u0435\u0440\u0436\u043a\u0430 \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u044f; \u0432\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0441\u043a\u043e\u0440\u043e\u0441\u0442\u044c \u043e\u0442\u0436\u0438\u043c\u0430",
-          "washer_substate_remote_anticrease": "\u0412\u044b\u043f\u043e\u043b\u043d\u044f\u0435\u0442\u0441\u044f \u0440\u0430\u0437\u0433\u043b\u0430\u0436\u0438\u0432\u0430\u043d\u0438\u0435 \u0441\u043a\u043b\u0430\u0434\u043e\u043a (\u0437\u0430\u043f\u0443\u0441\u043a \u0441 \u0443\u0434\u0430\u043b\u0435\u043d\u043d\u043e\u0433\u043e \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430).",
-          "washer_substate_drying": "\u0421\u0443\u0448\u043a\u0430",
-          "oven_message_good_appetite": "\u041f\u0440\u0438\u044f\u0442\u043d\u043e\u0433\u043e \u0430\u043f\u043f\u0435\u0442\u0438\u0442\u0430",
-          "oven_message_cooking": "\u0422\u0435\u0445\u043d\u0438\u043a\u0430 \u0434\u043b\u044f \u043f\u0440\u0438\u0433\u043e\u0442\u043e\u0432\u043b\u0435\u043d\u0438\u044f \u043f\u0438\u0449\u0438",
-          "oven_message_paused": "\u041f\u0440\u0438\u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e",
-          "oven_message_waiting": "\u041e\u0436\u0438\u0434\u0430\u043d\u0438\u0435",
-          "oven_message_defrosting": "\u0420\u0430\u0437\u043c\u043e\u0440\u043e\u0437\u043a\u0430",
-          "operation_completed": "\u041e\u043f\u0435\u0440\u0430\u0446\u0438\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430",
-          "oven_message_preheating": "\u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0440\u0430\u0437\u043e\u0433\u0440\u0435\u0432",
-          "oven_message_preheating_completed": "\u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0440\u0430\u0437\u043e\u0433\u0440\u0435\u0432 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d",
-          "oven_message_cleaning": "\u041e\u0447\u0438\u0441\u0442\u043a\u0430",
-          "oven_message_cleaning_completed": "\u041e\u0447\u0438\u0441\u0442\u043a\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430",
-          "dishwasher_message_time_delay_started": "\u0412\u0440\u0435\u043c\u044f \u043e\u043a\u043e\u043d\u0447\u0430\u043d\u0438\u044f \u0432\u043a\u043b\u044e\u0447\u0435\u043d\u043e",
-          "dishwasher_message_paused": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430 \u043f\u0440\u0438\u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0430",
-          "dishwasher_message_program_finished": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430",
-          "dishwasher_message_program_sanitized": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430, \u0414\u0415\u0417\u0418\u041d\u0424\u0415\u041a\u0426\u0418\u042f \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0430",
-          "dishwasher_message_cancelling": "\u041e\u0442\u043c\u0435\u043d\u0430...",
-          "dishwasher_message_time_delay_cancelled": "\u041e\u0442\u0441\u0440\u043e\u0447\u043a\u0430 \u043e\u0442\u043c\u0435\u043d\u0435\u043d\u0430",
-          "dishwasher_message_program_started": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430",
-          "dishwasher_message_washing": "\u041c\u043e\u0439\u043a\u0430",
-          "dishwasher_message_rinsing": "\u041f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0435",
-          "dishwasher_message_drying": "\u0421\u0443\u0448\u043a\u0430"
+          "washer_substate_washing": "Мойка/стирка",
+          "washer_substate_spin": "Отжим",
+          "washer_water_intake": "Забор воды",
+          "washer_substate_prewash": "Предварительная мойка",
+          "washer_substate_rinsing": "Полоскание",
+          "washer_substate_softener": "Умягчитель",
+          "washer_substate_program_started": "Программа запускается",
+          "washer_substate_time_delay_enabled": "Время окончания включено",
+          "washer_substate_paused": "Пауза",
+          "washer_substate_analysing": "Анализ",
+          "washer_substate_door_locked": "Дверца заблокирована",
+          "washer_substate_opening_door": "Открывание дверцы",
+          "washer_substate_locking_door": "Блокировка дверцы",
+          "washer_substate_remove_laundry": "Цикл стирки завершен; можно доставать белье",
+          "washer_substate_add_laundry": "Можно добавить белье",
+          "washer_substate_rinse_hold": "Включена задержка полоскания; выберите скорость отжима",
+          "washer_substate_remote_anticrease": "Выполняется разглаживание складок (запуск с удаленного устройства).",
+          "washer_substate_drying": "Сушка",
+          "oven_message_good_appetite": "Приятного аппетита",
+          "oven_message_cooking": "Техника для приготовления пищи",
+          "oven_message_paused": "Приостановлено",
+          "oven_message_waiting": "Ожидание",
+          "oven_message_defrosting": "Разморозка",
+          "operation_completed": "Операция завершена",
+          "oven_message_preheating": "Предварительный разогрев",
+          "oven_message_preheating_completed": "Предварительный разогрев завершен",
+          "oven_message_cleaning": "Очистка",
+          "oven_message_cleaning_completed": "Очистка завершена",
+          "dishwasher_message_time_delay_started": "Время окончания включено",
+          "dishwasher_message_paused": "Программа приостановлена",
+          "dishwasher_message_program_finished": "Программа завершена",
+          "dishwasher_message_program_sanitized": "Программа завершена, ДЕЗИНФЕКЦИЯ выполнена",
+          "dishwasher_message_cancelling": "Отмена...",
+          "dishwasher_message_time_delay_cancelled": "Отсрочка отменена",
+          "dishwasher_message_program_started": "Программа запущена",
+          "dishwasher_message_washing": "Мойка",
+          "dishwasher_message_rinsing": "Полоскание",
+          "dishwasher_message_drying": "Сушка"
         }
       },
       "washer_delay": {
-        "name": "\u0412\u0440\u0435\u043c\u044f \u043e\u043a\u043e\u043d\u0447\u0430\u043d\u0438\u044f \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b"
+        "name": "Время окончания программы"
       },
       "delay_start": {
-        "name": "\u041e\u0442\u043b\u043e\u0436\u0435\u043d\u043d\u044b\u0439 \u0441\u0442\u0430\u0440\u0442"
+        "name": "Отложенный старт"
       },
       "delay_start_time": {
-        "name": "\u041d\u0430\u0447\u0430\u043b\u043e \u043e\u0442\u043b\u043e\u0436\u0435\u043d\u043d\u043e\u0433\u043e \u0441\u0442\u0430\u0440\u0442\u0430"
+        "name": "Начало отложенного старта"
       },
       "delay_end_time": {
-        "name": "\u041a\u043e\u043d\u0435\u0446 \u043e\u0442\u043b\u043e\u0436\u0435\u043d\u043d\u043e\u0433\u043e \u0441\u0442\u0430\u0440\u0442\u0430"
+        "name": "Конец отложенного старта"
       },
       "washer_duration": {
-        "name": "\u0414\u043b\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c"
+        "name": "Длительность"
       },
       "washer_remaining": {
-        "name": "\u041e\u0441\u0442\u0430\u043b\u043e\u0441\u044c"
+        "name": "Осталось"
       },
       "remote_control": {
-        "name": "\u0423\u0434\u0430\u043b\u0435\u043d\u043d\u043e\u0435 \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435"
+        "name": "Удаленное управление"
       },
       "washer_warning_door_is_open": {
-        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430"
+        "name": "Дверца открыта"
       },
       "washer_warning_no_water": {
-        "name": "\u041d\u0435\u0442 \u0432\u043e\u0434\u044b"
+        "name": "Нет воды"
       },
       "washer_warning_security": {
-        "name": "\u0411\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c"
+        "name": "Безопасность"
       },
       "washer_prewash": {
-        "name": "\u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043c\u043e\u0439\u043a\u0430"
+        "name": "Предварительная мойка"
       },
       "washer_extrarinse": {
-        "name": "\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0435"
+        "name": "Дополнительное полоскание"
       },
       "washer_hidden_anti_crease": {
-        "name": "\u0418\u043d\u0442\u0435\u043b\u043b\u0435\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u043e\u0435 \u0440\u0430\u0437\u0433\u043b\u0430\u0436\u0438\u0432\u0430\u043d\u0438\u0435 \u0441\u043a\u043b\u0430\u0434\u043e\u043a"
+        "name": "Интеллектуальное разглаживание складок"
       },
       "washer_steam": {
-        "name": "\u041f\u0430\u0440"
+        "name": "Пар"
       },
       "washer_phr": {
-        "name": "\u0423\u0434\u0430\u043b\u0435\u043d\u0438\u0435 \u0448\u0435\u0440\u0441\u0442\u0438 \u0436\u0438\u0432\u043e\u0442\u043d\u044b\u0445"
+        "name": "Удаление шерсти животных"
       },
       "washer_add_water": {
-        "name": "\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043f\u043e\u0434\u0430\u0447\u0430 \u0432\u043e\u0434\u044b"
+        "name": "Дополнительная подача воды"
       },
       "washer_soaking": {
-        "name": "\u0417\u0430\u043c\u0430\u0447\u0438\u0432\u0430\u043d\u0438\u0435"
+        "name": "Замачивание"
       },
       "washer_night": {
-        "name": "\u041d\u043e\u0447\u043d\u043e\u0439 \u0440\u0435\u0436\u0438\u043c"
+        "name": "Ночной режим"
       },
       "washer_anticrease": {
-        "name": "\u0420\u0435\u0436\u0438\u043c AntiCrease"
+        "name": "Режим AntiCrease"
       },
       "oven_program": {
-        "name": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430",
+        "name": "Программа",
         "state": {
-          "program_static": "\u0421\u0442\u0430\u0442\u0438\u0447\u043d\u044b\u0439",
-          "program_static_fan": "\u0421\u0442\u0430\u0442\u0438\u0447\u043d\u044b\u0439 + \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440",
-          "program_fan_heating": "\u041d\u0430\u0433\u0440\u0435\u0432 \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440\u043e\u043c",
-          "program_multi_cooking": "\u041c\u0443\u043b\u044c\u0442\u0438\u0440\u0435\u0436\u0438\u043c (3D-\u043f\u0440\u0438\u0433\u043e\u0442\u043e\u0432\u043b\u0435\u043d\u0438\u0435)",
-          "program_fan_heat_bottom": "\u041d\u0430\u0433\u0440\u0435\u0432 \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440\u043e\u043c + \u0441\u043d\u0438\u0437\u0443",
-          "program_eco_grill": "\u0413\u0440\u0438\u043b\u044c Eco",
-          "program_full_grill": "\u0413\u0440\u0438\u043b\u044c",
-          "program_full_grill_fan": "\u0413\u0440\u0438\u043b\u044c + \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440",
-          "program_bottom_heating": "\u041d\u0438\u0436\u043d\u0438\u0439 \u043d\u0430\u0433\u0440\u0435\u0432",
-          "program_defrost": "\u0420\u0430\u0437\u043c\u043e\u0440\u043e\u0437\u043a\u0430",
-          "program_warm_keeping": "\u041f\u043e\u0434\u0434\u0435\u0440\u0436\u0430\u043d\u0438\u0435 \u0442\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u044b",
-          "program_eco_fan_heating": "\u041d\u0430\u0433\u0440\u0435\u0432 \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440\u043e\u043c Eco",
-          "program_steam_cleaning": "\u041e\u0447\u0438\u0441\u0442\u043a\u0430 \u043f\u0430\u0440\u043e\u043c",
-          "program_eco_pyro": "\u041e\u0447\u0438\u0441\u0442\u043a\u0430 Eco",
-          "program_pyro": "\u041e\u0447\u0438\u0441\u0442\u043a\u0430"
+          "program_static": "Статичный",
+          "program_static_fan": "Статичный + вентилятор",
+          "program_fan_heating": "Нагрев вентилятором",
+          "program_multi_cooking": "Мультирежим (3D-приготовление)",
+          "program_fan_heat_bottom": "Нагрев вентилятором + снизу",
+          "program_eco_grill": "Гриль Eco",
+          "program_full_grill": "Гриль",
+          "program_full_grill_fan": "Гриль + вентилятор",
+          "program_bottom_heating": "Нижний нагрев",
+          "program_defrost": "Разморозка",
+          "program_warm_keeping": "Поддержание температуры",
+          "program_eco_fan_heating": "Нагрев вентилятором Eco",
+          "program_steam_cleaning": "Очистка паром",
+          "program_eco_pyro": "Очистка Eco",
+          "program_pyro": "Очистка"
         }
       },
       "oven_temperature": {
-        "name": "\u0422\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430"
+        "name": "Температура"
       },
       "settings_brightness": {
-        "name": "\u042f\u0440\u043a\u043e\u0441\u0442\u044c"
+        "name": "Яркость"
       },
       "variable_delay": {
-        "name": "\u041f\u0435\u0440\u0435\u043c\u0435\u043d\u043d\u0430\u044f \u0437\u0430\u0434\u0435\u0440\u0436\u043a\u0430"
+        "name": "Переменная задержка"
       },
       "variable_oven_duration": {
-        "name": "\u0412\u0440\u0435\u043c\u044f \u043f\u0440\u0438\u0433\u043e\u0442\u043e\u0432\u043b\u0435\u043d\u0438\u044f (\u0447\u0430\u0441\u044b : \u043c\u0438\u043d\u0443\u0442\u044b)"
+        "name": "Время приготовления (часы : минуты)"
       },
       "variable_remaining": {
-        "name": "\u041e\u0441\u0442\u0430\u043b\u043e\u0441\u044c"
+        "name": "Осталось"
       },
       "oven_warning_door_is_open": {
-        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430"
+        "name": "Дверца открыта"
       },
       "oven_warning_door_locked": {
-        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u0437\u0430\u043f\u0435\u0440\u0442\u0430"
+        "name": "Дверца заперта"
       },
       "oven_warning_error": {
-        "name": "\u0412 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0435 \u043f\u0440\u043e\u0438\u0437\u043e\u0448\u043b\u0430 \u043d\u0435\u043f\u0440\u0435\u0434\u0432\u0438\u0434\u0435\u043d\u043d\u0430\u044f \u043e\u0448\u0438\u0431\u043a\u0430. \u0421\u043c. \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f."
+        "name": "В устройстве произошла непредвиденная ошибка. См. руководство пользователя."
       },
       "oven_booster": {
-        "name": "\u0411\u0443\u0441\u0442\u0435\u0440"
+        "name": "Бустер"
       },
       "oven_skip_preheating": {
-        "name": "\u041f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u044c >"
+        "name": "Пропустить >"
       },
       "program": {
-        "name": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430",
+        "name": "Программа",
         "state": {
-          "program_auto": "\u0410\u0432\u0442\u043e",
+          "program_auto": "Авто",
           "program_mix_wash_plus": "MixWash+",
-          "program_intensive_70": "\u0418\u043d\u0442\u0435\u043d\u0441\u0438\u0432 70\u00b0\u0421",
-          "program_eco_50": "Eco 50\u00b0\u0421",
+          "program_intensive_70": "Интенсив 70°С",
+          "program_eco_50": "Eco 50°С",
           "program_glasscare": "GlassCare",
-          "program_new58min": "QuickWash 58\u2019",
-          "program_30min": "\u041c\u0438\u043d\u0438 30\u2019",
-          "program_prewash": "\u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0435",
+          "program_new58min": "QuickWash 58’",
+          "program_30min": "Мини 30’",
+          "program_prewash": "Предварительное полоскание",
           "program_hygiene": "HygieneCare",
-          "program_daily": "\u0415\u0436\u0435\u0434\u043d\u0435\u0432\u043d\u0430\u044f \u043c\u043e\u0439\u043a\u0430",
-          "program_silent": "\u0422\u0438\u0445\u0430\u044f \u043c\u043e\u0439\u043a\u0430",
+          "program_daily": "Ежедневная мойка",
+          "program_silent": "Тихая мойка",
           "program_makine_temizleme": "Inner Clean"
         }
       },
       "setting_detergent_type": {
-        "name": "\u0422\u0438\u043f \u043c\u043e\u044e\u0449\u0435\u0433\u043e \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430",
+        "name": "Тип моющего средства",
         "state": {
-          "setting_detergent_type_powder": "\u041f\u043e\u0440\u043e\u0448\u043a\u043e\u0432\u043e\u0435 \u043c\u043e\u044e\u0449\u0435\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u043e",
-          "setting_detergent_type_tablet": "\u041c\u043e\u044e\u0449\u0435\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u043e \u0432 \u0442\u0430\u0431\u043b\u0435\u0442\u043a\u0430\u0445",
-          "setting_detergent_type_liquid": "\u0416\u0438\u0434\u043a\u043e\u0435 \u043c\u043e\u044e\u0449\u0435\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u043e"
+          "setting_detergent_type_powder": "Порошковое моющее средство",
+          "setting_detergent_type_tablet": "Моющее средство в таблетках",
+          "setting_detergent_type_liquid": "Жидкое моющее средство"
         }
       },
       "dishwasher_rinse_aid_level": {
-        "name": "\u0423\u0440\u043e\u0432\u0435\u043d\u044c \u043a\u043e\u043d\u0434\u0438\u0446\u0438\u043e\u043d\u0435\u0440\u0430 \u0434\u043b\u044f \u0431\u0435\u043b\u044c\u044f"
+        "name": "Уровень кондиционера для белья"
       },
       "dishwasher_water_hardness": {
-        "name": "\u0416\u0435\u0441\u0442\u043a\u043e\u0441\u0442\u044c \u0432\u043e\u0434\u044b"
+        "name": "Жесткость воды"
       },
       "dishwasher_delay": {
-        "name": "\u0412\u0440\u0435\u043c\u044f \u043e\u043a\u043e\u043d\u0447\u0430\u043d\u0438\u044f \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b"
+        "name": "Время окончания программы"
       },
       "dishwasher_duration": {
-        "name": "\u0414\u043b\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c"
+        "name": "Длительность"
       },
       "dishwasher_remaining": {
-        "name": "\u041e\u0441\u0442\u0430\u043b\u043e\u0441\u044c \u0432\u0440\u0435\u043c\u0435\u043d\u0438"
+        "name": "Осталось времени"
       },
       "dishwasher_warning_no_rinse_aid": {
-        "name": "\u0411\u0435\u0437 \u043a\u043e\u043d\u0434\u0438\u0446\u0438\u043e\u043d\u0435\u0440\u0430 \u0434\u043b\u044f \u0431\u0435\u043b\u044c\u044f"
+        "name": "Без кондиционера для белья"
       },
       "dishwasher_warning_no_salt": {
-        "name": "\u0411\u0435\u0437 \u0441\u043e\u043b\u0438"
+        "name": "Без соли"
       },
       "dishwasher_warning_no_water": {
-        "name": "\u041d\u0435\u0442 \u0432\u043e\u0434\u044b"
+        "name": "Нет воды"
       },
       "dishwasher_warning_check_the_filter": {
-        "name": "\u041f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435 \u0444\u0438\u043b\u044c\u0442\u0440"
+        "name": "Проверьте фильтр"
       },
       "dishwasher_warning_door_is_open": {
-        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430"
+        "name": "Дверца открыта"
       },
       "dishwasher_warning_call_service": {
-        "name": "\u041f\u043e\u0437\u0432\u043e\u043d\u0438\u0442\u0435 \u0432 \u0441\u0435\u0440\u0432\u0438\u0441\u043d\u0443\u044e \u0441\u043b\u0443\u0436\u0431\u0443"
+        "name": "Позвоните в сервисную службу"
       },
       "dishwasher_liquid_detergent_low": {
-        "name": "\u041d\u0438\u0437\u043a\u0438\u0439 \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u0436\u0438\u0434\u043a\u043e\u0433\u043e \u043c\u043e\u044e\u0449\u0435\u0433\u043e \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430"
+        "name": "Низкий уровень жидкого моющего средства"
       },
       "dishwasher_traywash": {
-        "name": "\u041c\u044b\u0442\u044c\u0435 \u043f\u0440\u043e\u0442\u0438\u0432\u0435\u043d\u044f"
+        "name": "Мытье противеня"
       },
       "dishwasher_fastplus": {
-        "name": "\u041f\u043e\u0441\u0443\u0434\u043e\u043c\u043e\u0435\u0447\u043d\u0430\u044f \u043c\u0430\u0448\u0438\u043d\u0430 Fastplus"
+        "name": "Посудомоечная машина Fastplus"
       },
       "dishwasher_steamgloss": {
-        "name": "\u0420\u0435\u0436\u0438\u043c Steamgloss"
+        "name": "Режим Steamgloss"
       },
       "dishwasher_extrarinse": {
-        "name": "\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0435"
+        "name": "Дополнительное полоскание"
       },
       "dishwasher_halfload": {
-        "name": "\u041f\u043e\u043b\u043e\u0432\u0438\u043d\u043d\u0430\u044f \u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0430"
+        "name": "Половинная загрузка"
       },
       "setting_auto_door": {
-        "name": "\u0424\u0443\u043d\u043a\u0446\u0438\u044f Doormatic"
+        "name": "Функция Doormatic"
       },
       "setting_inner_illumination": {
-        "name": "\u0412\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0435\u0435 \u043e\u0441\u0432\u0435\u0449\u0435\u043d\u0438\u0435"
+        "name": "Внутреннее освещение"
       },
       "dishwasher_program": {
-        "name": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430",
+        "name": "Программа",
         "state": {
-          "program_auto": "\u0410\u0432\u0442\u043e",
+          "program_auto": "Авто",
           "program_aqua_flex": "AquaFlex",
-          "program_intensive_70": "\u0418\u043d\u0442\u0435\u043d\u0441\u0438\u0432 70\u00b0C",
-          "program_eco_50": "Eco 50\u00b0C",
-          "program_delicate": "\u0414\u0435\u043b\u0438\u043a\u0430\u0442\u043d\u0430\u044f",
+          "program_intensive_70": "Интенсив 70°C",
+          "program_eco_50": "Eco 50°C",
+          "program_delicate": "Деликатная",
           "program_quick_and_shine": "Quick&Shine",
-          "program_mini": "\u041c\u0438\u043d\u0438",
-          "program_prewash": "\u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043c\u043e\u0439\u043a\u0430",
+          "program_mini": "Мини",
+          "program_prewash": "Предварительная мойка",
           "program_quiet": "QuietWash",
           "program_clean_and_shine": "Clean&Shine",
           "program_innerclean": "InnerClean"
         }
       },
       "dishwasher_liquid_detergent_level": {
-        "name": "\u0416\u0438\u0434\u043a\u043e\u0435 \u043c\u043e\u044e\u0449\u0435\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u043e"
+        "name": "Жидкое моющее средство"
       },
       "dishwasher_hygiene_intense": {
-        "name": "\u0418\u043d\u0442\u0435\u043d\u0441\u0438\u0432\u043d\u0430\u044f \u0433\u0438\u0433\u0438\u0435\u043d\u0430 \u043f\u043e\u0441\u0443\u0434\u043e\u043c\u043e\u0435\u0447\u043d\u043e\u0439 \u043c\u0430\u0448\u0438\u043d\u044b"
+        "name": "Интенсивная гигиена посудомоечной машины"
       },
       "dishwasher_deepwash": {
-        "name": "\u0413\u043b\u0443\u0431\u043e\u043a\u0430\u044f \u0441\u0442\u0438\u0440\u043a\u0430"
+        "name": "Глубокая стирка"
       },
       "washer_dry": {
-        "name": "\u0421\u0443\u0448\u043a\u0430",
+        "name": "Сушка",
         "state": {
-          "dry_off": "\u0412\u044b\u043a\u043b",
-          "dry_extra": "\u0421\u0438\u043b\u044c\u043d\u0430\u044f \u0441\u0443\u0448\u043a\u0430",
-          "dry_cabinet": "\u0413\u0430\u0440\u0434\u0435\u0440\u043e\u0431\u043d\u0430\u044f \u0441\u0443\u0448\u043a\u0430",
-          "dry_iron": "\u0421\u0443\u0448\u043a\u0430 \u0434\u043b\u044f \u043b\u0435\u0433\u043a\u043e\u0439 \u0433\u043b\u0430\u0436\u043a\u0438",
-          "dry_10": "45 \u043c\u0438\u043d",
-          "dry_20": "20 \u043c\u0438\u043d",
-          "dry_30": "30 \u043c\u0438\u043d",
-          "dry_60": "60 \u043c\u0438\u043d",
-          "dry_90": "90 \u043c\u0438\u043d",
-          "dry_120": "15 \u043c\u0438\u043d",
-          "dry_150": "150 \u043c\u0438\u043d"
+          "dry_off": "Выкл",
+          "dry_extra": "Сильная сушка",
+          "dry_cabinet": "Гардеробная сушка",
+          "dry_iron": "Сушка для легкой глажки",
+          "dry_10": "45 мин",
+          "dry_20": "20 мин",
+          "dry_30": "30 мин",
+          "dry_60": "60 мин",
+          "dry_90": "90 мин",
+          "dry_120": "15 мин",
+          "dry_150": "150 мин"
         }
       },
       "washer_rinse_count": {
-        "name": "\u0427\u0438\u0441\u043b\u043e \u0446\u0438\u043a\u043b\u043e\u0432 \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u044f"
+        "name": "Число циклов полоскания"
       },
       "air_conditioner_soft_air": {
-        "name": "\u041c\u044f\u0433\u043a\u0438\u0439 \u0432\u043e\u0437\u0434\u0443\u0445",
+        "name": "Мягкий воздух",
         "state": {
-          "air_conditioner_soft_air_off": "\u0412\u044b\u043a\u043b",
-          "air_conditioner_soft_air_up": "\u0412\u0432\u0435\u0440\u0445",
-          "air_conditioner_soft_air_down": "\u0412\u043d\u0438\u0437"
+          "air_conditioner_soft_air_off": "Выкл",
+          "air_conditioner_soft_air_up": "Вверх",
+          "air_conditioner_soft_air_down": "Вниз"
         }
       },
       "air_conditioner_up_down_vane_control": {
-        "name": "\u0412\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u044c\u043d\u043e\u0435 \u043a\u0430\u0447\u0435\u043d\u0438\u0435",
+        "name": "Вертикальное качение",
         "state": {
-          "up_down_vane_control_off": "\u0412\u044b\u043a\u043b",
+          "up_down_vane_control_off": "Выкл",
           "up_down_vane_control_6": "6",
           "up_down_vane_control_5": "5",
           "up_down_vane_control_4": "4",
           "up_down_vane_control_3": "3",
           "up_down_vane_control_2": "2",
           "up_down_vane_control_1": "1",
-          "up_down_vane_control_auto": "\u0410\u0432\u0442\u043e"
+          "up_down_vane_control_auto": "Авто"
         }
       },
       "air_conditioner_left_right_vane_control": {
-        "name": "\u0413\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u0430\u043b\u044c\u043d\u043e\u0435 \u043a\u0430\u0447\u0430\u043d\u0438\u0435",
+        "name": "Горизонтальное качание",
         "state": {
-          "left_right_vane_control_off": "\u0412\u044b\u043a\u043b",
+          "left_right_vane_control_off": "Выкл",
           "left_right_vane_control_1": "1",
           "left_right_vane_control_2": "2",
           "left_right_vane_control_3": "3",
           "left_right_vane_control_4": "4",
           "left_right_vane_control_5": "5",
-          "left_right_vane_control_left": "\u0421\u043b\u0435\u0432\u0430",
-          "left_right_vane_control_right": "\u0421\u043f\u0440\u0430\u0432\u0430",
-          "left_right_vane_control_auto": "\u0410\u0432\u0442\u043e"
+          "left_right_vane_control_left": "Слева",
+          "left_right_vane_control_right": "Справа",
+          "left_right_vane_control_auto": "Авто"
         }
       },
       "air_conditioner_instant_consumption": {
-        "name": "\u041c\u0433\u043d\u043e\u0432\u0435\u043d\u043d\u043e\u0435 \u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0432\u043e\u0437\u0434\u0443\u0445\u0430 \u043a\u043e\u043d\u0434\u0438\u0446\u0438\u043e\u043d\u0435\u0440\u043e\u043c"
+        "name": "Мгновенное потребление воздуха кондиционером"
       },
       "air_conditioner_sleep_mode_minute": {
-        "name": "\u041c\u0438\u043d\u0443\u0442\u0430 \u0441\u043f\u044f\u0449\u0435\u0433\u043e \u0440\u0435\u0436\u0438\u043c\u0430 \u043a\u043e\u043d\u0434\u0438\u0446\u0438\u043e\u043d\u0435\u0440\u0430"
+        "name": "Минута спящего режима кондиционера"
       },
       "air_conditioner_auto_switch_off": {
-        "name": "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u0437\u0430\u043a\u0440\u044b\u0432\u0430\u043d\u0438\u0435"
+        "name": "Автоматическое закрывание"
       },
       "air_conditioner_auto_switch_on": {
-        "name": "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u043e\u0442\u043a\u0440\u044b\u0432\u0430\u043d\u0438\u0435"
+        "name": "Автоматическое открывание"
       }
     },
     "binary_sensor": {
       "remote_control": {
-        "name": "\u0423\u0434\u0430\u043b\u0435\u043d\u043d\u043e\u0435 \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435"
+        "name": "Удаленное управление"
       },
       "washer_warning_door_is_open": {
-        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430"
+        "name": "Дверца открыта"
       },
       "washer_warning_no_water": {
-        "name": "\u041d\u0435\u0442 \u0432\u043e\u0434\u044b"
+        "name": "Нет воды"
       },
       "washer_warning_security": {
-        "name": "\u0411\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c"
+        "name": "Безопасность"
       },
       "oven_warning_door_is_open": {
-        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430"
+        "name": "Дверца открыта"
       },
       "oven_warning_door_locked": {
-        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u0437\u0430\u043f\u0435\u0440\u0442\u0430"
+        "name": "Дверца заперта"
       },
       "oven_warning_error": {
-        "name": "\u0412 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0435 \u043f\u0440\u043e\u0438\u0437\u043e\u0448\u043b\u0430 \u043d\u0435\u043f\u0440\u0435\u0434\u0432\u0438\u0434\u0435\u043d\u043d\u0430\u044f \u043e\u0448\u0438\u0431\u043a\u0430. \u0421\u043c. \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f."
+        "name": "В устройстве произошла непредвиденная ошибка. См. руководство пользователя."
       },
       "dishwasher_warning_no_rinse_aid": {
-        "name": "\u0411\u0435\u0437 \u043a\u043e\u043d\u0434\u0438\u0446\u0438\u043e\u043d\u0435\u0440\u0430 \u0434\u043b\u044f \u0431\u0435\u043b\u044c\u044f"
+        "name": "Без кондиционера для белья"
       },
       "dishwasher_warning_no_salt": {
-        "name": "\u0411\u0435\u0437 \u0441\u043e\u043b\u0438"
+        "name": "Без соли"
       },
       "dishwasher_warning_no_water": {
-        "name": "\u041d\u0435\u0442 \u0432\u043e\u0434\u044b"
+        "name": "Нет воды"
       },
       "dishwasher_warning_check_the_filter": {
-        "name": "\u041f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435 \u0444\u0438\u043b\u044c\u0442\u0440"
+        "name": "Проверьте фильтр"
       },
       "dishwasher_warning_door_is_open": {
-        "name": "\u0414\u0432\u0435\u0440\u0446\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0430"
+        "name": "Дверца открыта"
       },
       "dishwasher_warning_call_service": {
-        "name": "\u041f\u043e\u0437\u0432\u043e\u043d\u0438\u0442\u0435 \u0432 \u0441\u0435\u0440\u0432\u0438\u0441\u043d\u0443\u044e \u0441\u043b\u0443\u0436\u0431\u0443"
+        "name": "Позвоните в сервисную службу"
       },
       "dishwasher_liquid_detergent_low": {
-        "name": "\u041d\u0438\u0437\u043a\u0438\u0439 \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u0436\u0438\u0434\u043a\u043e\u0433\u043e \u043c\u043e\u044e\u0449\u0435\u0433\u043e \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430"
+        "name": "Низкий уровень жидкого моющего средства"
       }
     },
     "climate": {
       "ac": {
         "state_attributes": {
           "fan_mode": {
-            "name": "\u0421\u043a\u043e\u0440\u043e\u0441\u0442\u044c \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0442\u043e\u0440\u0430",
+            "name": "Скорость вентилятора",
             "state": {
-              "wind_strength_auto": "\u0410\u0432\u0442\u043e",
-              "wind_strength_low": "\u041d\u0438\u0437\u043a\u0430\u044f",
-              "wind_strength_mid": "\u0421\u0440\u0435\u0434\u043d\u044f\u044f",
-              "wind_strength_high": "\u0412\u044b\u0441\u043e\u043a\u0430\u044f"
+              "wind_strength_auto": "Авто",
+              "wind_strength_low": "Низкая",
+              "wind_strength_mid": "Средняя",
+              "wind_strength_high": "Высокая"
             }
           }
         },
-        "name": "\u041a\u043e\u043d\u0434\u0438\u0446\u0438\u043e\u043d\u0435\u0440"
+        "name": "Кондиционер"
       }
     },
     "switch": {
       "washer_prewash": {
-        "name": "\u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043c\u043e\u0439\u043a\u0430"
+        "name": "Предварительная мойка"
       },
       "washer_extrarinse": {
-        "name": "\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0435"
+        "name": "Дополнительное полоскание"
       },
       "washer_hidden_anti_crease": {
-        "name": "\u0418\u043d\u0442\u0435\u043b\u043b\u0435\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u043e\u0435 \u0440\u0430\u0437\u0433\u043b\u0430\u0436\u0438\u0432\u0430\u043d\u0438\u0435 \u0441\u043a\u043b\u0430\u0434\u043e\u043a"
+        "name": "Интеллектуальное разглаживание складок"
       },
       "washer_steam": {
-        "name": "\u041f\u0430\u0440"
+        "name": "Пар"
       },
       "washer_phr": {
-        "name": "\u0423\u0434\u0430\u043b\u0435\u043d\u0438\u0435 \u0448\u0435\u0440\u0441\u0442\u0438 \u0436\u0438\u0432\u043e\u0442\u043d\u044b\u0445"
+        "name": "Удаление шерсти животных"
       },
       "washer_add_water": {
-        "name": "\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043f\u043e\u0434\u0430\u0447\u0430 \u0432\u043e\u0434\u044b"
+        "name": "Дополнительная подача воды"
       },
       "washer_soaking": {
-        "name": "\u0417\u0430\u043c\u0430\u0447\u0438\u0432\u0430\u043d\u0438\u0435"
+        "name": "Замачивание"
       },
       "washer_night": {
-        "name": "\u041d\u043e\u0447\u043d\u043e\u0439 \u0440\u0435\u0436\u0438\u043c"
+        "name": "Ночной режим"
       },
       "washer_anticrease": {
-        "name": "\u0420\u0435\u0436\u0438\u043c AntiCrease"
+        "name": "Режим AntiCrease"
       },
       "oven_booster": {
-        "name": "\u0411\u0443\u0441\u0442\u0435\u0440"
+        "name": "Бустер"
       },
       "oven_skip_preheating": {
-        "name": "\u041f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u044c >"
+        "name": "Пропустить >"
       },
       "dishwasher_traywash": {
-        "name": "\u041c\u044b\u0442\u044c\u0435 \u043f\u0440\u043e\u0442\u0438\u0432\u0435\u043d\u044f"
+        "name": "Мытье противеня"
       },
       "dishwasher_fastplus": {
-        "name": "\u041f\u043e\u0441\u0443\u0434\u043e\u043c\u043e\u0435\u0447\u043d\u0430\u044f \u043c\u0430\u0448\u0438\u043d\u0430 Fastplus"
+        "name": "Посудомоечная машина Fastplus"
       },
       "dishwasher_steamgloss": {
-        "name": "\u0420\u0435\u0436\u0438\u043c Steamgloss"
+        "name": "Режим Steamgloss"
       },
       "dishwasher_extrarinse": {
-        "name": "\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u043e\u0441\u043a\u0430\u043d\u0438\u0435"
+        "name": "Дополнительное полоскание"
       },
       "dishwasher_halfload": {
-        "name": "\u041f\u043e\u043b\u043e\u0432\u0438\u043d\u043d\u0430\u044f \u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0430"
+        "name": "Половинная загрузка"
       },
       "setting_auto_door": {
-        "name": "\u0424\u0443\u043d\u043a\u0446\u0438\u044f Doormatic"
+        "name": "Функция Doormatic"
       },
       "setting_inner_illumination": {
-        "name": "\u0412\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0435\u0435 \u043e\u0441\u0432\u0435\u0449\u0435\u043d\u0438\u0435"
+        "name": "Внутреннее освещение"
       },
       "dishwasher_hygiene_intense": {
-        "name": "\u0418\u043d\u0442\u0435\u043d\u0441\u0438\u0432\u043d\u0430\u044f \u0433\u0438\u0433\u0438\u0435\u043d\u0430 \u043f\u043e\u0441\u0443\u0434\u043e\u043c\u043e\u0435\u0447\u043d\u043e\u0439 \u043c\u0430\u0448\u0438\u043d\u044b"
+        "name": "Интенсивная гигиена посудомоечной машины"
       },
       "dishwasher_deepwash": {
-        "name": "\u0413\u043b\u0443\u0431\u043e\u043a\u0430\u044f \u0441\u0442\u0438\u0440\u043a\u0430"
+        "name": "Глубокая стирка"
       }
     }
   },
   "options": {
     "step": {
       "init": {
-        "title": "\u041e\u043f\u0446\u0438\u0438 Homewhiz",
-        "description": "\u041f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u0442 \u0432\u044b\u043f\u043e\u043b\u043d\u0438\u0442\u044c \u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043d\u043d\u0443\u044e \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0443 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438.",
+        "title": "Опции Homewhiz",
+        "description": "Позволяет выполнить расширенную настройку интеграции.",
         "data": {
-          "bt_reconnect_interval": "\u041f\u0435\u0440\u0438\u043e\u0434\u0438\u0447\u043d\u043e\u0441\u0442\u044c \u043f\u0435\u0440\u0435\u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f Bluetooth (\u0432 \u0447\u0430\u0441\u0430\u0445)"
+          "bt_reconnect_interval": "Периодичность переподключения Bluetooth (в часах)"
         }
       }
     }

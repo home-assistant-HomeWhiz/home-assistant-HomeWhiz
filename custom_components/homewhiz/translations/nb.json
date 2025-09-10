@@ -4,13 +4,13 @@
       "state": {
         "name": "Fylke ",
         "state": {
-          "device_state_on": "P\u00e5",
+          "device_state_on": "På",
           "device_state_off": "Av",
-          "device_state_running": "Kj\u00f8rer",
-          "device_state_paused": "P\u00e5 pause",
+          "device_state_running": "Kjører",
+          "device_state_paused": "På pause",
           "device_state_time_delay_active": "Forsinkelsen er aktivert",
           "device_state_cancelling": "Avbryter",
-          "device_state_door_open": "D\u00f8ren er \u00e5pen!",
+          "device_state_door_open": "Døren er åpen!",
           "device_state_settings": "Innstillinger"
         }
       },
@@ -18,34 +18,34 @@
         "name": "Program",
         "state": {
           "program_cottons": "Bomull",
-          "program_eco_40_60": "\u00d8ko 40\u201360",
+          "program_eco_40_60": "Øko 40–60",
           "program_synthetics": "Syntetisk",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
           "program_delicates": "PROGRAM_DELICATES",
           "program_spin_pump": "Spin+Drain",
           "program_rinsing": "Skylling",
-          "program_darkwash": "M\u00f8rkt t\u00f8y (dongeribukser)",
+          "program_darkwash": "Mørkt tøy (dongeribukser)",
           "program_outdoor_sports_goretex": "Sport",
           "program_stain": "Flekkfjerning",
           "program_hygeine": "Hygiene+",
           "program_duvet": "Dyne",
           "program_shirts": "Skjorter",
-          "program_drum_clean": "Trommelrengj\u00f8ring",
+          "program_drum_clean": "Trommelrengjøring",
           "program_mix": "PROGRAM_MIX",
           "program_curtain": "Gardiner",
-          "program_lingerie": "Dameundert\u00f8y",
+          "program_lingerie": "Dameundertøy",
           "program_soft_toys": "Myke leker",
-          "program_towel": "H\u00e5ndkle",
-          "program_cottons_eco": "Bomull \u2013 \u00f8ko",
-          "program_dryer_cotton": "Bomull \u2013 t\u00f8rt",
-          "program_dryer_synthetics": "Syntetisk t\u00f8rt",
-          "program_hygiene_wash_dry": "Hygiene+ Vask og t\u00f8rk",
-          "program_4kg_wash_dry": "4\u00a0kg vask og t\u00f8rk",
+          "program_towel": "Håndkle",
+          "program_cottons_eco": "Bomull – øko",
+          "program_dryer_cotton": "Bomull – tørt",
+          "program_dryer_synthetics": "Syntetisk tørt",
+          "program_hygiene_wash_dry": "Hygiene+ Vask og tørk",
+          "program_4kg_wash_dry": "4 kg vask og tørk",
           "program_wash_wear": "Strykefritt",
-          "program_dark_wash": "M\u00f8rkt t\u00f8y",
-          "program_outdoor": "Friluftskl\u00e6r",
-          "program_drum_clean_plus": "Trommelrengj\u00f8ring+",
+          "program_dark_wash": "Mørkt tøy",
+          "program_outdoor": "Friluftsklær",
+          "program_drum_clean_plus": "Trommelrengjøring+",
           "program_steam_refresh": "Oppfrisking med damp"
         }
       },
@@ -53,9 +53,9 @@
         "name": "Temperatur",
         "state": {
           "temperature_cold_wash": "Kaldvask",
-          "temperature_20": "20\u00a0\u00b0C",
-          "temperature_30": "30\u00a0\u00b0C",
-          "temperature_40": "40\u00a0\u00b0C",
+          "temperature_20": "20 °C",
+          "temperature_30": "30 °C",
+          "temperature_40": "40 °C",
           "60c": "60C",
           "90c": "90C"
         }
@@ -85,7 +85,7 @@
         }
       },
       "custom_duration_level": {
-        "name": "Egendefinert varighetsniv\u00e5",
+        "name": "Egendefinert varighetsnivå",
         "state": {
           "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
@@ -108,14 +108,14 @@
         "name": "Knappevolum",
         "state": {
           "volume_low": "Lavt",
-          "volume_high": "H\u00f8yt"
+          "volume_high": "Høyt"
         }
       },
       "remote_control": {
         "name": "Fjernkontroll"
       },
       "washer_warning_door_is_open": {
-        "name": "D\u00f8ren er \u00e5pen"
+        "name": "Døren er åpen"
       },
       "washer_warning_no_water": {
         "name": "Tar ikke inn vann"
@@ -131,16 +131,16 @@
           "program_fan_heating": "Varmluft",
           "program_multi_cooking": "Multisteking (3D)",
           "program_fan_heat_bottom": "Varmluft + undervarme",
-          "program_eco_grill": "\u00d8kogrill",
+          "program_eco_grill": "Økogrill",
           "program_full_grill": "Full grill",
           "program_full_grill_fan": "Full grill + varmluft",
           "program_bottom_heating": "Undervarme",
           "program_defrost": "Opptining",
           "program_warm_keeping": "Hold varmt",
-          "program_eco_fan_heating": "\u00d8kovarmluft",
-          "program_steam_cleaning": "Damprengj\u00f8ring",
-          "program_eco_pyro": "\u00d8korengj\u00f8ring",
-          "program_pyro": "Rengj\u00f8ring"
+          "program_eco_fan_heating": "Økovarmluft",
+          "program_steam_cleaning": "Damprengjøring",
+          "program_eco_pyro": "Økorengjøring",
+          "program_pyro": "Rengjøring"
         }
       },
       "oven_temperature": {
@@ -150,10 +150,10 @@
         "name": "Lysstyrke"
       },
       "oven_warning_door_is_open": {
-        "name": "D\u00f8ren er \u00e5pen"
+        "name": "Døren er åpen"
       },
       "oven_warning_door_locked": {
-        "name": "D\u00f8ren er l\u00e5st"
+        "name": "Døren er låst"
       },
       "oven_warning_error": {
         "name": "Ovn advarsel feil"
@@ -161,18 +161,18 @@
       "program": {
         "name": "Utdanningsprogram",
         "state": {
-          "program_auto": "Auto. 40\u201365\u00a0\u00b0C",
+          "program_auto": "Auto. 40–65 °C",
           "program_mix_wash_plus": "All-in-Wash",
-          "program_intensive_70": "Intensivt: 70\u00a0\u00b0C",
-          "program_eco_50": "\u00d8ko: 50\u00a0\u00b0C",
-          "program_glasscare": "Sk\u00e5nsomt mot glass",
+          "program_intensive_70": "Intensivt: 70 °C",
+          "program_eco_50": "Øko: 50 °C",
+          "program_glasscare": "Skånsomt mot glass",
           "program_new58min": "QuickWash 58'",
           "program_30min": "Mini 30'",
           "program_prewash": "Forvask",
           "program_hygiene": "HygieneCare",
           "program_daily": "PROGRAM_DAILY",
           "program_silent": "Stillevask",
-          "program_makine_temizleme": "Innvendig rengj\u00f8ring"
+          "program_makine_temizleme": "Innvendig rengjøring"
         }
       },
       "setting_detergent_type": {
@@ -184,7 +184,7 @@
         }
       },
       "dishwasher_rinse_aid_level": {
-        "name": "Skyllemiddelniv\u00e5"
+        "name": "Skyllemiddelnivå"
       },
       "dishwasher_water_hardness": {
         "name": "Vannets hardhet"
@@ -202,7 +202,7 @@
         "name": "Sjekk filteret"
       },
       "dishwasher_warning_door_is_open": {
-        "name": "D\u00f8ren er \u00e5pen"
+        "name": "Døren er åpen"
       },
       "dishwasher_warning_call_service": {
         "name": "Ring service"
@@ -213,11 +213,11 @@
       "dishwasher_program": {
         "name": "Program",
         "state": {
-          "program_auto": "Auto. 40\u201365\u00a0\u00b0C",
+          "program_auto": "Auto. 40–65 °C",
           "program_aqua_flex": "PROGRAM_AQUA_FLEX",
-          "program_intensive_70": "Intensivt: 70\u00a0\u00b0C",
-          "program_eco_50": "\u00d8ko: 50\u00a0\u00b0C",
-          "program_delicate": "\u00d8mfintlig",
+          "program_intensive_70": "Intensivt: 70 °C",
+          "program_eco_50": "Øko: 50 °C",
+          "program_delicate": "Ømfintlig",
           "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
           "program_mini": "PROGRAM_MINI",
           "program_prewash": "Forvask",
@@ -230,19 +230,19 @@
         "name": "Flytende vaskemiddel"
       },
       "washer_dry": {
-        "name": "T\u00f8rker",
+        "name": "Tørker",
         "state": {
           "dry_off": "Av",
-          "dry_extra": "Ekstra t\u00f8rt",
+          "dry_extra": "Ekstra tørt",
           "dry_cabinet": "Wardrobe Dry",
-          "dry_iron": "Stryket\u00f8rt",
-          "dry_10": "45\u00a0min",
+          "dry_iron": "Stryketørt",
+          "dry_10": "45 min",
           "dry_20": "20 min",
-          "dry_30": "30\u00a0minutter",
-          "dry_60": "60\u00a0min",
-          "dry_90": "90\u00a0minutter",
-          "dry_120": "15\u00a0min",
-          "dry_150": "150\u00a0minutter"
+          "dry_30": "30 minutter",
+          "dry_60": "60 min",
+          "dry_90": "90 minutter",
+          "dry_120": "15 min",
+          "dry_150": "150 minutter"
         }
       },
       "washer_rinse_count": {
@@ -257,7 +257,7 @@
         }
       },
       "air_conditioner_up_down_vane_control": {
-        "name": "Vertikal luftstr\u00f8m",
+        "name": "Vertikal luftstrøm",
         "state": {
           "up_down_vane_control_off": "Av",
           "up_down_vane_control_6": "6",
@@ -270,7 +270,7 @@
         }
       },
       "air_conditioner_left_right_vane_control": {
-        "name": "Horisontal luftstr\u00f8m",
+        "name": "Horisontal luftstrøm",
         "state": {
           "left_right_vane_control_off": "Av",
           "left_right_vane_control_1": "1",
@@ -279,7 +279,7 @@
           "left_right_vane_control_4": "4",
           "left_right_vane_control_5": "5",
           "left_right_vane_control_left": "Venstre",
-          "left_right_vane_control_right": "H\u00f8yre",
+          "left_right_vane_control_right": "Høyre",
           "left_right_vane_control_auto": "Auto"
         }
       }
@@ -288,13 +288,13 @@
       "state": {
         "name": "Fylke ",
         "state": {
-          "device_state_on": "P\u00e5",
+          "device_state_on": "På",
           "device_state_off": "Av",
-          "device_state_running": "Kj\u00f8rer",
-          "device_state_paused": "P\u00e5 pause",
+          "device_state_running": "Kjører",
+          "device_state_paused": "På pause",
           "device_state_time_delay_active": "Forsinkelsen er aktivert",
           "device_state_cancelling": "Avbryter",
-          "device_state_door_open": "D\u00f8ren er \u00e5pen!",
+          "device_state_door_open": "Døren er åpen!",
           "device_state_settings": "Innstillinger"
         }
       },
@@ -302,34 +302,34 @@
         "name": "Program",
         "state": {
           "program_cottons": "Bomull",
-          "program_eco_40_60": "\u00d8ko 40\u201360",
+          "program_eco_40_60": "Øko 40–60",
           "program_synthetics": "Syntetisk",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
           "program_delicates": "PROGRAM_DELICATES",
           "program_spin_pump": "Spin+Drain",
           "program_rinsing": "Skylling",
-          "program_darkwash": "M\u00f8rkt t\u00f8y (dongeribukser)",
+          "program_darkwash": "Mørkt tøy (dongeribukser)",
           "program_outdoor_sports_goretex": "Sport",
           "program_stain": "Flekkfjerning",
           "program_hygeine": "Hygiene+",
           "program_duvet": "Dyne",
           "program_shirts": "Skjorter",
-          "program_drum_clean": "Trommelrengj\u00f8ring",
+          "program_drum_clean": "Trommelrengjøring",
           "program_mix": "PROGRAM_MIX",
           "program_curtain": "Gardiner",
-          "program_lingerie": "Dameundert\u00f8y",
+          "program_lingerie": "Dameundertøy",
           "program_soft_toys": "Myke leker",
-          "program_towel": "H\u00e5ndkle",
-          "program_cottons_eco": "Bomull \u2013 \u00f8ko",
-          "program_dryer_cotton": "Bomull \u2013 t\u00f8rt",
-          "program_dryer_synthetics": "Syntetisk t\u00f8rt",
-          "program_hygiene_wash_dry": "Hygiene+ Vask og t\u00f8rk",
-          "program_4kg_wash_dry": "4\u00a0kg vask og t\u00f8rk",
+          "program_towel": "Håndkle",
+          "program_cottons_eco": "Bomull – øko",
+          "program_dryer_cotton": "Bomull – tørt",
+          "program_dryer_synthetics": "Syntetisk tørt",
+          "program_hygiene_wash_dry": "Hygiene+ Vask og tørk",
+          "program_4kg_wash_dry": "4 kg vask og tørk",
           "program_wash_wear": "Strykefritt",
-          "program_dark_wash": "M\u00f8rkt t\u00f8y",
-          "program_outdoor": "Friluftskl\u00e6r",
-          "program_drum_clean_plus": "Trommelrengj\u00f8ring+",
+          "program_dark_wash": "Mørkt tøy",
+          "program_outdoor": "Friluftsklær",
+          "program_drum_clean_plus": "Trommelrengjøring+",
           "program_steam_refresh": "Oppfrisking med damp"
         }
       },
@@ -337,9 +337,9 @@
         "name": "Temperatur",
         "state": {
           "temperature_cold_wash": "Kaldvask",
-          "temperature_20": "20\u00a0\u00b0C",
-          "temperature_30": "30\u00a0\u00b0C",
-          "temperature_40": "40\u00a0\u00b0C",
+          "temperature_20": "20 °C",
+          "temperature_30": "30 °C",
+          "temperature_40": "40 °C",
           "60c": "60C",
           "90c": "90C"
         }
@@ -369,7 +369,7 @@
         }
       },
       "custom_duration_level": {
-        "name": "Egendefinert varighetsniv\u00e5",
+        "name": "Egendefinert varighetsnivå",
         "state": {
           "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
@@ -392,7 +392,7 @@
         "name": "Knappevolum",
         "state": {
           "volume_low": "Lavt",
-          "volume_high": "H\u00f8yt"
+          "volume_high": "Høyt"
         }
       },
       "sub_state": {
@@ -403,39 +403,39 @@
           "washer_water_intake": "Vanninntak",
           "washer_substate_prewash": "Forvask",
           "washer_substate_rinsing": "Skyll",
-          "washer_substate_softener": "T\u00f8ymykner",
+          "washer_substate_softener": "Tøymykner",
           "washer_substate_program_started": "Programmet starter",
           "washer_substate_time_delay_enabled": "Sluttid er aktivert",
           "washer_substate_paused": "Pause",
           "washer_substate_analysing": "Analyserer",
-          "washer_substate_door_locked": "D\u00f8ren er l\u00e5st",
-          "washer_substate_opening_door": "\u00c5pner d\u00f8ren",
-          "washer_substate_locking_door": "L\u00e5ser d\u00f8ren",
+          "washer_substate_door_locked": "Døren er låst",
+          "washer_substate_opening_door": "Åpner døren",
+          "washer_substate_locking_door": "Låser døren",
           "washer_substate_remove_laundry": "Vaskesyklusen er ferdig, ta ut vasken",
           "washer_substate_add_laundry": "Legg inn vasken",
           "washer_substate_rinse_hold": "Skyllestopp er aktivert, velg sentrifugehastighet",
-          "washer_substate_remote_anticrease": "Fjernstyrt antikr\u00f8ll p\u00e5g\u00e5r.",
-          "washer_substate_drying": "T\u00f8rker",
+          "washer_substate_remote_anticrease": "Fjernstyrt antikrøll pågår.",
+          "washer_substate_drying": "Tørker",
           "oven_message_good_appetite": "God appetitt!",
           "oven_message_cooking": "Steker",
-          "oven_message_paused": "P\u00e5 pause",
+          "oven_message_paused": "På pause",
           "oven_message_waiting": "Venter",
           "oven_message_defrosting": "Opptining",
           "operation_completed": "Operasjonen er ferdig",
           "oven_message_preheating": "Forvarming",
-          "oven_message_preheating_completed": "Forvarming fullf\u00f8rt",
-          "oven_message_cleaning": "Rengj\u00f8r",
-          "oven_message_cleaning_completed": "Rengj\u00f8ringen er ferdig",
+          "oven_message_preheating_completed": "Forvarming fullført",
+          "oven_message_cleaning": "Rengjør",
+          "oven_message_cleaning_completed": "Rengjøringen er ferdig",
           "dishwasher_message_time_delay_started": "Sluttid er aktivert",
-          "dishwasher_message_paused": "Programmet er satt p\u00e5 pause",
+          "dishwasher_message_paused": "Programmet er satt på pause",
           "dishwasher_message_program_finished": "Programmet er ferdig",
           "dishwasher_message_program_sanitized": "Programmet er ferdig og sanitized",
-          "dishwasher_message_cancelling": "Avbryter \u2026",
+          "dishwasher_message_cancelling": "Avbryter …",
           "dishwasher_message_time_delay_cancelled": "Forsinkelsen er avbrutt",
           "dishwasher_message_program_started": "Programmet er startet",
           "dishwasher_message_washing": "Vasker",
           "dishwasher_message_rinsing": "Skyller",
-          "dishwasher_message_drying": "T\u00f8rker"
+          "dishwasher_message_drying": "Tørker"
         }
       },
       "washer_delay": {
@@ -451,7 +451,7 @@
         "name": "Fjernkontroll"
       },
       "washer_warning_door_is_open": {
-        "name": "D\u00f8ren er \u00e5pen"
+        "name": "Døren er åpen"
       },
       "washer_warning_no_water": {
         "name": "Tar ikke inn vann"
@@ -466,19 +466,19 @@
         "name": "Ekstra skylling"
       },
       "washer_hidden_anti_crease": {
-        "name": "Fjernstyrt antikr\u00f8ll"
+        "name": "Fjernstyrt antikrøll"
       },
       "washer_steam": {
         "name": "Damp"
       },
       "washer_phr": {
-        "name": "Fjerning av husdyrh\u00e5r"
+        "name": "Fjerning av husdyrhår"
       },
       "washer_add_water": {
         "name": "Ekstra vann"
       },
       "washer_soaking": {
-        "name": "Gjennomv\u00e5tt"
+        "name": "Gjennomvått"
       },
       "washer_night": {
         "name": "Nattmodus"
@@ -494,16 +494,16 @@
           "program_fan_heating": "Varmluft",
           "program_multi_cooking": "Multisteking (3D)",
           "program_fan_heat_bottom": "Varmluft + undervarme",
-          "program_eco_grill": "\u00d8kogrill",
+          "program_eco_grill": "Økogrill",
           "program_full_grill": "Full grill",
           "program_full_grill_fan": "Full grill + varmluft",
           "program_bottom_heating": "Undervarme",
           "program_defrost": "Opptining",
           "program_warm_keeping": "Hold varmt",
-          "program_eco_fan_heating": "\u00d8kovarmluft",
-          "program_steam_cleaning": "Damprengj\u00f8ring",
-          "program_eco_pyro": "\u00d8korengj\u00f8ring",
-          "program_pyro": "Rengj\u00f8ring"
+          "program_eco_fan_heating": "Økovarmluft",
+          "program_steam_cleaning": "Damprengjøring",
+          "program_eco_pyro": "Økorengjøring",
+          "program_pyro": "Rengjøring"
         }
       },
       "oven_temperature": {
@@ -522,10 +522,10 @@
         "name": "Igjen"
       },
       "oven_warning_door_is_open": {
-        "name": "D\u00f8ren er \u00e5pen"
+        "name": "Døren er åpen"
       },
       "oven_warning_door_locked": {
-        "name": "D\u00f8ren er l\u00e5st"
+        "name": "Døren er låst"
       },
       "oven_warning_error": {
         "name": "Ovn advarsel feil"
@@ -539,18 +539,18 @@
       "program": {
         "name": "Utdanningsprogram",
         "state": {
-          "program_auto": "Auto. 40\u201365\u00a0\u00b0C",
+          "program_auto": "Auto. 40–65 °C",
           "program_mix_wash_plus": "All-in-Wash",
-          "program_intensive_70": "Intensivt: 70\u00a0\u00b0C",
-          "program_eco_50": "\u00d8ko: 50\u00a0\u00b0C",
-          "program_glasscare": "Sk\u00e5nsomt mot glass",
+          "program_intensive_70": "Intensivt: 70 °C",
+          "program_eco_50": "Øko: 50 °C",
+          "program_glasscare": "Skånsomt mot glass",
           "program_new58min": "QuickWash 58'",
           "program_30min": "Mini 30'",
           "program_prewash": "Forvask",
           "program_hygiene": "HygieneCare",
           "program_daily": "PROGRAM_DAILY",
           "program_silent": "Stillevask",
-          "program_makine_temizleme": "Innvendig rengj\u00f8ring"
+          "program_makine_temizleme": "Innvendig rengjøring"
         }
       },
       "setting_detergent_type": {
@@ -562,7 +562,7 @@
         }
       },
       "dishwasher_rinse_aid_level": {
-        "name": "Skyllemiddelniv\u00e5"
+        "name": "Skyllemiddelnivå"
       },
       "dishwasher_water_hardness": {
         "name": "Vannets hardhet"
@@ -574,7 +574,7 @@
         "name": "Varighet"
       },
       "dishwasher_remaining": {
-        "name": "Gjenv\u00e6rende tid"
+        "name": "Gjenværende tid"
       },
       "dishwasher_warning_no_rinse_aid": {
         "name": "Tomt for skyllemiddel"
@@ -589,7 +589,7 @@
         "name": "Sjekk filteret"
       },
       "dishwasher_warning_door_is_open": {
-        "name": "D\u00f8ren er \u00e5pen"
+        "name": "Døren er åpen"
       },
       "dishwasher_warning_call_service": {
         "name": "Ring service"
@@ -621,11 +621,11 @@
       "dishwasher_program": {
         "name": "Program",
         "state": {
-          "program_auto": "Auto. 40\u201365\u00a0\u00b0C",
+          "program_auto": "Auto. 40–65 °C",
           "program_aqua_flex": "PROGRAM_AQUA_FLEX",
-          "program_intensive_70": "Intensivt: 70\u00a0\u00b0C",
-          "program_eco_50": "\u00d8ko: 50\u00a0\u00b0C",
-          "program_delicate": "\u00d8mfintlig",
+          "program_intensive_70": "Intensivt: 70 °C",
+          "program_eco_50": "Øko: 50 °C",
+          "program_delicate": "Ømfintlig",
           "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
           "program_mini": "PROGRAM_MINI",
           "program_prewash": "Forvask",
@@ -644,19 +644,19 @@
         "name": "Dyp vask"
       },
       "washer_dry": {
-        "name": "T\u00f8rker",
+        "name": "Tørker",
         "state": {
           "dry_off": "Av",
-          "dry_extra": "Ekstra t\u00f8rt",
+          "dry_extra": "Ekstra tørt",
           "dry_cabinet": "Wardrobe Dry",
-          "dry_iron": "Stryket\u00f8rt",
-          "dry_10": "45\u00a0min",
+          "dry_iron": "Stryketørt",
+          "dry_10": "45 min",
           "dry_20": "20 min",
-          "dry_30": "30\u00a0minutter",
-          "dry_60": "60\u00a0min",
-          "dry_90": "90\u00a0minutter",
-          "dry_120": "15\u00a0min",
-          "dry_150": "150\u00a0minutter"
+          "dry_30": "30 minutter",
+          "dry_60": "60 min",
+          "dry_90": "90 minutter",
+          "dry_120": "15 min",
+          "dry_150": "150 minutter"
         }
       },
       "washer_rinse_count": {
@@ -671,7 +671,7 @@
         }
       },
       "air_conditioner_up_down_vane_control": {
-        "name": "Vertikal luftstr\u00f8m",
+        "name": "Vertikal luftstrøm",
         "state": {
           "up_down_vane_control_off": "Av",
           "up_down_vane_control_6": "6",
@@ -684,7 +684,7 @@
         }
       },
       "air_conditioner_left_right_vane_control": {
-        "name": "Horisontal luftstr\u00f8m",
+        "name": "Horisontal luftstrøm",
         "state": {
           "left_right_vane_control_off": "Av",
           "left_right_vane_control_1": "1",
@@ -693,21 +693,21 @@
           "left_right_vane_control_4": "4",
           "left_right_vane_control_5": "5",
           "left_right_vane_control_left": "Venstre",
-          "left_right_vane_control_right": "H\u00f8yre",
+          "left_right_vane_control_right": "Høyre",
           "left_right_vane_control_auto": "Auto"
         }
       },
       "air_conditioner_instant_consumption": {
-        "name": "Klimaanlegg \u00f8yeblikkelig forbruk"
+        "name": "Klimaanlegg øyeblikkelig forbruk"
       },
       "air_conditioner_sleep_mode_minute": {
         "name": "Klimaanlegg hvilemodus minutt"
       },
       "air_conditioner_auto_switch_off": {
-        "name": "Automatisk avsl\u00e5ing"
+        "name": "Automatisk avslåing"
       },
       "air_conditioner_auto_switch_on": {
-        "name": "Automatisk p\u00e5sl\u00e5ing"
+        "name": "Automatisk påslåing"
       }
     },
     "binary_sensor": {
@@ -715,7 +715,7 @@
         "name": "Fjernkontroll"
       },
       "washer_warning_door_is_open": {
-        "name": "D\u00f8ren er \u00e5pen"
+        "name": "Døren er åpen"
       },
       "washer_warning_no_water": {
         "name": "Tar ikke inn vann"
@@ -724,10 +724,10 @@
         "name": "Sikkerhet"
       },
       "oven_warning_door_is_open": {
-        "name": "D\u00f8ren er \u00e5pen"
+        "name": "Døren er åpen"
       },
       "oven_warning_door_locked": {
-        "name": "D\u00f8ren er l\u00e5st"
+        "name": "Døren er låst"
       },
       "oven_warning_error": {
         "name": "Ovn advarsel feil"
@@ -745,7 +745,7 @@
         "name": "Sjekk filteret"
       },
       "dishwasher_warning_door_is_open": {
-        "name": "D\u00f8ren er \u00e5pen"
+        "name": "Døren er åpen"
       },
       "dishwasher_warning_call_service": {
         "name": "Ring service"
@@ -767,19 +767,19 @@
         "name": "Ekstra skylling"
       },
       "washer_hidden_anti_crease": {
-        "name": "Fjernstyrt antikr\u00f8ll"
+        "name": "Fjernstyrt antikrøll"
       },
       "washer_steam": {
         "name": "Damp"
       },
       "washer_phr": {
-        "name": "Fjerning av husdyrh\u00e5r"
+        "name": "Fjerning av husdyrhår"
       },
       "washer_add_water": {
         "name": "Ekstra vann"
       },
       "washer_soaking": {
-        "name": "Gjennomv\u00e5tt"
+        "name": "Gjennomvått"
       },
       "washer_night": {
         "name": "Nattmodus"
