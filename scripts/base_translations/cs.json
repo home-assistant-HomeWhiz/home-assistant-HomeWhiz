@@ -1,9 +1,9 @@
 {
   "config": {
     "abort": {
-      "already_configured": "Za\u0159\u00edzen\u00ed je ji\u017e nastaveno",
-      "already_in_progress": "Konfigurace ji\u017e prob\u00edh\u00e1",
-      "no_devices_found": "V s\u00edti nebyla nalezena \u017e\u00e1dn\u00e1 za\u0159\u00edzen\u00ed"
+      "already_configured": "Zařízení je již nastaveno",
+      "already_in_progress": "Konfigurace již probíhá",
+      "no_devices_found": "V síti nebyla nalezena žádná zařízení"
     },
     "flow_title": "{name}",
     "step": {
@@ -12,9 +12,9 @@
       },
       "user": {
         "data": {
-          "address": "Za\u0159\u00edzen\u00ed"
+          "address": "Zařízení"
         },
-        "description": "Zvolte za\u0159\u00edzen\u00ed, kter\u00e9 chcete nastavit"
+        "description": "Zvolte zařízení, které chcete nastavit"
       }
     }
   }

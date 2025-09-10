@@ -1,8 +1,8 @@
 {
   "config": {
     "abort": {
-      "already_configured": "El dispositiu ja est\u00e0 configurat",
-      "already_in_progress": "El flux de configuraci\u00f3 ja est\u00e0 en curs",
+      "already_configured": "El dispositiu ja està configurat",
+      "already_in_progress": "El flux de configuració ja està en curs",
       "no_devices_found": "No s'han trobat dispositius a la xarxa"
     },
     "flow_title": "{name}",

@@ -8,14 +8,14 @@
     "flow_title": "{name}",
     "step": {
       "user": {
-        "description": "V\u00fdber typu pripojenia",
+        "description": "Výber typu pripojenia",
         "menu_options": {
           "select_bluetooth_device": "Bluetooth",
           "provide_cloud_credentials": "Cloud"
         }
       },
       "select_bluetooth_device": {
-        "description": "V\u00fdber zariadenia na nastavenie",
+        "description": "Výber zariadenia na nastavenie",
         "data": {
           "address": "Zariadenie"
         }
@@ -23,26 +23,26 @@
       "bluetooth_connect": {
         "description": "Poskytnite poverenia HomeWhiz",
         "data": {
-          "username": "Pou\u017e\u00edvate\u013esk\u00e9 meno",
+          "username": "Používateľské meno",
           "password": "Heslo"
         }
       },
       "provide_cloud_credentials": {
         "description": "Poskytnite poverenia HomeWhiz",
         "data": {
-          "username": "Pou\u017e\u00edvate\u013esk\u00e9 meno",
+          "username": "Používateľské meno",
           "password": "Heslo"
         }
       },
       "select_cloud_device": {
-        "description": "V\u00fdber zariadenia na nastavenie",
+        "description": "Výber zariadenia na nastavenie",
         "data": {
           "id": "Zariadenie"
         }
       }
     },
     "error": {
-      "invalid_auth": "Neplatn\u00e9 overenie"
+      "invalid_auth": "Neplatné overenie"
     }
   },
   "entity": {
@@ -52,11 +52,11 @@
         "state": {
           "device_state_on": "Zap",
           "device_state_off": "Vyp",
-          "device_state_running": "Spusten\u00e9",
-          "device_state_paused": "Pozastavan\u00e9",
-          "device_state_time_delay_active": "\u010casov\u00e9 oneskorenie akt\u00edvne",
-          "device_state_cancelling": "Prebieha ru\u0161enie",
-          "device_state_door_open": "Dvere s\u00fa otvoren\u00e9 !",
+          "device_state_running": "Spustené",
+          "device_state_paused": "Pozastavané",
+          "device_state_time_delay_active": "Časové oneskorenie aktívne",
+          "device_state_cancelling": "Prebieha rušenie",
+          "device_state_door_open": "Dvere sú otvorené !",
           "device_state_settings": "Nastavenia"
         }
       },
@@ -68,53 +68,53 @@
           "program_synthetics": "Syntetika",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Vlna",
-          "program_delicates": "Jemn\u00e9",
-          "program_spin_pump": "Odstre\u010fovanie + vyp\u00fa\u0161\u0165anie",
+          "program_delicates": "Jemné",
+          "program_spin_pump": "Odstreďovanie + vypúšťanie",
           "program_rinsing": "Oplachovanie",
-          "program_darkwash": "Tmav\u00e9 (Jeans)",
+          "program_darkwash": "Tmavé (Jeans)",
           "program_outdoor_sports_goretex": "Outdoor/Sport",
           "program_stain": "StainExpert",
           "program_hygeine": "Hygiena+",
-          "program_duvet": "Prikr\u00fdvka/P\u00e1perie",
-          "program_shirts": "Ko\u0161ele",
-          "program_drum_clean": "\u010cistenie bubna",
+          "program_duvet": "Prikrývka/Páperie",
+          "program_shirts": "Košele",
+          "program_drum_clean": "Čistenie bubna",
           "program_mix": "Mix",
-          "program_curtain": "Z\u00e1clony",
-          "program_lingerie": "Spodn\u00e1 bielize\u0148",
-          "program_soft_toys": "M\u00e4kk\u00e9 hra\u010dky",
-          "program_towel": "Uter\u00e1ky",
+          "program_curtain": "Záclony",
+          "program_lingerie": "Spodná bielizeň",
+          "program_soft_toys": "Mäkké hračky",
+          "program_towel": "Uteráky",
           "program_cottons_eco": "Eco bavlna",
-          "program_dryer_cotton": "Bavlna such\u00e1",
-          "program_dryer_synthetics": "Syntetika such\u00e1",
-          "program_hygiene_wash_dry": "Hygiena+ pranie a su\u0161enie",
-          "program_4kg_wash_dry": "4 Kg pranie a su\u0161enie",
-          "program_wash_wear": "Opra\u0165 a obliec\u0165",
-          "program_dark_wash": "Tmav\u00e9 pranie",
+          "program_dryer_cotton": "Bavlna suchá",
+          "program_dryer_synthetics": "Syntetika suchá",
+          "program_hygiene_wash_dry": "Hygiena+ pranie a sušenie",
+          "program_4kg_wash_dry": "4 Kg pranie a sušenie",
+          "program_wash_wear": "Oprať a obliecť",
+          "program_dark_wash": "Tmavé pranie",
           "program_outdoor": "Outdoor",
-          "program_drum_clean_plus": "program_bubon_\u010distenie_+",
+          "program_drum_clean_plus": "program_bubon_čistenie_+",
           "program_steam_refresh": "Obnovenie parou"
         }
       },
       "washer_temperature": {
         "name": "Teplota",
         "state": {
-          "temperature_cold_wash": "Studen\u00e9 pranie",
-          "temperature_20": "20 \u00b0C",
-          "temperature_30": "30 \u00b0C",
-          "temperature_40": "40 \u00b0C",
+          "temperature_cold_wash": "Studené pranie",
+          "temperature_20": "20 °C",
+          "temperature_30": "30 °C",
+          "temperature_40": "40 °C",
           "60c": "60c",
           "90c": "90c"
         }
       },
       "washer_spin": {
-        "name": "Ot\u00e1\u010dky",
+        "name": "Otáčky",
         "state": {
-          "spin_no_spin": "Bez ot\u00e1\u010dok",
+          "spin_no_spin": "Bez otáčok",
           "600rpm": "600rpm",
           "800rpm": "800rpm",
           "1000rpm": "1000rpm",
           "1200rpm": "1200rpm",
-          "spin_rinse_hold": "Zadr\u017eanie opl\u00e1chnutia",
+          "spin_rinse_hold": "Zadržanie opláchnutia",
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
@@ -123,17 +123,17 @@
         }
       },
       "washer_fast_plus": {
-        "name": "R\u00fdchlo+",
+        "name": "Rýchlo+",
         "state": {
-          "fast_plus_off": "r\u00fdchlo_+_vyp",
-          "fast_plus_on_fast": "r\u00fdchlo_+_na_r\u00fdchlo",
+          "fast_plus_off": "rýchlo_+_vyp",
+          "fast_plus_on_fast": "rýchlo_+_na_rýchlo",
           "fast_plus_on_fast_plus": "fast_+_on_fast_+"
         }
       },
       "custom_duration_level": {
-        "name": "Vlastn\u00e1 \u00farove\u0148 trvania",
+        "name": "Vlastná úroveň trvania",
         "state": {
-          "duration_level_0": "\u00farove\u0148_trvania_0",
+          "duration_level_0": "úroveň_trvania_0",
           "1": "1",
           "2": "2",
           "3": "3",
@@ -148,45 +148,45 @@
         }
       },
       "washer_extra_rinse_count": {
-        "name": "Po\u010det extra pl\u00e1kania"
+        "name": "Počet extra plákania"
       },
       "settings_volume": {
-        "name": "Tla\u010didlo Hlasitos\u0165",
+        "name": "Tlačidlo Hlasitosť",
         "state": {
-          "volume_low": "N\u00edzke",
-          "volume_high": "Vysok\u00e9"
+          "volume_low": "Nízke",
+          "volume_high": "Vysoké"
         }
       },
       "remote_control": {
-        "name": "Dia\u013ekov\u00e9 ovl\u00e1danie"
+        "name": "Diaľkové ovládanie"
       },
       "washer_warning_door_is_open": {
-        "name": "Dvere s\u00fa otvoren\u00e9"
+        "name": "Dvere sú otvorené"
       },
       "washer_warning_no_water": {
         "name": "Bez vody"
       },
       "washer_warning_security": {
-        "name": "Bezpe\u010dnos\u0165"
+        "name": "Bezpečnosť"
       },
       "oven_program": {
         "name": "Programy",
         "state": {
-          "program_static": "Statick\u00fd",
-          "program_static_fan": "Statick\u00fd + Ventil\u00e1tor",
-          "program_fan_heating": "K\u00farenie ventil\u00e1torom",
+          "program_static": "Statický",
+          "program_static_fan": "Statický + Ventilátor",
+          "program_fan_heating": "Kúrenie ventilátorom",
           "program_multi_cooking": "Multi (3D) varenie",
-          "program_fan_heat_bottom": "Ohrievanie ventil\u00e1tora + Dole",
+          "program_fan_heat_bottom": "Ohrievanie ventilátora + Dole",
           "program_eco_grill": "Eco Gril",
-          "program_full_grill": "Pln\u00fd Gril",
-          "program_full_grill_fan": "Pln\u00fd Gril + Ventil\u00e1tor",
-          "program_bottom_heating": "Spodn\u00fd ohrev",
-          "program_defrost": "Rozmrazi\u0165",
-          "program_warm_keeping": "Udr\u017eova\u0165 v teple",
-          "program_eco_fan_heating": "Ekologick\u00e9 vykurovanie ventil\u00e1torom",
-          "program_steam_cleaning": "\u010cistenie parou",
-          "program_eco_pyro": "Eco \u010distenie",
-          "program_pyro": "\u010cistenie"
+          "program_full_grill": "Plný Gril",
+          "program_full_grill_fan": "Plný Gril + Ventilátor",
+          "program_bottom_heating": "Spodný ohrev",
+          "program_defrost": "Rozmraziť",
+          "program_warm_keeping": "Udržovať v teple",
+          "program_eco_fan_heating": "Ekologické vykurovanie ventilátorom",
+          "program_steam_cleaning": "Čistenie parou",
+          "program_eco_pyro": "Eco čistenie",
+          "program_pyro": "Čistenie"
         }
       },
       "oven_temperature": {
@@ -196,47 +196,47 @@
         "name": "Jas"
       },
       "oven_warning_door_is_open": {
-        "name": "Dvere s\u00fa otvoren\u00e9"
+        "name": "Dvere sú otvorené"
       },
       "oven_warning_door_locked": {
-        "name": "Dvere zamknut\u00e9"
+        "name": "Dvere zamknuté"
       },
       "oven_warning_error": {
-        "name": "V produkte sa vyskytla neo\u010dak\u00e1van\u00e1 chyba. Pozrite si n\u00e1vod na pou\u017eitie."
+        "name": "V produkte sa vyskytla neočakávaná chyba. Pozrite si návod na použitie."
       },
       "program": {
         "name": "Program",
         "state": {
           "program_auto": "Auto",
-          "program_mix_wash_plus": "MixUm\u00fdvanie+",
-          "program_intensive_70": "Intenz\u00edvne 70\u00b0C",
-          "program_eco_50": "Eco 50\u00b0C",
-          "program_glasscare": "Starostlivos\u0165 o sklo",
-          "program_new58min": "R\u00fdchleUmytie 58'",
+          "program_mix_wash_plus": "MixUmývanie+",
+          "program_intensive_70": "Intenzívne 70°C",
+          "program_eco_50": "Eco 50°C",
+          "program_glasscare": "Starostlivosť o sklo",
+          "program_new58min": "RýchleUmytie 58'",
           "program_30min": "Mini 30'",
           "program_prewash": "Predumytie",
-          "program_hygiene": "HygienaStarostlivos\u0165",
-          "program_daily": "Denn\u00e9Umytie",
-          "program_silent": "Tich\u00e9Umytie",
-          "program_makine_temizleme": "Vn\u00fatorn\u00e9 \u010cistenie"
+          "program_hygiene": "HygienaStarostlivosť",
+          "program_daily": "DennéUmytie",
+          "program_silent": "TichéUmytie",
+          "program_makine_temizleme": "Vnútorné Čistenie"
         }
       },
       "setting_detergent_type": {
-        "name": "Typ \u010distiaceho prostriedku",
+        "name": "Typ čistiaceho prostriedku",
         "state": {
-          "setting_detergent_type_powder": "Pr\u00e1\u0161kov\u00fd \u010distiaci prostriedok",
-          "setting_detergent_type_tablet": "Tabletov\u00fd \u010distiaci prostriedok",
-          "setting_detergent_type_liquid": "Tekut\u00fd \u010distiaci prostriedok"
+          "setting_detergent_type_powder": "Práškový čistiaci prostriedok",
+          "setting_detergent_type_tablet": "Tabletový čistiaci prostriedok",
+          "setting_detergent_type_liquid": "Tekutý čistiaci prostriedok"
         }
       },
       "dishwasher_rinse_aid_level": {
-        "name": "\u00darove\u0148 oplachovacieho prostriedku"
+        "name": "Úroveň oplachovacieho prostriedku"
       },
       "dishwasher_water_hardness": {
-        "name": "Tvrdos\u0165 vody"
+        "name": "Tvrdosť vody"
       },
       "dishwasher_warning_no_rinse_aid": {
-        "name": "Bez le\u0161tidla"
+        "name": "Bez leštidla"
       },
       "dishwasher_warning_no_salt": {
         "name": "Bez soli"
@@ -245,43 +245,43 @@
         "name": "Bez vody"
       },
       "dishwasher_warning_check_the_filter": {
-        "name": "Skontrolova\u0165 filter"
+        "name": "Skontrolovať filter"
       },
       "dishwasher_warning_door_is_open": {
-        "name": "Dvere s\u00fa otvoren\u00e9"
+        "name": "Dvere sú otvorené"
       },
       "dishwasher_warning_call_service": {
-        "name": "Zavola\u0165 servis"
+        "name": "Zavolať servis"
       },
       "dishwasher_liquid_detergent_low": {
-        "name": "N\u00edzka hladina tekut\u00e9ho \u010disti\u010da"
+        "name": "Nízka hladina tekutého čističa"
       },
       "dishwasher_program": {
         "name": "Programy",
         "state": {
           "program_auto": "Auto",
           "program_aqua_flex": "AquaFlex",
-          "program_intensive_70": "Intenz\u00edvne 70\u00b0C",
-          "program_eco_50": "Eco 50\u00b0C",
-          "program_delicate": "Jemn\u00e9",
-          "program_quick_and_shine": "R\u00fdchlo&Lesk",
+          "program_intensive_70": "Intenzívne 70°C",
+          "program_eco_50": "Eco 50°C",
+          "program_delicate": "Jemné",
+          "program_quick_and_shine": "Rýchlo&Lesk",
           "program_mini": "Mini",
           "program_prewash": "Predumytie",
-          "program_quiet": "Tich\u00e9Umytie",
-          "program_clean_and_shine": "\u010cistenie&Lesk",
-          "program_innerclean": "Vn\u00fatorn\u00e9\u010cistenie"
+          "program_quiet": "TichéUmytie",
+          "program_clean_and_shine": "Čistenie&Lesk",
+          "program_innerclean": "VnútornéČistenie"
         }
       },
       "dishwasher_liquid_detergent_level": {
-        "name": "Tekut\u00fd um\u00fdvac\u00ed prostriedok"
+        "name": "Tekutý umývací prostriedok"
       },
       "washer_dry": {
-        "name": "Su\u0161enie",
+        "name": "Sušenie",
         "state": {
           "dry_off": "Vyp",
-          "dry_extra": "Extra Su\u0161enie",
-          "dry_cabinet": "Such\u00e1 skri\u0148a",
-          "dry_iron": "\u017dehli\u0165 na sucho",
+          "dry_extra": "Extra Sušenie",
+          "dry_cabinet": "Suchá skriňa",
+          "dry_iron": "Žehliť na sucho",
           "dry_10": "45 Min",
           "dry_20": "20 Min",
           "dry_30": "30 Min",
@@ -292,10 +292,10 @@
         }
       },
       "washer_rinse_count": {
-        "name": "Po\u010det opl\u00e1chnut\u00ed"
+        "name": "Počet opláchnutí"
       },
       "air_conditioner_soft_air": {
-        "name": "M\u00e4kk\u00fd vzduch",
+        "name": "Mäkký vzduch",
         "state": {
           "air_conditioner_soft_air_off": "Vyp",
           "air_conditioner_soft_air_up": "Hore",
@@ -303,7 +303,7 @@
         }
       },
       "air_conditioner_up_down_vane_control": {
-        "name": "Vertik\u00e1lne pr\u00fadenie vzduchu",
+        "name": "Vertikálne prúdenie vzduchu",
         "state": {
           "up_down_vane_control_off": "Vyp",
           "up_down_vane_control_6": "6",
@@ -316,7 +316,7 @@
         }
       },
       "air_conditioner_left_right_vane_control": {
-        "name": "Horizont\u00e1lne pr\u00fadenie vzduchu",
+        "name": "Horizontálne prúdenie vzduchu",
         "state": {
           "left_right_vane_control_off": "Vyp",
           "left_right_vane_control_1": "1",
@@ -324,7 +324,7 @@
           "left_right_vane_control_3": "3",
           "left_right_vane_control_4": "4",
           "left_right_vane_control_5": "5",
-          "left_right_vane_control_left": "V\u013eavo",
+          "left_right_vane_control_left": "Vľavo",
           "left_right_vane_control_right": "Vpravo",
           "left_right_vane_control_auto": "Auto"
         }
@@ -336,11 +336,11 @@
         "state": {
           "device_state_on": "Zap",
           "device_state_off": "Vyp",
-          "device_state_running": "Spusten\u00e9",
-          "device_state_paused": "Pozastaven\u00e9",
-          "device_state_time_delay_active": "\u010casov\u00e9 oneskorenie akt\u00edvne",
-          "device_state_cancelling": "Zru\u0161enie",
-          "device_state_door_open": "Dvere s\u00fa otvoren\u00e9 !",
+          "device_state_running": "Spustené",
+          "device_state_paused": "Pozastavené",
+          "device_state_time_delay_active": "Časové oneskorenie aktívne",
+          "device_state_cancelling": "Zrušenie",
+          "device_state_door_open": "Dvere sú otvorené !",
           "device_state_settings": "Nastavenia"
         }
       },
@@ -352,53 +352,53 @@
           "program_synthetics": "Syntetika",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Vlna",
-          "program_delicates": "Jemn\u00e9",
-          "program_spin_pump": "Odstre\u010fovanie+vyp\u00fa\u0161\u0165anie",
-          "program_rinsing": "Opl\u00e1chnutie",
-          "program_darkwash": "Tmav\u00e9 (Jeans)",
+          "program_delicates": "Jemné",
+          "program_spin_pump": "Odstreďovanie+vypúšťanie",
+          "program_rinsing": "Opláchnutie",
+          "program_darkwash": "Tmavé (Jeans)",
           "program_outdoor_sports_goretex": "Outdoor/Sport",
           "program_stain": "StainExpert",
           "program_hygeine": "Hygiena+",
-          "program_duvet": "Prikr\u00fdvka/P\u00e1perie",
-          "program_shirts": "Ko\u0161ele",
-          "program_drum_clean": "\u010cistenie bubna",
+          "program_duvet": "Prikrývka/Páperie",
+          "program_shirts": "Košele",
+          "program_drum_clean": "Čistenie bubna",
           "program_mix": "Mix",
-          "program_curtain": "Z\u00e1clony",
-          "program_lingerie": "Spodn\u00e1 bielize\u0148",
-          "program_soft_toys": "Jemn\u00e9 hra\u010dky",
-          "program_towel": "Uter\u00e1ky",
+          "program_curtain": "Záclony",
+          "program_lingerie": "Spodná bielizeň",
+          "program_soft_toys": "Jemné hračky",
+          "program_towel": "Uteráky",
           "program_cottons_eco": "Bavlna Eco",
-          "program_dryer_cotton": "Bavlna such\u00e1",
-          "program_dryer_synthetics": "Syntetika such\u00e1",
-          "program_hygiene_wash_dry": "Hygiena+ Pranie & Su\u0161enie",
-          "program_4kg_wash_dry": "4 Kg Pranie & Su\u0161enie",
-          "program_wash_wear": "Pra\u0165 & Obliec\u0165",
-          "program_dark_wash": "Tmav\u00e9 pranie",
+          "program_dryer_cotton": "Bavlna suchá",
+          "program_dryer_synthetics": "Syntetika suchá",
+          "program_hygiene_wash_dry": "Hygiena+ Pranie & Sušenie",
+          "program_4kg_wash_dry": "4 Kg Pranie & Sušenie",
+          "program_wash_wear": "Prať & Obliecť",
+          "program_dark_wash": "Tmavé pranie",
           "program_outdoor": "Outdoor",
-          "program_drum_clean_plus": "program_bubon_\u010disti\u0165_+",
+          "program_drum_clean_plus": "program_bubon_čistiť_+",
           "program_steam_refresh": "Obnovenie parou"
         }
       },
       "washer_temperature": {
         "name": "Teplota",
         "state": {
-          "temperature_cold_wash": "Studen\u00e9 pranie",
-          "temperature_20": "20 \u00b0C",
-          "temperature_30": "30 \u00b0C",
-          "temperature_40": "40 \u00b0C",
+          "temperature_cold_wash": "Studené pranie",
+          "temperature_20": "20 °C",
+          "temperature_30": "30 °C",
+          "temperature_40": "40 °C",
           "60c": "60c",
           "90c": "90c"
         }
       },
       "washer_spin": {
-        "name": "Ot\u00e1\u010dky",
+        "name": "Otáčky",
         "state": {
-          "spin_no_spin": "Bez ot\u00e1\u010dok",
+          "spin_no_spin": "Bez otáčok",
           "600rpm": "600rpm",
           "800rpm": "800rpm",
           "1000rpm": "1000rpm",
           "1200rpm": "1200rpm",
-          "spin_rinse_hold": "Zadr\u017eanie opl\u00e1chnutia",
+          "spin_rinse_hold": "Zadržanie opláchnutia",
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
@@ -407,17 +407,17 @@
         }
       },
       "washer_fast_plus": {
-        "name": "R\u00fdchlo+",
+        "name": "Rýchlo+",
         "state": {
-          "fast_plus_off": "r\u00fdchlo_+_vyp",
-          "fast_plus_on_fast": "r\u00fdchlo_+_na_r\u00fdchlo",
-          "fast_plus_on_fast_plus": "r\u00fdchlo_+_na_r\u00fdchlo_+"
+          "fast_plus_off": "rýchlo_+_vyp",
+          "fast_plus_on_fast": "rýchlo_+_na_rýchlo",
+          "fast_plus_on_fast_plus": "rýchlo_+_na_rýchlo_+"
         }
       },
       "custom_duration_level": {
-        "name": "Vlastn\u00e1 \u00farove\u0148 trvania",
+        "name": "Vlastná úroveň trvania",
         "state": {
-          "duration_level_0": "\u00farove\u0148_trvania_0",
+          "duration_level_0": "úroveň_trvania_0",
           "1": "1",
           "2": "2",
           "3": "3",
@@ -432,133 +432,133 @@
         }
       },
       "washer_extra_rinse_count": {
-        "name": "Po\u010det extra pl\u00e1kan\u00ed"
+        "name": "Počet extra plákaní"
       },
       "settings_volume": {
-        "name": "Tla\u010didlo Hlasitosti",
+        "name": "Tlačidlo Hlasitosti",
         "state": {
-          "volume_low": "N\u00edzke",
-          "volume_high": "Vysok\u00e9"
+          "volume_low": "Nízke",
+          "volume_high": "Vysoké"
         }
       },
       "sub_state": {
         "name": "Podstav",
         "state": {
           "washer_substate_washing": "Pranie",
-          "washer_substate_spin": "Ot\u00e1\u010dky",
-          "washer_water_intake": "Nap\u00fa\u0161\u0165anie vody",
+          "washer_substate_spin": "Otáčky",
+          "washer_water_intake": "Napúšťanie vody",
           "washer_substate_prewash": "Predpranie",
-          "washer_substate_rinsing": "Opl\u00e1chnutie",
-          "washer_substate_softener": "Zm\u00e4k\u010dova\u010d",
+          "washer_substate_rinsing": "Opláchnutie",
+          "washer_substate_softener": "Zmäkčovač",
           "washer_substate_program_started": "Spustenie programu",
-          "washer_substate_time_delay_enabled": "\u010cas ukon\u010denia povolen\u00fd",
-          "washer_substate_paused": "Pozastaven\u00e9",
+          "washer_substate_time_delay_enabled": "Čas ukončenia povolený",
+          "washer_substate_paused": "Pozastavené",
           "washer_substate_analysing": "Analyzovanie",
-          "washer_substate_door_locked": "Dvere zamknut\u00e9",
-          "washer_substate_opening_door": "Otv\u00e1ranie dver\u00ed",
-          "washer_substate_locking_door": "Zamk\u00fdnanie dver\u00ed",
-          "washer_substate_remove_laundry": "Um\u00fdvac\u00ed cyklus je dokon\u010den\u00fd; odstr\u00e1\u0148te bielize\u0148",
-          "washer_substate_add_laundry": "M\u00f4\u017eete prida\u0165 bielize\u0148",
-          "washer_substate_rinse_hold": "Zastavenie pl\u00e1kania je akt\u00edvne; zvo\u013ete r\u00fdchlos\u0165 odstre\u010fovania",
-          "washer_substate_remote_anticrease": "Prebieha dia\u013ekov\u00e1 ochrana proti pokr\u010deniu.",
-          "washer_substate_drying": "Su\u0161enie",
-          "oven_message_good_appetite": "Dobr\u00fa chu\u0165",
+          "washer_substate_door_locked": "Dvere zamknuté",
+          "washer_substate_opening_door": "Otváranie dverí",
+          "washer_substate_locking_door": "Zamkýnanie dverí",
+          "washer_substate_remove_laundry": "Umývací cyklus je dokončený; odstráňte bielizeň",
+          "washer_substate_add_laundry": "Môžete pridať bielizeň",
+          "washer_substate_rinse_hold": "Zastavenie plákania je aktívne; zvoľte rýchlosť odstreďovania",
+          "washer_substate_remote_anticrease": "Prebieha diaľková ochrana proti pokrčeniu.",
+          "washer_substate_drying": "Sušenie",
+          "oven_message_good_appetite": "Dobrú chuť",
           "oven_message_cooking": "Varenie",
-          "oven_message_paused": "Pozastaven\u00e9",
-          "oven_message_waiting": "\u010cakanie",
+          "oven_message_paused": "Pozastavené",
+          "oven_message_waiting": "Čakanie",
           "oven_message_defrosting": "Rozmrazovanie",
-          "operation_completed": "Oper\u00e1cia je vykonan\u00e1",
+          "operation_completed": "Operácia je vykonaná",
           "oven_message_preheating": "Predohrev",
-          "oven_message_preheating_completed": "Predohrev dokon\u010den\u00fd",
-          "oven_message_cleaning": "\u010cistenie",
-          "oven_message_cleaning_completed": "\u010cistenie dokon\u010den\u00e9",
-          "dishwasher_message_time_delay_started": "\u010cas ukon\u010denia povolen\u00fd",
-          "dishwasher_message_paused": "Program pozastaven\u00fd",
-          "dishwasher_message_program_finished": "Program dokon\u010den\u00fd",
-          "dishwasher_message_program_sanitized": "Program je dokon\u010den\u00fd a dezinfikovan\u00fd",
-          "dishwasher_message_cancelling": "Ru\u0161enie\u2026",
-          "dishwasher_message_time_delay_cancelled": "Oneskorenie zru\u0161en\u00e9",
-          "dishwasher_message_program_started": "Program spusten\u00fd",
-          "dishwasher_message_washing": "Um\u00fdvanie",
+          "oven_message_preheating_completed": "Predohrev dokončený",
+          "oven_message_cleaning": "Čistenie",
+          "oven_message_cleaning_completed": "Čistenie dokončené",
+          "dishwasher_message_time_delay_started": "Čas ukončenia povolený",
+          "dishwasher_message_paused": "Program pozastavený",
+          "dishwasher_message_program_finished": "Program dokončený",
+          "dishwasher_message_program_sanitized": "Program je dokončený a dezinfikovaný",
+          "dishwasher_message_cancelling": "Rušenie…",
+          "dishwasher_message_time_delay_cancelled": "Oneskorenie zrušené",
+          "dishwasher_message_program_started": "Program spustený",
+          "dishwasher_message_washing": "Umývanie",
           "dishwasher_message_rinsing": "Oplachovanie",
-          "dishwasher_message_drying": "Su\u0161enie"
+          "dishwasher_message_drying": "Sušenie"
         }
       },
       "washer_delay": {
-        "name": "\u010cas ukon\u010denia programu"
+        "name": "Čas ukončenia programu"
       },
       "delay_start": {
-        "name": "Oneskorenie \u0161tartu"
+        "name": "Oneskorenie štartu"
       },
       "delay_start_time": {
-        "name": "Oneskori\u0165 \u010das za\u010diatku"
+        "name": "Oneskoriť čas začiatku"
       },
       "delay_end_time": {
-        "name": "Oneskori\u0165 \u010das ukon\u010denia"
+        "name": "Oneskoriť čas ukončenia"
       },
       "washer_duration": {
         "name": "Trvanie"
       },
       "washer_remaining": {
-        "name": "Zost\u00e1vaj\u00face"
+        "name": "Zostávajúce"
       },
       "remote_control": {
-        "name": "Dia\u013ekov\u00e9 ovl\u00e1danie"
+        "name": "Diaľkové ovládanie"
       },
       "washer_warning_door_is_open": {
-        "name": "Dvere s\u00fa otvoren\u00e9"
+        "name": "Dvere sú otvorené"
       },
       "washer_warning_no_water": {
         "name": "Bez vody"
       },
       "washer_warning_security": {
-        "name": "Bezpe\u010dnos\u0165"
+        "name": "Bezpečnosť"
       },
       "washer_prewash": {
         "name": "Predumytie"
       },
       "washer_extrarinse": {
-        "name": "Extra opl\u00e1chnutie"
+        "name": "Extra opláchnutie"
       },
       "washer_hidden_anti_crease": {
-        "name": "Inteligentn\u00e1 ochrana proti pokr\u010deniu"
+        "name": "Inteligentná ochrana proti pokrčeniu"
       },
       "washer_steam": {
         "name": "Para"
       },
       "washer_phr": {
-        "name": "Odstr\u00e1nenie chlpov dom\u00e1cich zvierat"
+        "name": "Odstránenie chlpov domácich zvierat"
       },
       "washer_add_water": {
         "name": "Extra voda"
       },
       "washer_soaking": {
-        "name": "Nam\u00e1\u010danie"
+        "name": "Namáčanie"
       },
       "washer_night": {
-        "name": "No\u010dn\u00fd re\u017eim"
+        "name": "Nočný režim"
       },
       "washer_anticrease": {
-        "name": "Proti pokr\u010deniu"
+        "name": "Proti pokrčeniu"
       },
       "oven_program": {
         "name": "Program",
         "state": {
-          "program_static": "Statick\u00fd",
-          "program_static_fan": "Statick\u00fd + Ventil\u00e1tor",
-          "program_fan_heating": "Ohrev ventil\u00e1tora",
+          "program_static": "Statický",
+          "program_static_fan": "Statický + Ventilátor",
+          "program_fan_heating": "Ohrev ventilátora",
           "program_multi_cooking": "Multi (3D) varenie",
-          "program_fan_heat_bottom": "Ohrievanie ventil\u00e1tora + dole",
+          "program_fan_heat_bottom": "Ohrievanie ventilátora + dole",
           "program_eco_grill": "Eco Gril",
-          "program_full_grill": "Pln\u00fd Gril",
-          "program_full_grill_fan": "Pln\u00fd Gril + Ventil\u00e1tor",
-          "program_bottom_heating": "Spodn\u00fd ohrev",
+          "program_full_grill": "Plný Gril",
+          "program_full_grill_fan": "Plný Gril + Ventilátor",
+          "program_bottom_heating": "Spodný ohrev",
           "program_defrost": "Rozmrazenie",
-          "program_warm_keeping": "Udr\u017ea\u0165 v teple",
-          "program_eco_fan_heating": "Eco ohrev ventil\u00e1torom",
-          "program_steam_cleaning": "Parn\u00e9 \u010distenie",
-          "program_eco_pyro": "Eco \u010distenie",
-          "program_pyro": "\u010cistenie"
+          "program_warm_keeping": "Udržať v teple",
+          "program_eco_fan_heating": "Eco ohrev ventilátorom",
+          "program_steam_cleaning": "Parné čistenie",
+          "program_eco_pyro": "Eco čistenie",
+          "program_pyro": "Čistenie"
         }
       },
       "oven_temperature": {
@@ -568,71 +568,71 @@
         "name": "Jas"
       },
       "variable_delay": {
-        "name": "\u010cas ukon\u010denia programu"
+        "name": "Čas ukončenia programu"
       },
       "variable_oven_duration": {
-        "name": "Trvanie varenia (hodina: min\u00fata)"
+        "name": "Trvanie varenia (hodina: minúta)"
       },
       "variable_remaining": {
-        "name": "Zost\u00e1vaj\u00face"
+        "name": "Zostávajúce"
       },
       "oven_warning_door_is_open": {
-        "name": "Dvere s\u00fa otvoren\u00e9"
+        "name": "Dvere sú otvorené"
       },
       "oven_warning_door_locked": {
-        "name": "Dvere s\u00fa zamknut\u00e9"
+        "name": "Dvere sú zamknuté"
       },
       "oven_warning_error": {
-        "name": "V produkte sa vyskytla neo\u010dak\u00e1van\u00e1 chyba. Pozrite si n\u00e1vod na pou\u017eitie."
+        "name": "V produkte sa vyskytla neočakávaná chyba. Pozrite si návod na použitie."
       },
       "oven_booster": {
         "name": "Booster"
       },
       "oven_skip_preheating": {
-        "name": "Presko\u010di\u0165 >"
+        "name": "Preskočiť >"
       },
       "program": {
         "name": "Program",
         "state": {
           "program_auto": "Auto",
           "program_mix_wash_plus": "MixUmytie+",
-          "program_intensive_70": "Intenz\u00edvne 70\u00b0C",
-          "program_eco_50": "Eco 50\u00b0C",
-          "program_glasscare": "Starostlivos\u0165 o sklo",
-          "program_new58min": "R\u00fdchleUmytie 58'",
+          "program_intensive_70": "Intenzívne 70°C",
+          "program_eco_50": "Eco 50°C",
+          "program_glasscare": "Starostlivosť o sklo",
+          "program_new58min": "RýchleUmytie 58'",
           "program_30min": "Mini 30'",
           "program_prewash": "Predumytie",
-          "program_hygiene": "HygienaStarostlivos\u0165",
-          "program_daily": "Denn\u00e9Umytie",
-          "program_silent": "Tich\u00e9Umytie",
-          "program_makine_temizleme": "Vn\u00fatorn\u00e9 \u010cistenie"
+          "program_hygiene": "HygienaStarostlivosť",
+          "program_daily": "DennéUmytie",
+          "program_silent": "TichéUmytie",
+          "program_makine_temizleme": "Vnútorné Čistenie"
         }
       },
       "setting_detergent_type": {
-        "name": "Typ \u010distiaceho prostriedku",
+        "name": "Typ čistiaceho prostriedku",
         "state": {
-          "setting_detergent_type_powder": "Pr\u00e1\u0161kov\u00fd",
+          "setting_detergent_type_powder": "Práškový",
           "setting_detergent_type_tablet": "Tablety",
-          "setting_detergent_type_liquid": "Tekut\u00fd"
+          "setting_detergent_type_liquid": "Tekutý"
         }
       },
       "dishwasher_rinse_aid_level": {
-        "name": "\u00darove\u0148 oplachovacieho prostriedku"
+        "name": "Úroveň oplachovacieho prostriedku"
       },
       "dishwasher_water_hardness": {
-        "name": "Tvrdos\u0165 vody"
+        "name": "Tvrdosť vody"
       },
       "dishwasher_delay": {
-        "name": "\u010cas ukon\u010denia programu"
+        "name": "Čas ukončenia programu"
       },
       "dishwasher_duration": {
         "name": "Trvanie"
       },
       "dishwasher_remaining": {
-        "name": "Zost\u00e1vaj\u00faci \u010das"
+        "name": "Zostávajúci čas"
       },
       "dishwasher_warning_no_rinse_aid": {
-        "name": "Bez le\u0161tidla"
+        "name": "Bez leštidla"
       },
       "dishwasher_warning_no_salt": {
         "name": "Bez soli"
@@ -641,70 +641,70 @@
         "name": "Bez vody"
       },
       "dishwasher_warning_check_the_filter": {
-        "name": "Skontrolova\u0165 filter"
+        "name": "Skontrolovať filter"
       },
       "dishwasher_warning_door_is_open": {
-        "name": "Dvere s\u00fa otvoren\u00e9"
+        "name": "Dvere sú otvorené"
       },
       "dishwasher_warning_call_service": {
-        "name": "Zavola\u0165 servis"
+        "name": "Zavolať servis"
       },
       "dishwasher_liquid_detergent_low": {
-        "name": "M\u00e1lo tekut\u00e9ho \u010distiacieho prostriedku"
+        "name": "Málo tekutého čistiacieho prostriedku"
       },
       "dishwasher_traywash": {
-        "name": "Um\u00fdvanie podnosu"
+        "name": "Umývanie podnosu"
       },
       "dishwasher_fastplus": {
-        "name": "Um\u00fdva\u010dka riadu fastplus"
+        "name": "Umývačka riadu fastplus"
       },
       "dishwasher_steamgloss": {
-        "name": "Parn\u00fd lesk"
+        "name": "Parný lesk"
       },
       "dishwasher_extrarinse": {
-        "name": "Extra Opl\u00e1chnutie"
+        "name": "Extra Opláchnutie"
       },
       "dishwasher_halfload": {
-        "name": "Polovi\u010dn\u00e9 za\u0165a\u017eenie"
+        "name": "Polovičné zaťaženie"
       },
       "setting_auto_door": {
         "name": "Doormatic"
       },
       "setting_inner_illumination": {
-        "name": "Vn\u00fatorn\u00e9 osvetlenie"
+        "name": "Vnútorné osvetlenie"
       },
       "dishwasher_program": {
         "name": "Program",
         "state": {
           "program_auto": "Auto",
           "program_aqua_flex": "AquaFlex",
-          "program_intensive_70": "Intenz\u00edvne 70\u00b0C",
-          "program_eco_50": "Eco 50\u00b0C",
-          "program_delicate": "Jemn\u00e9",
-          "program_quick_and_shine": "R\u00fdchlo&Lesk",
+          "program_intensive_70": "Intenzívne 70°C",
+          "program_eco_50": "Eco 50°C",
+          "program_delicate": "Jemné",
+          "program_quick_and_shine": "Rýchlo&Lesk",
           "program_mini": "Mini",
           "program_prewash": "Predumytie",
-          "program_quiet": "Tich\u00e9Umytie",
-          "program_clean_and_shine": "\u010cisti\u0165&Lesk",
-          "program_innerclean": "Vn\u00fatorn\u00e9\u010cistenie"
+          "program_quiet": "TichéUmytie",
+          "program_clean_and_shine": "Čistiť&Lesk",
+          "program_innerclean": "VnútornéČistenie"
         }
       },
       "dishwasher_liquid_detergent_level": {
-        "name": "Tekut\u00fd \u010distiaci pr\u00edpravok"
+        "name": "Tekutý čistiaci prípravok"
       },
       "dishwasher_hygiene_intense": {
-        "name": "Intenz\u00edvna hygiena"
+        "name": "Intenzívna hygiena"
       },
       "dishwasher_deepwash": {
-        "name": "Hlbok\u00e9 um\u00fdvanie"
+        "name": "Hlboké umývanie"
       },
       "washer_dry": {
-        "name": "Su\u0161enie",
+        "name": "Sušenie",
         "state": {
           "dry_off": "Vyp",
-          "dry_extra": "Extra Su\u0161enie",
-          "dry_cabinet": "Su\u0161enie rovno do skrine",
-          "dry_iron": "\u017dehli\u0165 na sucho",
+          "dry_extra": "Extra Sušenie",
+          "dry_cabinet": "Sušenie rovno do skrine",
+          "dry_iron": "Žehliť na sucho",
           "dry_10": "45 Min",
           "dry_20": "20 Min",
           "dry_30": "30 Min",
@@ -715,10 +715,10 @@
         }
       },
       "washer_rinse_count": {
-        "name": "Po\u010det opl\u00e1chnut\u00ed"
+        "name": "Počet opláchnutí"
       },
       "air_conditioner_soft_air": {
-        "name": "M\u00e4kk\u00fd vzduch",
+        "name": "Mäkký vzduch",
         "state": {
           "air_conditioner_soft_air_off": "Vyp",
           "air_conditioner_soft_air_up": "Hore",
@@ -726,7 +726,7 @@
         }
       },
       "air_conditioner_up_down_vane_control": {
-        "name": "Vertik\u00e1lne pr\u00fadenie vzduchu",
+        "name": "Vertikálne prúdenie vzduchu",
         "state": {
           "up_down_vane_control_off": "Vyp",
           "up_down_vane_control_6": "6",
@@ -739,7 +739,7 @@
         }
       },
       "air_conditioner_left_right_vane_control": {
-        "name": "Horizont\u00e1lne pr\u00fadenie vzduchu",
+        "name": "Horizontálne prúdenie vzduchu",
         "state": {
           "left_right_vane_control_off": "Vyp",
           "left_right_vane_control_1": "1",
@@ -747,48 +747,48 @@
           "left_right_vane_control_3": "3",
           "left_right_vane_control_4": "4",
           "left_right_vane_control_5": "5",
-          "left_right_vane_control_left": "V\u013eavo",
+          "left_right_vane_control_left": "Vľavo",
           "left_right_vane_control_right": "Vpravo",
           "left_right_vane_control_auto": "Auto"
         }
       },
       "air_conditioner_instant_consumption": {
-        "name": "Okam\u017eit\u00e1 spotreba klimatiz\u00e1cie"
+        "name": "Okamžitá spotreba klimatizácie"
       },
       "air_conditioner_sleep_mode_minute": {
-        "name": "Re\u017eim sp\u00e1nku klimatiz\u00e1cie min\u00fata"
+        "name": "Režim spánku klimatizácie minúta"
       },
       "air_conditioner_auto_switch_off": {
-        "name": "Automatick\u00e9 vypnutie"
+        "name": "Automatické vypnutie"
       },
       "air_conditioner_auto_switch_on": {
-        "name": "Automatick\u00e9 zapnutie"
+        "name": "Automatické zapnutie"
       }
     },
     "binary_sensor": {
       "remote_control": {
-        "name": "Dia\u013ekov\u00e9 ovl\u00e1danie"
+        "name": "Diaľkové ovládanie"
       },
       "washer_warning_door_is_open": {
-        "name": "Dvere s\u00fa otvoren\u00e9"
+        "name": "Dvere sú otvorené"
       },
       "washer_warning_no_water": {
         "name": "Bez vody"
       },
       "washer_warning_security": {
-        "name": "Bezpe\u010dnos\u0165"
+        "name": "Bezpečnosť"
       },
       "oven_warning_door_is_open": {
-        "name": "Dvere s\u00fa otvoren\u00e9"
+        "name": "Dvere sú otvorené"
       },
       "oven_warning_door_locked": {
-        "name": "Dvere s\u00fa zaknut\u00e9"
+        "name": "Dvere sú zaknuté"
       },
       "oven_warning_error": {
-        "name": "V produkte sa vyskytla neo\u010dak\u00e1van\u00e1 chyba. Pozrite si n\u00e1vod na pou\u017eitie."
+        "name": "V produkte sa vyskytla neočakávaná chyba. Pozrite si návod na použitie."
       },
       "dishwasher_warning_no_rinse_aid": {
-        "name": "Bez le\u0161tidla"
+        "name": "Bez leštidla"
       },
       "dishwasher_warning_no_salt": {
         "name": "Bez soli"
@@ -797,16 +797,16 @@
         "name": "Bez vody"
       },
       "dishwasher_warning_check_the_filter": {
-        "name": "Skontrolova\u0165 filter"
+        "name": "Skontrolovať filter"
       },
       "dishwasher_warning_door_is_open": {
-        "name": "Dvere s\u00fa otvoren\u00e9"
+        "name": "Dvere sú otvorené"
       },
       "dishwasher_warning_call_service": {
-        "name": "Zavola\u0165 servis"
+        "name": "Zavolať servis"
       },
       "dishwasher_liquid_detergent_low": {
-        "name": "M\u00e1lo tekut\u00e9ho \u010distidla"
+        "name": "Málo tekutého čistidla"
       }
     },
     "climate": {
@@ -819,61 +819,61 @@
         "name": "Predumytie"
       },
       "washer_extrarinse": {
-        "name": "Extra Opl\u00e1chnutie"
+        "name": "Extra Opláchnutie"
       },
       "washer_hidden_anti_crease": {
-        "name": "Inteligentn\u00e1 ochrana proti pokr\u010deniu"
+        "name": "Inteligentná ochrana proti pokrčeniu"
       },
       "washer_steam": {
         "name": "Para"
       },
       "washer_phr": {
-        "name": "Odstr\u00e1nenie chlpov dom\u00e1cich zvierat"
+        "name": "Odstránenie chlpov domácich zvierat"
       },
       "washer_add_water": {
         "name": "Extra voda"
       },
       "washer_soaking": {
-        "name": "Nam\u00e1\u010danie"
+        "name": "Namáčanie"
       },
       "washer_night": {
-        "name": "No\u010dn\u00fd re\u017eim"
+        "name": "Nočný režim"
       },
       "washer_anticrease": {
-        "name": "Proti pokr\u010deniu"
+        "name": "Proti pokrčeniu"
       },
       "oven_booster": {
         "name": "Booster"
       },
       "oven_skip_preheating": {
-        "name": "Presko\u010di\u0165 >"
+        "name": "Preskočiť >"
       },
       "dishwasher_traywash": {
-        "name": "Um\u00fdvanie podnosu"
+        "name": "Umývanie podnosu"
       },
       "dishwasher_fastplus": {
-        "name": "Um\u00fdva\u010dka riadu fastplus"
+        "name": "Umývačka riadu fastplus"
       },
       "dishwasher_steamgloss": {
-        "name": "Parn\u00fd lesk"
+        "name": "Parný lesk"
       },
       "dishwasher_extrarinse": {
-        "name": "Extra Opl\u00e1chnutie"
+        "name": "Extra Opláchnutie"
       },
       "dishwasher_halfload": {
-        "name": "Polovi\u010dn\u00e1 n\u00e1pl\u0148"
+        "name": "Polovičná náplň"
       },
       "setting_auto_door": {
         "name": "Doormatic"
       },
       "setting_inner_illumination": {
-        "name": "Vn\u00fatorn\u00e9 osvetlenie"
+        "name": "Vnútorné osvetlenie"
       },
       "dishwasher_hygiene_intense": {
-        "name": "Intenz\u00edvna hygiena"
+        "name": "Intenzívna hygiena"
       },
       "dishwasher_deepwash": {
-        "name": "Hlbok\u00e9 umytie"
+        "name": "Hlboké umytie"
       }
     }
   }

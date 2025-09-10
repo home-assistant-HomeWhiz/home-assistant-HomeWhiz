@@ -1,53 +1,53 @@
 {
   "config": {
     "abort": {
-      "already_configured": "L'appareil est d\u00e9j\u00e0 configur\u00e9",
-      "already_in_progress": "La configuration est d\u00e9j\u00e0 en cours",
-      "no_devices_found": "Aucun appareil trouv\u00e9 sur le r\u00e9seau"
+      "already_configured": "L'appareil est déjà configuré",
+      "already_in_progress": "La configuration est déjà en cours",
+      "no_devices_found": "Aucun appareil trouvé sur le réseau"
     },
     "flow_title": "{name}",
     "step": {
       "bluetooth_confirm": {
-        "description": "Voulez-vous configurer {name}\u00a0?"
+        "description": "Voulez-vous configurer {name} ?"
       },
       "user": {
         "data": {
           "address": "Appareil"
         },
-        "description": "S\u00e9lectionnez l'appareil \u00e0 configurer"
+        "description": "Sélectionnez l'appareil à configurer"
       }
     }
   },
   "entity": {
     "select": {
       "state": {
-        "name": "\u00c9tat",
+        "name": "État",
         "state": {
           "device_state_on": "Marche",
-          "device_state_off": "Arr\u00eat",
+          "device_state_off": "Arrêt",
           "device_state_running": "En marche",
           "device_state_paused": "En pause",
-          "device_state_time_delay_active": "Temporisation activ\u00e9e",
+          "device_state_time_delay_active": "Temporisation activée",
           "device_state_cancelling": "Annulation",
-          "device_state_door_open": "La porte est ouverte\u00a0!",
-          "device_state_settings": "Param\u00e8tres"
+          "device_state_door_open": "La porte est ouverte !",
+          "device_state_settings": "Paramètres"
         }
       },
       "washer_program": {
         "name": "Programme",
         "state": {
           "program_cottons": "Coton",
-          "program_eco_40_60": "\u00c9co 40-60",
-          "program_synthetics": "Synth\u00e9tique",
+          "program_eco_40_60": "Éco 40-60",
+          "program_synthetics": "Synthétique",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
           "program_delicates": "PROGRAM_DELICATES",
           "program_spin_pump": "Spin+Drain",
-          "program_rinsing": "Rin\u00e7age",
+          "program_rinsing": "Rinçage",
           "program_darkwash": "Jeans",
           "program_outdoor_sports_goretex": "Sport",
-          "program_stain": "Expert taches Synth\u00e9tique",
-          "program_hygeine": "Hygi\u00e8ne +",
+          "program_stain": "Expert taches Synthétique",
+          "program_hygeine": "Hygiène +",
           "program_duvet": "Couette / Doudoune",
           "program_shirts": "Chemises",
           "program_drum_clean": "Nettoyage du tambour",
@@ -56,25 +56,25 @@
           "program_lingerie": "Lingerie",
           "program_soft_toys": "Peluches",
           "program_towel": "Serviette",
-          "program_cottons_eco": "Coton \u00c9co",
-          "program_dryer_cotton": "S\u00e9chage Coton",
-          "program_dryer_synthetics": "S\u00e9chage Synth\u00e9tique",
-          "program_hygiene_wash_dry": "Lavage et s\u00e9chage Hygi\u00e8ne+",
-          "program_4kg_wash_dry": "Lavage et s\u00e9chage 4\u00a0kg",
-          "program_wash_wear": "Lavage&S\u00e9chage Express",
-          "program_dark_wash": "Textiles fonc\u00e9s",
-          "program_outdoor": "Imperm\u00e9able",
+          "program_cottons_eco": "Coton Éco",
+          "program_dryer_cotton": "Séchage Coton",
+          "program_dryer_synthetics": "Séchage Synthétique",
+          "program_hygiene_wash_dry": "Lavage et séchage Hygiène+",
+          "program_4kg_wash_dry": "Lavage et séchage 4 kg",
+          "program_wash_wear": "Lavage&Séchage Express",
+          "program_dark_wash": "Textiles foncés",
+          "program_outdoor": "Imperméable",
           "program_drum_clean_plus": "Nettoyage du tambour Plus",
-          "program_steam_refresh": "Fra\u00eecheur vapeur"
+          "program_steam_refresh": "Fraîcheur vapeur"
         }
       },
       "washer_temperature": {
-        "name": "Temp\u00e9rature",
+        "name": "Température",
         "state": {
-          "temperature_cold_wash": "Lavage \u00e0 froid",
-          "temperature_20": "20\u00a0\u00b0C",
-          "temperature_30": "30\u00a0\u00b0C",
-          "temperature_40": "40\u00a0\u00b0C",
+          "temperature_cold_wash": "Lavage à froid",
+          "temperature_20": "20 °C",
+          "temperature_30": "30 °C",
+          "temperature_40": "40 °C",
           "60c": "60C",
           "90c": "90C"
         }
@@ -82,12 +82,12 @@
       "washer_spin": {
         "name": "Essorage",
         "state": {
-          "spin_no_spin": "Pas d\u2019essorage",
+          "spin_no_spin": "Pas d’essorage",
           "600rpm": "600RPM",
           "800rpm": "800RPM",
           "1000rpm": "1000RPM",
           "1200rpm": "1200RPM",
-          "spin_rinse_hold": "Arr\u00eat cuve pleine",
+          "spin_rinse_hold": "Arrêt cuve pleine",
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
@@ -98,13 +98,13 @@
       "washer_fast_plus": {
         "name": "Fast+",
         "state": {
-          "fast_plus_off": "Rapide Plus D\u00e9sactiv\u00e9",
+          "fast_plus_off": "Rapide Plus Désactivé",
           "fast_plus_on_fast": "Rapide",
           "fast_plus_on_fast_plus": "Rapide Plus"
         }
       },
       "custom_duration_level": {
-        "name": "Dur\u00e9e personnalis\u00e9e",
+        "name": "Durée personnalisée",
         "state": {
           "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
@@ -121,7 +121,7 @@
         }
       },
       "washer_extra_rinse_count": {
-        "name": "Nombre de rin\u00e7ages suppl\u00e9mentaires"
+        "name": "Nombre de rinçages supplémentaires"
       },
       "settings_volume": {
         "name": "Niveau sonore des boutons",
@@ -131,48 +131,48 @@
         }
       },
       "remote_control": {
-        "name": "T\u00e9l\u00e9commande"
+        "name": "Télécommande"
       },
       "washer_warning_door_is_open": {
         "name": "Porte ouverte"
       },
       "washer_warning_no_water": {
-        "name": "Pas de connexion d\u2019eau"
+        "name": "Pas de connexion d’eau"
       },
       "washer_warning_security": {
-        "name": "S\u00e9curit\u00e9"
+        "name": "Sécurité"
       },
       "oven_program": {
         "name": "Programme",
         "state": {
           "program_static": "Convection naturelle",
-          "program_static_fan": "Chaleur brass\u00e9e",
+          "program_static_fan": "Chaleur brassée",
           "program_fan_heating": "Chaleur tournante",
           "program_multi_cooking": "Cuisson 3D",
-          "program_fan_heat_bottom": "Chaleur tournante + r\u00e9sistance de sole",
-          "program_eco_grill": "Grill \u00c9co",
+          "program_fan_heat_bottom": "Chaleur tournante + résistance de sole",
+          "program_eco_grill": "Grill Éco",
           "program_full_grill": "Grill fort ",
-          "program_full_grill_fan": "Grill fort ventil\u00e9",
-          "program_bottom_heating": "R\u00e9sistance de sole",
-          "program_defrost": "D\u00e9cong\u00e9lation",
+          "program_full_grill_fan": "Grill fort ventilé",
+          "program_bottom_heating": "Résistance de sole",
+          "program_defrost": "Décongélation",
           "program_warm_keeping": "Maintien au chaud",
           "program_eco_fan_heating": "Chaleur tournante Eco",
           "program_steam_cleaning": "Nettoyage vapeur",
-          "program_eco_pyro": "Nettoyage Pyrolyse \u00c9co",
+          "program_eco_pyro": "Nettoyage Pyrolyse Éco",
           "program_pyro": "Nettoyage Pyrolyse"
         }
       },
       "oven_temperature": {
-        "name": "Temp\u00e9rature"
+        "name": "Température"
       },
       "settings_brightness": {
-        "name": "Luminosit\u00e9"
+        "name": "Luminosité"
       },
       "oven_warning_door_is_open": {
         "name": "Porte ouverte"
       },
       "oven_warning_door_locked": {
-        "name": "Porte verrouill\u00e9e"
+        "name": "Porte verrouillée"
       },
       "oven_warning_error": {
         "name": "Une erreur inattendue s'est produite avec le produit. Veuillez consulter le manuel d'utilisation."
@@ -180,45 +180,45 @@
       "program": {
         "name": "Programme",
         "state": {
-          "program_auto": "Auto 40-65\u00a0\u00b0C",
+          "program_auto": "Auto 40-65 °C",
           "program_mix_wash_plus": "AquaFlex",
-          "program_intensive_70": "Intensif 70\u00a0\u00b0C",
-          "program_eco_50": "\u00c9co 50\u00a0\u00b0C",
+          "program_intensive_70": "Intensif 70 °C",
+          "program_eco_50": "Éco 50 °C",
           "program_glasscare": "GlassCare",
           "program_new58min": "QuickWash 58'",
           "program_30min": "Mini 30'",
-          "program_prewash": "Pr\u00e9lavage",
-          "program_hygiene": "Hygi\u00e8ne +",
+          "program_prewash": "Prélavage",
+          "program_hygiene": "Hygiène +",
           "program_daily": "PROGRAM_DAILY",
           "program_silent": "Silence Nuit",
           "program_makine_temizleme": "Nettoyage cuve"
         }
       },
       "setting_detergent_type": {
-        "name": "Type de d\u00e9tergent",
+        "name": "Type de détergent",
         "state": {
-          "setting_detergent_type_powder": "D\u00e9tergent poudre",
-          "setting_detergent_type_tablet": "D\u00e9tergent tablette",
-          "setting_detergent_type_liquid": "D\u00e9tergent liquide"
+          "setting_detergent_type_powder": "Détergent poudre",
+          "setting_detergent_type_tablet": "Détergent tablette",
+          "setting_detergent_type_liquid": "Détergent liquide"
         }
       },
       "dishwasher_rinse_aid_level": {
-        "name": "Niveau produit de rin\u00e7age"
+        "name": "Niveau produit de rinçage"
       },
       "dishwasher_water_hardness": {
-        "name": "Duret\u00e9 de l\u2019eau"
+        "name": "Dureté de l’eau"
       },
       "dishwasher_warning_no_rinse_aid": {
-        "name": "Pas de produit de rin\u00e7age"
+        "name": "Pas de produit de rinçage"
       },
       "dishwasher_warning_no_salt": {
         "name": "Pas de sel"
       },
       "dishwasher_warning_no_water": {
-        "name": "Pas d\u2019eau"
+        "name": "Pas d’eau"
       },
       "dishwasher_warning_check_the_filter": {
-        "name": "V\u00e9rifier le filtre"
+        "name": "Vérifier le filtre"
       },
       "dishwasher_warning_door_is_open": {
         "name": "Porte ouverte"
@@ -227,50 +227,50 @@
         "name": "Appeler un technicien"
       },
       "dishwasher_liquid_detergent_low": {
-        "name": "D\u00e9tergent liquide bas"
+        "name": "Détergent liquide bas"
       },
       "dishwasher_program": {
         "name": "Programme",
         "state": {
-          "program_auto": "Auto 40-65\u00a0\u00b0C",
+          "program_auto": "Auto 40-65 °C",
           "program_aqua_flex": "PROGRAM_AQUA_FLEX",
-          "program_intensive_70": "Intensif 70\u00a0\u00b0C",
-          "program_eco_50": "\u00c9co 50\u00a0\u00b0C",
-          "program_delicate": "D\u00e9licat",
+          "program_intensive_70": "Intensif 70 °C",
+          "program_eco_50": "Éco 50 °C",
+          "program_delicate": "Délicat",
           "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
           "program_mini": "PROGRAM_MINI",
-          "program_prewash": "Pr\u00e9lavage",
+          "program_prewash": "Prélavage",
           "program_quiet": "PROGRAM_QUIET",
           "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
           "program_innerclean": "Nettoyage cuve"
         }
       },
       "dishwasher_liquid_detergent_level": {
-        "name": "D\u00e9tergent liquide"
+        "name": "Détergent liquide"
       },
       "washer_dry": {
-        "name": "S\u00e9chage",
+        "name": "Séchage",
         "state": {
-          "dry_off": "Arr\u00eat",
+          "dry_off": "Arrêt",
           "dry_extra": "Extra sec",
           "dry_cabinet": "Wardrobe Dry",
-          "dry_iron": "Pr\u00eat \u00e0 repasser",
-          "dry_10": "45\u00a0min",
-          "dry_20": "20\u00a0min",
-          "dry_30": "30\u00a0min",
-          "dry_60": "60\u00a0min",
-          "dry_90": "90\u00a0min",
-          "dry_120": "15\u00a0min",
-          "dry_150": "150\u00a0min"
+          "dry_iron": "Prêt à repasser",
+          "dry_10": "45 min",
+          "dry_20": "20 min",
+          "dry_30": "30 min",
+          "dry_60": "60 min",
+          "dry_90": "90 min",
+          "dry_120": "15 min",
+          "dry_150": "150 min"
         }
       },
       "washer_rinse_count": {
-        "name": "Nombre de rin\u00e7ages"
+        "name": "Nombre de rinçages"
       },
       "air_conditioner_soft_air": {
         "name": "Air doux",
         "state": {
-          "air_conditioner_soft_air_off": "Arr\u00eat",
+          "air_conditioner_soft_air_off": "Arrêt",
           "air_conditioner_soft_air_up": "Haut",
           "air_conditioner_soft_air_down": "Bas"
         }
@@ -278,20 +278,20 @@
       "air_conditioner_up_down_vane_control": {
         "name": "Oscillation",
         "state": {
-          "up_down_vane_control_off": "D\u00e9sactiv\u00e9e",
+          "up_down_vane_control_off": "Désactivée",
           "up_down_vane_control_6": "6",
           "up_down_vane_control_5": "5",
           "up_down_vane_control_4": "4",
           "up_down_vane_control_3": "3",
           "up_down_vane_control_2": "2",
           "up_down_vane_control_1": "1",
-          "up_down_vane_control_auto": "Activ\u00e9e"
+          "up_down_vane_control_auto": "Activée"
         }
       },
       "air_conditioner_left_right_vane_control": {
         "name": "Flux d'air horizontal",
         "state": {
-          "left_right_vane_control_off": "Arr\u00eat",
+          "left_right_vane_control_off": "Arrêt",
           "left_right_vane_control_1": "1",
           "left_right_vane_control_2": "2",
           "left_right_vane_control_3": "3",
@@ -305,33 +305,33 @@
     },
     "sensor": {
       "state": {
-        "name": "\u00c9tat",
+        "name": "État",
         "state": {
           "device_state_on": "Marche",
-          "device_state_off": "Arr\u00eat",
+          "device_state_off": "Arrêt",
           "device_state_running": "En marche",
           "device_state_paused": "En pause",
-          "device_state_time_delay_active": "Temporisation activ\u00e9e",
+          "device_state_time_delay_active": "Temporisation activée",
           "device_state_cancelling": "Annulation",
-          "device_state_door_open": "La porte est ouverte\u00a0!",
-          "device_state_settings": "Param\u00e8tres"
+          "device_state_door_open": "La porte est ouverte !",
+          "device_state_settings": "Paramètres"
         }
       },
       "washer_program": {
         "name": "Programme",
         "state": {
           "program_cottons": "Coton",
-          "program_eco_40_60": "\u00c9co 40-60",
-          "program_synthetics": "Synth\u00e9tique",
+          "program_eco_40_60": "Éco 40-60",
+          "program_synthetics": "Synthétique",
           "program_mini_mini14": "Xpress",
           "program_wool_handwash": "Woollens",
           "program_delicates": "PROGRAM_DELICATES",
           "program_spin_pump": "Spin+Drain",
-          "program_rinsing": "Rin\u00e7age",
+          "program_rinsing": "Rinçage",
           "program_darkwash": "Jeans",
           "program_outdoor_sports_goretex": "Sport",
-          "program_stain": "Expert taches Synth\u00e9tique",
-          "program_hygeine": "Hygi\u00e8ne +",
+          "program_stain": "Expert taches Synthétique",
+          "program_hygeine": "Hygiène +",
           "program_duvet": "Couette / Doudoune",
           "program_shirts": "Chemises",
           "program_drum_clean": "Nettoyage du tambour",
@@ -340,25 +340,25 @@
           "program_lingerie": "Lingerie",
           "program_soft_toys": "Peluches",
           "program_towel": "Serviette",
-          "program_cottons_eco": "Coton \u00c9co",
-          "program_dryer_cotton": "S\u00e9chage Coton",
-          "program_dryer_synthetics": "S\u00e9chage Synth\u00e9tique",
-          "program_hygiene_wash_dry": "Lavage et s\u00e9chage Hygi\u00e8ne+",
-          "program_4kg_wash_dry": "Lavage et s\u00e9chage 4\u00a0kg",
-          "program_wash_wear": "Lavage&S\u00e9chage Express",
-          "program_dark_wash": "Textiles fonc\u00e9s",
-          "program_outdoor": "Imperm\u00e9able",
+          "program_cottons_eco": "Coton Éco",
+          "program_dryer_cotton": "Séchage Coton",
+          "program_dryer_synthetics": "Séchage Synthétique",
+          "program_hygiene_wash_dry": "Lavage et séchage Hygiène+",
+          "program_4kg_wash_dry": "Lavage et séchage 4 kg",
+          "program_wash_wear": "Lavage&Séchage Express",
+          "program_dark_wash": "Textiles foncés",
+          "program_outdoor": "Imperméable",
           "program_drum_clean_plus": "Nettoyage du tambour Plus",
-          "program_steam_refresh": "Fra\u00eecheur vapeur"
+          "program_steam_refresh": "Fraîcheur vapeur"
         }
       },
       "washer_temperature": {
-        "name": "Temp\u00e9rature",
+        "name": "Température",
         "state": {
-          "temperature_cold_wash": "Lavage \u00e0 froid",
-          "temperature_20": "20\u00a0\u00b0C",
-          "temperature_30": "30\u00a0\u00b0C",
-          "temperature_40": "40\u00a0\u00b0C",
+          "temperature_cold_wash": "Lavage à froid",
+          "temperature_20": "20 °C",
+          "temperature_30": "30 °C",
+          "temperature_40": "40 °C",
           "60c": "60C",
           "90c": "90C"
         }
@@ -366,12 +366,12 @@
       "washer_spin": {
         "name": "Essorage",
         "state": {
-          "spin_no_spin": "Pas d\u2019essorage",
+          "spin_no_spin": "Pas d’essorage",
           "600rpm": "600RPM",
           "800rpm": "800RPM",
           "1000rpm": "1000RPM",
           "1200rpm": "1200RPM",
-          "spin_rinse_hold": "Arr\u00eat cuve pleine",
+          "spin_rinse_hold": "Arrêt cuve pleine",
           "spin_600": "600",
           "spin_800": "800",
           "spin_1200": "1200",
@@ -382,13 +382,13 @@
       "washer_fast_plus": {
         "name": "Fast+",
         "state": {
-          "fast_plus_off": "Rapide Plus D\u00e9sactiv\u00e9",
+          "fast_plus_off": "Rapide Plus Désactivé",
           "fast_plus_on_fast": "Rapide",
           "fast_plus_on_fast_plus": "Rapide Plus"
         }
       },
       "custom_duration_level": {
-        "name": "Dur\u00e9e personnalis\u00e9e",
+        "name": "Durée personnalisée",
         "state": {
           "duration_level_0": "DURATION_LEVEL_0",
           "1": "1",
@@ -405,7 +405,7 @@
         }
       },
       "washer_extra_rinse_count": {
-        "name": "Nombre de rin\u00e7ages suppl\u00e9mentaires"
+        "name": "Nombre de rinçages supplémentaires"
       },
       "settings_volume": {
         "name": "Niveau sonore des boutons",
@@ -415,86 +415,86 @@
         }
       },
       "sub_state": {
-        "name": "\u00c9tat f\u00e9d\u00e9r\u00e9",
+        "name": "État fédéré",
         "state": {
           "washer_substate_washing": "Lavage",
           "washer_substate_spin": "Essorage",
-          "washer_water_intake": "Arriv\u00e9e d\u2019eau",
-          "washer_substate_prewash": "Pr\u00e9lavage",
-          "washer_substate_rinsing": "Rin\u00e7age",
+          "washer_water_intake": "Arrivée d’eau",
+          "washer_substate_prewash": "Prélavage",
+          "washer_substate_rinsing": "Rinçage",
           "washer_substate_softener": "Assouplissant",
-          "washer_substate_program_started": "D\u00e9marrage du programme",
-          "washer_substate_time_delay_enabled": "Heure de fin activ\u00e9e",
+          "washer_substate_program_started": "Démarrage du programme",
+          "washer_substate_time_delay_enabled": "Heure de fin activée",
           "washer_substate_paused": "Pause",
           "washer_substate_analysing": "Analyse",
-          "washer_substate_door_locked": "Porte verrouill\u00e9e",
+          "washer_substate_door_locked": "Porte verrouillée",
           "washer_substate_opening_door": "Ouverture de la porte",
           "washer_substate_locking_door": "Verrouillage de la porte",
-          "washer_substate_remove_laundry": "Cycle de lavage termin\u00e9, retirer le linge",
+          "washer_substate_remove_laundry": "Cycle de lavage terminé, retirer le linge",
           "washer_substate_add_laundry": "Ajoutez le linge",
-          "washer_substate_rinse_hold": "Arr\u00eat cuve pleine actif, s\u00e9lectionnez la vitesse d'essorage",
-          "washer_substate_remote_anticrease": "L'anti-froissage \u00e0 distance est en cours.",
-          "washer_substate_drying": "S\u00e9chage",
-          "oven_message_good_appetite": "R\u00e9galez-vous",
+          "washer_substate_rinse_hold": "Arrêt cuve pleine actif, sélectionnez la vitesse d'essorage",
+          "washer_substate_remote_anticrease": "L'anti-froissage à distance est en cours.",
+          "washer_substate_drying": "Séchage",
+          "oven_message_good_appetite": "Régalez-vous",
           "oven_message_cooking": "Cuisson",
           "oven_message_paused": "En pause",
           "oven_message_waiting": "En attente",
-          "oven_message_defrosting": "D\u00e9cong\u00e9lation",
-          "operation_completed": "Op\u00e9ration termin\u00e9e",
-          "oven_message_preheating": "Pr\u00e9chauffage",
-          "oven_message_preheating_completed": "Pr\u00e9chauffage termin\u00e9",
+          "oven_message_defrosting": "Décongélation",
+          "operation_completed": "Opération terminée",
+          "oven_message_preheating": "Préchauffage",
+          "oven_message_preheating_completed": "Préchauffage terminé",
           "oven_message_cleaning": "Nettoyage",
-          "oven_message_cleaning_completed": "Nettoyage termin\u00e9",
-          "dishwasher_message_time_delay_started": "Heure de fin activ\u00e9e",
+          "oven_message_cleaning_completed": "Nettoyage terminé",
+          "dishwasher_message_time_delay_started": "Heure de fin activée",
           "dishwasher_message_paused": "Programme en pause",
-          "dishwasher_message_program_finished": "Programme termin\u00e9",
-          "dishwasher_message_program_sanitized": "Programme termin\u00e9",
+          "dishwasher_message_program_finished": "Programme terminé",
+          "dishwasher_message_program_sanitized": "Programme terminé",
           "dishwasher_message_cancelling": "Annulation...",
-          "dishwasher_message_time_delay_cancelled": "Temporisation annul\u00e9e",
-          "dishwasher_message_program_started": "Programme lanc\u00e9",
+          "dishwasher_message_time_delay_cancelled": "Temporisation annulée",
+          "dishwasher_message_program_started": "Programme lancé",
           "dishwasher_message_washing": "Lavage",
-          "dishwasher_message_rinsing": "Rin\u00e7age",
-          "dishwasher_message_drying": "S\u00e9chage"
+          "dishwasher_message_rinsing": "Rinçage",
+          "dishwasher_message_drying": "Séchage"
         }
       },
       "washer_delay": {
         "name": "Heure de fin du programme"
       },
       "washer_duration": {
-        "name": "Dur\u00e9e"
+        "name": "Durée"
       },
       "washer_remaining": {
         "name": "Reste"
       },
       "remote_control": {
-        "name": "T\u00e9l\u00e9commande"
+        "name": "Télécommande"
       },
       "washer_warning_door_is_open": {
         "name": "Porte ouverte"
       },
       "washer_warning_no_water": {
-        "name": "Pas de connexion d\u2019eau"
+        "name": "Pas de connexion d’eau"
       },
       "washer_warning_security": {
-        "name": "S\u00e9curit\u00e9"
+        "name": "Sécurité"
       },
       "washer_prewash": {
-        "name": "Pr\u00e9lavage"
+        "name": "Prélavage"
       },
       "washer_extrarinse": {
-        "name": "Rin\u00e7age en plus"
+        "name": "Rinçage en plus"
       },
       "washer_hidden_anti_crease": {
-        "name": "Anti-froissage \u00e0 distance"
+        "name": "Anti-froissage à distance"
       },
       "washer_steam": {
         "name": "Vapeur"
       },
       "washer_phr": {
-        "name": "\u00c9limination des poils d'animaux"
+        "name": "Élimination des poils d'animaux"
       },
       "washer_add_water": {
-        "name": "Eau suppl\u00e9mentaire"
+        "name": "Eau supplémentaire"
       },
       "washer_soaking": {
         "name": "Trempage"
@@ -509,33 +509,33 @@
         "name": "Programme",
         "state": {
           "program_static": "Convection naturelle",
-          "program_static_fan": "Chaleur brass\u00e9e",
+          "program_static_fan": "Chaleur brassée",
           "program_fan_heating": "Chaleur tournante",
           "program_multi_cooking": "Cuisson 3D",
-          "program_fan_heat_bottom": "Chaleur tournante + r\u00e9sistance de sole",
-          "program_eco_grill": "Grill \u00c9co",
+          "program_fan_heat_bottom": "Chaleur tournante + résistance de sole",
+          "program_eco_grill": "Grill Éco",
           "program_full_grill": "Grill fort ",
-          "program_full_grill_fan": "Grill fort ventil\u00e9",
-          "program_bottom_heating": "R\u00e9sistance de sole",
-          "program_defrost": "D\u00e9cong\u00e9lation",
+          "program_full_grill_fan": "Grill fort ventilé",
+          "program_bottom_heating": "Résistance de sole",
+          "program_defrost": "Décongélation",
           "program_warm_keeping": "Maintien au chaud",
           "program_eco_fan_heating": "Chaleur tournante Eco",
           "program_steam_cleaning": "Nettoyage vapeur",
-          "program_eco_pyro": "Nettoyage Pyrolyse \u00c9co",
+          "program_eco_pyro": "Nettoyage Pyrolyse Éco",
           "program_pyro": "Nettoyage Pyrolyse"
         }
       },
       "oven_temperature": {
-        "name": "Temp\u00e9rature"
+        "name": "Température"
       },
       "settings_brightness": {
-        "name": "Luminosit\u00e9"
+        "name": "Luminosité"
       },
       "variable_delay": {
         "name": "Heure de fin du programme"
       },
       "variable_oven_duration": {
-        "name": "Temps de cuisson (heure\u00a0: minute)"
+        "name": "Temps de cuisson (heure : minute)"
       },
       "variable_remaining": {
         "name": "Restant"
@@ -544,7 +544,7 @@
         "name": "Porte ouverte"
       },
       "oven_warning_door_locked": {
-        "name": "Porte verrouill\u00e9e"
+        "name": "Porte verrouillée"
       },
       "oven_warning_error": {
         "name": "Une erreur inattendue s'est produite avec le produit. Veuillez consulter le manuel d'utilisation."
@@ -558,54 +558,54 @@
       "program": {
         "name": "Programme",
         "state": {
-          "program_auto": "Auto 40-65\u00a0\u00b0C",
+          "program_auto": "Auto 40-65 °C",
           "program_mix_wash_plus": "AquaFlex",
-          "program_intensive_70": "Intensif 70\u00a0\u00b0C",
-          "program_eco_50": "\u00c9co 50\u00a0\u00b0C",
+          "program_intensive_70": "Intensif 70 °C",
+          "program_eco_50": "Éco 50 °C",
           "program_glasscare": "GlassCare",
           "program_new58min": "QuickWash 58'",
           "program_30min": "Mini 30'",
-          "program_prewash": "Pr\u00e9lavage",
-          "program_hygiene": "Hygi\u00e8ne +",
+          "program_prewash": "Prélavage",
+          "program_hygiene": "Hygiène +",
           "program_daily": "PROGRAM_DAILY",
           "program_silent": "Silence Nuit",
           "program_makine_temizleme": "Nettoyage cuve"
         }
       },
       "setting_detergent_type": {
-        "name": "Type de d\u00e9tergent",
+        "name": "Type de détergent",
         "state": {
-          "setting_detergent_type_powder": "D\u00e9tergent poudre",
-          "setting_detergent_type_tablet": "D\u00e9tergent tablette",
-          "setting_detergent_type_liquid": "D\u00e9tergent liquide"
+          "setting_detergent_type_powder": "Détergent poudre",
+          "setting_detergent_type_tablet": "Détergent tablette",
+          "setting_detergent_type_liquid": "Détergent liquide"
         }
       },
       "dishwasher_rinse_aid_level": {
-        "name": "Niveau produit de rin\u00e7age"
+        "name": "Niveau produit de rinçage"
       },
       "dishwasher_water_hardness": {
-        "name": "Duret\u00e9 de l\u2019eau"
+        "name": "Dureté de l’eau"
       },
       "dishwasher_delay": {
         "name": "Heure de fin du programme"
       },
       "dishwasher_duration": {
-        "name": "Dur\u00e9e"
+        "name": "Durée"
       },
       "dishwasher_remaining": {
         "name": "Temps restant"
       },
       "dishwasher_warning_no_rinse_aid": {
-        "name": "Pas de produit de rin\u00e7age"
+        "name": "Pas de produit de rinçage"
       },
       "dishwasher_warning_no_salt": {
         "name": "Pas de sel"
       },
       "dishwasher_warning_no_water": {
-        "name": "Pas d\u2019eau"
+        "name": "Pas d’eau"
       },
       "dishwasher_warning_check_the_filter": {
-        "name": "V\u00e9rifier le filtre"
+        "name": "Vérifier le filtre"
       },
       "dishwasher_warning_door_is_open": {
         "name": "Porte ouverte"
@@ -614,10 +614,10 @@
         "name": "Appeler un technicien"
       },
       "dishwasher_liquid_detergent_low": {
-        "name": "D\u00e9tergent liquide bas"
+        "name": "Détergent liquide bas"
       },
       "dishwasher_traywash": {
-        "name": "Lavage l\u00e8chefrite"
+        "name": "Lavage lèchefrite"
       },
       "dishwasher_fastplus": {
         "name": "Lave-vaisselle fastplus"
@@ -626,7 +626,7 @@
         "name": "SteamGloss"
       },
       "dishwasher_extrarinse": {
-        "name": "Rin\u00e7age Plus"
+        "name": "Rinçage Plus"
       },
       "dishwasher_halfload": {
         "name": "Demi-charge"
@@ -635,56 +635,56 @@
         "name": "Ouverture de porte automatique"
       },
       "setting_inner_illumination": {
-        "name": "\u00c9clairage int\u00e9rieur"
+        "name": "Éclairage intérieur"
       },
       "dishwasher_program": {
         "name": "Programme",
         "state": {
-          "program_auto": "Auto 40-65\u00a0\u00b0C",
+          "program_auto": "Auto 40-65 °C",
           "program_aqua_flex": "PROGRAM_AQUA_FLEX",
-          "program_intensive_70": "Intensif 70\u00a0\u00b0C",
-          "program_eco_50": "\u00c9co 50\u00a0\u00b0C",
-          "program_delicate": "D\u00e9licat",
+          "program_intensive_70": "Intensif 70 °C",
+          "program_eco_50": "Éco 50 °C",
+          "program_delicate": "Délicat",
           "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
           "program_mini": "PROGRAM_MINI",
-          "program_prewash": "Pr\u00e9lavage",
+          "program_prewash": "Prélavage",
           "program_quiet": "PROGRAM_QUIET",
           "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
           "program_innerclean": "Nettoyage cuve"
         }
       },
       "dishwasher_liquid_detergent_level": {
-        "name": "D\u00e9tergent liquide"
+        "name": "Détergent liquide"
       },
       "dishwasher_hygiene_intense": {
-        "name": "Hygi\u00e8ne du lave-vaisselle intense"
+        "name": "Hygiène du lave-vaisselle intense"
       },
       "dishwasher_deepwash": {
         "name": "Lavage profond"
       },
       "washer_dry": {
-        "name": "S\u00e9chage",
+        "name": "Séchage",
         "state": {
-          "dry_off": "Arr\u00eat",
+          "dry_off": "Arrêt",
           "dry_extra": "Extra sec",
           "dry_cabinet": "Wardrobe Dry",
-          "dry_iron": "Pr\u00eat \u00e0 repasser",
-          "dry_10": "45\u00a0min",
-          "dry_20": "20\u00a0min",
-          "dry_30": "30\u00a0min",
-          "dry_60": "60\u00a0min",
-          "dry_90": "90\u00a0min",
-          "dry_120": "15\u00a0min",
-          "dry_150": "150\u00a0min"
+          "dry_iron": "Prêt à repasser",
+          "dry_10": "45 min",
+          "dry_20": "20 min",
+          "dry_30": "30 min",
+          "dry_60": "60 min",
+          "dry_90": "90 min",
+          "dry_120": "15 min",
+          "dry_150": "150 min"
         }
       },
       "washer_rinse_count": {
-        "name": "Nombre de rin\u00e7ages"
+        "name": "Nombre de rinçages"
       },
       "air_conditioner_soft_air": {
         "name": "Air doux",
         "state": {
-          "air_conditioner_soft_air_off": "Arr\u00eat",
+          "air_conditioner_soft_air_off": "Arrêt",
           "air_conditioner_soft_air_up": "Haut",
           "air_conditioner_soft_air_down": "Bas"
         }
@@ -692,20 +692,20 @@
       "air_conditioner_up_down_vane_control": {
         "name": "Oscillation",
         "state": {
-          "up_down_vane_control_off": "D\u00e9sactiv\u00e9e",
+          "up_down_vane_control_off": "Désactivée",
           "up_down_vane_control_6": "6",
           "up_down_vane_control_5": "5",
           "up_down_vane_control_4": "4",
           "up_down_vane_control_3": "3",
           "up_down_vane_control_2": "2",
           "up_down_vane_control_1": "1",
-          "up_down_vane_control_auto": "Activ\u00e9e"
+          "up_down_vane_control_auto": "Activée"
         }
       },
       "air_conditioner_left_right_vane_control": {
         "name": "Flux d'air horizontal",
         "state": {
-          "left_right_vane_control_off": "Arr\u00eat",
+          "left_right_vane_control_off": "Arrêt",
           "left_right_vane_control_1": "1",
           "left_right_vane_control_2": "2",
           "left_right_vane_control_3": "3",
@@ -717,7 +717,7 @@
         }
       },
       "air_conditioner_instant_consumption": {
-        "name": "Consommation instantan\u00e9e du climatiseur"
+        "name": "Consommation instantanée du climatiseur"
       },
       "air_conditioner_sleep_mode_minute": {
         "name": "Minute du mode veille du climatiseur"
@@ -731,37 +731,37 @@
     },
     "binary_sensor": {
       "remote_control": {
-        "name": "T\u00e9l\u00e9commande"
+        "name": "Télécommande"
       },
       "washer_warning_door_is_open": {
         "name": "Porte ouverte"
       },
       "washer_warning_no_water": {
-        "name": "Pas de connexion d\u2019eau"
+        "name": "Pas de connexion d’eau"
       },
       "washer_warning_security": {
-        "name": "S\u00e9curit\u00e9"
+        "name": "Sécurité"
       },
       "oven_warning_door_is_open": {
         "name": "Porte ouverte"
       },
       "oven_warning_door_locked": {
-        "name": "Porte verrouill\u00e9e"
+        "name": "Porte verrouillée"
       },
       "oven_warning_error": {
         "name": "Une erreur inattendue s'est produite avec le produit. Veuillez consulter le manuel d'utilisation."
       },
       "dishwasher_warning_no_rinse_aid": {
-        "name": "Pas de produit de rin\u00e7age"
+        "name": "Pas de produit de rinçage"
       },
       "dishwasher_warning_no_salt": {
         "name": "Pas de sel"
       },
       "dishwasher_warning_no_water": {
-        "name": "Pas d\u2019eau"
+        "name": "Pas d’eau"
       },
       "dishwasher_warning_check_the_filter": {
-        "name": "V\u00e9rifier le filtre"
+        "name": "Vérifier le filtre"
       },
       "dishwasher_warning_door_is_open": {
         "name": "Porte ouverte"
@@ -770,7 +770,7 @@
         "name": "Appeler un technicien"
       },
       "dishwasher_liquid_detergent_low": {
-        "name": "D\u00e9tergent liquide bas"
+        "name": "Détergent liquide bas"
       }
     },
     "climate": {
@@ -780,22 +780,22 @@
     },
     "switch": {
       "washer_prewash": {
-        "name": "Pr\u00e9lavage"
+        "name": "Prélavage"
       },
       "washer_extrarinse": {
-        "name": "Rin\u00e7age en plus"
+        "name": "Rinçage en plus"
       },
       "washer_hidden_anti_crease": {
-        "name": "Anti-froissage \u00e0 distance"
+        "name": "Anti-froissage à distance"
       },
       "washer_steam": {
         "name": "Vapeur"
       },
       "washer_phr": {
-        "name": "\u00c9limination des poils d'animaux"
+        "name": "Élimination des poils d'animaux"
       },
       "washer_add_water": {
-        "name": "Eau suppl\u00e9mentaire"
+        "name": "Eau supplémentaire"
       },
       "washer_soaking": {
         "name": "Trempage"
@@ -813,7 +813,7 @@
         "name": "Ignorer >"
       },
       "dishwasher_traywash": {
-        "name": "Lavage l\u00e8chefrite"
+        "name": "Lavage lèchefrite"
       },
       "dishwasher_fastplus": {
         "name": "Lave-vaisselle fastplus"
@@ -822,7 +822,7 @@
         "name": "SteamGloss"
       },
       "dishwasher_extrarinse": {
-        "name": "Rin\u00e7age Plus"
+        "name": "Rinçage Plus"
       },
       "dishwasher_halfload": {
         "name": "Demi-charge"
@@ -831,10 +831,10 @@
         "name": "Ouverture de porte automatique"
       },
       "setting_inner_illumination": {
-        "name": "\u00c9clairage int\u00e9rieur"
+        "name": "Éclairage intérieur"
       },
       "dishwasher_hygiene_intense": {
-        "name": "Hygi\u00e8ne du lave-vaisselle intense"
+        "name": "Hygiène du lave-vaisselle intense"
       },
       "dishwasher_deepwash": {
         "name": "Lavage profond"

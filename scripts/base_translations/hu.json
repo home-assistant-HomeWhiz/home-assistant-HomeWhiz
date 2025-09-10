@@ -1,20 +1,20 @@
 {
   "config": {
     "abort": {
-      "already_configured": "Az eszk\u00f6z m\u00e1r konfigur\u00e1lva van",
-      "already_in_progress": "A be\u00e1ll\u00edt\u00e1si folyamat m\u00e1r el lett kezdve",
-      "no_devices_found": "Nem tal\u00e1lhat\u00f3 eszk\u00f6z a h\u00e1l\u00f3zaton"
+      "already_configured": "Az eszköz már konfigurálva van",
+      "already_in_progress": "A beállítási folyamat már el lett kezdve",
+      "no_devices_found": "Nem található eszköz a hálózaton"
     },
     "flow_title": "{name}",
     "step": {
       "bluetooth_confirm": {
-        "description": "Szeretn\u00e9 be\u00e1ll\u00edtani: {name}?"
+        "description": "Szeretné beállítani: {name}?"
       },
       "user": {
         "data": {
-          "address": "Eszk\u00f6z"
+          "address": "Eszköz"
         },
-        "description": "V\u00e1lasszon egy be\u00e1ll\u00edtand\u00f3 eszk\u00f6zt"
+        "description": "Válasszon egy beállítandó eszközt"
       }
     }
   }

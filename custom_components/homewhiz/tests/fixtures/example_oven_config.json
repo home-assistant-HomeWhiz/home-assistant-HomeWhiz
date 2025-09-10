@@ -484,7 +484,7 @@
           "upperLimit": 280,
           "step": 5,
           "factor": 5,
-          "unit": "\u00b0C"
+          "unit": "°C"
         }
       ]
     },

@@ -382,7 +382,7 @@
           "upperLimit": 100,
           "step": 0.5,
           "factor": 0.5,
-          "unit": "\u00b0C"
+          "unit": "°C"
         }
       ]
     },
