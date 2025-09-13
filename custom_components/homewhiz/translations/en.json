@@ -894,7 +894,9 @@
         "title": "Homewhiz Options",
         "description": "Allows for advanced configuration of the integration.",
         "data": {
-          "bt_reconnect_interval": "Interval at which to reconnect Bluetooth (in hours)"
+          "bt_reconnect_interval": "Interval at which to reconnect Bluetooth (in hours)",
+          "target_temperature_low_override": "Low target temperature override for AC (in °C)",
+          "target_temperature_high_override": "High target temperature override for AC (in °C)"
         }
       }
     }

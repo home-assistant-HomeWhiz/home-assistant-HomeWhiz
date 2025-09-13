@@ -13,7 +13,11 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .appliance_controls import ClimateControl, generate_controls_from_config
 from .config_flow import EntryData
-from .const import DOMAIN
+from .const import (
+    CONF_TARGET_TEMPERATURE_HIGH_OVERRIDE,
+    CONF_TARGET_TEMPERATURE_LOW_OVERRIDE,
+    DOMAIN,
+)
 from .entity import HomeWhizEntity
 from .helper import build_entry_data
 from .homewhiz import HomewhizCoordinator
@@ -32,10 +36,14 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
         control: ClimateControl,
         device_name: str,
         data: EntryData,
+        target_temperature_low_override: int | None = None,
+        target_temperature_high_override: int | None = None,
     ):
         super().__init__(coordinator, device_name, control.key, data)
         self._control = control
         self._previous_hvac_mode: HVACMode | None = None
+        self._target_temperature_low_override = target_temperature_low_override
+        self._target_temperature_high_override = target_temperature_high_override
 
     @property
     def supported_features(self) -> ClimateEntityFeature:  # type: ignore[override]
@@ -84,11 +92,17 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
 
     @property
     def target_temperature_low(self) -> float:  # type: ignore[override]
-        return self._control.target_temperature.bounds.lowerLimit
+        return (
+            self._target_temperature_low_override
+            or self._control.target_temperature.bounds.lowerLimit
+        )
 
     @property
     def target_temperature_high(self) -> float:  # type: ignore[override]
-        return self._control.target_temperature.bounds.upperLimit
+        return (
+            self._target_temperature_high_override
+            or self._control.target_temperature.bounds.upperLimit
+        )
 
     @property
     def target_temperature(self) -> float | None:  # type: ignore[override]
@@ -145,9 +159,17 @@ async def async_setup_entry(
     controls = generate_controls_from_config(entry.entry_id, data.contents.config)
     climate_controls = [c for c in controls if isinstance(c, ClimateControl)]
     _LOGGER.debug("ACs: %s", [c.key for c in climate_controls])
+
     async_add_entities(
         [
-            HomeWhizClimateEntity(coordinator, control, entry.title, data)
+            HomeWhizClimateEntity(
+                coordinator,
+                control,
+                entry.title,
+                data,
+                entry.options.get(CONF_TARGET_TEMPERATURE_LOW_OVERRIDE),
+                entry.options.get(CONF_TARGET_TEMPERATURE_HIGH_OVERRIDE),
+            )
             for control in climate_controls
         ]
     )

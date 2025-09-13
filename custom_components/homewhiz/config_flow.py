@@ -33,7 +33,12 @@ from .api import (
     login,
     make_id_exchange_request,
 )
-from .const import CONF_BT_RECONNECT_INTERVAL, DOMAIN
+from .const import (
+    CONF_BT_RECONNECT_INTERVAL,
+    CONF_TARGET_TEMPERATURE_HIGH_OVERRIDE,
+    CONF_TARGET_TEMPERATURE_LOW_OVERRIDE,
+    DOMAIN,
+)
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
@@ -270,9 +275,21 @@ class CloudOptionsFlowHandler(OptionsFlow):
         if user_input is not None:
             return self.async_create_entry(title="", data=user_input)
 
+        # If device is an AC, allow setting lower and upper temperature limits
+        data_schema = {
+            vol.Optional(
+                CONF_TARGET_TEMPERATURE_LOW_OVERRIDE,
+                description={"suggested_value": 16},
+            ): cv.positive_int,
+            vol.Optional(
+                CONF_TARGET_TEMPERATURE_HIGH_OVERRIDE,
+                description={"suggested_value": 30},
+            ): cv.positive_int,
+        }
+
         return self.async_show_form(
             step_id="init",
-            data_schema=vol.Schema({}),
+            data_schema=vol.Schema(data_schema),
         )
 
 

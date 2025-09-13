@@ -12,3 +12,5 @@ PLATFORMS = [
 
 # Configuration
 CONF_BT_RECONNECT_INTERVAL = "bt_reconnect_interval"
+CONF_TARGET_TEMPERATURE_LOW_OVERRIDE = "target_temperature_low_override"
+CONF_TARGET_TEMPERATURE_HIGH_OVERRIDE = "target_temperature_high_override"
