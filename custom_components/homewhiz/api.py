@@ -77,7 +77,7 @@ class ApplianceInfo:
     connectivity: str = "BT"
 
     def is_bt(self) -> bool:
-        return self in {"BT", "BASICBT"}
+        return self.connectivity in {"BT", "BASICBT"}
 
 
 @dataclass
