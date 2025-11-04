@@ -108,16 +108,33 @@ def get_signature_key(
 async def login(username: str, password: str) -> LoginResponse:
     request_parameters = {"password": password, "username": username}
 
+    headers = {
+        "Content-Type": "application/json",
+        "User-Agent": "HomeWhiz/1.0",
+        "Accept": "application/json",
+    }
+
     async with (
         aiohttp.ClientSession() as session,
         session.post(
             "https://api.arcelikiot.com/auth/login",
             json=request_parameters,
+            headers=headers,
         ) as response,
     ):
         contents = await response.json()
-        if not contents["success"]:
+        if response.status != 200:
+            _LOGGER.error(
+                "Login failed with HTTP %d: %s", response.status, json.dumps(
+                    contents, indent=4)
+            )
+            raise LoginError(contents)
+        if "success" in contents and not contents["success"]:
             _LOGGER.error(json.dumps(contents, indent=4))
+            raise LoginError(contents)
+        if "success" not in contents or "data" not in contents:
+            _LOGGER.error("Unexpected response format: %s",
+                          json.dumps(contents, indent=4))
             raise LoginError(contents)
         data = contents["data"]
         return from_dict(LoginResponse, data["credentials"])
@@ -163,7 +180,8 @@ async def make_api_get_request(
 ) -> Any:
     t = datetime.datetime.now(tz=datetime.UTC)
     amz_date = t.strftime("%Y%m%dT%H%M%SZ")
-    date_stamp = t.strftime("%Y%m%d")  # Date w/o time, used in credential scope
+    # Date w/o time, used in credential scope
+    date_stamp = t.strftime("%Y%m%d")
     canonical_headers = (
         f"host:{host}\n"
         f"x-amz-date:{amz_date}\n"
@@ -194,7 +212,8 @@ async def make_api_get_request(
     )
 
     # Create the signing key using the function defined above.
-    signing_key = get_signature_key(credentials.secretKey, date_stamp, REGION, SERVICE)
+    signing_key = get_signature_key(
+        credentials.secretKey, date_stamp, REGION, SERVICE)
     signature = hmac.new(
         signing_key, string_to_sign.encode("utf-8"), hashlib.sha256
     ).hexdigest()
@@ -209,6 +228,8 @@ async def make_api_get_request(
         "x-amz-date": amz_date,
         "x-amz-security-token": (credentials.sessionToken),
         "Authorization": authorization_header,
+        "User-Agent": "HomeWhiz/1.0",
+        "Accept": "application/json",
     }
 
     async with (
@@ -219,7 +240,14 @@ async def make_api_get_request(
     ):
         try:
             contents = await response.json()
-            if not contents["success"]:
+            if response.status != 200:
+                _LOGGER.error(
+                    "API request failed with HTTP %d: %s",
+                    response.status,
+                    json.dumps(contents, indent=4),
+                )
+                raise RequestError(contents)
+            if "success" in contents and not contents["success"]:
                 _LOGGER.error(json.dumps(contents, indent=4))
                 raise RequestError(contents)
             return contents  # noqa: TRY300
@@ -308,5 +336,6 @@ async def fetch_appliance_infos(credentials: LoginResponse) -> list[ApplianceInf
             credentials,
             canonical_uri=f"/my-homes/{home.id}",
         )
-        appliances.extend(from_dict(HomeResponseData, home_resp["data"]).appliances)
+        appliances.extend(from_dict(HomeResponseData,
+                          home_resp["data"]).appliances)
     return appliances
