@@ -135,7 +135,8 @@ async def login(username: str, password: str) -> LoginResponse:
             raise LoginError(contents)
         if "success" not in contents or "data" not in contents:
             _LOGGER.error(
-                "Unexpected response format: %s", json.dumps(contents, indent=4)
+                "Unexpected response format: %s",
+                json.dumps(contents, indent=4),
             )
             raise LoginError(contents)
         data = contents["data"]
@@ -214,7 +215,8 @@ async def make_api_get_request(
     )
 
     # Create the signing key using the function defined above.
-    signing_key = get_signature_key(credentials.secretKey, date_stamp, REGION, SERVICE)
+    signing_key = get_signature_key(
+        credentials.secretKey, date_stamp, REGION, SERVICE)
     signature = hmac.new(
         signing_key, string_to_sign.encode("utf-8"), hashlib.sha256
     ).hexdigest()
@@ -233,28 +235,28 @@ async def make_api_get_request(
         "Accept": "application/json",
     }
 
-    async with (
-        aiohttp.ClientSession() as session,
-        session.get(
-            f"https://{host}{canonical_uri}?{canonical_querystring}", headers=headers
-        ) as response,
-    ):
-        try:
-            contents = await response.json()
-            if response.status != 200:
-                _LOGGER.error(
-                    "API request failed with HTTP %d: %s",
-                    response.status,
-                    json.dumps(contents, indent=4),
-                )
-                raise RequestError(contents)
-            if "success" in contents and not contents["success"]:
-                _LOGGER.error(json.dumps(contents, indent=4))
-                raise RequestError(contents)
-            return contents  # noqa: TRY300
-        except ContentTypeError as err:
-            _LOGGER.error(await response.text())
-            raise RequestError(contents) from err
+    async with aiohttp.ClientSession() as session:
+        url = f"https://{host}{canonical_uri}"
+        if canonical_querystring:
+            url = f"{url}?{canonical_querystring}"
+        async with session.get(url, headers=headers) as response:
+            try:
+                contents = await response.json()
+                if response.status != 200:
+                    _LOGGER.error(
+                        "API request failed with HTTP %d: %s",
+                        response.status,
+                        json.dumps(contents, indent=4),
+                    )
+                    raise RequestError(contents)
+                if "success" in contents and not contents["success"]:
+                    _LOGGER.error(json.dumps(contents, indent=4))
+                    raise RequestError(contents)
+                return contents  # noqa: TRY300
+            except ContentTypeError as err:
+                text = await response.text()
+                _LOGGER.error(text)
+                raise RequestError(text) from err
 
 
 async def fetch_contents_index(
@@ -337,5 +339,6 @@ async def fetch_appliance_infos(credentials: LoginResponse) -> list[ApplianceInf
             credentials,
             canonical_uri=f"/my-homes/{home.id}",
         )
-        appliances.extend(from_dict(HomeResponseData, home_resp["data"]).appliances)
+        appliances.extend(from_dict(HomeResponseData,
+                          home_resp["data"]).appliances)
     return appliances
