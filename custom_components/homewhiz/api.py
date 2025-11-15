@@ -215,8 +215,7 @@ async def make_api_get_request(
     )
 
     # Create the signing key using the function defined above.
-    signing_key = get_signature_key(
-        credentials.secretKey, date_stamp, REGION, SERVICE)
+    signing_key = get_signature_key(credentials.secretKey, date_stamp, REGION, SERVICE)
     signature = hmac.new(
         signing_key, string_to_sign.encode("utf-8"), hashlib.sha256
     ).hexdigest()
@@ -339,6 +338,5 @@ async def fetch_appliance_infos(credentials: LoginResponse) -> list[ApplianceInf
             credentials,
             canonical_uri=f"/my-homes/{home.id}",
         )
-        appliances.extend(from_dict(HomeResponseData,
-                          home_resp["data"]).appliances)
+        appliances.extend(from_dict(HomeResponseData, home_resp["data"]).appliances)
     return appliances
