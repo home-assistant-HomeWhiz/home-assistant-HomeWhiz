@@ -145,11 +145,16 @@ async def login(username: str, password: str) -> LoginResponse:
 
 async def make_id_exchange_request(device_name: str) -> IdExchangeResponse:
     hsmid = device_name[4:]
+    headers = {
+        "User-Agent": "HomeWhiz/1.0",
+        "Accept": "application/json",
+    }
     _LOGGER.debug("hsmid: %s", hsmid)
     async with (
         aiohttp.ClientSession() as session,
-        session.get(
+         session.get(
             f"https://idexchange.arcelikiot.com/GetApplianceId?hsmid={hsmid}",
+            headers=headers,
         ) as response,
     ):
         if not response.ok:
