@@ -152,7 +152,7 @@ async def make_id_exchange_request(device_name: str) -> IdExchangeResponse:
     _LOGGER.debug("hsmid: %s", hsmid)
     async with (
         aiohttp.ClientSession() as session,
-         session.get(
+        session.get(
             f"https://idexchange.arcelikiot.com/GetApplianceId?hsmid={hsmid}",
             headers=headers,
         ) as response,
