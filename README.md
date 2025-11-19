@@ -60,12 +60,15 @@ Don't forget to include your device digital ID that can be found either in the H
 ## Troubleshooting
 
 ### Bluetooth
-The integration should work with all devices connected via Bluetooth. Remember that the range of Bluetooth is limited. If your device is out of range, try using an [ESPHome Bluetooth Proxy](https://esphome.github.io/bluetooth-proxies/).
+The integration should work with all devices connected via Bluetooth. Remember that the range of Bluetooth is limited. If your device is out of range, try using an [ESPHome Bluetooth Proxy](https://esphome.github.io/bluetooth-proxies/). 
 
 If you are using custom Home Assistant installation method like virtual machine, please make sure your system is configured properly and Bluetooth is available within Home Assistant.
 
 The devices can support only single Bluetooth connections at a time.
 To connect the device to the original app, you have to disable the Home Assistant integration. Restart Home Assistant and wait a few minutes - this should be indicated on the device: E.g. the Bluetooth icon on a washing machine starts flashing.
+
+#### Bluetooth proxy notes
+Switching to an ESPHome-based proxy helped fix issues for many. If issues persist even when using a proxy, force the proxy into active mode (`bluetooth_proxy:\n  active: true`) and re-add the integration; some users also had to declare the washer/dryer MAC under `ble_client` and keep the proxy within ~1 m of the appliance to maintain a stable connection.
 
 ### Retrieve Integration Logs
 
