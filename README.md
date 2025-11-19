@@ -67,8 +67,11 @@ If you are using custom Home Assistant installation method like virtual machine,
 The devices can support only single Bluetooth connections at a time.
 To connect the device to the original app, you have to disable the Home Assistant integration. Restart Home Assistant and wait a few minutes - this should be indicated on the device: E.g. the Bluetooth icon on a washing machine starts flashing.
 
-#### Bluetooth proxy notes
+#### Bluetooth Proxy
 Switching to an ESPHome-based proxy helped fix issues for many. If issues persist even when using a proxy, force the proxy into active mode (`bluetooth_proxy:\n  active: true`) and re-add the integration; some users also had to declare the washer/dryer MAC under `ble_client` and keep the proxy within ~1 m of the appliance to maintain a stable connection.
+
+### Google Login
+If you signed up via Google in the HomeWhiz app, try forcing a HomeWhiz password reset inside the original app. Go to *My Account* → *Change Password* and tap *Forgot Password* to trigger the reset email for your Google address, then use the new password when adding the integration.
 
 ### Retrieve Integration Logs
 
