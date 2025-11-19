@@ -81,7 +81,9 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
     async def connect(self) -> bool:
         from awscrt.auth import AwsCredentialsProvider  # noqa: PLC0415
         from awscrt.exceptions import AwsCrtError  # noqa: PLC0415
-        from awsiot import mqtt_connection_builder  # noqa: PLC0415, # type: ignore[import]
+        from awsiot import (  # noqa: PLC0415
+            mqtt_connection_builder,
+        )
 
         _LOGGER.info("Connecting to %s", self._appliance_id)
         credentials = await login(
@@ -185,13 +187,19 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         self._is_connected = False
 
     @callback
-    def on_connection_resumed(self, return_code: int, session_present: bool, **kwargs: Any) -> None:
-        _LOGGER.info("Connection resumed - return_code: %s, session_present: %s", return_code, session_present)
+    def on_connection_resumed(
+        self, return_code: int, session_present: bool, **kwargs: Any
+    ) -> None:
+        _LOGGER.info(
+            "Connection resumed - return_code: %s, session_present: %s",
+            return_code,
+            session_present,
+        )
         self._is_connected = True
 
         if not session_present:
             _LOGGER.info("Session not present, resubscribing to topics")
-            asyncio.create_task(self._resubscribe_after_resume())
+            asyncio.create_task(self._resubscribe_after_resume())  # noqa: RUF006
 
     async def _resubscribe_after_resume(self) -> None:
         await self._subscribe_to_topics()
@@ -235,7 +243,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             else:
                 _LOGGER.error("Force read failed with unexpected error: %s", e)
                 raise
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             _LOGGER.error("Force read failed: %s", e)
 
     def get_shadow(self, *args: Any) -> None:
@@ -258,7 +266,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             else:
                 _LOGGER.error("Get shadow failed with unexpected error: %s", e)
                 raise
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             _LOGGER.error("Get shadow failed: %s", e)
 
     async def send_command(self, command: Command) -> None:
@@ -283,7 +291,9 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             )
             _LOGGER.debug("Sending command %s:%s", command.index, command.value)
             loop = asyncio.get_event_loop()
-            await loop.run_in_executor(None, functools.partial(publish.result, timeout=5.0))
+            await loop.run_in_executor(
+                None, functools.partial(publish.result, timeout=5.0)
+            )
             _LOGGER.debug("Command sent successfully")
         except RuntimeError as e:
             if "AWS_ERROR_MQTT_NOT_CONNECTED" in str(e):
@@ -292,7 +302,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             else:
                 _LOGGER.error("Send command failed with unexpected error: %s", e)
                 raise
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             _LOGGER.error("Failed to send command: %s", e)
 
     @callback
@@ -308,7 +318,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
                 data = bytearray(padding + wfa)
                 _LOGGER.debug("Message received: %s", data)
                 self.hass.loop.call_soon_threadsafe(self.async_set_updated_data, data)
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             _LOGGER.error("Error handling notify: %s", e)
 
     @property
@@ -325,4 +335,3 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         if self._update_timer_task:
             self._update_timer_task()
             self._update_timer_task = None
-
