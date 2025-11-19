@@ -27,32 +27,32 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 
 @dataclass
 class Reported:
-    connected: bool | str | None
-    wfaSize: str | int
-    brand: str | int
-    applianceType: str | int
-    model: str
-    applianceId: str
-    macAddr: str
-    wfa: list[int]
-    modifiedTime: int | None
-    wfaSizeModifiedTime: int | None
+    connected: bool | str | None = None
+    brand: str | int | None = None
+    applianceType: str | int | None = None
+    model: str | None = None
+    applianceId: str | None = None
+    macAddr: str | None = None
+    wfa: list[int] | None = None
+    modifiedTime: int | None = None
+    wfaSizeModifiedTime: int | None = None
+    wfaSize: str | int | None = None
     wfaStartOffset: str | int = 26
 
 
 @dataclass
 class Metadata:
-    reported: Reported
+    reported: Reported | None = None
 
 
 @dataclass
 class State:
-    reported: Reported
+    reported: Reported | None = None
 
 
 @dataclass
 class MqttPayload:
-    state: State
+    state: State | None = None
 
 
 class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
@@ -63,8 +63,6 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         cloud_config: CloudConfig,
         entry: ConfigEntry,
     ) -> None:
-        # Place awscrt imports within class
-        # (awscrt module can sometimes not be installed automatically)
         from awscrt import mqtt  # noqa: PLC0415
 
         self._appliance_id = appliance_id
@@ -83,7 +81,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
     async def connect(self) -> bool:
         from awscrt.auth import AwsCredentialsProvider  # noqa: PLC0415
         from awscrt.exceptions import AwsCrtError  # noqa: PLC0415
-        from awsiot import (  # noqa: PLC0415, # type: ignore[import],
+        from awsiot import (  # noqa: PLC0415
             mqtt_connection_builder,
         )
 
@@ -110,6 +108,8 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
                 credentials_provider=credentials_provider,
                 on_connection_interrupted=self.on_connection_interrupted,
                 on_connection_resumed=self.on_connection_resumed,
+                clean_session=False,
+                keep_alive_secs=1200,
             ),
         )
         connection = await mqtt_connection_builder_task
@@ -118,8 +118,6 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             connection_future = connection.connect()
             await loop.run_in_executor(None, connection_future.result)
             _LOGGER.debug("MQTT connection successful")
-        # If exception occurs, retry in one minute
-        # (to be more resilient against e.g., DNS issues)
         except AwsCrtError:
             _LOGGER.exception(
                 "Exception during connection to AWS occurred. Will retry in one minute."
@@ -134,31 +132,11 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             return False
 
         self._is_connected = True
-        [subscribe_update, _] = connection.subscribe(
-            f"$aws/things/{self._appliance_id}/shadow/update/accepted",
-            self._mqtt.QoS.AT_LEAST_ONCE,
-            lambda topic, payload, dup, qos, retain, **kwargs: self.handle_notify(
-                payload
-            ),
-        )
-        [subscribe_get, _] = connection.subscribe(
-            f"$aws/things/{self._appliance_id}/shadow/get/accepted",
-            self._mqtt.QoS.AT_LEAST_ONCE,
-            lambda topic, payload, dup, qos, retain, **kwargs: self.handle_notify(
-                payload
-            ),
-        )
-        loop = asyncio.get_event_loop()
-        subscribe_update_result = await loop.run_in_executor(
-            None, subscribe_update.result
-        )
-        subscribe_get_result = await loop.run_in_executor(None, subscribe_get.result)
-        _LOGGER.debug("Subscribe to update result: %s", subscribe_update_result)
-        _LOGGER.debug("Subscribe to get result: %s", subscribe_get_result)
+        await self._subscribe_to_topics()
 
+        await asyncio.sleep(0.5)
         self.force_read()
 
-        # Trigger refresh connection when credentials expired
         async_track_point_in_utc_time(
             hass=self.hass,
             action=self.refresh_connection,  # type: ignore[arg-type]
@@ -166,8 +144,6 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         )
 
         if not self._update_timer_task:
-            # Set hass task to update the HomeWhiz device data periodically
-            # Returns a callable to remove the task
             self._update_timer_task = async_track_time_interval(
                 hass=self.hass, action=self.force_read, interval=timedelta(minutes=1)
             )
@@ -176,49 +152,128 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
 
         return True
 
+    async def _subscribe_to_topics(self) -> None:
+        if self._connection is None:
+            _LOGGER.warning("Cannot subscribe: connection is None")
+            return
+
+        loop = asyncio.get_event_loop()
+
+        [subscribe_update, _] = self._connection.subscribe(
+            f"$aws/things/{self._appliance_id}/shadow/update/accepted",
+            self._mqtt.QoS.AT_LEAST_ONCE,
+            lambda topic, payload, dup, qos, retain, **kwargs: self.handle_notify(
+                payload
+            ),
+        )
+        [subscribe_get, _] = self._connection.subscribe(
+            f"$aws/things/{self._appliance_id}/shadow/get/accepted",
+            self._mqtt.QoS.AT_LEAST_ONCE,
+            lambda topic, payload, dup, qos, retain, **kwargs: self.handle_notify(
+                payload
+            ),
+        )
+
+        subscribe_update_result = await loop.run_in_executor(
+            None, subscribe_update.result
+        )
+        subscribe_get_result = await loop.run_in_executor(None, subscribe_get.result)
+        _LOGGER.debug("Subscribe to update result: %s", subscribe_update_result)
+        _LOGGER.debug("Subscribe to get result: %s", subscribe_get_result)
+
     @callback
     def on_connection_interrupted(self, error: str, **kwargs: Any) -> None:
-        _LOGGER.debug("Connection interrupted %s", error)
+        _LOGGER.warning("Connection interrupted: %s", error)
         self._is_connected = False
 
     @callback
-    def on_connection_resumed(self, **kwargs: Any) -> None:
-        _LOGGER.debug("Connection resumed")
+    def on_connection_resumed(
+        self, return_code: int, session_present: bool, **kwargs: Any
+    ) -> None:
+        _LOGGER.info(
+            "Connection resumed - return_code: %s, session_present: %s",
+            return_code,
+            session_present,
+        )
         self._is_connected = True
+
+        if not session_present:
+            _LOGGER.info("Session not present, resubscribing to topics")
+            asyncio.create_task(self._resubscribe_after_resume())  # noqa: RUF006
+
+    async def _resubscribe_after_resume(self) -> None:
+        await self._subscribe_to_topics()
+        await asyncio.sleep(0.5)
+        self.force_read()
 
     @callback
     async def refresh_connection(self, *args: Any) -> None:
         _LOGGER.debug("Refreshing connection")
-        assert self._connection is not None
-        self._connection.disconnect()
+        if self._connection is not None:
+            loop = asyncio.get_event_loop()
+            disconnect_future = self._connection.disconnect()
+            await loop.run_in_executor(None, disconnect_future.result)
         await self.connect()
 
     def force_read(self, *args: Any) -> None:
+        if self._connection is None or not self._is_connected:
+            _LOGGER.warning("Cannot force read: MQTT connection not available")
+            return
+
         _LOGGER.debug("Forcing read")
-        assert self._connection is not None
         suffix = "/tuyacommand" if self._is_tuya else "/command"
         force_read = {
             "type": "fread" + suffix,
         }
         if self._is_tuya:
             force_read["applianceId"] = self._appliance_id
-        [publish, _] = self._connection.publish(
-            f"$aws/things/{self._appliance_id}/shadow/get",
-            json.dumps(force_read),
-            qos=self._mqtt.QoS.AT_MOST_ONCE,
-        )
-        _LOGGER.debug("Force read result: %s", publish.result())
+
+        try:
+            [publish, _] = self._connection.publish(
+                f"$aws/things/{self._appliance_id}/shadow/get",
+                json.dumps(force_read),
+                qos=self._mqtt.QoS.AT_MOST_ONCE,
+            )
+            result = publish.result(timeout=5.0)
+            _LOGGER.debug("Force read result: %s", result)
+        except RuntimeError as e:
+            if "AWS_ERROR_MQTT_NOT_CONNECTED" in str(e):
+                _LOGGER.warning("Force read failed: MQTT connection lost (%s)", e)
+                self._is_connected = False
+            else:
+                _LOGGER.error("Force read failed with unexpected error: %s", e)
+                raise
+        except Exception as e:  # noqa: BLE001
+            _LOGGER.error("Force read failed: %s", e)
 
     def get_shadow(self, *args: Any) -> None:
-        assert self._connection is not None
-        [publish, _] = self._connection.publish(
-            f"$aws/things/{self._appliance_id}/shadow/get",
-            "{}",
-            qos=self._mqtt.QoS.AT_MOST_ONCE,
-        )
-        _LOGGER.debug("Get shadow result: %s", publish.result())
+        if self._connection is None or not self._is_connected:
+            _LOGGER.warning("Cannot get shadow: MQTT connection not available")
+            return
+
+        try:
+            [publish, _] = self._connection.publish(
+                f"$aws/things/{self._appliance_id}/shadow/get",
+                "{}",
+                qos=self._mqtt.QoS.AT_MOST_ONCE,
+            )
+            result = publish.result(timeout=5.0)
+            _LOGGER.debug("Get shadow result: %s", result)
+        except RuntimeError as e:
+            if "AWS_ERROR_MQTT_NOT_CONNECTED" in str(e):
+                _LOGGER.warning("Get shadow failed: MQTT connection lost (%s)", e)
+                self._is_connected = False
+            else:
+                _LOGGER.error("Get shadow failed with unexpected error: %s", e)
+                raise
+        except Exception as e:  # noqa: BLE001
+            _LOGGER.error("Get shadow failed: %s", e)
 
     async def send_command(self, command: Command) -> None:
+        if self._connection is None or not self._is_connected:
+            _LOGGER.warning("Cannot send command: MQTT connection not available")
+            return
+
         suffix = "/tuyacommand" if self._is_tuya else "/command"
         obj = {
             "type": "write",
@@ -227,25 +282,44 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         if self._is_tuya:
             obj["applianceId"] = self._appliance_id
         message = json.dumps(obj)
-        assert self._connection is not None
-        [publish, _] = self._connection.publish(
-            self._appliance_id + suffix,
-            message,
-            qos=self._mqtt.QoS.AT_LEAST_ONCE,
-        )
-        _LOGGER.debug("Sending command %s:%s", command.index, command.value)
-        _LOGGER.debug("Command result: %s", publish.result())
+
+        try:
+            [publish, _] = self._connection.publish(
+                self._appliance_id + suffix,
+                message,
+                qos=self._mqtt.QoS.AT_LEAST_ONCE,
+            )
+            _LOGGER.debug("Sending command %s:%s", command.index, command.value)
+            loop = asyncio.get_event_loop()
+            await loop.run_in_executor(
+                None, functools.partial(publish.result, timeout=5.0)
+            )
+            _LOGGER.debug("Command sent successfully")
+        except RuntimeError as e:
+            if "AWS_ERROR_MQTT_NOT_CONNECTED" in str(e):
+                _LOGGER.warning("Send command failed: MQTT connection lost (%s)", e)
+                self._is_connected = False
+            else:
+                _LOGGER.error("Send command failed with unexpected error: %s", e)
+                raise
+        except Exception as e:  # noqa: BLE001
+            _LOGGER.error("Failed to send command: %s", e)
 
     @callback
     def handle_notify(self, payload: str) -> None:
         _LOGGER.debug("Handling notify")
         _LOGGER.debug("Payload: %s", payload)
-        message = from_dict(MqttPayload, json.loads(payload))
-        offset = int(message.state.reported.wfaStartOffset)
-        padding = [0 for _ in range(offset)]
-        data = bytearray(padding + message.state.reported.wfa)
-        _LOGGER.debug("Message received: %s", data)
-        self.hass.loop.call_soon_threadsafe(self.async_set_updated_data, data)
+        try:
+            message = from_dict(MqttPayload, json.loads(payload))
+            if message.state and message.state.reported:
+                offset = int(message.state.reported.wfaStartOffset or 26)
+                wfa = message.state.reported.wfa or []
+                padding = [0 for _ in range(offset)]
+                data = bytearray(padding + wfa)
+                _LOGGER.debug("Message received: %s", data)
+                self.hass.loop.call_soon_threadsafe(self.async_set_updated_data, data)
+        except Exception as e:  # noqa: BLE001
+            _LOGGER.error("Error handling notify: %s", e)
 
     @property
     def is_connected(self) -> bool:
@@ -255,8 +329,9 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         self._is_connected = False
         self.alive = False
         if self._connection is not None:
-            self._connection.disconnect()
+            loop = asyncio.get_event_loop()
+            disconnect_future = self._connection.disconnect()
+            await loop.run_in_executor(None, disconnect_future.result)
         if self._update_timer_task:
-            # Remove update timer task
             self._update_timer_task()
             self._update_timer_task = None
