@@ -102,6 +102,8 @@
           "temperature_20": "20 °C",
           "temperature_30": "30 °C",
           "temperature_40": "40 °C",
+          "temperature_60": "60 °C",
+          "temperature_90": "90 °C",
           "60c": "60C",
           "90c": "90C"
         }
@@ -287,7 +289,7 @@
           "dry_30": "30 Min",
           "dry_60": "60 Min",
           "dry_90": "90 Min",
-          "dry_120": "15 Min",
+          "dry_120": "120 Min",
           "dry_150": "150 Min"
         }
       },
