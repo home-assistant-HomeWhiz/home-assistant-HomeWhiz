@@ -102,6 +102,8 @@
           "temperature_20": "20 °C",
           "temperature_30": "30 °C",
           "temperature_40": "40 °C",
+          "temperature_60": "60 °C",
+          "temperature_90": "90 °C",
           "60c": "60C",
           "90c": "90C"
         }
