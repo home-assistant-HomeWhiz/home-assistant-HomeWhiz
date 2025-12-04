@@ -38,9 +38,12 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 def clamp(value: int) -> int:
     return value if value < 128 else value - 128
 
+
 def safe_get(data: bytearray, index: int) -> int:
     if index >= len(data):
-        _LOGGER.debug("Index %d out of range (data length: %d), returning 0", index, len(data))
+        _LOGGER.debug(
+            "Index %d out of range (data length: %d), returning 0", index, len(data)
+        )
         return 0
     return clamp(data[index])
 
@@ -162,7 +165,9 @@ class TimeControl(Control):
 
     def get_value(self, data: bytearray) -> int:
         hours = safe_get(data, self.hour_index)
-        minutes = safe_get(data, self.minute_index) if self.minute_index is not None else 0
+        minutes = (
+            safe_get(data, self.minute_index) if self.minute_index is not None else 0
+        )
         return hours * 60 + minutes
 
 
@@ -210,7 +215,10 @@ class BooleanControl(Control):
     def _get_fallback_value(self) -> bool:
         """Return last known value if available, else False."""
         if self._last_known_value is not None:
-            _LOGGER.debug("Using cached value for boolean control %s", getattr(self, "key", "unknown"))
+            _LOGGER.debug(
+                "Using cached value for boolean control %s",
+                getattr(self, "key", "unknown"),
+            )
             return self._last_known_value
         return False
 
@@ -224,7 +232,7 @@ class BooleanCompareControl(BooleanControl):
     def get_value(self, data: bytearray) -> bool:
         if self.read_index < len(data):
             # Data is present: evaluate and update cache
-            current_bool = (data[self.read_index] == self.compare_value)
+            current_bool = data[self.read_index] == self.compare_value
             return self._get_cached_bool(current_bool)
         # Data missing: use fallback/cache
         return self._get_fallback_value()
@@ -239,7 +247,7 @@ class BooleanBitmaskControl(BooleanControl):
     def get_value(self, data: bytearray) -> bool:
         if self.read_index < len(data):
             # Data is present: evaluate and update cache
-            current_bool = (data[self.read_index] & (1 << self.bit) != 0)
+            current_bool = data[self.read_index] & (1 << self.bit) != 0
             return self._get_cached_bool(current_bool)
         # Data missing: use fallback/cache
         return self._get_fallback_value()
@@ -260,7 +268,7 @@ class WriteBooleanControl(BooleanControl):
         if self.read_index < len(data):
             # Data is present: evaluate using safe_get logic (clamp) and update cache
             byte = clamp(data[self.read_index])
-            current_bool = (byte == self.value_on)
+            current_bool = byte == self.value_on
             return self._get_cached_bool(current_bool)
         # Data missing: use fallback/cache
         return self._get_fallback_value()
@@ -269,7 +277,6 @@ class WriteBooleanControl(BooleanControl):
         return Command(
             index=self.write_index, value=self.value_on if value else self.value_off
         )
-
 
 
 class DisabledSwingAxisControl(Control):
@@ -356,23 +363,32 @@ class SwingControl(Control):
             result.append(SWING_BOTH)
         return result
 
-    def get_value(self, data: bytearray) -> str:
-        value_horizontal = self.horizontal.get_value(data)
-        value_vertical = self.vertical.get_value(data)
-        if value_horizontal and value_vertical:
+    def get_value(self, data: bytearray) -> str | None:
+        horizontal = self.horizontal.get_value(data)
+        vertical = self.vertical.get_value(data)
+        if horizontal and vertical:
             return SWING_BOTH
-        if value_horizontal:
+        if horizontal:
             return SWING_HORIZONTAL
-        if value_vertical:
+        if vertical:
             return SWING_VERTICAL
         return SWING_OFF
 
     def set_value(self, value: str, current_data: bytearray) -> list[Command]:
-        value_horizontal = value in (SWING_HORIZONTAL, SWING_BOTH)
-        value_vertical = value in (SWING_VERTICAL, SWING_BOTH)
-        return self.horizontal.set_value(
-            value_horizontal, current_data
-        ) + self.vertical.set_value(value_vertical, current_data)
+        commands: list[Command] = []
+        if value == SWING_OFF:
+            commands.extend(self.horizontal.set_value(False, current_data))
+            commands.extend(self.vertical.set_value(False, current_data))
+        elif value == SWING_HORIZONTAL:
+            commands.extend(self.horizontal.set_value(True, current_data))
+            commands.extend(self.vertical.set_value(False, current_data))
+        elif value == SWING_VERTICAL:
+            commands.extend(self.horizontal.set_value(False, current_data))
+            commands.extend(self.vertical.set_value(True, current_data))
+        elif value == SWING_BOTH:
+            commands.extend(self.horizontal.set_value(True, current_data))
+            commands.extend(self.vertical.set_value(True, current_data))
+        return commands
 
 
 program_suffix_to_hvac_mode = {
