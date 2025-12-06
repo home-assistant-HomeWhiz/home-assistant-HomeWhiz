@@ -180,6 +180,7 @@ class StateAwareRemainingTimeControl(Control):
     remaining_control. This prevents stuck time displays when devices are
     turned off with remaining time still stored in memory.
     """
+
     def __init__(
         self, key: str, remaining_control: Control, state_control: Control | None
     ):
