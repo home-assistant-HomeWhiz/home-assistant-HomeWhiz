@@ -171,6 +171,38 @@ class TimeControl(Control):
         return hours * 60 + minutes
 
 
+class StateAwareRemainingTimeControl(Control):
+    """Wraps a remaining time control to return 0 when device is off.
+
+    This control checks the device state before returning remaining time.
+    If the state is "device_state_off", it returns 0 regardless of the
+    underlying remaining time value. Otherwise, it delegates to the wrapped
+    remaining_control. This prevents stuck time displays when devices are
+    turned off with remaining time still stored in memory.
+    """
+
+    def __init__(
+        self, key: str, remaining_control: Control, state_control: Control | None
+    ):
+        self.key = key
+        self.remaining_control = remaining_control
+        self.state_control = state_control
+
+    def get_value(self, data: bytearray) -> int:
+        # If we have a state control, check if device is off
+        if self.state_control is not None:
+            state = self.state_control.get_value(data)
+            if state == "device_state_off":
+                _LOGGER.debug(
+                    "Device is off, returning 0 for remaining time %s",
+                    self.key,
+                )
+                return 0
+
+        # Return the actual remaining time
+        return self.remaining_control.get_value(data)
+
+
 class SummedTimestampControl(Control):
     """Uses different sensors to calculate a timestamp"""
 
@@ -617,8 +649,9 @@ def build_control_from_state(state: ApplianceState | None) -> Control | None:
     )
 
 
-def build_controls_from_progress_variables(
+def build_controls_from_progress_variables(  # noqa: C901
     progress_variables: ApplianceProgress | None,
+    state_control: Control | None = None,
 ) -> list[Control]:
     if progress_variables is None:
         return []
@@ -652,6 +685,17 @@ def build_controls_from_progress_variables(
                     else None,
                 )
             )
+
+    # Wrap remaining time controls with state awareness
+    # This ensures that when device is off, remaining time is reported as 0
+    if state_control is not None:
+        for i, control in enumerate(results):
+            if control.key == "washer_remaining" and isinstance(control, TimeControl):
+                results[i] = StateAwareRemainingTimeControl(
+                    key=control.key,
+                    remaining_control=control,
+                    state_control=state_control,
+                )
 
     # Build calculated controls
     for calculation_key, feature_key_tuple in delay_keys.items():
@@ -813,14 +857,18 @@ def generate_controls_from_config(
     config: ApplianceConfiguration,
 ) -> list[Control]:
     if key not in controls:
+        state_control = build_control_from_state(config.deviceStates)
+
         possible_controls: list[Control | None] = [
-            build_control_from_state(config.deviceStates),
+            state_control,
             build_control_from_program(config.program),
             build_control_from_substate(config.deviceSubStates),
             *build_controls_from_features(config.subPrograms),
             *build_controls_from_features(config.customSubPrograms),
             *build_controls_from_monitorings(config.monitorings),
-            *build_controls_from_progress_variables(config.progressVariables),
+            *build_controls_from_progress_variables(
+                config.progressVariables, state_control
+            ),
             build_control_from_remote_control(config.remoteControl),
             *build_controls_from_warnings(config.deviceWarnings),
             *build_controls_from_warnings(config.warnings),

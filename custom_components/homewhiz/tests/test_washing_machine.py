@@ -306,3 +306,33 @@ def test_remote_control_custom_settings(config: ApplianceConfiguration) -> None:
             "delay_start_time#0": None,
         },
     )
+
+
+def test_device_off(config: ApplianceConfiguration) -> None:
+    """Test that remaining time is 0 when device is off (Issue #336)
+
+    The fix ensures that when a washing machine is in OFF state,
+    the remaining time is reported as 0, even if the device previously
+    had a running program. This prevents the "Programme End Time" from
+    incrementing indefinitely when the device is off.
+    """
+    # Create hex data with device state OFF (byte 35 = 0x14 = 20 decimal)
+    # Based on test_running data but with state changed to OFF
+    data_bytes = bytearray.fromhex(
+        "002f4a45a10100000000000000000000000000000000000000000200000000000000001e819e0c"
+        "0080000080021100398080010000000000000000000080808100800000008001078000808000"
+    )
+    # Change byte 35 from 0x1e (running) to 0x14 (off)
+    data_bytes[35] = 0x14  # DEVICE_STATE_OFF
+
+    controls = generate_controls_from_config("test_washing_machine_test_off", config)
+    values = {control.key: control.get_value(data_bytes) for control in controls}
+
+    # The state should be OFF
+    test_case.assertEqual(values["state"], "device_state_off")
+    # The remaining time should be 0 when device is off (this is the fix)
+    test_case.assertEqual(
+        values["washer_remaining"],
+        0,
+        "Remaining time should be 0 when device is off (Issue #336)",
+    )
