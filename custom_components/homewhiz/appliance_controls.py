@@ -172,8 +172,14 @@ class TimeControl(Control):
 
 
 class StateAwareRemainingTimeControl(Control):
-    """Wraps a remaining time control to return 0 when device is off"""
+    """Wraps a remaining time control to return 0 when device is off.
 
+    This control checks the device state before returning remaining time.
+    If the state is "device_state_off", it returns 0 regardless of the
+    underlying remaining time value. Otherwise, it delegates to the wrapped
+    remaining_control. This prevents stuck time displays when devices are
+    turned off with remaining time still stored in memory.
+    """
     def __init__(
         self, key: str, remaining_control: Control, state_control: Control | None
     ):
