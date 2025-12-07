@@ -39,6 +39,15 @@ def clamp(value: int) -> int:
     return value if value < 128 else value - 128
 
 
+def safe_get(data: bytearray, index: int) -> int:
+    if index >= len(data):
+        _LOGGER.debug(
+            "Index %d out of range (data length: %d), returning 0", index, len(data)
+        )
+        return 0
+    return clamp(data[index])
+
+
 def to_friendly_name(name: str) -> str:
     # Generates a translation friendly name based on the key
     # To filter out characters not supported by homeassistant
@@ -100,7 +109,7 @@ class EnumControl(Control, Generic[_Options]):
         self.options = options
 
     def get_value(self, data: bytearray) -> str | None:
-        byte = clamp(data[self.read_index])
+        byte = safe_get(data, self.read_index)
         if byte in self.options:
             return self.options[byte]
         return None
@@ -129,7 +138,7 @@ class NumericControl(Control):
         self.bounds = bounds
 
     def get_value(self, data: bytearray) -> float | None:
-        byte = clamp(data[self.read_index])
+        byte = safe_get(data, self.read_index)
         return byte * self.bounds.factor
 
 
@@ -155,9 +164,43 @@ class TimeControl(Control):
         self.minute_index = minute_index
 
     def get_value(self, data: bytearray) -> int:
-        hours = clamp(data[self.hour_index])
-        minutes = clamp(data[self.minute_index]) if self.minute_index is not None else 0
+        hours = safe_get(data, self.hour_index)
+        minutes = (
+            safe_get(data, self.minute_index) if self.minute_index is not None else 0
+        )
         return hours * 60 + minutes
+
+
+class StateAwareRemainingTimeControl(Control):
+    """Wraps a remaining time control to return 0 when device is off.
+
+    This control checks the device state before returning remaining time.
+    If the state is "device_state_off", it returns 0 regardless of the
+    underlying remaining time value. Otherwise, it delegates to the wrapped
+    remaining_control. This prevents stuck time displays when devices are
+    turned off with remaining time still stored in memory.
+    """
+
+    def __init__(
+        self, key: str, remaining_control: Control, state_control: Control | None
+    ):
+        self.key = key
+        self.remaining_control = remaining_control
+        self.state_control = state_control
+
+    def get_value(self, data: bytearray) -> int:
+        # If we have a state control, check if device is off
+        if self.state_control is not None:
+            state = self.state_control.get_value(data)
+            if state == "device_state_off":
+                _LOGGER.debug(
+                    "Device is off, returning 0 for remaining time %s",
+                    self.key,
+                )
+                return 0
+
+        # Return the actual remaining time
+        return self.remaining_control.get_value(data)
 
 
 class SummedTimestampControl(Control):
@@ -190,9 +233,26 @@ class SummedTimestampControl(Control):
 
 
 class BooleanControl(Control):
+    _last_known_value: bool | None = None
+
     @abstractmethod
     def get_value(self, data: bytearray) -> bool:
         pass
+
+    def _get_cached_bool(self, current_bool: bool) -> bool:
+        """Cache the valid boolean value."""
+        self._last_known_value = current_bool
+        return current_bool
+
+    def _get_fallback_value(self) -> bool:
+        """Return last known value if available, else False."""
+        if self._last_known_value is not None:
+            _LOGGER.debug(
+                "Using cached value for boolean control %s",
+                getattr(self, "key", "unknown"),
+            )
+            return self._last_known_value
+        return False
 
 
 class BooleanCompareControl(BooleanControl):
@@ -202,7 +262,12 @@ class BooleanCompareControl(BooleanControl):
         self.compare_value = compare_value
 
     def get_value(self, data: bytearray) -> bool:
-        return data[self.read_index] == self.compare_value
+        if self.read_index < len(data):
+            # Data is present: evaluate and update cache
+            current_bool = data[self.read_index] == self.compare_value
+            return self._get_cached_bool(current_bool)
+        # Data missing: use fallback/cache
+        return self._get_fallback_value()
 
 
 class BooleanBitmaskControl(BooleanControl):
@@ -212,7 +277,12 @@ class BooleanBitmaskControl(BooleanControl):
         self.bit = bit
 
     def get_value(self, data: bytearray) -> bool:
-        return data[self.read_index] & (1 << self.bit) != 0
+        if self.read_index < len(data):
+            # Data is present: evaluate and update cache
+            current_bool = data[self.read_index] & (1 << self.bit) != 0
+            return self._get_cached_bool(current_bool)
+        # Data missing: use fallback/cache
+        return self._get_fallback_value()
 
 
 @dataclass
@@ -227,8 +297,13 @@ class WriteBooleanControl(BooleanControl):
         self.value_off = value_off
 
     def get_value(self, data: bytearray) -> bool:
-        byte = clamp(data[self.read_index])
-        return byte == self.value_on
+        if self.read_index < len(data):
+            # Data is present: evaluate using safe_get logic (clamp) and update cache
+            byte = clamp(data[self.read_index])
+            current_bool = byte == self.value_on
+            return self._get_cached_bool(current_bool)
+        # Data missing: use fallback/cache
+        return self._get_fallback_value()
 
     def set_value(self, value: bool) -> Command:
         return Command(
@@ -320,23 +395,32 @@ class SwingControl(Control):
             result.append(SWING_BOTH)
         return result
 
-    def get_value(self, data: bytearray) -> str:
-        value_horizontal = self.horizontal.get_value(data)
-        value_vertical = self.vertical.get_value(data)
-        if value_horizontal and value_vertical:
+    def get_value(self, data: bytearray) -> str | None:
+        horizontal = self.horizontal.get_value(data)
+        vertical = self.vertical.get_value(data)
+        if horizontal and vertical:
             return SWING_BOTH
-        if value_horizontal:
+        if horizontal:
             return SWING_HORIZONTAL
-        if value_vertical:
+        if vertical:
             return SWING_VERTICAL
         return SWING_OFF
 
     def set_value(self, value: str, current_data: bytearray) -> list[Command]:
-        value_horizontal = value in (SWING_HORIZONTAL, SWING_BOTH)
-        value_vertical = value in (SWING_VERTICAL, SWING_BOTH)
-        return self.horizontal.set_value(
-            value_horizontal, current_data
-        ) + self.vertical.set_value(value_vertical, current_data)
+        commands: list[Command] = []
+        if value == SWING_OFF:
+            commands.extend(self.horizontal.set_value(False, current_data))
+            commands.extend(self.vertical.set_value(False, current_data))
+        elif value == SWING_HORIZONTAL:
+            commands.extend(self.horizontal.set_value(True, current_data))
+            commands.extend(self.vertical.set_value(False, current_data))
+        elif value == SWING_VERTICAL:
+            commands.extend(self.horizontal.set_value(False, current_data))
+            commands.extend(self.vertical.set_value(True, current_data))
+        elif value == SWING_BOTH:
+            commands.extend(self.horizontal.set_value(True, current_data))
+            commands.extend(self.vertical.set_value(True, current_data))
+        return commands
 
 
 program_suffix_to_hvac_mode = {
@@ -565,8 +649,9 @@ def build_control_from_state(state: ApplianceState | None) -> Control | None:
     )
 
 
-def build_controls_from_progress_variables(
+def build_controls_from_progress_variables(  # noqa: C901
     progress_variables: ApplianceProgress | None,
+    state_control: Control | None = None,
 ) -> list[Control]:
     if progress_variables is None:
         return []
@@ -600,6 +685,17 @@ def build_controls_from_progress_variables(
                     else None,
                 )
             )
+
+    # Wrap remaining time controls with state awareness
+    # This ensures that when device is off, remaining time is reported as 0
+    if state_control is not None:
+        for i, control in enumerate(results):
+            if control.key == "washer_remaining" and isinstance(control, TimeControl):
+                results[i] = StateAwareRemainingTimeControl(
+                    key=control.key,
+                    remaining_control=control,
+                    state_control=state_control,
+                )
 
     # Build calculated controls
     for calculation_key, feature_key_tuple in delay_keys.items():
@@ -761,14 +857,18 @@ def generate_controls_from_config(
     config: ApplianceConfiguration,
 ) -> list[Control]:
     if key not in controls:
+        state_control = build_control_from_state(config.deviceStates)
+
         possible_controls: list[Control | None] = [
-            build_control_from_state(config.deviceStates),
+            state_control,
             build_control_from_program(config.program),
             build_control_from_substate(config.deviceSubStates),
             *build_controls_from_features(config.subPrograms),
             *build_controls_from_features(config.customSubPrograms),
             *build_controls_from_monitorings(config.monitorings),
-            *build_controls_from_progress_variables(config.progressVariables),
+            *build_controls_from_progress_variables(
+                config.progressVariables, state_control
+            ),
             build_control_from_remote_control(config.remoteControl),
             *build_controls_from_warnings(config.deviceWarnings),
             *build_controls_from_warnings(config.warnings),

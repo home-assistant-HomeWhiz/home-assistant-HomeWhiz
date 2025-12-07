@@ -54,6 +54,7 @@ brand_name_by_code = defaultdict(
         17: "Teka",
         18: "Voltas Beko",
         36: "Whirlpool",
+        39: "Bauknecht",
     },
 )
 
