@@ -18,7 +18,7 @@ from .appliance_controls import (
     TimeControl,
     generate_controls_from_config,
 )
-from .config_flow import EntryData
+from .config_flow import import EntryData
 from .const import DOMAIN
 from .entity import HomeWhizEntity
 from .helper import build_entry_data
@@ -31,39 +31,18 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
     def __init__(
         self,
         coordinator: HomewhizCoordinator,
-        control: TimeControl
-        | EnumControl
-        | NumericControl
-        | DebugControl
-        | SummedTimestampControl,
+        control: TimeControl | EnumControl | NumericControl | DebugControl,
         device_name: str,
         data: EntryData,
     ):
         super().__init__(coordinator, device_name, control.key, data)
         self._control = control
         if isinstance(control, TimeControl):
-            self._attr_icon = "mdi:clock-outline"
-            self._attr_native_unit_of_measurement = "min"
             self._attr_device_class = SensorDeviceClass.DURATION
         elif isinstance(control, EnumControl):
             self._attr_device_class = SensorDeviceClass.ENUM  # type:ignore
-            self._attr_options = list(self._control.options.values())  # type:ignore
         elif isinstance(control, SummedTimestampControl):
-            self._attr_icon = "mdi:camera-timer"
             self._attr_device_class = SensorDeviceClass.TIMESTAMP
-
-    @property
-    def extra_state_attributes(self) -> Mapping[str, Any] | None:  # type: ignore[override]
-        """Attribute to identify the origin of the data used"""
-        if isinstance(self._control, SummedTimestampControl):
-            return {
-                "sources": [
-                    x.my_entity_ids
-                    for x in self._control.sensors
-                    if hasattr(x, "my_entity_ids")
-                ]
-            }
-        return None
 
     @property
     def native_value(  # type: ignore[override]
@@ -80,7 +59,23 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
 
         if self.coordinator.data is None:
             return None
-        return self._control.get_value(self.coordinator.data)
+        
+        value = self._control.get_value(self.coordinator.data)
+
+        # Patch for devices reporting 0 duration inappropriately (e.g. Bauknecht Dryers)
+        # 0 duration is technically valid for finished programs, but some devices report it
+        # continuously or incorrectly for "end_time" sensors.
+        if self._attr_device_class == SensorDeviceClass.DURATION and value == 0:
+            return None
+
+        return value
+
+    @property
+    def extra_state_attributes(self) -> Mapping[str, Any] | None:
+        """Return the state attributes."""
+        if isinstance(self._control, EnumControl):
+            return {"options": self._control.options}
+        return None
 
 
 async def async_setup_entry(
@@ -88,31 +83,18 @@ async def async_setup_entry(
 ) -> None:
     data = build_entry_data(entry)
     coordinator = hass.data[DOMAIN][entry.entry_id]
-    controls = generate_controls_from_config(entry.entry_id, data.contents.config)
-    _LOGGER.debug("Generated controls: %s", controls)
+    controls = generate_controls_from_config(data.contents)
     sensor_controls = [
         c
         for c in controls
         if isinstance(
-            c,
-            (
-                TimeControl,
-                EnumControl,
-                NumericControl,
-                DebugControl,
-                SummedTimestampControl,
-            ),
+            c, (TimeControl, EnumControl, NumericControl, DebugControl, SummedTimestampControl)
         )
     ]
-
-    _LOGGER.debug("Sensors: %s", [c.key for c in sensor_controls])
-
-    homewhiz_sensor_entities = [
-        HomeWhizSensorEntity(coordinator, control, entry.title, data)
-        for control in sensor_controls
-    ]
-    _LOGGER.debug(
-        "Entities: %s",
-        {entity.entity_key: entity for entity in homewhiz_sensor_entities},
+    _LOGGER.debug("Sensors: %s", sensor_controls)
+    async_add_entities(
+        [
+            HomeWhizSensorEntity(coordinator, control, entry.title, data)
+            for control in sensor_controls
+        ]
     )
-    async_add_entities(homewhiz_sensor_entities)
