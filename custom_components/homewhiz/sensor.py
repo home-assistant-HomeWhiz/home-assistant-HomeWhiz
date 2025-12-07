@@ -87,7 +87,14 @@ async def async_setup_entry(
         c
         for c in controls
         if isinstance(
-            c, (TimeControl, EnumControl, NumericControl, DebugControl, SummedTimestampControl)
+            c,
+            (
+                TimeControl,
+                EnumControl,
+                NumericControl,
+                DebugControl,
+                SummedTimestampControl,
+            ),
         )
     ]
     _LOGGER.debug("Sensors: %s", sensor_controls)
