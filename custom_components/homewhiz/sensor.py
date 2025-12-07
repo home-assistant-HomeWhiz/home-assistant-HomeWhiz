@@ -18,7 +18,7 @@ from .appliance_controls import (
     TimeControl,
     generate_controls_from_config,
 )
-from .config_flow import import EntryData
+from .config_flow import EntryData
 from .const import DOMAIN
 from .entity import HomeWhizEntity
 from .helper import build_entry_data
@@ -59,7 +59,6 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
 
         if self.coordinator.data is None:
             return None
-        
         value = self._control.get_value(self.coordinator.data)
 
         # Patch for devices reporting 0 duration inappropriately (e.g. Bauknecht Dryers)
