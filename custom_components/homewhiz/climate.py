@@ -47,7 +47,25 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
         )
         if self._control.swing.enabled:
             features |= ClimateEntityFeature.SWING_MODE
+        if self._control.preset_mode.enabled:
+            features |= ClimateEntityFeature.PRESET_MODE
         return features
+
+    @property
+    def preset_modes(self) -> list[str] | None:
+        return self._control.preset_mode.options
+
+    @property
+    def preset_mode(self) -> str | None:
+        if self.coordinator.data is None:
+            return None
+        return self._control.preset_mode.get_value(self.coordinator.data)
+
+    async def async_set_preset_mode(self, preset_mode: str) -> None:
+        _LOGGER.debug("Changing preset mode %s", preset_mode)
+        commands = self._control.preset_mode.set_value(preset_mode)
+        for command in commands:
+            await self.coordinator.send_command(command)
 
     @property
     def hvac_modes(self) -> list[HVACMode]:  # type: ignore[override]

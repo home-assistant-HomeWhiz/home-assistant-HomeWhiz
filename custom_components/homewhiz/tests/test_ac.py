@@ -4,7 +4,11 @@ from unittest import TestCase
 
 import pytest
 from dacite import from_dict
-from homeassistant.components.climate import SWING_OFF, HVACMode  # type: ignore[import]
+from homeassistant.components.climate import (  # type: ignore[import]
+    PRESET_NONE,
+    SWING_OFF,
+    HVACMode,
+)
 
 from custom_components.homewhiz.appliance_config import ApplianceConfiguration
 from custom_components.homewhiz.appliance_controls import (
@@ -56,6 +60,7 @@ def test_off(config: ApplianceConfiguration) -> None:
                 "air_conditioner_room_temperature": 28,
                 "air_conditioner_wind_strength": "wind_strength_low",
                 "hvac": HVACMode.OFF,
+                "preset": PRESET_NONE,
                 "swing": SWING_OFF,
             },
         },
@@ -74,6 +79,7 @@ def test_mode_auto(config: ApplianceConfiguration) -> None:
                 "air_conditioner_room_temperature": 26,
                 "air_conditioner_wind_strength": "wind_strength_auto",
                 "hvac": HVACMode.AUTO,
+                "preset": PRESET_NONE,
                 "swing": SWING_OFF,
             },
         },

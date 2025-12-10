@@ -8,6 +8,8 @@ from typing import Any, Generic, TypeVar
 
 from bidict import bidict
 from homeassistant.components.climate import (  # type: ignore[import]
+    PRESET_BOOST,
+    PRESET_NONE,
     SWING_BOTH,
     SWING_HORIZONTAL,
     SWING_OFF,
@@ -477,6 +479,37 @@ class HvacControl(Control):
         ] + [HVACMode.OFF]
 
 
+class PresetControl(Control):
+    key = "preset"
+
+    def __init__(self, jet_mode: WriteBooleanControl | None):
+        self.jet_mode = jet_mode
+        self.enabled = jet_mode is not None
+
+    @property
+    def options(self) -> list[str]:
+        if not self.enabled:
+            return [PRESET_NONE]
+        return [PRESET_NONE, PRESET_BOOST]
+
+    def get_value(self, data: bytearray) -> str | None:
+        if self.enabled:
+            assert self.jet_mode is not None
+            if self.jet_mode.get_value(data):
+                return PRESET_BOOST
+        return PRESET_NONE
+
+    def set_value(self, value: str) -> list[Command]:
+        if not self.enabled:
+            return []
+        assert self.jet_mode is not None
+        if value == PRESET_BOOST:
+            return [self.jet_mode.set_value(True)]
+        if value == PRESET_NONE:
+            return [self.jet_mode.set_value(False)]
+        return []
+
+
 class ClimateControl(Control):
     key = "ac"
 
@@ -487,18 +520,21 @@ class ClimateControl(Control):
         current_temperature: NumericControl,
         fan_mode: WriteEnumControl,
         swing: SwingControl,
+        preset_mode: PresetControl,
     ):
         self.hvac_mode = hvac_mode
         self.target_temperature = target_temperature
         self.current_temperature = current_temperature
         self.fan_mode = fan_mode
         self.swing = swing
+        self.preset_mode = preset_mode
         self._controls = [
             hvac_mode,
             target_temperature,
             current_temperature,
             fan_mode,
             swing,
+            preset_mode,
         ]
 
     def get_value(self, data: bytearray) -> dict[str, Any]:
@@ -828,6 +864,10 @@ def extract_ac_control(controls: list[Control]) -> list[Control]:
         assert horizontal_swing_control is None or isinstance(
             horizontal_swing_control, WriteEnumControl
         )
+        jet_mode_control = controls_dict.get("air_conditioner_jet_mode")
+        assert jet_mode_control is None or isinstance(
+            jet_mode_control, WriteBooleanControl
+        )
 
         climate = ClimateControl(
             hvac_mode=HvacControl(program, state),
@@ -835,14 +875,17 @@ def extract_ac_control(controls: list[Control]) -> list[Control]:
             target_temperature=target_temperature,
             fan_mode=fan_mode,
             swing=SwingControl(horizontal_swing_control, vertical_swing_control),
+            preset_mode=PresetControl(jet_mode_control),
         )
-        excluded_controls = [
+        excluded_controls: list[Control] = [
             program,
             state,
             current_temperature,
             target_temperature,
             fan_mode,
         ]
+        if jet_mode_control is not None:
+            excluded_controls.append(jet_mode_control)
         return [c for c in controls if c not in excluded_controls] + [climate]
     return controls
 
