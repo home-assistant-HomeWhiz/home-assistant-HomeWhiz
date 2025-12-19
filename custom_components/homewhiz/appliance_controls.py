@@ -852,6 +852,7 @@ def extract_ac_control(controls: list[Control]) -> list[Control]:
 controls: dict[str, list[Control]] = {}
 
 
+
 def generate_controls_from_config(
     key: str,
     config: ApplianceConfiguration,
@@ -859,12 +860,27 @@ def generate_controls_from_config(
     if key not in controls:
         state_control = build_control_from_state(config.deviceStates)
 
+        # Safely handle optional program/subPrograms
+        program_control = None
+        if config.program is not None:
+            program_control = build_control_from_program(config.program)
+
+        sub_program_controls: list[Control] = []
+        if config.subPrograms is not None:
+            sub_program_controls = build_controls_from_features(config.subPrograms)
+
+        custom_sub_program_controls: list[Control] = []
+        if config.customSubPrograms is not None:
+            custom_sub_program_controls = build_controls_from_features(
+                config.customSubPrograms
+            )
+
         possible_controls: list[Control | None] = [
             state_control,
-            build_control_from_program(config.program),
+            program_control,
             build_control_from_substate(config.deviceSubStates),
-            *build_controls_from_features(config.subPrograms),
-            *build_controls_from_features(config.customSubPrograms),
+            *sub_program_controls,
+            *custom_sub_program_controls,
             *build_controls_from_monitorings(config.monitorings),
             *build_controls_from_progress_variables(
                 config.progressVariables, state_control
@@ -880,6 +896,7 @@ def generate_controls_from_config(
             for control in possible_controls
             if control is not None
         ]
+
         controls[key] = extract_ac_control(tmp_controls)
 
     return controls[key]
