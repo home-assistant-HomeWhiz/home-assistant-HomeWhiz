@@ -8,11 +8,11 @@ from typing import Any, Generic, TypeVar
 
 from bidict import bidict
 from homeassistant.components.climate import (  # type: ignore[import]
-    HVACMode,
     SWING_BOTH,
     SWING_HORIZONTAL,
     SWING_OFF,
     SWING_VERTICAL,
+    HVACMode,
 )
 
 from custom_components.homewhiz.appliance_config import (
