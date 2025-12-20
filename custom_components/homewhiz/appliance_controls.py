@@ -8,11 +8,11 @@ from typing import Any, Generic, TypeVar
 
 from bidict import bidict
 from homeassistant.components.climate import (  # type: ignore[import]
+    HVACMode,
     SWING_BOTH,
     SWING_HORIZONTAL,
     SWING_OFF,
     SWING_VERTICAL,
-    HVACMode,
 )
 
 from custom_components.homewhiz.appliance_config import (
@@ -574,7 +574,6 @@ def build_write_control_from_feature(feature: ApplianceFeature) -> Control | Non
     )
 
 
-# --- Copilot-angepasst: program kann None sein ---
 def build_control_from_program(program: ApplianceProgram | None) -> Control | None:
     """Return a control for program or None if program is missing."""
     if program is None:
@@ -589,7 +588,6 @@ def build_control_from_program(program: ApplianceProgram | None) -> Control | No
         ),
         options=bidict(get_options_from_enum_options(program.values)),
     )
-# --- Ende build_control_from_program ---
 
 
 def build_control_from_substate(
@@ -745,7 +743,9 @@ def build_controls_from_warnings(warnings: ApplianceWarning | None) -> list[Cont
     ]
 
 
-def build_controls_from_features(settings: list[ApplianceFeature] | None) -> list[Control]:
+def build_controls_from_features(
+    settings: list[ApplianceFeature] | None,
+) -> list[Control]:
     if settings is None:
         return []
     return [
@@ -753,7 +753,6 @@ def build_controls_from_features(settings: list[ApplianceFeature] | None) -> lis
         for c in (build_write_control_from_feature(s) for s in settings)
         if c is not None
     ]
-
 
 
 def convert_to_bool_control_if_possible(control: Control) -> Control:
@@ -821,10 +820,11 @@ def extract_ac_control(controls: list[Control]) -> list[Control]:
     return controls
 
 
+# Only generate controls once to allow basic inter-Control communication
+# Use entry id as key to avoid issues when multiple homewhiz devices are used
 controls: dict[str, list[Control]] = {}
 
 
-# --- Copilot-angepasst: robuste Generate-Funktion ---
 def generate_controls_from_config(
     key: str,
     config: ApplianceConfiguration,
@@ -843,9 +843,7 @@ def generate_controls_from_config(
             )
         )
         monitorings_controls = list(
-            build_controls_from_monitorings(
-                getattr(config, "monitorings", None) or []
-            )
+            build_controls_from_monitorings(getattr(config, "monitorings", None) or [])
         )
 
         progress_controls = (
@@ -892,9 +890,10 @@ def generate_controls_from_config(
         ]
 
         _LOGGER.debug(
-            "generate_controls_from_config: key=%s -> %d controls", key, len(tmp_controls)
+            "generate_controls_from_config: key=%s -> %d controls",
+            key,
+            len(tmp_controls),
         )
         controls[key] = extract_ac_control(tmp_controls)
 
     return controls[key]
-# --- Ende generate_controls_from_config ---
