@@ -339,30 +339,31 @@ class ApplianceTeaMachineRecipe:
 
 @dataclass
 class ApplianceConfiguration:
-    program: ApplianceProgram
-    subPrograms: list[ApplianceFeature]
-    progressVariables: ApplianceProgress | None
-    deviceStates: ApplianceState | None
-    deviceSubStates: ApplianceSubState | None
-    ovenMeatProbeAccessory: ApplianceOvenMeatProbe | None
-    autoController: AutoController | None
-    commands: list[ApplianceFeature] | None
-    consumableSettings: ApplianceConsumableSettings | None
-    customSubPrograms: list[ApplianceFeature] | None
-    downloadCycleSettingsModel: ApplianceProgramDownloadSettings | None
-    clock: ApplianceClock | None
-    zones: ApplianceHobZones | None
-    monitorings: list[ApplianceFeature] | None
-    ovenClockWifiArrayIndexes: ApplianceClock | None
-    ovenDownloadedAutoBakeInformation: AutoBakeDownloadedFood | None
-    ovenRecipeInformation: ApplianceOvenRecipe | None
-    stepCooking: ApplianceOvenStepCooking | None
-    ovenTemperatureInfo: OvenTemperatureInfo | None
-    refrigeratorDefrostInformation: ApplianceRefrigeratorDefrost | None
-    remoteControl: ApplianceRemoteControl | None
-    screenSaver: ApplianceScreenSaver | None
-    settings: list[ApplianceFeature] | None
-    teaRecipeInformation: ApplianceTeaMachineRecipe | None
-    deviceWarningsExtra: ApplianceWarning | None
-    deviceWarnings: ApplianceWarning | None
-    warnings: ApplianceWarning | None
+    # UPDATED: All fields are now optional with default None to prevent dacite errors
+    program: ApplianceProgram | None = None
+    subPrograms: list[ApplianceFeature] | None = None
+    progressVariables: ApplianceProgress | None = None
+    deviceStates: ApplianceState | None = None
+    deviceSubStates: ApplianceSubState | None = None
+    ovenMeatProbeAccessory: ApplianceOvenMeatProbe | None = None
+    autoController: AutoController | None = None
+    commands: list[ApplianceFeature] | None = None
+    consumableSettings: ApplianceConsumableSettings | None = None
+    customSubPrograms: list[ApplianceFeature] | None = None
+    downloadCycleSettingsModel: ApplianceProgramDownloadSettings | None = None
+    clock: ApplianceClock | None = None
+    zones: ApplianceHobZones | None = None
+    monitorings: list[ApplianceFeature] | None = None
+    ovenClockWifiArrayIndexes: ApplianceClock | None = None
+    ovenDownloadedAutoBakeInformation: AutoBakeDownloadedFood | None = None
+    ovenRecipeInformation: ApplianceOvenRecipe | None = None
+    stepCooking: ApplianceOvenStepCooking | None = None
+    ovenTemperatureInfo: OvenTemperatureInfo | None = None
+    refrigeratorDefrostInformation: ApplianceRefrigeratorDefrost | None = None
+    remoteControl: ApplianceRemoteControl | None = None
+    screenSaver: ApplianceScreenSaver | None = None
+    settings: list[ApplianceFeature] | None = None
+    teaRecipeInformation: ApplianceTeaMachineRecipe | None = None
+    deviceWarningsExtra: ApplianceWarning | None = None
+    deviceWarnings: ApplianceWarning | None = None
+    warnings: ApplianceWarning | None = None

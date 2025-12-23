@@ -53,9 +53,7 @@ def to_friendly_name(name: str) -> str:
     # To filter out characters not supported by homeassistant
     name = name.replace("+", "plus")
     name = name.lower()
-    # https://stackoverflow.com/questions/15754587/keeping-only-certain-characters-in-a-string-using-python
     name = re.sub("[^a-z0-9-_]", "", name)
-    # "cannot start or end with a hyphen or underscore
     if name[-1] == "_":
         name = name[:-1]
     return name
@@ -66,6 +64,7 @@ class Control(ABC):
 
     key: str
 
+    @abstractmethod
     def get_value(self, data: bytearray) -> Any:
         pass
 
@@ -80,6 +79,7 @@ class Option(ABC):
     value: int
     name: str
 
+    @abstractmethod
     def get_value(self, data: bytearray) -> Any:
         pass
 
@@ -172,14 +172,7 @@ class TimeControl(Control):
 
 
 class StateAwareRemainingTimeControl(Control):
-    """Wraps a remaining time control to return 0 when device is off.
-
-    This control checks the device state before returning remaining time.
-    If the state is "device_state_off", it returns 0 regardless of the
-    underlying remaining time value. Otherwise, it delegates to the wrapped
-    remaining_control. This prevents stuck time displays when devices are
-    turned off with remaining time still stored in memory.
-    """
+    """Wraps a remaining time control to return 0 when device is off."""
 
     def __init__(
         self, key: str, remaining_control: Control, state_control: Control | None
@@ -189,7 +182,6 @@ class StateAwareRemainingTimeControl(Control):
         self.state_control = state_control
 
     def get_value(self, data: bytearray) -> int:
-        # If we have a state control, check if device is off
         if self.state_control is not None:
             state = self.state_control.get_value(data)
             if state == "device_state_off":
@@ -198,8 +190,6 @@ class StateAwareRemainingTimeControl(Control):
                     self.key,
                 )
                 return 0
-
-        # Return the actual remaining time
         return self.remaining_control.get_value(data)
 
 
@@ -208,7 +198,6 @@ class SummedTimestampControl(Control):
 
     def __init__(self, key: str, sensors: list[Control]):
         self.key = key
-        # Sensors used for timestamp calculation
         self.sensors = sensors
 
     def get_value(self, data: bytearray) -> datetime | None:
@@ -217,10 +206,7 @@ class SummedTimestampControl(Control):
             self.key,
             [sensor.key for sensor in self.sensors],
         )
-        # Calculate timestamps for delay_start_time and delay_end_time
-        # delay_start_time: Sensors are washer_delay and washer_remaining
-        # delay_end_time: Sensors are washer_delay
-        minute_delta = sum([sensor.get_value(data) for sensor in self.sensors])
+        minute_delta = sum(sensor.get_value(data) for sensor in self.sensors)
         if minute_delta < 1:
             _LOGGER.debug("Device Running or No Delay Active")
             return None
@@ -240,12 +226,10 @@ class BooleanControl(Control):
         pass
 
     def _get_cached_bool(self, current_bool: bool) -> bool:
-        """Cache the valid boolean value."""
         self._last_known_value = current_bool
         return current_bool
 
     def _get_fallback_value(self) -> bool:
-        """Return last known value if available, else False."""
         if self._last_known_value is not None:
             _LOGGER.debug(
                 "Using cached value for boolean control %s",
@@ -263,10 +247,8 @@ class BooleanCompareControl(BooleanControl):
 
     def get_value(self, data: bytearray) -> bool:
         if self.read_index < len(data):
-            # Data is present: evaluate and update cache
             current_bool = data[self.read_index] == self.compare_value
             return self._get_cached_bool(current_bool)
-        # Data missing: use fallback/cache
         return self._get_fallback_value()
 
 
@@ -278,10 +260,8 @@ class BooleanBitmaskControl(BooleanControl):
 
     def get_value(self, data: bytearray) -> bool:
         if self.read_index < len(data):
-            # Data is present: evaluate and update cache
             current_bool = data[self.read_index] & (1 << self.bit) != 0
             return self._get_cached_bool(current_bool)
-        # Data missing: use fallback/cache
         return self._get_fallback_value()
 
 
@@ -298,11 +278,9 @@ class WriteBooleanControl(BooleanControl):
 
     def get_value(self, data: bytearray) -> bool:
         if self.read_index < len(data):
-            # Data is present: evaluate using safe_get logic (clamp) and update cache
             byte = clamp(data[self.read_index])
             current_bool = byte == self.value_on
             return self._get_cached_bool(current_bool)
-        # Data missing: use fallback/cache
         return self._get_fallback_value()
 
     def set_value(self, value: bool) -> Command:
@@ -525,7 +503,6 @@ def get_options_from_feature(key: str, feature: ApplianceFeature) -> bidict[int,
     if feature.enumValues is not None:
         for option in feature.enumValues:
             friendly_name = to_friendly_name(option.strKey)
-            # Friendly names are not always unique
             if friendly_name in options.inverse:
                 friendly_name = f"{friendly_name}_{option.wifiArrayValue}"
             options[option.wifiArrayValue] = friendly_name
@@ -597,7 +574,10 @@ def build_write_control_from_feature(feature: ApplianceFeature) -> Control | Non
     )
 
 
-def build_control_from_program(program: ApplianceProgram) -> Control:
+def build_control_from_program(program: ApplianceProgram | None) -> Control | None:
+    """Return a control for program or None if program is missing."""
+    if program is None:
+        return None
     return WriteEnumControl(
         key=to_friendly_name(program.strKey),
         read_index=program.wifiArrayIndex,
@@ -657,7 +637,6 @@ def build_controls_from_progress_variables(  # noqa: C901
         return []
 
     results: list[Control] = []
-    # To keep track of keys for which a calculated control will be built
     delay_keys: dict[str, tuple[str, int]] = {}
 
     for field in fields(progress_variables):
@@ -666,8 +645,6 @@ def build_controls_from_progress_variables(  # noqa: C901
         )
         if feature is not None:
             feature_key = to_friendly_name(feature.strKey)
-            # Restrict this to washing machine only
-            # Replaces washer_delay feature with SummedTimestampControl feature
             if feature.isCalculatedToStart is not None and feature_key in [
                 "washer_delay"
             ]:
@@ -686,8 +663,6 @@ def build_controls_from_progress_variables(  # noqa: C901
                 )
             )
 
-    # Wrap remaining time controls with state awareness
-    # This ensures that when device is off, remaining time is reported as 0
     if state_control is not None:
         for i, control in enumerate(results):
             if control.key == "washer_remaining" and isinstance(control, TimeControl):
@@ -697,11 +672,9 @@ def build_controls_from_progress_variables(  # noqa: C901
                     state_control=state_control,
                 )
 
-    # Build calculated controls
     for calculation_key, feature_key_tuple in delay_keys.items():
         feature_key = feature_key_tuple[0]
 
-        # Key for the new remaining time control
         remaining_key: str = "_".join([*calculation_key.split("_")[:-1], "remaining"])
         _LOGGER.debug(
             "Detected time based calculated feature %s "
@@ -728,10 +701,8 @@ def build_controls_from_progress_variables(  # noqa: C901
             ],
         }
 
-        # Calculations based on end_time need both feature_key and remaining_key
         if len(timestamp_sensors[end_time_key]) <= 1:
             del timestamp_sensors[end_time_key]
-        # Remove sensor if no control is present
         if len(timestamp_sensors[start_time_key]) == 0:
             del timestamp_sensors[start_time_key]
 
@@ -774,19 +745,21 @@ def build_controls_from_warnings(warnings: ApplianceWarning | None) -> list[Cont
 
 def build_controls_from_features(
     settings: list[ApplianceFeature] | None,
-) -> list[Control | None]:
+) -> list[Control]:
     if settings is None:
         return []
-
-    return [build_write_control_from_feature(s) for s in settings]
+    return [
+        c
+        for c in (build_write_control_from_feature(s) for s in settings)
+        if c is not None
+    ]
 
 
 def convert_to_bool_control_if_possible(control: Control) -> Control:
     if not isinstance(control, WriteEnumControl):
         return control
     options = control.options.inverse
-    option_keys = list(options.keys())
-    option_keys.sort()
+    option_keys = sorted(options.keys())
     if (
         len(option_keys) == 2
         and option_keys[0].endswith("_off")
@@ -857,22 +830,57 @@ def generate_controls_from_config(
     config: ApplianceConfiguration,
 ) -> list[Control]:
     if key not in controls:
-        state_control = build_control_from_state(config.deviceStates)
+        state_control = build_control_from_state(getattr(config, "deviceStates", None))
+
+        program_control = build_control_from_program(getattr(config, "program", None))
+
+        sub_program_controls = list(
+            build_controls_from_features(getattr(config, "subPrograms", None) or [])
+        )
+        custom_sub_program_controls = list(
+            build_controls_from_features(
+                getattr(config, "customSubPrograms", None) or []
+            )
+        )
+        monitorings_controls = list(
+            build_controls_from_monitorings(getattr(config, "monitorings", None) or [])
+        )
+
+        progress_controls = (
+            build_controls_from_progress_variables(
+                getattr(config, "progressVariables", None), state_control
+            )
+            if getattr(config, "progressVariables", None) is not None
+            else []
+        )
+
+        remote_control = build_control_from_remote_control(
+            getattr(config, "remoteControl", None)
+        )
+
+        warnings_controls: list[Control] = []
+        if getattr(config, "deviceWarnings", None) is not None:
+            warnings_controls.extend(
+                build_controls_from_warnings(config.deviceWarnings)
+            )
+        if getattr(config, "warnings", None) is not None:
+            warnings_controls.extend(build_controls_from_warnings(config.warnings))
+
+        settings_controls = list(
+            build_controls_from_features(getattr(config, "settings", None) or [])
+        )
 
         possible_controls: list[Control | None] = [
             state_control,
-            build_control_from_program(config.program),
-            build_control_from_substate(config.deviceSubStates),
-            *build_controls_from_features(config.subPrograms),
-            *build_controls_from_features(config.customSubPrograms),
-            *build_controls_from_monitorings(config.monitorings),
-            *build_controls_from_progress_variables(
-                config.progressVariables, state_control
-            ),
-            build_control_from_remote_control(config.remoteControl),
-            *build_controls_from_warnings(config.deviceWarnings),
-            *build_controls_from_warnings(config.warnings),
-            *build_controls_from_features(config.settings),
+            program_control,
+            build_control_from_substate(getattr(config, "deviceSubStates", None)),
+            *sub_program_controls,
+            *custom_sub_program_controls,
+            *monitorings_controls,
+            *progress_controls,
+            remote_control,
+            *warnings_controls,
+            *settings_controls,
         ]
 
         tmp_controls = [
@@ -880,6 +888,12 @@ def generate_controls_from_config(
             for control in possible_controls
             if control is not None
         ]
+
+        _LOGGER.debug(
+            "generate_controls_from_config: key=%s -> %d controls",
+            key,
+            len(tmp_controls),
+        )
         controls[key] = extract_ac_control(tmp_controls)
 
     return controls[key]
