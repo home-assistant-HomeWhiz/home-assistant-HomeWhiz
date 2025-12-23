@@ -82,7 +82,7 @@ logger:
     custom_components.homewhiz: debug
 ```
 To retrieve logs, navigate in Home Assistant to: settings -> system -> logs and retrieve logs by e.g. pressing the download button below the logs.
-> :warning: Please review your logs and **delete personal and private information before posting** :warning:
+> ⚠️ Please review your logs and **delete personal and private information before posting** ⚠️
 
 ## Contributing to the project
 
