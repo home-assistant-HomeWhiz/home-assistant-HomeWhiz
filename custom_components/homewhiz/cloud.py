@@ -215,6 +215,19 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             await loop.run_in_executor(None, disconnect_future.result)
         await self.connect()
 
+    def _handle_mqtt_disconnect_error(self, e: Exception, action: str) -> None:
+        """Handle an MQTT not-connected RuntimeError consistently.
+
+        Logs a WARNING only when the connection state transitions from connected -> disconnected,
+        otherwise logs at DEBUG to avoid spamming logs during transient disconnects.
+        Marks the internal connection state as disconnected.
+        """
+        if self._is_connected:
+            _LOGGER.warning("%s failed: MQTT connection lost: %s", action, e)
+        else:
+            _LOGGER.debug("%s attempted while MQTT disconnected: %s", action, e)
+        self._is_connected = False
+
     def force_read(self, *args: Any) -> None:
         if self._connection is None or not self._is_connected:
             _LOGGER.warning("Cannot force read: MQTT connection not available")
@@ -238,10 +251,9 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             _LOGGER.debug("Force read result: %s", result)
         except RuntimeError as e:
             if "AWS_ERROR_MQTT_NOT_CONNECTED" in str(e):
-                _LOGGER.warning("Force read failed: MQTT connection lost (%s)", e)
-                self._is_connected = False
+                self._handle_mqtt_disconnect_error(e, "Force read")
             else:
-                _LOGGER.error("Force read failed with unexpected error: %s", e)
+                _LOGGER.exception("Force read failed with unexpected error")
                 raise
         except Exception as e:  # noqa: BLE001
             _LOGGER.error("Force read failed: %s", e)
@@ -261,10 +273,9 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             _LOGGER.debug("Get shadow result: %s", result)
         except RuntimeError as e:
             if "AWS_ERROR_MQTT_NOT_CONNECTED" in str(e):
-                _LOGGER.warning("Get shadow failed: MQTT connection lost (%s)", e)
-                self._is_connected = False
+                self._handle_mqtt_disconnect_error(e, "Get shadow")
             else:
-                _LOGGER.error("Get shadow failed with unexpected error: %s", e)
+                _LOGGER.exception("Get shadow failed with unexpected error")
                 raise
         except Exception as e:  # noqa: BLE001
             _LOGGER.error("Get shadow failed: %s", e)
@@ -297,10 +308,9 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             _LOGGER.debug("Command sent successfully")
         except RuntimeError as e:
             if "AWS_ERROR_MQTT_NOT_CONNECTED" in str(e):
-                _LOGGER.warning("Send command failed: MQTT connection lost (%s)", e)
-                self._is_connected = False
+                self._handle_mqtt_disconnect_error(e, "Send command")
             else:
-                _LOGGER.error("Send command failed with unexpected error: %s", e)
+                _LOGGER.exception("Send command failed with unexpected error")
                 raise
         except Exception as e:  # noqa: BLE001
             _LOGGER.error("Failed to send command: %s", e)
