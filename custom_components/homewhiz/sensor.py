@@ -14,6 +14,7 @@ from .appliance_controls import (
     DebugControl,
     EnumControl,
     NumericControl,
+    StateAwareRemainingTimeControl,
     SummedTimestampControl,
     TimeControl,
     generate_controls_from_config,
@@ -35,13 +36,14 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
         | EnumControl
         | NumericControl
         | DebugControl
-        | SummedTimestampControl,
+        | SummedTimestampControl
+        | StateAwareRemainingTimeControl,
         device_name: str,
         data: EntryData,
     ):
         super().__init__(coordinator, device_name, control.key, data)
         self._control = control
-        if isinstance(control, TimeControl):
+        if isinstance(control, (TimeControl, StateAwareRemainingTimeControl)):
             self._attr_icon = "mdi:clock-outline"
             self._attr_native_unit_of_measurement = "min"
             self._attr_device_class = SensorDeviceClass.DURATION
@@ -101,6 +103,7 @@ async def async_setup_entry(
                 NumericControl,
                 DebugControl,
                 SummedTimestampControl,
+                StateAwareRemainingTimeControl,
             ),
         )
     ]

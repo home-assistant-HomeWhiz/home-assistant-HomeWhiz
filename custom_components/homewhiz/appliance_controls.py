@@ -170,6 +170,12 @@ class TimeControl(Control):
         minutes = (
             safe_get(data, self.minute_index) if self.minute_index is not None else 0
         )
+        _LOGGER.debug(
+            "Getting time for %s from hour index %d and minute index %s",
+            self.key,
+            self.hour_index,
+            self.minute_index,
+        )
         return hours * 60 + minutes
 
 
@@ -177,21 +183,34 @@ class StateAwareRemainingTimeControl(Control):
     """Wraps a remaining time control to return 0 when device is off."""
 
     def __init__(
-        self, key: str, remaining_control: Control, state_control: Control | None
+        self, key: str, remaining_control: TimeControl, state_control: Control | None
     ):
         self.key = key
         self.remaining_control = remaining_control
         self.state_control = state_control
 
     def get_value(self, data: bytearray) -> int:
+        _LOGGER.debug(
+            "Getting state aware remaining time for %s, state_control: %s, value %s",
+            self.key,
+            self.state_control,
+            data,
+        )
         if self.state_control is not None:
             state = self.state_control.get_value(data)
+            _LOGGER.debug(
+                "Current state for state aware remaining time %s: %s", self.key, state
+            )
             if state == "device_state_off":
                 _LOGGER.debug(
                     "Device is off, returning 0 for remaining time %s",
                     self.key,
                 )
                 return 0
+        _LOGGER.debug(
+            "Device is not off, getting remaining time from underlying control %s",
+            self.key,
+        )
         return self.remaining_control.get_value(data)
 
 
@@ -702,6 +721,12 @@ def build_controls_from_progress_variables(  # noqa: C901
     if state_control is not None:
         for i, control in enumerate(results):
             if control.key == "washer_remaining" and isinstance(control, TimeControl):
+                _LOGGER.debug(
+                    "Wrapping control %s of type %s with state aware control - %s",
+                    control.key,
+                    type(control),
+                    i,
+                )
                 results[i] = StateAwareRemainingTimeControl(
                     key=control.key,
                     remaining_control=control,
