@@ -306,6 +306,10 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
                 None, functools.partial(publish.result, timeout=5.0)
             )
             _LOGGER.debug("Command sent successfully")
+            # Request updated state after command is sent to ensure Home Assistant
+            # reflects the change immediately, mimicking the HomeWhiz app behavior
+            await asyncio.sleep(0.5)
+            self.force_read()
         except RuntimeError as e:
             if "AWS_ERROR_MQTT_NOT_CONNECTED" in str(e):
                 self._handle_mqtt_disconnect_error(e, "Send command")
