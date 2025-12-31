@@ -145,9 +145,9 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
 
         if not self._update_timer_task:
             self._update_timer_task = async_track_time_interval(
-                hass=self.hass, 
-                action=lambda _: self.hass.add_job(self.force_read()), 
-                interval=timedelta(minutes=1)
+                hass=self.hass,
+                action=lambda _: self.hass.add_job(self.force_read()),
+                interval=timedelta(minutes=1),
             )
             # FIX: Await get_shadow properly
             await self.get_shadow()
@@ -317,7 +317,6 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
                 None, functools.partial(publish.result, timeout=5.0)
             )
             _LOGGER.debug("Command sent successfully")
-            
             await asyncio.sleep(0.5)
             await self.force_read()
 
