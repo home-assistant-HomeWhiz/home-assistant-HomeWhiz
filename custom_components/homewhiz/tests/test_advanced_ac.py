@@ -5,6 +5,8 @@ from unittest import TestCase
 import pytest
 from dacite import from_dict
 from homeassistant.components.climate import (  # type: ignore[import]
+    PRESET_BOOST,
+    PRESET_NONE,
     SWING_BOTH,
     SWING_HORIZONTAL,
     SWING_OFF,
@@ -50,6 +52,15 @@ data_swing_horizontal = bytearray(
     b"\x00\x00\x00\x00\x07\x01\x00\x00\x00\x00"
 )
 
+data_jet_mode_on = bytearray(
+    b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
+    b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
+    b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
+    b"\x00\x00\x00\x00\x04<\x06\x01d\x05"
+    b"\x1e\x00\x00\x14\n\x00\x00\x00\x00\x00"
+    b"\x00\x00\x00\x00\x07\x01\x00\x00\x00\x00"
+)
+
 
 @pytest.fixture
 def config() -> ApplianceConfiguration:
@@ -81,6 +92,7 @@ def test(config: ApplianceConfiguration) -> None:
                 "air_conditioner_wind_strength": "6",
                 "hvac": HVACMode.OFF,
                 "swing": SWING_BOTH,
+                "preset": PRESET_NONE,
             },
         },
     )
@@ -158,4 +170,36 @@ def test_swing_control(config: ApplianceConfiguration) -> None:
     test_case.assertListEqual(
         swing_control.set_value(SWING_VERTICAL, data_swing_horizontal),
         [Command(index=39, value=0), Command(index=38, value=100)],
+    )
+
+
+def test_preset_control(config: ApplianceConfiguration) -> None:
+    controls = generate_controls_from_config("ac_advanced_test_preset_control", config)
+    controls_map = {control.key: control for control in controls}
+    assert "ac" in controls_map
+    ac_control = controls_map["ac"]
+    assert isinstance(ac_control, ClimateControl)
+    preset_control = ac_control.preset_mode
+
+    test_case.assertTrue(preset_control.enabled)
+
+    # Options
+    test_case.assertListEqual(
+        preset_control.options,
+        [PRESET_NONE, PRESET_BOOST],
+    )
+
+    test_case.assertEqual(preset_control.get_value(data_swing_both), PRESET_NONE)
+    test_case.assertEqual(preset_control.get_value(data_jet_mode_on), PRESET_BOOST)
+
+    # Turn on
+    test_case.assertListEqual(
+        preset_control.set_value(PRESET_BOOST),
+        [Command(index=37, value=1)],
+    )
+
+    # Turn off
+    test_case.assertListEqual(
+        preset_control.set_value(PRESET_NONE),
+        [Command(index=37, value=0)],
     )
