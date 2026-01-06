@@ -816,6 +816,158 @@ def build_controls_from_features(
     ]
 
 
+def build_controls_from_hob_zones(  # noqa: C901
+    zones: Any,  # ApplianceHobZones | None
+) -> list[Control]:
+    """Generate controls for all hob zones based on zone configuration."""
+    if zones is None:
+        return []
+
+    controls: list[Control] = []
+    default_zone = zones.defaultZone
+    num_zones = zones.numberOfZones
+    segment_length = zones.eachZoneWifiArraySegmentLength
+    start_index = zones.firstZoneWifiArrayStartIndex
+
+    # Generate controls for each zone
+    for zone_idx in range(num_zones):
+        zone_offset = start_index + (zone_idx * segment_length)
+        zone_prefix = f"zone_{zone_idx + 1}"
+
+        # Zone program (manual/predefined)
+        if default_zone.program is not None:
+            program_read_idx = default_zone.program.wifiArrayIndex + zone_offset
+            program_write_idx = (
+                default_zone.program.wfaWriteIndex + zone_offset
+                if default_zone.program.wfaWriteIndex is not None
+                else program_read_idx
+            )
+            controls.append(
+                WriteEnumControl(
+                    key=f"{zone_prefix}_program",
+                    read_index=program_read_idx,
+                    write_index=program_write_idx,
+                    options=bidict(
+                        get_options_from_enum_options(default_zone.program.values)
+                    ),
+                )
+            )
+
+        # Zone sub-programs (predefined programs, heater level, flexi)
+        for sub_program in default_zone.subPrograms:
+            if sub_program.strKey is None:
+                continue
+            sub_key = to_friendly_name(sub_program.strKey)
+            read_idx = sub_program.wifiArrayIndex + zone_offset
+            write_idx = (
+                sub_program.wfaWriteIndex + zone_offset
+                if sub_program.wfaWriteIndex is not None
+                else read_idx
+            )
+
+            if sub_program.boundedValues and len(sub_program.boundedValues) == 1:
+                # Numeric control (e.g., heater level 0-16)
+                controls.append(
+                    WriteNumericControl(
+                        key=f"{zone_prefix}_{sub_key}",
+                        read_index=read_idx,
+                        write_index=write_idx,
+                        bounds=sub_program.boundedValues[0],
+                    )
+                )
+            elif sub_program.enumValues:
+                # Enum control (e.g., predefined programs, flexi)
+                controls.append(
+                    WriteEnumControl(
+                        key=f"{zone_prefix}_{sub_key}",
+                        read_index=read_idx,
+                        write_index=write_idx,
+                        options=bidict(
+                            get_options_from_enum_options(sub_program.enumValues)
+                        ),
+                    )
+                )
+
+        # Zone monitorings (zone extension status)
+        for monitoring in default_zone.monitorings:
+            if monitoring.strKey is None:
+                continue
+            mon_key = to_friendly_name(monitoring.strKey)
+            read_idx = monitoring.wifiArrayIndex + zone_offset
+
+            if monitoring.enumValues:
+                controls.append(
+                    EnumControl(
+                        key=f"{zone_prefix}_{mon_key}",
+                        read_index=read_idx,
+                        options=get_options_from_enum_options(monitoring.enumValues),
+                    )
+                )
+
+        # Zone cooking state
+        if default_zone.cookingStates is not None:
+            cook_read_idx = default_zone.cookingStates.wifiArrayReadIndex
+            if cook_read_idx is not None:
+                cook_read_idx += zone_offset
+                controls.append(
+                    EnumControl(
+                        key=f"{zone_prefix}_cooking_state",
+                        read_index=cook_read_idx,
+                        options=get_options_from_enum_options(
+                            default_zone.cookingStates.states
+                        ),
+                    )
+                )
+
+        # Zone duration timer
+        if (
+            default_zone.progressVariables is not None
+            and default_zone.progressVariables.duration is not None
+        ):
+            duration = default_zone.progressVariables.duration
+            hour_idx = duration.hour.wifiArrayIndex + zone_offset
+            minute_idx = duration.minute.wifiArrayIndex + zone_offset
+            controls.append(
+                TimeControl(
+                    key=f"{zone_prefix}_duration",
+                    hour_index=hour_idx,
+                    minute_index=minute_idx,
+                )
+            )
+
+        # Zone remaining/elapsed timer (if visible)
+        if (
+            default_zone.progressVariables is not None
+            and default_zone.progressVariables.remainingOrElapsed is not None
+            and default_zone.progressVariables.remainingOrElapsed.isVisible == 1
+        ):
+            remaining = default_zone.progressVariables.remainingOrElapsed
+            hour_idx = remaining.hour.wifiArrayIndex + zone_offset
+            minute_idx = remaining.minute.wifiArrayIndex + zone_offset
+            controls.append(
+                TimeControl(
+                    key=f"{zone_prefix}_remaining_or_elapsed",
+                    hour_index=hour_idx,
+                    minute_index=minute_idx,
+                )
+            )
+
+        # Zone warnings (hot, pan info)
+        if default_zone.deviceWarnings is not None:
+            warn_read_idx = default_zone.deviceWarnings.wifiArrayReadIndex + zone_offset
+            for warn in default_zone.deviceWarnings.warnings:
+                warn_key = to_friendly_name(warn.strKey)
+                controls.append(
+                    BooleanBitmaskControl(
+                        key=f"{zone_prefix}_{warn_key}",
+                        read_index=warn_read_idx,
+                        bit=warn.bitIndex,
+                    )
+                )
+
+    return controls
+
+
 def convert_to_bool_control_if_possible(control: Control) -> Control:
     if not isinstance(control, WriteEnumControl):
         return control
@@ -938,6 +1090,11 @@ def generate_controls_from_config(
             build_controls_from_features(getattr(config, "settings", None) or [])
         )
 
+        # Hob zones support
+        hob_zones_controls = build_controls_from_hob_zones(
+            getattr(config, "zones", None)
+        )
+
         possible_controls: list[Control | None] = [
             state_control,
             program_control,
@@ -949,6 +1106,7 @@ def generate_controls_from_config(
             remote_control,
             *warnings_controls,
             *settings_controls,
+            *hob_zones_controls,
         ]
 
         tmp_controls = [
