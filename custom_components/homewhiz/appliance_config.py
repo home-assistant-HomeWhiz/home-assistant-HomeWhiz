@@ -96,8 +96,8 @@ class ApplianceFeatureNotificationInfo:
 
 @dataclass
 class ApplianceStateOption(ApplianceFeatureEnumOption):
-    allowedTransitions: list[str]
     notificationInfo: ApplianceFeatureNotificationInfo
+    allowedTransitions: list[str] | None = None
 
 
 @dataclass
