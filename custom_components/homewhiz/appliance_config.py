@@ -200,7 +200,7 @@ class ApplianceWarning:
 @dataclass
 class HobDefaultZone:
     cookingStates: ApplianceState
-    monitorings: ApplianceFeature
+    monitorings: list[ApplianceFeature]
     program: ApplianceProgram
     progressVariables: ApplianceProgress
     zoneRecipeInfo: HobZoneRecipeInfo
