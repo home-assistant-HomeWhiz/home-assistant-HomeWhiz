@@ -159,6 +159,55 @@ class WriteNumericControl(NumericControl):
         return Command(index=self.write_index, value=int(value / self.bounds.factor))
 
 
+class HobZoneHeaterLevelControl(WriteNumericControl):
+    """Hob zone heater level control that auto-switches to MANUAL mode."""
+
+    def __init__(
+        self,
+        key: str,
+        read_index: int,
+        write_index: int,
+        bounds: ApplianceFeatureBoundedOption,
+        program_write_index: int,
+        manual_mode_value: int,
+    ):
+        super().__init__(key, read_index, write_index, bounds)
+        self.program_write_index = program_write_index
+        self.manual_mode_value = manual_mode_value
+
+    def set_value_multi(self, value: float) -> list[Command]:
+        """Set heater level with automatic mode switch to MANUAL."""
+        return [
+            Command(index=self.program_write_index, value=self.manual_mode_value),
+            Command(index=self.write_index, value=int(value / self.bounds.factor)),
+        ]
+
+
+class HobZonePredefinedProgramControl(WriteEnumControl):
+    """Hob zone predefined program control that auto-switches to PREDEFINED mode."""
+
+    def __init__(
+        self,
+        key: str,
+        read_index: int,
+        write_index: int,
+        options: bidict[int, str],
+        program_write_index: int,
+        predefined_mode_value: int,
+    ):
+        super().__init__(key, read_index, write_index, options)
+        self.program_write_index = program_write_index
+        self.predefined_mode_value = predefined_mode_value
+
+    def set_value_multi(self, value: str) -> list[Command]:
+        """Set predefined program with automatic mode switch to PREDEFINED."""
+        byte = self.options.inverse[value]
+        return [
+            Command(index=self.program_write_index, value=self.predefined_mode_value),
+            Command(index=self.write_index, value=byte),
+        ]
+
+
 class TimeControl(Control):
     def __init__(self, key: str, hour_index: int, minute_index: int | None):
         self.key = key
@@ -829,12 +878,25 @@ def build_controls_from_hob_zones(  # noqa: C901
     segment_length = zones.eachZoneWifiArraySegmentLength
     start_index = zones.firstZoneWifiArrayStartIndex
 
+    # Find mode values from program options
+    manual_mode_value = 1  # Default fallback
+    predefined_mode_value = 2  # Default fallback
+    if default_zone.program is not None:
+        for prog_option in default_zone.program.values:
+            if prog_option.strKey == "HOB_PROGRAM_MANUAL":
+                manual_mode_value = prog_option.wifiArrayValue
+            elif prog_option.strKey == "HOB_PROGRAM_PREDEFINED":
+                predefined_mode_value = prog_option.wifiArrayValue
+
     # Generate controls for each zone
     for zone_idx in range(num_zones):
-        zone_offset = start_index + (zone_idx * segment_length)
+        # FIX: zone_offset should NOT include start_index
+        # The wifiArrayIndex values in defaultZone are already absolute for Zone 1
+        zone_offset = zone_idx * segment_length
         zone_prefix = f"zone_{zone_idx + 1}"
 
         # Zone program (manual/predefined)
+        program_write_idx = None
         if default_zone.program is not None:
             program_read_idx = default_zone.program.wifiArrayIndex + zone_offset
             program_write_idx = (
@@ -853,12 +915,13 @@ def build_controls_from_hob_zones(  # noqa: C901
                 )
             )
 
-        # Zone sub-programs (predefined programs, heater level, flexi)
+        # Zone sub-programs with mode-aware controls
         for sub_program in default_zone.subPrograms:
             if sub_program.strKey is None:
                 continue
             sub_key = to_friendly_name(sub_program.strKey)
             read_idx = sub_program.wifiArrayIndex + zone_offset
+
             write_idx = (
                 sub_program.wfaWriteIndex + zone_offset
                 if sub_program.wfaWriteIndex is not None
@@ -866,27 +929,56 @@ def build_controls_from_hob_zones(  # noqa: C901
             )
 
             if sub_program.boundedValues and len(sub_program.boundedValues) == 1:
-                # Numeric control (e.g., heater level 0-16)
-                controls.append(
-                    WriteNumericControl(
-                        key=f"{zone_prefix}_{sub_key}",
-                        read_index=read_idx,
-                        write_index=write_idx,
-                        bounds=sub_program.boundedValues[0],
+                # Heater level control with auto mode-switch to MANUAL
+                if program_write_idx is not None:
+                    controls.append(
+                        HobZoneHeaterLevelControl(
+                            key=f"{zone_prefix}_{sub_key}",
+                            read_index=read_idx,
+                            write_index=write_idx,
+                            bounds=sub_program.boundedValues[0],
+                            program_write_index=program_write_idx,
+                            manual_mode_value=manual_mode_value,
+                        )
                     )
-                )
+                else:
+                    # Fallback to regular control if program index not available
+                    controls.append(
+                        WriteNumericControl(
+                            key=f"{zone_prefix}_{sub_key}",
+                            read_index=read_idx,
+                            write_index=write_idx,
+                            bounds=sub_program.boundedValues[0],
+                        )
+                    )
             elif sub_program.enumValues:
-                # Enum control (e.g., predefined programs, flexi)
-                controls.append(
-                    WriteEnumControl(
-                        key=f"{zone_prefix}_{sub_key}",
-                        read_index=read_idx,
-                        write_index=write_idx,
-                        options=bidict(
-                            get_options_from_enum_options(sub_program.enumValues)
-                        ),
+                # Check if this is the predefined program control
+                if sub_program.strKey == "HOB_PREDEFINED_PROGRAM" and program_write_idx is not None:
+                    # Predefined program control with auto mode-switch to PREDEFINED
+                    controls.append(
+                        HobZonePredefinedProgramControl(
+                            key=f"{zone_prefix}_{sub_key}",
+                            read_index=read_idx,
+                            write_index=write_idx,
+                            options=bidict(
+                                get_options_from_enum_options(sub_program.enumValues)
+                            ),
+                            program_write_index=program_write_idx,
+                            predefined_mode_value=predefined_mode_value,
+                        )
                     )
-                )
+                else:
+                    # Regular enum control (e.g., flexi)
+                    controls.append(
+                        WriteEnumControl(
+                            key=f"{zone_prefix}_{sub_key}",
+                            read_index=read_idx,
+                            write_index=write_idx,
+                            options=bidict(
+                                get_options_from_enum_options(sub_program.enumValues)
+                            ),
+                        )
+                    )
 
         # Zone monitorings (zone extension status)
         for monitoring in default_zone.monitorings:
