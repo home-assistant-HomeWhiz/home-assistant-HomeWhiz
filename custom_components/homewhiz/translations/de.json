@@ -34,12 +34,12 @@
         }
       },
       "dryer_program": {
-        "name": "Trockner:  Programm",
+        "name": "Trockner: Programm",
         "state": {
           "program_cottons": "Baumwolle",
           "program_cottons_eco": "Baumwolle Eco",
           "program_synthetics": "Synthetik",
-          "program_mix":  "Mix",
+          "program_mix": "Mix",
           "program_woolprotect": "Wolle",
           "program_night": "Nachtprogramm",
           "program_drying_rack_timer_programmes": "Trockengestell/Zeitprogramm",
@@ -50,23 +50,23 @@
           "program_xpress_super_short": "Express Kurz",
           "program_hygienic_drying": "Hygienisch Trocknen",
           "program_hygienic_refresh": "Hygiene Auffrischen",
-          "program_bedding":  "Bettwäsche",
+          "program_bedding": "Bettwäsche",
           "program_lingerie": "Feinwäsche",
           "program_towel": "Handtücher",
-          "program_fashion":  "Fashion"
+          "program_fashion": "Fashion"
         }
       },
       "dryer_drying_level": {
         "name": "Trockner: Trocknungsgrad",
-        "state":  {
+        "state": {
           "drying_level_iron_dry": "Bügeltrocken",
           "drying_level_cupboard_dry": "Schranktrocken",
-          "drying_level_plus":  "Schranktrocken+",
+          "drying_level_plus": "Schranktrocken+",
           "drying_level_extra_dry": "Extratrocken"
         }
       },
       "dryer_anti_creasing": {
-        "name":  "Trockner: Knitterschutz",
+        "name": "Trockner: Knitterschutz",
         "state": {
           "0": "Aus",
           "30": "30 min",
@@ -317,12 +317,12 @@
       "dishwasher_liquid_detergent_level": {
         "name": "Flüssigwaschmittel"
       },
-      "washer_dry":  {
+      "washer_dry": {
         "name": "Trocknung",
         "state": {
           "dry_off": "Aus",
           "dry_extra": "Extra trocken",
-          "dry_cabinet":  "Wardrobe Dry",
+          "dry_cabinet": "Wardrobe Dry",
           "dry_iron": "Bügeltrocken",
           "dry_10": "10 Min.",
           "dry_20": "20 Min.",
@@ -387,14 +387,14 @@
         }
       },
       "dryer_program": {
-        "name": "Trockner:  Programm",
+        "name": "Trockner: Programm",
         "state": {
           "program_cottons": "Baumwolle",
           "program_cottons_eco": "Baumwolle Eco",
           "program_synthetics": "Synthetik",
           "program_mix": "Mix",
           "program_woolprotect": "Wolle",
-          "program_night":  "Nachtprogramm",
+          "program_night": "Nachtprogramm",
           "program_drying_rack_timer_programmes": "Trockengestell/Zeitprogramm",
           "program_jeans": "Jeans",
           "program_outdoor_sports": "Outdoor/Sport",
@@ -406,7 +406,7 @@
           "program_bedding": "Bettwäsche",
           "program_lingerie": "Feinwäsche",
           "program_towel": "Handtücher",
-          "program_fashion":  "Fashion"
+          "program_fashion": "Fashion"
         }
       },
       "dryer_drying_level": {
@@ -414,12 +414,12 @@
         "state": {
           "drying_level_iron_dry": "Bügeltrocken",
           "drying_level_cupboard_dry": "Schranktrocken",
-          "drying_level_plus":  "Schranktrocken+",
+          "drying_level_plus": "Schranktrocken+",
           "drying_level_extra_dry": "Extratrocken"
         }
       },
       "dryer_anti_creasing": {
-        "name":  "Trockner: Knitterschutz",
+        "name": "Trockner: Knitterschutz",
         "state": {
           "0": "Aus",
           "30": "30 min",
@@ -431,7 +431,7 @@
         "name": "Trockner: Zeitwahl"
       },
       "dryer_lowtemp_mode": {
-        "name": "Trockner:  Niedrigtemperatur-Modus"
+        "name": "Trockner: Niedrigtemperatur-Modus"
       },
       "variable_delay": {
         "name": "Trockner: Startverzögerung"
@@ -439,7 +439,7 @@
       "variable_duration": {
         "name": "Trockner: Programmdauer"
       },
-      "variable_remaining":  {
+      "variable_remaining": {
         "name": "Trockner: Restzeit"
       },
       "setting_volume": {
@@ -553,7 +553,7 @@
           "dryer_message_hello": "Willkommen",
           "dryer_message_closing": "Wird ausgeschaltet",
           "dryer_message_program_started": "Programm gestartet",
-          "dryer_message_drying":  "Trocknen",
+          "dryer_message_drying": "Trocknen",
           "dryer_message_time_delay_active": "Startverzögerung aktiv",
           "dryer_message_paused": "Pausiert",
           "dryer_message_cooling": "Abkühlen",
@@ -674,7 +674,7 @@
       "settings_brightness": {
         "name": "Helligkeit"
       },
-	  "variable_delay": {
+      "variable_delay": {
         "name": "Endzeit des Programms"
       },
       "variable_oven_duration": {
@@ -877,28 +877,28 @@
         "name": "Fernbedienung"
       },
       "dryer_warning_door_is_open": {
-        "name": "Trockner:  Tür ist offen"
+        "name": "Trockner: Tür ist offen"
       },
       "dryer_warning_tankfull": {
-        "name":  "Trockner: Wassertank voll"
+        "name": "Trockner: Wassertank voll"
       },
       "dryer_warning_check_the_filter": {
         "name": "Trockner: Filter prüfen"
       },
       "dryer_warning_check_the_condenser_filter": {
-        "name":  "Trockner: Kondensatorfilter prüfen"
+        "name": "Trockner: Kondensatorfilter prüfen"
       },
       "dryer_warning_drum_empty": {
         "name": "Trockner: Trommel leer"
       },
       "dryer_message_child_lock": {
-        "name": "Trockner:  Kindersicherung aktiv"
+        "name": "Trockner: Kindersicherung aktiv"
       },
       "dryer_message_end_program": {
         "name": "Trockner: Programmende"
       },
       "dryer_message_anti_creasing": {
-        "name": "Trockner:  Knitterschutz aktiv"
+        "name": "Trockner: Knitterschutz aktiv"
       },
       "dryer_message_anti_creasing_finished": {
         "name": "Trockner: Knitterschutz beendet"
