@@ -674,14 +674,8 @@
       "settings_brightness": {
         "name": "Helligkeit"
       },
-      "variable_delay": {
-        "name": "Endzeit des Programms"
-      },
       "variable_oven_duration": {
         "name": "Gardauer"
-      },
-      "variable_remaining": {
-        "name": "Verbleibend"
       },
       "oven_warning_door_is_open": {
         "name": "Die Tür ist offen"
