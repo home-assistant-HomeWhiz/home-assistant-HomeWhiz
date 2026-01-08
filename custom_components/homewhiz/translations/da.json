@@ -236,12 +236,12 @@
           "dry_extra": "Ekstra tørt",
           "dry_cabinet": "Wardrobe Dry",
           "dry_iron": "Strygetørt",
-          "dry_10": "45 min.",
+          "dry_10": "10 min.",
           "dry_20": "20 min.",
           "dry_30": "30 min.",
           "dry_60": "60 min.",
           "dry_90": "90 min.",
-          "dry_120": "15 min.",
+          "dry_120": "120 min.",
           "dry_150": "150 min."
         }
       },
@@ -650,12 +650,12 @@
           "dry_extra": "Ekstra tørt",
           "dry_cabinet": "Wardrobe Dry",
           "dry_iron": "Strygetørt",
-          "dry_10": "45 min.",
+          "dry_10": "10 min.",
           "dry_20": "20 min.",
           "dry_30": "30 min.",
           "dry_60": "60 min.",
           "dry_90": "90 min.",
-          "dry_120": "15 min.",
+          "dry_120": "120 min.",
           "dry_150": "150 min."
         }
       },

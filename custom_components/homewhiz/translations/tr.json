@@ -255,12 +255,12 @@
           "dry_extra": "Ekstra Kuru",
           "dry_cabinet": "Wardrobe Dry",
           "dry_iron": "Ütü Kuruluğu",
-          "dry_10": "45 dk",
+          "dry_10": "10 dk",
           "dry_20": "20 dk",
           "dry_30": "30 dk",
           "dry_60": "60 dk",
           "dry_90": "90 dk",
-          "dry_120": "15 dk",
+          "dry_120": "120 dk",
           "dry_150": "150 dk"
         }
       },
@@ -669,12 +669,12 @@
           "dry_extra": "Ekstra Kuru",
           "dry_cabinet": "Wardrobe Dry",
           "dry_iron": "Ütü Kuruluğu",
-          "dry_10": "45 dk",
+          "dry_10": "10 dk",
           "dry_20": "20 dk",
           "dry_30": "30 dk",
           "dry_60": "60 dk",
           "dry_90": "90 dk",
-          "dry_120": "15 dk",
+          "dry_120": "120 dk",
           "dry_150": "150 dk"
         }
       },
