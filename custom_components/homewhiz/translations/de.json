@@ -645,6 +645,15 @@
       "washer_delay": {
         "name": "Endzeit des Programms"
       },
+      "delay_start": {
+        "name": "Startverzögerung"
+      },
+      "delay_start_time": {
+        "name": "Verzögerte Startzeit"
+      },
+      "delay_end_time": {
+        "name": "Verzögerte Endzeit"
+      },
       "washer_duration": {
         "name": "Dauer"
       },
@@ -1086,7 +1095,18 @@
     },
     "climate": {
       "ac": {
-        "name": "Notfall"
+        "name": "Notfall",
+        "state_attributes": {
+          "fan_mode": {
+            "name": "Lüftergeschwindigkeit",
+            "state": {
+              "wind_strength_auto": "Auto",
+              "wind_strength_low": "Niedrig",
+              "wind_strength_mid": "Mittel",
+              "wind_strength_high": "Hoch"
+            }
+          }
+        }
       }
     },
     "switch": {
