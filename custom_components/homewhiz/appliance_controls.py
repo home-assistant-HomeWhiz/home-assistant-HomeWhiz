@@ -366,7 +366,7 @@ class DisabledSwingAxisControl(Control):
     def get_value(self, data: bytearray) -> bool:
         return False
 
-    def set_value(self, value: bool, current_data: bytearray) -> list[Command]:
+    def set_value(self, _value: bool, _current_data: bytearray) -> list[Command]:
         return []
 
 
@@ -408,7 +408,7 @@ class SwingAxisControl(Control):
             else self._option_with_suffix("_off")
         )
         if selected_option is None:
-            raise Exception(f"Cannot change swing for axis {self.key}")
+            raise ValueError(f"Cannot change swing for axis {self.key}")
         return [self.parent.set_value(selected_option)]
 
 
@@ -514,7 +514,7 @@ class HvacControl(Control):
         if self._hvac_mode_raw(current_data) != hvac_mode:
             program_key = self._program_dict.inverse.get(hvac_mode)
             if program_key is None:
-                raise Exception(f"Unrecognized fan mode {hvac_mode}")
+                raise ValueError(f"Unrecognized fan mode {hvac_mode}")
             result.append(self.program.set_value(program_key))
         return result
 
@@ -607,7 +607,7 @@ def get_options_from_feature(key: str, feature: ApplianceFeature) -> bidict[int,
     if feature.enumValues is not None:
         for option in feature.enumValues:
             friendly_name = to_friendly_name(option.strKey)
-            if friendly_name in options.inverse:
+            if friendly_name in options.inverse.values():
                 friendly_name = f"{friendly_name}_{option.wifiArrayValue}"
             options[option.wifiArrayValue] = friendly_name
     if feature.boundedValues is not None:
@@ -872,7 +872,7 @@ def build_controls_from_hob_zones(  # noqa: C901
     if zones is None:
         return []
 
-    controls: list[Control] = []
+    zone_controls: list[Control] = []
     default_zone = zones.defaultZone
     num_zones = zones.numberOfZones
     segment_length = zones.eachZoneWifiArraySegmentLength
@@ -889,8 +889,7 @@ def build_controls_from_hob_zones(  # noqa: C901
 
     # Generate controls for each zone
     for zone_idx in range(num_zones):
-        # FIX: zone_offset should NOT include start_index
-        # The wifiArrayIndex values in defaultZone are already absolute for Zone 1
+        # Calculate zone offset: wifiArrayIndex values in defaultZone are already absolute for Zone 1
         zone_offset = zone_idx * segment_length
         zone_prefix = f"zone_{zone_idx + 1}"
 
@@ -903,7 +902,7 @@ def build_controls_from_hob_zones(  # noqa: C901
                 if default_zone.program.wfaWriteIndex is not None
                 else program_read_idx
             )
-            controls.append(
+            zone_controls.append(
                 WriteEnumControl(
                     key=f"{zone_prefix}_program",
                     read_index=program_read_idx,
@@ -930,7 +929,7 @@ def build_controls_from_hob_zones(  # noqa: C901
             if sub_program.boundedValues and len(sub_program.boundedValues) == 1:
                 # Heater level control with auto mode-switch to MANUAL
                 if program_write_idx is not None:
-                    controls.append(
+                    zone_controls.append(
                         HobZoneHeaterLevelControl(
                             key=f"{zone_prefix}_{sub_key}",
                             read_index=read_idx,
@@ -942,7 +941,7 @@ def build_controls_from_hob_zones(  # noqa: C901
                     )
                 else:
                     # Fallback to regular control if program index not available
-                    controls.append(
+                    zone_controls.append(
                         WriteNumericControl(
                             key=f"{zone_prefix}_{sub_key}",
                             read_index=read_idx,
@@ -957,7 +956,7 @@ def build_controls_from_hob_zones(  # noqa: C901
                     and program_write_idx is not None
                 ):
                     # Predefined program control with auto mode-switch to PREDEFINED
-                    controls.append(
+                    zone_controls.append(
                         HobZonePredefinedProgramControl(
                             key=f"{zone_prefix}_{sub_key}",
                             read_index=read_idx,
@@ -971,7 +970,7 @@ def build_controls_from_hob_zones(  # noqa: C901
                     )
                 else:
                     # Regular enum control (e.g., flexi)
-                    controls.append(
+                    zone_controls.append(
                         WriteEnumControl(
                             key=f"{zone_prefix}_{sub_key}",
                             read_index=read_idx,
@@ -990,7 +989,7 @@ def build_controls_from_hob_zones(  # noqa: C901
             read_idx = monitoring.wifiArrayIndex + zone_offset
 
             if monitoring.enumValues:
-                controls.append(
+                zone_controls.append(
                     EnumControl(
                         key=f"{zone_prefix}_{mon_key}",
                         read_index=read_idx,
@@ -1003,7 +1002,7 @@ def build_controls_from_hob_zones(  # noqa: C901
             cook_read_idx = default_zone.cookingStates.wifiArrayReadIndex
             if cook_read_idx is not None:
                 cook_read_idx += zone_offset
-                controls.append(
+                zone_controls.append(
                     EnumControl(
                         key=f"{zone_prefix}_cooking_state",
                         read_index=cook_read_idx,
@@ -1021,7 +1020,7 @@ def build_controls_from_hob_zones(  # noqa: C901
             duration = default_zone.progressVariables.duration
             hour_idx = duration.hour.wifiArrayIndex + zone_offset
             minute_idx = duration.minute.wifiArrayIndex + zone_offset
-            controls.append(
+            zone_controls.append(
                 TimeControl(
                     key=f"{zone_prefix}_duration",
                     hour_index=hour_idx,
@@ -1038,7 +1037,7 @@ def build_controls_from_hob_zones(  # noqa: C901
             remaining = default_zone.progressVariables.remainingOrElapsed
             hour_idx = remaining.hour.wifiArrayIndex + zone_offset
             minute_idx = remaining.minute.wifiArrayIndex + zone_offset
-            controls.append(
+            zone_controls.append(
                 TimeControl(
                     key=f"{zone_prefix}_remaining_or_elapsed",
                     hour_index=hour_idx,
@@ -1051,7 +1050,7 @@ def build_controls_from_hob_zones(  # noqa: C901
             warn_read_idx = default_zone.deviceWarnings.wifiArrayReadIndex + zone_offset
             for warn in default_zone.deviceWarnings.warnings:
                 warn_key = to_friendly_name(warn.strKey)
-                controls.append(
+                zone_controls.append(
                     BooleanBitmaskControl(
                         key=f"{zone_prefix}_{warn_key}",
                         read_index=warn_read_idx,
@@ -1059,7 +1058,7 @@ def build_controls_from_hob_zones(  # noqa: C901
                     )
                 )
 
-    return controls
+    return zone_controls
 
 
 def convert_to_bool_control_if_possible(control: Control) -> Control:
@@ -1082,8 +1081,8 @@ def convert_to_bool_control_if_possible(control: Control) -> Control:
     return control
 
 
-def extract_ac_control(controls: list[Control]) -> list[Control]:
-    controls_dict = {control.key: control for control in controls}
+def extract_ac_control(control_list: list[Control]) -> list[Control]:
+    controls_dict = {control.key: control for control in control_list}
     keys = controls_dict.keys()
     if "air_conditioner_program" in keys:
         state = controls_dict["state"]
@@ -1130,8 +1129,8 @@ def extract_ac_control(controls: list[Control]) -> list[Control]:
         ]
         if jet_mode_control is not None:
             excluded_controls.append(jet_mode_control)
-        return [c for c in controls if c not in excluded_controls] + [climate]
-    return controls
+        return [c for c in control_list if c not in excluded_controls] + [climate]
+    return control_list
 
 
 # Only generate controls once to allow basic inter-Control communication
