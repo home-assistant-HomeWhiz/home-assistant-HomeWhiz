@@ -246,6 +246,48 @@
       "oven_warning_error": {
         "name": "Beim Produkt ist ein unerwarteter Fehler aufgetreten. Bitte überprüfen Sie die Bedienungsanleitung."
       },
+      "settings_hob2hood": {
+        "name": "HobToHood Einstellung"
+      },
+      "settings_keylocked": {
+        "name": "Tastensperre"
+      },
+      "zone_1_program": {
+        "name": "Zone 1 Programm"
+      },
+      "zone_1_hob_predefined_program": {
+        "name": "Zone 1 Vordefiniertes Programm"
+      },
+      "zone_1_hob_heater_level": {
+        "name": "Zone 1 Heizstufe"
+      },
+      "zone_2_program": {
+        "name": "Zone 2 Programm"
+      },
+      "zone_2_hob_predefined_program": {
+        "name": "Zone 2 Vordefiniertes Programm"
+      },
+      "zone_2_hob_heater_level": {
+        "name": "Zone 2 Heizstufe"
+      },
+      "zone_3_program": {
+        "name": "Zone 3 Programm"
+      },
+      "zone_3_hob_predefined_program": {
+        "name": "Zone 3 Vordefiniertes Programm"
+      },
+      "zone_3_hob_heater_level": {
+        "name": "Zone 3 Heizstufe"
+      },
+      "zone_4_program": {
+        "name": "Zone 4 Programm"
+      },
+      "zone_4_hob_predefined_program": {
+        "name": "Zone 4 Vordefiniertes Programm"
+      },
+      "zone_4_hob_heater_level": {
+        "name": "Zone 4 Heizstufe"
+      },
       "program": {
         "name": "Programm",
         "state": {
@@ -692,6 +734,87 @@
       "oven_skip_preheating": {
         "name": "Überspringen >"
       },
+      "monitoring_hob2hood": {
+        "name": "HobToHood Status"
+      },
+      "settings_hob2hood": {
+        "name": "HobToHood Einstellung"
+      },
+      "settings_keylocked": {
+        "name": "Tastensperre"
+      },
+      "zone_1_program": {
+        "name": "Zone 1 Programm"
+      },
+      "zone_1_hob_predefined_program": {
+        "name": "Zone 1 Vordefiniertes Programm"
+      },
+      "zone_1_hob_heater_level": {
+        "name": "Zone 1 Heizstufe"
+      },
+      "zone_1_zone_extended": {
+        "name": "Zone 1 Erweiterung"
+      },
+      "zone_1_cooking_state": {
+        "name": "Zone 1 Kochzustand"
+      },
+      "zone_1_duration": {
+        "name": "Zone 1 Dauer"
+      },
+      "zone_2_program": {
+        "name": "Zone 2 Programm"
+      },
+      "zone_2_hob_predefined_program": {
+        "name": "Zone 2 Vordefiniertes Programm"
+      },
+      "zone_2_hob_heater_level": {
+        "name": "Zone 2 Heizstufe"
+      },
+      "zone_2_zone_extended": {
+        "name": "Zone 2 Erweiterung"
+      },
+      "zone_2_cooking_state": {
+        "name": "Zone 2 Kochzustand"
+      },
+      "zone_2_duration": {
+        "name": "Zone 2 Dauer"
+      },
+      "zone_3_program": {
+        "name": "Zone 3 Programm"
+      },
+      "zone_3_hob_predefined_program": {
+        "name": "Zone 3 Vordefiniertes Programm"
+      },
+      "zone_3_hob_heater_level": {
+        "name": "Zone 3 Heizstufe"
+      },
+      "zone_3_zone_extended": {
+        "name": "Zone 3 Erweiterung"
+      },
+      "zone_3_cooking_state": {
+        "name": "Zone 3 Kochzustand"
+      },
+      "zone_3_duration": {
+        "name": "Zone 3 Dauer"
+      },
+      "zone_4_program": {
+        "name": "Zone 4 Programm"
+      },
+      "zone_4_hob_predefined_program": {
+        "name": "Zone 4 Vordefiniertes Programm"
+      },
+      "zone_4_hob_heater_level": {
+        "name": "Zone 4 Heizstufe"
+      },
+      "zone_4_zone_extended": {
+        "name": "Zone 4 Erweiterung"
+      },
+      "zone_4_cooking_state": {
+        "name": "Zone 4 Kochzustand"
+      },
+      "zone_4_duration": {
+        "name": "Zone 4 Dauer"
+      },
       "program": {
         "name": "Programm",
         "state": {
@@ -915,6 +1038,30 @@
       "oven_warning_error": {
         "name": "Beim Produkt ist ein unerwarteter Fehler aufgetreten. Bitte überprüfen Sie die Bedienungsanleitung."
       },
+      "zone_1_hob_hot": {
+        "name": "Zone 1 Heiße Oberfläche"
+      },
+      "zone_1_hob_pan_info": {
+        "name": "Zone 1 Topferkennung"
+      },
+      "zone_2_hob_hot": {
+        "name": "Zone 2 Heiße Oberfläche"
+      },
+      "zone_2_hob_pan_info": {
+        "name": "Zone 2 Topferkennung"
+      },
+      "zone_3_hob_hot": {
+        "name": "Zone 3 Heiße Oberfläche"
+      },
+      "zone_3_hob_pan_info": {
+        "name": "Zone 3 Topferkennung"
+      },
+      "zone_4_hob_hot": {
+        "name": "Zone 4 Heiße Oberfläche"
+      },
+      "zone_4_hob_pan_info": {
+        "name": "Zone 4 Topferkennung"
+      },
       "dishwasher_warning_no_rinse_aid": {
         "name": "Kein Klarspüler"
       },
@@ -984,6 +1131,18 @@
       },
       "dishwasher_fastplus": {
         "name": "Geschirrspüler fastplus"
+      },
+      "zone_1_hob_flexi": {
+        "name": "Zone 1 FlexiZone"
+      },
+      "zone_2_hob_flexi": {
+        "name": "Zone 2 FlexiZone"
+      },
+      "zone_3_hob_flexi": {
+        "name": "Zone 3 FlexiZone"
+      },
+      "zone_4_hob_flexi": {
+        "name": "Zone 4 FlexiZone"
       },
       "dishwasher_steamgloss": {
         "name": "Steamgloss"
