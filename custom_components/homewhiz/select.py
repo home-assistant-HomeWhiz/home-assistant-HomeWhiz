@@ -71,7 +71,7 @@ class HomeWhizSelectEntity(HomeWhizEntity, SelectEntity):
                 "Hob Heater Level %s: Sending %d commands: %s",
                 self._original_control.key,
                 len(commands),
-                [(c.index, c.value) for c in commands]
+                [(c.index, c.value) for c in commands],
             )
             for command in commands:
                 await self.coordinator.send_command(command)
@@ -81,7 +81,7 @@ class HomeWhizSelectEntity(HomeWhizEntity, SelectEntity):
                 "Hob Predefined Program %s: Sending %d commands: %s",
                 self._original_control.key,
                 len(commands),
-                [(c.index, c.value) for c in commands]
+                [(c.index, c.value) for c in commands],
             )
             for command in commands:
                 await self.coordinator.send_command(command)

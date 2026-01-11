@@ -876,7 +876,6 @@ def build_controls_from_hob_zones(  # noqa: C901
     default_zone = zones.defaultZone
     num_zones = zones.numberOfZones
     segment_length = zones.eachZoneWifiArraySegmentLength
-    start_index = zones.firstZoneWifiArrayStartIndex
 
     # Find mode values from program options
     manual_mode_value = 1  # Default fallback
@@ -953,7 +952,10 @@ def build_controls_from_hob_zones(  # noqa: C901
                     )
             elif sub_program.enumValues:
                 # Check if this is the predefined program control
-                if sub_program.strKey == "HOB_PREDEFINED_PROGRAM" and program_write_idx is not None:
+                if (
+                    sub_program.strKey == "HOB_PREDEFINED_PROGRAM"
+                    and program_write_idx is not None
+                ):
                     # Predefined program control with auto mode-switch to PREDEFINED
                     controls.append(
                         HobZonePredefinedProgramControl(
