@@ -699,21 +699,6 @@
       "monitoring_hob2hood": {
         "name": "HobToHood Status"
       },
-      "settings_hob2hood": {
-        "name": "HobToHood Setting"
-      },
-      "settings_keylocked": {
-        "name": "Key Lock"
-      },
-      "zone_1_program": {
-        "name": "Zone 1 Program"
-      },
-      "zone_1_hob_predefined_program": {
-        "name": "Zone 1 Predefined Program"
-      },
-      "zone_1_hob_heater_level": {
-        "name": "Zone 1 Heater Level"
-      },
       "zone_1_zone_extended": {
         "name": "Zone 1 Extension"
       },
@@ -722,15 +707,6 @@
       },
       "zone_1_duration": {
         "name": "Zone 1 Duration"
-      },
-      "zone_2_program": {
-        "name": "Zone 2 Program"
-      },
-      "zone_2_hob_predefined_program": {
-        "name": "Zone 2 Predefined Program"
-      },
-      "zone_2_hob_heater_level": {
-        "name": "Zone 2 Heater Level"
       },
       "zone_2_zone_extended": {
         "name": "Zone 2 Extension"
@@ -741,15 +717,6 @@
       "zone_2_duration": {
         "name": "Zone 2 Duration"
       },
-      "zone_3_program": {
-        "name": "Zone 3 Program"
-      },
-      "zone_3_hob_predefined_program": {
-        "name": "Zone 3 Predefined Program"
-      },
-      "zone_3_hob_heater_level": {
-        "name": "Zone 3 Heater Level"
-      },
       "zone_3_zone_extended": {
         "name": "Zone 3 Extension"
       },
@@ -758,15 +725,6 @@
       },
       "zone_3_duration": {
         "name": "Zone 3 Duration"
-      },
-      "zone_4_program": {
-        "name": "Zone 4 Program"
-      },
-      "zone_4_hob_predefined_program": {
-        "name": "Zone 4 Predefined Program"
-      },
-      "zone_4_hob_heater_level": {
-        "name": "Zone 4 Heater Level"
       },
       "zone_4_zone_extended": {
         "name": "Zone 4 Extension"
