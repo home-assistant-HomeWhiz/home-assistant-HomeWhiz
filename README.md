@@ -50,6 +50,7 @@ Please note that the constant internet connection is required.
 | Dishwasher       | :heavy_check_mark: |                                                    |
 | Air conditioner  | :heavy_check_mark: |                                                    |
 | Extraction fan   | :heavy_check_mark: |                                                    |
+| Hob              | :heavy_check_mark: | Beko 4-zone induction hob                          |
 | Oven             | :question: :x:     | Not tested                                         |
 
 If you have other device types not listed yet, please let us know.
