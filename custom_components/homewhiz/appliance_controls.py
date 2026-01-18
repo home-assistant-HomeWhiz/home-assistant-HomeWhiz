@@ -366,7 +366,7 @@ class DisabledSwingAxisControl(Control):
     def get_value(self, data: bytearray) -> bool:
         return False
 
-    def set_value(self, _value: bool, _current_data: bytearray) -> list[Command]:
+    def set_value(self, _value: bool, current_data: bytearray) -> list[Command]:
         return []
 
 
@@ -607,7 +607,7 @@ def get_options_from_feature(key: str, feature: ApplianceFeature) -> bidict[int,
     if feature.enumValues is not None:
         for option in feature.enumValues:
             friendly_name = to_friendly_name(option.strKey)
-            if friendly_name in options.inverse.values():
+            if friendly_name in options.inverse:
                 friendly_name = f"{friendly_name}_{option.wifiArrayValue}"
             options[option.wifiArrayValue] = friendly_name
     if feature.boundedValues is not None:
