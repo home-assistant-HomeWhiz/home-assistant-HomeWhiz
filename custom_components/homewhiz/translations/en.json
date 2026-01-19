@@ -258,6 +258,48 @@
       "dishwasher_liquid_detergent_low": {
         "name": "Liquid Detergent Low"
       },
+      "settings_hob2hood": {
+        "name": "HobToHood Setting"
+      },
+      "settings_keylocked": {
+        "name": "Key Lock"
+      },
+      "zone_1_program": {
+        "name": "Zone 1 Program"
+      },
+      "zone_1_hob_predefined_program": {
+        "name": "Zone 1 Predefined Program"
+      },
+      "zone_1_hob_heater_level": {
+        "name": "Zone 1 Heater Level"
+      },
+      "zone_2_program": {
+        "name": "Zone 2 Program"
+      },
+      "zone_2_hob_predefined_program": {
+        "name": "Zone 2 Predefined Program"
+      },
+      "zone_2_hob_heater_level": {
+        "name": "Zone 2 Heater Level"
+      },
+      "zone_3_program": {
+        "name": "Zone 3 Program"
+      },
+      "zone_3_hob_predefined_program": {
+        "name": "Zone 3 Predefined Program"
+      },
+      "zone_3_hob_heater_level": {
+        "name": "Zone 3 Heater Level"
+      },
+      "zone_4_program": {
+        "name": "Zone 4 Program"
+      },
+      "zone_4_hob_predefined_program": {
+        "name": "Zone 4 Predefined Program"
+      },
+      "zone_4_hob_heater_level": {
+        "name": "Zone 4 Heater Level"
+      },
       "dishwasher_program": {
         "name": "Programme",
         "state": {
@@ -284,7 +326,7 @@
           "dry_extra": "Extra Dry",
           "dry_cabinet": "Wardrobe Dry",
           "dry_iron": "Iron Dry",
-          "dry_10": "45 Min",
+          "dry_10": "10 Min",
           "dry_20": "20 Min",
           "dry_30": "30 Min",
           "dry_60": "60 Min",
@@ -654,6 +696,45 @@
       "dishwasher_liquid_detergent_low": {
         "name": "Liquid Detergent Low"
       },
+      "monitoring_hob2hood": {
+        "name": "HobToHood Status"
+      },
+      "zone_1_zone_extended": {
+        "name": "Zone 1 Extension"
+      },
+      "zone_1_cooking_state": {
+        "name": "Zone 1 Cooking State"
+      },
+      "zone_1_duration": {
+        "name": "Zone 1 Duration"
+      },
+      "zone_2_zone_extended": {
+        "name": "Zone 2 Extension"
+      },
+      "zone_2_cooking_state": {
+        "name": "Zone 2 Cooking State"
+      },
+      "zone_2_duration": {
+        "name": "Zone 2 Duration"
+      },
+      "zone_3_zone_extended": {
+        "name": "Zone 3 Extension"
+      },
+      "zone_3_cooking_state": {
+        "name": "Zone 3 Cooking State"
+      },
+      "zone_3_duration": {
+        "name": "Zone 3 Duration"
+      },
+      "zone_4_zone_extended": {
+        "name": "Zone 4 Extension"
+      },
+      "zone_4_cooking_state": {
+        "name": "Zone 4 Cooking State"
+      },
+      "zone_4_duration": {
+        "name": "Zone 4 Duration"
+      },
       "dishwasher_traywash": {
         "name": "Tray Wash"
       },
@@ -707,12 +788,12 @@
           "dry_extra": "Extra Dry",
           "dry_cabinet": "Wardrobe Dry",
           "dry_iron": "Iron Dry",
-          "dry_10": "45 Min",
+          "dry_10": "10 Min",
           "dry_20": "20 Min",
           "dry_30": "30 Min",
           "dry_60": "60 Min",
           "dry_90": "90 Min",
-          "dry_120": "15 Min",
+          "dry_120": "120 Min",
           "dry_150": "150 Min"
         }
       },
@@ -809,6 +890,30 @@
       },
       "dishwasher_liquid_detergent_low": {
         "name": "Liquid Detergent Low"
+      },
+      "zone_1_hob_hot": {
+        "name": "Zone 1 Hot Surface"
+      },
+      "zone_1_hob_pan_info": {
+        "name": "Zone 1 Pan Detection"
+      },
+      "zone_2_hob_hot": {
+        "name": "Zone 2 Hot Surface"
+      },
+      "zone_2_hob_pan_info": {
+        "name": "Zone 2 Pan Detection"
+      },
+      "zone_3_hob_hot": {
+        "name": "Zone 3 Hot Surface"
+      },
+      "zone_3_hob_pan_info": {
+        "name": "Zone 3 Pan Detection"
+      },
+      "zone_4_hob_hot": {
+        "name": "Zone 4 Hot Surface"
+      },
+      "zone_4_hob_pan_info": {
+        "name": "Zone 4 Pan Detection"
       }
     },
     "climate": {
@@ -866,6 +971,18 @@
       },
       "dishwasher_fastplus": {
         "name": "Dishwasher fastplus"
+      },
+      "zone_1_hob_flexi": {
+        "name": "Zone 1 FlexiZone"
+      },
+      "zone_2_hob_flexi": {
+        "name": "Zone 2 FlexiZone"
+      },
+      "zone_3_hob_flexi": {
+        "name": "Zone 3 FlexiZone"
+      },
+      "zone_4_hob_flexi": {
+        "name": "Zone 4 FlexiZone"
       },
       "dishwasher_steamgloss": {
         "name": "Steamgloss"

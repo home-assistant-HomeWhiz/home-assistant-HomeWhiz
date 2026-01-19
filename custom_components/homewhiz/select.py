@@ -9,6 +9,8 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .appliance_controls import (
+    HobZoneHeaterLevelControl,
+    HobZonePredefinedProgramControl,
     WriteEnumControl,
     WriteNumericControl,
     generate_controls_from_config,
@@ -33,6 +35,7 @@ class NumericControlAsEnum(WriteEnumControl):
                 numeric_control.key, numeric_control.bounds
             ),
         )
+        self._original_control = numeric_control
 
 
 class HomeWhizSelectEntity(HomeWhizEntity, SelectEntity):
@@ -44,6 +47,7 @@ class HomeWhizSelectEntity(HomeWhizEntity, SelectEntity):
         data: EntryData,
     ):
         super().__init__(coordinator, device_name, control.key, data)
+        self._original_control = control
         self._control = (
             NumericControlAsEnum(control)
             if isinstance(control, WriteNumericControl)
@@ -60,7 +64,29 @@ class HomeWhizSelectEntity(HomeWhizEntity, SelectEntity):
         return self._control.get_value(self.coordinator.data)
 
     async def async_select_option(self, option: str) -> None:
-        await self.coordinator.send_command(self._control.set_value(option))
+        if isinstance(self._original_control, HobZoneHeaterLevelControl):
+            numeric_value = float(self._control.options.inverse[option])
+            commands = self._original_control.set_value_multi(numeric_value)
+            _LOGGER.debug(
+                "Hob Heater Level %s: Sending %d commands: %s",
+                self._original_control.key,
+                len(commands),
+                [(c.index, c.value) for c in commands],
+            )
+            for command in commands:
+                await self.coordinator.send_command(command)
+        elif isinstance(self._original_control, HobZonePredefinedProgramControl):
+            commands = self._original_control.set_value_multi(option)
+            _LOGGER.debug(
+                "Hob Predefined Program %s: Sending %d commands: %s",
+                self._original_control.key,
+                len(commands),
+                [(c.index, c.value) for c in commands],
+            )
+            for command in commands:
+                await self.coordinator.send_command(command)
+        else:
+            await self.coordinator.send_command(self._control.set_value(option))
 
 
 async def async_setup_entry(

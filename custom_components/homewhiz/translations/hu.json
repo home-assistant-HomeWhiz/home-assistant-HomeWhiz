@@ -280,12 +280,12 @@
           "dry_extra": "Extra száraz",
           "dry_cabinet": "Gardrób száraz",
           "dry_iron": "Vasalás száraz",
-          "dry_10": "45 perc",
+          "dry_10": "10 perc",
           "dry_20": "20 perc",
           "dry_30": "30 perc",
           "dry_60": "60 perc",
           "dry_90": "90 perc",
-          "dry_120": "15 perc",
+          "dry_120": "120 perc",
           "dry_150": "150 perc"
         }
       },
@@ -692,12 +692,12 @@
           "dry_extra": "Extra száraz",
           "dry_cabinet": "Gardrób száraz",
           "dry_iron": "Vasalás száraz",
-          "dry_10": "45 perc",
+          "dry_10": "10 perc",
           "dry_20": "20 perc",
           "dry_30": "30 perc",
           "dry_60": "60 perc",
           "dry_90": "90 perc",
-          "dry_120": "15 perc",
+          "dry_120": "120 perc",
           "dry_150": "150 perc"
         }
       },

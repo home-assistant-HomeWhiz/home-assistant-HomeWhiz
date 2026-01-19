@@ -96,8 +96,8 @@ class ApplianceFeatureNotificationInfo:
 
 @dataclass
 class ApplianceStateOption(ApplianceFeatureEnumOption):
-    allowedTransitions: list[str]
-    notificationInfo: ApplianceFeatureNotificationInfo
+    notificationInfo: ApplianceFeatureNotificationInfo | None = None
+    allowedTransitions: list[str] | None = None
 
 
 @dataclass
@@ -200,7 +200,7 @@ class ApplianceWarning:
 @dataclass
 class HobDefaultZone:
     cookingStates: ApplianceState
-    monitorings: ApplianceFeature
+    monitorings: list[ApplianceFeature]
     program: ApplianceProgram
     progressVariables: ApplianceProgress
     zoneRecipeInfo: HobZoneRecipeInfo

@@ -282,12 +282,12 @@
           "dry_extra": "Extra Sušenie",
           "dry_cabinet": "Suchá skriňa",
           "dry_iron": "Žehliť na sucho",
-          "dry_10": "45 Min",
+          "dry_10": "10 Min",
           "dry_20": "20 Min",
           "dry_30": "30 Min",
           "dry_60": "60 Min",
           "dry_90": "90 Min",
-          "dry_120": "15 Min",
+          "dry_120": "120 Min",
           "dry_150": "150 Min"
         }
       },
@@ -705,12 +705,12 @@
           "dry_extra": "Extra Sušenie",
           "dry_cabinet": "Sušenie rovno do skrine",
           "dry_iron": "Žehliť na sucho",
-          "dry_10": "45 Min",
+          "dry_10": "10 Min",
           "dry_20": "20 Min",
           "dry_30": "30 Min",
           "dry_60": "60 Min",
           "dry_90": "90 Min",
-          "dry_120": "15 Min",
+          "dry_120": "120 Min",
           "dry_150": "150 Min"
         }
       },
