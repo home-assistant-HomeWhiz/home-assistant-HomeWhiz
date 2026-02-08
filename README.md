@@ -74,21 +74,55 @@ Switching to an ESPHome-based proxy helped fix issues for many. If issues persis
 ### Google Login
 If you signed up via Google in the HomeWhiz app, try forcing a HomeWhiz password reset inside the original app. Go to *My Account* → *Change Password* and tap *Forgot Password* to trigger the reset email for your Google address, then use the new password when adding the integration.
 
-### Retrieve Integration Logs
+### Retrieve Integration Logs and Diagnostics
 
-To help us help you, please include integration logs when you submit issues. The integration supports multiple logging levels of which not all are shown in the Home Assistant log by default. To enable debug logging for this integration, please add the following configuration to your Home Assistant configuration.yaml file:
+To help us help you, please include **debug logs and diagnostics** when you submit issues.
+
+## Enable Debug Logging
+
+Debug logging can be enabled directly from the Home Assistant integration page:
+
+- Navigate to **Settings** → **Devices & Services** → **Integrations**
+- Find the **HomeWhiz** integration
+- Click on the three-dot menu and select **Enable debug logging**
+- Reproduce the issue
+- Click **Disable debug logging** to stop logging and download the debug log file
+
+Alternatively, you can enable debug logging via `configuration.yaml`:
 ```yaml
 logger:
   logs:
     custom_components.homewhiz: debug
 ```
-To retrieve logs, navigate in Home Assistant to: settings -> system -> logs and retrieve logs by e.g. pressing the download button below the logs.
-> ⚠️ Please review your logs and **delete personal and private information before posting** ⚠️
+
+After adding this configuration, restart Home Assistant. To retrieve logs, navigate to Settings → System → Logs and download them.
+
+>⚠️ Please review your logs and delete personal and private information before posting ⚠️
+
+## Download Diagnostics
+
+Diagnostic information can help identify issues with your device:
+
+- Navigate to Settings → Devices & Services → Integrations
+
+- Find the HomeWhiz integration and click on it
+
+- Select your device
+
+- Click on Download diagnostics to download a JSON file with diagnostic information.
+
+>⚠️ Please review the diagnostics file and delete personal and private information before posting ⚠️
+
+## Known Issues
+- For known issues and troubleshooting tips, check the Known Issues on [Github](https://github.com/home-assistant-HomeWhiz/home-assistant-HomeWhiz/issues)
+
+- If you encounter a problem not listed there, please create a new issue [here](https://github.com/home-assistant-HomeWhiz/home-assistant-HomeWhiz/issues) with:
+
+- Debug logs and Diagnostics file (see above)
 
 ## Contributing to the project
 
 Contributions are welcome.
-- Report problems by creating an issue [here](https://github.com/home-assistant-HomeWhiz/home-assistant-HomeWhiz/issues)
 - [Get started developing](./linux_dev.md)
 - [Submit your code](https://github.com/home-assistant-HomeWhiz/home-assistant-HomeWhiz/pulls)
 
