@@ -102,6 +102,8 @@
           "temperature_20": "20 °C",
           "temperature_30": "30 °C",
           "temperature_40": "40 °C",
+          "temperature_60": "60 °C",
+          "temperature_90": "90 °C",
           "60c": "60c",
           "90c": "90c"
         }
@@ -256,6 +258,48 @@
       "dishwasher_liquid_detergent_low": {
         "name": "Nízka hladina tekutého čističa"
       },
+      "settings_hob2hood": {
+        "name": "HobToHood Nastavenie"
+      },
+      "settings_keylocked": {
+        "name": "Klúčový zámok"
+      },
+      "zone_1_program": {
+        "name": "Zóna 1 Program"
+      },
+      "zone_1_hob_predefined_program": {
+        "name": "Zóna 1 Predvolený Program"
+      },
+      "zone_1_hob_heater_level": {
+        "name": "Zóna 1 Úroveň ohrevu"
+      },
+      "zone_2_program": {
+        "name": "Zóna 2 Program"
+      },
+      "zone_2_hob_predefined_program": {
+        "name": "Zóna 2 Predvolený Program"
+      },
+      "zone_2_hob_heater_level": {
+        "name": "Zóna 2 Úroveň ohrevu"
+      },
+      "zone_3_program": {
+        "name": "Zóna 3 Program"
+      },
+      "zone_3_hob_predefined_program": {
+        "name": "Zóna 3 Predvolený Program"
+      },
+      "zone_3_hob_heater_level": {
+        "name": "Zóna 3 Úroveň ohrevu"
+      },
+      "zone_4_program": {
+        "name": "Zóna 4 Program"
+      },
+      "zone_4_hob_predefined_program": {
+        "name": "Zóna 4 Predvolený Program"
+      },
+      "zone_4_hob_heater_level": {
+        "name": "Zóna 4 Úroveň ohrevu"
+      },
       "dishwasher_program": {
         "name": "Programy",
         "state": {
@@ -409,9 +453,9 @@
       "washer_fast_plus": {
         "name": "Rýchlo+",
         "state": {
-          "fast_plus_off": "rýchlo_+_vyp",
-          "fast_plus_on_fast": "rýchlo_+_na_rýchlo",
-          "fast_plus_on_fast_plus": "rýchlo_+_na_rýchlo_+"
+          "fast_plus_off": "Vyp",
+          "fast_plus_on_fast": "Rýchlo",
+          "fast_plus_on_fast_plus": "Rýchlo+"
         }
       },
       "custom_duration_level": {
@@ -652,6 +696,45 @@
       "dishwasher_liquid_detergent_low": {
         "name": "Málo tekutého čistiacieho prostriedku"
       },
+      "monitoring_hob2hood": {
+        "name": "HobToHood Stav"
+      },
+      "zone_1_zone_extended": {
+        "name": "Zóna 1 Rozšírenie"
+      },
+      "zone_1_cooking_state": {
+        "name": "Zóna 1 Stav varenia"
+      },
+      "zone_1_duration": {
+        "name": "Zóna 1 Trvanie"
+      },
+      "zone_2_zone_extended": {
+        "name": "Zóna 2 Rozšírenie"
+      },
+      "zone_2_cooking_state": {
+        "name": "Zóna 2 Stav varenia"
+      },
+      "zone_2_duration": {
+        "name": "Zóna 2 Trvanie"
+      },
+      "zone_3_zone_extended": {
+        "name": "Zóna 3 Rozšírenie"
+      },
+      "zone_3_cooking_state": {
+        "name": "Zóna 3 Stav varenia"
+      },
+      "zone_3_duration": {
+        "name": "Zóna 3 Trvanie"
+      },
+      "zone_4_zone_extended": {
+        "name": "Zóna 4 Rozšírenie"
+      },
+      "zone_4_cooking_state": {
+        "name": "Zóna 4 Stav varenia"
+      },
+      "zone_4_duration": {
+        "name": "Zóna 4 Trvanie"
+      },
       "dishwasher_traywash": {
         "name": "Umývanie podnosu"
       },
@@ -807,10 +890,45 @@
       },
       "dishwasher_liquid_detergent_low": {
         "name": "Málo tekutého čistidla"
+      },
+      "zone_1_hob_hot": {
+        "name": "Zóna 1 Horúci povrch"
+      },
+      "zone_1_hob_pan_info": {
+        "name": "Zóna 1 Detekcia panvice"
+      },
+      "zone_2_hob_hot": {
+        "name": "Zóna 2 Horúci povrch"
+      },
+      "zone_2_hob_pan_info": {
+        "name": "Zóna 2 Detekcia panvice"
+      },
+      "zone_3_hob_hot": {
+        "name": "Zóna 3 Horúci povrch"
+      },
+      "zone_3_hob_pan_info": {
+        "name": "Zóna 3 Detekcia panvice"
+      },
+      "zone_4_hob_hot": {
+        "name": "Zóna 4 Horúci povrch"
+      },
+      "zone_4_hob_pan_info": {
+        "name": "Zóna 4 Detekcia panvice"
       }
     },
     "climate": {
       "ac": {
+        "state_attributes": {
+          "fan_mode": {
+            "name": "Rýchlosť ventilátora",
+            "state": {
+              "wind_strength_auto": "Auto",
+              "wind_strength_low": "Nízke",
+              "wind_strength_mid": "Stredné",
+              "wind_strength_high": "Vysoké"
+            }
+          }
+        },
         "name": "AC"
       }
     },
@@ -854,6 +972,18 @@
       "dishwasher_fastplus": {
         "name": "Umývačka riadu fastplus"
       },
+      "zone_1_hob_flexi": {
+        "name": "Zóna 1 FlexiZóna"
+      },
+      "zone_2_hob_flexi": {
+        "name": "Zóna 2 FlexiZóna"
+      },
+      "zone_3_hob_flexi": {
+        "name": "Zóna 3 FlexiZóna"
+      },
+      "zone_4_hob_flexi": {
+        "name": "Zóna 4 FlexiZóna"
+      },
       "dishwasher_steamgloss": {
         "name": "Parný lesk"
       },
@@ -874,6 +1004,17 @@
       },
       "dishwasher_deepwash": {
         "name": "Hlboké umytie"
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Homewhiz možnosti",
+        "description": "Umožňuje pokročilú konfiguráciu integrácie.",
+        "data": {
+          "bt_reconnect_interval": "Interval, v ktorom sa má Bluetooth znova pripojiť (v hodinách)"
+        }
       }
     }
   }
