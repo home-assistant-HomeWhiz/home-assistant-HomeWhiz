@@ -154,8 +154,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
                 action=lambda _: self.hass.add_job(self.force_read()),
                 interval=timedelta(minutes=1),
             )
-
-        _LOGGER.debug("Set hass time interval update")
+            _LOGGER.debug("Set hass time interval update")
 
         # FIX: Await get_shadow properly
         await self.get_shadow()
@@ -225,8 +224,6 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
 
     async def _async_refresh_connection(self) -> None:
         """Actual async logic for refreshing connection."""
-        from awscrt.exceptions import AwsCrtError  # noqa: PLC0415
-
         _LOGGER.debug("Refreshing connection")
         self._is_connected = (
             False  # FIX: prevent spurious WARNING during planned reconnect window
@@ -397,8 +394,6 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         return self._is_connected
 
     async def kill(self) -> None:
-        from awscrt.exceptions import AwsCrtError  # noqa: PLC0415
-
         self._is_connected = False
         self.alive = False
         if self._connection is not None:
