@@ -125,7 +125,6 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             _LOGGER.exception(
                 "Exception during connection to AWS occurred. Will retry in one minute."
             )
-
             self._entry.async_on_unload(
                 async_track_point_in_time(
                     hass=self.hass,
@@ -155,7 +154,8 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
                 action=lambda _: self.hass.add_job(self.force_read()),
                 interval=timedelta(minutes=1),
             )
-            _LOGGER.debug("Set hass time interval update")
+
+        _LOGGER.debug("Set hass time interval update")
 
         # FIX: Await get_shadow properly
         await self.get_shadow()
@@ -228,14 +228,19 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         from awscrt.exceptions import AwsCrtError  # noqa: PLC0415
 
         _LOGGER.debug("Refreshing connection")
-        self._is_connected = False  # FIX: prevent spurious WARNING during planned reconnect window
+        self._is_connected = (
+            False  # FIX: prevent spurious WARNING during planned reconnect window
+        )
         if self._connection is not None:
             try:
                 loop = asyncio.get_event_loop()
                 disconnect_future = self._connection.disconnect()
                 await loop.run_in_executor(None, disconnect_future.result)
-            except Exception as e:  # noqa: BLE001  # broad catch: AwsCrtError subclasses not always predictable
-                _LOGGER.debug("Disconnect during refresh failed (already disconnected): %s", e)
+            except Exception as e:  # noqa: BLE001 # broad catch: AwsCrtError subclasses not always predictable
+                _LOGGER.debug(
+                    "Disconnect during refresh failed (already disconnected): %s",
+                    e,
+                )
 
         # FIX: avoid nested executor deadlock – connect() uses run_in_executor internally
         # FIX v5: wrap in safe_connect to prevent "Task exception was never retrieved"
@@ -258,7 +263,9 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         from awscrt.exceptions import AwsCrtError  # noqa: PLC0415
 
         if self._connection is None or not self._is_connected:
-            _LOGGER.debug("Cannot force read: MQTT connection not available")  # fix #368: WARNING → DEBUG
+            _LOGGER.debug(
+                "Cannot force read: MQTT connection not available"
+            )  # fix #368: WARNING → DEBUG
             return
 
         _LOGGER.debug("Forcing read")
@@ -297,7 +304,9 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         from awscrt.exceptions import AwsCrtError  # noqa: PLC0415
 
         if self._connection is None or not self._is_connected:
-            _LOGGER.debug("Cannot get shadow: MQTT connection not available")  # fix #368: WARNING → DEBUG
+            _LOGGER.debug(
+                "Cannot get shadow: MQTT connection not available"
+            )  # fix #368: WARNING → DEBUG
             return
 
         try:
@@ -327,7 +336,9 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         from awscrt.exceptions import AwsCrtError  # noqa: PLC0415
 
         if self._connection is None or not self._is_connected:
-            _LOGGER.debug("Cannot send command: MQTT connection not available")  # fix #368: WARNING → DEBUG
+            _LOGGER.debug(
+                "Cannot send command: MQTT connection not available"
+            )  # fix #368: WARNING → DEBUG
             return
 
         suffix = "/tuyacommand" if self._is_tuya else "/command"
@@ -395,8 +406,11 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
                 loop = asyncio.get_event_loop()
                 disconnect_future = self._connection.disconnect()
                 await loop.run_in_executor(None, disconnect_future.result)
-            except Exception as e:  # noqa: BLE001  # broad catch: AwsCrtError subclasses not always predictable
-                _LOGGER.debug("Disconnect during kill failed (already disconnected): %s", e)
+            except Exception as e:  # noqa: BLE001 # broad catch: AwsCrtError subclasses not always predictable
+                _LOGGER.debug(
+                    "Disconnect during kill failed (already disconnected): %s",
+                    e,
+                )
         if self._update_timer_task:
             self._update_timer_task()
             self._update_timer_task = None
