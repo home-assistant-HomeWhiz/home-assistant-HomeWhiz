@@ -9,7 +9,7 @@
   ],
   "codeowners": [
     "@rowysock",
-    "@TechHummel"
+    "@TechHummel",
     "@Asmir1975"
   ],
   "config_flow": true,
