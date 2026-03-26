@@ -40,9 +40,9 @@
           "program_eco_40_60": "Eco 40-60",
           "program_synthetics": "Sentetik",
           "program_mini_mini14": "Xpress",
-          "program_wool_handwash": "Woollens",
+          "program_wool_handwash": "Yünlüler",
           "program_delicates": "Narin",
-          "program_spin_pump": "Spin+Drain",
+          "program_spin_pump": "Sıkma+Tahliye",
           "program_rinsing": "Durulama",
           "program_darkwash": "Koyu Renkliler (Kot)",
           "program_outdoor_sports_goretex": "Spor",
@@ -175,10 +175,10 @@
         "name": "Kapak kilitli"
       },
       "oven_warning_error": {
-        "name": "Üründe beklenmedik bir hata oluştu.Lütfen kullanma kılavuzunu kontrol ediniz."
+        "name": "Üründe beklenmedik bir hata oluştu. Lütfen kullanma kılavuzunu kontrol ediniz."
       },
       "program": {
-        "name": "é",
+        "name": "Program",
         "state": {
           "program_auto": "Otomatik",
           "program_mix_wash_plus": "Karma",
@@ -253,7 +253,7 @@
         "state": {
           "dry_off": "Kapalı",
           "dry_extra": "Ekstra Kuru",
-          "dry_cabinet": "Wardrobe Dry",
+          "dry_cabinet": "Dolap Kuruluğu",
           "dry_iron": "Ütü Kuruluğu",
           "dry_10": "10 dk",
           "dry_20": "20 dk",
@@ -324,9 +324,9 @@
           "program_eco_40_60": "Eco 40-60",
           "program_synthetics": "Sentetik",
           "program_mini_mini14": "Xpress",
-          "program_wool_handwash": "Woollens",
+          "program_wool_handwash": "Yünlüler",
           "program_delicates": "Narin",
-          "program_spin_pump": "Spin+Drain",
+          "program_spin_pump": "Sıkma+Tahliye",
           "program_rinsing": "Durulama",
           "program_darkwash": "Koyu Renkliler (Kot)",
           "program_outdoor_sports_goretex": "Spor",
@@ -547,7 +547,7 @@
         "name": "Kapak kilitli"
       },
       "oven_warning_error": {
-        "name": "Üründe beklenmedik bir hata oluştu.Lütfen kullanma kılavuzunu kontrol ediniz."
+        "name": "Üründe beklenmedik bir hata oluştu. Lütfen kullanma kılavuzunu kontrol ediniz."
       },
       "oven_booster": {
         "name": "Hızlı Isıtma"
@@ -556,7 +556,7 @@
         "name": "Atla >"
       },
       "program": {
-        "name": "é",
+        "name": "Program",
         "state": {
           "program_auto": "Otomatik",
           "program_mix_wash_plus": "Karma",
@@ -667,7 +667,7 @@
         "state": {
           "dry_off": "Kapalı",
           "dry_extra": "Ekstra Kuru",
-          "dry_cabinet": "Wardrobe Dry",
+          "dry_cabinet": "Dolap Kuruluğu",
           "dry_iron": "Ütü Kuruluğu",
           "dry_10": "10 dk",
           "dry_20": "20 dk",
@@ -749,7 +749,7 @@
         "name": "Kapak kilitli"
       },
       "oven_warning_error": {
-        "name": "Üründe beklenmedik bir hata oluştu.Lütfen kullanma kılavuzunu kontrol ediniz."
+        "name": "Üründe beklenmedik bir hata oluştu. Lütfen kullanma kılavuzunu kontrol ediniz."
       },
       "dishwasher_warning_no_rinse_aid": {
         "name": "Parlatıcı yok"
@@ -834,7 +834,7 @@
         "name": "İç Aydınlatma"
       },
       "dishwasher_hygiene_intense": {
-        "name": "Bulaşık makinesi hijyeni yoğun"
+        "name": "Bulaşık makinesi yoğun hijyen"
       },
       "dishwasher_deepwash": {
         "name": "Şişe Yıkama"
