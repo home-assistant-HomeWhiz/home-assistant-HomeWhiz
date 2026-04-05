@@ -39,8 +39,14 @@ async def async_get_config_entry_diagnostics(
 
         entities_data[entity_id] = entity_info
 
+    appliance_info = entry.data.get("appliance_info") or {}
+    redacted_appliance_info = {
+        **appliance_info,
+        "applianceSerialNumber": "**REDACTED**",
+    }
+
     return {
         "data": entry.data["contents"],
-        "appliance_info": entry.data["appliance_info"],
+        "appliance_info": redacted_appliance_info,
         "entities": entities_data,
     }
