@@ -7,6 +7,9 @@
     },
     "flow_title": "{name}",
     "step": {
+      "bluetooth_confirm": {
+        "description": "Do you want to set up {name}?"
+      },
       "user": {
         "description": "Select a connection type",
         "menu_options": {
@@ -55,6 +58,7 @@
           "device_state_running": "Running",
           "device_state_paused": "Paused",
           "device_state_time_delay_active": "Time Delay Active",
+          "device_state_time_delay_paused": "Time Delay Paused",
           "device_state_cancelling": "Cancelling",
           "device_state_door_open": "Door is open !",
           "device_state_settings": "Settings"
@@ -102,26 +106,25 @@
           "temperature_20": "20 °C",
           "temperature_30": "30 °C",
           "temperature_40": "40 °C",
-          "temperature_60": "60 °C",
-          "temperature_90": "90 °C",
-          "60c": "60C",
-          "90c": "90C"
+          "60c": "60 °C",
+          "90c": "90 °C"
         }
       },
       "washer_spin": {
         "name": "Spin",
         "state": {
           "spin_no_spin": "No Spin",
-          "600rpm": "600RPM",
-          "800rpm": "800RPM",
-          "1000rpm": "1000RPM",
-          "1200rpm": "1200RPM",
+          "600rpm": "600 rpm",
+          "800rpm": "800 rpm",
+          "1000rpm": "1000 rpm",
+          "1200rpm": "1200 rpm",
           "spin_rinse_hold": "Rinse Hold",
-          "spin_600": "600",
-          "spin_800": "800",
-          "spin_1200": "1200",
-          "spin_1400": "1400",
-          "1400rpm": "1400RPM"
+          "spin_600": "600 rpm",
+          "spin_800": "800 rpm",
+          "spin_1000": "1000 rpm",
+          "spin_1200": "1200 rpm",
+          "spin_1400": "1400 rpm",
+          "1400rpm": "1400 rpm"
         }
       },
       "washer_fast_plus": {
@@ -135,18 +138,18 @@
       "custom_duration_level": {
         "name": "Custom Duration Level",
         "state": {
-          "duration_level_0": "0",
-          "1": "1",
-          "2": "2",
-          "3": "3",
-          "4": "4",
-          "5": "5",
-          "6": "6",
-          "7": "7",
-          "8": "8",
-          "9": "9",
-          "10": "10",
-          "11": "11"
+          "duration_level_0": "Level 0",
+          "1": "Level 1",
+          "2": "Level 2",
+          "3": "Level 3",
+          "4": "Level 4",
+          "5": "Level 5",
+          "6": "Level 6",
+          "7": "Level 7",
+          "8": "Level 8",
+          "9": "Level 9",
+          "10": "Level 10",
+          "11": "Level 11"
         }
       },
       "washer_extra_rinse_count": {
@@ -324,7 +327,7 @@
         "state": {
           "dry_off": "Off",
           "dry_extra": "Extra Dry",
-          "dry_cabinet": "Wardrobe Dry",
+          "dry_cabinet": "Cabinet Dry",
           "dry_iron": "Iron Dry",
           "dry_10": "10 Min",
           "dry_20": "20 Min",
@@ -452,6 +455,7 @@
           "device_state_running": "Running",
           "device_state_paused": "Paused",
           "device_state_time_delay_active": "Time Delay Active",
+          "device_state_time_delay_paused": "Time Delay Paused",
           "device_state_cancelling": "Cancelling",
           "device_state_door_open": "Door is open !",
           "device_state_settings": "Settings"
@@ -499,24 +503,25 @@
           "temperature_20": "20 °C",
           "temperature_30": "30 °C",
           "temperature_40": "40 °C",
-          "60c": "60C",
-          "90c": "90C"
+          "60c": "60 °C",
+          "90c": "90 °C"
         }
       },
       "washer_spin": {
         "name": "Spin",
         "state": {
           "spin_no_spin": "No Spin",
-          "600rpm": "600RPM",
-          "800rpm": "800RPM",
-          "1000rpm": "1000RPM",
-          "1200rpm": "1200RPM",
+          "600rpm": "600 rpm",
+          "800rpm": "800 rpm",
+          "1000rpm": "1000 rpm",
+          "1200rpm": "1200 rpm",
           "spin_rinse_hold": "Rinse Hold",
-          "spin_600": "600",
-          "spin_800": "800",
-          "spin_1200": "1200",
-          "spin_1400": "1400",
-          "1400rpm": "1400RPM"
+          "spin_600": "600 rpm",
+          "spin_800": "800 rpm",
+          "spin_1000": "1000 rpm",
+          "spin_1200": "1200 rpm",
+          "spin_1400": "1400 rpm",
+          "1400rpm": "1400 rpm"
         }
       },
       "washer_fast_plus": {
@@ -530,18 +535,18 @@
       "custom_duration_level": {
         "name": "Custom Duration Level",
         "state": {
-          "duration_level_0": "0",
-          "1": "1",
-          "2": "2",
-          "3": "3",
-          "4": "4",
-          "5": "5",
-          "6": "6",
-          "7": "7",
-          "8": "8",
-          "9": "9",
-          "10": "10",
-          "11": "11"
+          "duration_level_0": "Level 0",
+          "1": "Level 1",
+          "2": "Level 2",
+          "3": "Level 3",
+          "4": "Level 4",
+          "5": "Level 5",
+          "6": "Level 6",
+          "7": "Level 7",
+          "8": "Level 8",
+          "9": "Level 9",
+          "10": "Level 10",
+          "11": "Level 11"
         }
       },
       "washer_extra_rinse_count": {
@@ -663,7 +668,7 @@
         "name": "Night Mode"
       },
       "washer_anticrease": {
-        "name": "AntiCrease"
+        "name": "Anti-Crease"
       },
       "dryer_program": {
         "name": "Programme",
@@ -923,7 +928,7 @@
         "state": {
           "dry_off": "Off",
           "dry_extra": "Extra Dry",
-          "dry_cabinet": "Wardrobe Dry",
+          "dry_cabinet": "Cabinet Dry",
           "dry_iron": "Iron Dry",
           "dry_10": "10 Min",
           "dry_20": "20 Min",
@@ -1125,7 +1130,7 @@
         "name": "Night Mode"
       },
       "washer_anticrease": {
-        "name": "AntiCrease"
+        "name": "Anti-Crease"
       },
       "oven_booster": {
         "name": "Booster"
