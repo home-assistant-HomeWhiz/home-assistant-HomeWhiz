@@ -92,9 +92,7 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
         await self.async_set_hvac_mode(HVACMode.OFF)
 
     async def async_turn_on(self) -> None:
-        await self.async_set_hvac_mode(
-            self._previous_hvac_mode if self._previous_hvac_mode else HVACMode.HEAT_COOL
-        )
+        await self.async_set_hvac_mode(self._previous_hvac_mode or HVACMode.HEAT_COOL)
 
     @property
     def target_temperature_step(self) -> float:  # type: ignore[override]
