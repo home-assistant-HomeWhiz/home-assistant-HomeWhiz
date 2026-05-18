@@ -239,8 +239,8 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
 
     async def kill(self) -> None:
         _LOGGER.debug("[%s] Killing connection", self.address)
+        self.alive = False   # set FIRST, before calling disconnect()
         async with self._connection_lock:
-            self.alive = False
             if self._connection is not None:
                 await self._connection.disconnect()
             if self._reconnect_interval_task:
