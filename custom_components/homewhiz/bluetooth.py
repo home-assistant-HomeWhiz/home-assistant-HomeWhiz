@@ -156,8 +156,10 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
     def reconnect_callback(self, *args: Any) -> None:
         # Trigger a disconnect, the disconnected_callback will trigger the reconnect
         _LOGGER.debug("Reconnect callback")
-        if self.alive and self._connection:
-            self.hass.create_task(self._connection.disconnect())
+        if self.alive:
+            connection = self._connection  # capture a local reference atomically
+            if connection is not None:
+                self.hass.create_task(self._connection.disconnect())
 
     async def try_reconnect(self) -> None:
         async with self._reconnecting_lock:
