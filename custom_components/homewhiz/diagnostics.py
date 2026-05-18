@@ -4,9 +4,13 @@ from __future__ import annotations
 
 from typing import Any
 
+from homeassistant.components import bluetooth
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import entity_registry as er
+
+from .bluetooth import HomewhizBluetoothUpdateCoordinator
+from .const import DOMAIN
 
 
 async def async_get_config_entry_diagnostics(
@@ -45,8 +49,18 @@ async def async_get_config_entry_diagnostics(
         "applianceSerialNumber": "**REDACTED**",
     }
 
-    return {
+    result: dict[str, Any] = {
         "data": entry.data["contents"],
         "appliance_info": redacted_appliance_info,
         "entities": entities_data,
     }
+
+    # Include BLE RSSI for Bluetooth appliances.
+    coordinator = hass.data.get(DOMAIN, {}).get(entry.entry_id)
+    if isinstance(coordinator, HomewhizBluetoothUpdateCoordinator):
+        service_info = bluetooth.async_last_service_info(
+            hass, coordinator.address, connectable=True
+        )
+        result["bt_rssi"] = service_info.rssi if service_info else None
+
+    return result
