@@ -184,8 +184,9 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                 await self._connection.disconnect()
             self.hass.add_job(self.async_set_updated_data, None)
             self._connection = None
-            _LOGGER.info("[%s] Disconnected", self.address)
-            self.hass.create_task(self.try_reconnect())
+        # Spawn the task AFTER releasing the lock
+        _LOGGER.info("[%s] Disconnected", self.address)
+        self.hass.create_task(self.try_reconnect())
 
     @callback
     async def handle_notify(self, message: bytearray) -> None:
