@@ -203,7 +203,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         _LOGGER.info("[%s] Disconnected", self.address)
         self.hass.create_task(self.try_reconnect())
 
-    @callback
+    # @callback removed – the function is invoked via create_task, not called directly
     async def handle_notify(self, message: bytearray) -> None:
         _LOGGER.debug("Message received: %s", message)
         if len(message) < 10:
