@@ -90,21 +90,33 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                     disconnected_callback=self.disconnected_callback,
                     name=self.address,
                 )
+            try:
                 if not self._connection.is_connected:
                     raise Exception("Can't connect")
-            _LOGGER.debug("Starting notify")
-            await self._connection.start_notify(
-                "0000ac02-0000-1000-8000-00805f9b34fb",
-                lambda sender, message: self.hass.create_task(
-                    self.handle_notify(message)
-                ),
-            )
-            _LOGGER.debug("Sending initial command")
-            await self._connection.write_gatt_char(
-                "0000ac01-0000-1000-8000-00805f9b34fb",
-                bytearray.fromhex("02 04 00 04 00 1a 01 03"),
-                response=False,
-            )
+
+                await asyncio.sleep(0.5)
+
+                _LOGGER.debug("Starting notify")
+                await self._connection.start_notify(
+                    "0000ac02-0000-1000-8000-00805f9b34fb",
+                    lambda sender, message: self.hass.create_task(
+                        self.handle_notify(message)
+                    ),
+                )
+                _LOGGER.debug("Sending initial command")
+                await self._connection.write_gatt_char(
+                    "0000ac01-0000-1000-8000-00805f9b34fb",
+                    bytearray.fromhex("02 04 00 04 00 1a 01 03"),
+                    response=False,
+                )
+            except Exception:
+                _LOGGER.exception("Failed to set up connection, cleaning up")
+                try:
+                    await self._connection.disconnect()
+                except Exception:
+                    pass
+                self._connection = None   # ensure clean state for next attempt
+                raise
 
         # To retrieve RSSI value
         # https://developers.home-assistant.io/docs/core/bluetooth/api/#fetching-the-latest-bluetoothserviceinfobleak-for-a-device
