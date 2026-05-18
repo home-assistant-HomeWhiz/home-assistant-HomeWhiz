@@ -17,19 +17,25 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 
 
 class MessageAccumulator:
-    expected_index = 0
-    accumulated: bytearray = bytearray()
+    def __init__(self):
+        self._expected_index = 0
+        self._accumulated: bytearray = bytearray()
 
     def accumulate_message(self, message: bytearray) -> bytearray | None:
         message_index = message[4]
         _LOGGER.debug("Message index: %d", message_index)
         if message_index == 0:
-            self.accumulated = message[7:]
-            self.expected_index = 1
-        elif self.expected_index == 1:
-            full_message = self.accumulated + message[7:]
-            self.expected_index = 0
+            self._accumulated = message[7:]
+            self._expected_index = 1
+        elif message_index == 1 and self._expected_index == 1:
+            full_message = self._accumulated + message[7:]
+            self._expected_index = 0
             return full_message
+        else:
+            # Unexpected sequence: reset to avoid getting permanently stuck
+            _LOGGER.warning("Unexpected message index %d, resetting accumulator", message_index)
+            self._expected_index = 0
+            self._accumulated = bytearray()
         return None
 
 
