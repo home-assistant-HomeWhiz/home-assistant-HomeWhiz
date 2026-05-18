@@ -211,12 +211,18 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
     async def send_command(self, command: Command) -> None:
         _LOGGER.debug("Sending command %s:%s", command.index, command.value)
         async with self._connection_lock:
+            if self._connection is None or not self._connection.is_connected:
+                _LOGGER.warning("Cannot send command: not connected")
+                raise HomeAssistantError("Device not connected")
             payload = bytearray([2, 4, 0, 4, 0, command.index, 1, command.value])
-            assert self._connection is not None
-            await self._connection.write_gatt_char(
-                "0000ac01-0000-1000-8000-00805F9B34FB",
-                payload,
-            )
+            try:
+                await self._connection.write_gatt_char(
+                    "0000ac01-0000-1000-8000-00805F9B34FB",
+                    payload,
+                )
+            except Exception as e:
+                _LOGGER.error("Failed to send command: %s", e)
+                raise
             _LOGGER.debug("Command sent")
 
     @property
