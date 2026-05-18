@@ -112,8 +112,10 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         service_info = bluetooth.async_last_service_info(
             self.hass, self.address, connectable=True
         )
-        assert service_info is not None
-        _LOGGER.info("Successfully connected. RSSI: %s", service_info.rssi)
+        if service_info is not None:
+            _LOGGER.info("Successfully connected. RSSI: %s", service_info.rssi)
+        else:
+            _LOGGER.info("Successfully connected (RSSI not available)")
 
         # If reconnection is configured, set a task to reconnect after interval
         if self._reconnect_interval:
