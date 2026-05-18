@@ -172,7 +172,8 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                         "Device not found. "
                         "Will reconnect automatically when the device becomes available"
                     )
-                    return
+                    await asyncio.sleep(60)
+                    continue   # instead of return
                 try:
                     _LOGGER.debug(
                         "[%s] Establish connection from reconnect",
