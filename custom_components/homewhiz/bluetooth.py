@@ -62,7 +62,13 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         super().__init__(hass, _LOGGER, name=DOMAIN)
 
     async def connect(self) -> bool:
+        if self.is_connected:
+            _LOGGER.debug("Already connected, skipping connect()")
+            return True
         async with self._connection_lock:
+            if self.is_connected:   # double-checked locking
+                _LOGGER.debug("Already connected, skipping connect()")
+                return True
             _LOGGER.info("Connecting to %s", self.address)
             async with self._device_lock:
                 self._device = bluetooth.async_ble_device_from_address(
