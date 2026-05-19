@@ -1,4 +1,5 @@
 import asyncio
+import contextlib
 import logging
 from collections.abc import Callable
 from datetime import datetime, timedelta
@@ -8,6 +9,7 @@ from bleak import BleakClient, BLEDevice
 from bleak_retry_connector import establish_connection
 from homeassistant.components import bluetooth
 from homeassistant.core import HomeAssistant, callback
+from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.event import async_track_point_in_time
 
 from .const import DOMAIN
@@ -17,7 +19,7 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 
 
 class MessageAccumulator:
-    def __init__(self):
+    def __init__(self) -> None:
         self._expected_index = 0
         self._accumulated: bytearray = bytearray()
 
@@ -80,7 +82,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                         "Trying to connect even though connection already exists!"
                     )
                 if not self._device:
-                    raise Exception(f"Device not found for address {self.address}")
+                    raise RuntimeError(f"Device not found for address {self.address}")
 
                 # How to clear disconnected_callback?
                 _LOGGER.debug("Establishing connection")
@@ -92,7 +94,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                 )
             try:
                 if not self._connection.is_connected:
-                    raise Exception("Can't connect")
+                    raise RuntimeError("Can't connect")
 
                 await asyncio.sleep(0.5)
 
@@ -111,10 +113,8 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                 )
             except Exception:
                 _LOGGER.exception("Failed to set up connection, cleaning up")
-                try:
+                with contextlib.suppress(Exception):
                     await self._connection.disconnect()
-                except Exception:
-                    pass
                 self._connection = None   # ensure clean state for next attempt
                 raise
 
@@ -173,7 +173,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         if self.alive:
             connection = self._connection  # capture a local reference atomically
             if connection is not None:
-                self.hass.create_task(self._connection.disconnect())
+                self.hass.create_task(connection.disconnect())
 
     async def try_reconnect(self) -> None:
         async with self._reconnecting_lock:
