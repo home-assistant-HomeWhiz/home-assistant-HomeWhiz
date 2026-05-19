@@ -186,6 +186,10 @@ async def make_api_get_request(
     canonical_uri: str,
     canonical_querystring: str = "",
 ) -> Any:
+
+    def _handle_request_error(text: str, err: Exception) -> None:
+        raise RequestError(text) from err
+
     t = datetime.datetime.now(tz=datetime.UTC)
     amz_date = t.strftime("%Y%m%dT%H%M%SZ")
     # Date w/o time, used in credential scope
@@ -260,10 +264,7 @@ async def make_api_get_request(
             except ContentTypeError as err:
                 text = await response.text()
                 _LOGGER.error(text)
-                _handle_request_error(text, err)
-
-    def _handle_request_error(text: str, err: Exception) -> None:
-        raise RequestError(text) from err
+                return _handle_request_error(text, err)  # Add explicit return
 
 
 async def fetch_contents_index(
