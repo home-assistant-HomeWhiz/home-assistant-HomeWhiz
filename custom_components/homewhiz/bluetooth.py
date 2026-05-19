@@ -35,7 +35,9 @@ class MessageAccumulator:
             return full_message
         else:
             # Unexpected sequence: reset to avoid getting permanently stuck
-            _LOGGER.warning("Unexpected message index %d, resetting accumulator", message_index)
+            _LOGGER.warning(
+                "Unexpected message index %d, resetting accumulator", message_index
+            )
             self._expected_index = 0
             self._accumulated = bytearray()
         return None
@@ -68,7 +70,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
             _LOGGER.debug("Already connected, skipping connect()")
             return True
         async with self._connection_lock:
-            if self.is_connected:   # double-checked locking
+            if self.is_connected:  # double-checked locking
                 _LOGGER.debug("Already connected, skipping connect()")
                 return True
             _LOGGER.info("Connecting to %s", self.address)
@@ -115,7 +117,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                 _LOGGER.exception("Failed to set up connection, cleaning up")
                 with contextlib.suppress(Exception):
                     await self._connection.disconnect()
-                self._connection = None   # ensure clean state for next attempt
+                self._connection = None  # ensure clean state for next attempt
                 raise
 
         # To retrieve RSSI value
@@ -176,7 +178,6 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                 self.hass.create_task(connection.disconnect())
 
     async def try_reconnect(self) -> None:
-        # noqa: SLF001
         async with self.reconnecting_lock:
             _LOGGER.debug("[%s] Trying to reconnect", self.address)
             while self.alive and not self.is_connected:
@@ -188,7 +189,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                         "Will reconnect automatically when the device becomes available"
                     )
                     await asyncio.sleep(60)
-                    continue   # instead of return
+                    continue  # instead of return
                 try:
                     _LOGGER.debug(
                         "[%s] Establish connection from reconnect",
@@ -255,7 +256,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
 
     async def kill(self) -> None:
         _LOGGER.debug("[%s] Killing connection", self.address)
-        self.alive = False   # set FIRST, before calling disconnect()
+        self.alive = False  # set FIRST, before calling disconnect()
         async with self._connection_lock:
             if self._connection is not None:
                 await self._connection.disconnect()
