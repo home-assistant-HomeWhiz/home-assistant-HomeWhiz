@@ -57,7 +57,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         self._connection_lock = asyncio.Lock()
         self.alive = True
         # To ensure that only one reconnect is performed at a time
-        self._reconnecting_lock = asyncio.Lock()
+        self.reconnecting_lock = asyncio.Lock()
         # Allow users to configure regular Bluetooth reconnections
         self._reconnect_interval: int | None = reconnect_interval
         self._reconnect_interval_task: None | Callable = None
@@ -176,7 +176,8 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                 self.hass.create_task(connection.disconnect())
 
     async def try_reconnect(self) -> None:
-        async with self._reconnecting_lock:
+        # noqa: SLF001
+        async with self.reconnecting_lock:
             _LOGGER.debug("[%s] Trying to reconnect", self.address)
             while self.alive and not self.is_connected:
                 if not bluetooth.async_address_present(
