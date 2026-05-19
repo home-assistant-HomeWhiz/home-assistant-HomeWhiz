@@ -41,9 +41,12 @@ from custom_components.homewhiz.appliance_controls import (
 
 async def get_file(url: str) -> Any:
     """Get JSON file from url"""
-    async with aiohttp.ClientSession() as session, session.get(
-        url,
-    ) as response:
+    async with (
+        aiohttp.ClientSession() as session,
+        session.get(
+            url,
+        ) as response,
+    ):
         return json.loads(await response.text())
 
 

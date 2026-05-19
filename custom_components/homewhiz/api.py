@@ -260,7 +260,10 @@ async def make_api_get_request(
             except ContentTypeError as err:
                 text = await response.text()
                 _LOGGER.error(text)
-                raise RequestError(text) from err
+                _handle_request_error(text, err)
+
+    def _handle_request_error(text: str, err: Exception) -> None:
+        raise RequestError(text) from err
 
 
 async def fetch_contents_index(
