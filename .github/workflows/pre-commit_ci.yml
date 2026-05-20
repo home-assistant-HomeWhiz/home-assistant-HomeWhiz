@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v6
     - uses: actions/setup-python@v6
       with:
-        python-version: 3.13
-    - uses: pre-commit/action@v3.0.1
-    - uses: pre-commit-ci/lite-action@v1.1.0
-      if: always()
+        python-version: 3.14
+    - run: |
+        pip install pre-commit
+        pre-commit run --show-diff-on-failure --color=always --all-files
