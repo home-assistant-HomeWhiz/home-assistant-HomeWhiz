@@ -2,11 +2,9 @@
 
 ![HomeWhiz icon](./icons/icon.png)
 
-Integration for devices that support the HomeWhiz mobile app (Beko, Grundig, Arcelik)
+Integration for devices that support the HomeWhiz mobile app (Beko, Grundig, Bauknecht, Arcelik)
 
 ## Installation
-
-⚠️ This integration depends on the awscrt Python package. This package is not directly available for ARM devices with 32 bit OS. More information can be found [here](https://github.com/home-assistant-HomeWhiz/home-assistant-HomeWhiz/issues/97).
 
 ### Option 1. Using HACS (Recommended)
 
@@ -45,13 +43,13 @@ Please note that the constant internet connection is required.
 
 | Device           | Supported          | Comments                                           |
 | ---------------- | ------------------ | -------------------------------------------------- |
-| Washing machines | :heavy_check_mark: | Also includes washing machine / dryer combinations |
-| Dryer            | :heavy_check_mark: | Also includes washing machine / dryer combinations |
-| Dishwasher       | :heavy_check_mark: |                                                    |
-| Air conditioner  | :heavy_check_mark: |                                                    |
-| Extraction fan   | :heavy_check_mark: |                                                    |
-| Hob              | :heavy_check_mark: | Beko 4-zone induction hob                          |
-| Oven             | :question: :x:     | Not tested                                         |
+| Washing machines | ✅                 | Also includes washing machine / dryer combinations |
+| Dryer            | ✅                 | Also includes washing machine / dryer combinations |
+| Dishwasher       | ✅                 |                                                    |
+| Air conditioner  | ✅                 |                                                    |
+| Extraction fan   | ✅                 |                                                    |
+| Hob              | ✅                 | Beko 4-zone induction hob                          |
+| Oven             | ❓ ❌              | Not tested                                         |
 
 If you have other device types not listed yet, please let us know.
 
