@@ -94,10 +94,14 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                     disconnected_callback=self.disconnected_callback,
                     name=self.address,
                 )
+
+            def _raise_cant_connect() -> None:
+                msg = "Can't connect"
+                raise RuntimeError(msg)
+
             try:
                 if not self._connection.is_connected:
-                    msg = "Can't connect"
-                    raise RuntimeError(msg)
+                    _raise_cant_connect()
 
                 await asyncio.sleep(0.5)
 
