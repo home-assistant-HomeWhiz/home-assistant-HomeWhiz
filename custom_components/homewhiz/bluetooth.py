@@ -96,7 +96,8 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                 )
             try:
                 if not self._connection.is_connected:
-                    raise RuntimeError("Can't connect")
+                    msg = "Can't connect"
+                    raise RuntimeError(msg)
 
                 await asyncio.sleep(0.5)
 
