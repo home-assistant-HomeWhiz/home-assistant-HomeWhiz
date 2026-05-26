@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Any
 
+from homeassistant.components.diagnostics import async_redact_data
 from homeassistant.components import bluetooth
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
@@ -11,6 +12,8 @@ from homeassistant.helpers import entity_registry as er
 
 from .bluetooth import HomewhizBluetoothUpdateCoordinator
 from .const import DOMAIN
+
+REDACT_KEYS = {"applianceSerialNumber"}
 
 
 async def async_get_config_entry_diagnostics(
@@ -44,10 +47,7 @@ async def async_get_config_entry_diagnostics(
         entities_data[entity_id] = entity_info
 
     appliance_info = entry.data.get("appliance_info") or {}
-    redacted_appliance_info = {
-        **appliance_info,
-        "applianceSerialNumber": "**REDACTED**",
-    }
+    redacted_appliance_info = async_redact_data(appliance_info, REDACT_KEYS)
 
     result: dict[str, Any] = {
         "data": entry.data["contents"],
