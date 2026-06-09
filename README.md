@@ -1,8 +1,23 @@
-# HomeWhiz Integration for Home Assistant
+<div align="center">
 
 ![HomeWhiz icon](./icons/icon.png)
 
-Integration for devices that support the HomeWhiz mobile app (Beko, Grundig, Bauknecht, Arcelik)
+# HomeWhiz Integration for Home Assistant
+
+[![HACS Default](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=flat-square)](https://github.com/hacs/integration)
+[![Home Assistant](https://img.shields.io/badge/Home%20Assistant-Integration-41BDF5?style=flat-square&logo=home-assistant&logoColor=white)](https://www.home-assistant.io/)
+[![Version](https://img.shields.io/badge/version-v0.5.19-41BDF5?style=flat-square)](https://github.com/home-assistant-HomeWhiz/home-assistant-HomeWhiz/releases)
+[![License](https://img.shields.io/badge/license-MIT-41BDF5?style=flat-square)](LICENSE)
+
+[![Active installs](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fanalytics.home-assistant.io%2Fcustom_integrations.json&query=%24.homewhiz.total&label=active%20installs&style=flat-square&color=41BDF5&logo=home-assistant&logoColor=white)](https://analytics.home-assistant.io/)
+[![GitHub stars](https://img.shields.io/github/stars/home-assistant-HomeWhiz/home-assistant-HomeWhiz?style=flat-square)](https://github.com/home-assistant-HomeWhiz/home-assistant-HomeWhiz/stargazers)
+[![Open issues](https://img.shields.io/github/issues/home-assistant-HomeWhiz/home-assistant-HomeWhiz?style=flat-square)](https://github.com/home-assistant-HomeWhiz/home-assistant-HomeWhiz/issues)
+
+</div>
+
+
+Integration for devices that support the HomeWhiz mobile app (Beko, Grundig, Bauknecht, Arcelik).<br />
+Monitor and control them in Home Assistant, over local Bluetooth or the HomeWhiz cloud (Wi-Fi) depending on the model.
 
 ## Installation
 
@@ -22,7 +37,7 @@ Integration for devices that support the HomeWhiz mobile app (Beko, Grundig, Bau
 
 ## Configuration
 
-### Bluetooth
+### <img src="https://cdn.simpleicons.org/bluetooth/0082FC" height="20" align="absmiddle" alt="" /> Bluetooth
 
 1. Connect the device to the HomeWhiz app on your smartphone
 2. Close the app
@@ -30,7 +45,7 @@ Integration for devices that support the HomeWhiz mobile app (Beko, Grundig, Bau
 4. Select the "Bluetooth" connection type
 5. Provide the HomeWhiz username and password. These will be used to fetch your device mapping from the HomeWhiz API during configuration. No internet connection is required after the initial configuration.
 
-### Wi-Fi
+### 📶 Wi-Fi
 
 1. Connect the device to the HomeWhiz app on your smartphone
 2. In the HA UI go to "Configuration" -> "Integrations". Click "+" and search for "HomeWhiz"
