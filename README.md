@@ -1,20 +1,20 @@
-<div align="center">
+<p align="center">
+  <img src="./icons/icon.png" alt="HomeWhiz icon">
+</p>
 
-![HomeWhiz icon](./icons/icon.png)
+<div align="center">
 
 # HomeWhiz Integration for Home Assistant
 
 [![HACS Default](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=flat-square)](https://github.com/hacs/integration)
 [![Home Assistant](https://img.shields.io/badge/Home%20Assistant-Integration-41BDF5?style=flat-square&logo=home-assistant&logoColor=white)](https://www.home-assistant.io/)
-[![Version](https://img.shields.io/badge/version-v0.5.19-41BDF5?style=flat-square)](https://github.com/home-assistant-HomeWhiz/home-assistant-HomeWhiz/releases)
-[![License](https://img.shields.io/badge/license-MIT-41BDF5?style=flat-square)](LICENSE)
+[![Version](https://img.shields.io/github/v/release/home-assistant-HomeWhiz/home-assistant-HomeWhiz?style=flat-square&logo=github&color=41BDF5&logoColor=white)](https://github.com/home-assistant-HomeWhiz/home-assistant-HomeWhiz/releases)
 
-[![Active installs](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fanalytics.home-assistant.io%2Fcustom_integrations.json&query=%24.homewhiz.total&label=active%20installs&style=flat-square&color=41BDF5&logo=home-assistant&logoColor=white)](https://analytics.home-assistant.io/)
+[![HA installs](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fanalytics.home-assistant.io%2Fcustom_integrations.json&query=%24.homewhiz.total&label=HA%20installs&color=41BDF5&style=flat-square&logo=home-assistant&logoColor=white)](https://analytics.home-assistant.io/)
 [![GitHub stars](https://img.shields.io/github/stars/home-assistant-HomeWhiz/home-assistant-HomeWhiz?style=flat-square)](https://github.com/home-assistant-HomeWhiz/home-assistant-HomeWhiz/stargazers)
 [![Open issues](https://img.shields.io/github/issues/home-assistant-HomeWhiz/home-assistant-HomeWhiz?style=flat-square)](https://github.com/home-assistant-HomeWhiz/home-assistant-HomeWhiz/issues)
 
 </div>
-
 
 Integration for devices that support the HomeWhiz mobile app (Beko, Grundig, Bauknecht, Arcelik).<br />
 Monitor and control them in Home Assistant, over local Bluetooth or the HomeWhiz cloud (Wi-Fi) depending on the model.
