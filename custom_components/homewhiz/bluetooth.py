@@ -217,7 +217,8 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
             # Ensure device is disconnected
             if self._connection:
                 _LOGGER.info("Triggering disconnect")
-                await self._connection.disconnect()
+                with contextlib.suppress(Exception):
+                    await self._connection.disconnect()
             self.hass.add_job(self.async_set_updated_data, None)
             self._connection = None
         # Spawn the task AFTER releasing the lock
@@ -264,7 +265,8 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         self.alive = False  # set FIRST, before calling disconnect()
         async with self._connection_lock:
             if self._connection is not None:
-                await self._connection.disconnect()
+                with contextlib.suppress(Exception):
+                    await self._connection.disconnect()
             if self._reconnect_interval_task:
                 self._reconnect_interval_task()
             _LOGGER.debug("[%s] Connection killed", self.address)
