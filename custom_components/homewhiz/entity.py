@@ -57,7 +57,7 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator]):  # type: ignore[ty
 
     @property
     def available(self) -> bool:  # type: ignore[override]
-        return self.coordinator.is_connected
+        return self.coordinator.available
 
     @property
     def translation_key(self) -> str | None:  # type: ignore[override]

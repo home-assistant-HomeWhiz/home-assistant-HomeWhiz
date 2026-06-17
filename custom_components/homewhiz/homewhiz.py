@@ -28,6 +28,12 @@ class HomewhizCoordinator(
     def is_connected(self) -> bool:
         pass
 
+    @property
+    def available(self) -> bool:
+        """Whether entities should be available. Defaults to the live
+        connection state; subclasses may debounce it across brief blips."""
+        return self.is_connected
+
     @abc.abstractmethod
     async def send_command(self, command: Command) -> None:
         pass
