@@ -7,6 +7,7 @@ Home Assistant needed) and mock the BleakClient.
 """
 
 import asyncio
+from datetime import datetime
 from unittest.mock import AsyncMock, Mock
 
 import pytest
@@ -22,12 +23,32 @@ from custom_components.homewhiz.homewhiz import Command
 
 
 class _FakeConnection:
-    """Minimal stand-in for a connected BleakClient."""
+    """Minimal stand-in for a connected BleakClient.
 
-    def __init__(self, *, connected: bool = True, write_side_effect=None) -> None:
-        self.is_connected = connected
+    ``connect_after`` makes ``is_connected`` report disconnected for the first N
+    reads and connected afterwards, so the send_command wait loop can be driven
+    deterministically without real-time sleeps.
+    """
+
+    def __init__(
+        self,
+        *,
+        connected: bool = True,
+        connect_after: int | None = None,
+        write_side_effect=None,
+    ) -> None:
+        self._connected = connected
+        self._connect_after = connect_after
+        self._checks = 0
         self.write_gatt_char = AsyncMock(side_effect=write_side_effect)
         self.disconnect = AsyncMock()
+
+    @property
+    def is_connected(self) -> bool:
+        self._checks += 1
+        if self._connect_after is not None and self._checks > self._connect_after:
+            return True
+        return self._connected
 
 
 def _make_coordinator() -> HomewhizBluetoothUpdateCoordinator:
@@ -83,17 +104,13 @@ async def test_send_command_writes_payload_when_connected() -> None:
 
 async def test_send_command_waits_for_in_flight_reconnect() -> None:
     coord = _make_coordinator()
-    conn = _FakeConnection(connected=False)
+    # Reports disconnected on the first availability check, connected after -
+    # exercises the wait loop without racing on wall-clock time.
+    conn = _FakeConnection(connected=False, connect_after=1)
     coord._connection = conn
 
-    async def _reconnect() -> None:
-        await asyncio.sleep(0.3)
-        conn.is_connected = True
-
-    flipper = asyncio.create_task(_reconnect())
     # Should wait for the reconnect rather than failing immediately.
     await coord.send_command(Command(index=1, value=1))
-    await flipper
 
     conn.write_gatt_char.assert_awaited_once()
 
@@ -144,7 +161,7 @@ def test_grace_expiry_marks_unavailable_when_still_down() -> None:
     coord._available = True
     coord._connection = None  # is_connected -> False
 
-    coord._grace_expired(None)
+    coord._grace_expired(datetime.now())
 
     assert coord.available is False
     coord.async_set_updated_data.assert_called_once_with(None)
@@ -155,7 +172,7 @@ def test_grace_expiry_keeps_available_when_reconnected() -> None:
     coord._available = True
     coord._connection = _FakeConnection(connected=True)
 
-    coord._grace_expired(None)
+    coord._grace_expired(datetime.now())
 
     assert coord.available is True
     coord.async_set_updated_data.assert_not_called()

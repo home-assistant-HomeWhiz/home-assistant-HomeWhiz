@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 from typing import Any
 
 from bleak import BleakClient, BLEDevice
+from bleak.exc import BleakError
 from bleak_retry_connector import establish_connection
 from homeassistant.components import bluetooth
 from homeassistant.core import HomeAssistant, callback
@@ -33,9 +34,13 @@ _SETUP_MAX_ATTEMPTS = 4
 _SETUP_RETRY_DELAY = 1.0
 
 # ESP32 BLE proxies periodically drop the link with a supervision timeout
-# (HCI 0x08) due to WiFi/BLE radio coexistence, even on a strong signal. These
-# blips self-heal in ~1-2s, so don't flap entities unavailable on every drop -
-# only mark unavailable if the connection stays down past this grace period.
+# (HCI 0x08) due to WiFi/BLE radio coexistence, even on a strong signal.
+# Reconnects usually complete within a couple of seconds, but can occasionally
+# take much longer (proxy backhaul hiccups, slow re-advertising, or the reconnect
+# backoff). The grace period is deliberately generous - well above the typical
+# reconnect time - so those slower recoveries don't surface as a spurious
+# "unavailable"; entities only go unavailable once the link has genuinely stayed
+# down this long.
 _DISCONNECT_GRACE_SECONDS = 60
 
 # A control command may arrive during one of those brief blips (entities stay
@@ -225,8 +230,27 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                     await asyncio.sleep(_SETUP_RETRY_DELAY)
                 continue
 
-            # Publish the live connection before returning so that a drop in the
-            # hand-off window is still routed to handle_disconnect().
+            # The link may have dropped during setup; because self._connection
+            # wasn't set yet, disconnected_callback would have ignored it as a
+            # stale client. Verify it's still up before publishing it - there is
+            # no await between this check and the assignment, so the callback
+            # cannot fire in the gap. If it died, retry like any other setup
+            # failure instead of getting stuck believing we're connected.
+            if not connection.is_connected:
+                last_error = BleakError("Link dropped during connection setup")
+                _LOGGER.debug(
+                    "Connection setup attempt %d/%d: link dropped during setup",
+                    attempt,
+                    _SETUP_MAX_ATTEMPTS,
+                )
+                with contextlib.suppress(Exception):
+                    await connection.disconnect()
+                if attempt < _SETUP_MAX_ATTEMPTS:
+                    await asyncio.sleep(_SETUP_RETRY_DELAY)
+                continue
+
+            # Publish the live connection. A drop from here on is recognised by
+            # disconnected_callback (client is self._connection).
             self._connection = connection
             return
 
