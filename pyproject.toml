@@ -1,3 +1,6 @@
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
 [tool.ruff]
 target-version = "py313"
 [tool.ruff.lint]
@@ -163,3 +166,7 @@ ignore = [
   # Temporarily disabled
   "TRY002",
 ]
+
+[tool.ruff.lint.per-file-ignores]
+# Tests legitimately reach into coordinator internals to exercise blip handling.
+"custom_components/homewhiz/tests/*" = ["SLF001"]
