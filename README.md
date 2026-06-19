@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./icons/icon.png" alt="HomeWhiz icon">
+  <img src="https://raw.githubusercontent.com/home-assistant-HomeWhiz/home-assistant-HomeWhiz/main/icons/icon.png" alt="HomeWhiz icon">
 </p>
 
 <div align="center">
