@@ -34,6 +34,8 @@ file_names = [
     "example_oven_config.json",
     "example_dishwasher_config.json",
     "example_washing_machine_with_dryer_config.json",
+    # Sparse refrigerator config from issue #375 (enum option without wifiArrayValue)
+    "refrigerator-375.json",
 ]
 
 
