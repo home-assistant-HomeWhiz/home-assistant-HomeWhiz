@@ -990,6 +990,11 @@
         "name": "Auto turn on"
       }
     },
+    "number": {
+      "delay_start_set": {
+        "name": "Start Delay"
+      }
+    },
     "binary_sensor": {
       "remote_control": {
         "name": "Remote control"
