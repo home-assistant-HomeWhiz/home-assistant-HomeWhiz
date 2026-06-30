@@ -778,10 +778,7 @@ def build_controls_from_progress_variables(  # noqa: C901
         )
         if feature is not None:
             feature_key = to_friendly_name(feature.strKey)
-            if (
-                feature.isCalculatedToStart is not None
-                and feature_key == "washer_delay"
-            ):
+            if feature.isCalculatedToStart is not None:
                 calculation_key = feature_key
                 feature_key = "delay_start#" + str(len(delay_keys))
                 delay_keys.update(
