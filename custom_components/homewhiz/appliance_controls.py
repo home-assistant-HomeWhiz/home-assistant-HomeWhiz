@@ -228,6 +228,35 @@ class TimeControl(Control):
         return hours * 60 + minutes
 
 
+class WriteTimeControl(Control):
+    """Writable counterpart of :class:`TimeControl` for a delay/timer value.
+
+    Reads the same hour/minute byte indices as ``TimeControl`` (value expressed in
+    minutes), but adds :meth:`set_value` so the value can be written back to the
+    appliance. It is a standalone ``Control`` subclass (not a ``TimeControl``) so it
+    is surfaced as a writable ``number`` entity instead of a read-only ``sensor``.
+    """
+
+    def __init__(self, key: str, hour_index: int, minute_index: int | None):
+        self.key = key
+        self.hour_index = hour_index
+        self.minute_index = minute_index
+
+    def get_value(self, data: bytearray) -> int:
+        hours = safe_get(data, self.hour_index)
+        minutes = (
+            safe_get(data, self.minute_index) if self.minute_index is not None else 0
+        )
+        return hours * 60 + minutes
+
+    def set_value(self, minutes: int) -> list[Command]:
+        minutes = max(0, int(minutes))
+        commands = [Command(self.hour_index, minutes // 60)]
+        if self.minute_index is not None:
+            commands.append(Command(self.minute_index, minutes % 60))
+        return commands
+
+
 class StateAwareRemainingTimeControl(Control):
     """Wraps a remaining time control to return 0 when device is off."""
 
@@ -757,6 +786,17 @@ def build_controls_from_progress_variables(  # noqa: C901
                 feature_key = "delay_start#" + str(len(delay_keys))
                 delay_keys.update(
                     {calculation_key: (feature_key, feature.isCalculatedToStart)}
+                )
+                # Expose the start delay as a writable number (in addition to the
+                # read-only sensor), reusing the same hour/minute byte indices.
+                results.append(
+                    WriteTimeControl(
+                        key=feature_key.replace("delay_start", "delay_start_set", 1),
+                        hour_index=feature.hour.wifiArrayIndex,
+                        minute_index=feature.minute.wifiArrayIndex
+                        if feature.minute is not None
+                        else None,
+                    )
                 )
             results.append(
                 TimeControl(
