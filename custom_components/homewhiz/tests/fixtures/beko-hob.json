@@ -1,0 +1,431 @@
+{
+  "autoController": null,
+  "clock": null,
+  "commands": null,
+  "consumableSettings": null,
+  "customSubPrograms": null,
+  "deviceStates": {
+    "states": [
+      {
+        "allowedTransitions": null,
+        "notificationInfo": {
+          "necessity": null,
+          "priority": "MEDIUM",
+          "strKey": "DEVICE_STATE_ON_NOTIFICATION"
+        },
+        "strKey": "DEVICE_STATE_ON",
+        "wifiArrayValue": 10
+      },
+      {
+        "allowedTransitions": null,
+        "notificationInfo": {
+          "necessity": null,
+          "priority": "MEDIUM",
+          "strKey": "DEVICE_STATE_OFF_NOTIFICATION"
+        },
+        "strKey": "DEVICE_STATE_OFF",
+        "wifiArrayValue": 20
+      },
+      {
+        "allowedTransitions": null,
+        "notificationInfo": {
+          "necessity": null,
+          "priority": "MEDIUM",
+          "strKey": "DEVICE_STATE_COOKING_NOTIFICATION"
+        },
+        "strKey": "DEVICE_STATE_COOKING",
+        "wifiArrayValue": 30
+      },
+      {
+        "allowedTransitions": null,
+        "notificationInfo": {
+          "necessity": null,
+          "priority": "MEDIUM",
+          "strKey": "DEVICE_STATE_PAUSED_NOTIFICATION"
+        },
+        "strKey": "DEVICE_STATE_PAUSED",
+        "wifiArrayValue": 40
+      }
+    ],
+    "wfaIndex": null,
+    "wifiArrayReadIndex": 34,
+    "wifiArrayWriteIndex": 34
+  },
+  "deviceSubStates": null,
+  "deviceWarnings": null,
+  "deviceWarningsExtra": null,
+  "downloadCycleSettingsModel": null,
+  "monitorings": [
+    {
+      "boundedValues": null,
+      "enumValues": [
+        {
+          "strKey": "HOB2HOOD_NOT_PAIRED",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "HOB2HOOD_NOTCONNECTED",
+          "wifiArrayValue": 1
+        },
+        {
+          "strKey": "HOB2HOOD_CONNECTED",
+          "wifiArrayValue": 2
+        }
+      ],
+      "isSwitch": null,
+      "isVisible": 1,
+      "strKey": "MONITORING_HOB2HOOD",
+      "wfaWriteIndex": null,
+      "wifiArrayIndex": 36
+    }
+  ],
+  "ovenClockWifiArrayIndexes": null,
+  "ovenDownloadedAutoBakeInformation": null,
+  "ovenMeatProbeAccessory": null,
+  "ovenRecipeInformation": null,
+  "ovenTemperatureInfo": null,
+  "program": null,
+  "progressVariables": null,
+  "refrigeratorDefrostInformation": null,
+  "remoteControl": null,
+  "screenSaver": null,
+  "settings": [
+    {
+      "boundedValues": null,
+      "enumValues": [
+        {
+          "strKey": "HOB2HOOD_DISABLE",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "HOB2HOOD_ENABLE",
+          "wifiArrayValue": 1
+        }
+      ],
+      "isSwitch": null,
+      "isVisible": 1,
+      "strKey": "SETTINGS_HOB2HOOD",
+      "wfaWriteIndex": null,
+      "wifiArrayIndex": 37
+    },
+    {
+      "boundedValues": null,
+      "enumValues": [
+        {
+          "strKey": "KEYLOCKED_DISABLE",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "KEYLOCKED_ENABLE",
+          "wifiArrayValue": 1
+        }
+      ],
+      "isSwitch": null,
+      "isVisible": 1,
+      "strKey": "SETTINGS_KEYLOCKED",
+      "wfaWriteIndex": null,
+      "wifiArrayIndex": 38
+    }
+  ],
+  "stepCooking": null,
+  "subPrograms": null,
+  "teaRecipeInformation": null,
+  "warnings": null,
+  "zones": {
+    "defaultZone": {
+      "cookingStates": {
+        "states": [
+          {
+            "allowedTransitions": null,
+            "notificationInfo": null,
+            "strKey": "COOKING_STATE_IDLE",
+            "wifiArrayValue": 0
+          },
+          {
+            "allowedTransitions": null,
+            "notificationInfo": null,
+            "strKey": "COOKING_STATE_NOT_CONFIRMED",
+            "wifiArrayValue": 1
+          }
+        ],
+        "wfaIndex": null,
+        "wifiArrayReadIndex": 53,
+        "wifiArrayWriteIndex": 53
+      },
+      "deviceWarnings": {
+        "warnings": [
+          {
+            "bitIndex": 0,
+            "notificationInfo": {
+              "necessity": "MANDA",
+              "priority": "MEDIUM",
+              "strKey": "HOB_HOT_NOTIFICATION"
+            },
+            "reasonInfo": null,
+            "strKey": "HOB_HOT"
+          },
+          {
+            "bitIndex": 1,
+            "notificationInfo": {
+              "necessity": "MANDA",
+              "priority": "MEDIUM",
+              "strKey": "HOB_PAN_INFO_NOTIFICATION"
+            },
+            "reasonInfo": null,
+            "strKey": "HOB_PAN_INFO"
+          }
+        ],
+        "wifiArrayByteCount": null,
+        "wifiArrayReadIndex": 44
+      },
+      "monitorings": [
+        {
+          "boundedValues": null,
+          "enumValues": [
+            {
+              "strKey": "ZONE_NOT_EXTENDED",
+              "wifiArrayValue": 0
+            },
+            {
+              "strKey": "ZONE_EXTEND_TO_LEFT",
+              "wifiArrayValue": 1
+            },
+            {
+              "strKey": "ZONE_EXTEND_TO_RIGHT",
+              "wifiArrayValue": 2
+            },
+            {
+              "strKey": "ZONE_EXTEND_TO_BOTH",
+              "wifiArrayValue": 3
+            },
+            {
+              "strKey": "ZONE_ONLY_EXTENDED",
+              "wifiArrayValue": 4
+            }
+          ],
+          "isSwitch": null,
+          "isVisible": 1,
+          "strKey": "ZONE_EXTENDED",
+          "wfaWriteIndex": null,
+          "wifiArrayIndex": 43
+        }
+      ],
+      "program": {
+        "isSwitch": null,
+        "isVisible": 1,
+        "strKey": "HOB_PROGRAM",
+        "values": [
+          {
+            "customSubProgramOverrides": null,
+            "isDownloadableCycle": null,
+            "isVisible": 1,
+            "progressVariableOverrides": null,
+            "strKey": "HOB_PROGRAM_MANUAL",
+            "subProgramOverrides": [
+              {
+                "allowedValueIndices": null,
+                "isDisabled": 1,
+                "strKeyRef": "HOB_PREDEFINED_PROGRAM"
+              }
+            ],
+            "wifiArrayValue": 1
+          },
+          {
+            "customSubProgramOverrides": null,
+            "isDownloadableCycle": null,
+            "isVisible": 1,
+            "progressVariableOverrides": null,
+            "strKey": "HOB_PROGRAM_PREDEFINED",
+            "subProgramOverrides": [
+              {
+                "allowedValueIndices": null,
+                "isDisabled": 1,
+                "strKeyRef": "HOB_HEATER_LEVEL"
+              }
+            ],
+            "wifiArrayValue": 2
+          }
+        ],
+        "wfaWriteIndex": null,
+        "wifiArrayIndex": 39
+      },
+      "progressVariables": {
+        "autoOff": null,
+        "autoOn": null,
+        "delay": null,
+        "duration": {
+          "hour": {
+            "boundedValues": [
+              {
+                "factor": 1,
+                "lowerLimit": 0,
+                "step": 1,
+                "strKey": "HOUR",
+                "unit": "",
+                "upperLimit": 2
+              }
+            ],
+            "enumValues": null,
+            "isSwitch": null,
+            "isVisible": 1,
+            "strKey": null,
+            "wfaWriteIndex": null,
+            "wifiArrayIndex": 46
+          },
+          "isCalculatedToStart": null,
+          "isExpandableBySwitch": null,
+          "isVisible": 1,
+          "minute": {
+            "boundedValues": [
+              {
+                "factor": 1,
+                "lowerLimit": 0,
+                "step": 1,
+                "strKey": "MINUTE",
+                "unit": "",
+                "upperLimit": 59
+              }
+            ],
+            "enumValues": null,
+            "isSwitch": null,
+            "isVisible": 1,
+            "strKey": null,
+            "wfaWriteIndex": null,
+            "wifiArrayIndex": 47
+          },
+          "strKey": "ZONE_DURATION",
+          "wfaIndex": null,
+          "wfaWriteIndex": null
+        },
+        "elapsed": null,
+        "fermentedremaining": null,
+        "remaining": null,
+        "remainingOrElapsed": {
+          "hour": {
+            "boundedValues": [
+              {
+                "factor": 1,
+                "lowerLimit": 0,
+                "step": 1,
+                "strKey": "HOUR",
+                "unit": "",
+                "upperLimit": 23
+              }
+            ],
+            "enumValues": null,
+            "isSwitch": null,
+            "isVisible": 1,
+            "strKey": null,
+            "wfaWriteIndex": null,
+            "wifiArrayIndex": 48
+          },
+          "isCalculatedToStart": null,
+          "isExpandableBySwitch": null,
+          "isVisible": 0,
+          "minute": {
+            "boundedValues": [
+              {
+                "factor": 1,
+                "lowerLimit": 0,
+                "step": 1,
+                "strKey": "MINUTE",
+                "unit": "",
+                "upperLimit": 59
+              }
+            ],
+            "enumValues": null,
+            "isSwitch": null,
+            "isVisible": 1,
+            "strKey": null,
+            "wfaWriteIndex": null,
+            "wifiArrayIndex": 49
+          },
+          "strKey": "ZONE_REMAINING_OR_ELAPSED",
+          "wfaIndex": null,
+          "wfaWriteIndex": null
+        }
+      },
+      "subPrograms": [
+        {
+          "boundedValues": null,
+          "enumValues": [
+            {
+              "strKey": "CLOSED",
+              "wifiArrayValue": 0
+            },
+            {
+              "strKey": "KEEP_WARM",
+              "wifiArrayValue": 1
+            },
+            {
+              "strKey": "BOIL",
+              "wifiArrayValue": 2
+            },
+            {
+              "strKey": "FRY",
+              "wifiArrayValue": 3
+            }
+          ],
+          "isSwitch": null,
+          "isVisible": 1,
+          "strKey": "HOB_PREDEFINED_PROGRAM",
+          "wfaWriteIndex": null,
+          "wifiArrayIndex": 40
+        },
+        {
+          "boundedValues": [
+            {
+              "factor": 1,
+              "lowerLimit": 0,
+              "step": 1,
+              "strKey": "HEAT",
+              "unit": "",
+              "upperLimit": 16
+            }
+          ],
+          "enumValues": null,
+          "isSwitch": null,
+          "isVisible": 1,
+          "strKey": "HOB_HEATER_LEVEL",
+          "wfaWriteIndex": null,
+          "wifiArrayIndex": 41
+        },
+        {
+          "boundedValues": null,
+          "enumValues": [
+            {
+              "strKey": "HOB_FLEXI_OFF",
+              "wifiArrayValue": 0
+            },
+            {
+              "strKey": "HOB_FLEXI_ON",
+              "wifiArrayValue": 1
+            }
+          ],
+          "isSwitch": 1,
+          "isVisible": 1,
+          "strKey": "HOB_FLEXI",
+          "wfaWriteIndex": null,
+          "wifiArrayIndex": 42
+        }
+      ],
+      "subStates": {
+        "subStates": [
+          {
+            "strKey": "HOB_MESSAGE_ENJOY_YOUR_MEAL",
+            "wifiArrayValue": 1
+          }
+        ],
+        "wifiArrayReadIndex": 45
+      },
+      "zoneRecipeInfo": {
+        "readyMealCurrentStepReadIndex": 52,
+        "readyMealIdHighReadIndex": 51,
+        "readyMealIdLowReadIndex": 50
+      }
+    },
+    "eachZoneWifiArraySegmentLength": 21,
+    "firstZoneWifiArrayStartIndex": 39,
+    "numberOfZones": 4
+  }
+}
