@@ -754,7 +754,7 @@
         "name": "Helligkeit"
       },
       "variable_delay": {
-        "name": "Startverzögerung"
+        "name": "Endzeit des Programms"
       },
       "variable_oven_duration": {
         "name": "Gardauer"
@@ -988,6 +988,11 @@
       },
       "air_conditioner_auto_switch_on": {
         "name": "Automatisch einschalten"
+      }
+    },
+    "number": {
+      "delay_start_set": {
+        "name": "Startverzögerung (Eingabe)"
       }
     },
     "binary_sensor": {
