@@ -1,0 +1,1240 @@
+{
+  "autoController": null,
+  "clock": null,
+  "commands": null,
+  "consumableSettings": null,
+  "customSubPrograms": null,
+  "deviceStates": {
+    "states": [
+      {
+        "allowedTransitions": [
+          "DEVICE_STATE_OFF",
+          "DEVICE_STATE_RUNNING",
+          "DEVICE_STATE_TIME_DELAY_ACTIVE"
+        ],
+        "notificationInfo": {
+          "necessity": null,
+          "priority": "MEDIUM",
+          "strKey": "DEVICE_STATE_ON_NOTIFICATION"
+        },
+        "strKey": "DEVICE_STATE_ON",
+        "wifiArrayValue": 10
+      },
+      {
+        "allowedTransitions": [
+          "DEVICE_STATE_ON"
+        ],
+        "notificationInfo": {
+          "necessity": null,
+          "priority": "MEDIUM",
+          "strKey": "DEVICE_STATE_OFF_NOTIFICATION"
+        },
+        "strKey": "DEVICE_STATE_OFF",
+        "wifiArrayValue": 20
+      },
+      {
+        "allowedTransitions": [
+          "DEVICE_STATE_OFF",
+          "DEVICE_STATE_PAUSED",
+          "DEVICE_STATE_END",
+          "DEVICE_STATE_ANTICREASE",
+          "DEVICE_STATE_ON"
+        ],
+        "notificationInfo": {
+          "necessity": null,
+          "priority": "MEDIUM",
+          "strKey": "DEVICE_STATE_RUNNING_NOTIFICATION"
+        },
+        "strKey": "DEVICE_STATE_RUNNING",
+        "wifiArrayValue": 30
+      },
+      {
+        "allowedTransitions": [
+          "DEVICE_STATE_OFF",
+          "DEVICE_STATE_RUNNING",
+          "DEVICE_STATE_ON",
+          "DEVICE_STATE_END"
+        ],
+        "notificationInfo": {
+          "necessity": null,
+          "priority": "MEDIUM",
+          "strKey": "DEVICE_STATE_PAUSED_NOTIFICATION"
+        },
+        "strKey": "DEVICE_STATE_PAUSED",
+        "wifiArrayValue": 40
+      },
+      {
+        "allowedTransitions": [
+          "DEVICE_STATE_OFF",
+          "DEVICE_STATE_PAUSED"
+        ],
+        "notificationInfo": {
+          "necessity": null,
+          "priority": "MEDIUM",
+          "strKey": "DEVICE_STATE_TIME_DELAY_ACTIVE_NOTIFICATION"
+        },
+        "strKey": "DEVICE_STATE_TIME_DELAY_ACTIVE",
+        "wifiArrayValue": 60
+      },
+      {
+        "allowedTransitions": [
+          "DEVICE_STATE_TIME_DELAY_ACTIVE",
+          "DEVICE_STATE_OFF",
+          "DEVICE_STATE_ON",
+          "DEVICE_STATE_RUNNING"
+        ],
+        "notificationInfo": {
+          "necessity": null,
+          "priority": "MEDIUM",
+          "strKey": "DEVICE_STATE_TIME_DELAY_PAUSED_NOTIFICATION"
+        },
+        "strKey": "DEVICE_STATE_TIME_DELAY_PAUSED",
+        "wifiArrayValue": 70
+      }
+    ],
+    "wfaIndex": null,
+    "wifiArrayReadIndex": 49,
+    "wifiArrayWriteIndex": 34
+  },
+  "deviceSubStates": {
+    "subStates": [
+      {
+        "strKey": "DRYER_MESSAGE_PROGRAM_FINISHED",
+        "wifiArrayValue": 1
+      },
+      {
+        "strKey": "DRYER_MESSAGE_HELLO",
+        "wifiArrayValue": 3
+      },
+      {
+        "strKey": "DRYER_MESSAGE_CLOSING",
+        "wifiArrayValue": 4
+      },
+      {
+        "strKey": "DRYER_MESSAGE_PROGRAM_STARTED",
+        "wifiArrayValue": 6
+      },
+      {
+        "strKey": "DRYER_MESSAGE_DRYING",
+        "wifiArrayValue": 7
+      },
+      {
+        "strKey": "DRYER_MESSAGE_TIME_DELAY_ACTIVE",
+        "wifiArrayValue": 8
+      },
+      {
+        "strKey": "DRYER_MESSAGE_PAUSED",
+        "wifiArrayValue": 9
+      },
+      {
+        "strKey": "DRYER_MESSAGE_COOLING",
+        "wifiArrayValue": 11
+      },
+      {
+        "strKey": "DRYER_MESSAGE_REFRESHING",
+        "wifiArrayValue": 12
+      },
+      {
+        "strKey": "DRYER_MESSAGE_ANTI_CREASING",
+        "wifiArrayValue": 13
+      },
+      {
+        "strKey": "DRYER_MESSAGE_DRUM_EMPTY",
+        "wifiArrayValue": 14
+      }
+    ],
+    "wifiArrayReadIndex": 48
+  },
+  "deviceWarnings": {
+    "warnings": [
+      {
+        "bitIndex": 0,
+        "notificationInfo": {
+          "necessity": "MANDA",
+          "priority": "BLOCKER",
+          "strKey": "DRYER_WARNING_DOOR_IS_OPEN_NOTIFICATION"
+        },
+        "reasonInfo": null,
+        "strKey": "DRYER_WARNING_DOOR_IS_OPEN"
+      },
+      {
+        "bitIndex": 1,
+        "notificationInfo": {
+          "necessity": "OPTON",
+          "priority": "HIGH",
+          "strKey": "DRYER_WARNING_TANKFULL_NOTIFICATION"
+        },
+        "reasonInfo": null,
+        "strKey": "DRYER_WARNING_TANKFULL"
+      },
+      {
+        "bitIndex": 2,
+        "notificationInfo": {
+          "necessity": "OPTON",
+          "priority": "MEDIUM",
+          "strKey": "DRYER_WARNING_CHECK_THE_FILTER_NOTIFICATION"
+        },
+        "reasonInfo": null,
+        "strKey": "DRYER_WARNING_CHECK_THE_FILTER"
+      },
+      {
+        "bitIndex": 8,
+        "notificationInfo": {
+          "necessity": "OPTON",
+          "priority": "MEDIUM",
+          "strKey": "DRYER_WARNING_CHECK_THE_CONDENSER_FILTER_NOTIFICATION"
+        },
+        "reasonInfo": null,
+        "strKey": "DRYER_WARNING_CHECK_THE_CONDENSER_FILTER"
+      },
+      {
+        "bitIndex": 3,
+        "notificationInfo": {
+          "necessity": "OPTON",
+          "priority": "HIGH",
+          "strKey": "DRYER_WARNING_DRUM_EMPTY_NOTIFICATION"
+        },
+        "reasonInfo": null,
+        "strKey": "DRYER_WARNING_DRUM_EMPTY"
+      },
+      {
+        "bitIndex": 4,
+        "notificationInfo": {
+          "necessity": "OPTON",
+          "priority": "LOW",
+          "strKey": "DRYER_MESSAGE_CHILD_LOCK_NOTIFICATION"
+        },
+        "reasonInfo": null,
+        "strKey": "DRYER_MESSAGE_CHILD_LOCK"
+      },
+      {
+        "bitIndex": 5,
+        "notificationInfo": {
+          "necessity": "OPTON",
+          "priority": "MEDIUM",
+          "strKey": "DRYER_MESSAGE_END_PROGRAM_NOTIFICATION"
+        },
+        "reasonInfo": null,
+        "strKey": "DRYER_MESSAGE_END_PROGRAM"
+      },
+      {
+        "bitIndex": 6,
+        "notificationInfo": {
+          "necessity": "OPTON",
+          "priority": "MEDIUM",
+          "strKey": "DRYER_MESSAGE_ANTI_CREASING_NOTIFICATION"
+        },
+        "reasonInfo": null,
+        "strKey": "DRYER_MESSAGE_ANTI_CREASING"
+      },
+      {
+        "bitIndex": 7,
+        "notificationInfo": {
+          "necessity": "OPTON",
+          "priority": "MEDIUM",
+          "strKey": "DRYER_MESSAGE_ANTI_CREASING_FINISHED_NOTIFICATION"
+        },
+        "reasonInfo": null,
+        "strKey": "DRYER_MESSAGE_ANTI_CREASING_FINISHED"
+      }
+    ],
+    "wifiArrayByteCount": null,
+    "wifiArrayReadIndex": 52
+  },
+  "deviceWarningsExtra": null,
+  "downloadCycleSettingsModel": {
+    "strKey": "DOWNLOADABLE_CYCLE_BYTE",
+    "wifiArrayReadIndex": 60
+  },
+  "monitorings": null,
+  "ovenClockWifiArrayIndexes": null,
+  "ovenDownloadedAutoBakeInformation": null,
+  "ovenMeatProbeAccessory": null,
+  "ovenRecipeInformation": null,
+  "ovenTemperatureInfo": null,
+  "program": {
+    "isSwitch": null,
+    "isVisible": 1,
+    "strKey": "DRYER_PROGRAM",
+    "values": [
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "PROGRAM_COTTONS",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_DRYING_LEVEL"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DURATION"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_ANTI_CREASING"
+          }
+        ],
+        "wifiArrayValue": 1
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "PROGRAM_COTTONS_ECO",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DRYING_LEVEL"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DURATION"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_ANTI_CREASING"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_LOWTEMP_MODE"
+          }
+        ],
+        "wifiArrayValue": 2
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "PROGRAM_SYNTHETICS",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_DRYING_LEVEL"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DURATION"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_ANTI_CREASING"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_LOWTEMP_MODE"
+          }
+        ],
+        "wifiArrayValue": 3
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "PROGRAM_MIX",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_DRYING_LEVEL"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DURATION"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_ANTI_CREASING"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_LOWTEMP_MODE"
+          }
+        ],
+        "wifiArrayValue": 4
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "PROGRAM_WOOLPROTECT",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DRYING_LEVEL"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DURATION"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_ANTI_CREASING"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_LOWTEMP_MODE"
+          }
+        ],
+        "wifiArrayValue": 5
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "PROGRAM_NIGHT",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_DRYING_LEVEL"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DURATION"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_ANTI_CREASING"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_LOWTEMP_MODE"
+          }
+        ],
+        "wifiArrayValue": 6
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "PROGRAM_DRYING_RACK_TIMER_PROGRAMMES",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DRYING_LEVEL"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_DURATION"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_ANTI_CREASING"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_LOWTEMP_MODE"
+          }
+        ],
+        "wifiArrayValue": 8
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "PROGRAM_JEANS",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": [
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_DRYING_LEVEL"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DURATION"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_ANTI_CREASING"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_LOWTEMP_MODE"
+          }
+        ],
+        "wifiArrayValue": 9
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "PROGRAM_OUTDOOR_SPORTS",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": [
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_DRYING_LEVEL"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DURATION"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_ANTI_CREASING"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_LOWTEMP_MODE"
+          }
+        ],
+        "wifiArrayValue": 10
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "PROGRAM_DUVET_DOWNWEAR",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": [
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_DRYING_LEVEL"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DURATION"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_ANTI_CREASING"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_LOWTEMP_MODE"
+          }
+        ],
+        "wifiArrayValue": 11
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "PROGRAM_GENTLECARE",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_DRYING_LEVEL"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DURATION"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_ANTI_CREASING"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_LOWTEMP_MODE"
+          }
+        ],
+        "wifiArrayValue": 12
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "PROGRAM_XPRESS_SUPER_SHORT",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DRYING_LEVEL"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DURATION"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_ANTI_CREASING"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_LOWTEMP_MODE"
+          }
+        ],
+        "wifiArrayValue": 13
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "PROGRAM_HYGIENIC_DRYING",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DRYING_LEVEL"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DURATION"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_ANTI_CREASING"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_LOWTEMP_MODE"
+          }
+        ],
+        "wifiArrayValue": 14
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "PROGRAM_HYGIENIC_REFRESH",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DRYING_LEVEL"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DURATION"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_ANTI_CREASING"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_LOWTEMP_MODE"
+          }
+        ],
+        "wifiArrayValue": 15
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "PROGRAM_BEDDING",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_DRYING_LEVEL"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DURATION"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_ANTI_CREASING"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_LOWTEMP_MODE"
+          }
+        ],
+        "wifiArrayValue": 16
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "PROGRAM_LINGERIE",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_DRYING_LEVEL"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DURATION"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_ANTI_CREASING"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_LOWTEMP_MODE"
+          }
+        ],
+        "wifiArrayValue": 17
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "PROGRAM_TOWEL",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": [
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_DRYING_LEVEL"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DURATION"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_ANTI_CREASING"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_LOWTEMP_MODE"
+          }
+        ],
+        "wifiArrayValue": 18
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "PROGRAM_FASHION",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_DRYING_LEVEL"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "DRYER_DURATION"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_ANTI_CREASING"
+          },
+          {
+            "allowedValueIndices": [
+              0,
+              1
+            ],
+            "isDisabled": null,
+            "strKeyRef": "DRYER_LOWTEMP_MODE"
+          }
+        ],
+        "wifiArrayValue": 19
+      }
+    ],
+    "wfaWriteIndex": null,
+    "wifiArrayIndex": 35
+  },
+  "progressVariables": {
+    "autoOff": null,
+    "autoOn": null,
+    "delay": {
+      "hour": {
+        "boundedValues": [
+          {
+            "factor": 1,
+            "lowerLimit": 0,
+            "step": 1,
+            "strKey": "HOUR",
+            "unit": "",
+            "upperLimit": 23
+          }
+        ],
+        "enumValues": null,
+        "isSwitch": null,
+        "isVisible": 1,
+        "strKey": null,
+        "wfaWriteIndex": null,
+        "wifiArrayIndex": 42
+      },
+      "isCalculatedToStart": 0,
+      "isExpandableBySwitch": null,
+      "isVisible": 1,
+      "minute": {
+        "boundedValues": [
+          {
+            "factor": 1,
+            "lowerLimit": 0,
+            "step": 1,
+            "strKey": "MINUTE",
+            "unit": "",
+            "upperLimit": 59
+          }
+        ],
+        "enumValues": null,
+        "isSwitch": null,
+        "isVisible": 1,
+        "strKey": null,
+        "wfaWriteIndex": null,
+        "wifiArrayIndex": 43
+      },
+      "strKey": "VARIABLE_DELAY",
+      "wfaIndex": null,
+      "wfaWriteIndex": null
+    },
+    "duration": {
+      "hour": {
+        "boundedValues": [
+          {
+            "factor": 1,
+            "lowerLimit": 0,
+            "step": 1,
+            "strKey": "HOUR",
+            "unit": "",
+            "upperLimit": 23
+          }
+        ],
+        "enumValues": null,
+        "isSwitch": null,
+        "isVisible": 1,
+        "strKey": null,
+        "wfaWriteIndex": null,
+        "wifiArrayIndex": 50
+      },
+      "isCalculatedToStart": null,
+      "isExpandableBySwitch": null,
+      "isVisible": 0,
+      "minute": {
+        "boundedValues": [
+          {
+            "factor": 1,
+            "lowerLimit": 0,
+            "step": 1,
+            "strKey": "MINUTE",
+            "unit": "",
+            "upperLimit": 59
+          }
+        ],
+        "enumValues": null,
+        "isSwitch": null,
+        "isVisible": 1,
+        "strKey": null,
+        "wfaWriteIndex": null,
+        "wifiArrayIndex": 51
+      },
+      "strKey": "VARIABLE_DURATION",
+      "wfaIndex": null,
+      "wfaWriteIndex": null
+    },
+    "elapsed": null,
+    "fermentedremaining": null,
+    "remaining": {
+      "hour": {
+        "boundedValues": [
+          {
+            "factor": 1,
+            "lowerLimit": 0,
+            "step": 1,
+            "strKey": "HOUR",
+            "unit": "",
+            "upperLimit": 23
+          }
+        ],
+        "enumValues": null,
+        "isSwitch": null,
+        "isVisible": 1,
+        "strKey": null,
+        "wfaWriteIndex": null,
+        "wifiArrayIndex": 40
+      },
+      "isCalculatedToStart": null,
+      "isExpandableBySwitch": null,
+      "isVisible": 0,
+      "minute": {
+        "boundedValues": [
+          {
+            "factor": 1,
+            "lowerLimit": 0,
+            "step": 1,
+            "strKey": "MINUTE",
+            "unit": "",
+            "upperLimit": 59
+          }
+        ],
+        "enumValues": null,
+        "isSwitch": null,
+        "isVisible": 1,
+        "strKey": null,
+        "wfaWriteIndex": null,
+        "wifiArrayIndex": 41
+      },
+      "strKey": "VARIABLE_REMAINING",
+      "wfaIndex": null,
+      "wfaWriteIndex": null
+    },
+    "remainingOrElapsed": null
+  },
+  "refrigeratorDefrostInformation": null,
+  "remoteControl": {
+    "wifiArrayReadIndex": 32,
+    "wifiArrayValue": 170
+  },
+  "screenSaver": null,
+  "settings": [
+    {
+      "boundedValues": null,
+      "enumValues": [
+        {
+          "strKey": "VOLUME_CLOSE",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "VOLUME_ON",
+          "wifiArrayValue": 3
+        }
+      ],
+      "isSwitch": null,
+      "isVisible": 1,
+      "strKey": "SETTING_VOLUME",
+      "wfaWriteIndex": null,
+      "wifiArrayIndex": 47
+    }
+  ],
+  "stepCooking": null,
+  "subPrograms": [
+    {
+      "boundedValues": null,
+      "enumValues": [
+        {
+          "strKey": "LOWTEMP_MODE_OFF",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "LOWTEMP_MODE_ON",
+          "wifiArrayValue": 1
+        }
+      ],
+      "isSwitch": 1,
+      "isVisible": 1,
+      "strKey": "DRYER_LOWTEMP_MODE",
+      "wfaWriteIndex": null,
+      "wifiArrayIndex": 56
+    },
+    {
+      "boundedValues": null,
+      "enumValues": [
+        {
+          "strKey": "DRYING_LEVEL_IRON_DRY",
+          "wifiArrayValue": 1
+        },
+        {
+          "strKey": "DRYING_LEVEL_CUPBOARD_DRY",
+          "wifiArrayValue": 2
+        },
+        {
+          "strKey": "DRYING_LEVEL_PLUS",
+          "wifiArrayValue": 3
+        },
+        {
+          "strKey": "DRYING_LEVEL_EXTRA_DRY",
+          "wifiArrayValue": 4
+        }
+      ],
+      "isSwitch": 0,
+      "isVisible": 1,
+      "strKey": "DRYER_DRYING_LEVEL",
+      "wfaWriteIndex": null,
+      "wifiArrayIndex": 36
+    },
+    {
+      "boundedValues": null,
+      "enumValues": [
+        {
+          "strKey": "0",
+          "wifiArrayValue": 1
+        },
+        {
+          "strKey": "30",
+          "wifiArrayValue": 2
+        },
+        {
+          "strKey": "60",
+          "wifiArrayValue": 3
+        },
+        {
+          "strKey": "120",
+          "wifiArrayValue": 4
+        }
+      ],
+      "isSwitch": 0,
+      "isVisible": 1,
+      "strKey": "DRYER_ANTI_CREASING",
+      "wfaWriteIndex": null,
+      "wifiArrayIndex": 39
+    },
+    {
+      "boundedValues": [
+        {
+          "factor": 10,
+          "lowerLimit": 10,
+          "step": 10,
+          "strKey": "DURATION",
+          "unit": "",
+          "upperLimit": 160
+        }
+      ],
+      "enumValues": null,
+      "isSwitch": 0,
+      "isVisible": 1,
+      "strKey": "DRYER_DURATION",
+      "wfaWriteIndex": null,
+      "wifiArrayIndex": 44
+    }
+  ],
+  "teaRecipeInformation": null,
+  "warnings": null,
+  "zones": null
+}
