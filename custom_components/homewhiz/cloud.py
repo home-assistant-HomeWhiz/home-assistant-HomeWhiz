@@ -56,6 +56,20 @@ class MqttPayload:
     state: State | None = None
 
 
+def shadow_payload_to_data(payload: str) -> bytearray | None:
+    """Decode an AWS shadow payload into the raw device byte array.
+
+    Returns None when the payload carries no reported state.
+    """
+    message = from_dict(MqttPayload, json.loads(payload))
+    if message.state and message.state.reported:
+        offset = int(message.state.reported.wfaStartOffset or 26)
+        wfa = message.state.reported.wfa or []
+        padding = [0 for _ in range(offset)]
+        return bytearray(padding + wfa)
+    return None
+
+
 class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
     def __init__(
         self,
@@ -394,12 +408,8 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
     def handle_notify(self, payload: str) -> None:
         _LOGGER.debug("Handling notify")
         try:
-            message = from_dict(MqttPayload, json.loads(payload))
-            if message.state and message.state.reported:
-                offset = int(message.state.reported.wfaStartOffset or 26)
-                wfa = message.state.reported.wfa or []
-                padding = [0 for _ in range(offset)]
-                data = bytearray(padding + wfa)
+            data = shadow_payload_to_data(payload)
+            if data is not None:
                 _LOGGER.debug("Message received: %s", data)
                 self.hass.loop.call_soon_threadsafe(self.async_set_updated_data, data)
         except Exception as e:  # noqa: BLE001
