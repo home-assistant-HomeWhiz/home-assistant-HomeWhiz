@@ -59,12 +59,17 @@ class MqttPayload:
 def shadow_payload_to_data(payload: str) -> bytearray | None:
     """Decode an AWS shadow payload into the raw device byte array.
 
-    Returns None when the payload carries no reported state.
+    Returns None when the payload carries no reported state, or when the
+    reported state is metadata-only (e.g. a connected/modifiedTime update)
+    and has no wfa array yet.
     """
     message = from_dict(MqttPayload, json.loads(payload))
     if message.state and message.state.reported:
-        offset = int(message.state.reported.wfaStartOffset or 26)
-        wfa = message.state.reported.wfa or []
+        reported = message.state.reported
+        if reported.wfa is None:
+            return None
+        offset = int(reported.wfaStartOffset or 26)
+        wfa = reported.wfa
         padding = [0 for _ in range(offset)]
         return bytearray(padding + wfa)
     return None
