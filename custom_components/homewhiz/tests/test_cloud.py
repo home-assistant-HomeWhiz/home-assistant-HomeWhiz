@@ -13,14 +13,14 @@ def test_default_offset_is_26_when_missing() -> None:
     assert data == bytearray([0] * 26 + [9])
 
 
-def test_metadata_only_update_produces_zero_state() -> None:
-    # A metadata-only shadow update (presence/connected, no wfa) currently
-    # decodes to an all-zero device state. Pinning the current behaviour so a
-    # later change to this path is deliberate and visible in the diff.
+def test_metadata_only_update_is_ignored() -> None:
+    # A metadata-only shadow update (presence/connected, no wfa yet) must not
+    # be decoded into a false all-zero device state (issue: momentary state
+    # flicker / spurious automation triggers on every cloud reconnect).
     data = shadow_payload_to_data(
         '{"state": {"reported": {"connected": true, "modifiedTime": 1720000000}}}'
     )
-    assert data == bytearray(26)
+    assert data is None
 
 
 def test_no_reported_state_returns_none() -> None:
