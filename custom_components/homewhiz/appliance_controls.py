@@ -651,9 +651,13 @@ def get_options_from_feature(key: str, feature: ApplianceFeature) -> bidict[int,
 def get_options_from_enum_options(
     options: Sequence[ApplianceFeatureEnumOption],
 ) -> dict[int, str]:
-    return {
-        option.wifiArrayValue: to_friendly_name(option.strKey) for option in options
-    }
+    result: dict[int, str] = {}
+    for option in options:
+        friendly_name = to_friendly_name(option.strKey)
+        if friendly_name in result.values():
+            friendly_name = f"{friendly_name}_{option.wifiArrayValue}"
+        result[option.wifiArrayValue] = friendly_name
+    return result
 
 
 def build_read_control_from_feature(feature: ApplianceFeature) -> Control | None:
