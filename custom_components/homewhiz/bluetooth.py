@@ -176,7 +176,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         if not self.alive:
             _LOGGER.debug("Disconnected callback called but not alive")
             return
-        self.hass.create_task(self.handle_disconnect())
+        self.hass.create_task(self.handle_disconnect(client))
 
     @callback
     def reconnect_callback(self, *args: Any) -> None:
@@ -214,9 +214,21 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                     )
                     await asyncio.sleep(30)
 
-    async def handle_disconnect(self, *args: Any) -> None:
+    async def handle_disconnect(
+        self, client: BleakClient | None = None, *args: Any
+    ) -> None:
         _LOGGER.debug("Handling disconnect%s...", " by time interval" if args else "")
         async with self._connection_lock:
+            # Only a disconnect of the live connection may tear it down.
+            # A late callback from a superseded client would otherwise kill
+            # a fresh, healthy connection established in the meantime.
+            if (
+                client is not None
+                and self._connection is not None
+                and client is not self._connection
+            ):
+                _LOGGER.debug("Ignoring disconnect from a stale connection")
+                return
             async with self._device_lock:
                 self._device = None
             # Ensure device is disconnected
