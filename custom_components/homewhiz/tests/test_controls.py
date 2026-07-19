@@ -8,7 +8,9 @@ from dacite import from_dict
 from custom_components.homewhiz.appliance_config import ApplianceConfiguration
 from custom_components.homewhiz.appliance_controls import (
     EnumControl,
+    WriteEnumControl,
     WriteTimeControl,
+    build_control_from_program,
     generate_controls_from_config,
 )
 from custom_components.homewhiz.homewhiz import Command
@@ -73,3 +75,23 @@ def test_writable_start_delay(config: ApplianceConfiguration) -> None:
     for command in delay.set_value(125):
         data[command.index] = command.value
     assert delay.get_value(data) == 125
+
+
+def test_program_options_with_duplicate_names() -> None:
+    # Issue #410: this Beko washer lists PROGRAM_MIX twice (bytes 7 and 16),
+    # which crashed every platform setup with bidict.ValueDuplicationError.
+    # The duplicate gets the wifiArrayValue suffixed instead, like the existing
+    # guard in get_options_from_feature (#273).
+    file_path = Path(__file__).parent / "fixtures" / "beko-washer-410.json"
+    with file_path.open(encoding="utf-8") as file:
+        washer_config = from_dict(ApplianceConfiguration, json.load(file))
+    control = build_control_from_program(washer_config.program)
+    assert isinstance(control, WriteEnumControl)
+    options = list(control.options.values())
+    assert len(options) == 21
+    assert "program_mix" in options
+    assert "program_mix_16" in options
+    # Both names stay individually writable: the first entry keeps the plain
+    # name (byte 7), the duplicate carries its byte value as suffix.
+    assert control.set_value("program_mix") == Command(control.write_index, 7)
+    assert control.set_value("program_mix_16") == Command(control.write_index, 16)
