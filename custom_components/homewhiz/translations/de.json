@@ -444,6 +444,50 @@
           "volume_close": "Aus",
           "volume_on": "Ein"
         }
+      },
+      "fridge_cooler_temperature": {
+        "name": "Kühlteil-Temperatur"
+      },
+      "fridge_freezer_temperature": {
+        "name": "Gefriertemperatur"
+      },
+      "fridge_degree_dimension": {
+        "name": "Temperatureinheit",
+        "state": {
+          "degree_dimension_celcius": "Celsius (°C)",
+          "degree_dimension_fahrenheit": "Fahrenheit (°F)"
+        }
+      },
+      "fridge_freezer_joker_mode": {
+        "name": "Joker-Fach",
+        "state": {
+          "freezer_joker_mode_freezer": "Gefrierschrank",
+          "freezer_joker_mode_cooler": "Kühlschrank"
+        }
+      },
+      "fridge_freezer_joker_temperature": {
+        "name": "Joker-Fach-Temperatur",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C"
+        }
+      },
+      "settings_door_alarm_time": {
+        "name": "Türalarm-Zeit",
+        "state": {
+          "one_min": "1 min",
+          "one_and_half_min": "1,5 min",
+          "two_min": "2 min",
+          "three_min": "3 min",
+          "four_min": "4 min",
+          "five_min": "5 min"
+        }
       }
     },
     "sensor": {
@@ -988,6 +1032,50 @@
       },
       "air_conditioner_auto_switch_on": {
         "name": "Automatisch einschalten"
+      },
+      "fridge_cooler_temperature": {
+        "name": "Kühlteil-Temperatur"
+      },
+      "fridge_freezer_temperature": {
+        "name": "Gefriertemperatur"
+      },
+      "fridge_degree_dimension": {
+        "name": "Temperatureinheit",
+        "state": {
+          "degree_dimension_celcius": "Celsius (°C)",
+          "degree_dimension_fahrenheit": "Fahrenheit (°F)"
+        }
+      },
+      "fridge_freezer_joker_mode": {
+        "name": "Joker-Fach",
+        "state": {
+          "freezer_joker_mode_freezer": "Gefrierschrank",
+          "freezer_joker_mode_cooler": "Kühlschrank"
+        }
+      },
+      "fridge_freezer_joker_temperature": {
+        "name": "Joker-Fach-Temperatur",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C"
+        }
+      },
+      "settings_door_alarm_time": {
+        "name": "Türalarm-Zeit",
+        "state": {
+          "one_min": "1 min",
+          "one_and_half_min": "1,5 min",
+          "two_min": "2 min",
+          "three_min": "3 min",
+          "four_min": "4 min",
+          "five_min": "5 min"
+        }
       }
     },
     "number": {
@@ -1088,6 +1176,12 @@
       },
       "zone_4_hob_pan_info": {
         "name": "Zone 4 Topferkennung"
+      },
+      "fridge_warning_door_is_open": {
+        "name": "Tür ist offen"
+      },
+      "fridge_warning_high_temperature": {
+        "name": "Hohe Temperatur"
       }
     },
     "climate": {
@@ -1181,6 +1275,12 @@
       },
       "dishwasher_deepwash": {
         "name": "Tiefenreinigung"
+      },
+      "fridge_quick_cool": {
+        "name": "Quick Cool"
+      },
+      "fridge_a_cool": {
+        "name": "A-Cool"
       }
     }
   },
