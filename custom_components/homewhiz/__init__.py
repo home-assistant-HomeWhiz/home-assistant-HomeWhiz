@@ -52,6 +52,14 @@ async def setup_bluetooth(
         )
     )
 
+    async def connect_retrieving_errors() -> None:
+        # connect() logs its own failure and try_reconnect takes over;
+        # retrieving the exception here avoids a duplicate traceback.
+        try:
+            await coordinator.connect()
+        except Exception:  # noqa: BLE001
+            _LOGGER.debug("Connect from advertisement failed, reconnect retries")
+
     @callback
     def connect(
         service_info: BluetoothServiceInfoBleak,
@@ -59,7 +67,7 @@ async def setup_bluetooth(
     ) -> None:
         if not coordinator.is_connected and not coordinator.reconnecting_lock.locked():
             _LOGGER.debug("Called connect callback in setup_bluetooth")
-            hass.async_create_task(coordinator.connect())
+            hass.async_create_task(connect_retrieving_errors())
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     entry.async_on_unload(
