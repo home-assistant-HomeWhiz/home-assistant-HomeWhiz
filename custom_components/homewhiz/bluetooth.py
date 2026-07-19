@@ -119,7 +119,12 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                     response=False,
                 )
             except Exception:
-                _LOGGER.exception("Failed to set up connection, cleaning up")
+                # WARNING, not ERROR: this failure is transient and the
+                # reconnect loop takes over; a persistent problem still
+                # surfaces as ERROR via "Can't reconnect" every 30s.
+                _LOGGER.warning(
+                    "Failed to set up connection, cleaning up", exc_info=True
+                )
                 with contextlib.suppress(Exception):
                     await self._connection.disconnect()
                 self._connection = None  # ensure clean state for next attempt
