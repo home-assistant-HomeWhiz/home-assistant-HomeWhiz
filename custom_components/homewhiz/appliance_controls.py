@@ -635,6 +635,8 @@ def get_options_from_feature(key: str, feature: ApplianceFeature) -> bidict[int,
     options: bidict[int, str] = bidict()
     if feature.enumValues is not None:
         for option in feature.enumValues:
+            if option.wifiArrayValue is None:
+                continue
             friendly_name = to_friendly_name(option.strKey)
             if friendly_name in options.inverse:
                 friendly_name = f"{friendly_name}_{option.wifiArrayValue}"
@@ -653,6 +655,8 @@ def get_options_from_enum_options(
 ) -> dict[int, str]:
     result: dict[int, str] = {}
     for option in options:
+        if option.wifiArrayValue is None:
+            continue
         friendly_name = to_friendly_name(option.strKey)
         if friendly_name in result.values():
             friendly_name = f"{friendly_name}_{option.wifiArrayValue}"
