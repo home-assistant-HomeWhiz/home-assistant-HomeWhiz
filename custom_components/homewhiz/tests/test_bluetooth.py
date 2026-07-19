@@ -2,9 +2,13 @@
 
 The coordinator is built without DataUpdateCoordinator.__init__, and async code
 runs through asyncio.run() from sync tests, so no extra plugin is needed.
+Setting up that state requires touching private attributes.
 """
 
+# ruff: noqa: SLF001
+
 import asyncio
+from typing import Any
 from unittest.mock import Mock
 
 from custom_components.homewhiz.bluetooth import HomewhizBluetoothUpdateCoordinator
@@ -42,8 +46,8 @@ def _make_coordinator(scheduled: list) -> HomewhizBluetoothUpdateCoordinator:
 def test_stale_client_disconnect_is_ignored() -> None:
     scheduled: list = []
     coord = _make_coordinator(scheduled)
-    superseded = _FakeClient(connected=False)
-    live = _FakeClient()
+    superseded: Any = _FakeClient(connected=False)
+    live: Any = _FakeClient()
     coord._connection = live
 
     asyncio.run(coord.handle_disconnect(superseded))
@@ -57,7 +61,7 @@ def test_stale_client_disconnect_is_ignored() -> None:
 def test_live_client_disconnect_tears_down() -> None:
     scheduled: list = []
     coord = _make_coordinator(scheduled)
-    live = _FakeClient()
+    live: Any = _FakeClient()
     coord._connection = live
 
     asyncio.run(coord.handle_disconnect(live))
@@ -72,7 +76,7 @@ def test_disconnect_without_client_tears_down() -> None:
     """Callers that pass no client (e.g. interval reconnect) keep working."""
     scheduled: list = []
     coord = _make_coordinator(scheduled)
-    live = _FakeClient()
+    live: Any = _FakeClient()
     coord._connection = live
 
     asyncio.run(coord.handle_disconnect())
