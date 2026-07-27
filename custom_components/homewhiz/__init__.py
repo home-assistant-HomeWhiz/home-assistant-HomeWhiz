@@ -54,12 +54,14 @@ async def setup_bluetooth(
     )
 
     async def connect_retrieving_errors() -> None:
-        # connect() logs its own failure and try_reconnect takes over;
-        # retrieving the exception here avoids a duplicate traceback.
+        # Heals on the next advertisement, not via try_reconnect() (that
+        # only runs after a disconnect from an established connection).
         try:
             await coordinator.connect()
         except Exception:  # noqa: BLE001
-            _LOGGER.debug("Connect from advertisement failed, reconnect retries")
+            _LOGGER.debug(
+                "Connect from advertisement failed, waiting for the next advertisement"
+            )
 
     @callback
     def connect(
