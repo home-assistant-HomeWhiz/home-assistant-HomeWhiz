@@ -246,6 +246,8 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
             for appliance in self._cloud_appliances
             if not appliance.is_bt()
         }
+        if len(options) == 0:
+            return self.async_abort(reason="no_cloud_devices_found")
 
         return self.async_show_form(
             step_id="select_cloud_device",
