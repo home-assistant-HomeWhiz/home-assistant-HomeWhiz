@@ -46,7 +46,8 @@
       }
     },
     "error": {
-      "invalid_auth": "Ungültige Anmeldedaten"
+      "invalid_auth": "Ungültige Anmeldedaten",
+      "unknown": "Unerwarteter Fehler. Details stehen in den HomeWhiz-Einträgen im Home-Assistant-Protokoll."
     }
   },
   "entity": {
