@@ -104,7 +104,7 @@ def _lazy_install_awsiotsdk() -> None:
 async def setup_cloud(entry: ConfigEntry, hass: HomeAssistant) -> bool:
     _LOGGER.info("Setting up cloud connection")
 
-    loop = asyncio.get_event_loop()
+    loop = asyncio.get_running_loop()
     lazy_install_awsiotsdk_task = loop.run_in_executor(None, _lazy_install_awsiotsdk)
     await lazy_install_awsiotsdk_task
 
