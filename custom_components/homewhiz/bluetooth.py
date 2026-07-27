@@ -65,11 +65,18 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         self._reconnect_interval_task: None | Callable = None
         super().__init__(hass, _LOGGER, name=DOMAIN)
 
-    async def connect(self) -> bool:
+    async def connect(self) -> bool:  # noqa: C901
+        if not self.alive:
+            _LOGGER.debug("Coordinator is no longer alive, skipping connect()")
+            return False
         if self.is_connected:
             _LOGGER.debug("Already connected, skipping connect()")
             return True
         async with self._connection_lock:
+            # kill() may have run while this waited for the lock.
+            if not self.alive:
+                _LOGGER.debug("Coordinator is no longer alive, skipping connect()")
+                return False
             if self.is_connected:  # double-checked locking
                 _LOGGER.debug("Already connected, skipping connect()")
                 return True

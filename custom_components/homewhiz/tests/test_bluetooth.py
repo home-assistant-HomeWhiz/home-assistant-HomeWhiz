@@ -85,3 +85,12 @@ def test_disconnect_without_client_tears_down() -> None:
 
     assert coord._connection is None
     assert live.disconnect_calls == 1
+
+
+def test_connect_on_dead_coordinator_is_refused() -> None:
+    """After kill() a queued connect must not revive the coordinator."""
+    coord = _make_coordinator([])
+    coord.alive = False
+
+    assert asyncio.run(coord.connect()) is False
+    assert coord._connection is None
