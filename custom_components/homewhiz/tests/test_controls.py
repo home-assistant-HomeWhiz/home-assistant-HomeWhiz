@@ -5,13 +5,17 @@ from unittest import TestCase
 import pytest
 from dacite import from_dict
 
-from custom_components.homewhiz.appliance_config import ApplianceConfiguration
+from custom_components.homewhiz.appliance_config import (
+    ApplianceConfiguration,
+    ApplianceFeatureBoundedOption,
+)
 from custom_components.homewhiz.appliance_controls import (
     EnumControl,
     WriteEnumControl,
     WriteTimeControl,
     build_control_from_program,
     generate_controls_from_config,
+    get_bounded_values_options,
 )
 from custom_components.homewhiz.homewhiz import Command
 
@@ -95,3 +99,30 @@ def test_program_options_with_duplicate_names() -> None:
     # name (byte 7), the duplicate carries its byte value as suffix.
     assert control.set_value("program_mix") == Command(control.write_index, 7)
     assert control.set_value("program_mix_16") == Command(control.write_index, 16)
+
+
+def _bounded(step: float, factor: float) -> ApplianceFeatureBoundedOption:
+    return ApplianceFeatureBoundedOption(
+        factor=factor,
+        lowerLimit=0,
+        step=step,
+        strKey="TEMPERATURE",
+        unit=None,
+        upperLimit=4,
+    )
+
+
+def test_bounded_values_are_expanded() -> None:
+    options = get_bounded_values_options("temperature", _bounded(step=2, factor=1))
+
+    assert list(options.items()) == [(0, "0c"), (2, "2c"), (4, "4c")]
+
+
+def test_zero_step_is_skipped() -> None:
+    """A step of zero would otherwise loop forever and freeze the event loop."""
+    assert len(get_bounded_values_options("temperature", _bounded(0, 1))) == 0
+
+
+def test_zero_factor_is_skipped() -> None:
+    """A factor of zero would otherwise raise ZeroDivisionError during setup."""
+    assert len(get_bounded_values_options("temperature", _bounded(1, 0))) == 0
