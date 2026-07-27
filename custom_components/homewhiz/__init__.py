@@ -88,7 +88,9 @@ async def setup_bluetooth(
         hass.create_task(coordinator.kill())
 
     _LOGGER.debug("Setting up shutdown event listener")
-    hass.bus.async_listen_once(EVENT_HOMEASSISTANT_STOP, disconnect_service)
+    entry.async_on_unload(
+        hass.bus.async_listen_once(EVENT_HOMEASSISTANT_STOP, disconnect_service)
+    )
 
     return True
 
