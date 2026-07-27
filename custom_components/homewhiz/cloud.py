@@ -68,7 +68,18 @@ def shadow_payload_to_data(payload: str) -> bytearray | None:
         reported = message.state.reported
         if reported.wfa is None:
             return None
-        offset = int(reported.wfaStartOffset or 26)
+        raw_offset = reported.wfaStartOffset
+        offset = int(raw_offset or 26)
+        if not raw_offset:
+            _LOGGER.warning(
+                "Device reports wfaStartOffset %r, falling back to %d",
+                raw_offset,
+                offset,
+            )
+        elif offset < 0:
+            _LOGGER.warning(
+                "Device reports wfaStartOffset %r, no padding applied", raw_offset
+            )
         wfa = reported.wfa
         padding = [0 for _ in range(offset)]
         return bytearray(padding + wfa)
