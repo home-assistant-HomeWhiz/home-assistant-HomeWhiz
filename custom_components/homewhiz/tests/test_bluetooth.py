@@ -8,8 +8,9 @@ Setting up that state requires touching private attributes.
 # ruff: noqa: SLF001
 
 import asyncio
+import contextlib
 from typing import Any
-from unittest.mock import Mock
+from unittest.mock import AsyncMock, Mock, patch
 
 from custom_components.homewhiz.bluetooth import HomewhizBluetoothUpdateCoordinator
 
@@ -36,10 +37,13 @@ def _make_coordinator(scheduled: list) -> HomewhizBluetoothUpdateCoordinator:
     coord._connection_lock = asyncio.Lock()
     coord._device = None
     coord._device_lock = asyncio.Lock()
+    coord._connect_task = None
+    coord._reconnect_interval_task = None
     hass = Mock()
     hass.create_task = scheduled.append
     hass.add_job = Mock()
     coord.hass = hass
+    coord._hass = hass
     return coord
 
 
@@ -94,3 +98,79 @@ def test_connect_on_dead_coordinator_is_refused() -> None:
 
     assert asyncio.run(coord.connect()) is False
     assert coord._connection is None
+
+
+def test_kill_cancels_a_connect_in_progress() -> None:
+    """Without cancellation, kill() would block on the lock the stuck connect holds."""
+    coord = _make_coordinator([])
+
+    async def run() -> tuple[float, bool]:
+        async def stuck_connect() -> None:
+            coord._connect_task = asyncio.current_task()
+            try:
+                async with coord._connection_lock:
+                    await asyncio.sleep(100)  # simulates a hung establish_connection()
+            finally:
+                coord._connect_task = None
+
+        task = asyncio.ensure_future(stuck_connect())
+        await asyncio.sleep(0.01)  # let it acquire the lock first
+        start = asyncio.get_running_loop().time()
+        await coord.kill()
+        elapsed = asyncio.get_running_loop().time() - start
+        with contextlib.suppress(asyncio.CancelledError):
+            await task
+        return elapsed, task.cancelled()
+
+    elapsed, cancelled = asyncio.run(run())
+
+    assert elapsed < 1
+    assert cancelled
+
+
+def test_kill_cancels_the_lock_holder_not_a_queued_connect() -> None:
+    """A queued connect() must not steal kill()'s cancellation target."""
+    coord = _make_coordinator([])
+
+    async def hang_forever(**_kwargs: object) -> None:
+        await asyncio.sleep(100)
+
+    async def run() -> tuple[float, bool, bool]:
+        with (
+            patch(
+                "homeassistant.components.bluetooth.async_ble_device_from_address",
+                return_value=Mock(),
+            ),
+            patch(
+                "custom_components.homewhiz.bluetooth.establish_connection",
+                new_callable=AsyncMock,
+                side_effect=hang_forever,
+            ),
+        ):
+            first = asyncio.ensure_future(coord.connect())
+            await asyncio.sleep(0.05)  # let it acquire the lock and hang inside
+            second = asyncio.ensure_future(coord.connect())
+            await asyncio.sleep(0.05)  # let it start waiting on the lock
+
+            start = asyncio.get_running_loop().time()
+            await asyncio.wait_for(coord.kill(), timeout=2)
+            elapsed = asyncio.get_running_loop().time() - start
+
+            for task in (first, second):
+                with contextlib.suppress(asyncio.CancelledError):
+                    await task
+            return elapsed, first.cancelled(), second.cancelled()
+
+    elapsed, first_cancelled, second_cancelled = asyncio.run(run())
+
+    assert elapsed < 1
+    assert first_cancelled
+    assert not second_cancelled  # it was never running anything to cancel
+
+
+def test_kill_without_an_in_flight_connect_is_unaffected() -> None:
+    coord = _make_coordinator([])
+
+    asyncio.run(coord.kill())
+
+    assert coord.alive is False

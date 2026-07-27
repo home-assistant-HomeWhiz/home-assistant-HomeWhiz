@@ -63,6 +63,8 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         # Allow users to configure regular Bluetooth reconnections
         self._reconnect_interval: int | None = reconnect_interval
         self._reconnect_interval_task: None | Callable = None
+        # Tracked so kill() can cancel an in-progress connect attempt.
+        self._connect_task: asyncio.Task[bool] | None = None
         super().__init__(hass, _LOGGER, name=DOMAIN)
 
     async def connect(self) -> bool:  # noqa: C901
@@ -73,69 +75,77 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
             _LOGGER.debug("Already connected, skipping connect()")
             return True
         async with self._connection_lock:
-            # kill() may have run while this waited for the lock.
-            if not self.alive:
-                _LOGGER.debug("Coordinator is no longer alive, skipping connect()")
-                return False
-            if self.is_connected:  # double-checked locking
-                _LOGGER.debug("Already connected, skipping connect()")
-                return True
-            _LOGGER.info("Connecting to %s", self.address)
-            async with self._device_lock:
-                self._device = bluetooth.async_ble_device_from_address(
-                    self._hass, self.address, connectable=True
-                )
-                # Self connection should be None
-                if self._connection:
-                    _LOGGER.warning(
-                        "Trying to connect even though connection already exists!"
-                    )
-                if not self._device:
-                    raise RuntimeError(f"Device not found for address {self.address}")
-
-                # How to clear disconnected_callback?
-                _LOGGER.debug("Establishing connection")
-                self._connection = await establish_connection(
-                    client_class=BleakClient,
-                    device=self._device,
-                    disconnected_callback=self.disconnected_callback,
-                    name=self.address,
-                )
-
-            def _raise_cant_connect() -> None:
-                msg = "Can't connect"
-                raise RuntimeError(msg)
-
+            # Only the lock holder is tracked, not a queued connect() still
+            # waiting its turn.
+            self._connect_task = asyncio.current_task()
             try:
-                if not self._connection.is_connected:
-                    _raise_cant_connect()
+                # kill() may have run while this waited for the lock.
+                if not self.alive:
+                    _LOGGER.debug("Coordinator is no longer alive, skipping connect()")
+                    return False
+                if self.is_connected:  # double-checked locking
+                    _LOGGER.debug("Already connected, skipping connect()")
+                    return True
+                _LOGGER.info("Connecting to %s", self.address)
+                async with self._device_lock:
+                    self._device = bluetooth.async_ble_device_from_address(
+                        self._hass, self.address, connectable=True
+                    )
+                    # Self connection should be None
+                    if self._connection:
+                        _LOGGER.warning(
+                            "Trying to connect even though connection already exists!"
+                        )
+                    if not self._device:
+                        raise RuntimeError(
+                            f"Device not found for address {self.address}"
+                        )
 
-                await asyncio.sleep(0.5)
+                    # How to clear disconnected_callback?
+                    _LOGGER.debug("Establishing connection")
+                    self._connection = await establish_connection(
+                        client_class=BleakClient,
+                        device=self._device,
+                        disconnected_callback=self.disconnected_callback,
+                        name=self.address,
+                    )
 
-                _LOGGER.debug("Starting notify")
-                await self._connection.start_notify(
-                    "0000ac02-0000-1000-8000-00805f9b34fb",
-                    lambda sender, message: self.hass.create_task(
-                        self.handle_notify(message)
-                    ),
-                )
-                _LOGGER.debug("Sending initial command")
-                await self._connection.write_gatt_char(
-                    "0000ac01-0000-1000-8000-00805f9b34fb",
-                    bytearray.fromhex("02 04 00 04 00 1a 01 03"),
-                    response=False,
-                )
-            except Exception:
-                # WARNING, not ERROR: this failure is transient and the
-                # reconnect loop takes over; a persistent problem still
-                # surfaces as ERROR via "Can't reconnect" every 30s.
-                _LOGGER.warning(
-                    "Failed to set up connection, cleaning up", exc_info=True
-                )
-                with contextlib.suppress(Exception):
-                    await self._connection.disconnect()
-                self._connection = None  # ensure clean state for next attempt
-                raise
+                def _raise_cant_connect() -> None:
+                    msg = "Can't connect"
+                    raise RuntimeError(msg)
+
+                try:
+                    if not self._connection.is_connected:
+                        _raise_cant_connect()
+
+                    await asyncio.sleep(0.5)
+
+                    _LOGGER.debug("Starting notify")
+                    await self._connection.start_notify(
+                        "0000ac02-0000-1000-8000-00805f9b34fb",
+                        lambda sender, message: self.hass.create_task(
+                            self.handle_notify(message)
+                        ),
+                    )
+                    _LOGGER.debug("Sending initial command")
+                    await self._connection.write_gatt_char(
+                        "0000ac01-0000-1000-8000-00805f9b34fb",
+                        bytearray.fromhex("02 04 00 04 00 1a 01 03"),
+                        response=False,
+                    )
+                except Exception:
+                    # WARNING, not ERROR: this failure is transient and the
+                    # reconnect loop takes over; a persistent problem still
+                    # surfaces as ERROR via "Can't reconnect" every 30s.
+                    _LOGGER.warning(
+                        "Failed to set up connection, cleaning up", exc_info=True
+                    )
+                    with contextlib.suppress(Exception):
+                        await self._connection.disconnect()
+                    self._connection = None  # ensure clean state for next attempt
+                    raise
+            finally:
+                self._connect_task = None
 
         # To retrieve RSSI value
         # https://developers.home-assistant.io/docs/core/bluetooth/api/#fetching-the-latest-bluetoothserviceinfobleak-for-a-device
@@ -287,6 +297,12 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
     async def kill(self) -> None:
         _LOGGER.debug("[%s] Killing connection", self.address)
         self.alive = False  # set FIRST, before calling disconnect()
+        connect_task = self._connect_task
+        if connect_task is not None and not connect_task.done():
+            _LOGGER.debug("[%s] Cancelling connect in progress", self.address)
+            connect_task.cancel()
+            with contextlib.suppress(asyncio.CancelledError, Exception):
+                await connect_task
         async with self._connection_lock:
             if self._connection is not None:
                 with contextlib.suppress(Exception):
