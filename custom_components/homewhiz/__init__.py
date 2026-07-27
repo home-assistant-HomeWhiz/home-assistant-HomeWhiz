@@ -17,6 +17,7 @@ from homeassistant.requirements import RequirementsNotFound
 from homeassistant.util.package import install_package, is_installed
 
 from .api import IdExchangeResponse
+from .appliance_controls import forget_controls
 from .bluetooth import HomewhizBluetoothUpdateCoordinator
 from .cloud import HomewhizCloudUpdateCoordinator
 from .config_flow import CloudConfig
@@ -125,4 +126,5 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     await hass.data[DOMAIN][entry.entry_id].kill()
     if unload_ok := await hass.config_entries.async_unload_platforms(entry, PLATFORMS):
         hass.data[DOMAIN].pop(entry.entry_id)
+        forget_controls(entry.entry_id)
     return unload_ok

@@ -14,6 +14,8 @@ from custom_components.homewhiz.appliance_controls import (
     WriteEnumControl,
     WriteTimeControl,
     build_control_from_program,
+    controls,
+    forget_controls,
     generate_controls_from_config,
     get_bounded_values_options,
     to_friendly_name,
@@ -142,3 +144,22 @@ def test_zero_factor_is_skipped() -> None:
 )
 def test_to_friendly_name(raw: str, expected: str) -> None:
     assert to_friendly_name(raw) == expected
+
+
+def test_forget_controls_removes_the_cached_entry(
+    config: ApplianceConfiguration,
+) -> None:
+    key = "test-entry-forget-controls"
+    first = generate_controls_from_config(key, config)
+    assert key in controls
+
+    forget_controls(key)
+
+    assert key not in controls
+    # A rebuilt list, not the same cached object handed back again.
+    assert generate_controls_from_config(key, config) is not first
+    forget_controls(key)  # do not leak state into other tests
+
+
+def test_forget_controls_on_unknown_key_is_a_no_op() -> None:
+    forget_controls("never-generated")
