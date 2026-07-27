@@ -1192,6 +1192,10 @@ def extract_ac_control(control_list: list[Control]) -> list[Control]:
 controls: dict[str, list[Control]] = {}
 
 
+def forget_controls(key: str) -> None:
+    controls.pop(key, None)
+
+
 def generate_controls_from_config(
     key: str,
     config: ApplianceConfiguration,
