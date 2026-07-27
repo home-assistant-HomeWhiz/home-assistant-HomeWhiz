@@ -348,4 +348,14 @@ async def fetch_appliance_infos(credentials: LoginResponse) -> list[ApplianceInf
             canonical_uri=f"/my-homes/{home.id}",
         )
         appliances.extend(from_dict(HomeResponseData, home_resp["data"]).appliances)
+    for appliance in appliances:
+        _LOGGER.debug(
+            "Appliance %s: name=%s type=%s model=%s connectivity=%s platform=%s",
+            appliance.applianceId,
+            appliance.name,
+            appliance.applianceType,
+            appliance.model,
+            appliance.connectivity,
+            appliance.platformType,
+        )
     return appliances
