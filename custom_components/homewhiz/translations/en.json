@@ -45,7 +45,8 @@
       }
     },
     "error": {
-      "invalid_auth": "Invalid authentication"
+      "invalid_auth": "Invalid authentication",
+      "unknown": "Unexpected error. Check the HomeWhiz entries in the Home Assistant log for details."
     }
   },
   "entity": {
