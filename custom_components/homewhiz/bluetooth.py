@@ -61,6 +61,9 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         # that waited for the lock can tell whether it is still relevant.
         self._connection_generation = 0
         self.alive = True
+        # Set when the device is advertised again, so a waiting reconnect can
+        # act on it instead of sleeping out its full interval.
+        self._advertisement = asyncio.Event()
         # To ensure that only one reconnect is performed at a time
         self.reconnecting_lock = asyncio.Lock()
         # Allow users to configure regular Bluetooth reconnections
@@ -205,6 +208,11 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         )
 
     @callback
+    def note_advertisement(self) -> None:
+        """Wake a reconnect loop that is waiting for the device to return."""
+        self._advertisement.set()
+
+    @callback
     def reconnect_callback(self, *args: Any) -> None:
         # Trigger a disconnect, the disconnected_callback will trigger the reconnect
         _LOGGER.debug("Reconnect callback")
@@ -224,7 +232,13 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                         "Device not found. "
                         "Will reconnect automatically when the device becomes available"
                     )
-                    await asyncio.sleep(60)
+                    # Wait for the device to show up again rather than sleeping
+                    # the full interval: this loop holds reconnecting_lock, so
+                    # the advertisement callback cannot connect while we sleep.
+                    self._advertisement.clear()
+                    with contextlib.suppress(TimeoutError):
+                        async with asyncio.timeout(60):
+                            await self._advertisement.wait()
                     continue  # instead of return
                 try:
                     _LOGGER.debug(

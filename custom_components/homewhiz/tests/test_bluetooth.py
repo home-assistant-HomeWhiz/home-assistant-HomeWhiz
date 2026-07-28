@@ -37,6 +37,7 @@ def _make_coordinator(scheduled: list) -> HomewhizBluetoothUpdateCoordinator:
     coord._connection = None
     coord._connection_lock = asyncio.Lock()
     coord._connection_generation = 0
+    coord._advertisement = asyncio.Event()
     coord._device = None
     coord._device_lock = asyncio.Lock()
     coord._connect_task = None
@@ -334,3 +335,47 @@ def test_kill_without_an_in_flight_connect_is_unaffected() -> None:
     asyncio.run(coord.kill())
 
     assert coord.alive is False
+
+
+def test_advertisement_wakes_the_waiting_reconnect() -> None:
+    """HW-BT-03: a returning device must not wait out the full interval.
+
+    try_reconnect() holds reconnecting_lock while it waits, so the
+    advertisement callback cannot connect in the meantime. Waiting on an
+    event instead of sleeping lets the loop act on the first advertisement.
+    """
+    coord = _make_coordinator([])
+    coord.reconnecting_lock = asyncio.Lock()
+    coord._hass = Mock()
+    present = False
+
+    async def scenario() -> None:
+        nonlocal present
+        task = asyncio.ensure_future(coord.try_reconnect())
+        await asyncio.sleep(0)
+        await asyncio.sleep(0)
+        # Device shows up again long before the 60s interval would elapse.
+        present = True
+        coord.note_advertisement()
+        await asyncio.sleep(0)
+        await asyncio.sleep(0)
+        coord.alive = False
+        coord.note_advertisement()
+        await asyncio.wait_for(task, timeout=5)
+
+    with patch.object(
+        bluetooth_module.bluetooth,
+        "async_address_present",
+        Mock(side_effect=lambda *a, **k: present),
+    ):
+        connect_calls: list = []
+
+        async def fake_connect() -> bool:
+            connect_calls.append(1)
+            coord.alive = False
+            return True
+
+        coord.connect = fake_connect  # type: ignore[method-assign]
+        asyncio.run(asyncio.wait_for(scenario(), timeout=8))
+
+    assert connect_calls, "reconnect never acted on the advertisement"

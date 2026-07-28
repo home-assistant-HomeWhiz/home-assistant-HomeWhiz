@@ -69,6 +69,7 @@ async def setup_bluetooth(
         service_info: BluetoothServiceInfoBleak,
         change: BluetoothChange,
     ) -> None:
+        coordinator.note_advertisement()
         if not coordinator.is_connected and not coordinator.reconnecting_lock.locked():
             _LOGGER.debug("Called connect callback in setup_bluetooth")
             hass.async_create_task(connect_retrieving_errors())
