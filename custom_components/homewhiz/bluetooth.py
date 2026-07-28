@@ -57,6 +57,9 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         self._device_lock = asyncio.Lock()
         self._connection: BleakClient | None = None
         self._connection_lock = asyncio.Lock()
+        # Bumped whenever a connection is established, so a disconnect callback
+        # that waited for the lock can tell whether it is still relevant.
+        self._connection_generation = 0
         self.alive = True
         # To ensure that only one reconnect is performed at a time
         self.reconnecting_lock = asyncio.Lock()
@@ -133,6 +136,10 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                         bytearray.fromhex("02 04 00 04 00 1a 01 03"),
                         response=False,
                     )
+                    # Only a usable connection counts: a failed setup below resets
+                    # _connection, and disconnect callbacks queued behind this lock
+                    # must still run their reconnect in that case.
+                    self._connection_generation += 1
                 except Exception:
                     # WARNING, not ERROR: this failure is transient and the
                     # reconnect loop takes over; a persistent problem still
@@ -193,7 +200,9 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         if not self.alive:
             _LOGGER.debug("Disconnected callback called but not alive")
             return
-        self.hass.create_task(self.handle_disconnect(client))
+        self.hass.create_task(
+            self.handle_disconnect(client, generation=self._connection_generation)
+        )
 
     @callback
     def reconnect_callback(self, *args: Any) -> None:
@@ -232,10 +241,19 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                     await asyncio.sleep(30)
 
     async def handle_disconnect(
-        self, client: BleakClient | None = None, *args: Any
+        self,
+        client: BleakClient | None = None,
+        *args: Any,
+        generation: int | None = None,
     ) -> None:
         _LOGGER.debug("Handling disconnect%s...", " by time interval" if args else "")
         async with self._connection_lock:
+            # A connection was established while this callback waited for the
+            # lock. establish_connection() reuses one client across its internal
+            # retries, so the identity check below cannot catch this case.
+            if generation is not None and generation != self._connection_generation:
+                _LOGGER.debug("Ignoring disconnect from a superseded connection")
+                return
             # Only a disconnect of the live connection may tear it down.
             # A late callback from a superseded client would otherwise kill
             # a fresh, healthy connection established in the meantime.

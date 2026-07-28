@@ -12,6 +12,7 @@ import contextlib
 from typing import Any
 from unittest.mock import AsyncMock, Mock, patch
 
+from custom_components.homewhiz import bluetooth as bluetooth_module
 from custom_components.homewhiz.bluetooth import HomewhizBluetoothUpdateCoordinator
 
 
@@ -35,6 +36,7 @@ def _make_coordinator(scheduled: list) -> HomewhizBluetoothUpdateCoordinator:
     coord.alive = True
     coord._connection = None
     coord._connection_lock = asyncio.Lock()
+    coord._connection_generation = 0
     coord._device = None
     coord._device_lock = asyncio.Lock()
     coord._connect_task = None
@@ -86,6 +88,164 @@ def test_disconnect_without_client_tears_down() -> None:
     asyncio.run(coord.handle_disconnect())
     for coro in scheduled:
         coro.close()
+
+    assert coord._connection is None
+    assert live.disconnect_calls == 1
+
+
+def _make_scheduling_coordinator() -> HomewhizBluetoothUpdateCoordinator:
+    """Like _make_coordinator, but disconnect handling really runs.
+
+    Needed to drive disconnected_callback, which is the seam the device hits.
+    The try_reconnect() that handle_disconnect spawns afterwards is dropped,
+    same as the other tests here do.
+    """
+    coord = _make_coordinator([])
+
+    def create_task(coro: Any) -> Any:
+        if coro.__qualname__.endswith("handle_disconnect"):
+            return asyncio.ensure_future(coro)
+        coro.close()
+        return None
+
+    coord.hass.create_task = create_task
+    return coord
+
+
+def test_queued_disconnect_does_not_kill_a_reconnected_client() -> None:
+    """A callback that waited for the lock must not tear down what came after.
+
+    establish_connection() reuses a single client across its internal retries,
+    so a callback fired during those retries carries the very object that ends
+    up as self._connection. Identity cannot tell the two apart, only the
+    generation can.
+    """
+    coord = _make_scheduling_coordinator()
+    client: Any = _FakeClient()
+
+    async def scenario() -> None:
+        # connect() is running: it holds the lock and has not published a
+        # client yet.
+        await coord._connection_lock.acquire()
+        coord.disconnected_callback(client)
+        await asyncio.sleep(0)
+        # establish_connection() returns the same client it retried with.
+        coord._connection = client
+        coord._connection_generation += 1
+        coord._connection_lock.release()
+        await asyncio.sleep(0)
+        await asyncio.sleep(0)
+
+    asyncio.run(scenario())
+
+    assert coord._connection is client
+    assert client.disconnect_calls == 0
+
+
+def test_queued_disconnect_survives_a_real_connect() -> None:
+    """Same scenario as above, but driven through the real connect() path.
+
+    Reproduces citizenserious' log: a stale internal-retry callback is queued
+    while connect() holds the lock, and connect() itself succeeds and bumps
+    the generation, all through production code.
+    """
+    scheduled: list = []
+    coord = _make_coordinator(scheduled)
+
+    def create_task(coro: Any) -> Any:
+        if coro.__qualname__.endswith("handle_disconnect"):
+            return asyncio.ensure_future(coro)
+        scheduled.append(coro)
+        return None
+
+    coord.hass.create_task = create_task
+    coord._hass = Mock()
+    coord._reconnect_interval = None
+    client: Any = _FakeClient()
+
+    async def _noop(*args: Any, **kwargs: Any) -> None:
+        return None
+
+    client.start_notify = _noop
+    client.write_gatt_char = _noop
+
+    async def establish(**kwargs: Any) -> Any:
+        # Mirrors bleak_retry_connector: a callback queued during establish_
+        # connection()'s internal retries fires on the *same* client object
+        # that is about to be returned and published as self._connection.
+        coord.disconnected_callback(client)
+        await asyncio.sleep(0)
+        return client
+
+    with (
+        patch.object(bluetooth_module, "establish_connection", establish),
+        patch.object(
+            bluetooth_module.bluetooth,
+            "async_ble_device_from_address",
+            Mock(return_value=Mock()),
+        ),
+        patch.object(
+            bluetooth_module.bluetooth,
+            "async_last_service_info",
+            Mock(return_value=None),
+        ),
+    ):
+        asyncio.run(coord.connect())
+        for coro in scheduled:
+            coro.close()
+
+    assert coord._connection is client
+    assert client.disconnect_calls == 0
+
+
+def test_failed_setup_does_not_advance_the_generation() -> None:
+    """A connection that never became usable must not move the generation.
+
+    establish_connection() can succeed and the notify setup fail right after;
+    connect() then clears _connection again. If the generation had moved, a
+    disconnect callback queued behind the lock would be dropped and its
+    try_reconnect() with it.
+    """
+    coord = _make_coordinator([])
+    coord._hass = Mock()
+    client: Any = _FakeClient()
+
+    async def failing_notify(*args: Any, **kwargs: Any) -> None:
+        raise RuntimeError("notify setup failed")
+
+    client.start_notify = failing_notify
+
+    async def establish(**kwargs: Any) -> Any:
+        return client
+
+    with (
+        patch.object(bluetooth_module, "establish_connection", establish),
+        patch.object(
+            bluetooth_module.bluetooth,
+            "async_ble_device_from_address",
+            Mock(return_value=Mock()),
+        ),
+        contextlib.suppress(RuntimeError),
+    ):
+        asyncio.run(coord.connect())
+
+    assert coord._connection is None
+    assert coord._connection_generation == 0
+
+
+def test_disconnect_after_a_settled_connection_tears_down() -> None:
+    """Control: without a reconnect in between, the teardown still runs."""
+    coord = _make_scheduling_coordinator()
+    live: Any = _FakeClient()
+    coord._connection = live
+    coord._connection_generation = 7
+
+    async def scenario() -> None:
+        coord.disconnected_callback(live)
+        await asyncio.sleep(0)
+        await asyncio.sleep(0)
+
+    asyncio.run(scenario())
 
     assert coord._connection is None
     assert live.disconnect_calls == 1
