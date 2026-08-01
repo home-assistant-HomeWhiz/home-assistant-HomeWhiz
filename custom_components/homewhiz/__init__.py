@@ -12,6 +12,7 @@ from homeassistant.components.bluetooth import (
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import EVENT_HOMEASSISTANT_STOP
 from homeassistant.core import HomeAssistant, callback
+from homeassistant.exceptions import HomeAssistantError
 from homeassistant.requirements import RequirementsNotFound
 from homeassistant.util.package import install_package, is_installed
 
@@ -28,7 +29,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     _LOGGER.info("Setting up entry %s", entry.unique_id)
     address = entry.unique_id
     if "ids" not in entry.data:
-        raise Exception(
+        raise HomeAssistantError(
             "Appliance config not fetched from the API. "
             "Please configure the integration again"
         )
