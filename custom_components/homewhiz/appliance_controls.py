@@ -620,6 +620,14 @@ def get_bounded_values_options(
     key: str, values: ApplianceFeatureBoundedOption
 ) -> bidict[int, str]:
     result: bidict[int, str] = bidict()
+    if values.step <= 0 or values.factor == 0:
+        _LOGGER.warning(
+            "Skipping bounded values for %s, the device reports step=%s factor=%s",
+            key,
+            values.step,
+            values.factor,
+        )
+        return result
     value = float(values.lowerLimit)
     while value <= values.upperLimit:
         wifiValue = int(value / values.factor)
