@@ -134,7 +134,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             secret_access_key=credentials.secretKey,
         )
 
-        loop = asyncio.get_event_loop()
+        loop = asyncio.get_running_loop()
         mqtt_connection_builder_task = loop.run_in_executor(
             None,
             functools.partial(
@@ -201,7 +201,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             _LOGGER.warning("Cannot subscribe: connection is None")
             return
 
-        loop = asyncio.get_event_loop()
+        loop = asyncio.get_running_loop()
 
         [subscribe_update, _] = self._connection.subscribe(
             f"$aws/things/{self._appliance_id}/shadow/update/accepted",
@@ -265,7 +265,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         )
         if self._connection is not None:
             try:
-                loop = asyncio.get_event_loop()
+                loop = asyncio.get_running_loop()
                 disconnect_future = self._connection.disconnect()
                 await loop.run_in_executor(None, disconnect_future.result)
             except Exception as e:  # noqa: BLE001 # broad catch: AwsCrtError subclasses not always predictable
@@ -316,7 +316,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
                 qos=self._mqtt.QoS.AT_MOST_ONCE,
             )
 
-            loop = asyncio.get_event_loop()
+            loop = asyncio.get_running_loop()
             result = await loop.run_in_executor(
                 None, functools.partial(publish.result, timeout=5.0)
             )
@@ -349,7 +349,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             )
 
             # FIX: Make non-blocking using executor
-            loop = asyncio.get_event_loop()
+            loop = asyncio.get_running_loop()
             result = await loop.run_in_executor(
                 None, functools.partial(publish.result, timeout=5.0)
             )
@@ -391,7 +391,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             )
 
             _LOGGER.debug("Sending command %s:%s", command.index, command.value)
-            loop = asyncio.get_event_loop()
+            loop = asyncio.get_running_loop()
             await loop.run_in_executor(
                 None, functools.partial(publish.result, timeout=5.0)
             )
@@ -429,7 +429,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
         self.alive = False
         if self._connection is not None:
             try:
-                loop = asyncio.get_event_loop()
+                loop = asyncio.get_running_loop()
                 disconnect_future = self._connection.disconnect()
                 await loop.run_in_executor(None, disconnect_future.result)
             except Exception as e:  # noqa: BLE001 # broad catch: AwsCrtError subclasses not always predictable
