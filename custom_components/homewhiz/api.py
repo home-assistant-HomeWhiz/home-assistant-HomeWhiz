@@ -158,7 +158,7 @@ async def make_id_exchange_request(device_name: str) -> IdExchangeResponse:
         ) as response,
     ):
         if not response.ok:
-            _LOGGER.error(await response.text())
+            _LOGGER.error("ID exchange request failed: %s", await response.text())
             raise RequestError
         contents = json.loads(await response.text())
         return from_dict(IdExchangeResponse, contents)
@@ -175,7 +175,7 @@ async def make_get_contents_request(contents: ContentsDescription) -> Any:
         ) as response,
     ):
         if not response.ok:
-            _LOGGER.error(await response.text())
+            _LOGGER.error("Contents request failed: %s", await response.text())
             raise RequestError
         return json.loads(await response.text())
 
@@ -263,7 +263,7 @@ async def make_api_get_request(
                 return contents  # noqa: TRY300
             except ContentTypeError as err:
                 text = await response.text()
-                _LOGGER.error(text)
+                _LOGGER.error("API request returned non-JSON response: %s", text)
                 return _handle_request_error(text, err)  # Add explicit return
 
 
@@ -348,4 +348,14 @@ async def fetch_appliance_infos(credentials: LoginResponse) -> list[ApplianceInf
             canonical_uri=f"/my-homes/{home.id}",
         )
         appliances.extend(from_dict(HomeResponseData, home_resp["data"]).appliances)
+    for appliance in appliances:
+        _LOGGER.debug(
+            "Appliance %s: name=%s type=%s model=%s connectivity=%s platform=%s",
+            appliance.applianceId,
+            appliance.name,
+            appliance.applianceType,
+            appliance.model,
+            appliance.connectivity,
+            appliance.platformType,
+        )
     return appliances
