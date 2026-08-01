@@ -157,6 +157,9 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
                 )
             except LoginError:
                 errors["base"] = "invalid_auth"
+            except Exception:  # broad catch: without it the user gets no message at all
+                _LOGGER.exception("Bluetooth setup failed unexpectedly")
+                errors["base"] = "unknown"
 
         return self.async_show_form(
             step_id="bluetooth_connect",
@@ -187,6 +190,9 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
                 return await self.async_step_select_cloud_device()
             except LoginError:
                 errors["base"] = "invalid_auth"
+            except Exception:  # broad catch: without it the user gets no message at all
+                _LOGGER.exception("Cloud setup failed unexpectedly")
+                errors["base"] = "unknown"
 
         return self.async_show_form(
             step_id="provide_cloud_credentials",
@@ -240,6 +246,8 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
             for appliance in self._cloud_appliances
             if not appliance.is_bt()
         }
+        if len(options) == 0:
+            return self.async_abort(reason="no_cloud_devices_found")
 
         return self.async_show_form(
             step_id="select_cloud_device",

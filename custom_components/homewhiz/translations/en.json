@@ -3,7 +3,8 @@
     "abort": {
       "already_configured": "Device is already configured",
       "already_in_progress": "Configuration flow is already in progress",
-      "no_devices_found": "No devices found on the network"
+      "no_devices_found": "No devices found on the network",
+      "no_cloud_devices_found": "None of the devices in this account can be set up over the cloud. Go back and use the Bluetooth option instead."
     },
     "flow_title": "{name}",
     "step": {
@@ -45,7 +46,8 @@
       }
     },
     "error": {
-      "invalid_auth": "Invalid authentication"
+      "invalid_auth": "Invalid authentication",
+      "unknown": "Unexpected error. Check the HomeWhiz entries in the Home Assistant log for details."
     }
   },
   "entity": {

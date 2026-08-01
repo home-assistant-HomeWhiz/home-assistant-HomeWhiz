@@ -3,7 +3,8 @@
     "abort": {
       "already_configured": "Gerät ist bereits konfiguriert",
       "already_in_progress": "Der Konfigurationsablauf wird bereits ausgeführt",
-      "no_devices_found": "Keine Geräte im Netzwerk gefunden"
+      "no_devices_found": "Keine Geräte im Netzwerk gefunden",
+      "no_cloud_devices_found": "Keines der Geräte in diesem Konto lässt sich über die Cloud einrichten. Gehe zurück und nutze stattdessen die Bluetooth-Option."
     },
     "flow_title": "{name}",
     "step": {
@@ -45,7 +46,8 @@
       }
     },
     "error": {
-      "invalid_auth": "Ungültige Anmeldedaten"
+      "invalid_auth": "Ungültige Anmeldedaten",
+      "unknown": "Unerwarteter Fehler. Details stehen in den HomeWhiz-Einträgen im Home-Assistant-Protokoll."
     }
   },
   "entity": {
