@@ -719,9 +719,6 @@
       "air_conditioner_instant_consumption": {
         "name": "Anlık Tüketim"
       },
-      "air_conditioner_instant_consumption_total": {
-        "name": "Toplam Enerji Tüketimi"
-      },
       "air_conditioner_sleep_mode_minute": {
         "name": "Klima uyku modu dakika"
       },
