@@ -3,19 +3,19 @@ from __future__ import annotations
 import logging
 import math
 from collections.abc import Mapping, Sequence
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
+from decimal import Decimal
 from typing import Any
 
 from homeassistant.components.sensor import (
+    RestoreSensor,
     SensorDeviceClass,
     SensorEntity,
     SensorStateClass,
 )
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import STATE_UNAVAILABLE, STATE_UNKNOWN
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.restore_state import RestoreEntity
 
 from .appliance_controls import (
     Control,
@@ -118,22 +118,27 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
         return self._control.get_value(self.coordinator.data)
 
 
-class HomeWhizEnergyEntity(HomeWhizEntity, SensorEntity, RestoreEntity):
+class HomeWhizEnergyEntity(HomeWhizEntity, RestoreSensor):
     """Integrates the instant-consumption power (kW) sensor over time into
     an accumulated kWh total, ready to be added to the HA Energy dashboard.
 
     The appliance itself does not report a running kWh total, only
     instantaneous power - this entity does a trapezoidal integration of
     that value every time the coordinator pushes new data, and persists
-    the running total across HA restarts via RestoreEntity so it behaves
-    like a proper "total_increasing" energy meter.
+    the running total across HA restarts via RestoreSensor (which stores
+    the typed native_value directly, rather than the published state
+    string - so a transient "unavailable"/"unknown" published state can't
+    wipe out the accumulated total on restart).
 
     Scoped with the exact same key+unit check as the kW sensor above, on
     purpose - only appliances confirmed to expose the buggy "hw"-labeled
     instant-consumption field get this companion entity.
     """
 
-    _attr_state_class = SensorStateClass.TOTAL_INCREASING
+    # Matches HA's own IntegrationSensor helper: TOTAL (not
+    # TOTAL_INCREASING) because a restore/reset can legitimately bring the
+    # value back down, and TOTAL_INCREASING would treat that as an error.
+    _attr_state_class = SensorStateClass.TOTAL
     _attr_native_unit_of_measurement = "kWh"
     _attr_icon = "mdi:lightning-bolt"
 
@@ -146,26 +151,41 @@ class HomeWhizEnergyEntity(HomeWhizEntity, SensorEntity, RestoreEntity):
     ):
         super().__init__(coordinator, device_name, f"{power_control.key}_total", data)
         # HomeWhizEntity.__init__ (called just above) unconditionally sets
-        # self._attr_device_class to a homewhiz-internal placeholder value,
-        # clobbering the class-level SensorDeviceClass.ENERGY. Re-assert it
-        # here so HA recognizes this as a proper energy sensor (otherwise
-        # the Energy dashboard rejects it with "Unexpected device class").
+        # self._attr_device_class to a homewhiz-internal placeholder value.
+        # There is no class-level SensorDeviceClass.ENERGY to fall back on,
+        # so it must be (re-)assigned here, or this entity would report the
+        # wrong device_class and the Energy dashboard would reject it with
+        # "Unexpected device class".
         self._attr_device_class = SensorDeviceClass.ENERGY
         self._power_control = power_control
         self._total_kwh: float = 0.0
         self._last_update: datetime | None = None
         self._last_power_kw: float | None = None
 
+    @property
+    def translation_key(self) -> str | None:  # type: ignore[override]
+        """No translation entry exists for the "..._total" key this entity
+        generates (see HomeWhizEntity.translation_key), and
+        scripts/generate_translations.py would drop a manually-added entry
+        on its next run anyway. Return None so HA falls back to the
+        device class name instead of the raw, untranslated key."""
+        return None
+
     @staticmethod
-    def parse_restored_total(state: str | None) -> float:
-        """Pure helper: turn a restored HA state string back into a kWh
-        total. Anything that isn't a plain finite number (missing state,
-        "unknown", "unavailable", or garbage) resets to 0.0 rather than
-        raising or silently carrying over a stale/invalid value."""
-        if state is None or state in (STATE_UNKNOWN, STATE_UNAVAILABLE):
+    def parse_restored_total(
+        native_value: str | float | date | datetime | Decimal | None,
+    ) -> float:
+        """Pure helper: turn a restored native_value (from
+        RestoreSensor.async_get_last_sensor_data(), already typed - not a
+        published-state string, so it's never "unknown"/"unavailable")
+        back into a kWh total. Anything that isn't a plain finite number
+        (missing, a date/datetime, or somehow garbage) resets to 0.0
+        rather than raising or silently carrying over a stale/invalid
+        value."""
+        if not isinstance(native_value, str | int | float | Decimal):
             return 0.0
         try:
-            value = float(state)
+            value = float(native_value)
         except (TypeError, ValueError):
             return 0.0
         if not math.isfinite(value):
@@ -190,9 +210,9 @@ class HomeWhizEnergyEntity(HomeWhizEntity, SensorEntity, RestoreEntity):
 
     async def async_added_to_hass(self) -> None:
         await super().async_added_to_hass()
-        last_state = await self.async_get_last_state()
+        last_sensor_data = await self.async_get_last_sensor_data()
         self._total_kwh = self.parse_restored_total(
-            last_state.state if last_state is not None else None
+            last_sensor_data.native_value if last_sensor_data is not None else None
         )
         # Prime the integration baseline now, so the very first coordinator
         # update after startup doesn't integrate over the (possibly huge)
@@ -213,14 +233,24 @@ class HomeWhizEnergyEntity(HomeWhizEntity, SensorEntity, RestoreEntity):
         be unit tested directly without a real hass instance."""
         power_kw = self._current_power_kw()
 
-        if power_kw is not None:
-            if self._last_update is not None:
-                elapsed_hours = (now - self._last_update).total_seconds() / 3600
-                self._total_kwh += self.integrate_delta(
-                    self._last_power_kw, power_kw, elapsed_hours
-                )
-            self._last_power_kw = power_kw
-            self._last_update = now
+        if power_kw is None:
+            # No usable sample right now (appliance/coordinator data
+            # unavailable). Clear the baseline entirely rather than leaving
+            # it in place - otherwise the next valid sample would integrate
+            # across the *entire* gap as if power had been constant the
+            # whole time, silently fabricating energy that was never
+            # measured.
+            self._last_power_kw = None
+            self._last_update = None
+            return
+
+        if self._last_update is not None:
+            elapsed_hours = (now - self._last_update).total_seconds() / 3600
+            self._total_kwh += self.integrate_delta(
+                self._last_power_kw, power_kw, elapsed_hours
+            )
+        self._last_power_kw = power_kw
+        self._last_update = now
 
     def _handle_coordinator_update(self) -> None:
         self._advance_integration(datetime.now(UTC))
