@@ -1195,7 +1195,13 @@
               "wind_strength_auto": "Auto",
               "wind_strength_low": "Niedrig",
               "wind_strength_mid": "Mittel",
-              "wind_strength_high": "Hoch"
+              "wind_strength_high": "Hoch",
+              "2": "1",
+              "3": "2",
+              "4": "3",
+              "5": "4",
+              "6": "5",
+              "wind_strength_chaos_swing": "Chaos Swing"
             }
           }
         },
