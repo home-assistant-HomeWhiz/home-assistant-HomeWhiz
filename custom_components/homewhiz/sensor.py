@@ -5,7 +5,11 @@ from collections.abc import Mapping
 from datetime import datetime
 from typing import Any
 
-from homeassistant.components.sensor import SensorDeviceClass, SensorEntity
+from homeassistant.components.sensor import (
+    SensorDeviceClass,
+    SensorEntity,
+    SensorStateClass,
+)
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -26,6 +30,17 @@ from .helper import build_entry_data
 from .homewhiz import HomewhizCoordinator
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
+
+# The only NumericControl currently known to need a corrected unit/device
+# class. Arcelik's CONFIGURATION endpoint reports this field with a "hw"
+# unit label (see the matching factor fix in appliance_controls.py's
+# extract_ac_control) which isn't a real HA unit, so we map it to kW here.
+# Scoped to this single key on purpose - other NumericControl sensors keep
+# their previous (no explicit unit/device_class) behavior.
+INSTANT_CONSUMPTION_KEY = "air_conditioner_instant_consumption"
+# The bogus unit label that marks the affected reports. A device sending the
+# same key with a real unit is left alone, matching the factor fix.
+INSTANT_CONSUMPTION_BOGUS_UNIT = "hw"
 
 
 class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
@@ -50,6 +65,14 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
         elif isinstance(control, EnumControl):
             self._attr_device_class = SensorDeviceClass.ENUM  # type:ignore
             self._attr_options = list(self._control.options.values())  # type:ignore
+        elif (
+            isinstance(control, NumericControl)
+            and control.key == INSTANT_CONSUMPTION_KEY
+            and control.bounds.unit == INSTANT_CONSUMPTION_BOGUS_UNIT
+        ):
+            self._attr_native_unit_of_measurement = "kW"
+            self._attr_device_class = SensorDeviceClass.POWER
+            self._attr_state_class = SensorStateClass.MEASUREMENT
         elif isinstance(control, SummedTimestampControl):
             self._attr_icon = "mdi:camera-timer"
             self._attr_device_class = SensorDeviceClass.TIMESTAMP

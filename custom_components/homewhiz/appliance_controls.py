@@ -2,7 +2,7 @@ import logging
 import re
 from abc import ABC, abstractmethod
 from collections.abc import Iterable, Mapping, Sequence
-from dataclasses import dataclass, fields
+from dataclasses import dataclass, fields, replace
 from datetime import UTC, datetime, timedelta
 from typing import Any, Generic, TypeVar
 
@@ -1137,6 +1137,22 @@ def extract_ac_control(control_list: list[Control]) -> list[Control]:
     controls_dict = {control.key: control for control in control_list}
     keys = controls_dict.keys()
     if "air_conditioner_program" in keys:
+        # Arcelik's own CONFIGURATION endpoint reports a wrong factor (1)
+        # for AIR_CONDITIONER_INSTANT_CONSUMPTION on some AC models (e.g.
+        # Ekolojik 18325/15325) - the user manual and the on-device display
+        # confirm the real value is raw_byte * 0.1 (kW), not raw_byte * 1.
+        # Only touch this single, known-affected AC feature, and only when
+        # we see the exact known-bad factor, so appliances that already
+        # report the correct factor (or any other feature/unit) are left
+        # untouched.
+        instant_consumption = controls_dict.get("air_conditioner_instant_consumption")
+        if (
+            isinstance(instant_consumption, NumericControl)
+            and instant_consumption.bounds.unit == "hw"
+            and instant_consumption.bounds.factor == 1
+        ):
+            instant_consumption.bounds = replace(instant_consumption.bounds, factor=0.1)
+
         state = controls_dict["state"]
         assert isinstance(state, WriteBooleanControl)
         program = controls_dict["air_conditioner_program"]
