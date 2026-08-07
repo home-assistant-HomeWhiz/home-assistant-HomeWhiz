@@ -103,6 +103,8 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                 if not self._connection.is_connected:
                     _raise_cant_connect()
 
+                # Brief settle time before subscribing. The 0.5s is not
+                # backed by a measurement, do not drop it untested.
                 await asyncio.sleep(0.5)
 
                 _LOGGER.debug("Starting notify")
@@ -199,7 +201,7 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                         "Will reconnect automatically when the device becomes available"
                     )
                     await asyncio.sleep(60)
-                    continue  # instead of return
+                    continue  # keep waiting instead of giving up
                 try:
                     _LOGGER.debug(
                         "[%s] Establish connection from reconnect",
