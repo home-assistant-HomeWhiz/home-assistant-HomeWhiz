@@ -2,19 +2,22 @@
 
 Deliberately hass-free (project convention, see test_config_flow.py): the
 async lifecycle methods here are exercised with Mock()-based coordinators
-and monkeypatched RestoreEntity hooks rather than a real hass instance.
+and monkeypatched RestoreSensor hooks rather than a real hass instance.
 """
 
 # ruff: noqa: SLF001
 
 import asyncio
+import math
 from datetime import UTC, datetime
 from unittest.mock import AsyncMock, Mock, patch
 
 import pytest
-from homeassistant.components.sensor import SensorDeviceClass, SensorStateClass
-from homeassistant.const import STATE_UNAVAILABLE, STATE_UNKNOWN
-from homeassistant.core import State
+from homeassistant.components.sensor import (
+    SensorDeviceClass,
+    SensorExtraStoredData,
+    SensorStateClass,
+)
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from custom_components.homewhiz.api import ApplianceContents
@@ -166,26 +169,39 @@ def test_energy_entity_reports_energy_device_class_and_kwh_unit() -> None:
     entity = _energy_entity()
 
     assert entity.device_class == SensorDeviceClass.ENERGY
-    assert entity.state_class == SensorStateClass.TOTAL_INCREASING
+    assert entity.state_class == SensorStateClass.TOTAL
     assert entity.native_unit_of_measurement == "kWh"
     assert entity.native_value == 0.0
 
 
+def test_energy_entity_translation_key_is_none() -> None:
+    """No translation entry exists for the generated "..._total" key, and
+    scripts/generate_translations.py would drop a manual one on its next
+    run - translation_key must be overridden to None so HA falls back to
+    the device class name instead of showing the raw, untranslated key."""
+    entity = _energy_entity()
+
+    assert entity.translation_key is None
+
+
 @pytest.mark.parametrize(
-    ("state", "expected"),
+    ("native_value", "expected"),
     [
         (None, 0.0),
-        (STATE_UNKNOWN, 0.0),
-        (STATE_UNAVAILABLE, 0.0),
-        ("not-a-number", 0.0),
+        (12.5, 12.5),
+        (12, 12.0),
+        (0, 0.0),
         ("12.5", 12.5),
-        ("0", 0.0),
-        ("nan", 0.0),
-        ("inf", 0.0),
+        ("not-a-number", 0.0),
+        (float("nan"), 0.0),
+        (float("inf"), 0.0),
+        (float("-inf"), 0.0),
     ],
 )
-def test_parse_restored_total(state: str | None, expected: float) -> None:
-    assert HomeWhizEnergyEntity.parse_restored_total(state) == expected
+def test_parse_restored_total(
+    native_value: float | str | None, expected: float
+) -> None:
+    assert HomeWhizEnergyEntity.parse_restored_total(native_value) == expected
 
 
 def test_integrate_delta_with_no_previous_sample_is_a_no_op() -> None:
@@ -236,7 +252,11 @@ def test_advance_integration_accumulates_over_two_steps() -> None:
     assert entity._last_power_kw == 0.4
 
 
-def test_advance_integration_ignores_unavailable_coordinator_data() -> None:
+def test_advance_integration_clears_baseline_on_missing_data() -> None:
+    """When the coordinator data disappears, the integration baseline must
+    be cleared entirely, not just left in place - otherwise the *next*
+    valid sample would integrate across the whole gap as if power had
+    been constant that entire time (fabricating energy never measured)."""
     coordinator = Mock()
     coordinator.data = None
 
@@ -246,9 +266,40 @@ def test_advance_integration_ignores_unavailable_coordinator_data() -> None:
 
     entity._advance_integration(datetime(2026, 1, 1, 12, 5, 0, tzinfo=UTC))
 
-    # No data available -> nothing integrated, nothing lost either.
     assert entity.native_value == 0.0
-    assert entity._last_power_kw == 0.4
+    assert entity._last_power_kw is None
+    assert entity._last_update is None
+
+
+def test_advance_integration_valid_then_gap_then_valid_integrates_zero() -> None:
+    """The scenario the previous (buggy) behavior got wrong: a valid
+    sample, then a gap where the appliance/coordinator data is
+    unavailable, then a valid sample again. No energy should be
+    fabricated for the gap itself."""
+    coordinator = Mock()
+    coordinator.data = bytearray(60)
+    coordinator.data[45] = 4  # 0.4 kW
+
+    entity = _energy_entity(coordinator)
+
+    # First valid sample.
+    entity._advance_integration(datetime(2026, 1, 1, 12, 0, 0, tzinfo=UTC))
+    assert entity.native_value == 0.0  # nothing to integrate yet (no prior sample)
+
+    # Gap: coordinator data goes missing for 5 minutes.
+    coordinator.data = None
+    entity._advance_integration(datetime(2026, 1, 1, 12, 5, 0, tzinfo=UTC))
+
+    # Data comes back, still 0.4 kW.
+    coordinator.data = bytearray(60)
+    coordinator.data[45] = 4
+    entity._advance_integration(datetime(2026, 1, 1, 12, 10, 0, tzinfo=UTC))
+
+    # Previously: 0.4 kW * (10 min gap, wrongly measured as if constant)
+    # would have fabricated ~0.0667 kWh. Correct behavior: 0, since there
+    # was no valid sample immediately before this one (baseline was
+    # cleared during the gap).
+    assert entity.native_value == 0.0
 
 
 def test_handle_coordinator_update_calls_advance_integration() -> None:
@@ -271,8 +322,10 @@ def test_handle_coordinator_update_calls_advance_integration() -> None:
 
 def test_async_added_to_hass_restores_previous_total() -> None:
     entity = _energy_entity()
-    entity.async_get_last_state = AsyncMock(  # type: ignore[method-assign]
-        return_value=State("sensor.test_total", "42.5")
+    entity.async_get_last_sensor_data = AsyncMock(  # type: ignore[method-assign]
+        return_value=SensorExtraStoredData(
+            native_value=42.5, native_unit_of_measurement="kWh"
+        )
     )
 
     asyncio.run(entity.async_added_to_hass())
@@ -282,20 +335,28 @@ def test_async_added_to_hass_restores_previous_total() -> None:
     assert entity._last_power_kw == pytest.approx(0.0)
 
 
-def test_async_added_to_hass_with_no_previous_state_starts_at_zero() -> None:
+def test_async_added_to_hass_survives_appliance_being_unavailable_at_shutdown() -> None:
+    """The bug this replaces: RestoreEntity restores the *published state
+    string*, which HA forces to "unavailable" whenever the entity's
+    `available` property was False (e.g. the appliance was offline right
+    before HA shut down) - even though the real accumulated total was a
+    valid positive number. RestoreSensor stores native_value separately
+    from the published state, so it isn't affected by that at all."""
     entity = _energy_entity()
-    entity.async_get_last_state = AsyncMock(return_value=None)  # type: ignore[method-assign]
+    entity.async_get_last_sensor_data = AsyncMock(  # type: ignore[method-assign]
+        return_value=SensorExtraStoredData(
+            native_value=17.25, native_unit_of_measurement="kWh"
+        )
+    )
 
     asyncio.run(entity.async_added_to_hass())
 
-    assert entity.native_value == 0.0
+    assert entity.native_value == 17.25
 
 
-def test_async_added_to_hass_with_unavailable_previous_state_resets_to_zero() -> None:
+def test_async_added_to_hass_with_no_previous_state_starts_at_zero() -> None:
     entity = _energy_entity()
-    entity.async_get_last_state = AsyncMock(  # type: ignore[method-assign]
-        return_value=State("sensor.test_total", STATE_UNAVAILABLE)
-    )
+    entity.async_get_last_sensor_data = AsyncMock(return_value=None)  # type: ignore[method-assign]
 
     asyncio.run(entity.async_added_to_hass())
 
@@ -327,3 +388,36 @@ def test_find_instant_consumption_controls_matches_only_the_known_signature() ->
     result = _find_instant_consumption_controls([matching, wrong_unit, wrong_key])
 
     assert result == [matching]
+
+
+@pytest.mark.parametrize(
+    "coordinator_data",
+    [
+        None,
+        bytearray(),
+        bytearray(10),  # shorter than read_index (45)
+    ],
+    ids=["none", "empty-bytearray", "short-bytearray"],
+)
+def test_advance_integration_never_raises_on_bad_coordinator_data(
+    coordinator_data: bytearray | None,
+) -> None:
+    """A misbehaving/short-lived coordinator payload must never raise here:
+    coordinator listeners run without per-listener exception handling in
+    HA, so an exception in this entity would prevent any other listener
+    scheduled in the same update cycle from running."""
+    coordinator = Mock()
+    coordinator.data = coordinator_data
+
+    entity = _energy_entity(coordinator)
+    entity._last_update = datetime(2026, 1, 1, 12, 0, 0, tzinfo=UTC)
+    entity._last_power_kw = 0.4
+
+    entity._advance_integration(datetime(2026, 1, 1, 12, 5, 0, tzinfo=UTC))
+
+    # The point of this test is that none of these inputs raise. safe_get()
+    # treats out-of-range/missing bytes as 0 (not an error), so an empty or
+    # short bytearray still yields a (zero-byte) reading and integrates
+    # normally; only coordinator.data being None short-circuits before any
+    # byte access happens. Either way, the result must stay a finite float.
+    assert math.isfinite(entity.native_value)
