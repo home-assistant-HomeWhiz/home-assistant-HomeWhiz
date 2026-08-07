@@ -717,7 +717,10 @@
         }
       },
       "air_conditioner_instant_consumption": {
-        "name": "Klima anlık tüketimi"
+        "name": "Anlık Tüketim"
+      },
+      "air_conditioner_instant_consumption_total": {
+        "name": "Toplam Enerji Tüketimi"
       },
       "air_conditioner_sleep_mode_minute": {
         "name": "Klima uyku modu dakika"
@@ -775,7 +778,20 @@
     },
     "climate": {
       "ac": {
-        "name": "AC"
+        "name": "AC",
+        "state_attributes": {
+          "fan_mode": {
+            "name": "Fan Hızı",
+            "state": {
+              "2": "1",
+              "3": "2",
+              "4": "3",
+              "5": "4",
+              "6": "5",
+              "wind_strength_chaos_swing": "Otomatik"
+            }
+          }
+        }
       }
     },
     "switch": {
