@@ -278,9 +278,9 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
                     e,
                 )
 
-        # connect() uses run_in_executor internally, so it runs as its own
-        # task instead of being awaited here. The wrapper keeps the task
-        # from ending as an unretrieved exception.
+        # connect() runs as its own task instead of being awaited. The wrapper
+        # keeps it from ending as an unretrieved exception. The original reason
+        # for detaching it is not recorded.
         async def _safe_connect() -> None:
             try:
                 await self.connect()
