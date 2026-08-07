@@ -133,6 +133,13 @@ class HomeWhizEnergyEntity(HomeWhizEntity, SensorEntity, RestoreEntity):
         data: EntryData,
     ):
         super().__init__(coordinator, device_name, f"{power_control.key}_total", data)
+        # HomeWhizEntity.__init__ (called just above) unconditionally sets
+        # self._attr_device_class to a homewhiz-internal placeholder value,
+        # clobbering the SensorDeviceClass.ENERGY class attribute defined
+        # above. Re-assert it here so HA recognizes this as a proper energy
+        # sensor (otherwise the Energy dashboard rejects it with
+        # "Unexpected device class").
+        self._attr_device_class = SensorDeviceClass.ENERGY
         self._power_control = power_control
         self._total_kwh: float = 0.0
         self._last_update: datetime | None = None
