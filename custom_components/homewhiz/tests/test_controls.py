@@ -16,6 +16,7 @@ from custom_components.homewhiz.appliance_controls import (
     build_control_from_program,
     generate_controls_from_config,
     get_bounded_values_options,
+    to_friendly_name,
 )
 from custom_components.homewhiz.homewhiz import Command
 
@@ -126,3 +127,18 @@ def test_zero_step_is_skipped() -> None:
 def test_zero_factor_is_skipped() -> None:
     """A factor of zero would otherwise raise ZeroDivisionError during setup."""
     assert len(get_bounded_values_options("temperature", _bounded(1, 0))) == 0
+
+
+@pytest.mark.parametrize(
+    ("raw", "expected"),
+    [
+        ("Program_", "program"),
+        ("Program", "program"),
+        ("Temp+", "tempplus"),
+        ("-18 °C", "-18c"),
+        ("!!!", ""),
+        ("", ""),
+    ],
+)
+def test_to_friendly_name(raw: str, expected: str) -> None:
+    assert to_friendly_name(raw) == expected
