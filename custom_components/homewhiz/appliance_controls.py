@@ -2,7 +2,7 @@ import logging
 import re
 from abc import ABC, abstractmethod
 from collections.abc import Iterable, Mapping, Sequence
-from dataclasses import dataclass, fields
+from dataclasses import dataclass, fields, replace
 from datetime import UTC, datetime, timedelta
 from typing import Any, Generic, TypeVar
 
@@ -672,6 +672,15 @@ def get_options_from_enum_options(
     return result
 
 
+# Arcelik's own CONFIGURATION endpoint reports a wrong factor (1) for this
+# key on some AC models (e.g. Ekolojik 18325) - the user manual and the
+# on-device display confirm the real value is raw_byte * 0.1 (kW), not
+# raw_byte * 1. Override it here since we can't fix Arcelik's server data.
+KNOWN_BAD_FACTORS = {
+    "air_conditioner_instant_consumption": 0.1,
+}
+
+
 def build_read_control_from_feature(feature: ApplianceFeature) -> Control | None:
     key = feature.strKey
     if key is None:
@@ -682,10 +691,13 @@ def build_read_control_from_feature(feature: ApplianceFeature) -> Control | None
         and feature.boundedValues is not None
         and len(feature.boundedValues) == 1
     ):
+        bounds = feature.boundedValues[0]
+        if key in KNOWN_BAD_FACTORS:
+            bounds = replace(bounds, factor=KNOWN_BAD_FACTORS[key])
         return NumericControl(
             key=key,
             read_index=feature.wifiArrayIndex,
-            bounds=feature.boundedValues[0],
+            bounds=bounds,
         )
     return EnumControl(
         key=key,
