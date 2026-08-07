@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 from collections.abc import Mapping
-from datetime import UTC, datetime
+from datetime import datetime
 from typing import Any
 
 from homeassistant.components.sensor import (
@@ -13,7 +13,6 @@ from homeassistant.components.sensor import (
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.restore_state import RestoreEntity
 
 from .appliance_controls import (
     DebugControl,
@@ -32,11 +31,13 @@ from .homewhiz import HomewhizCoordinator
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
-# If the coordinator hasn't pushed an update for longer than this, we don't
-# trust the "constant power over the gap" assumption (e.g. HA was down, or
-# the appliance dropped offline) - skip integrating that particular gap
-# instead of risking a bogus energy spike/dip on the Energy dashboard.
-MAX_INTEGRATION_GAP_HOURS = 1.0
+# The only NumericControl currently known to need a corrected unit/device
+# class. Arcelik's CONFIGURATION endpoint reports this field with a "hw"
+# unit label (see the matching factor fix in appliance_controls.py's
+# extract_ac_control) which isn't a real HA unit, so we map it to kW here.
+# Scoped to this single key on purpose - other NumericControl sensors keep
+# their previous (no explicit unit/device_class) behavior.
+INSTANT_CONSUMPTION_KEY = "air_conditioner_instant_consumption"
 
 
 class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
@@ -61,19 +62,13 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
         elif isinstance(control, EnumControl):
             self._attr_device_class = SensorDeviceClass.ENUM  # type:ignore
             self._attr_options = list(self._control.options.values())  # type:ignore
-        elif isinstance(control, NumericControl):
-            unit = control.bounds.unit
-            # Arcelik reports this consumption field with an unusable "hw"
-            # unit label; the value itself is corrected to real kW via the
-            # factor override in appliance_controls.py, so show it as kW.
-            if unit == "hw":
-                unit = "kW"
-                self._attr_device_class = SensorDeviceClass.POWER
-                self._attr_state_class = SensorStateClass.MEASUREMENT
-            elif unit == "°C":
-                self._attr_device_class = SensorDeviceClass.TEMPERATURE
-            if unit:
-                self._attr_native_unit_of_measurement = unit
+        elif (
+            isinstance(control, NumericControl)
+            and control.key == INSTANT_CONSUMPTION_KEY
+        ):
+            self._attr_native_unit_of_measurement = "kW"
+            self._attr_device_class = SensorDeviceClass.POWER
+            self._attr_state_class = SensorStateClass.MEASUREMENT
         elif isinstance(control, SummedTimestampControl):
             self._attr_icon = "mdi:camera-timer"
             self._attr_device_class = SensorDeviceClass.TIMESTAMP
@@ -109,88 +104,6 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
         return self._control.get_value(self.coordinator.data)
 
 
-class HomeWhizEnergyEntity(HomeWhizEntity, SensorEntity, RestoreEntity):
-    """Integrates an instantaneous power (kW) NumericControl over time into
-    an accumulated kWh total, ready to be added to the HA Energy dashboard.
-
-    The appliance itself does not report a running kWh total, only
-    instantaneous power - this entity does a trapezoidal integration of
-    that value every time the coordinator pushes new data, and persists
-    the running total across HA restarts via RestoreEntity so it behaves
-    like a proper "total_increasing" energy meter.
-    """
-
-    _attr_device_class = SensorDeviceClass.ENERGY
-    _attr_state_class = SensorStateClass.TOTAL_INCREASING
-    _attr_native_unit_of_measurement = "kWh"
-    _attr_icon = "mdi:lightning-bolt"
-
-    def __init__(
-        self,
-        coordinator: HomewhizCoordinator,
-        power_control: NumericControl,
-        device_name: str,
-        data: EntryData,
-    ):
-        super().__init__(coordinator, device_name, f"{power_control.key}_total", data)
-        # HomeWhizEntity.__init__ (called just above) unconditionally sets
-        # self._attr_device_class to a homewhiz-internal placeholder value,
-        # clobbering the SensorDeviceClass.ENERGY class attribute defined
-        # above. Re-assert it here so HA recognizes this as a proper energy
-        # sensor (otherwise the Energy dashboard rejects it with
-        # "Unexpected device class").
-        self._attr_device_class = SensorDeviceClass.ENERGY
-        self._power_control = power_control
-        self._total_kwh: float = 0.0
-        self._last_update: datetime | None = None
-        self._last_power_kw: float | None = None
-
-    async def async_added_to_hass(self) -> None:
-        await super().async_added_to_hass()
-        last_state = await self.async_get_last_state()
-        if last_state is not None and last_state.state not in (
-            None,
-            "unknown",
-            "unavailable",
-        ):
-            try:
-                self._total_kwh = float(last_state.state)
-            except (TypeError, ValueError):
-                self._total_kwh = 0.0
-        # Prime the integration baseline now, so the very first coordinator
-        # update after startup doesn't integrate over the (possibly huge)
-        # gap since HA was last running.
-        self._last_update = datetime.now(UTC)
-        current = self._current_power_kw()
-        if current is not None:
-            self._last_power_kw = current
-
-    def _current_power_kw(self) -> float | None:
-        if self.coordinator.data is None:
-            return None
-        value = self._power_control.get_value(self.coordinator.data)
-        return float(value) if value is not None else None
-
-    def _handle_coordinator_update(self) -> None:
-        now = datetime.now(UTC)
-        power_kw = self._current_power_kw()
-
-        if power_kw is not None:
-            if self._last_update is not None and self._last_power_kw is not None:
-                elapsed_hours = (now - self._last_update).total_seconds() / 3600
-                if 0 < elapsed_hours <= MAX_INTEGRATION_GAP_HOURS:
-                    avg_power_kw = (self._last_power_kw + power_kw) / 2
-                    self._total_kwh += avg_power_kw * elapsed_hours
-            self._last_power_kw = power_kw
-            self._last_update = now
-
-        super()._handle_coordinator_update()
-
-    @property
-    def native_value(self) -> float:  # type: ignore[override]
-        return round(self._total_kwh, 4)
-
-
 async def async_setup_entry(
     hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
 ) -> None:
@@ -216,23 +129,10 @@ async def async_setup_entry(
 
     _LOGGER.debug("Sensors: %s", [c.key for c in sensor_controls])
 
-    homewhiz_sensor_entities: list[HomeWhizSensorEntity | HomeWhizEnergyEntity] = [
+    homewhiz_sensor_entities = [
         HomeWhizSensorEntity(coordinator, control, entry.title, data)
         for control in sensor_controls
     ]
-
-    # For every instantaneous power ("hw" -> kW) control, also add a
-    # companion kWh accumulator entity for the Energy dashboard.
-    power_controls = [
-        c
-        for c in sensor_controls
-        if isinstance(c, NumericControl) and c.bounds.unit == "hw"
-    ]
-    homewhiz_sensor_entities.extend(
-        HomeWhizEnergyEntity(coordinator, control, entry.title, data)
-        for control in power_controls
-    )
-
     _LOGGER.debug(
         "Entities: %s",
         {entity.entity_key: entity for entity in homewhiz_sensor_entities},
