@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 from collections.abc import Mapping
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any
 
 from homeassistant.components.sensor import (
@@ -132,9 +132,7 @@ class HomeWhizEnergyEntity(HomeWhizEntity, SensorEntity, RestoreEntity):
         device_name: str,
         data: EntryData,
     ):
-        super().__init__(
-            coordinator, device_name, f"{power_control.key}_total", data
-        )
+        super().__init__(coordinator, device_name, f"{power_control.key}_total", data)
         self._power_control = power_control
         self._total_kwh: float = 0.0
         self._last_update: datetime | None = None
@@ -155,7 +153,7 @@ class HomeWhizEnergyEntity(HomeWhizEntity, SensorEntity, RestoreEntity):
         # Prime the integration baseline now, so the very first coordinator
         # update after startup doesn't integrate over the (possibly huge)
         # gap since HA was last running.
-        self._last_update = datetime.now(timezone.utc)
+        self._last_update = datetime.now(UTC)
         current = self._current_power_kw()
         if current is not None:
             self._last_power_kw = current
@@ -167,7 +165,7 @@ class HomeWhizEnergyEntity(HomeWhizEntity, SensorEntity, RestoreEntity):
         return float(value) if value is not None else None
 
     def _handle_coordinator_update(self) -> None:
-        now = datetime.now(timezone.utc)
+        now = datetime.now(UTC)
         power_kw = self._current_power_kw()
 
         if power_kw is not None:
