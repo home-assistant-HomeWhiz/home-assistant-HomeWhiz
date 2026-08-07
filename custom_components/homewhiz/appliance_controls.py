@@ -56,9 +56,7 @@ def to_friendly_name(name: str) -> str:
     name = name.replace("+", "plus")
     name = name.lower()
     name = re.sub("[^a-z0-9-_]", "", name)
-    if name[-1] == "_":
-        name = name[:-1]
-    return name
+    return name.removesuffix("_")
 
 
 class Control(ABC):

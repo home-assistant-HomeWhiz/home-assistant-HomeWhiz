@@ -78,3 +78,32 @@ def test_unrelated_numeric_control_sensor_keeps_previous_behavior() -> None:
     # the one instant_consumption key, left untouched by this PR.
     assert entity.device_class == f"{DOMAIN}__{control.key}"
     assert entity.state_class is None
+
+
+def test_instant_consumption_sensor_with_a_real_unit_is_left_alone() -> None:
+    """The known-bad signature is the key plus the bogus "hw" unit label. A
+    device reporting the same key with a real unit must keep its previous
+    behavior, matching the factor correction in extract_ac_control."""
+    control = NumericControl(
+        key="air_conditioner_instant_consumption",
+        read_index=45,
+        bounds=ApplianceFeatureBoundedOption(
+            factor=1,
+            lowerLimit=0,
+            step=1,
+            strKey="",
+            unit="W",
+            upperLimit=500,
+        ),
+    )
+
+    entity = HomeWhizSensorEntity(
+        coordinator=Mock(),
+        control=control,
+        device_name="Test AC",
+        data=_entry_data(),
+    )
+
+    assert entity.native_unit_of_measurement is None
+    assert entity.device_class == f"{DOMAIN}__{control.key}"
+    assert entity.state_class is None

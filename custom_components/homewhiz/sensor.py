@@ -38,6 +38,9 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 # Scoped to this single key on purpose - other NumericControl sensors keep
 # their previous (no explicit unit/device_class) behavior.
 INSTANT_CONSUMPTION_KEY = "air_conditioner_instant_consumption"
+# The bogus unit label that marks the affected reports. A device sending the
+# same key with a real unit is left alone, matching the factor fix.
+INSTANT_CONSUMPTION_BOGUS_UNIT = "hw"
 
 
 class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
@@ -65,6 +68,7 @@ class HomeWhizSensorEntity(HomeWhizEntity, SensorEntity):
         elif (
             isinstance(control, NumericControl)
             and control.key == INSTANT_CONSUMPTION_KEY
+            and control.bounds.unit == INSTANT_CONSUMPTION_BOGUS_UNIT
         ):
             self._attr_native_unit_of_measurement = "kW"
             self._attr_device_class = SensorDeviceClass.POWER
