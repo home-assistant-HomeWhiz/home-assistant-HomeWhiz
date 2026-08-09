@@ -1,0 +1,296 @@
+{
+  "subPrograms": [
+    {
+      "strKey": "FRIDGE_COOLER_TEMPERATURE",
+      "wifiArrayIndex": 36,
+      "enumValues": [
+        {
+          "strKey": "--"
+        }
+      ]
+    },
+    {
+      "strKey": "FRIDGE_FREEZER_TEMPERATURE",
+      "wifiArrayIndex": 35,
+      "enumValues": [
+        {
+          "strKey": "-18 °C",
+          "wifiArrayValue": 10
+        },
+        {
+          "strKey": "-19 °C",
+          "wifiArrayValue": 16
+        },
+        {
+          "strKey": "-20 °C",
+          "wifiArrayValue": 15
+        },
+        {
+          "strKey": "-21 °C",
+          "wifiArrayValue": 14
+        },
+        {
+          "strKey": "-22 °C",
+          "wifiArrayValue": 13
+        },
+        {
+          "strKey": "-23 °C",
+          "wifiArrayValue": 12
+        },
+        {
+          "strKey": "-24 °C",
+          "wifiArrayValue": 11
+        },
+        {
+          "strKey": "-27 °C",
+          "wifiArrayValue": 37
+        },
+        {
+          "strKey": "--",
+          "wifiArrayValue": 127
+        }
+      ]
+    },
+    {
+      "strKey": "FRIDGE_QUICK_COOL",
+      "wifiArrayIndex": 40,
+      "isSwitch": 1,
+      "enumValues": [
+        {
+          "strKey": "QUICK_COOL_OFF",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "QUICK_COOL_ON",
+          "wifiArrayValue": 1
+        }
+      ]
+    },
+    {
+      "strKey": "FRIDGE_FREEZER_JOKER_MODE",
+      "wifiArrayIndex": 69,
+      "enumValues": [
+        {
+          "strKey": "FREEZER_JOKER_MODE_FREEZER",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "FREEZER_JOKER_MODE_COOLER",
+          "wifiArrayValue": 1
+        }
+      ]
+    },
+    {
+      "strKey": "FRIDGE_FREEZER_JOKER_TEMPERATURE",
+      "wifiArrayIndex": 35,
+      "enumValues": [
+        {
+          "strKey": "1 °C",
+          "wifiArrayValue": 5
+        },
+        {
+          "strKey": "2 °C",
+          "wifiArrayValue": 6
+        },
+        {
+          "strKey": "3 °C",
+          "wifiArrayValue": 7
+        },
+        {
+          "strKey": "4 °C",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "5 °C",
+          "wifiArrayValue": 1
+        },
+        {
+          "strKey": "6 °C",
+          "wifiArrayValue": 2
+        },
+        {
+          "strKey": "7 °C",
+          "wifiArrayValue": 3
+        },
+        {
+          "strKey": "8 °C",
+          "wifiArrayValue": 4
+        },
+        {
+          "strKey": "1 °C",
+          "wifiArrayValue": 14
+        },
+        {
+          "strKey": "--",
+          "wifiArrayValue": 127
+        }
+      ]
+    },
+    {
+      "strKey": "FRIDGE_A_COOL",
+      "wifiArrayIndex": 72,
+      "isSwitch": 1,
+      "enumValues": [
+        {
+          "strKey": "A_COOL_OFF",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "A_COOL_ON",
+          "wifiArrayValue": 1
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "strKey": "SETTINGS_DOOR_ALARM_TIME",
+      "wifiArrayIndex": 71,
+      "enumValues": [
+        {
+          "strKey": "ONE_MIN",
+          "wifiArrayValue": 5
+        },
+        {
+          "strKey": "ONE_AND_HALF_MIN",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "TWO_MIN",
+          "wifiArrayValue": 1
+        },
+        {
+          "strKey": "THREE_MIN",
+          "wifiArrayValue": 2
+        },
+        {
+          "strKey": "FOUR_MIN",
+          "wifiArrayValue": 3
+        },
+        {
+          "strKey": "FIVE_MIN",
+          "wifiArrayValue": 4
+        }
+      ]
+    }
+  ],
+  "deviceWarnings": {
+    "wifiArrayReadIndex": 56,
+    "warnings": [
+      {
+        "strKey": "FRIDGE_WARNING_DOOR_IS_OPEN",
+        "bitIndex": 0,
+        "notificationInfo": {
+          "strKey": "FRIDGE_WARNING_DOOR_IS_OPEN_NOTIFICATION",
+          "priority": "HIGH",
+          "necessity": "OPTON"
+        }
+      },
+      {
+        "strKey": "FRIDGE_WARNING_HIGH_TEMPERATURE",
+        "bitIndex": 1,
+        "notificationInfo": {
+          "strKey": "FRIDGE_WARNING_HIGH_TEMPERATURE_NOTIFICATION",
+          "priority": "HIGH",
+          "necessity": "MANDA"
+        }
+      }
+    ]
+  },
+  "program": {
+    "isDisabled": 1,
+    "strKey": "FRIDGE_DEGREE_DIMENSION",
+    "wifiArrayIndex": 34,
+    "values": [
+      {
+        "strKey": "DEGREE_DIMENSION_CELCIUS",
+        "wifiArrayValue": 0,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "FRIDGE_COOLER_TEMPERATURE",
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          },
+          {
+            "strKeyRef": "FRIDGE_FREEZER_TEMPERATURE",
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          },
+          {
+            "strKeyRef": "FRIDGE_FREEZER_JOKER_TEMPERATURE",
+            "isDisabled": 1,
+            "allowedValueIndices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          }
+        ]
+      },
+      {
+        "strKey": "DEGREE_DIMENSION_FAHRENHEIT",
+        "wifiArrayValue": 1,
+        "subProgramOverrides": [
+          {
+            "strKeyRef": "FRIDGE_COOLER_TEMPERATURE",
+            "allowedValueIndices": [
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21
+            ]
+          },
+          {
+            "strKeyRef": "FRIDGE_FREEZER_TEMPERATURE",
+            "allowedValueIndices": [
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "version": "0.0.0"
+}

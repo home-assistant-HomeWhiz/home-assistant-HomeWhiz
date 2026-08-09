@@ -3,7 +3,8 @@
     "abort": {
       "already_configured": "Gerät ist bereits konfiguriert",
       "already_in_progress": "Der Konfigurationsablauf wird bereits ausgeführt",
-      "no_devices_found": "Keine Geräte im Netzwerk gefunden"
+      "no_devices_found": "Keine Geräte im Netzwerk gefunden",
+      "no_cloud_devices_found": "Keines der Geräte in diesem Konto lässt sich über die Cloud einrichten. Gehe zurück und nutze stattdessen die Bluetooth-Option."
     },
     "flow_title": "{name}",
     "step": {
@@ -45,7 +46,8 @@
       }
     },
     "error": {
-      "invalid_auth": "Ungültige Anmeldedaten"
+      "invalid_auth": "Ungültige Anmeldedaten",
+      "unknown": "Unerwarteter Fehler. Details stehen in den HomeWhiz-Einträgen im Home-Assistant-Protokoll."
     }
   },
   "entity": {
@@ -444,6 +446,50 @@
           "volume_close": "Aus",
           "volume_on": "Ein"
         }
+      },
+      "fridge_cooler_temperature": {
+        "name": "Kühlteil-Temperatur"
+      },
+      "fridge_freezer_temperature": {
+        "name": "Gefriertemperatur"
+      },
+      "fridge_degree_dimension": {
+        "name": "Temperatureinheit",
+        "state": {
+          "degree_dimension_celcius": "Celsius (°C)",
+          "degree_dimension_fahrenheit": "Fahrenheit (°F)"
+        }
+      },
+      "fridge_freezer_joker_mode": {
+        "name": "Joker-Fach",
+        "state": {
+          "freezer_joker_mode_freezer": "Gefrierschrank",
+          "freezer_joker_mode_cooler": "Kühlschrank"
+        }
+      },
+      "fridge_freezer_joker_temperature": {
+        "name": "Joker-Fach-Temperatur",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C"
+        }
+      },
+      "settings_door_alarm_time": {
+        "name": "Türalarm-Zeit",
+        "state": {
+          "one_min": "1 min",
+          "one_and_half_min": "1,5 min",
+          "two_min": "2 min",
+          "three_min": "3 min",
+          "four_min": "4 min",
+          "five_min": "5 min"
+        }
       }
     },
     "sensor": {
@@ -754,7 +800,7 @@
         "name": "Helligkeit"
       },
       "variable_delay": {
-        "name": "Startverzögerung"
+        "name": "Endzeit des Programms"
       },
       "variable_oven_duration": {
         "name": "Gardauer"
@@ -988,6 +1034,55 @@
       },
       "air_conditioner_auto_switch_on": {
         "name": "Automatisch einschalten"
+      },
+      "fridge_cooler_temperature": {
+        "name": "Kühlteil-Temperatur"
+      },
+      "fridge_freezer_temperature": {
+        "name": "Gefriertemperatur"
+      },
+      "fridge_degree_dimension": {
+        "name": "Temperatureinheit",
+        "state": {
+          "degree_dimension_celcius": "Celsius (°C)",
+          "degree_dimension_fahrenheit": "Fahrenheit (°F)"
+        }
+      },
+      "fridge_freezer_joker_mode": {
+        "name": "Joker-Fach",
+        "state": {
+          "freezer_joker_mode_freezer": "Gefrierschrank",
+          "freezer_joker_mode_cooler": "Kühlschrank"
+        }
+      },
+      "fridge_freezer_joker_temperature": {
+        "name": "Joker-Fach-Temperatur",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C"
+        }
+      },
+      "settings_door_alarm_time": {
+        "name": "Türalarm-Zeit",
+        "state": {
+          "one_min": "1 min",
+          "one_and_half_min": "1,5 min",
+          "two_min": "2 min",
+          "three_min": "3 min",
+          "four_min": "4 min",
+          "five_min": "5 min"
+        }
+      }
+    },
+    "number": {
+      "delay_start_set": {
+        "name": "Startverzögerung (Eingabe)"
       }
     },
     "binary_sensor": {
@@ -1083,6 +1178,12 @@
       },
       "zone_4_hob_pan_info": {
         "name": "Zone 4 Topferkennung"
+      },
+      "fridge_warning_door_is_open": {
+        "name": "Tür ist offen"
+      },
+      "fridge_warning_high_temperature": {
+        "name": "Hohe Temperatur"
       }
     },
     "climate": {
@@ -1094,7 +1195,13 @@
               "wind_strength_auto": "Auto",
               "wind_strength_low": "Niedrig",
               "wind_strength_mid": "Mittel",
-              "wind_strength_high": "Hoch"
+              "wind_strength_high": "Hoch",
+              "2": "1",
+              "3": "2",
+              "4": "3",
+              "5": "4",
+              "6": "5",
+              "wind_strength_chaos_swing": "Chaos Swing"
             }
           }
         },
@@ -1176,6 +1283,12 @@
       },
       "dishwasher_deepwash": {
         "name": "Tiefenreinigung"
+      },
+      "fridge_quick_cool": {
+        "name": "Quick Cool"
+      },
+      "fridge_a_cool": {
+        "name": "A-Cool"
       }
     }
   },

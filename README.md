@@ -66,6 +66,7 @@ Monitor and control them in Home Assistant, over local Bluetooth or the HomeWhiz
 | ❄️ Air conditioner | ✅ | |
 | 💨 Extraction fan | ✅ | |
 | 🔥 Hob | ✅ | Beko 4-zone induction hob |
+| 🧊 Refrigerator / Freezer | ✅ | Bauknecht freezer with convertible compartment (tested via cloud) |
 | 🍪 Oven | ❓ | Not tested |
 
 If you have other device types not listed yet, please let us know.

@@ -63,6 +63,7 @@ def test_on(config: ApplianceConfiguration) -> None:
             "washer_add_water": False,
             "custom_duration_level": "duration_level_0",
             "delay_start#0": 0,
+            "delay_start_set#0": 0,
             "delay_start_time#0": None,
         },
     )
@@ -109,6 +110,7 @@ def test_running(config: ApplianceConfiguration) -> None:
             "washer_add_water": False,
             "custom_duration_level": "duration_level_0",
             "delay_start#0": 0,
+            "delay_start_set#0": 0,
             "delay_start_time#0": None,
         },
     )
@@ -155,6 +157,7 @@ def test_spinning(config: ApplianceConfiguration) -> None:
             "washer_add_water": False,
             "custom_duration_level": "duration_level_0",
             "delay_start#0": 0,
+            "delay_start_set#0": 0,
             "delay_start_time#0": None,
         },
     )
@@ -201,6 +204,7 @@ def test_delay_defined(config: ApplianceConfiguration) -> None:
             "washer_add_water": False,
             "custom_duration_level": "duration_level_0",
             "delay_start#0": 104,
+            "delay_start_set#0": 104,
             "delay_start_time#0": datetime.datetime.now(tz=datetime.UTC).replace(
                 second=0, microsecond=0
             )
@@ -253,6 +257,7 @@ def test_warning(config: ApplianceConfiguration) -> None:
             "washer_add_water": True,
             "custom_duration_level": "duration_level_0",
             "delay_start#0": 0,
+            "delay_start_set#0": 0,
             "delay_start_time#0": None,
         },
     )
@@ -303,6 +308,7 @@ def test_remote_control_custom_settings(config: ApplianceConfiguration) -> None:
             "washer_add_water": True,
             "custom_duration_level": "duration_level_0",
             "delay_start#0": 0,
+            "delay_start_set#0": 0,
             "delay_start_time#0": None,
         },
     )

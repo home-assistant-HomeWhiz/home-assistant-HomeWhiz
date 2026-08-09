@@ -2,7 +2,7 @@ import logging
 import re
 from abc import ABC, abstractmethod
 from collections.abc import Iterable, Mapping, Sequence
-from dataclasses import dataclass, fields
+from dataclasses import dataclass, fields, replace
 from datetime import UTC, datetime, timedelta
 from typing import Any, Generic, TypeVar
 
@@ -56,9 +56,7 @@ def to_friendly_name(name: str) -> str:
     name = name.replace("+", "plus")
     name = name.lower()
     name = re.sub("[^a-z0-9-_]", "", name)
-    if name[-1] == "_":
-        name = name[:-1]
-    return name
+    return name.removesuffix("_")
 
 
 class Control(ABC):
@@ -226,6 +224,35 @@ class TimeControl(Control):
             self.minute_index,
         )
         return hours * 60 + minutes
+
+
+class WriteTimeControl(Control):
+    """Writable counterpart of :class:`TimeControl` for a delay/timer value.
+
+    Reads the same hour/minute byte indices as ``TimeControl`` (value expressed in
+    minutes), but adds :meth:`set_value` so the value can be written back to the
+    appliance. It is a standalone ``Control`` subclass (not a ``TimeControl``) so it
+    is surfaced as a writable ``number`` entity instead of a read-only ``sensor``.
+    """
+
+    def __init__(self, key: str, hour_index: int, minute_index: int | None):
+        self.key = key
+        self.hour_index = hour_index
+        self.minute_index = minute_index
+
+    def get_value(self, data: bytearray) -> int:
+        hours = safe_get(data, self.hour_index)
+        minutes = (
+            safe_get(data, self.minute_index) if self.minute_index is not None else 0
+        )
+        return hours * 60 + minutes
+
+    def set_value(self, minutes: int) -> list[Command]:
+        minutes = max(0, int(minutes))
+        commands = [Command(self.hour_index, minutes // 60)]
+        if self.minute_index is not None:
+            commands.append(Command(self.minute_index, minutes % 60))
+        return commands
 
 
 class StateAwareRemainingTimeControl(Control):
@@ -591,6 +618,14 @@ def get_bounded_values_options(
     key: str, values: ApplianceFeatureBoundedOption
 ) -> bidict[int, str]:
     result: bidict[int, str] = bidict()
+    if values.step <= 0 or values.factor == 0:
+        _LOGGER.warning(
+            "Skipping bounded values for %s, the device reports step=%s factor=%s",
+            key,
+            values.step,
+            values.factor,
+        )
+        return result
     value = float(values.lowerLimit)
     while value <= values.upperLimit:
         wifiValue = int(value / values.factor)
@@ -606,6 +641,8 @@ def get_options_from_feature(key: str, feature: ApplianceFeature) -> bidict[int,
     options: bidict[int, str] = bidict()
     if feature.enumValues is not None:
         for option in feature.enumValues:
+            if option.wifiArrayValue is None:
+                continue
             friendly_name = to_friendly_name(option.strKey)
             if friendly_name in options.inverse:
                 friendly_name = f"{friendly_name}_{option.wifiArrayValue}"
@@ -622,9 +659,15 @@ def get_options_from_feature(key: str, feature: ApplianceFeature) -> bidict[int,
 def get_options_from_enum_options(
     options: Sequence[ApplianceFeatureEnumOption],
 ) -> dict[int, str]:
-    return {
-        option.wifiArrayValue: to_friendly_name(option.strKey) for option in options
-    }
+    result: dict[int, str] = {}
+    for option in options:
+        if option.wifiArrayValue is None:
+            continue
+        friendly_name = to_friendly_name(option.strKey)
+        if friendly_name in result.values():
+            friendly_name = f"{friendly_name}_{option.wifiArrayValue}"
+        result[option.wifiArrayValue] = friendly_name
+    return result
 
 
 def build_read_control_from_feature(feature: ApplianceFeature) -> Control | None:
@@ -749,14 +792,22 @@ def build_controls_from_progress_variables(  # noqa: C901
         )
         if feature is not None:
             feature_key = to_friendly_name(feature.strKey)
-            if (
-                feature.isCalculatedToStart is not None
-                and feature_key == "washer_delay"
-            ):
+            if feature.isCalculatedToStart is not None:
                 calculation_key = feature_key
                 feature_key = "delay_start#" + str(len(delay_keys))
                 delay_keys.update(
                     {calculation_key: (feature_key, feature.isCalculatedToStart)}
+                )
+                # Expose the start delay as a writable number (in addition to the
+                # read-only sensor), reusing the same hour/minute byte indices.
+                results.append(
+                    WriteTimeControl(
+                        key=feature_key.replace("delay_start", "delay_start_set", 1),
+                        hour_index=feature.hour.wifiArrayIndex,
+                        minute_index=feature.minute.wifiArrayIndex
+                        if feature.minute is not None
+                        else None,
+                    )
                 )
             results.append(
                 TimeControl(
@@ -1086,6 +1137,22 @@ def extract_ac_control(control_list: list[Control]) -> list[Control]:
     controls_dict = {control.key: control for control in control_list}
     keys = controls_dict.keys()
     if "air_conditioner_program" in keys:
+        # Arcelik's own CONFIGURATION endpoint reports a wrong factor (1)
+        # for AIR_CONDITIONER_INSTANT_CONSUMPTION on some AC models (e.g.
+        # Ekolojik 18325/15325) - the user manual and the on-device display
+        # confirm the real value is raw_byte * 0.1 (kW), not raw_byte * 1.
+        # Only touch this single, known-affected AC feature, and only when
+        # we see the exact known-bad factor, so appliances that already
+        # report the correct factor (or any other feature/unit) are left
+        # untouched.
+        instant_consumption = controls_dict.get("air_conditioner_instant_consumption")
+        if (
+            isinstance(instant_consumption, NumericControl)
+            and instant_consumption.bounds.unit == "hw"
+            and instant_consumption.bounds.factor == 1
+        ):
+            instant_consumption.bounds = replace(instant_consumption.bounds, factor=0.1)
+
         state = controls_dict["state"]
         assert isinstance(state, WriteBooleanControl)
         program = controls_dict["air_conditioner_program"]
@@ -1137,6 +1204,10 @@ def extract_ac_control(control_list: list[Control]) -> list[Control]:
 # Only generate controls once to allow basic inter-Control communication
 # Use entry id as key to avoid issues when multiple homewhiz devices are used
 controls: dict[str, list[Control]] = {}
+
+
+def forget_controls(key: str) -> None:
+    controls.pop(key, None)
 
 
 def generate_controls_from_config(

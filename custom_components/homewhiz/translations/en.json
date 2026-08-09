@@ -3,7 +3,8 @@
     "abort": {
       "already_configured": "Device is already configured",
       "already_in_progress": "Configuration flow is already in progress",
-      "no_devices_found": "No devices found on the network"
+      "no_devices_found": "No devices found on the network",
+      "no_cloud_devices_found": "None of the devices in this account can be set up over the cloud. Go back and use the Bluetooth option instead."
     },
     "flow_title": "{name}",
     "step": {
@@ -45,7 +46,8 @@
       }
     },
     "error": {
-      "invalid_auth": "Invalid authentication"
+      "invalid_auth": "Invalid authentication",
+      "unknown": "Unexpected error. Check the HomeWhiz entries in the Home Assistant log for details."
     }
   },
   "entity": {
@@ -443,6 +445,50 @@
         "state": {
           "volume_close": "Off",
           "volume_on": "On"
+        }
+      },
+      "fridge_cooler_temperature": {
+        "name": "Cooler Temperature"
+      },
+      "fridge_freezer_temperature": {
+        "name": "Freezer Temperature"
+      },
+      "fridge_degree_dimension": {
+        "name": "Temperature Unit",
+        "state": {
+          "degree_dimension_celcius": "Celsius (°C)",
+          "degree_dimension_fahrenheit": "Fahrenheit (°F)"
+        }
+      },
+      "fridge_freezer_joker_mode": {
+        "name": "Freezer Compartment Mode",
+        "state": {
+          "freezer_joker_mode_freezer": "Freezer",
+          "freezer_joker_mode_cooler": "Cooler"
+        }
+      },
+      "fridge_freezer_joker_temperature": {
+        "name": "Freezer Compartment Temperature",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C"
+        }
+      },
+      "settings_door_alarm_time": {
+        "name": "Door Alarm Time",
+        "state": {
+          "one_min": "1 min",
+          "one_and_half_min": "1.5 min",
+          "two_min": "2 min",
+          "three_min": "3 min",
+          "four_min": "4 min",
+          "five_min": "5 min"
         }
       }
     },
@@ -978,7 +1024,7 @@
         }
       },
       "air_conditioner_instant_consumption": {
-        "name": "Air conditioner instant consumption"
+        "name": "Instant Consumption"
       },
       "air_conditioner_sleep_mode_minute": {
         "name": "Air conditioner sleep mode minute"
@@ -988,6 +1034,55 @@
       },
       "air_conditioner_auto_switch_on": {
         "name": "Auto turn on"
+      },
+      "fridge_cooler_temperature": {
+        "name": "Cooler Temperature"
+      },
+      "fridge_freezer_temperature": {
+        "name": "Freezer Temperature"
+      },
+      "fridge_degree_dimension": {
+        "name": "Temperature Unit",
+        "state": {
+          "degree_dimension_celcius": "Celsius (°C)",
+          "degree_dimension_fahrenheit": "Fahrenheit (°F)"
+        }
+      },
+      "fridge_freezer_joker_mode": {
+        "name": "Freezer Compartment Mode",
+        "state": {
+          "freezer_joker_mode_freezer": "Freezer",
+          "freezer_joker_mode_cooler": "Cooler"
+        }
+      },
+      "fridge_freezer_joker_temperature": {
+        "name": "Freezer Compartment Temperature",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C"
+        }
+      },
+      "settings_door_alarm_time": {
+        "name": "Door Alarm Time",
+        "state": {
+          "one_min": "1 min",
+          "one_and_half_min": "1.5 min",
+          "two_min": "2 min",
+          "three_min": "3 min",
+          "four_min": "4 min",
+          "five_min": "5 min"
+        }
+      }
+    },
+    "number": {
+      "delay_start_set": {
+        "name": "Start Delay"
       }
     },
     "binary_sensor": {
@@ -1083,6 +1178,12 @@
       },
       "zone_4_hob_pan_info": {
         "name": "Zone 4 Pan Detection"
+      },
+      "fridge_warning_door_is_open": {
+        "name": "Door is open"
+      },
+      "fridge_warning_high_temperature": {
+        "name": "High temperature"
       }
     },
     "climate": {
@@ -1094,7 +1195,13 @@
               "wind_strength_auto": "Auto",
               "wind_strength_low": "Low",
               "wind_strength_mid": "Medium",
-              "wind_strength_high": "High"
+              "wind_strength_high": "High",
+              "2": "1",
+              "3": "2",
+              "4": "3",
+              "5": "4",
+              "6": "5",
+              "wind_strength_chaos_swing": "Chaos Swing"
             }
           }
         },
@@ -1176,6 +1283,12 @@
       },
       "dishwasher_deepwash": {
         "name": "Deep Wash"
+      },
+      "fridge_quick_cool": {
+        "name": "Quick Cool"
+      },
+      "fridge_a_cool": {
+        "name": "A-Cool"
       }
     }
   },

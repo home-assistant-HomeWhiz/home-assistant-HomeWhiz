@@ -925,7 +925,13 @@
               "wind_strength_auto": "Auto",
               "wind_strength_low": "Nízke",
               "wind_strength_mid": "Stredné",
-              "wind_strength_high": "Vysoké"
+              "wind_strength_high": "Vysoké",
+              "2": "1",
+              "3": "2",
+              "4": "3",
+              "5": "4",
+              "6": "5",
+              "wind_strength_chaos_swing": "Chaos Swing"
             }
           }
         },

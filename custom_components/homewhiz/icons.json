@@ -18,6 +18,11 @@
           }
         }
       }
+    },
+    "number": {
+      "delay_start_set": {
+        "default": "mdi:timer-edit-outline"
+      }
     }
   }
 }

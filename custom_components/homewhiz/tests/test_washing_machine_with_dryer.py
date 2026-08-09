@@ -64,6 +64,7 @@ def test_off(config: ApplianceConfiguration) -> None:
             "washer_add_water": False,
             "custom_duration_level": "duration_level_0",
             "delay_start#0": 0,
+            "delay_start_set#0": 0,
             "delay_start_time#0": None,
         },
     )

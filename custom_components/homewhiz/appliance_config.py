@@ -18,10 +18,10 @@ class ApplianceProgressFeatureOverride:
 @dataclass
 class ApplianceFeatureEnumOption:
     strKey: str
-    wifiArrayValue: int
+    wifiArrayValue: int | None = None
 
 
-@dataclass
+@dataclass(kw_only=True)
 class ApplianceProgramOption(ApplianceFeatureEnumOption):
     customSubProgramOverrides: list[ApplianceSubprogramOverride] | None
     isDownloadableCycle: bool | None

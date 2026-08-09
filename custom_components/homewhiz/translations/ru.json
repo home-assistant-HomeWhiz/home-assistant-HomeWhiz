@@ -818,7 +818,13 @@
               "wind_strength_auto": "Авто",
               "wind_strength_low": "Низкая",
               "wind_strength_mid": "Средняя",
-              "wind_strength_high": "Высокая"
+              "wind_strength_high": "Высокая",
+              "2": "1",
+              "3": "2",
+              "4": "3",
+              "5": "4",
+              "6": "5",
+              "wind_strength_chaos_swing": "Chaos Swing"
             }
           }
         },
