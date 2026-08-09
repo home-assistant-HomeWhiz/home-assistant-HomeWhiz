@@ -1,6 +1,8 @@
 {
   "name": "HomeWhiz",
   "render_readme": true,
+  "zip_release": true,
+  "filename": "homewhiz.zip",
   "hacs": "1.6.0",
   "homeassistant": "0.118.0"
 }

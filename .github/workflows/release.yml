@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v7
     - name: Create homewhiz.zip
-      run: cd custom_components && zip -r ../homewhiz.zip homewhiz/
+      run: cd custom_components/homewhiz && zip -r ../../homewhiz.zip .
     - name: Upload homewhiz.zip to release
       uses: softprops/action-gh-release@v3
       with:
