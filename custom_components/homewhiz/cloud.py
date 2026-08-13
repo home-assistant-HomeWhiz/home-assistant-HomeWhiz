@@ -20,7 +20,7 @@ from homeassistant.helpers.event import (
 
 from .api import login
 from .config_flow import CloudConfig
-from .const import DOMAIN
+from .const import CONF_CLOUD_POLLING, DOMAIN
 from .homewhiz import Command, HomewhizCoordinator
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
@@ -187,17 +187,26 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             )
         )
 
-        if not self._update_timer_task:
-            self._update_timer_task = async_track_time_interval(
-                hass=self.hass,
-                action=lambda _: self.hass.add_job(self.force_read()),
-                interval=timedelta(minutes=1),
-            )
-            _LOGGER.debug("Set hass time interval update")
+        self._start_active_polling()
 
         await self.get_shadow()
 
         return True
+
+    def _start_active_polling(self) -> None:
+        """Start periodic appliance reads when enabled for this entry."""
+        if (
+            not self._entry.options.get(CONF_CLOUD_POLLING, True)
+            or self._update_timer_task
+        ):
+            return
+
+        self._update_timer_task = async_track_time_interval(
+            hass=self.hass,
+            action=lambda _: self.hass.add_job(self.force_read()),
+            interval=timedelta(minutes=1),
+        )
+        _LOGGER.debug("Set HomeWhiz active polling interval")
 
     async def _subscribe_to_topics(self) -> None:
         if self._connection is None:

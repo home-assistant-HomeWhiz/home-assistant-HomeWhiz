@@ -1298,7 +1298,11 @@
         "title": "Homewhiz Options",
         "description": "Allows for advanced configuration of the integration.",
         "data": {
-          "bt_reconnect_interval": "Interval at which to reconnect Bluetooth (in hours)"
+          "bt_reconnect_interval": "Interval at which to reconnect Bluetooth (in hours)",
+          "cloud_polling": "Active cloud polling"
+        },
+        "data_description": {
+          "cloud_polling": "Request fresh appliance data every minute. Disable this if polling wakes the display or causes other unwanted appliance activity."
         }
       }
     }

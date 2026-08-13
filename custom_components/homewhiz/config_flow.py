@@ -33,7 +33,7 @@ from .api import (
     login,
     make_id_exchange_request,
 )
-from .const import CONF_BT_RECONNECT_INTERVAL, DOMAIN
+from .const import CONF_BT_RECONNECT_INTERVAL, CONF_CLOUD_POLLING, DOMAIN
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
@@ -276,11 +276,27 @@ class CloudOptionsFlowHandler(OptionsFlow):
     ) -> ConfigFlowResult:
         """Manage the options."""
         if user_input is not None:
+            self.hass.config_entries.async_update_entry(
+                self.config_entry, options=user_input
+            )
+            await self.hass.config_entries.async_reload(self.config_entry.entry_id)
             return self.async_create_entry(title="", data=user_input)
 
         return self.async_show_form(
             step_id="init",
-            data_schema=vol.Schema({}),
+            data_schema=vol.Schema(
+                {
+                    vol.Optional(
+                        CONF_CLOUD_POLLING,
+                        description={
+                            "suggested_value": self.config_entry.options.get(
+                                CONF_CLOUD_POLLING, True
+                            )
+                        },
+                        default=True,
+                    ): bool,
+                }
+            ),
         )
 
 

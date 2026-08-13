@@ -24,7 +24,16 @@
     }
   },
   "options": {
-    "step": {},
+    "step": {
+      "init": {
+        "data": {
+          "cloud_polling": "Active cloud polling"
+        },
+        "data_description": {
+          "cloud_polling": "Request fresh appliance data every minute. Disable this if polling wakes the display or causes other unwanted appliance activity."
+        }
+      }
+    },
     "abort": {
       "no_devices": "[%key:common::config_flow::abort::no_devices%]"
     }

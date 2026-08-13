@@ -12,4 +12,5 @@ PLATFORMS = [
 ]
 
 # Configuration
+CONF_CLOUD_POLLING = "cloud_polling"
 CONF_BT_RECONNECT_INTERVAL = "bt_reconnect_interval"
