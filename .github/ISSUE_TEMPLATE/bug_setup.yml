@@ -1,0 +1,71 @@
+name: Setup issue
+description: Report a problem while adding or configuring HomeWhiz.
+labels: [bug]
+body:
+- type: markdown
+  attributes:
+    value: |
+      Use this form for problems while setting up the HomeWhiz integration.
+      If the integration is already set up and a device or entity is not working, use the runtime issue form.
+
+- type: textarea
+  id: problem
+  attributes:
+    label: The problem
+    description: Describe what happens and where setup stops.
+  validations:
+    required: true
+
+- type: input
+  id: homewhiz_version
+  attributes:
+    label: HomeWhiz version
+    placeholder: v0.5.25
+  validations:
+    required: true
+
+- type: input
+  id: home_assistant_version
+  attributes:
+    label: Home Assistant version
+    placeholder: 2026.8.2
+  validations:
+    required: true
+
+- type: dropdown
+  id: connection_type
+  attributes:
+    label: Connection type
+    options:
+    - Bluetooth
+    - Cloud
+    - Unknown
+  validations:
+    required: true
+
+- type: input
+  id: appliance
+  attributes:
+    label: Appliance information
+    description: Brand, model, appliance type, and digital ID if known.
+    placeholder: Beko washing machine, 7001440063
+  validations:
+    required: true
+
+- type: textarea
+  id: diagnostics
+  attributes:
+    label: Diagnostics
+    description: Download the HomeWhiz integration diagnostics and drag the file here. Review it before posting.
+    placeholder: Drag and drop the diagnostics file here.
+  validations:
+    required: true
+
+- type: textarea
+  id: debug_log
+  attributes:
+    label: Debug log
+    description: Enable debug logging for HomeWhiz, reproduce the setup issue, then attach the downloaded log.
+    render: txt
+  validations:
+    required: true
