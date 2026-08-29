@@ -1,4 +1,5 @@
 import json
+from dataclasses import replace
 from pathlib import Path
 from unittest import TestCase
 
@@ -13,6 +14,8 @@ from homeassistant.components.climate import (  # type: ignore[import]
 from custom_components.homewhiz.appliance_config import ApplianceConfiguration
 from custom_components.homewhiz.appliance_controls import (
     ClimateControl,
+    WriteNumericControl,
+    forget_controls,
     generate_controls_from_config,
 )
 from custom_components.homewhiz.homewhiz import Command
@@ -129,3 +132,42 @@ def test_hvac_control(config: ApplianceConfiguration) -> None:
             HVACMode.OFF,
         ],
     )
+
+
+@pytest.mark.parametrize("later_indices", [(77,), (77, 88)])
+def test_duplicate_ac_target_keeps_existing_selection(
+    config: ApplianceConfiguration, later_indices: tuple[int, ...]
+) -> None:
+    assert config.subPrograms is not None
+    target = next(
+        f
+        for f in config.subPrograms
+        if f.strKey == "AIR_CONDITIONER_TARGET_TEMPERATURE"
+    )
+    config = replace(
+        config,
+        settings=[
+            replace(target, wifiArrayIndex=index, wfaWriteIndex=index + 1)
+            for index in later_indices
+        ],
+    )
+    key = f"ac-duplicate-target-{later_indices}"
+    try:
+        generated = generate_controls_from_config(key, config)
+        assert [(type(c), c.key) for c in generated] == [
+            (WriteNumericControl, "air_conditioner_target_temperature"),
+            (ClimateControl, "ac"),
+        ]
+        standalone, climate = generated
+        assert isinstance(standalone, WriteNumericControl)
+        assert isinstance(climate, ClimateControl)
+        # HA retains the first standalone entity, while AC extraction uses the
+        # last configured target. Dedup must preserve both existing selections.
+        assert standalone.read_index == target.wifiArrayIndex
+        assert standalone.set_value(24) == Command(target.wifiArrayIndex, 24)
+        assert climate.target_temperature.read_index == later_indices[-1]
+        assert climate.target_temperature.set_value(24) == Command(
+            later_indices[-1] + 1, 24
+        )
+    finally:
+        forget_controls(key)
