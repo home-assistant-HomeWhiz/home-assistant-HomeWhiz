@@ -1285,6 +1285,10 @@ def generate_controls_from_config(
             key,
             len(tmp_controls),
         )
-        controls[key] = extract_ac_control(tmp_controls)
+        # Preserve AC selection before removing duplicate entity controls.
+        unique_controls: dict[tuple[type[Control], str], Control] = {}
+        for control in extract_ac_control(tmp_controls):
+            unique_controls.setdefault((type(control), control.key), control)
+        controls[key] = list(unique_controls.values())
 
     return controls[key]
