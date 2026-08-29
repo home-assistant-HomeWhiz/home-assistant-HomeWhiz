@@ -328,6 +328,12 @@ async def fetch_appliance_contents(
     config = await make_get_contents_request(config_contents[0])
     localization = await fetch_localizations(contents_index)
 
+    # Some dryers return integer labels for subprogram enum options (#451).
+    for subprogram in config.get("subPrograms") or []:
+        for option in subprogram.get("enumValues") or []:
+            if type(option.get("strKey")) is int:
+                option["strKey"] = str(option["strKey"])
+
     return ApplianceContents(
         config=from_dict(ApplianceConfiguration, config), localization=localization
     )
