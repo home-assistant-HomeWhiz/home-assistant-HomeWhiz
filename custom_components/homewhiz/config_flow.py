@@ -213,27 +213,34 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
         self, user_input: dict[str, Any] | None = None
     ) -> ConfigFlowResult:
         assert self._cloud_credentials is not None
+        errors = {}
         if user_input is not None:
             assert self._cloud_appliances is not None
             appliance_id = user_input[CONF_ID]
             await self.async_set_unique_id(appliance_id)
+            # Outside the try: an already configured appliance must keep aborting
+            # the flow instead of being reported as an unexpected error.
             self._abort_if_unique_id_configured()
-            appliance = next(
-                a for a in self._cloud_appliances if a.applianceId == appliance_id
-            )
-            contents = await fetch_appliance_contents(
-                self._cloud_credentials, appliance_id
-            )
-            data = EntryData(
-                ids=IdExchangeResponse(appliance_id),
-                contents=contents,
-                appliance_info=appliance,
-                cloud_config=self._cloud_config,
-            )
-            return self.async_create_entry(
-                title=appliance.name,
-                data=asdict(data),
-            )
+            try:
+                appliance = next(
+                    a for a in self._cloud_appliances if a.applianceId == appliance_id
+                )
+                contents = await fetch_appliance_contents(
+                    self._cloud_credentials, appliance_id
+                )
+                data = EntryData(
+                    ids=IdExchangeResponse(appliance_id),
+                    contents=contents,
+                    appliance_info=appliance,
+                    cloud_config=self._cloud_config,
+                )
+                return self.async_create_entry(
+                    title=appliance.name,
+                    data=asdict(data),
+                )
+            except Exception:  # broad catch: without it the user gets no message at all
+                _LOGGER.exception("Cloud device setup failed unexpectedly")
+                errors["base"] = "unknown"
 
         if self._cloud_appliances is None:
             self._cloud_appliances = await fetch_appliance_infos(
@@ -252,6 +259,7 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
         return self.async_show_form(
             step_id="select_cloud_device",
             data_schema=vol.Schema({vol.Required(CONF_ID): vol.In(options)}),
+            errors=errors,
         )
 
     @staticmethod
