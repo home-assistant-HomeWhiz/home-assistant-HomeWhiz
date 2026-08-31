@@ -74,7 +74,9 @@ def test_cloud_devices_are_offered() -> None:
 
 def _submittable_flow(appliances: list[ApplianceInfo]) -> TiltConfigFlow:
     """The submit path calls Home Assistant's unique id helpers, which need a
-    running hass. Stub them so the test covers this step's own behaviour."""
+    running hass. Stub them out. That keeps these tests on the step's own
+    behaviour, and it means they say nothing about Home Assistant's abort
+    semantics for an id that is already claimed or configured."""
     flow = _make_flow(appliances)
     flow.async_set_unique_id = AsyncMock(return_value=None)  # type: ignore[method-assign]
     flow._abort_if_unique_id_configured = Mock(return_value=None)  # type: ignore[method-assign]
@@ -96,9 +98,10 @@ def test_failing_contents_fetch_shows_the_form_again() -> None:
     assert result["errors"] == {"base": "unknown"}
 
 
-def test_retry_after_a_failed_fetch_still_creates_the_entry() -> None:
-    """The unique id is claimed before the fetch, so a second attempt in the
-    same flow must not be turned away."""
+def test_a_caught_error_leaves_the_flow_usable() -> None:
+    """A second submit after a caught fetch error still creates the entry, so
+    the except branch does not leave the step in a state it cannot recover
+    from."""
     flow = _submittable_flow([_appliance("a1", "BTWIFI")])
     contents = ApplianceContents(config=ApplianceConfiguration(), localization={})
 
@@ -106,7 +109,9 @@ def test_retry_after_a_failed_fetch_still_creates_the_entry() -> None:
         "custom_components.homewhiz.config_flow.fetch_appliance_contents",
         AsyncMock(side_effect=RuntimeError("boom")),
     ):
-        asyncio.run(flow.async_step_select_cloud_device({CONF_ID: "a1"}))
+        failed = asyncio.run(flow.async_step_select_cloud_device({CONF_ID: "a1"}))
+
+    assert failed["type"] == FlowResultType.FORM
 
     with patch(
         "custom_components.homewhiz.config_flow.fetch_appliance_contents",
