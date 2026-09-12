@@ -11,10 +11,15 @@ import asyncio
 from typing import Any
 from unittest.mock import AsyncMock, Mock, patch
 
-from homeassistant.const import CONF_ID
+from homeassistant.const import CONF_ID, CONF_PASSWORD, CONF_USERNAME
 from homeassistant.data_entry_flow import FlowResultType
 
-from custom_components.homewhiz.api import ApplianceContents, ApplianceInfo
+from custom_components.homewhiz.api import (
+    ApplianceContents,
+    ApplianceInfo,
+    IdExchangeResponse,
+    NoConfigurationError,
+)
 from custom_components.homewhiz.appliance_config import ApplianceConfiguration
 from custom_components.homewhiz.config_flow import TiltConfigFlow
 
@@ -96,6 +101,63 @@ def test_failing_contents_fetch_shows_the_form_again() -> None:
     assert result["type"] == FlowResultType.FORM
     assert result["step_id"] == "select_cloud_device"
     assert result["errors"] == {"base": "unknown"}
+
+
+def _submittable_bt_flow() -> TiltConfigFlow:
+    flow = TiltConfigFlow()
+    flow.flow_id = "test"
+    flow.handler = "homewhiz"
+    flow._bt_address = "AA:BB:CC:DD:EE:FF"
+    flow._bt_name = "HwZ-test"
+    flow.async_set_unique_id = AsyncMock(return_value=None)  # type: ignore[method-assign]
+    flow._abort_if_unique_id_configured = Mock(return_value=None)  # type: ignore[method-assign]
+    return flow
+
+
+def test_bluetooth_missing_configuration_shows_a_specific_error() -> None:
+    """Issue #419 and Discussion #465: HomeWhiz's backend has no CONFIGURATION
+    for the appliance, hit through the Bluetooth setup path."""
+    flow = _submittable_bt_flow()
+
+    with (
+        patch(
+            "custom_components.homewhiz.config_flow.login",
+            AsyncMock(return_value=Mock()),
+        ),
+        patch(
+            "custom_components.homewhiz.config_flow.make_id_exchange_request",
+            AsyncMock(return_value=IdExchangeResponse(appId="a1")),
+        ),
+        patch(
+            "custom_components.homewhiz.config_flow.fetch_appliance_contents",
+            AsyncMock(side_effect=NoConfigurationError("a1")),
+        ),
+    ):
+        result = asyncio.run(
+            flow.async_step_bluetooth_connect(
+                {CONF_USERNAME: "user", CONF_PASSWORD: "pass"}
+            )
+        )
+
+    assert result["type"] == FlowResultType.FORM
+    assert result["step_id"] == "bluetooth_connect"
+    assert result["errors"] == {"base": "no_configuration"}
+
+
+def test_missing_configuration_shows_a_specific_error() -> None:
+    """Discussion #465: HomeWhiz's backend has no CONFIGURATION for this
+    appliance, which must not look like a generic unexpected error."""
+    flow = _submittable_flow([_appliance("a1", "BTWIFI")])
+
+    with patch(
+        "custom_components.homewhiz.config_flow.fetch_appliance_contents",
+        AsyncMock(side_effect=NoConfigurationError("a1")),
+    ):
+        result = asyncio.run(flow.async_step_select_cloud_device({CONF_ID: "a1"}))
+
+    assert result["type"] == FlowResultType.FORM
+    assert result["step_id"] == "select_cloud_device"
+    assert result["errors"] == {"base": "no_configuration"}
 
 
 def test_a_caught_error_leaves_the_flow_usable() -> None:

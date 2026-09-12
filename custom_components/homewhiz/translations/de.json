@@ -47,6 +47,7 @@
     },
     "error": {
       "invalid_auth": "Ungültige Anmeldedaten",
+      "no_configuration": "HomeWhiz hat für dieses Gerät noch keine Konfiguration veröffentlicht. Das kann die Integration nicht beheben, bitte den HomeWhiz/Beko-Support kontaktieren.",
       "unknown": "Unerwarteter Fehler. Details stehen in den HomeWhiz-Einträgen im Home-Assistant-Protokoll."
     }
   },

@@ -27,6 +27,10 @@ class LoginError(Exception):
     pass
 
 
+class NoConfigurationError(Exception):
+    pass
+
+
 @dataclass
 class IdExchangeResponse:
     appId: str
@@ -324,6 +328,9 @@ async def fetch_appliance_contents(
         for content in contents_index.results
         if content.ctype == "CONFIGURATION"
     ]
+
+    if not config_contents:
+        raise NoConfigurationError(app_id)
 
     config = await make_get_contents_request(config_contents[0])
     localization = await fetch_localizations(contents_index)

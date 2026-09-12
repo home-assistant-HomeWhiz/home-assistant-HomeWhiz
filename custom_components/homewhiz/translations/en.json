@@ -47,6 +47,7 @@
     },
     "error": {
       "invalid_auth": "Invalid authentication",
+      "no_configuration": "HomeWhiz has not published a configuration for this appliance yet. This is not something the integration can fix; contact HomeWhiz/Beko support.",
       "unknown": "Unexpected error. Check the HomeWhiz entries in the Home Assistant log for details."
     }
   },
