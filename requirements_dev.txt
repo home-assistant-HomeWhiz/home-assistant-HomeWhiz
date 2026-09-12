@@ -1,4 +1,5 @@
 homeassistant
+aiohasupervisor
 bleak
 bleak_retry_connector
 dacite
