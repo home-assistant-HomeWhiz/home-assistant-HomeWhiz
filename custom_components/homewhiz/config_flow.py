@@ -28,6 +28,7 @@ from .api import (
     IdExchangeResponse,
     LoginError,
     LoginResponse,
+    NoConfigurationError,
     fetch_appliance_contents,
     fetch_appliance_infos,
     login,
@@ -157,6 +158,11 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
                 )
             except LoginError:
                 errors["base"] = "invalid_auth"
+            except NoConfigurationError:
+                _LOGGER.warning(
+                    "HomeWhiz has no CONFIGURATION for appId=%s", id_response.appId
+                )
+                errors["base"] = "no_configuration"
             except Exception:  # broad catch: without it the user gets no message at all
                 _LOGGER.exception("Bluetooth setup failed unexpectedly")
                 errors["base"] = "unknown"
@@ -238,6 +244,11 @@ class TiltConfigFlow(ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
                     title=appliance.name,
                     data=asdict(data),
                 )
+            except NoConfigurationError:
+                _LOGGER.warning(
+                    "HomeWhiz has no CONFIGURATION for appId=%s", appliance_id
+                )
+                errors["base"] = "no_configuration"
             except Exception:  # broad catch: without it the user gets no message at all
                 _LOGGER.exception("Cloud device setup failed unexpectedly")
                 errors["base"] = "unknown"
