@@ -15,7 +15,7 @@ jobs:
       id: get_version
       run: |
         VERSION=$(jq -r '.version' custom_components/homewhiz/manifest.json)
-        echo "::set-output name=version::$VERSION"
+        echo "version=$VERSION" >> "$GITHUB_OUTPUT"
     - name: Check version
       run: |
         TAG=$(echo $GITHUB_REF | sed 's/refs\/tags\///')
