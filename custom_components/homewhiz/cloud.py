@@ -110,7 +110,7 @@ class HomewhizCloudUpdateCoordinator(HomewhizCoordinator):
             credentials = await login(
                 self._cloud_config.username, self._cloud_config.password
             )
-        except (TimeoutError, aiohttp.ClientError):
+        except TimeoutError, aiohttp.ClientError:
             # Transient login failure (e.g. HA boots before DNS is ready after an
             # outage): schedule a retry like the AwsCrtError path, don't die.
             _LOGGER.exception(
