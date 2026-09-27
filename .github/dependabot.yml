@@ -1,7 +1,11 @@
-# Set update schedule for GitHub Actions
+# Set update schedule for GitHub Actions and pre-commit hooks
 version: 2
 updates:
 - package-ecosystem: github-actions
+  directory: /
+  schedule:
+    interval: weekly
+- package-ecosystem: pre-commit
   directory: /
   schedule:
     interval: weekly
