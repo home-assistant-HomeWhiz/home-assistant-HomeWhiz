@@ -3,17 +3,17 @@ default_language_version:
 repos:
 - repo: https://github.com/astral-sh/ruff-pre-commit
   # Ruff version.
-  rev: v0.15.13
+  rev: v0.16.9
   hooks:
     # Run the linter.
-  - id: ruff
+  - id: ruff-check
     args: [--fix]
     files: ^((custom_components)/.+)?[^/]+\.(py|pyi)$
     # Run the formatter.
   - id: ruff-format
     files: ^((custom_components)/.+)?[^/]+\.(py|pyi)$
 - repo: https://github.com/codespell-project/codespell
-  rev: v2.4.1
+  rev: v2.4.3
   hooks:
   - id: codespell
     args:
@@ -33,12 +33,12 @@ repos:
     - --no-ensure-ascii
     exclude: .devcontainer/devcontainer.json
 - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-  rev: v2.15.0
+  rev: v2.16.0
   hooks:
   - id: pretty-format-yaml
     args: [--autofix, --indent, '2']
 - repo: https://github.com/pre-commit/mirrors-mypy
-  rev: v1.18.2
+  rev: v2.3.1
   hooks:
   - id: mypy
     additional_dependencies:

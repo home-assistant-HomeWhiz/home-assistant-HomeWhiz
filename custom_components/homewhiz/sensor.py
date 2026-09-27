@@ -186,7 +186,7 @@ class HomeWhizEnergyEntity(HomeWhizEntity, RestoreSensor):
             return 0.0
         try:
             value = float(native_value)
-        except (TypeError, ValueError):
+        except TypeError, ValueError:
             return 0.0
         if not math.isfinite(value):
             return 0.0

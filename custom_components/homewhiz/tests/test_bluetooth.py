@@ -54,8 +54,8 @@ def test_stale_client_disconnect_is_ignored() -> None:
     for coro in scheduled:
         coro.close()
 
-    assert coord._connection is live
     assert live.disconnect_calls == 0
+    assert coord._connection is live
 
 
 def test_live_client_disconnect_tears_down() -> None:
