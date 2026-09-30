@@ -99,7 +99,13 @@
           "program_dark_wash": "Dark Wash",
           "program_outdoor": "Outdoor",
           "program_drum_clean_plus": "Drum Clean+",
-          "program_steam_refresh": "Steam Refresh"
+          "program_steam_refresh": "Steam Refresh",
+          "program_duvet_downwear": "Duvet/Down Wear",
+          "program_hygiene_plus": "Hygiene+",
+          "program_steam_therapy": "SteamTherapy",
+          "program_auto_program": "Auto",
+          "program_cold_wash": "Cold Wash",
+          "program_darkwash_jeans": "Dark (Jeans)"
         }
       },
       "washer_temperature": {
@@ -110,7 +116,9 @@
           "temperature_30": "30 °C",
           "temperature_40": "40 °C",
           "60c": "60 °C",
-          "90c": "90 °C"
+          "90c": "90 °C",
+          "temperature_60": "60 °C",
+          "temperature_90": "90 °C"
         }
       },
       "washer_spin": {
@@ -607,6 +615,38 @@
           "handle_light_passive": "Off",
           "handle_light_active": "On"
         }
+      },
+      "hood_aircleaning": {
+        "name": "Air Cleaning Mode",
+        "state": {
+          "hood_mode_normal": "Normal",
+          "hood_mode_air_cleaning": "Air Cleaning"
+        }
+      },
+      "hood_fan_level": {
+        "name": "Fan Level",
+        "state": {
+          "hood_fan_level_off": "Off",
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "4"
+        }
+      },
+      "hood_lamp": {
+        "name": "Light",
+        "state": {
+          "hood_lamp_off": "Off",
+          "dim_level_2": "Level 2"
+        }
+      },
+      "oven_flexi": {
+        "name": "Flexi",
+        "state": {
+          "no_flexi": "Off",
+          "flexi_level_one": "Level 1",
+          "flexi_level_two": "Level 2"
+        }
       }
     },
     "sensor": {
@@ -656,7 +696,13 @@
           "program_dark_wash": "Dark Wash",
           "program_outdoor": "Outdoor",
           "program_drum_clean_plus": "Drum Clean+",
-          "program_steam_refresh": "Steam Refresh"
+          "program_steam_refresh": "Steam Refresh",
+          "program_duvet_downwear": "Duvet/Down Wear",
+          "program_hygiene_plus": "Hygiene+",
+          "program_steam_therapy": "SteamTherapy",
+          "program_auto_program": "Auto",
+          "program_cold_wash": "Cold Wash",
+          "program_darkwash_jeans": "Dark (Jeans)"
         }
       },
       "washer_temperature": {
@@ -667,7 +713,9 @@
           "temperature_30": "30 °C",
           "temperature_40": "40 °C",
           "60c": "60 °C",
-          "90c": "90 °C"
+          "90c": "90 °C",
+          "temperature_60": "60 °C",
+          "temperature_90": "90 °C"
         }
       },
       "washer_spin": {
@@ -773,7 +821,8 @@
           "dryer_message_cooling": "Cooling",
           "dryer_message_refreshing": "Refreshing",
           "dryer_message_anti_creasing": "Anti-creasing active",
-          "dryer_message_drum_empty": "Drum empty"
+          "dryer_message_drum_empty": "Drum empty",
+          "washer_substate_time_delay_paused": "Time delay paused"
         }
       },
       "washer_delay": {
@@ -1002,7 +1051,12 @@
         "name": "Liquid Detergent Low"
       },
       "monitoring_hob2hood": {
-        "name": "HobToHood Status"
+        "name": "HobToHood Status",
+        "state": {
+          "paired_with_hob": "Paired with hob",
+          "hob_connected_via_ble": "Hob connected via Bluetooth",
+          "hob2hoodactivated": "HobToHood active"
+        }
       },
       "zone_1_zone_extended": {
         "name": "Zone 1 Extension"
@@ -1311,6 +1365,41 @@
           "handle_light_passive": "Off",
           "handle_light_active": "On"
         }
+      },
+      "hood_aircleaning": {
+        "name": "Air Cleaning Mode",
+        "state": {
+          "hood_mode_normal": "Normal",
+          "hood_mode_air_cleaning": "Air Cleaning"
+        }
+      },
+      "hood_fan_level": {
+        "name": "Fan Level",
+        "state": {
+          "hood_fan_level_off": "Off",
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "4"
+        }
+      },
+      "hood_lamp": {
+        "name": "Light",
+        "state": {
+          "hood_lamp_off": "Off",
+          "dim_level_2": "Level 2"
+        }
+      },
+      "oven_flexi": {
+        "name": "Flexi",
+        "state": {
+          "no_flexi": "Off",
+          "flexi_level_one": "Level 1",
+          "flexi_level_two": "Level 2"
+        }
+      },
+      "monitoring_hood_filter_dirt_level_percentage": {
+        "name": "Filter Dirt Level"
       }
     },
     "number": {
@@ -1417,6 +1506,15 @@
       },
       "fridge_warning_high_temperature": {
         "name": "High temperature"
+      },
+      "washer_warning_low_detergent": {
+        "name": "Low detergent"
+      },
+      "washer_warning_low_softener": {
+        "name": "Low softener"
+      },
+      "hood_filter_full": {
+        "name": "Filter full"
       }
     },
     "climate": {
@@ -1525,6 +1623,18 @@
       },
       "fridge_quick_freeze": {
         "name": "Quick Freeze"
+      },
+      "washer_fast_plus": {
+        "name": "Fast+"
+      },
+      "washer_heavy": {
+        "name": "Heavy"
+      },
+      "washer_softener_dosage": {
+        "name": "Automatic Softener Dosing"
+      },
+      "washer_liquid_detergent": {
+        "name": "Automatic Detergent Dosing"
       }
     }
   },
