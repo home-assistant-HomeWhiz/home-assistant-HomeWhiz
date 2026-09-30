@@ -449,10 +449,69 @@
         }
       },
       "fridge_cooler_temperature": {
-        "name": "Cooler Temperature"
+        "name": "Cooler Temperature",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C",
+          "33f": "33 °F",
+          "34f": "34 °F",
+          "35f": "35 °F",
+          "36f": "36 °F",
+          "37f": "37 °F",
+          "38f": "38 °F",
+          "39f": "39 °F",
+          "40f": "40 °F",
+          "41f": "41 °F",
+          "42f": "42 °F",
+          "43f": "43 °F",
+          "44f": "44 °F",
+          "45f": "45 °F",
+          "46f": "46 °F",
+          "--": "--"
+        }
       },
       "fridge_freezer_temperature": {
-        "name": "Freezer Temperature"
+        "name": "Freezer Temperature",
+        "state": {
+          "-27c": "-27 °C",
+          "-26c": "-26 °C",
+          "-25c": "-25 °C",
+          "-24c": "-24 °C",
+          "-23c": "-23 °C",
+          "-22c": "-22 °C",
+          "-21c": "-21 °C",
+          "-20c": "-20 °C",
+          "-19c": "-19 °C",
+          "-18c": "-18 °C",
+          "-16f": "-16 °F",
+          "-15f": "-15 °F",
+          "-14f": "-14 °F",
+          "-13f": "-13 °F",
+          "-12f": "-12 °F",
+          "-11f": "-11 °F",
+          "-10f": "-10 °F",
+          "-9f": "-9 °F",
+          "-8f": "-8 °F",
+          "-7f": "-7 °F",
+          "-6f": "-6 °F",
+          "-5f": "-5 °F",
+          "-4f": "-4 °F",
+          "-3f": "-3 °F",
+          "-2f": "-2 °F",
+          "-1f": "-1 °F",
+          "0f": "0 °F",
+          "1f": "1 °F",
+          "2f": "2 °F",
+          "3f": "3 °F",
+          "4f": "4 °F",
+          "5f": "5 °F"
+        }
       },
       "fridge_degree_dimension": {
         "name": "Temperature Unit",
@@ -490,6 +549,63 @@
           "three_min": "3 min",
           "four_min": "4 min",
           "five_min": "5 min"
+        }
+      },
+      "fridge_vacation_mode": {
+        "name": "Vacation Mode",
+        "state": {
+          "vacation_mode_passive": "Off",
+          "vacation_mode_active": "On"
+        }
+      },
+      "fridge_eco_fuzzy": {
+        "name": "Eco Fuzzy",
+        "state": {
+          "eco_fuzzy_passive": "Off",
+          "eco_fuzzy_active": "On"
+        }
+      },
+      "fridge_freezer_convertible_mode": {
+        "name": "Convertible Compartment Mode",
+        "state": {
+          "freezer_convertible_mode_freezer": "Freezer",
+          "freezer_convertible_mode_cooler": "Cooler",
+          "freezer_convertible_mode_off": "Off"
+        }
+      },
+      "fridge_freezer_convertible_temperature": {
+        "name": "Convertible Compartment Temperature",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C",
+          "33f": "33 °F",
+          "34f": "34 °F",
+          "35f": "35 °F",
+          "36f": "36 °F",
+          "37f": "37 °F",
+          "38f": "38 °F",
+          "39f": "39 °F",
+          "40f": "40 °F",
+          "41f": "41 °F",
+          "42f": "42 °F",
+          "43f": "43 °F",
+          "44f": "44 °F",
+          "45f": "45 °F",
+          "46f": "46 °F",
+          "--": "--"
+        }
+      },
+      "settings_handle_light": {
+        "name": "Handle Light",
+        "state": {
+          "handle_light_passive": "Off",
+          "handle_light_active": "On"
         }
       }
     },
@@ -1037,10 +1153,69 @@
         "name": "Auto turn on"
       },
       "fridge_cooler_temperature": {
-        "name": "Cooler Temperature"
+        "name": "Cooler Temperature",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C",
+          "33f": "33 °F",
+          "34f": "34 °F",
+          "35f": "35 °F",
+          "36f": "36 °F",
+          "37f": "37 °F",
+          "38f": "38 °F",
+          "39f": "39 °F",
+          "40f": "40 °F",
+          "41f": "41 °F",
+          "42f": "42 °F",
+          "43f": "43 °F",
+          "44f": "44 °F",
+          "45f": "45 °F",
+          "46f": "46 °F",
+          "--": "--"
+        }
       },
       "fridge_freezer_temperature": {
-        "name": "Freezer Temperature"
+        "name": "Freezer Temperature",
+        "state": {
+          "-27c": "-27 °C",
+          "-26c": "-26 °C",
+          "-25c": "-25 °C",
+          "-24c": "-24 °C",
+          "-23c": "-23 °C",
+          "-22c": "-22 °C",
+          "-21c": "-21 °C",
+          "-20c": "-20 °C",
+          "-19c": "-19 °C",
+          "-18c": "-18 °C",
+          "-16f": "-16 °F",
+          "-15f": "-15 °F",
+          "-14f": "-14 °F",
+          "-13f": "-13 °F",
+          "-12f": "-12 °F",
+          "-11f": "-11 °F",
+          "-10f": "-10 °F",
+          "-9f": "-9 °F",
+          "-8f": "-8 °F",
+          "-7f": "-7 °F",
+          "-6f": "-6 °F",
+          "-5f": "-5 °F",
+          "-4f": "-4 °F",
+          "-3f": "-3 °F",
+          "-2f": "-2 °F",
+          "-1f": "-1 °F",
+          "0f": "0 °F",
+          "1f": "1 °F",
+          "2f": "2 °F",
+          "3f": "3 °F",
+          "4f": "4 °F",
+          "5f": "5 °F"
+        }
       },
       "fridge_degree_dimension": {
         "name": "Temperature Unit",
@@ -1078,6 +1253,63 @@
           "three_min": "3 min",
           "four_min": "4 min",
           "five_min": "5 min"
+        }
+      },
+      "fridge_vacation_mode": {
+        "name": "Vacation Mode",
+        "state": {
+          "vacation_mode_passive": "Off",
+          "vacation_mode_active": "On"
+        }
+      },
+      "fridge_eco_fuzzy": {
+        "name": "Eco Fuzzy",
+        "state": {
+          "eco_fuzzy_passive": "Off",
+          "eco_fuzzy_active": "On"
+        }
+      },
+      "fridge_freezer_convertible_mode": {
+        "name": "Convertible Compartment Mode",
+        "state": {
+          "freezer_convertible_mode_freezer": "Freezer",
+          "freezer_convertible_mode_cooler": "Cooler",
+          "freezer_convertible_mode_off": "Off"
+        }
+      },
+      "fridge_freezer_convertible_temperature": {
+        "name": "Convertible Compartment Temperature",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C",
+          "33f": "33 °F",
+          "34f": "34 °F",
+          "35f": "35 °F",
+          "36f": "36 °F",
+          "37f": "37 °F",
+          "38f": "38 °F",
+          "39f": "39 °F",
+          "40f": "40 °F",
+          "41f": "41 °F",
+          "42f": "42 °F",
+          "43f": "43 °F",
+          "44f": "44 °F",
+          "45f": "45 °F",
+          "46f": "46 °F",
+          "--": "--"
+        }
+      },
+      "settings_handle_light": {
+        "name": "Handle Light",
+        "state": {
+          "handle_light_passive": "Off",
+          "handle_light_active": "On"
         }
       }
     },
@@ -1290,6 +1522,9 @@
       },
       "fridge_a_cool": {
         "name": "A-Cool"
+      },
+      "fridge_quick_freeze": {
+        "name": "Quick Freeze"
       }
     }
   },
