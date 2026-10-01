@@ -99,7 +99,13 @@
           "program_dark_wash": "Dunkel",
           "program_outdoor": "Outdoor",
           "program_drum_clean_plus": "Trommelreinigung+",
-          "program_steam_refresh": "Dampf-Auffrischung"
+          "program_steam_refresh": "Dampf-Auffrischung",
+          "program_duvet_downwear": "Daunen/Bettdecke",
+          "program_hygiene_plus": "Hygiene+",
+          "program_steam_therapy": "SteamTherapy",
+          "program_auto_program": "Auto",
+          "program_cold_wash": "Kalt waschen",
+          "program_darkwash_jeans": "Dunkel (Jeans)"
         }
       },
       "washer_temperature": {
@@ -110,7 +116,9 @@
           "temperature_30": "30 °C",
           "temperature_40": "40 °C",
           "60c": "60 °C",
-          "90c": "90 °C"
+          "90c": "90 °C",
+          "temperature_60": "60 °C",
+          "temperature_90": "90 °C"
         }
       },
       "washer_spin": {
@@ -449,7 +457,31 @@
         }
       },
       "fridge_cooler_temperature": {
-        "name": "Kühlteil-Temperatur"
+        "name": "Kühlteil-Temperatur",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C",
+          "33f": "33 °F",
+          "34f": "34 °F",
+          "35f": "35 °F",
+          "36f": "36 °F",
+          "37f": "37 °F",
+          "38f": "38 °F",
+          "39f": "39 °F",
+          "40f": "40 °F",
+          "41f": "41 °F",
+          "42f": "42 °F",
+          "43f": "43 °F",
+          "44f": "44 °F",
+          "45f": "45 °F",
+          "46f": "46 °F"
+        }
       },
       "fridge_freezer_temperature": {
         "name": "Gefriertemperatur"
@@ -490,6 +522,94 @@
           "three_min": "3 min",
           "four_min": "4 min",
           "five_min": "5 min"
+        }
+      },
+      "fridge_vacation_mode": {
+        "name": "Urlaubsmodus",
+        "state": {
+          "vacation_mode_passive": "Aus",
+          "vacation_mode_active": "Ein"
+        }
+      },
+      "fridge_eco_fuzzy": {
+        "name": "Eco Fuzzy",
+        "state": {
+          "eco_fuzzy_passive": "Aus",
+          "eco_fuzzy_active": "Ein"
+        }
+      },
+      "fridge_freezer_convertible_mode": {
+        "name": "Joker-Fach",
+        "state": {
+          "freezer_convertible_mode_freezer": "Gefrierschrank",
+          "freezer_convertible_mode_cooler": "Kühlschrank",
+          "freezer_convertible_mode_off": "Aus"
+        }
+      },
+      "fridge_freezer_convertible_temperature": {
+        "name": "Joker-Fach-Temperatur",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C",
+          "33f": "33 °F",
+          "34f": "34 °F",
+          "35f": "35 °F",
+          "36f": "36 °F",
+          "37f": "37 °F",
+          "38f": "38 °F",
+          "39f": "39 °F",
+          "40f": "40 °F",
+          "41f": "41 °F",
+          "42f": "42 °F",
+          "43f": "43 °F",
+          "44f": "44 °F",
+          "45f": "45 °F",
+          "46f": "46 °F"
+        }
+      },
+      "settings_handle_light": {
+        "name": "Griffbeleuchtung",
+        "state": {
+          "handle_light_passive": "Aus",
+          "handle_light_active": "Ein"
+        }
+      },
+      "hood_aircleaning": {
+        "name": "Luftreinigungsmodus",
+        "state": {
+          "hood_mode_normal": "Normal",
+          "hood_mode_air_cleaning": "Luftreinigung"
+        }
+      },
+      "hood_fan_level": {
+        "name": "Lüfterstufe",
+        "state": {
+          "hood_fan_level_off": "Aus",
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "4"
+        }
+      },
+      "hood_lamp": {
+        "name": "Beleuchtung",
+        "state": {
+          "hood_lamp_off": "Aus",
+          "dim_level_2": "Level 2"
+        }
+      },
+      "oven_flexi": {
+        "name": "Flexi",
+        "state": {
+          "no_flexi": "Aus",
+          "flexi_level_one": "Level 1",
+          "flexi_level_two": "Level 2"
         }
       }
     },
@@ -540,7 +660,13 @@
           "program_dark_wash": "Dunkel",
           "program_outdoor": "Outdoor",
           "program_drum_clean_plus": "Trommelreinigung+",
-          "program_steam_refresh": "Dampf-Auffrischung"
+          "program_steam_refresh": "Dampf-Auffrischung",
+          "program_duvet_downwear": "Daunen/Bettdecke",
+          "program_hygiene_plus": "Hygiene+",
+          "program_steam_therapy": "SteamTherapy",
+          "program_auto_program": "Auto",
+          "program_cold_wash": "Kalt waschen",
+          "program_darkwash_jeans": "Dunkel (Jeans)"
         }
       },
       "washer_temperature": {
@@ -551,7 +677,9 @@
           "temperature_30": "30 °C",
           "temperature_40": "40 °C",
           "60c": "60 °C",
-          "90c": "90 °C"
+          "90c": "90 °C",
+          "temperature_60": "60 °C",
+          "temperature_90": "90 °C"
         }
       },
       "washer_spin": {
@@ -657,7 +785,8 @@
           "dryer_message_cooling": "Abkühlen",
           "dryer_message_refreshing": "Auffrischen",
           "dryer_message_anti_creasing": "Knitterschutz aktiv",
-          "dryer_message_drum_empty": "Trommel leer"
+          "dryer_message_drum_empty": "Trommel leer",
+          "washer_substate_time_delay_paused": "Startverzögerung pausiert"
         }
       },
       "washer_delay": {
@@ -886,7 +1015,12 @@
         "name": "Wenig Flüssigwaschmittel"
       },
       "monitoring_hob2hood": {
-        "name": "HobToHood Status"
+        "name": "HobToHood Status",
+        "state": {
+          "paired_with_hob": "Mit Kochfeld gekoppelt",
+          "hob_connected_via_ble": "Kochfeld über Bluetooth verbunden",
+          "hob2hoodactivated": "HobToHood aktiv"
+        }
       },
       "zone_1_zone_extended": {
         "name": "Zone 1 Erweiterung"
@@ -1037,7 +1171,31 @@
         "name": "Automatisch einschalten"
       },
       "fridge_cooler_temperature": {
-        "name": "Kühlteil-Temperatur"
+        "name": "Kühlteil-Temperatur",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C",
+          "33f": "33 °F",
+          "34f": "34 °F",
+          "35f": "35 °F",
+          "36f": "36 °F",
+          "37f": "37 °F",
+          "38f": "38 °F",
+          "39f": "39 °F",
+          "40f": "40 °F",
+          "41f": "41 °F",
+          "42f": "42 °F",
+          "43f": "43 °F",
+          "44f": "44 °F",
+          "45f": "45 °F",
+          "46f": "46 °F"
+        }
       },
       "fridge_freezer_temperature": {
         "name": "Gefriertemperatur"
@@ -1079,6 +1237,97 @@
           "four_min": "4 min",
           "five_min": "5 min"
         }
+      },
+      "fridge_vacation_mode": {
+        "name": "Urlaubsmodus",
+        "state": {
+          "vacation_mode_passive": "Aus",
+          "vacation_mode_active": "Ein"
+        }
+      },
+      "fridge_eco_fuzzy": {
+        "name": "Eco Fuzzy",
+        "state": {
+          "eco_fuzzy_passive": "Aus",
+          "eco_fuzzy_active": "Ein"
+        }
+      },
+      "fridge_freezer_convertible_mode": {
+        "name": "Joker-Fach",
+        "state": {
+          "freezer_convertible_mode_freezer": "Gefrierschrank",
+          "freezer_convertible_mode_cooler": "Kühlschrank",
+          "freezer_convertible_mode_off": "Aus"
+        }
+      },
+      "fridge_freezer_convertible_temperature": {
+        "name": "Joker-Fach-Temperatur",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C",
+          "33f": "33 °F",
+          "34f": "34 °F",
+          "35f": "35 °F",
+          "36f": "36 °F",
+          "37f": "37 °F",
+          "38f": "38 °F",
+          "39f": "39 °F",
+          "40f": "40 °F",
+          "41f": "41 °F",
+          "42f": "42 °F",
+          "43f": "43 °F",
+          "44f": "44 °F",
+          "45f": "45 °F",
+          "46f": "46 °F"
+        }
+      },
+      "settings_handle_light": {
+        "name": "Griffbeleuchtung",
+        "state": {
+          "handle_light_passive": "Aus",
+          "handle_light_active": "Ein"
+        }
+      },
+      "hood_aircleaning": {
+        "name": "Luftreinigungsmodus",
+        "state": {
+          "hood_mode_normal": "Normal",
+          "hood_mode_air_cleaning": "Luftreinigung"
+        }
+      },
+      "hood_fan_level": {
+        "name": "Lüfterstufe",
+        "state": {
+          "hood_fan_level_off": "Aus",
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "4"
+        }
+      },
+      "hood_lamp": {
+        "name": "Beleuchtung",
+        "state": {
+          "hood_lamp_off": "Aus",
+          "dim_level_2": "Level 2"
+        }
+      },
+      "oven_flexi": {
+        "name": "Flexi",
+        "state": {
+          "no_flexi": "Aus",
+          "flexi_level_one": "Level 1",
+          "flexi_level_two": "Level 2"
+        }
+      },
+      "monitoring_hood_filter_dirt_level_percentage": {
+        "name": "Filterverschmutzung"
       }
     },
     "number": {
@@ -1185,6 +1434,15 @@
       },
       "fridge_warning_high_temperature": {
         "name": "Hohe Temperatur"
+      },
+      "washer_warning_low_detergent": {
+        "name": "Wenig Waschmittel"
+      },
+      "washer_warning_low_softener": {
+        "name": "Wenig Weichspüler"
+      },
+      "hood_filter_full": {
+        "name": "Filter voll"
       }
     },
     "climate": {
@@ -1290,6 +1548,21 @@
       },
       "fridge_a_cool": {
         "name": "A-Cool"
+      },
+      "fridge_quick_freeze": {
+        "name": "Quick Freeze"
+      },
+      "washer_fast_plus": {
+        "name": "Fast+"
+      },
+      "washer_heavy": {
+        "name": "Intensiv"
+      },
+      "washer_softener_dosage": {
+        "name": "Automatische Weichspülerdosierung"
+      },
+      "washer_liquid_detergent": {
+        "name": "Automatische Waschmitteldosierung"
       }
     }
   },
