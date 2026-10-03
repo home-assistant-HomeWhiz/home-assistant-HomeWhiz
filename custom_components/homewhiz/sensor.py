@@ -299,6 +299,15 @@ async def async_setup_entry(
             ),
         )
     ]
+    # Writable controls can share a key with their read-only monitoring control.
+    # Both become sensors, so retain the first control for each sensor unique ID.
+    seen_sensor_keys: set[str] = set()
+    unique_sensor_controls = []
+    for control in sensor_controls:
+        if control.key not in seen_sensor_keys:
+            seen_sensor_keys.add(control.key)
+            unique_sensor_controls.append(control)
+    sensor_controls = unique_sensor_controls
 
     _LOGGER.debug("Sensors: %s", [c.key for c in sensor_controls])
 

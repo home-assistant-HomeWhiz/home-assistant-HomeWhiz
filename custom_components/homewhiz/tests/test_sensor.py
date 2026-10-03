@@ -9,6 +9,7 @@ and monkeypatched RestoreSensor hooks rather than a real hass instance.
 
 import asyncio
 import math
+from dataclasses import replace
 from datetime import UTC, datetime
 from unittest.mock import AsyncMock, Mock, patch
 
@@ -21,10 +22,20 @@ from homeassistant.components.sensor import (
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from custom_components.homewhiz.api import ApplianceContents
-from custom_components.homewhiz.appliance_config import ApplianceFeatureBoundedOption
-from custom_components.homewhiz.appliance_controls import NumericControl
+from custom_components.homewhiz.appliance_config import (
+    ApplianceConfiguration,
+    ApplianceFeature,
+    ApplianceFeatureBoundedOption,
+    ApplianceFeatureEnumOption,
+)
+from custom_components.homewhiz.appliance_controls import (
+    NumericControl,
+    forget_controls,
+)
 from custom_components.homewhiz.config_flow import EntryData
 from custom_components.homewhiz.const import DOMAIN
+from custom_components.homewhiz.homewhiz import Command
+from custom_components.homewhiz.select import async_setup_entry as setup_selects
 from custom_components.homewhiz.sensor import (
     INSTANT_CONSUMPTION_BOGUS_UNIT,
     INSTANT_CONSUMPTION_KEY,
@@ -32,6 +43,9 @@ from custom_components.homewhiz.sensor import (
     HomeWhizEnergyEntity,
     HomeWhizSensorEntity,
     _find_instant_consumption_controls,
+)
+from custom_components.homewhiz.sensor import (
+    async_setup_entry as setup_sensors,
 )
 
 
@@ -42,6 +56,98 @@ def _entry_data() -> EntryData:
         appliance_info=None,
         cloud_config=None,
     )
+
+
+@pytest.mark.parametrize("control_kind", ["numeric", "enum"])
+@pytest.mark.parametrize("writable_section", ["subPrograms", "settings"])
+def test_setup_keeps_one_sensor_per_key_and_preserves_select(
+    control_kind: str, writable_section: str
+) -> None:
+    """A writable feature and its monitoring entry must share one sensor."""
+    feature = ApplianceFeature(
+        boundedValues=(
+            [
+                ApplianceFeatureBoundedOption(
+                    factor=1,
+                    lowerLimit=0,
+                    step=1,
+                    strKey="",
+                    unit=None,
+                    upperLimit=2,
+                )
+            ]
+            if control_kind == "numeric"
+            else None
+        ),
+        enumValues=(
+            [
+                ApplianceFeatureEnumOption(strKey=key, wifiArrayValue=index)
+                for index, key in enumerate(("low", "medium", "high"))
+            ]
+            if control_kind == "enum"
+            else None
+        ),
+        isSwitch=None,
+        strKey="tea_machine_brew_duration",
+        wifiArrayIndex=0,
+        wfaWriteIndex=3,
+    )
+    data = _entry_data()
+    data.contents.config = ApplianceConfiguration(
+        monitorings=[
+            replace(feature, wifiArrayIndex=1, wfaWriteIndex=None),
+            replace(
+                feature,
+                strKey="other_feature",
+                wifiArrayIndex=2,
+                wfaWriteIndex=None,
+            ),
+        ],
+    )
+    setattr(data.contents.config, writable_section, [feature])
+    entry = Mock(entry_id=f"test-duplicate-{control_kind}", title="Test appliance")
+    coordinator = Mock(
+        data=bytearray([1, 2, 0]),
+        is_connected=True,
+        send_command=AsyncMock(),
+    )
+    hass = Mock(data={DOMAIN: {entry.entry_id: coordinator}})
+    add_sensors = Mock()
+    add_selects = Mock()
+
+    try:
+        with (
+            patch(
+                "custom_components.homewhiz.sensor.build_entry_data", return_value=data
+            ),
+            patch(
+                "custom_components.homewhiz.select.build_entry_data", return_value=data
+            ),
+        ):
+            asyncio.run(setup_sensors(hass, entry, add_sensors))
+            asyncio.run(setup_selects(hass, entry, add_selects))
+
+        sensors = add_sensors.call_args.args[0]
+        assert [sensor.unique_id for sensor in sensors] == [
+            "Test appliance_tea_machine_brew_duration",
+            "Test appliance_other_feature",
+        ]
+        first_value = 1 if writable_section == "subPrograms" else 2
+        expected_value = (
+            first_value
+            if control_kind == "numeric"
+            else ("low", "medium", "high")[first_value]
+        )
+        assert sensors[0].native_value == expected_value
+
+        selects = add_selects.call_args.args[0]
+        assert len(selects) == 1
+        assert selects[0].unique_id == sensors[0].unique_id
+        assert selects[0].current_option == selects[0].options[1]
+        asyncio.run(selects[0].async_select_option(selects[0].options[2]))
+        coordinator.send_command.assert_awaited_once_with(Command(index=3, value=2))
+    finally:
+        forget_controls(entry.entry_id)
 
 
 def test_instant_consumption_sensor_reports_kw_power_measurement() -> None:
