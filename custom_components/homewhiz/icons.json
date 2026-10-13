@@ -530,8 +530,8 @@
       "state": {
         "default": "mdi:power",
         "state": {
-          "device_state_on": "mdi:power-on",
-          "device_state_off": "mdi:power-off",
+          "device_state_on": "mdi:power",
+          "device_state_off": "mdi:power-standby",
           "device_state_running": "mdi:play-circle-outline",
           "device_state_paused": "mdi:pause-circle-outline",
           "device_state_time_delay_active": "mdi:timer-sand",
