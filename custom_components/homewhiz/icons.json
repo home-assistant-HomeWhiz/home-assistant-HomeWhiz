@@ -1,8 +1,265 @@
 {
   "entity": {
+    "binary_sensor": {
+      "dryer_warning_door_is_open": {
+        "default": "mdi:door-open"
+      },
+      "dryer_warning_tankfull": {
+        "default": "mdi:water-alert"
+      },
+      "dryer_warning_check_the_filter": {
+        "default": "mdi:filter-outline"
+      },
+      "dryer_warning_check_the_condenser_filter": {
+        "default": "mdi:air-filter"
+      },
+      "dryer_warning_drum_empty": {
+        "default": "mdi:tumble-dryer"
+      },
+      "dryer_message_child_lock": {
+        "default": "mdi:lock"
+      },
+      "dryer_message_end_program": {
+        "default": "mdi:check-circle-outline"
+      },
+      "dryer_message_anti_creasing": {
+        "default": "mdi:tshirt-crew-outline"
+      },
+      "dryer_message_anti_creasing_finished": {
+        "default": "mdi:check-circle-outline"
+      },
+      "washer_warning_door_is_open": {
+        "default": "mdi:door-open"
+      },
+      "washer_warning_no_water": {
+        "default": "mdi:water-alert"
+      },
+      "washer_warning_security": {
+        "default": "mdi:shield-alert-outline"
+      },
+      "oven_warning_door_is_open": {
+        "default": "mdi:door-open"
+      },
+      "oven_warning_door_locked": {
+        "default": "mdi:lock"
+      },
+      "oven_warning_error": {
+        "default": "mdi:alert-circle-outline"
+      },
+      "dishwasher_warning_no_rinse_aid": {
+        "default": "mdi:bottle-tonic-outline"
+      },
+      "dishwasher_warning_no_salt": {
+        "default": "mdi:shaker-outline"
+      },
+      "dishwasher_warning_no_water": {
+        "default": "mdi:water-alert"
+      },
+      "dishwasher_warning_check_the_filter": {
+        "default": "mdi:filter-outline"
+      },
+      "dishwasher_warning_door_is_open": {
+        "default": "mdi:door-open"
+      },
+      "dishwasher_warning_call_service": {
+        "default": "mdi:wrench-outline"
+      },
+      "dishwasher_liquid_detergent_low": {
+        "default": "mdi:bottle-tonic-outline"
+      },
+      "zone_1_hob_hot": {
+        "default": "mdi:heat-wave"
+      },
+      "zone_1_hob_pan_info": {
+        "default": "mdi:pot-steam-outline"
+      },
+      "zone_2_hob_hot": {
+        "default": "mdi:heat-wave"
+      },
+      "zone_2_hob_pan_info": {
+        "default": "mdi:pot-steam-outline"
+      },
+      "zone_3_hob_hot": {
+        "default": "mdi:heat-wave"
+      },
+      "zone_3_hob_pan_info": {
+        "default": "mdi:pot-steam-outline"
+      },
+      "zone_4_hob_hot": {
+        "default": "mdi:heat-wave"
+      },
+      "zone_4_hob_pan_info": {
+        "default": "mdi:pot-steam-outline"
+      },
+      "fridge_warning_door_is_open": {
+        "default": "mdi:door-open"
+      },
+      "fridge_warning_high_temperature": {
+        "default": "mdi:thermometer-alert"
+      },
+      "oven_warning_probe_is_detached": {
+        "default": "mdi:thermometer-off"
+      },
+      "oven_warning_pyro_cleaning": {
+        "default": "mdi:fire"
+      },
+      "remote_control": {
+        "default": "mdi:remote"
+      },
+      "washer_warning_liquid_detergent_pumping": {
+        "default": "mdi:pump"
+      },
+      "washer_warning_low_detergent": {
+        "default": "mdi:bottle-tonic-outline"
+      },
+      "washer_warning_low_softener": {
+        "default": "mdi:flower-outline"
+      },
+      "washer_warning_no_liquid_detergent": {
+        "default": "mdi:bottle-tonic-outline"
+      },
+      "washer_warning_no_powder_detergent": {
+        "default": "mdi:shaker-outline"
+      },
+      "washer_warning_no_softener": {
+        "default": "mdi:flower-outline"
+      },
+      "washer_warning_pop_up": {
+        "default": "mdi:message-alert-outline"
+      }
+    },
     "switch": {
+      "dryer_lowtemp_mode": {
+        "default": "mdi:thermometer-low"
+      },
+      "washer_prewash": {
+        "default": "mdi:washing-machine"
+      },
+      "washer_extrarinse": {
+        "default": "mdi:water-plus"
+      },
+      "washer_hidden_anti_crease": {
+        "default": "mdi:tshirt-crew-outline"
+      },
       "washer_steam": {
         "default": "mdi:weather-fog"
+      },
+      "washer_add_water": {
+        "default": "mdi:water-plus"
+      },
+      "washer_soaking": {
+        "default": "mdi:waves"
+      },
+      "washer_night": {
+        "default": "mdi:weather-night"
+      },
+      "washer_anticrease": {
+        "default": "mdi:tshirt-crew-outline"
+      },
+      "oven_booster": {
+        "default": "mdi:rocket-launch-outline"
+      },
+      "oven_skip_preheating": {
+        "default": "mdi:skip-forward-outline"
+      },
+      "dishwasher_traywash": {
+        "default": "mdi:tray"
+      },
+      "dishwasher_fastplus": {
+        "default": "mdi:speedometer"
+      },
+      "zone_1_hob_flexi": {
+        "default": "mdi:stove"
+      },
+      "zone_2_hob_flexi": {
+        "default": "mdi:stove"
+      },
+      "zone_3_hob_flexi": {
+        "default": "mdi:stove"
+      },
+      "zone_4_hob_flexi": {
+        "default": "mdi:stove"
+      },
+      "dishwasher_steamgloss": {
+        "default": "mdi:weather-fog"
+      },
+      "dishwasher_extrarinse": {
+        "default": "mdi:water-plus"
+      },
+      "dishwasher_halfload": {
+        "default": "mdi:fraction-one-half"
+      },
+      "setting_auto_door": {
+        "default": "mdi:door-open"
+      },
+      "setting_inner_illumination": {
+        "default": "mdi:lightbulb-on-outline"
+      },
+      "dishwasher_hygiene_intense": {
+        "default": "mdi:bacteria-outline"
+      },
+      "dishwasher_deepwash": {
+        "default": "mdi:dishwasher"
+      },
+      "fridge_quick_cool": {
+        "default": "mdi:snowflake"
+      },
+      "fridge_a_cool": {
+        "default": "mdi:snowflake-thermometer"
+      },
+      "dishwasher_extra_shiny": {
+        "default": "mdi:shimmer"
+      },
+      "dishwasher_fastwash": {
+        "default": "mdi:speedometer"
+      },
+      "dishwasher_filter_self_cleaning": {
+        "default": "mdi:filter-cog-outline"
+      },
+      "dishwasher_strong_wash": {
+        "default": "mdi:arm-flex-outline"
+      },
+      "dishwasher_tablet": {
+        "default": "mdi:pill"
+      },
+      "dryer_fast_mode": {
+        "default": "mdi:speedometer"
+      },
+      "fridge_ice_machine": {
+        "default": "mdi:cube-outline"
+      },
+      "fridge_quick_freeze": {
+        "default": "mdi:snowflake-variant"
+      },
+      "washer_anti_crease": {
+        "default": "mdi:tshirt-crew-outline"
+      },
+      "washer_extra_rinse": {
+        "default": "mdi:water-plus"
+      },
+      "washer_extra_water": {
+        "default": "mdi:water-plus"
+      },
+      "washer_fast": {
+        "default": "mdi:speedometer"
+      },
+      "washer_fast_plus": {
+        "default": "mdi:speedometer"
+      },
+      "washer_hidden_extra_water": {
+        "default": "mdi:water-plus"
+      },
+      "washer_liquid_detergent": {
+        "default": "mdi:bottle-tonic-outline"
+      },
+      "washer_phr": {
+        "default": "mdi:paw"
+      },
+      "washer_silent_mode": {
+        "default": "mdi:volume-off"
+      },
+      "washer_softener_dosage": {
+        "default": "mdi:flower-outline"
       }
     },
     "climate": {
@@ -13,7 +270,13 @@
               "wind_strength_auto": "mdi:fan-auto",
               "wind_strength_low": "mdi:fan-speed-1",
               "wind_strength_mid": "mdi:fan-speed-2",
-              "wind_strength_high": "mdi:fan-speed-3"
+              "wind_strength_high": "mdi:fan-speed-3",
+              "2": "mdi:fan-speed-1",
+              "3": "mdi:fan-speed-2",
+              "4": "mdi:fan-speed-3",
+              "5": "mdi:fan-speed-3",
+              "6": "mdi:fan-speed-3",
+              "wind_strength_chaos_swing": "mdi:fan-alert"
             }
           }
         }
