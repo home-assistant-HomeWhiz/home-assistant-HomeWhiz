@@ -19,6 +19,8 @@
 Integration for devices that support the HomeWhiz mobile app (Beko, Grundig, Bauknecht, Arcelik).<br />
 Monitor and control them in Home Assistant, over local Bluetooth or the HomeWhiz cloud (Wi-Fi) depending on the model.
 
+If you find this integration useful, please give it a ⭐ on GitHub.
+
 ## Installation
 
 ### Option 1. Using HACS (recommended)
