@@ -2,7 +2,10 @@
   "entity": {
     "binary_sensor": {
       "dryer_warning_door_is_open": {
-        "default": "mdi:door-open"
+        "default": "mdi:door-closed",
+        "state": {
+          "on": "mdi:door-open"
+        }
       },
       "dryer_warning_tankfull": {
         "default": "mdi:water-alert"
@@ -17,7 +20,10 @@
         "default": "mdi:tumble-dryer"
       },
       "dryer_message_child_lock": {
-        "default": "mdi:lock"
+        "default": "mdi:lock-open-variant-outline",
+        "state": {
+          "on": "mdi:lock"
+        }
       },
       "dryer_message_end_program": {
         "default": "mdi:check-circle-outline"
@@ -29,7 +35,10 @@
         "default": "mdi:check-circle-outline"
       },
       "washer_warning_door_is_open": {
-        "default": "mdi:door-open"
+        "default": "mdi:door-closed",
+        "state": {
+          "on": "mdi:door-open"
+        }
       },
       "washer_warning_no_water": {
         "default": "mdi:water-alert"
@@ -38,10 +47,16 @@
         "default": "mdi:shield-alert-outline"
       },
       "oven_warning_door_is_open": {
-        "default": "mdi:door-open"
+        "default": "mdi:door-closed",
+        "state": {
+          "on": "mdi:door-open"
+        }
       },
       "oven_warning_door_locked": {
-        "default": "mdi:lock"
+        "default": "mdi:lock-open-variant-outline",
+        "state": {
+          "on": "mdi:lock"
+        }
       },
       "oven_warning_error": {
         "default": "mdi:alert-circle-outline"
@@ -59,7 +74,10 @@
         "default": "mdi:filter-outline"
       },
       "dishwasher_warning_door_is_open": {
-        "default": "mdi:door-open"
+        "default": "mdi:door-closed",
+        "state": {
+          "on": "mdi:door-open"
+        }
       },
       "dishwasher_warning_call_service": {
         "default": "mdi:wrench-outline"
@@ -92,7 +110,10 @@
         "default": "mdi:pot-steam-outline"
       },
       "fridge_warning_door_is_open": {
-        "default": "mdi:door-open"
+        "default": "mdi:door-closed",
+        "state": {
+          "on": "mdi:door-open"
+        }
       },
       "fridge_warning_high_temperature": {
         "default": "mdi:thermometer-alert"
@@ -104,7 +125,10 @@
         "default": "mdi:fire"
       },
       "remote_control": {
-        "default": "mdi:remote"
+        "default": "mdi:remote-off",
+        "state": {
+          "on": "mdi:remote"
+        }
       },
       "washer_warning_liquid_detergent_pumping": {
         "default": "mdi:pump"
@@ -126,6 +150,9 @@
       },
       "washer_warning_pop_up": {
         "default": "mdi:message-alert-outline"
+      },
+      "hood_filter_full": {
+        "default": "mdi:air-filter"
       }
     },
     "switch": {
@@ -260,6 +287,259 @@
       },
       "washer_softener_dosage": {
         "default": "mdi:flower-outline"
+      },
+      "washer_heavy": {
+        "default": "mdi:arm-flex-outline"
+      }
+    },
+    "sensor": {
+      "air_conditioner_instant_consumption": {
+        "default": "mdi:flash"
+      },
+      "air_conditioner_left_right_vane_control": {
+        "default": "mdi:arrow-left-right"
+      },
+      "air_conditioner_sleep_mode_minute": {
+        "default": "mdi:sleep"
+      },
+      "air_conditioner_soft_air": {
+        "default": "mdi:weather-windy"
+      },
+      "air_conditioner_up_down_vane_control": {
+        "default": "mdi:arrow-up-down"
+      },
+      "custom_duration_level": {
+        "default": "mdi:timer-cog-outline"
+      },
+      "dishwasher_program": {
+        "default": "mdi:dishwasher"
+      },
+      "dishwasher_rinse_aid_level": {
+        "default": "mdi:bottle-tonic-outline"
+      },
+      "dishwasher_water_hardness": {
+        "default": "mdi:water-opacity"
+      },
+      "dryer_anti_creasing": {
+        "default": "mdi:tshirt-crew-outline"
+      },
+      "dryer_drying_level": {
+        "default": "mdi:water-percent"
+      },
+      "dryer_duration": {
+        "default": "mdi:timer-outline"
+      },
+      "dryer_program": {
+        "default": "mdi:tumble-dryer"
+      },
+      "dryer_washing_spin": {
+        "default": "mdi:rotate-3d-variant"
+      },
+      "fridge_cooler_temperature": {
+        "default": "mdi:thermometer"
+      },
+      "fridge_degree_dimension": {
+        "default": "mdi:temperature-celsius"
+      },
+      "fridge_eco_fuzzy": {
+        "default": "mdi:leaf"
+      },
+      "fridge_freezer_joker_mode": {
+        "default": "mdi:fridge-outline"
+      },
+      "fridge_freezer_joker_temperature": {
+        "default": "mdi:thermometer"
+      },
+      "fridge_freezer_temperature": {
+        "default": "mdi:snowflake-thermometer"
+      },
+      "fridge_ice_source": {
+        "default": "mdi:cube-outline"
+      },
+      "fridge_vacation_mode": {
+        "default": "mdi:beach"
+      },
+      "monitoring_awaiting_input": {
+        "default": "mdi:gesture-tap"
+      },
+      "monitoring_cook_more_status": {
+        "default": "mdi:timer-plus-outline"
+      },
+      "monitoring_hob2hood": {
+        "default": "mdi:link-variant"
+      },
+      "oven_program": {
+        "default": "mdi:stove"
+      },
+      "oven_suggestion": {
+        "default": "mdi:lightbulb-outline"
+      },
+      "oven_temperature": {
+        "default": "mdi:thermometer"
+      },
+      "program": {
+        "default": "mdi:playlist-play"
+      },
+      "setting_detergent_type": {
+        "default": "mdi:bottle-tonic-outline"
+      },
+      "setting_volume": {
+        "default": "mdi:volume-high"
+      },
+      "settings_brightness": {
+        "default": "mdi:brightness-6"
+      },
+      "settings_detergent_dosing_amount": {
+        "default": "mdi:bottle-tonic-outline"
+      },
+      "settings_detergent_dosing_quantity": {
+        "default": "mdi:bottle-tonic-outline"
+      },
+      "settings_door_alarm_time": {
+        "default": "mdi:timer-alert-outline"
+      },
+      "settings_hob2hood": {
+        "default": "mdi:link-variant"
+      },
+      "settings_keylocked": {
+        "default": "mdi:lock"
+      },
+      "settings_language": {
+        "default": "mdi:translate"
+      },
+      "settings_softener_dosing_amount": {
+        "default": "mdi:flower-outline"
+      },
+      "settings_softener_dosing_quantity": {
+        "default": "mdi:flower-outline"
+      },
+      "settings_volume": {
+        "default": "mdi:volume-high"
+      },
+      "sub_state": {
+        "default": "mdi:progress-clock"
+      },
+      "washer_dirt_level": {
+        "default": "mdi:gauge"
+      },
+      "washer_dirt_type": {
+        "default": "mdi:tag-outline"
+      },
+      "washer_dry": {
+        "default": "mdi:tumble-dryer"
+      },
+      "washer_extra_rinse_count": {
+        "default": "mdi:water-plus"
+      },
+      "washer_extra_rinsing": {
+        "default": "mdi:water-plus"
+      },
+      "washer_fast_plus": {
+        "default": "mdi:speedometer"
+      },
+      "washer_liquid_detergent_dosing": {
+        "default": "mdi:bottle-tonic-outline"
+      },
+      "washer_program": {
+        "default": "mdi:washing-machine"
+      },
+      "washer_rinse_count": {
+        "default": "mdi:water-sync"
+      },
+      "washer_spin": {
+        "default": "mdi:rotate-3d-variant"
+      },
+      "washer_temperature": {
+        "default": "mdi:thermometer"
+      },
+      "zone_1_cooking_state": {
+        "default": "mdi:pot-steam-outline"
+      },
+      "zone_1_hob_heater_level": {
+        "default": "mdi:fire"
+      },
+      "zone_1_hob_predefined_program": {
+        "default": "mdi:chef-hat"
+      },
+      "zone_1_program": {
+        "default": "mdi:stove"
+      },
+      "zone_1_zone_extended": {
+        "default": "mdi:arrow-expand-horizontal"
+      },
+      "zone_2_cooking_state": {
+        "default": "mdi:pot-steam-outline"
+      },
+      "zone_2_hob_heater_level": {
+        "default": "mdi:fire"
+      },
+      "zone_2_hob_predefined_program": {
+        "default": "mdi:chef-hat"
+      },
+      "zone_2_program": {
+        "default": "mdi:stove"
+      },
+      "zone_2_zone_extended": {
+        "default": "mdi:arrow-expand-horizontal"
+      },
+      "zone_3_cooking_state": {
+        "default": "mdi:pot-steam-outline"
+      },
+      "zone_3_hob_heater_level": {
+        "default": "mdi:fire"
+      },
+      "zone_3_hob_predefined_program": {
+        "default": "mdi:chef-hat"
+      },
+      "zone_3_program": {
+        "default": "mdi:stove"
+      },
+      "zone_3_zone_extended": {
+        "default": "mdi:arrow-expand-horizontal"
+      },
+      "zone_4_cooking_state": {
+        "default": "mdi:pot-steam-outline"
+      },
+      "zone_4_hob_heater_level": {
+        "default": "mdi:fire"
+      },
+      "zone_4_hob_predefined_program": {
+        "default": "mdi:chef-hat"
+      },
+      "zone_4_program": {
+        "default": "mdi:stove"
+      },
+      "zone_4_zone_extended": {
+        "default": "mdi:arrow-expand-horizontal"
+      },
+      "dishwasher_liquid_detergent_level": {
+        "default": "mdi:bottle-tonic-outline"
+      },
+      "fridge_freezer_convertible_mode": {
+        "default": "mdi:fridge-outline"
+      },
+      "fridge_freezer_convertible_temperature": {
+        "default": "mdi:thermometer"
+      },
+      "hood_fan_level": {
+        "default": "mdi:fan"
+      },
+      "monitoring_hood_filter_dirt_level_percentage": {
+        "default": "mdi:air-filter"
+      },
+      "state": {
+        "default": "mdi:power",
+        "state": {
+          "device_state_on": "mdi:power-on",
+          "device_state_off": "mdi:power-off",
+          "device_state_running": "mdi:play-circle-outline",
+          "device_state_paused": "mdi:pause-circle-outline",
+          "device_state_time_delay_active": "mdi:timer-sand",
+          "device_state_time_delay_paused": "mdi:timer-pause-outline",
+          "device_state_cancelling": "mdi:cancel",
+          "device_state_door_open": "mdi:door-open",
+          "device_state_settings": "mdi:cog-outline"
+        }
       }
     },
     "climate": {
