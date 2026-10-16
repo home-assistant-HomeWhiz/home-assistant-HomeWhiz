@@ -779,6 +779,7 @@ def build_control_from_state(state: ApplianceState | None) -> Control | None:
 def build_controls_from_progress_variables(  # noqa: C901
     progress_variables: ApplianceProgress | None,
     state_control: Control | None = None,
+    state_aware_remaining_keys: Sequence[str] = ("washer_remaining",),
 ) -> list[Control]:
     if progress_variables is None:
         return []
@@ -821,7 +822,9 @@ def build_controls_from_progress_variables(  # noqa: C901
 
     if state_control is not None:
         for i, control in enumerate(results):
-            if control.key == "washer_remaining" and isinstance(control, TimeControl):
+            if control.key in state_aware_remaining_keys and isinstance(
+                control, TimeControl
+            ):
                 _LOGGER.debug(
                     "Wrapping control %s of type %s with state aware control - %s",
                     control.key,
@@ -1231,9 +1234,17 @@ def generate_controls_from_config(
             build_controls_from_monitorings(getattr(config, "monitorings", None) or [])
         )
 
+        # Dryers keep reporting the selected programme's duration as
+        # remaining time while off, which would push the end time forward
+        state_aware_remaining_keys = ["washer_remaining"]
+        if program_control is not None and program_control.key == "dryer_program":
+            state_aware_remaining_keys.append("variable_remaining")
+
         progress_controls = (
             build_controls_from_progress_variables(
-                getattr(config, "progressVariables", None), state_control
+                getattr(config, "progressVariables", None),
+                state_control,
+                state_aware_remaining_keys,
             )
             if getattr(config, "progressVariables", None) is not None
             else []
