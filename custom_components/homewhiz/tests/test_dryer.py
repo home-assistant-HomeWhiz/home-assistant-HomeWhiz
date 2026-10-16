@@ -53,3 +53,37 @@ def test(config: ApplianceConfiguration) -> None:
             "setting_volume",
         ],
     )
+
+
+def test_device_off(config: ApplianceConfiguration) -> None:
+    """Remaining time is 0 and end time is unset when the dryer is off
+
+    The dryer keeps reporting the selected programme's duration as
+    remaining time while it is off, which made "Programme End Time"
+    move forward with the clock (same issue as #336 for washers).
+    """
+    data = bytearray(100)
+    data[49] = 20  # DEVICE_STATE_OFF
+    data[40] = 2  # remaining hours
+    data[41] = 25  # remaining minutes
+
+    controls = generate_controls_from_config("test_dryer_off", config)
+    values = {control.key: control.get_value(data) for control in controls}
+
+    test_case.assertEqual(values["state"], "device_state_off")
+    test_case.assertEqual(values["variable_remaining"], 0)
+    test_case.assertIsNone(values["variable_delay"])
+
+
+def test_device_running(config: ApplianceConfiguration) -> None:
+    data = bytearray(100)
+    data[49] = 30  # DEVICE_STATE_RUNNING
+    data[40] = 2  # remaining hours
+    data[41] = 25  # remaining minutes
+
+    controls = generate_controls_from_config("test_dryer_running", config)
+    values = {control.key: control.get_value(data) for control in controls}
+
+    test_case.assertEqual(values["state"], "device_state_running")
+    test_case.assertEqual(values["variable_remaining"], 145)
+    test_case.assertIsNotNone(values["variable_delay"])
