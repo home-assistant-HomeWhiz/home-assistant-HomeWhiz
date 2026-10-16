@@ -611,6 +611,50 @@
           "flexi_level_one": "Level 1",
           "flexi_level_two": "Level 2"
         }
+      },
+      "dryer_steam_mode_level": {
+        "name": "Steam Mode Level",
+        "state": {
+          "steam_mode_level_1": "Low",
+          "steam_mode_level_2": "Medium",
+          "steam_mode_level_3": "High"
+        }
+      },
+      "dryer_washing_spin": {
+        "name": "Washing Spin"
+      },
+      "fridge_ice_source": {
+        "name": "Ice Source"
+      },
+      "oven_suggestion": {
+        "name": "Suggestion"
+      },
+      "settings_detergent_dosing_amount": {
+        "name": "Detergent Amount"
+      },
+      "settings_detergent_dosing_quantity": {
+        "name": "Detergent Dosing Quantity"
+      },
+      "settings_language": {
+        "name": "Language"
+      },
+      "settings_softener_dosing_amount": {
+        "name": "Softener Amount"
+      },
+      "settings_softener_dosing_quantity": {
+        "name": "Softener Dosing Quantity"
+      },
+      "washer_dirt_level": {
+        "name": "Dirt Level"
+      },
+      "washer_dirt_type": {
+        "name": "Stain Type"
+      },
+      "washer_extra_rinsing": {
+        "name": "Extra Rinsing"
+      },
+      "washer_liquid_detergent_dosing": {
+        "name": "Detergent Type"
       }
     },
     "sensor": {
@@ -1328,6 +1372,101 @@
       },
       "monitoring_hood_filter_dirt_level_percentage": {
         "name": "Filter Dirt Level"
+      },
+      "dishwasher_variable_delay": {
+        "name": "Programme End Time"
+      },
+      "dryer_steam_mode_level": {
+        "name": "Steam Mode Level",
+        "state": {
+          "steam_mode_level_1": "Low",
+          "steam_mode_level_2": "Medium",
+          "steam_mode_level_3": "High"
+        }
+      },
+      "dryer_washing_spin": {
+        "name": "Washing Spin"
+      },
+      "fridge_ice_source": {
+        "name": "Ice Source"
+      },
+      "monitoring_awaiting_input": {
+        "name": "Awaiting Input"
+      },
+      "monitoring_cook_more_status": {
+        "name": "Cook More Status"
+      },
+      "oven_suggestion": {
+        "name": "Suggestion"
+      },
+      "settings_detergent_dosing_amount": {
+        "name": "Detergent Amount"
+      },
+      "settings_detergent_dosing_quantity": {
+        "name": "Detergent Dosing Quantity"
+      },
+      "settings_hob2hood": {
+        "name": "HobToHood Setting"
+      },
+      "settings_keylocked": {
+        "name": "Key Lock"
+      },
+      "settings_language": {
+        "name": "Language"
+      },
+      "settings_softener_dosing_amount": {
+        "name": "Softener Amount"
+      },
+      "settings_softener_dosing_quantity": {
+        "name": "Softener Dosing Quantity"
+      },
+      "washer_dirt_level": {
+        "name": "Dirt Level"
+      },
+      "washer_dirt_type": {
+        "name": "Stain Type"
+      },
+      "washer_extra_rinsing": {
+        "name": "Extra Rinsing"
+      },
+      "washer_liquid_detergent_dosing": {
+        "name": "Detergent Type"
+      },
+      "zone_1_hob_heater_level": {
+        "name": "Zone 1 Heater Level"
+      },
+      "zone_1_hob_predefined_program": {
+        "name": "Zone 1 Predefined Program"
+      },
+      "zone_1_program": {
+        "name": "Zone 1 Program"
+      },
+      "zone_2_hob_heater_level": {
+        "name": "Zone 2 Heater Level"
+      },
+      "zone_2_hob_predefined_program": {
+        "name": "Zone 2 Predefined Program"
+      },
+      "zone_2_program": {
+        "name": "Zone 2 Program"
+      },
+      "zone_3_hob_heater_level": {
+        "name": "Zone 3 Heater Level"
+      },
+      "zone_3_hob_predefined_program": {
+        "name": "Zone 3 Predefined Program"
+      },
+      "zone_3_program": {
+        "name": "Zone 3 Program"
+      },
+      "zone_4_hob_heater_level": {
+        "name": "Zone 4 Heater Level"
+      },
+      "zone_4_hob_predefined_program": {
+        "name": "Zone 4 Predefined Program"
+      },
+      "zone_4_program": {
+        "name": "Zone 4 Program"
       }
     },
     "number": {
@@ -1443,6 +1582,27 @@
       },
       "hood_filter_full": {
         "name": "Filter full"
+      },
+      "oven_warning_probe_is_detached": {
+        "name": "Probe Is Detached"
+      },
+      "oven_warning_pyro_cleaning": {
+        "name": "Pyrolytic Cleaning"
+      },
+      "washer_warning_liquid_detergent_pumping": {
+        "name": "Detergent Is Being Pumped"
+      },
+      "washer_warning_no_liquid_detergent": {
+        "name": "Add Liquid Detergent"
+      },
+      "washer_warning_no_powder_detergent": {
+        "name": "Select Powder Detergent"
+      },
+      "washer_warning_no_softener": {
+        "name": "Add Softener"
+      },
+      "washer_warning_pop_up": {
+        "name": "Programme Cannot Start/Stopped"
       }
     },
     "climate": {
@@ -1563,6 +1723,48 @@
       },
       "washer_liquid_detergent": {
         "name": "Automatic Detergent Dosing"
+      },
+      "dishwasher_extra_shiny": {
+        "name": "Extra Shine"
+      },
+      "dishwasher_fastwash": {
+        "name": "Fast Wash"
+      },
+      "dishwasher_filter_self_cleaning": {
+        "name": "Filter Self-Cleaning"
+      },
+      "dishwasher_strong_wash": {
+        "name": "Strong Wash"
+      },
+      "dishwasher_tablet": {
+        "name": "Tablet"
+      },
+      "dryer_fast_mode": {
+        "name": "Fast Mode"
+      },
+      "dryer_steam_mode_onoff": {
+        "name": "Steam Mode"
+      },
+      "fridge_ice_machine": {
+        "name": "Ice Machine"
+      },
+      "washer_anti_crease": {
+        "name": "Remote Anti Crease"
+      },
+      "washer_extra_rinse": {
+        "name": "Extra Rinse"
+      },
+      "washer_extra_water": {
+        "name": "Extra Water"
+      },
+      "washer_fast": {
+        "name": "Fast"
+      },
+      "washer_hidden_extra_water": {
+        "name": "Extra Water"
+      },
+      "washer_silent_mode": {
+        "name": "Silent Mode"
       }
     }
   },
