@@ -1769,14 +1769,14 @@
     }
   },
   "options": {
-      "step": {
-        "init": {
-          "title": "Опције Homewhiz",
-          "description": "Омогућава напредну конфигурацију интеграције.",
-          "data": {
-            "bt_reconnect_interval": "Интервал за поновно повезивање Bluetooth-а (у сатима)"
-          }
+    "step": {
+      "init": {
+        "title": "Опције Homewhiz",
+        "description": "Омогућава напредну конфигурацију интеграције.",
+        "data": {
+          "bt_reconnect_interval": "Интервал за поновно повезивање Bluetooth-а (у сатима)"
         }
       }
+    }
   }
 }
