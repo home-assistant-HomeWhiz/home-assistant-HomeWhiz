@@ -1,0 +1,1782 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "Uređaj je već konfigurisan",
+      "already_in_progress": "Konfiguracija je već u toku",
+      "no_devices_found": "Nema pronađenih uređaja na mreži",
+      "no_cloud_devices_found": "Nijedan uređaj na ovom nalogu ne može da se podesi putem oblaka. Vratite se i koristite Bluetooth opciju."
+    },
+    "flow_title": "{name}",
+    "step": {
+      "bluetooth_confirm": {
+        "description": "Želite li da podesite {name}?"
+      },
+      "user": {
+        "description": "Izaberite tip povezivanja",
+        "menu_options": {
+          "select_bluetooth_device": "Bluetooth",
+          "provide_cloud_credentials": "Oblak"
+        }
+      },
+      "select_bluetooth_device": {
+        "description": "Izaberite uređaj za podešavanje",
+        "data": {
+          "address": "Uređaj"
+        }
+      },
+      "bluetooth_connect": {
+        "description": "Unesite HomeWhiz akreditive",
+        "data": {
+          "username": "Korisničko ime",
+          "password": "Lozinka"
+        }
+      },
+      "provide_cloud_credentials": {
+        "description": "Unesite HomeWhiz akreditive",
+        "data": {
+          "username": "Korisničko ime",
+          "password": "Lozinka"
+        }
+      },
+      "select_cloud_device": {
+        "description": "Izaberite uređaj za podešavanje",
+        "data": {
+          "id": "Uređaj"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Nevažeća autentifikacija",
+      "no_configuration": "HomeWhiz još nije objavio konfiguraciju za ovaj uređaj. Ovo nije nešto što integracija može da reši; obratite se HomeWhiz/Beko podršci.",
+      "unknown": "Neočekivana greška. Proverite HomeWhiz unose u Home Assistant logu za detalje."
+    }
+  },
+  "entity": {
+    "select": {
+      "state": {
+        "name": "Stanje",
+        "state": {
+          "device_state_on": "Uključeno",
+          "device_state_off": "Isključeno",
+          "device_state_running": "Radi",
+          "device_state_paused": "Pauzirano",
+          "device_state_time_delay_active": "Odloženo pokretanje aktivno",
+          "device_state_time_delay_paused": "Odloženo pokretanje pauzirano",
+          "device_state_cancelling": "Otkazivanje",
+          "device_state_door_open": "Vrata su otvorena!",
+          "device_state_settings": "Podešavanja"
+        }
+      },
+      "washer_program": {
+        "name": "Program",
+        "state": {
+          "program_cottons": "Pamuk",
+          "program_eco_40_60": "Eko 40-60",
+          "program_synthetics": "Sintetika",
+          "program_mini_mini14": "Xpress",
+          "program_wool_handwash": "Vuna (ručno pranje)",
+          "program_delicates": "Osetljivo",
+          "program_spin_pump": "Centrifuga+Ispumpavanje",
+          "program_rinsing": "Ispiranje",
+          "program_darkwash": "Tamno (Farmerke)",
+          "program_outdoor_sports_goretex": "Outdoor/Sports",
+          "program_stain": "StainExpert",
+          "program_hygeine": "Higijena+",
+          "program_duvet": "Jorgan/Pernata odeća",
+          "program_shirts": "Košulje",
+          "program_drum_clean": "Čišćenje bubnja",
+          "program_mix": "Mešano",
+          "program_curtain": "Zavese",
+          "program_lingerie": "Donji veš",
+          "program_soft_toys": "Plišane igračke",
+          "program_towel": "Peškiri",
+          "program_cottons_eco": "Pamuk Eko",
+          "program_dryer_cotton": "Sušenje pamuka",
+          "program_dryer_synthetics": "Sušenje sintetike",
+          "program_hygiene_wash_dry": "Higijena+ Pranje & Sušenje",
+          "program_4kg_wash_dry": "4 kg Pranje & Sušenje",
+          "program_wash_wear": "Operi & Obuci",
+          "program_dark_wash": "Tamno pranje",
+          "program_outdoor": "Outdoor",
+          "program_drum_clean_plus": "Čišćenje bubnja+",
+          "program_steam_refresh": "Osvežavanje parom",
+          "program_duvet_downwear": "Jorgan/Pernata odeća",
+          "program_hygiene_plus": "Higijena+",
+          "program_steam_therapy": "Terapija parom",
+          "program_auto_program": "Auto",
+          "program_cold_wash": "Pranje hladnom vodom",
+          "program_darkwash_jeans": "Tamno (Farmerke)"
+        }
+      },
+      "washer_temperature": {
+        "name": "Temperatura",
+        "state": {
+          "temperature_cold_wash": "Pranje hladnom vodom",
+          "temperature_20": "20 °C",
+          "temperature_30": "30 °C",
+          "temperature_40": "40 °C",
+          "60c": "60 °C",
+          "90c": "90 °C",
+          "temperature_60": "60 °C",
+          "temperature_90": "90 °C"
+        }
+      },
+      "washer_spin": {
+        "name": "Centrifuga",
+        "state": {
+          "spin_no_spin": "Bez centrifuge",
+          "600rpm": "600 obrt/min",
+          "800rpm": "800 obrt/min",
+          "1000rpm": "1000 obrt/min",
+          "1200rpm": "1200 obrt/min",
+          "spin_rinse_hold": "Zadržavanje ispiranja",
+          "spin_600": "600 obrt/min",
+          "spin_800": "800 obrt/min",
+          "spin_1000": "1000 obrt/min",
+          "spin_1200": "1200 obrt/min",
+          "spin_1400": "1400 obrt/min",
+          "1400rpm": "1400 obrt/min"
+        }
+      },
+      "washer_fast_plus": {
+        "name": "Brzo+",
+        "state": {
+          "fast_plus_off": "Isključeno",
+          "fast_plus_on_fast": "Brzo",
+          "fast_plus_on_fast_plus": "Brzo+"
+        }
+      },
+      "custom_duration_level": {
+        "name": "Nivo prilagođenog trajanja",
+        "state": {
+          "duration_level_0": "Nivo 0",
+          "1": "Nivo 1",
+          "2": "Nivo 2",
+          "3": "Nivo 3",
+          "4": "Nivo 4",
+          "5": "Nivo 5",
+          "6": "Nivo 6",
+          "7": "Nivo 7",
+          "8": "Nivo 8",
+          "9": "Nivo 9",
+          "10": "Nivo 10",
+          "11": "Nivo 11"
+        }
+      },
+      "washer_extra_rinse_count": {
+        "name": "Broj dodatnih ispiranja"
+      },
+      "settings_volume": {
+        "name": "Jačina zvuka tastera",
+        "state": {
+          "volume_low": "Nisko",
+          "volume_high": "Visoko"
+        }
+      },
+      "remote_control": {
+        "name": "Daljinsko upravljanje"
+      },
+      "washer_warning_door_is_open": {
+        "name": "Vrata su otvorena"
+      },
+      "washer_warning_no_water": {
+        "name": "Nema vode"
+      },
+      "washer_warning_security": {
+        "name": "Bezbednost"
+      },
+      "oven_program": {
+        "name": "Program",
+        "state": {
+          "program_static": "Statika",
+          "program_static_fan": "Statika + ventilator",
+          "program_fan_heating": "Grejanje ventilatorom",
+          "program_multi_cooking": "Multi (3D) kuvanje",
+          "program_fan_heat_bottom": "Ventilator + donje grejanje",
+          "program_eco_grill": "Eko gril",
+          "program_full_grill": "Puni gril",
+          "program_full_grill_fan": "Puni gril + ventilator",
+          "program_bottom_heating": "Donje grejanje",
+          "program_defrost": "Odmrzavanje",
+          "program_warm_keeping": "Održavanje toplote",
+          "program_eco_fan_heating": "Eko grejanje ventilatorom",
+          "program_steam_cleaning": "Čišćenje parom",
+          "program_eco_pyro": "Eko čišćenje",
+          "program_pyro": "Čišćenje"
+        }
+      },
+      "oven_temperature": {
+        "name": "Temperatura"
+      },
+      "settings_brightness": {
+        "name": "Osvetljenost"
+      },
+      "oven_warning_door_is_open": {
+        "name": "Vrata su otvorena"
+      },
+      "oven_warning_door_locked": {
+        "name": "Vrata zaključana"
+      },
+      "oven_warning_error": {
+        "name": "Došlo je do neočekivane greške na uređaju. Proverite korisničko uputstvo."
+      },
+      "program": {
+        "name": "Program",
+        "state": {
+          "program_auto": "Auto",
+          "program_mix_wash_plus": "MixWash+",
+          "program_intensive_70": "Intenzivno 70°C",
+          "program_eco_50": "Eko 50°C",
+          "program_glasscare": "GlassCare",
+          "program_new58min": "Brzo pranje 58'",
+          "program_30min": "Mini 30'",
+          "program_prewash": "Predpranje",
+          "program_hygiene": "HygieneCare",
+          "program_daily": "DailyWash",
+          "program_silent": "Tiho pranje",
+          "program_makine_temizleme": "Unutrašnje čišćenje"
+        }
+      },
+      "setting_detergent_type": {
+        "name": "Vrsta deterdženta",
+        "state": {
+          "setting_detergent_type_powder": "Praškasti deterdžent",
+          "setting_detergent_type_tablet": "Tableta deterdžent",
+          "setting_detergent_type_liquid": "Tečni deterdžent"
+        }
+      },
+      "dishwasher_rinse_aid_level": {
+        "name": "Nivo sredstva za ispiranje"
+      },
+      "dishwasher_water_hardness": {
+        "name": "Tvrdoća vode"
+      },
+      "dishwasher_warning_no_rinse_aid": {
+        "name": "Nema sredstva za ispiranje"
+      },
+      "dishwasher_warning_no_salt": {
+        "name": "Nema soli"
+      },
+      "dishwasher_warning_no_water": {
+        "name": "Nema vode"
+      },
+      "dishwasher_warning_check_the_filter": {
+        "name": "Proverite filter"
+      },
+      "dishwasher_warning_door_is_open": {
+        "name": "Vrata su otvorena"
+      },
+      "dishwasher_warning_call_service": {
+        "name": "Pozovite servis"
+      },
+      "dishwasher_liquid_detergent_low": {
+        "name": "Malo tečnog deterdženta"
+      },
+      "settings_hob2hood": {
+        "name": "Podešavanje HobToHood"
+      },
+      "settings_keylocked": {
+        "name": "Zaključavanje tastera"
+      },
+      "zone_1_program": {
+        "name": "Zona 1 program"
+      },
+      "zone_1_hob_predefined_program": {
+        "name": "Zona 1 unapred definisan program"
+      },
+      "zone_1_hob_heater_level": {
+        "name": "Zona 1 nivo grejača"
+      },
+      "zone_2_program": {
+        "name": "Zona 2 program"
+      },
+      "zone_2_hob_predefined_program": {
+        "name": "Zona 2 unapred definisan program"
+      },
+      "zone_2_hob_heater_level": {
+        "name": "Zona 2 nivo grejača"
+      },
+      "zone_3_program": {
+        "name": "Zona 3 program"
+      },
+      "zone_3_hob_predefined_program": {
+        "name": "Zona 3 unapred definisan program"
+      },
+      "zone_3_hob_heater_level": {
+        "name": "Zona 3 nivo grejača"
+      },
+      "zone_4_program": {
+        "name": "Zone 4 Program"
+      },
+      "zone_4_hob_predefined_program": {
+        "name": "Zona 4 unapred definisan program"
+      },
+      "zone_4_hob_heater_level": {
+        "name": "Zona 4 nivo grejača"
+      },
+      "dishwasher_program": {
+        "name": "Program",
+        "state": {
+          "program_auto": "Auto",
+          "program_aqua_flex": "AquaFlex",
+          "program_intensive_70": "Intenzivno 70°C",
+          "program_eco_50": "Eko 50°C",
+          "program_delicate": "Osetljivo",
+          "program_quick_and_shine": "Brzo&Sjaj",
+          "program_mini": "Mini",
+          "program_prewash": "Predpranje",
+          "program_quiet": "Tiho pranje",
+          "program_clean_and_shine": "Čisto&Sjaj",
+          "program_innerclean": "Unutrašnje čišćenje"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "Tečni deterdžent"
+      },
+      "washer_dry": {
+        "name": "Sušenje",
+        "state": {
+          "dry_off": "Isključeno",
+          "dry_extra": "Ekstra suvo",
+          "dry_cabinet": "Suvo za ormar",
+          "dry_iron": "Suvo za peglanje",
+          "dry_10": "10 min",
+          "dry_20": "20 min",
+          "dry_30": "30 min",
+          "dry_60": "60 min",
+          "dry_90": "90 min",
+          "dry_120": "120 min",
+          "dry_150": "150 min"
+        }
+      },
+      "washer_rinse_count": {
+        "name": "Broj ispiranja"
+      },
+      "air_conditioner_soft_air": {
+        "name": "Blagi protok vazduha",
+        "state": {
+          "air_conditioner_soft_air_off": "Isključeno",
+          "air_conditioner_soft_air_up": "Gore",
+          "air_conditioner_soft_air_down": "Dole"
+        }
+      },
+      "air_conditioner_up_down_vane_control": {
+        "name": "Vertikalni protok vazduha",
+        "state": {
+          "up_down_vane_control_off": "Isključeno",
+          "up_down_vane_control_6": "6",
+          "up_down_vane_control_5": "5",
+          "up_down_vane_control_4": "4",
+          "up_down_vane_control_3": "3",
+          "up_down_vane_control_2": "2",
+          "up_down_vane_control_1": "1",
+          "up_down_vane_control_auto": "Auto"
+        }
+      },
+      "air_conditioner_left_right_vane_control": {
+        "name": "Horizontalni protok vazduha",
+        "state": {
+          "left_right_vane_control_off": "Isključeno",
+          "left_right_vane_control_1": "1",
+          "left_right_vane_control_2": "2",
+          "left_right_vane_control_3": "3",
+          "left_right_vane_control_4": "4",
+          "left_right_vane_control_5": "5",
+          "left_right_vane_control_left": "Levo",
+          "left_right_vane_control_right": "Desno",
+          "left_right_vane_control_auto": "Auto"
+        }
+      },
+      "dryer_program": {
+        "name": "Program",
+        "state": {
+          "program_cottons": "Pamuk",
+          "program_cottons_eco": "Pamuk Eko",
+          "program_synthetics": "Sintetika",
+          "program_mix": "Mešano",
+          "program_woolprotect": "Vuna",
+          "program_night": "Noćni program",
+          "program_drying_rack_timer_programmes": "Sušenje na stalku/Tajmer",
+          "program_jeans": "Farmerke",
+          "program_outdoor_sports": "Outdoor/Sports",
+          "program_duvet_downwear": "Jorgan/Pernata odeća",
+          "program_gentlecare": "Blaga nega",
+          "program_xpress_super_short": "Xpress vrlo kratko",
+          "program_hygienic_drying": "Higijensko sušenje",
+          "program_hygienic_refresh": "Higijensko osvežavanje",
+          "program_bedding": "Posteljina",
+          "program_lingerie": "Donji veš",
+          "program_towel": "Peškiri",
+          "program_fashion": "Moda"
+        }
+      },
+      "dryer_drying_level": {
+        "name": "Nivo sušenja",
+        "state": {
+          "drying_level_iron_dry": "Suvo za peglanje",
+          "drying_level_cupboard_dry": "Suvo za ormar",
+          "drying_level_plus": "Suvo za ormar+",
+          "drying_level_extra_dry": "Ekstra suvo"
+        }
+      },
+      "dryer_anti_creasing": {
+        "name": "Protiv gužvanja",
+        "state": {
+          "0": "Isključeno",
+          "30": "30 min",
+          "60": "60 min",
+          "120": "120 min"
+        }
+      },
+      "dryer_duration": {
+        "name": "Trajanje",
+        "state": {
+          "10": "10 min",
+          "20": "20 min",
+          "30": "30 min",
+          "40": "40 min",
+          "50": "50 min",
+          "60": "60 min",
+          "70": "70 min",
+          "80": "80 min",
+          "90": "90 min",
+          "100": "100 min",
+          "110": "110 min",
+          "120": "120 min",
+          "130": "130 min",
+          "140": "140 min",
+          "150": "150 min",
+          "160": "160 min"
+        }
+      },
+      "setting_volume": {
+        "name": "Jačina zvuka",
+        "state": {
+          "volume_close": "Isključeno",
+          "volume_on": "Uključeno"
+        }
+      },
+      "fridge_cooler_temperature": {
+        "name": "Temperatura frižidera",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C",
+          "33f": "33 °F",
+          "34f": "34 °F",
+          "35f": "35 °F",
+          "36f": "36 °F",
+          "37f": "37 °F",
+          "38f": "38 °F",
+          "39f": "39 °F",
+          "40f": "40 °F",
+          "41f": "41 °F",
+          "42f": "42 °F",
+          "43f": "43 °F",
+          "44f": "44 °F",
+          "45f": "45 °F",
+          "46f": "46 °F"
+        }
+      },
+      "fridge_freezer_temperature": {
+        "name": "Temperatura zamrzivača"
+      },
+      "fridge_degree_dimension": {
+        "name": "Jedinica temperature",
+        "state": {
+          "degree_dimension_celcius": "Celzijus (°C)",
+          "degree_dimension_fahrenheit": "Farenhajt (°F)"
+        }
+      },
+      "fridge_freezer_joker_mode": {
+        "name": "Režim odeljka zamrzivača",
+        "state": {
+          "freezer_joker_mode_freezer": "Zamrzivač",
+          "freezer_joker_mode_cooler": "Frižider"
+        }
+      },
+      "fridge_freezer_joker_temperature": {
+        "name": "Temperatura odeljka zamrzivača",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C"
+        }
+      },
+      "settings_door_alarm_time": {
+        "name": "Vreme alarma za vrata",
+        "state": {
+          "one_min": "1 min",
+          "one_and_half_min": "1.5 min",
+          "two_min": "2 min",
+          "three_min": "3 min",
+          "four_min": "4 min",
+          "five_min": "5 min"
+        }
+      },
+      "fridge_vacation_mode": {
+        "name": "Režim odmora",
+        "state": {
+          "vacation_mode_passive": "Isključeno",
+          "vacation_mode_active": "Uključeno"
+        }
+      },
+      "fridge_eco_fuzzy": {
+        "name": "Eko Fuzzy",
+        "state": {
+          "eco_fuzzy_passive": "Isključeno",
+          "eco_fuzzy_active": "Uključeno"
+        }
+      },
+      "fridge_freezer_convertible_mode": {
+        "name": "Režim konvertibilnog odeljka",
+        "state": {
+          "freezer_convertible_mode_freezer": "Zamrzivač",
+          "freezer_convertible_mode_cooler": "Frižider",
+          "freezer_convertible_mode_off": "Isključeno"
+        }
+      },
+      "fridge_freezer_convertible_temperature": {
+        "name": "Temperatura konvertibilnog odeljka",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C",
+          "33f": "33 °F",
+          "34f": "34 °F",
+          "35f": "35 °F",
+          "36f": "36 °F",
+          "37f": "37 °F",
+          "38f": "38 °F",
+          "39f": "39 °F",
+          "40f": "40 °F",
+          "41f": "41 °F",
+          "42f": "42 °F",
+          "43f": "43 °F",
+          "44f": "44 °F",
+          "45f": "45 °F",
+          "46f": "46 °F"
+        }
+      },
+      "settings_handle_light": {
+        "name": "Osvetljenje ručke",
+        "state": {
+          "handle_light_passive": "Isključeno",
+          "handle_light_active": "Uključeno"
+        }
+      },
+      "hood_aircleaning": {
+        "name": "Režim čišćenja vazduha",
+        "state": {
+          "hood_mode_normal": "Normalno",
+          "hood_mode_air_cleaning": "Čišćenje vazduha"
+        }
+      },
+      "hood_fan_level": {
+        "name": "Nivo ventilatora",
+        "state": {
+          "hood_fan_level_off": "Isključeno",
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "4"
+        }
+      },
+      "hood_lamp": {
+        "name": "Svetlo",
+        "state": {
+          "hood_lamp_off": "Isključeno",
+          "dim_level_2": "Nivo 2"
+        }
+      },
+      "oven_flexi": {
+        "name": "Flexi",
+        "state": {
+          "no_flexi": "Isključeno",
+          "flexi_level_one": "Nivo 1",
+          "flexi_level_two": "Nivo 2"
+        }
+      },
+      "dryer_steam_mode_level": {
+        "name": "Nivo režima pare",
+        "state": {
+          "steam_mode_level_1": "Nizak",
+          "steam_mode_level_2": "Srednji",
+          "steam_mode_level_3": "Visok"
+        }
+      },
+      "dryer_washing_spin": {
+        "name": "Centrifuga pranja"
+      },
+      "fridge_ice_source": {
+        "name": "Izvor leda"
+      },
+      "oven_suggestion": {
+        "name": "Preporuka"
+      },
+      "settings_detergent_dosing_amount": {
+        "name": "Količina deterdženta"
+      },
+      "settings_detergent_dosing_quantity": {
+        "name": "Doziranje deterdženta"
+      },
+      "settings_language": {
+        "name": "Jezik"
+      },
+      "settings_softener_dosing_amount": {
+        "name": "Količina omekšivača"
+      },
+      "settings_softener_dosing_quantity": {
+        "name": "Doziranje omekšivača"
+      },
+      "washer_dirt_level": {
+        "name": "Nivo zaprljanosti"
+      },
+      "washer_dirt_type": {
+        "name": "Vrsta mrlje"
+      },
+      "washer_extra_rinsing": {
+        "name": "Dodatno ispiranje"
+      },
+      "washer_liquid_detergent_dosing": {
+        "name": "Vrsta deterdženta"
+      }
+    },
+    "sensor": {
+      "state": {
+        "name": "Stanje",
+        "state": {
+          "device_state_on": "Uključeno",
+          "device_state_off": "Isključeno",
+          "device_state_running": "Radi",
+          "device_state_paused": "Pauzirano",
+          "device_state_time_delay_active": "Odloženo pokretanje aktivno",
+          "device_state_time_delay_paused": "Odloženo pokretanje pauzirano",
+          "device_state_cancelling": "Otkazivanje",
+          "device_state_door_open": "Vrata su otvorena!",
+          "device_state_settings": "Podešavanja"
+        }
+      },
+      "washer_program": {
+        "name": "Program",
+        "state": {
+          "program_cottons": "Pamuk",
+          "program_eco_40_60": "Eko 40-60",
+          "program_synthetics": "Sintetika",
+          "program_mini_mini14": "Xpress",
+          "program_wool_handwash": "Vuna (ručno pranje)",
+          "program_delicates": "Osetljivo",
+          "program_spin_pump": "Centrifuga+Ispumpavanje",
+          "program_rinsing": "Ispiranje",
+          "program_darkwash": "Tamno (Farmerke)",
+          "program_outdoor_sports_goretex": "Outdoor/Sports",
+          "program_stain": "StainExpert",
+          "program_hygeine": "Higijena+",
+          "program_duvet": "Jorgan/Pernata odeća",
+          "program_shirts": "Košulje",
+          "program_drum_clean": "Čišćenje bubnja",
+          "program_mix": "Mešano",
+          "program_curtain": "Zavese",
+          "program_lingerie": "Donji veš",
+          "program_soft_toys": "Plišane igračke",
+          "program_towel": "Peškiri",
+          "program_cottons_eco": "Pamuk Eko",
+          "program_dryer_cotton": "Sušenje pamuka",
+          "program_dryer_synthetics": "Sušenje sintetike",
+          "program_hygiene_wash_dry": "Higijena+ Pranje & Sušenje",
+          "program_4kg_wash_dry": "4 kg Pranje & Sušenje",
+          "program_wash_wear": "Operi & Obuci",
+          "program_dark_wash": "Tamno pranje",
+          "program_outdoor": "Outdoor",
+          "program_drum_clean_plus": "Čišćenje bubnja+",
+          "program_steam_refresh": "Osvežavanje parom",
+          "program_duvet_downwear": "Jorgan/Pernata odeća",
+          "program_hygiene_plus": "Higijena+",
+          "program_steam_therapy": "Terapija parom",
+          "program_auto_program": "Auto",
+          "program_cold_wash": "Pranje hladnom vodom",
+          "program_darkwash_jeans": "Tamno (Farmerke)"
+        }
+      },
+      "washer_temperature": {
+        "name": "Temperatura",
+        "state": {
+          "temperature_cold_wash": "Pranje hladnom vodom",
+          "temperature_20": "20 °C",
+          "temperature_30": "30 °C",
+          "temperature_40": "40 °C",
+          "60c": "60 °C",
+          "90c": "90 °C",
+          "temperature_60": "60 °C",
+          "temperature_90": "90 °C"
+        }
+      },
+      "washer_spin": {
+        "name": "Centrifuga",
+        "state": {
+          "spin_no_spin": "Bez centrifuge",
+          "600rpm": "600 obrt/min",
+          "800rpm": "800 obrt/min",
+          "1000rpm": "1000 obrt/min",
+          "1200rpm": "1200 obrt/min",
+          "spin_rinse_hold": "Zadržavanje ispiranja",
+          "spin_600": "600 obrt/min",
+          "spin_800": "800 obrt/min",
+          "spin_1000": "1000 obrt/min",
+          "spin_1200": "1200 obrt/min",
+          "spin_1400": "1400 obrt/min",
+          "1400rpm": "1400 obrt/min"
+        }
+      },
+      "washer_fast_plus": {
+        "name": "Brzo+",
+        "state": {
+          "fast_plus_off": "Isključeno",
+          "fast_plus_on_fast": "Brzo",
+          "fast_plus_on_fast_plus": "Brzo+"
+        }
+      },
+      "custom_duration_level": {
+        "name": "Nivo prilagođenog trajanja",
+        "state": {
+          "duration_level_0": "Nivo 0",
+          "1": "Nivo 1",
+          "2": "Nivo 2",
+          "3": "Nivo 3",
+          "4": "Nivo 4",
+          "5": "Nivo 5",
+          "6": "Nivo 6",
+          "7": "Nivo 7",
+          "8": "Nivo 8",
+          "9": "Nivo 9",
+          "10": "Nivo 10",
+          "11": "Nivo 11"
+        }
+      },
+      "washer_extra_rinse_count": {
+        "name": "Broj dodatnih ispiranja"
+      },
+      "settings_volume": {
+        "name": "Jačina zvuka tastera",
+        "state": {
+          "volume_low": "Nisko",
+          "volume_high": "Visoko"
+        }
+      },
+      "sub_state": {
+        "name": "Podstanje",
+        "state": {
+          "washer_substate_washing": "Pranje",
+          "washer_substate_spin": "Centrifuga",
+          "washer_water_intake": "Uzimanje vode",
+          "washer_substate_prewash": "Predpranje",
+          "washer_substate_rinsing": "Ispiranje",
+          "washer_substate_softener": "Omekšivač",
+          "washer_substate_program_started": "Program pokrenut",
+          "washer_substate_time_delay_enabled": "Odloženi završetak uključen",
+          "washer_substate_paused": "Pauzirano",
+          "washer_substate_analysing": "Analiziranje",
+          "washer_substate_door_locked": "Vrata zaključana",
+          "washer_substate_opening_door": "Otvaranje vrata",
+          "washer_substate_locking_door": "Zaključavanje vrata",
+          "washer_substate_remove_laundry": "Pranje završeno; izvadite veš",
+          "washer_substate_add_laundry": "Možete dodati veš",
+          "washer_substate_rinse_hold": "Zadržavanje ispiranja aktivno; izaberite brzinu centrifuge",
+          "washer_substate_remote_anticrease": "Daljinsko protiv gužvanja u toku",
+          "washer_substate_drying": "Sušenje",
+          "oven_message_good_appetite": "Prijatno",
+          "oven_message_cooking": "Kuvanje",
+          "oven_message_paused": "Pauzirano",
+          "oven_message_waiting": "Čekanje",
+          "oven_message_defrosting": "Odmrzavanje",
+          "operation_completed": "Operacija završena",
+          "oven_message_preheating": "Predgrevanje",
+          "oven_message_preheating_completed": "Predgrevanje završeno",
+          "oven_message_cleaning": "Čišćenje",
+          "oven_message_cleaning_completed": "Čišćenje završeno",
+          "dishwasher_message_time_delay_started": "Odloženi završetak uključen",
+          "dishwasher_message_paused": "Program pauziran",
+          "dishwasher_message_program_finished": "Program završen",
+          "dishwasher_message_program_sanitized": "Program završen i DEZINFIKOVAN",
+          "dishwasher_message_cancelling": "Otkazivanje…",
+          "dishwasher_message_time_delay_cancelled": "Odlaganje otkazano",
+          "dishwasher_message_program_started": "Program pokrenut",
+          "dishwasher_message_washing": "Pranje",
+          "dishwasher_message_rinsing": "Ispiranje",
+          "dishwasher_message_drying": "Sušenje",
+          "dryer_message_program_finished": "Program završen",
+          "dryer_message_hello": "Zdravo",
+          "dryer_message_closing": "Gašenje",
+          "dryer_message_program_started": "Program pokrenut",
+          "dryer_message_drying": "Sušenje",
+          "dryer_message_time_delay_active": "Odloženo pokretanje aktivno",
+          "dryer_message_paused": "Pauzirano",
+          "dryer_message_cooling": "Hlađenje",
+          "dryer_message_refreshing": "Osvežavanje",
+          "dryer_message_anti_creasing": "Protiv gužvanja aktivno",
+          "dryer_message_drum_empty": "Bubanj prazan",
+          "washer_substate_time_delay_paused": "Odloženo pokretanje pauzirano"
+        }
+      },
+      "washer_delay": {
+        "name": "Vreme završetka programa"
+      },
+      "delay_start": {
+        "name": "Odloženi start"
+      },
+      "delay_start_time": {
+        "name": "Vreme odloženog starta"
+      },
+      "delay_end_time": {
+        "name": "Vreme odloženog završetka"
+      },
+      "washer_duration": {
+        "name": "Trajanje"
+      },
+      "washer_remaining": {
+        "name": "Preostalo"
+      },
+      "remote_control": {
+        "name": "Daljinsko upravljanje"
+      },
+      "washer_warning_door_is_open": {
+        "name": "Vrata su otvorena"
+      },
+      "washer_warning_no_water": {
+        "name": "Nema vode"
+      },
+      "washer_warning_security": {
+        "name": "Bezbednost"
+      },
+      "washer_prewash": {
+        "name": "Predpranje"
+      },
+      "washer_extrarinse": {
+        "name": "Dodatno ispiranje"
+      },
+      "washer_hidden_anti_crease": {
+        "name": "Pametno protiv gužvanja"
+      },
+      "washer_steam": {
+        "name": "Para"
+      },
+      "washer_phr": {
+        "name": "Uklanjanje dlaka kućnih ljubimaca"
+      },
+      "washer_add_water": {
+        "name": "Dodatna voda"
+      },
+      "washer_soaking": {
+        "name": "Namočavanje"
+      },
+      "washer_night": {
+        "name": "Noćni režim"
+      },
+      "washer_anticrease": {
+        "name": "Protiv gužvanja"
+      },
+      "dryer_program": {
+        "name": "Program",
+        "state": {
+          "program_cottons": "Pamuk",
+          "program_cottons_eco": "Pamuk Eko",
+          "program_synthetics": "Sintetika",
+          "program_mix": "Mešano",
+          "program_woolprotect": "Vuna",
+          "program_night": "Noćni program",
+          "program_drying_rack_timer_programmes": "Sušenje na stalku/Tajmer",
+          "program_jeans": "Farmerke",
+          "program_outdoor_sports": "Outdoor/Sports",
+          "program_duvet_downwear": "Jorgan/Pernata odeća",
+          "program_gentlecare": "Blaga nega",
+          "program_xpress_super_short": "Xpress vrlo kratko",
+          "program_hygienic_drying": "Higijensko sušenje",
+          "program_hygienic_refresh": "Higijensko osvežavanje",
+          "program_bedding": "Posteljina",
+          "program_lingerie": "Donji veš",
+          "program_towel": "Peškiri",
+          "program_fashion": "Moda"
+        }
+      },
+      "dryer_drying_level": {
+        "name": "Nivo sušenja",
+        "state": {
+          "drying_level_iron_dry": "Suvo za peglanje",
+          "drying_level_cupboard_dry": "Suvo za ormar",
+          "drying_level_plus": "Suvo za ormar+",
+          "drying_level_extra_dry": "Ekstra suvo"
+        }
+      },
+      "dryer_anti_creasing": {
+        "name": "Protiv gužvanja",
+        "state": {
+          "0": "Isključeno",
+          "30": "30 min",
+          "60": "60 min",
+          "120": "120 min"
+        }
+      },
+      "dryer_duration": {
+        "name": "Trajanje"
+      },
+      "dryer_lowtemp_mode": {
+        "name": "Režim niske temperature"
+      },
+      "variable_duration": {
+        "name": "Trajanje"
+      },
+      "setting_volume": {
+        "name": "Jačina zvuka",
+        "state": {
+          "volume_close": "Isključeno",
+          "volume_on": "Uključeno"
+        }
+      },
+      "oven_program": {
+        "name": "Program",
+        "state": {
+          "program_static": "Statika",
+          "program_static_fan": "Statika + ventilator",
+          "program_fan_heating": "Grejanje ventilatorom",
+          "program_multi_cooking": "Multi (3D) kuvanje",
+          "program_fan_heat_bottom": "Ventilator + donje grejanje",
+          "program_eco_grill": "Eko gril",
+          "program_full_grill": "Puni gril",
+          "program_full_grill_fan": "Puni gril + ventilator",
+          "program_bottom_heating": "Donje grejanje",
+          "program_defrost": "Odmrzavanje",
+          "program_warm_keeping": "Održavanje toplote",
+          "program_eco_fan_heating": "Eko grejanje ventilatorom",
+          "program_steam_cleaning": "Čišćenje parom",
+          "program_eco_pyro": "Eko čišćenje",
+          "program_pyro": "Čišćenje"
+        }
+      },
+      "oven_temperature": {
+        "name": "Temperatura"
+      },
+      "settings_brightness": {
+        "name": "Osvetljenost"
+      },
+      "variable_delay": {
+        "name": "Vreme završetka programa"
+      },
+      "variable_oven_duration": {
+        "name": "Trajanje kuvanja (Sat : Minut)"
+      },
+      "variable_remaining": {
+        "name": "Preostalo"
+      },
+      "oven_warning_door_is_open": {
+        "name": "Vrata su otvorena"
+      },
+      "oven_warning_door_locked": {
+        "name": "Vrata zaključana"
+      },
+      "oven_warning_error": {
+        "name": "Došlo je do neočekivane greške na uređaju. Proverite korisničko uputstvo."
+      },
+      "oven_booster": {
+        "name": "Pojačivač"
+      },
+      "oven_skip_preheating": {
+        "name": "Preskoči >"
+      },
+      "program": {
+        "name": "Program",
+        "state": {
+          "program_auto": "Auto",
+          "program_mix_wash_plus": "MixWash+",
+          "program_intensive_70": "Intenzivno 70°C",
+          "program_eco_50": "Eko 50°C",
+          "program_glasscare": "GlassCare",
+          "program_new58min": "Brzo pranje 58'",
+          "program_30min": "Mini 30'",
+          "program_prewash": "Predpranje",
+          "program_hygiene": "HygieneCare",
+          "program_daily": "DailyWash",
+          "program_silent": "Tiho pranje",
+          "program_makine_temizleme": "Unutrašnje čišćenje"
+        }
+      },
+      "setting_detergent_type": {
+        "name": "Vrsta deterdženta",
+        "state": {
+          "setting_detergent_type_powder": "Praškasti deterdžent",
+          "setting_detergent_type_tablet": "Tableta deterdžent",
+          "setting_detergent_type_liquid": "Tečni deterdžent"
+        }
+      },
+      "dishwasher_rinse_aid_level": {
+        "name": "Nivo sredstva za ispiranje"
+      },
+      "dishwasher_water_hardness": {
+        "name": "Tvrdoća vode"
+      },
+      "dishwasher_delay": {
+        "name": "Vreme završetka programa"
+      },
+      "dishwasher_duration": {
+        "name": "Trajanje"
+      },
+      "dishwasher_remaining": {
+        "name": "Preostalo vreme"
+      },
+      "dishwasher_warning_no_rinse_aid": {
+        "name": "Nema sredstva za ispiranje"
+      },
+      "dishwasher_warning_no_salt": {
+        "name": "Nema soli"
+      },
+      "dishwasher_warning_no_water": {
+        "name": "Nema vode"
+      },
+      "dishwasher_warning_check_the_filter": {
+        "name": "Proverite filter"
+      },
+      "dishwasher_warning_door_is_open": {
+        "name": "Vrata su otvorena"
+      },
+      "dishwasher_warning_call_service": {
+        "name": "Pozovite servis"
+      },
+      "dishwasher_liquid_detergent_low": {
+        "name": "Malo tečnog deterdženta"
+      },
+      "monitoring_hob2hood": {
+        "name": "HobToHood status",
+        "state": {
+          "paired_with_hob": "Upareno sa pločom",
+          "hob_connected_via_ble": "Ploča povezana putem Bluetooth-a",
+          "hob2hoodactivated": "HobToHood aktivan"
+        }
+      },
+      "zone_1_zone_extended": {
+        "name": "Zona 1 proširenje"
+      },
+      "zone_1_cooking_state": {
+        "name": "Zona 1 stanje kuvanja"
+      },
+      "zone_1_duration": {
+        "name": "Zona 1 trajanje"
+      },
+      "zone_2_zone_extended": {
+        "name": "Zona 2 proširenje"
+      },
+      "zone_2_cooking_state": {
+        "name": "Zona 2 stanje kuvanja"
+      },
+      "zone_2_duration": {
+        "name": "Zona 2 trajanje"
+      },
+      "zone_3_zone_extended": {
+        "name": "Zona 3 proširenje"
+      },
+      "zone_3_cooking_state": {
+        "name": "Zona 3 stanje kuvanja"
+      },
+      "zone_3_duration": {
+        "name": "Zona 3 trajanje"
+      },
+      "zone_4_zone_extended": {
+        "name": "Zona 4 proširenje"
+      },
+      "zone_4_cooking_state": {
+        "name": "Zona 4 stanje kuvanja"
+      },
+      "zone_4_duration": {
+        "name": "Zona 4 trajanje"
+      },
+      "dishwasher_traywash": {
+        "name": "Pranje tacni"
+      },
+      "dishwasher_fastplus": {
+        "name": "Brzo pranje plus"
+      },
+      "dishwasher_steamgloss": {
+        "name": "Parni sjaj"
+      },
+      "dishwasher_extrarinse": {
+        "name": "Dodatno ispiranje"
+      },
+      "dishwasher_halfload": {
+        "name": "Polupunjenje"
+      },
+      "setting_auto_door": {
+        "name": "Automatska vrata"
+      },
+      "setting_inner_illumination": {
+        "name": "Unutrašnje osvetljenje"
+      },
+      "dishwasher_program": {
+        "name": "Program",
+        "state": {
+          "program_auto": "Auto",
+          "program_aqua_flex": "AquaFlex",
+          "program_intensive_70": "Intenzivno 70°C",
+          "program_eco_50": "Eko 50°C",
+          "program_delicate": "Osetljivo",
+          "program_quick_and_shine": "Brzo&Sjaj",
+          "program_mini": "Mini",
+          "program_prewash": "Predpranje",
+          "program_quiet": "Tiho pranje",
+          "program_clean_and_shine": "Čisto&Sjaj",
+          "program_innerclean": "Unutrašnje čišćenje"
+        }
+      },
+      "dishwasher_liquid_detergent_level": {
+        "name": "Tečni deterdžent"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Intenzivna higijena"
+      },
+      "dishwasher_deepwash": {
+        "name": "Dubinsko pranje"
+      },
+      "washer_dry": {
+        "name": "Sušenje",
+        "state": {
+          "dry_off": "Isključeno",
+          "dry_extra": "Ekstra suvo",
+          "dry_cabinet": "Suvo za ormar",
+          "dry_iron": "Suvo za peglanje",
+          "dry_10": "10 min",
+          "dry_20": "20 min",
+          "dry_30": "30 min",
+          "dry_60": "60 min",
+          "dry_90": "90 min",
+          "dry_120": "120 min",
+          "dry_150": "150 min"
+        }
+      },
+      "washer_rinse_count": {
+        "name": "Broj ispiranja"
+      },
+      "air_conditioner_soft_air": {
+        "name": "Blagi protok vazduha",
+        "state": {
+          "air_conditioner_soft_air_off": "Isključeno",
+          "air_conditioner_soft_air_up": "Gore",
+          "air_conditioner_soft_air_down": "Dole"
+        }
+      },
+      "air_conditioner_up_down_vane_control": {
+        "name": "Vertikalni protok vazduha",
+        "state": {
+          "up_down_vane_control_off": "Isključeno",
+          "up_down_vane_control_6": "6",
+          "up_down_vane_control_5": "5",
+          "up_down_vane_control_4": "4",
+          "up_down_vane_control_3": "3",
+          "up_down_vane_control_2": "2",
+          "up_down_vane_control_1": "1",
+          "up_down_vane_control_auto": "Auto"
+        }
+      },
+      "air_conditioner_left_right_vane_control": {
+        "name": "Horizontalni protok vazduha",
+        "state": {
+          "left_right_vane_control_off": "Isključeno",
+          "left_right_vane_control_1": "1",
+          "left_right_vane_control_2": "2",
+          "left_right_vane_control_3": "3",
+          "left_right_vane_control_4": "4",
+          "left_right_vane_control_5": "5",
+          "left_right_vane_control_left": "Levo",
+          "left_right_vane_control_right": "Desno",
+          "left_right_vane_control_auto": "Auto"
+        }
+      },
+      "air_conditioner_instant_consumption": {
+        "name": "Trenutna potrošnja"
+      },
+      "air_conditioner_sleep_mode_minute": {
+        "name": "Minuti režima spavanja klima uređaja"
+      },
+      "air_conditioner_auto_switch_off": {
+        "name": "Automatsko isključivanje"
+      },
+      "air_conditioner_auto_switch_on": {
+        "name": "Automatsko uključivanje"
+      },
+      "fridge_cooler_temperature": {
+        "name": "Temperatura frižidera",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C",
+          "33f": "33 °F",
+          "34f": "34 °F",
+          "35f": "35 °F",
+          "36f": "36 °F",
+          "37f": "37 °F",
+          "38f": "38 °F",
+          "39f": "39 °F",
+          "40f": "40 °F",
+          "41f": "41 °F",
+          "42f": "42 °F",
+          "43f": "43 °F",
+          "44f": "44 °F",
+          "45f": "45 °F",
+          "46f": "46 °F"
+        }
+      },
+      "fridge_freezer_temperature": {
+        "name": "Temperatura zamrzivača"
+      },
+      "fridge_degree_dimension": {
+        "name": "Jedinica temperature",
+        "state": {
+          "degree_dimension_celcius": "Celzijus (°C)",
+          "degree_dimension_fahrenheit": "Farenhajt (°F)"
+        }
+      },
+      "fridge_freezer_joker_mode": {
+        "name": "Režim odeljka zamrzivača",
+        "state": {
+          "freezer_joker_mode_freezer": "Zamrzivač",
+          "freezer_joker_mode_cooler": "Frižider"
+        }
+      },
+      "fridge_freezer_joker_temperature": {
+        "name": "Temperatura odeljka zamrzivača",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C"
+        }
+      },
+      "settings_door_alarm_time": {
+        "name": "Vreme alarma za vrata",
+        "state": {
+          "one_min": "1 min",
+          "one_and_half_min": "1.5 min",
+          "two_min": "2 min",
+          "three_min": "3 min",
+          "four_min": "4 min",
+          "five_min": "5 min"
+        }
+      },
+      "fridge_vacation_mode": {
+        "name": "Režim odmora",
+        "state": {
+          "vacation_mode_passive": "Isključeno",
+          "vacation_mode_active": "Uključeno"
+        }
+      },
+      "fridge_eco_fuzzy": {
+        "name": "Eko Fuzzy",
+        "state": {
+          "eco_fuzzy_passive": "Isključeno",
+          "eco_fuzzy_active": "Uključeno"
+        }
+      },
+      "fridge_freezer_convertible_mode": {
+        "name": "Režim konvertibilnog odeljka",
+        "state": {
+          "freezer_convertible_mode_freezer": "Zamrzivač",
+          "freezer_convertible_mode_cooler": "Frižider",
+          "freezer_convertible_mode_off": "Isključeno"
+        }
+      },
+      "fridge_freezer_convertible_temperature": {
+        "name": "Temperatura konvertibilnog odeljka",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C",
+          "33f": "33 °F",
+          "34f": "34 °F",
+          "35f": "35 °F",
+          "36f": "36 °F",
+          "37f": "37 °F",
+          "38f": "38 °F",
+          "39f": "39 °F",
+          "40f": "40 °F",
+          "41f": "41 °F",
+          "42f": "42 °F",
+          "43f": "43 °F",
+          "44f": "44 °F",
+          "45f": "45 °F",
+          "46f": "46 °F"
+        }
+      },
+      "settings_handle_light": {
+        "name": "Osvetljenje ručke",
+        "state": {
+          "handle_light_passive": "Isključeno",
+          "handle_light_active": "Uključeno"
+        }
+      },
+      "hood_aircleaning": {
+        "name": "Režim čišćenja vazduha",
+        "state": {
+          "hood_mode_normal": "Normalno",
+          "hood_mode_air_cleaning": "Čišćenje vazduha"
+        }
+      },
+      "hood_fan_level": {
+        "name": "Nivo ventilatora",
+        "state": {
+          "hood_fan_level_off": "Isključeno",
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "4"
+        }
+      },
+      "hood_lamp": {
+        "name": "Svetlo",
+        "state": {
+          "hood_lamp_off": "Isključeno",
+          "dim_level_2": "Nivo 2"
+        }
+      },
+      "oven_flexi": {
+        "name": "Flexi",
+        "state": {
+          "no_flexi": "Isključeno",
+          "flexi_level_one": "Nivo 1",
+          "flexi_level_two": "Nivo 2"
+        }
+      },
+      "monitoring_hood_filter_dirt_level_percentage": {
+        "name": "Nivo zaprljanosti filtera"
+      },
+      "dishwasher_variable_delay": {
+        "name": "Vreme završetka programa"
+      },
+      "dryer_steam_mode_level": {
+        "name": "Nivo režima pare",
+        "state": {
+          "steam_mode_level_1": "Nizak",
+          "steam_mode_level_2": "Srednji",
+          "steam_mode_level_3": "Visok"
+        }
+      },
+      "dryer_washing_spin": {
+        "name": "Centrifuga pranja"
+      },
+      "fridge_ice_source": {
+        "name": "Izvor leda"
+      },
+      "monitoring_awaiting_input": {
+        "name": "Čekanje unosa"
+      },
+      "monitoring_cook_more_status": {
+        "name": "Status dodatnog kuvanja"
+      },
+      "oven_suggestion": {
+        "name": "Preporuka"
+      },
+      "settings_detergent_dosing_amount": {
+        "name": "Količina deterdženta"
+      },
+      "settings_detergent_dosing_quantity": {
+        "name": "Doziranje deterdženta"
+      },
+      "settings_hob2hood": {
+        "name": "Podešavanje HobToHood"
+      },
+      "settings_keylocked": {
+        "name": "Zaključavanje tastera"
+      },
+      "settings_language": {
+        "name": "Jezik"
+      },
+      "settings_softener_dosing_amount": {
+        "name": "Količina omekšivača"
+      },
+      "settings_softener_dosing_quantity": {
+        "name": "Doziranje omekšivača"
+      },
+      "washer_dirt_level": {
+        "name": "Nivo zaprljanosti"
+      },
+      "washer_dirt_type": {
+        "name": "Vrsta mrlje"
+      },
+      "washer_extra_rinsing": {
+        "name": "Dodatno ispiranje"
+      },
+      "washer_liquid_detergent_dosing": {
+        "name": "Vrsta deterdženta"
+      },
+      "zone_1_hob_heater_level": {
+        "name": "Zona 1 nivo grejača"
+      },
+      "zone_1_hob_predefined_program": {
+        "name": "Zona 1 unapred definisan program"
+      },
+      "zone_1_program": {
+        "name": "Zona 1 program"
+      },
+      "zone_2_hob_heater_level": {
+        "name": "Zona 2 nivo grejača"
+      },
+      "zone_2_hob_predefined_program": {
+        "name": "Zona 2 unapred definisan program"
+      },
+      "zone_2_program": {
+        "name": "Zona 2 program"
+      },
+      "zone_3_hob_heater_level": {
+        "name": "Zona 3 nivo grejača"
+      },
+      "zone_3_hob_predefined_program": {
+        "name": "Zona 3 unapred definisan program"
+      },
+      "zone_3_program": {
+        "name": "Zona 3 program"
+      },
+      "zone_4_hob_heater_level": {
+        "name": "Zona 4 nivo grejača"
+      },
+      "zone_4_hob_predefined_program": {
+        "name": "Zona 4 unapred definisan program"
+      },
+      "zone_4_program": {
+        "name": "Zona 4 program"
+      }
+    },
+    "number": {
+      "delay_start_set": {
+        "name": "Odloženi start"
+      }
+    },
+    "binary_sensor": {
+      "remote_control": {
+        "name": "Daljinsko upravljanje"
+      },
+      "dryer_warning_door_is_open": {
+        "name": "Vrata su otvorena"
+      },
+      "dryer_warning_tankfull": {
+        "name": "Rezervoar za vodu pun"
+      },
+      "dryer_warning_check_the_filter": {
+        "name": "Proverite filter"
+      },
+      "dryer_warning_check_the_condenser_filter": {
+        "name": "Proverite kondenzatorski filter"
+      },
+      "dryer_warning_drum_empty": {
+        "name": "Bubanj prazan"
+      },
+      "dryer_message_child_lock": {
+        "name": "Dečija zaštita aktivna"
+      },
+      "dryer_message_end_program": {
+        "name": "Program završen"
+      },
+      "dryer_message_anti_creasing": {
+        "name": "Protiv gužvanja aktivno"
+      },
+      "dryer_message_anti_creasing_finished": {
+        "name": "Protiv gužvanja završeno"
+      },
+      "washer_warning_door_is_open": {
+        "name": "Vrata su otvorena"
+      },
+      "washer_warning_no_water": {
+        "name": "Nema vode"
+      },
+      "washer_warning_security": {
+        "name": "Bezbednost"
+      },
+      "oven_warning_door_is_open": {
+        "name": "Vrata su otvorena"
+      },
+      "oven_warning_door_locked": {
+        "name": "Vrata zaključana"
+      },
+      "oven_warning_error": {
+        "name": "Došlo je do neočekivane greške na uređaju. Proverite korisničko uputstvo."
+      },
+      "dishwasher_warning_no_rinse_aid": {
+        "name": "Nema sredstva za ispiranje"
+      },
+      "dishwasher_warning_no_salt": {
+        "name": "Nema soli"
+      },
+      "dishwasher_warning_no_water": {
+        "name": "Nema vode"
+      },
+      "dishwasher_warning_check_the_filter": {
+        "name": "Proverite filter"
+      },
+      "dishwasher_warning_door_is_open": {
+        "name": "Vrata su otvorena"
+      },
+      "dishwasher_warning_call_service": {
+        "name": "Pozovite servis"
+      },
+      "dishwasher_liquid_detergent_low": {
+        "name": "Malo tečnog deterdženta"
+      },
+      "zone_1_hob_hot": {
+        "name": "Zona 1 vruća površina"
+      },
+      "zone_1_hob_pan_info": {
+        "name": "Zona 1 detekcija posude"
+      },
+      "zone_2_hob_hot": {
+        "name": "Zona 2 vruća površina"
+      },
+      "zone_2_hob_pan_info": {
+        "name": "Zona 2 detekcija posude"
+      },
+      "zone_3_hob_hot": {
+        "name": "Zona 3 vruća površina"
+      },
+      "zone_3_hob_pan_info": {
+        "name": "Zona 3 detekcija posude"
+      },
+      "zone_4_hob_hot": {
+        "name": "Zona 4 vruća površina"
+      },
+      "zone_4_hob_pan_info": {
+        "name": "Zona 4 detekcija posude"
+      },
+      "fridge_warning_door_is_open": {
+        "name": "Vrata su otvorena"
+      },
+      "fridge_warning_high_temperature": {
+        "name": "Visoka temperatura"
+      },
+      "washer_warning_low_detergent": {
+        "name": "Malo deterdženta"
+      },
+      "washer_warning_low_softener": {
+        "name": "Malo omekšivača"
+      },
+      "hood_filter_full": {
+        "name": "Filter pun"
+      },
+      "oven_warning_probe_is_detached": {
+        "name": "Sonda je odvojena"
+      },
+      "oven_warning_pyro_cleaning": {
+        "name": "Pirolitičko čišćenje"
+      },
+      "washer_warning_liquid_detergent_pumping": {
+        "name": "Deterdžent se pumpa"
+      },
+      "washer_warning_no_liquid_detergent": {
+        "name": "Dodajte tečni deterdžent"
+      },
+      "washer_warning_no_powder_detergent": {
+        "name": "Izaberite praškasti deterdžent"
+      },
+      "washer_warning_no_softener": {
+        "name": "Dodajte omekšivač"
+      },
+      "washer_warning_pop_up": {
+        "name": "Program ne može da se pokrene/zaustavljen"
+      }
+    },
+    "climate": {
+      "ac": {
+        "state_attributes": {
+          "fan_mode": {
+            "name": "Brzina ventilatora",
+            "state": {
+              "wind_strength_auto": "Auto",
+              "wind_strength_low": "Niska",
+              "wind_strength_mid": "Srednja",
+              "wind_strength_high": "Visoka",
+              "2": "1",
+              "3": "2",
+              "4": "3",
+              "5": "4",
+              "6": "5",
+              "wind_strength_chaos_swing": "Haotično njihanje"
+            }
+          }
+        },
+        "name": "Klima"
+      }
+    },
+    "switch": {
+      "dryer_lowtemp_mode": {
+        "name": "Režim niske temperature"
+      },
+      "washer_prewash": {
+        "name": "Predpranje"
+      },
+      "washer_extrarinse": {
+        "name": "Dodatno ispiranje"
+      },
+      "washer_hidden_anti_crease": {
+        "name": "Pametno protiv gužvanja"
+      },
+      "washer_steam": {
+        "name": "Para"
+      },
+      "washer_phr": {
+        "name": "Uklanjanje dlaka kućnih ljubimaca"
+      },
+      "washer_add_water": {
+        "name": "Dodatna voda"
+      },
+      "washer_soaking": {
+        "name": "Namočavanje"
+      },
+      "washer_night": {
+        "name": "Noćni režim"
+      },
+      "washer_anticrease": {
+        "name": "Protiv gužvanja"
+      },
+      "oven_booster": {
+        "name": "Pojačivač"
+      },
+      "oven_skip_preheating": {
+        "name": "Preskoči >"
+      },
+      "dishwasher_traywash": {
+        "name": "Pranje tacni"
+      },
+      "dishwasher_fastplus": {
+        "name": "Brzo pranje plus"
+      },
+      "zone_1_hob_flexi": {
+        "name": "Zona 1 FlexiZone"
+      },
+      "zone_2_hob_flexi": {
+        "name": "Zona 2 FlexiZone"
+      },
+      "zone_3_hob_flexi": {
+        "name": "Zona 3 FlexiZone"
+      },
+      "zone_4_hob_flexi": {
+        "name": "Zona 4 FlexiZone"
+      },
+      "dishwasher_steamgloss": {
+        "name": "Parni sjaj"
+      },
+      "dishwasher_extrarinse": {
+        "name": "Dodatno ispiranje"
+      },
+      "dishwasher_halfload": {
+        "name": "Polupunjenje"
+      },
+      "setting_auto_door": {
+        "name": "Automatska vrata"
+      },
+      "setting_inner_illumination": {
+        "name": "Unutrašnje osvetljenje"
+      },
+      "dishwasher_hygiene_intense": {
+        "name": "Intenzivna higijena"
+      },
+      "dishwasher_deepwash": {
+        "name": "Dubinsko pranje"
+      },
+      "fridge_quick_cool": {
+        "name": "Brzo hlađenje"
+      },
+      "fridge_a_cool": {
+        "name": "A-hlađenje"
+      },
+      "fridge_quick_freeze": {
+        "name": "Brzo zamrzavanje"
+      },
+      "washer_fast_plus": {
+        "name": "Brzo+"
+      },
+      "washer_heavy": {
+        "name": "Jako pranje"
+      },
+      "washer_softener_dosage": {
+        "name": "Automatsko doziranje omekšivača"
+      },
+      "washer_liquid_detergent": {
+        "name": "Automatsko doziranje deterdženta"
+      },
+      "dishwasher_extra_shiny": {
+        "name": "Ekstra sjaj"
+      },
+      "dishwasher_fastwash": {
+        "name": "Brzo pranje"
+      },
+      "dishwasher_filter_self_cleaning": {
+        "name": "Samostalno čišćenje filtera"
+      },
+      "dishwasher_strong_wash": {
+        "name": "Jako pranje"
+      },
+      "dishwasher_tablet": {
+        "name": "Tableta"
+      },
+      "dryer_fast_mode": {
+        "name": "Brzi režim"
+      },
+      "dryer_steam_mode_onoff": {
+        "name": "Režim pare"
+      },
+      "fridge_ice_machine": {
+        "name": "Mašina za led"
+      },
+      "washer_anti_crease": {
+        "name": "Daljinsko protiv gužvanja"
+      },
+      "washer_extra_rinse": {
+        "name": "Dodatno ispiranje"
+      },
+      "washer_extra_water": {
+        "name": "Dodatna voda"
+      },
+      "washer_fast": {
+        "name": "Brzo"
+      },
+      "washer_hidden_extra_water": {
+        "name": "Dodatna voda"
+      },
+      "washer_silent_mode": {
+        "name": "Tihi režim"
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opcije Homewhiz",
+        "description": "Omogućava naprednu konfiguraciju integracije.",
+        "data": {
+          "bt_reconnect_interval": "Interval za ponovno povezivanje Bluetooth-a (u satima)"
+        }
+      }
+    }
+  }
+}
