@@ -87,3 +87,42 @@ def test_device_running(config: ApplianceConfiguration) -> None:
     test_case.assertEqual(values["state"], "device_state_running")
     test_case.assertEqual(values["variable_remaining"], 145)
     test_case.assertIsNotNone(values["variable_delay"])
+
+
+def test_device_on_but_running_not_yet_finished(
+    config: ApplianceConfiguration,
+) -> None:
+    """A real remaining time while running must survive, only the finished
+    message (not DEVICE_STATE_ON by itself) should zero it."""
+    data = bytearray(100)
+    data[49] = 10  # DEVICE_STATE_ON
+    data[48] = 7  # DRYER_MESSAGE_DRYING, not finished
+    data[40] = 0  # remaining hours
+    data[41] = 25  # remaining minutes
+
+    controls = generate_controls_from_config("test_dryer_on_drying", config)
+    values = {control.key: control.get_value(data) for control in controls}
+
+    test_case.assertEqual(values["sub_state"], "dryer_message_drying")
+    test_case.assertEqual(values["variable_remaining"], 25)
+
+
+def test_device_on_and_finished(config: ApplianceConfiguration) -> None:
+    """2026-10-18 live log: the dryer reports DEVICE_STATE_ON with
+    DRYER_MESSAGE_PROGRAM_FINISHED for minutes before it reaches
+    DEVICE_STATE_OFF, during which it keeps the last remaining time (here 1
+    minute) instead of reporting 0.
+    """
+    data = bytearray(100)
+    data[49] = 10  # DEVICE_STATE_ON
+    data[48] = 1  # DRYER_MESSAGE_PROGRAM_FINISHED
+    data[40] = 0  # remaining hours
+    data[41] = 1  # remaining minutes, stuck
+
+    controls = generate_controls_from_config("test_dryer_on_finished", config)
+    values = {control.key: control.get_value(data) for control in controls}
+
+    test_case.assertEqual(values["state"], "device_state_on")
+    test_case.assertEqual(values["sub_state"], "dryer_message_program_finished")
+    test_case.assertEqual(values["variable_remaining"], 0)
+    test_case.assertIsNone(values["variable_delay"])
