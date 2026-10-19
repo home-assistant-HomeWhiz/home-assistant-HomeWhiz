@@ -1,4 +1,4 @@
-import datetime
+import datetime as dt
 import json
 from pathlib import Path
 from unittest import TestCase
@@ -46,10 +46,8 @@ def test_on(config: ApplianceConfiguration) -> None:
             "washer_temperature": "temperature_30",
             "washer_steam": False,
             "washer_duration": 137,
-            "washer_delay": datetime.datetime.now(tz=datetime.UTC).replace(
-                second=0, microsecond=0
-            )
-            + datetime.timedelta(minutes=137),
+            "washer_delay": dt.datetime.now(tz=dt.UTC).replace(second=0, microsecond=0)
+            + dt.timedelta(minutes=137),
             "washer_remaining": 137,
             "remote_control": False,
             "washer_warning_door_is_open": False,
@@ -93,10 +91,8 @@ def test_running(config: ApplianceConfiguration) -> None:
             "washer_temperature": "temperature_30",
             "washer_steam": False,
             "washer_duration": 137,
-            "washer_delay": datetime.datetime.now(tz=datetime.UTC).replace(
-                second=0, microsecond=0
-            )
-            + datetime.timedelta(minutes=57),
+            "washer_delay": dt.datetime.now(tz=dt.UTC).replace(second=0, microsecond=0)
+            + dt.timedelta(minutes=57),
             "washer_remaining": 57,
             "remote_control": False,
             "washer_warning_door_is_open": False,
@@ -140,10 +136,8 @@ def test_spinning(config: ApplianceConfiguration) -> None:
             "washer_temperature": "temperature_30",
             "washer_steam": False,
             "washer_duration": 137,
-            "washer_delay": datetime.datetime.now(tz=datetime.UTC).replace(
-                second=0, microsecond=0
-            )
-            + datetime.timedelta(minutes=10),
+            "washer_delay": dt.datetime.now(tz=dt.UTC).replace(second=0, microsecond=0)
+            + dt.timedelta(minutes=10),
             "washer_remaining": 10,
             "remote_control": False,
             "washer_warning_door_is_open": False,
@@ -187,10 +181,8 @@ def test_delay_defined(config: ApplianceConfiguration) -> None:
             "washer_temperature": "temperature_40",
             "washer_steam": False,
             "washer_remaining": 136,
-            "washer_delay": datetime.datetime.now(tz=datetime.UTC).replace(
-                second=0, microsecond=0
-            )
-            + datetime.timedelta(minutes=104 + 136),
+            "washer_delay": dt.datetime.now(tz=dt.UTC).replace(second=0, microsecond=0)
+            + dt.timedelta(minutes=104 + 136),
             "washer_duration": 136,
             "remote_control": False,
             "washer_warning_door_is_open": True,
@@ -205,10 +197,10 @@ def test_delay_defined(config: ApplianceConfiguration) -> None:
             "custom_duration_level": "duration_level_0",
             "delay_start#0": 104,
             "delay_start_set#0": 104,
-            "delay_start_time#0": datetime.datetime.now(tz=datetime.UTC).replace(
+            "delay_start_time#0": dt.datetime.now(tz=dt.UTC).replace(
                 second=0, microsecond=0
             )
-            + datetime.timedelta(minutes=104),
+            + dt.timedelta(minutes=104),
         },
     )
 
@@ -240,10 +232,8 @@ def test_warning(config: ApplianceConfiguration) -> None:
             "washer_temperature": "temperature_40",
             "washer_steam": False,
             "washer_remaining": 126,
-            "washer_delay": datetime.datetime.now(tz=datetime.UTC).replace(
-                second=0, microsecond=0
-            )
-            + datetime.timedelta(minutes=126),
+            "washer_delay": dt.datetime.now(tz=dt.UTC).replace(second=0, microsecond=0)
+            + dt.timedelta(minutes=126),
             "washer_duration": 126,
             "remote_control": False,
             "washer_warning_door_is_open": True,
@@ -291,10 +281,8 @@ def test_remote_control_custom_settings(config: ApplianceConfiguration) -> None:
             "washer_temperature": "temperature_40",
             "washer_steam": False,
             "washer_duration": 113,
-            "washer_delay": datetime.datetime.now(tz=datetime.UTC).replace(
-                second=0, microsecond=0
-            )
-            + datetime.timedelta(minutes=113),
+            "washer_delay": dt.datetime.now(tz=dt.UTC).replace(second=0, microsecond=0)
+            + dt.timedelta(minutes=113),
             "washer_remaining": 113,
             "remote_control": True,
             "washer_warning_door_is_open": False,

@@ -1,4 +1,4 @@
-import datetime
+import datetime as dt
 import json
 from pathlib import Path
 from unittest import TestCase
@@ -51,10 +51,10 @@ def test_off(config: ApplianceConfiguration) -> None:
             "oven_temperature": 200,
             "state": "device_state_off",
             "sub_state": None,
-            "variable_delay": datetime.datetime.now(tz=datetime.UTC).replace(
+            "variable_delay": dt.datetime.now(tz=dt.UTC).replace(
                 second=0, microsecond=0
             )
-            + datetime.timedelta(minutes=98 + 6),
+            + dt.timedelta(minutes=98 + 6),
             "variable_oven_duration": 0,
             "variable_remaining": 6,
             "remote_control": True,
@@ -65,9 +65,9 @@ def test_off(config: ApplianceConfiguration) -> None:
             "settings_volume": "volume_high",
             "delay_start#0": 98,
             "delay_start_set#0": 98,
-            "delay_start_time#0": datetime.datetime.now(tz=datetime.UTC).replace(
+            "delay_start_time#0": dt.datetime.now(tz=dt.UTC).replace(
                 second=0, microsecond=0
             )
-            + datetime.timedelta(minutes=98),
+            + dt.timedelta(minutes=98),
         },
     )
