@@ -1,4 +1,4 @@
-import datetime
+import datetime as dt
 import hashlib
 import hmac
 import json
@@ -194,7 +194,7 @@ async def make_api_get_request(
     def _handle_request_error(text: str, err: Exception) -> None:
         raise RequestError(text) from err
 
-    t = datetime.datetime.now(tz=datetime.UTC)
+    t = dt.datetime.now(tz=dt.UTC)
     amz_date = t.strftime("%Y%m%dT%H%M%SZ")
     # Date w/o time, used in credential scope
     date_stamp = t.strftime("%Y%m%d")
