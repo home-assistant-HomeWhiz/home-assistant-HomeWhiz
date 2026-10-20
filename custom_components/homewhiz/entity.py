@@ -11,9 +11,12 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 
 
 def build_device_info(unique_name: str, data: EntryData) -> DeviceInfo:
+    # The API name can end in a space ("Trockner "), which would double the
+    # space in every entity's friendly name. Only the display name is stripped,
+    # the identifiers stay as they are.
     friendly_name = (
         data.appliance_info.name if data.appliance_info is not None else unique_name
-    )
+    ).strip()
     manufacturer = (
         brand_name_by_code[data.appliance_info.brand]
         if data.appliance_info is not None
