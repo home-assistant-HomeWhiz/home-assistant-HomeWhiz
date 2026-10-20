@@ -256,14 +256,27 @@ class WriteTimeControl(Control):
 
 
 class StateAwareRemainingTimeControl(Control):
-    """Wraps a remaining time control to return 0 when device is off."""
+    """Wraps a remaining time control to return 0 when the device is off or,
+    for appliances that report it, once the programme itself is finished.
+
+    A dryer reaches DEVICE_STATE_OFF only after an internal delay following
+    DRYER_MESSAGE_PROGRAM_FINISHED (observed ~11 minutes on 2026-10-18), and
+    keeps reporting the last non-zero remaining time until then.
+    """
 
     def __init__(
-        self, key: str, remaining_control: TimeControl, state_control: Control | None
+        self,
+        key: str,
+        remaining_control: TimeControl,
+        state_control: Control | None,
+        sub_state_control: Control | None = None,
+        finished_sub_state: str | None = None,
     ):
         self.key = key
         self.remaining_control = remaining_control
         self.state_control = state_control
+        self.sub_state_control = sub_state_control
+        self.finished_sub_state = finished_sub_state
 
     def get_value(self, data: bytearray) -> int:
         _LOGGER.debug(
@@ -280,6 +293,15 @@ class StateAwareRemainingTimeControl(Control):
             if state == "device_state_off":
                 _LOGGER.debug(
                     "Device is off, returning 0 for remaining time %s",
+                    self.key,
+                )
+                return 0
+        if self.sub_state_control is not None and self.finished_sub_state is not None:
+            sub_state = self.sub_state_control.get_value(data)
+            if sub_state == self.finished_sub_state:
+                _LOGGER.debug(
+                    "Programme is finished (%s), returning 0 for remaining time %s",
+                    sub_state,
                     self.key,
                 )
                 return 0
@@ -780,6 +802,8 @@ def build_controls_from_progress_variables(  # noqa: C901
     progress_variables: ApplianceProgress | None,
     state_control: Control | None = None,
     state_aware_remaining_keys: Sequence[str] = ("washer_remaining",),
+    sub_state_control: Control | None = None,
+    finished_sub_states: Mapping[str, str] | None = None,
 ) -> list[Control]:
     if progress_variables is None:
         return []
@@ -835,6 +859,8 @@ def build_controls_from_progress_variables(  # noqa: C901
                     key=control.key,
                     remaining_control=control,
                     state_control=state_control,
+                    sub_state_control=sub_state_control,
+                    finished_sub_state=(finished_sub_states or {}).get(control.key),
                 )
 
     for calculation_key, feature_key_tuple in delay_keys.items():
@@ -1234,17 +1260,27 @@ def generate_controls_from_config(
             build_controls_from_monitorings(getattr(config, "monitorings", None) or [])
         )
 
+        sub_state_control = build_control_from_substate(
+            getattr(config, "deviceSubStates", None)
+        )
+
         # Dryers keep reporting the selected programme's duration as
         # remaining time while off, which would push the end time forward
         state_aware_remaining_keys = ["washer_remaining"]
+        finished_sub_states: dict[str, str] = {}
         if program_control is not None and program_control.key == "dryer_program":
             state_aware_remaining_keys.append("variable_remaining")
+            # The dryer reaches DEVICE_STATE_OFF only after an internal delay
+            # following this message, keeping remaining time non-zero until then.
+            finished_sub_states["variable_remaining"] = "dryer_message_program_finished"
 
         progress_controls = (
             build_controls_from_progress_variables(
                 getattr(config, "progressVariables", None),
                 state_control,
                 state_aware_remaining_keys,
+                sub_state_control,
+                finished_sub_states,
             )
             if getattr(config, "progressVariables", None) is not None
             else []
@@ -1274,7 +1310,7 @@ def generate_controls_from_config(
         possible_controls: list[Control | None] = [
             state_control,
             program_control,
-            build_control_from_substate(getattr(config, "deviceSubStates", None)),
+            sub_state_control,
             *sub_program_controls,
             *custom_sub_program_controls,
             *monitorings_controls,
