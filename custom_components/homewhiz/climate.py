@@ -125,6 +125,8 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
 
     @property
     def current_temperature(self) -> float | None:  # type: ignore[override]
+        if self.coordinator.data is None:
+            return None
         return self._control.current_temperature.get_value(self.coordinator.data)
 
     @property
@@ -133,6 +135,8 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
 
     @property
     def fan_mode(self) -> str | None:  # type: ignore[override]
+        if self.coordinator.data is None:
+            return None
         return self._control.fan_mode.get_value(self.coordinator.data)
 
     async def async_set_fan_mode(self, fan_mode: str) -> None:

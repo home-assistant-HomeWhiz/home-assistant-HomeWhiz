@@ -76,4 +76,4 @@ def test_turn_on_without_previous_mode_uses_a_supported_mode(
 
     asyncio.run(climate_entity.async_turn_on())
 
-    assert climate_entity.coordinator.send_command.await_count > 0
+    assert climate_entity.coordinator.send_command.await_count > 0  # type: ignore[attr-defined]
