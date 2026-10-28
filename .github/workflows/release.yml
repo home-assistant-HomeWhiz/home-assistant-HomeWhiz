@@ -11,6 +11,14 @@ jobs:
       contents: write
     steps:
     - uses: actions/checkout@v7
+    - name: Set manifest.json version from the release tag
+      env:
+        RELEASE_TAG: ${{ github.event.release.tag_name }}
+      run: |
+        VERSION="${RELEASE_TAG,,}"
+        jq --arg version "$VERSION" '.version = $version' \
+          custom_components/homewhiz/manifest.json > manifest.tmp
+        mv manifest.tmp custom_components/homewhiz/manifest.json
     - name: Create homewhiz.zip
       run: cd custom_components/homewhiz && zip -r ../../homewhiz.zip .
     - name: Upload homewhiz.zip to release
