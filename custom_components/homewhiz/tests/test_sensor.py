@@ -10,7 +10,7 @@ and monkeypatched RestoreSensor hooks rather than a real hass instance.
 import asyncio
 import math
 from datetime import UTC, datetime
-from unittest.mock import AsyncMock, Mock, patch
+from unittest.mock import AsyncMock, Mock, PropertyMock, patch
 
 import pytest
 from homeassistant.components.sensor import (
@@ -421,3 +421,78 @@ def test_advance_integration_never_raises_on_bad_coordinator_data(
     # normally; only coordinator.data being None short-circuits before any
     # byte access happens. Either way, the result must stay a finite float.
     assert math.isfinite(entity.native_value)
+
+
+def _sensor_entity(control: NumericControl) -> HomeWhizSensorEntity:
+    return HomeWhizSensorEntity(
+        coordinator=Mock(),
+        control=control,
+        device_name="Test AC",
+        data=_entry_data(),
+    )
+
+
+def test_entity_id_changed_rekeys_my_entity_ids() -> None:
+    """A renamed entity_id must replace the old key in my_entity_ids, which
+    feeds the "sources" attribute of SummedTimestampControl sensors."""
+    control = _power_control()
+    entity = _sensor_entity(control)
+    control.my_entity_ids = {  # type: ignore[attr-defined]
+        "sensor.old": "Power",
+        "select.other": "Other",
+    }
+    entity.entity_id = "sensor.new"
+
+    with patch.object(
+        HomeWhizSensorEntity, "name", new_callable=PropertyMock, return_value="Power"
+    ):
+        entity.async_entity_id_changed("sensor.old")
+
+    assert control.my_entity_ids == {  # type: ignore[attr-defined]
+        "select.other": "Other",
+        "sensor.new": "Power",
+    }
+
+
+def test_entity_id_changed_without_my_entity_ids_is_a_no_op() -> None:
+    control = _power_control()
+    entity = _sensor_entity(control)
+    entity.entity_id = "sensor.new"
+
+    entity.async_entity_id_changed("sensor.old")
+
+    assert not hasattr(control, "my_entity_ids")
+
+
+def test_entity_id_changed_calls_the_parent_hook_if_present() -> None:
+    """From Home Assistant 2026.11 on the base class defines the hook and it
+    must be called. Older versions lack it, which the other tests cover."""
+    control = _power_control()
+    entity = _sensor_entity(control)
+    control.my_entity_ids = {"sensor.old": "Power"}  # type: ignore[attr-defined]
+    entity.entity_id = "sensor.new"
+    parent = Mock()
+
+    with (
+        patch.object(CoordinatorEntity, "async_entity_id_changed", parent, create=True),
+        patch.object(
+            HomeWhizSensorEntity,
+            "name",
+            new_callable=PropertyMock,
+            return_value="Power",
+        ),
+    ):
+        entity.async_entity_id_changed("sensor.old")
+
+    parent.assert_called_once_with("sensor.old")
+    assert control.my_entity_ids == {"sensor.new": "Power"}  # type: ignore[attr-defined]
+
+
+def test_energy_entity_opts_in_to_entity_id_changes() -> None:
+    """HomeWhizEnergyEntity defines its own async_added_to_hass, so it needs
+    its own async_entity_id_changed to be changed in place."""
+    assert "async_entity_id_changed" in HomeWhizEnergyEntity.__dict__
+    entity = _energy_entity()
+    entity.entity_id = "sensor.new_total"
+
+    entity.async_entity_id_changed("sensor.old_total")
