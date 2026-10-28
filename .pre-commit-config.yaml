@@ -43,7 +43,7 @@ repos:
   - id: mypy
     additional_dependencies:
     - aiohttp
-    - homeassistant-stubs==2026.9.4
+    - homeassistant==2026.10.4
     - types-awscrt
     - voluptuous-stubs
     - dacite
