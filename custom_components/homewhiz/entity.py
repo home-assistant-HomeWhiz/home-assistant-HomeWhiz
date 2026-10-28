@@ -1,5 +1,6 @@
 import logging
 
+from homeassistant.core import callback
 from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
@@ -57,6 +58,21 @@ class HomeWhizEntity(CoordinatorEntity[HomewhizCoordinator]):  # type: ignore[ty
                 self._control.my_entity_ids.update({self.entity_id: self.name})
             else:
                 setattr(self._control, "my_entity_ids", {self.entity_id: self.name})
+
+    @callback
+    def async_entity_id_changed(self, old_entity_id: str) -> None:
+        """Re-key my_entity_ids when the entity_id is changed in place.
+
+        Home Assistant calls this from 2026.11 on. The parent method does not
+        exist before that version, hence the guarded super() call.
+        """
+        parent = getattr(super(), "async_entity_id_changed", None)
+        if parent is not None:
+            parent(old_entity_id)
+        ids = getattr(getattr(self, "_control", None), "my_entity_ids", None)
+        if ids is not None:
+            ids.pop(old_entity_id, None)
+            ids[self.entity_id] = self.name
 
     @property
     def available(self) -> bool:  # type: ignore[override]
