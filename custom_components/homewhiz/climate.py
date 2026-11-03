@@ -20,9 +20,15 @@ from .homewhiz import HomewhizCoordinator
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
+# HA 2026.11 deprecates the unprefixed temperature properties in favour of
+# native_* ones (removal 2027.11). Older versions only read the unprefixed names.
+_HAS_NATIVE_TEMPERATURE = hasattr(ClimateEntity, "native_temperature_unit")
+
 
 class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
-    _attr_temperature_unit = UnitOfTemperature.CELSIUS
+    _attr_native_temperature_unit = UnitOfTemperature.CELSIUS
+    if not _HAS_NATIVE_TEMPERATURE:
+        _attr_temperature_unit = UnitOfTemperature.CELSIUS  # type: ignore[misc]
     # https://developers.home-assistant.io/blog/2024/01/24/climate-climateentityfeatures-expanded/
     _enable_turn_on_off_backwards_compatibility = False
 
@@ -104,15 +110,15 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
         return self._control.target_temperature.bounds.step
 
     @property
-    def target_temperature_low(self) -> float:  # type: ignore[override]
+    def native_target_temperature_low(self) -> float:  # type: ignore[override]
         return self._control.target_temperature.bounds.lowerLimit
 
     @property
-    def target_temperature_high(self) -> float:  # type: ignore[override]
+    def native_target_temperature_high(self) -> float:  # type: ignore[override]
         return self._control.target_temperature.bounds.upperLimit
 
     @property
-    def target_temperature(self) -> float | None:  # type: ignore[override]
+    def native_target_temperature(self) -> float | None:  # type: ignore[override]
         if self.coordinator.data is None:
             return None
         return self._control.target_temperature.get_value(self.coordinator.data)
@@ -124,10 +130,16 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
         )
 
     @property
-    def current_temperature(self) -> float | None:  # type: ignore[override]
+    def native_current_temperature(self) -> float | None:  # type: ignore[override]
         if self.coordinator.data is None:
             return None
         return self._control.current_temperature.get_value(self.coordinator.data)
+
+    if not _HAS_NATIVE_TEMPERATURE:
+        target_temperature_low = native_target_temperature_low  # type: ignore[misc]
+        target_temperature_high = native_target_temperature_high  # type: ignore[misc]
+        target_temperature = native_target_temperature  # type: ignore[misc]
+        current_temperature = native_current_temperature  # type: ignore[misc]
 
     @property
     def fan_modes(self) -> list[str]:  # type: ignore[override]
