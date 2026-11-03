@@ -14,6 +14,7 @@ from unittest.mock import AsyncMock, Mock
 
 import pytest
 from dacite import from_dict
+from homeassistant.const import UnitOfTemperature
 
 from custom_components.homewhiz.api import ApplianceContents
 from custom_components.homewhiz.appliance_config import ApplianceConfiguration
@@ -77,3 +78,30 @@ def test_turn_on_without_previous_mode_uses_a_supported_mode(
     asyncio.run(climate_entity.async_turn_on())
 
     assert climate_entity.coordinator.send_command.await_count > 0  # type: ignore[attr-defined]
+
+
+def test_temperature_values_through_home_assistants_public_names(
+    climate_entity: HomeWhizClimateEntity,
+) -> None:
+    """HA reads these public names on every version: directly before 2026.11, via
+    its deprecation shim to the native_* properties from 2026.11 on. The entity
+    must answer the same way on both."""
+    control = climate_entity._control
+    data = climate_entity.coordinator.data
+    assert data is not None
+
+    assert climate_entity.temperature_unit == UnitOfTemperature.CELSIUS
+    assert climate_entity.current_temperature == control.current_temperature.get_value(
+        data
+    )
+    assert climate_entity.target_temperature == control.target_temperature.get_value(
+        data
+    )
+    assert (
+        climate_entity.target_temperature_low
+        == control.target_temperature.bounds.lowerLimit
+    )
+    assert (
+        climate_entity.target_temperature_high
+        == control.target_temperature.bounds.upperLimit
+    )
