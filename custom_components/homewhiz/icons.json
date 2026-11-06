@@ -156,6 +156,12 @@
       }
     },
     "switch": {
+      "device_power": {
+        "default": "mdi:power",
+        "state": {
+          "off": "mdi:power-off"
+        }
+      },
       "dryer_lowtemp_mode": {
         "default": "mdi:thermometer-low"
       },

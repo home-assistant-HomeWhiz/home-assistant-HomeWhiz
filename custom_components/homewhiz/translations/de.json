@@ -1468,6 +1468,9 @@
       }
     },
     "switch": {
+      "device_power": {
+        "name": "Ein/Aus"
+      },
       "dryer_lowtemp_mode": {
         "name": "Niedrigtemperatur-Modus"
       },
