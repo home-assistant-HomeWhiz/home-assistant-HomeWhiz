@@ -1,0 +1,505 @@
+{
+  "autoController": {
+    "hasAutoController": true
+  },
+  "clock": null,
+  "commands": null,
+  "consumableSettings": null,
+  "customSubPrograms": null,
+  "deviceStates": {
+    "states": [
+      {
+        "allowedTransitions": [
+          "DEVICE_STATE_OFF"
+        ],
+        "notificationInfo": {
+          "necessity": null,
+          "priority": "LOW",
+          "strKey": "DEVICE_STATE_ON_NOTIFICATION"
+        },
+        "strKey": "DEVICE_STATE_ON",
+        "wifiArrayValue": 10
+      },
+      {
+        "allowedTransitions": [
+          "DEVICE_STATE_ON"
+        ],
+        "notificationInfo": {
+          "necessity": null,
+          "priority": "LOW",
+          "strKey": "DEVICE_STATE_OFF_NOTIFICATION"
+        },
+        "strKey": "DEVICE_STATE_OFF",
+        "wifiArrayValue": 20
+      }
+    ],
+    "wfaIndex": null,
+    "wifiArrayReadIndex": 43,
+    "wifiArrayWriteIndex": 44
+  },
+  "deviceSubStates": null,
+  "deviceWarnings": {
+    "warnings": [],
+    "wifiArrayByteCount": null,
+    "wifiArrayReadIndex": 56
+  },
+  "deviceWarningsExtra": null,
+  "downloadCycleSettingsModel": null,
+  "monitorings": [
+    {
+      "boundedValues": [
+        {
+          "factor": 0.5,
+          "lowerLimit": 0,
+          "step": 0.5,
+          "strKey": "",
+          "unit": "°C",
+          "upperLimit": 100
+        }
+      ],
+      "enumValues": null,
+      "isSwitch": 0,
+      "isVisible": 1,
+      "strKey": "AIR_CONDITIONER_ROOM_TEMPERATURE",
+      "wfaWriteIndex": null,
+      "wifiArrayIndex": 40
+    },
+    {
+      "boundedValues": [
+        {
+          "factor": 1,
+          "lowerLimit": 0,
+          "step": 1,
+          "strKey": "",
+          "unit": "hw",
+          "upperLimit": 500
+        }
+      ],
+      "enumValues": null,
+      "isSwitch": 0,
+      "isVisible": 1,
+      "strKey": "AIR_CONDITIONER_INSTANT_CONSUMPTION",
+      "wfaWriteIndex": null,
+      "wifiArrayIndex": 45
+    },
+    {
+      "boundedValues": [
+        {
+          "factor": 1,
+          "lowerLimit": 0,
+          "step": 1,
+          "strKey": "AIR_CONDITIONER_SLEEP_MODE_MINUTE",
+          "unit": "",
+          "upperLimit": 59
+        }
+      ],
+      "enumValues": null,
+      "isSwitch": 0,
+      "isVisible": 1,
+      "strKey": "AIR_CONDITIONER_SLEEP_MODE_MINUTE",
+      "wfaWriteIndex": null,
+      "wifiArrayIndex": 49
+    }
+  ],
+  "ovenClockWifiArrayIndexes": null,
+  "ovenDownloadedAutoBakeInformation": null,
+  "ovenMeatProbeAccessory": null,
+  "ovenRecipeInformation": null,
+  "ovenTemperatureInfo": null,
+  "program": {
+    "isSwitch": null,
+    "isVisible": 1,
+    "strKey": "AIR_CONDITIONER_PROGRAM",
+    "values": [
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "AIR_CONDITIONER_MODE_COOLING",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": [
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14
+            ],
+            "isDisabled": null,
+            "strKeyRef": "AIR_CONDITIONER_TARGET_TEMPERATURE"
+          }
+        ],
+        "wifiArrayValue": 0
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "AIR_CONDITIONER_MODE_AUTO",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "AIR_CONDITIONER_JET_MODE"
+          },
+          {
+            "allowedValueIndices": [
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14
+            ],
+            "isDisabled": null,
+            "strKeyRef": "AIR_CONDITIONER_TARGET_TEMPERATURE"
+          }
+        ],
+        "wifiArrayValue": 6
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "AIR_CONDITIONER_MODE_DEHUMIDIFICATION",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "AIR_CONDITIONER_TARGET_TEMPERATURE"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "AIR_CONDITIONER_JET_MODE"
+          }
+        ],
+        "wifiArrayValue": 1
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "AIR_CONDITIONER_MODE_HEATING",
+        "subProgramOverrides": [],
+        "wifiArrayValue": 4
+      },
+      {
+        "customSubProgramOverrides": null,
+        "isDownloadableCycle": null,
+        "isVisible": 1,
+        "progressVariableOverrides": null,
+        "strKey": "AIR_CONDITIONER_MODE_FAN",
+        "subProgramOverrides": [
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "AIR_CONDITIONER_TARGET_TEMPERATURE"
+          },
+          {
+            "allowedValueIndices": null,
+            "isDisabled": 1,
+            "strKeyRef": "AIR_CONDITIONER_JET_MODE"
+          }
+        ],
+        "wifiArrayValue": 2
+      }
+    ],
+    "wfaWriteIndex": null,
+    "wifiArrayIndex": 34
+  },
+  "progressVariables": {
+    "autoOff": {
+      "hour": {
+        "boundedValues": [
+          {
+            "factor": 1,
+            "lowerLimit": 0,
+            "step": 1,
+            "strKey": "HOUR",
+            "unit": "",
+            "upperLimit": 23
+          }
+        ],
+        "enumValues": null,
+        "isSwitch": null,
+        "isVisible": 1,
+        "strKey": null,
+        "wfaWriteIndex": null,
+        "wifiArrayIndex": 52
+      },
+      "isCalculatedToStart": null,
+      "isExpandableBySwitch": 1,
+      "isVisible": 1,
+      "minute": {
+        "boundedValues": [
+          {
+            "factor": 1,
+            "lowerLimit": 0,
+            "step": 1,
+            "strKey": "MINUTE",
+            "unit": "",
+            "upperLimit": 59
+          }
+        ],
+        "enumValues": null,
+        "isSwitch": null,
+        "isVisible": 1,
+        "strKey": null,
+        "wfaWriteIndex": null,
+        "wifiArrayIndex": 53
+      },
+      "strKey": "AIR_CONDITIONER_AUTO_SWITCH_OFF",
+      "wfaIndex": null,
+      "wfaWriteIndex": null
+    },
+    "autoOn": {
+      "hour": {
+        "boundedValues": [
+          {
+            "factor": 1,
+            "lowerLimit": 0,
+            "step": 1,
+            "strKey": "HOUR",
+            "unit": "",
+            "upperLimit": 23
+          }
+        ],
+        "enumValues": null,
+        "isSwitch": null,
+        "isVisible": 1,
+        "strKey": null,
+        "wfaWriteIndex": null,
+        "wifiArrayIndex": 50
+      },
+      "isCalculatedToStart": null,
+      "isExpandableBySwitch": 1,
+      "isVisible": 1,
+      "minute": {
+        "boundedValues": [
+          {
+            "factor": 1,
+            "lowerLimit": 0,
+            "step": 1,
+            "strKey": "MINUTE",
+            "unit": "",
+            "upperLimit": 59
+          }
+        ],
+        "enumValues": null,
+        "isSwitch": null,
+        "isVisible": 1,
+        "strKey": null,
+        "wfaWriteIndex": null,
+        "wifiArrayIndex": 51
+      },
+      "strKey": "AIR_CONDITIONER_AUTO_SWITCH_ON",
+      "wfaIndex": null,
+      "wfaWriteIndex": null
+    },
+    "delay": null,
+    "duration": null,
+    "elapsed": null,
+    "fermentedremaining": null,
+    "remaining": null,
+    "remainingOrElapsed": null
+  },
+  "refrigeratorDefrostInformation": null,
+  "remoteControl": null,
+  "screenSaver": null,
+  "settings": null,
+  "stepCooking": null,
+  "subPrograms": [
+    {
+      "boundedValues": [
+        {
+          "factor": 0.5,
+          "lowerLimit": 16,
+          "step": 1,
+          "strKey": "AIR_CONDITIONER_TARGET_TEMPERATURE",
+          "unit": "",
+          "upperLimit": 30
+        }
+      ],
+      "enumValues": null,
+      "isSwitch": 0,
+      "isVisible": 1,
+      "strKey": "AIR_CONDITIONER_TARGET_TEMPERATURE",
+      "wfaWriteIndex": null,
+      "wifiArrayIndex": 35
+    },
+    {
+      "boundedValues": [
+        {
+          "factor": 1,
+          "lowerLimit": 2,
+          "step": 1,
+          "strKey": "WIND_STRENGTH",
+          "unit": "",
+          "upperLimit": 6
+        }
+      ],
+      "enumValues": [
+        {
+          "strKey": "WIND_STRENGTH_CHAOS_SWING",
+          "wifiArrayValue": 8
+        }
+      ],
+      "isSwitch": 0,
+      "isVisible": 1,
+      "strKey": "AIR_CONDITIONER_WIND_STRENGTH",
+      "wfaWriteIndex": null,
+      "wifiArrayIndex": 36
+    },
+    {
+      "boundedValues": null,
+      "enumValues": [
+        {
+          "strKey": "AIR_CONDITIONER_JET_MODE_OFF",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "AIR_CONDITIONER_JET_MODE_ON",
+          "wifiArrayValue": 1
+        }
+      ],
+      "isSwitch": 1,
+      "isVisible": 1,
+      "strKey": "AIR_CONDITIONER_JET_MODE",
+      "wfaWriteIndex": null,
+      "wifiArrayIndex": 37
+    },
+    {
+      "boundedValues": null,
+      "enumValues": [
+        {
+          "strKey": "AIR_CONDITIONER_SOFT_AIR_OFF",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "AIR_CONDITIONER_SOFT_AIR_UP",
+          "wifiArrayValue": 1
+        },
+        {
+          "strKey": "AIR_CONDITIONER_SOFT_AIR_DOWN",
+          "wifiArrayValue": 6
+        }
+      ],
+      "isSwitch": 0,
+      "isVisible": 1,
+      "strKey": "AIR_CONDITIONER_SOFT_AIR",
+      "wfaWriteIndex": null,
+      "wifiArrayIndex": 46
+    },
+    {
+      "boundedValues": null,
+      "enumValues": [
+        {
+          "strKey": "UP_DOWN_VANE_CONTROL_OFF",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "UP_DOWN_VANE_CONTROL_1",
+          "wifiArrayValue": 6
+        },
+        {
+          "strKey": "UP_DOWN_VANE_CONTROL_2",
+          "wifiArrayValue": 5
+        },
+        {
+          "strKey": "UP_DOWN_VANE_CONTROL_3",
+          "wifiArrayValue": 4
+        },
+        {
+          "strKey": "UP_DOWN_VANE_CONTROL_4",
+          "wifiArrayValue": 3
+        },
+        {
+          "strKey": "UP_DOWN_VANE_CONTROL_5",
+          "wifiArrayValue": 2
+        },
+        {
+          "strKey": "UP_DOWN_VANE_CONTROL_6",
+          "wifiArrayValue": 1
+        },
+        {
+          "strKey": "UP_DOWN_VANE_CONTROL_AUTO",
+          "wifiArrayValue": 100
+        }
+      ],
+      "isSwitch": 0,
+      "isVisible": 1,
+      "strKey": "AIR_CONDITIONER_UP_DOWN_VANE_CONTROL",
+      "wfaWriteIndex": null,
+      "wifiArrayIndex": 38
+    },
+    {
+      "boundedValues": null,
+      "enumValues": [
+        {
+          "strKey": "LEFT_RIGHT_VANE_CONTROL_OFF",
+          "wifiArrayValue": 0
+        },
+        {
+          "strKey": "LEFT_RIGHT_VANE_CONTROL_1",
+          "wifiArrayValue": 1
+        },
+        {
+          "strKey": "LEFT_RIGHT_VANE_CONTROL_2",
+          "wifiArrayValue": 2
+        },
+        {
+          "strKey": "LEFT_RIGHT_VANE_CONTROL_3",
+          "wifiArrayValue": 3
+        },
+        {
+          "strKey": "LEFT_RIGHT_VANE_CONTROL_4",
+          "wifiArrayValue": 4
+        },
+        {
+          "strKey": "LEFT_RIGHT_VANE_CONTROL_5",
+          "wifiArrayValue": 5
+        },
+        {
+          "strKey": "LEFT_RIGHT_VANE_CONTROL_LEFT",
+          "wifiArrayValue": 13
+        },
+        {
+          "strKey": "LEFT_RIGHT_VANE_CONTROL_RIGHT",
+          "wifiArrayValue": 35
+        },
+        {
+          "strKey": "LEFT_RIGHT_VANE_CONTROL_AUTO",
+          "wifiArrayValue": 100
+        }
+      ],
+      "isSwitch": 0,
+      "isVisible": 1,
+      "strKey": "AIR_CONDITIONER_LEFT_RIGHT_VANE_CONTROL",
+      "wfaWriteIndex": null,
+      "wifiArrayIndex": 39
+    }
+  ],
+  "teaRecipeInformation": null,
+  "warnings": null,
+  "zones": null
+}
