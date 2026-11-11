@@ -41,7 +41,6 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
     ):
         super().__init__(coordinator, device_name, control.key, data)
         self._control = control
-        self._previous_hvac_mode: HVACMode | None = None
 
     @property
     def supported_features(self) -> ClimateEntityFeature:  # type: ignore[override]
@@ -94,11 +93,13 @@ class HomeWhizClimateEntity(HomeWhizEntity, ClimateEntity):
             await self.coordinator.send_command(command)
 
     async def async_turn_off(self) -> None:
-        self._previous_hvac_mode = self.hvac_mode
         await self.async_set_hvac_mode(HVACMode.OFF)
 
     async def async_turn_on(self) -> None:
-        mode = self._previous_hvac_mode
+        # The appliance keeps its mode while it is off, also after a restart of
+        # Home Assistant or when it was switched off with the remote or the app.
+        data = self.coordinator.data
+        mode = None if data is None else self._control.hvac_mode.remembered_mode(data)
         if mode is None:
             modes = [m for m in self.hvac_modes if m != HVACMode.OFF]
             mode = HVACMode.AUTO if HVACMode.AUTO in modes else next(iter(modes), None)

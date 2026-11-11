@@ -554,6 +554,10 @@ class HvacControl(Control):
             return HVACMode.OFF
         return self._hvac_mode_raw(data)
 
+    def remembered_mode(self, data: bytearray) -> HVACMode | None:
+        """Mode the appliance has stored, also while it is switched off."""
+        return self._hvac_mode_raw(data)
+
     def set_value(self, hvac_mode: HVACMode, current_data: bytearray) -> list[Command]:
         if hvac_mode == HVACMode.OFF:
             return [self.state.set_value(False)]
