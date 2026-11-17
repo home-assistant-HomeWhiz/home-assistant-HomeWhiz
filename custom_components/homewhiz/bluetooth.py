@@ -78,6 +78,13 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
                 self._device = bluetooth.async_ble_device_from_address(
                     self._hass, self.address, connectable=True
                 )
+                if not self._device:
+                    _LOGGER.info(
+                        "Device not available as connectable; retrying without filter"
+                    )
+                    self._device = bluetooth.async_ble_device_from_address(
+                        self._hass, self.address, connectable=False
+                    )
                 # Self connection should be None
                 if self._connection:
                     _LOGGER.warning(
@@ -138,6 +145,10 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         service_info = bluetooth.async_last_service_info(
             self.hass, self.address, connectable=True
         )
+        if service_info is None:
+            service_info = bluetooth.async_last_service_info(
+                self.hass, self.address, connectable=False
+            )
         if service_info is not None:
             _LOGGER.info("Successfully connected. RSSI: %s", service_info.rssi)
         else:
@@ -193,8 +204,13 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
         async with self.reconnecting_lock:
             _LOGGER.debug("[%s] Trying to reconnect", self.address)
             while self.alive and not self.is_connected:
-                if not bluetooth.async_address_present(
-                    self.hass, self.address, connectable=True
+                if not (
+                    bluetooth.async_address_present(
+                        self.hass, self.address, connectable=True
+                    )
+                    or bluetooth.async_address_present(
+                        self.hass, self.address, connectable=False
+                    )
                 ):
                     _LOGGER.info(
                         "Device not found. "
