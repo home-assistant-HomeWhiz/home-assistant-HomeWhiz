@@ -105,7 +105,10 @@
           "program_steam_therapy": "SteamTherapy",
           "program_auto_program": "Auto",
           "program_cold_wash": "Cold Wash",
-          "program_darkwash_jeans": "Dark (Jeans)"
+          "program_darkwash_jeans": "Dark (Jeans)",
+          "program_mini": "Express",
+          "program_cotton": "Intense Wash",
+          "program_cool_clean": "Cool Clean"
         }
       },
       "washer_temperature": {
@@ -407,7 +410,9 @@
           "program_bedding": "Bedding",
           "program_lingerie": "Lingerie",
           "program_towel": "Towel",
-          "program_fashion": "Fashion"
+          "program_fashion": "Fashion",
+          "program_ready_to_wear": "Ready to Wear (Shirts)",
+          "program_refresh": "Refresh"
         }
       },
       "dryer_drying_level": {
@@ -666,7 +671,10 @@
           "program_steam_therapy": "SteamTherapy",
           "program_auto_program": "Auto",
           "program_cold_wash": "Cold Wash",
-          "program_darkwash_jeans": "Dark (Jeans)"
+          "program_darkwash_jeans": "Dark (Jeans)",
+          "program_mini": "Express",
+          "program_cotton": "Intense Wash",
+          "program_cool_clean": "Cool Clean"
         }
       },
       "washer_temperature": {
@@ -866,7 +874,9 @@
           "program_bedding": "Bedding",
           "program_lingerie": "Lingerie",
           "program_towel": "Towel",
-          "program_fashion": "Fashion"
+          "program_fashion": "Fashion",
+          "program_ready_to_wear": "Ready to Wear (Shirts)",
+          "program_refresh": "Refresh"
         }
       },
       "dryer_drying_level": {
