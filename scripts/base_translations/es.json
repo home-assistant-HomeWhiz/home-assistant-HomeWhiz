@@ -7,15 +7,42 @@
     },
     "flow_title": "{name}",
     "step": {
-      "bluetooth_confirm": {
-        "description": "¿Quieres configurar {name}?"
-      },
       "user": {
+        "description": "Selecciona un tipo de conexión",
+        "menu_options": {
+          "select_bluetooth_device": "Bluetooth",
+          "provide_cloud_credentials": "Nube"
+        }
+      },
+      "select_bluetooth_device": {
+        "description": "Elige un dispositivo para configurar",
         "data": {
           "address": "Dispositivo"
-        },
-        "description": "Elige un dispositivo para configurar"
+        }
+      },
+      "bluetooth_connect": {
+        "description": "Introduce tus credenciales de HomeWhiz",
+        "data": {
+          "username": "Nombre de usuario",
+          "password": "Contraseña"
+        }
+      },
+      "provide_cloud_credentials": {
+        "description": "Introduce tus credenciales de HomeWhiz",
+        "data": {
+          "username": "Nombre de usuario",
+          "password": "Contraseña"
+        }
+      },
+      "select_cloud_device": {
+        "description": "Elige un dispositivo para configurar",
+        "data": {
+          "id": "Dispositivo"
+        }
       }
+    },
+    "error": {
+      "invalid_auth": "Autenticación no válida"
     }
   }
 }
