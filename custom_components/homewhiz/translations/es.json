@@ -3,7 +3,8 @@
     "abort": {
       "already_configured": "El dispositivo ya está configurado",
       "already_in_progress": "El flujo de configuración ya está en curso",
-      "no_devices_found": "No se encontraron dispositivos en la red"
+      "no_devices_found": "No se encontraron dispositivos en la red",
+      "no_cloud_devices_found": "Ninguno de los dispositivos de esta cuenta se puede configurar a través de la nube. Vuelve atrás y usa la opción Bluetooth."
     },
     "flow_title": "{name}",
     "step": {
@@ -11,11 +12,43 @@
         "description": "¿Quieres configurar {name}?"
       },
       "user": {
+        "description": "Selecciona un tipo de conexión",
+        "menu_options": {
+          "select_bluetooth_device": "Bluetooth",
+          "provide_cloud_credentials": "Nube"
+        }
+      },
+      "select_bluetooth_device": {
+        "description": "Elige un dispositivo para configurar",
         "data": {
           "address": "Dispositivo"
-        },
-        "description": "Elige un dispositivo para configurar"
+        }
+      },
+      "bluetooth_connect": {
+        "description": "Introduce tus credenciales de HomeWhiz",
+        "data": {
+          "username": "Nombre de usuario",
+          "password": "Contraseña"
+        }
+      },
+      "provide_cloud_credentials": {
+        "description": "Introduce tus credenciales de HomeWhiz",
+        "data": {
+          "username": "Nombre de usuario",
+          "password": "Contraseña"
+        }
+      },
+      "select_cloud_device": {
+        "description": "Elige un dispositivo para configurar",
+        "data": {
+          "id": "Dispositivo"
+        }
       }
+    },
+    "error": {
+      "invalid_auth": "Autenticación no válida",
+      "no_configuration": "HomeWhiz aún no ha publicado una configuración para este electrodoméstico. La integración no puede solucionarlo; ponte en contacto con el servicio de asistencia de HomeWhiz/Beko.",
+      "unknown": "Error inesperado. Consulta las entradas de HomeWhiz en el registro de Home Assistant para ver más detalles."
     }
   },
   "entity": {
@@ -28,6 +61,7 @@
           "device_state_running": "En marcha",
           "device_state_paused": "Pausada",
           "device_state_time_delay_active": "Inicio diferido",
+          "device_state_time_delay_paused": "Inicio diferido en pausa",
           "device_state_cancelling": "Cancelando",
           "device_state_door_open": "La puerta está abierta.",
           "device_state_settings": "Configuración"
@@ -65,7 +99,16 @@
           "program_dark_wash": "Lavado de ropa oscura",
           "program_outdoor": "Exteriores",
           "program_drum_clean_plus": "Limpieza del tambor+",
-          "program_steam_refresh": "Refrescar mediante vapor"
+          "program_steam_refresh": "Refrescar mediante vapor",
+          "program_duvet_downwear": "Plumíferos",
+          "program_hygiene_plus": "Higiene+",
+          "program_steam_therapy": "SteamTherapy",
+          "program_auto_program": "Automático",
+          "program_cold_wash": "Lavado en frío",
+          "program_darkwash_jeans": "Prendas oscuras / Jeans",
+          "program_mini": "Rápido",
+          "program_cotton": "Lavado intensivo",
+          "program_cool_clean": "Cool Clean"
         }
       },
       "washer_temperature": {
@@ -76,7 +119,9 @@
           "temperature_30": "30 °C",
           "temperature_40": "40 °C",
           "60c": "60 °C",
-          "90c": "90 °C"
+          "90c": "90 °C",
+          "temperature_60": "60 °C",
+          "temperature_90": "90 °C"
         }
       },
       "washer_spin": {
@@ -90,6 +135,7 @@
           "spin_rinse_hold": "Retención de aclarado",
           "spin_600": "600 rpm",
           "spin_800": "800 rpm",
+          "spin_1000": "1000 rpm",
           "spin_1200": "1200 rpm",
           "spin_1400": "1400 rpm",
           "1400rpm": "1400 rpm"
@@ -135,22 +181,6 @@
         "state": {
           "hidden_anti_crease_off_0": "Desactivado",
           "hidden_anti_crease_on_1": "Activado"
-        }
-      },
-      "settings_detergent_dosing_quantity": {
-        "name": "Cantidad de detergente",
-        "state": {
-          "quantity_low": "Baja",
-          "quantity_medium": "Media",
-          "quantity_high": "Alta"
-        }
-      },
-      "settings_softener_dosing_quantity": {
-        "name": "Cantidad de suavizante",
-        "state": {
-          "quantity_low": "Baja",
-          "quantity_medium": "Media",
-          "quantity_high": "Alta"
         }
       },
       "remote_control": {
@@ -252,19 +282,61 @@
       "dishwasher_liquid_detergent_low": {
         "name": "Detergente líquido bajo"
       },
+      "settings_hob2hood": {
+        "name": "Ajuste HobToHood"
+      },
+      "settings_keylocked": {
+        "name": "Bloqueo de teclas"
+      },
+      "zone_1_program": {
+        "name": "Programa de la zona 1"
+      },
+      "zone_1_hob_predefined_program": {
+        "name": "Programa predefinido de la zona 1"
+      },
+      "zone_1_hob_heater_level": {
+        "name": "Nivel de potencia de la zona 1"
+      },
+      "zone_2_program": {
+        "name": "Programa de la zona 2"
+      },
+      "zone_2_hob_predefined_program": {
+        "name": "Programa predefinido de la zona 2"
+      },
+      "zone_2_hob_heater_level": {
+        "name": "Nivel de potencia de la zona 2"
+      },
+      "zone_3_program": {
+        "name": "Programa de la zona 3"
+      },
+      "zone_3_hob_predefined_program": {
+        "name": "Programa predefinido de la zona 3"
+      },
+      "zone_3_hob_heater_level": {
+        "name": "Nivel de potencia de la zona 3"
+      },
+      "zone_4_program": {
+        "name": "Programa de la zona 4"
+      },
+      "zone_4_hob_predefined_program": {
+        "name": "Programa predefinido de la zona 4"
+      },
+      "zone_4_hob_heater_level": {
+        "name": "Nivel de potencia de la zona 4"
+      },
       "dishwasher_program": {
         "name": "Programa",
         "state": {
           "program_auto": "40-65 °C automático",
-          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_aqua_flex": "AquaFlex",
           "program_intensive_70": "Intensivo 70 °C",
           "program_eco_50": "Eco 50 °C",
           "program_delicate": "Delicado",
-          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
-          "program_mini": "PROGRAM_MINI",
+          "program_quick_and_shine": "Quick&Shine",
+          "program_mini": "Mini",
           "program_prewash": "Prelavar",
-          "program_quiet": "PROGRAM_QUIET",
-          "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
+          "program_quiet": "QuietWash",
+          "program_clean_and_shine": "Clean&Shine",
           "program_innerclean": "InnerClean"
         }
       },
@@ -276,7 +348,7 @@
         "state": {
           "dry_off": "Apagado",
           "dry_extra": "Secado extra",
-          "dry_cabinet": "Wardrobe Dry",
+          "dry_cabinet": "Secado armario",
           "dry_iron": "Secado plancha",
           "dry_10": "10 min",
           "dry_20": "20 min",
@@ -321,9 +393,290 @@
           "left_right_vane_control_4": "4",
           "left_right_vane_control_5": "5",
           "left_right_vane_control_left": "Izquierda",
-          "left_right_vane_control_right": "Derecho",
+          "left_right_vane_control_right": "Derecha",
           "left_right_vane_control_auto": "Auto"
         }
+      },
+      "dryer_program": {
+        "name": "Programa",
+        "state": {
+          "program_cottons": "Algodón",
+          "program_cottons_eco": "Algodón Eco",
+          "program_synthetics": "Sintéticos",
+          "program_mix": "Mixtos",
+          "program_woolprotect": "Lana",
+          "program_night": "Programa nocturno",
+          "program_drying_rack_timer_programmes": "Cesta de secado / Por tiempo",
+          "program_jeans": "Jeans",
+          "program_outdoor_sports": "Ropa exterior / deportiva",
+          "program_duvet_downwear": "Plumíferos",
+          "program_gentlecare": "Cuidado delicado",
+          "program_xpress_super_short": "Xpress superrápido",
+          "program_hygienic_drying": "Secado higiénico",
+          "program_hygienic_refresh": "Refrescado higiénico",
+          "program_bedding": "Ropa de cama",
+          "program_lingerie": "Lencería",
+          "program_towel": "Toallas",
+          "program_fashion": "Moda",
+          "program_ready_to_wear": "Listo para llevar (camisas)",
+          "program_refresh": "Refrescar"
+        }
+      },
+      "dryer_drying_level": {
+        "name": "Nivel de secado",
+        "state": {
+          "drying_level_iron_dry": "Secado plancha",
+          "drying_level_cupboard_dry": "Secado armario",
+          "drying_level_plus": "Secado armario+",
+          "drying_level_extra_dry": "Secado extra"
+        }
+      },
+      "dryer_anti_creasing": {
+        "name": "Antiarrugas",
+        "state": {
+          "0": "Desactivado",
+          "30": "30 min",
+          "60": "60 min",
+          "120": "120 min"
+        }
+      },
+      "dryer_duration": {
+        "name": "Duración",
+        "state": {
+          "10": "10 min",
+          "20": "20 min",
+          "30": "30 min",
+          "40": "40 min",
+          "50": "50 min",
+          "60": "60 min",
+          "70": "70 min",
+          "80": "80 min",
+          "90": "90 min",
+          "100": "100 min",
+          "110": "110 min",
+          "120": "120 min",
+          "130": "130 min",
+          "140": "140 min",
+          "150": "150 min",
+          "160": "160 min"
+        }
+      },
+      "setting_volume": {
+        "name": "Volumen",
+        "state": {
+          "volume_close": "Desactivado",
+          "volume_on": "Activado"
+        }
+      },
+      "fridge_cooler_temperature": {
+        "name": "Temperatura del frigorífico",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C",
+          "33f": "33 °F",
+          "34f": "34 °F",
+          "35f": "35 °F",
+          "36f": "36 °F",
+          "37f": "37 °F",
+          "38f": "38 °F",
+          "39f": "39 °F",
+          "40f": "40 °F",
+          "41f": "41 °F",
+          "42f": "42 °F",
+          "43f": "43 °F",
+          "44f": "44 °F",
+          "45f": "45 °F",
+          "46f": "46 °F"
+        }
+      },
+      "fridge_freezer_temperature": {
+        "name": "Temperatura del congelador"
+      },
+      "fridge_degree_dimension": {
+        "name": "Unidad de temperatura",
+        "state": {
+          "degree_dimension_celcius": "Celsius (°C)",
+          "degree_dimension_fahrenheit": "Fahrenheit (°F)"
+        }
+      },
+      "fridge_freezer_joker_mode": {
+        "name": "Modo del compartimento del congelador",
+        "state": {
+          "freezer_joker_mode_freezer": "Congelador",
+          "freezer_joker_mode_cooler": "Frigorífico"
+        }
+      },
+      "fridge_freezer_joker_temperature": {
+        "name": "Temperatura del compartimento del congelador",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C"
+        }
+      },
+      "settings_door_alarm_time": {
+        "name": "Tiempo de alarma de puerta",
+        "state": {
+          "one_min": "1 min",
+          "one_and_half_min": "1,5 min",
+          "two_min": "2 min",
+          "three_min": "3 min",
+          "four_min": "4 min",
+          "five_min": "5 min"
+        }
+      },
+      "fridge_vacation_mode": {
+        "name": "Modo vacaciones",
+        "state": {
+          "vacation_mode_passive": "Desactivado",
+          "vacation_mode_active": "Activado"
+        }
+      },
+      "fridge_eco_fuzzy": {
+        "name": "Eco Fuzzy",
+        "state": {
+          "eco_fuzzy_passive": "Desactivado",
+          "eco_fuzzy_active": "Activado"
+        }
+      },
+      "fridge_freezer_convertible_mode": {
+        "name": "Modo del compartimento convertible",
+        "state": {
+          "freezer_convertible_mode_freezer": "Congelador",
+          "freezer_convertible_mode_cooler": "Frigorífico",
+          "freezer_convertible_mode_off": "Apagado"
+        }
+      },
+      "fridge_freezer_convertible_temperature": {
+        "name": "Temperatura del compartimento convertible",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C",
+          "33f": "33 °F",
+          "34f": "34 °F",
+          "35f": "35 °F",
+          "36f": "36 °F",
+          "37f": "37 °F",
+          "38f": "38 °F",
+          "39f": "39 °F",
+          "40f": "40 °F",
+          "41f": "41 °F",
+          "42f": "42 °F",
+          "43f": "43 °F",
+          "44f": "44 °F",
+          "45f": "45 °F",
+          "46f": "46 °F"
+        }
+      },
+      "settings_handle_light": {
+        "name": "Luz del tirador",
+        "state": {
+          "handle_light_passive": "Apagada",
+          "handle_light_active": "Encendida"
+        }
+      },
+      "hood_aircleaning": {
+        "name": "Modo de purificación de aire",
+        "state": {
+          "hood_mode_normal": "Normal",
+          "hood_mode_air_cleaning": "Purificación de aire"
+        }
+      },
+      "hood_fan_level": {
+        "name": "Nivel del ventilador",
+        "state": {
+          "hood_fan_level_off": "Apagado",
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "4"
+        }
+      },
+      "hood_lamp": {
+        "name": "Luz",
+        "state": {
+          "hood_lamp_off": "Apagada",
+          "dim_level_2": "Nivel 2"
+        }
+      },
+      "oven_flexi": {
+        "name": "Flexi",
+        "state": {
+          "no_flexi": "Desactivado",
+          "flexi_level_one": "Nivel 1",
+          "flexi_level_two": "Nivel 2"
+        }
+      },
+      "dryer_steam_mode_level": {
+        "name": "Nivel del modo vapor",
+        "state": {
+          "steam_mode_level_1": "Bajo",
+          "steam_mode_level_2": "Medio",
+          "steam_mode_level_3": "Alto"
+        }
+      },
+      "dryer_washing_spin": {
+        "name": "Centrifugado del lavado"
+      },
+      "fridge_ice_source": {
+        "name": "Fuente de hielo"
+      },
+      "oven_suggestion": {
+        "name": "Sugerencia"
+      },
+      "settings_detergent_dosing_amount": {
+        "name": "Dosis de detergente"
+      },
+      "settings_detergent_dosing_quantity": {
+        "name": "Cantidad de detergente",
+        "state": {
+          "quantity_low": "Baja",
+          "quantity_medium": "Media",
+          "quantity_high": "Alta"
+        }
+      },
+      "settings_language": {
+        "name": "Idioma"
+      },
+      "settings_softener_dosing_amount": {
+        "name": "Dosis de suavizante"
+      },
+      "settings_softener_dosing_quantity": {
+        "name": "Cantidad de suavizante",
+        "state": {
+          "quantity_low": "Baja",
+          "quantity_medium": "Media",
+          "quantity_high": "Alta"
+        }
+      },
+      "washer_dirt_level": {
+        "name": "Nivel de suciedad"
+      },
+      "washer_dirt_type": {
+        "name": "Tipo de mancha"
+      },
+      "washer_extra_rinsing": {
+        "name": "Aclarado adicional"
+      },
+      "washer_liquid_detergent_dosing": {
+        "name": "Tipo de detergente"
       }
     },
     "sensor": {
@@ -335,6 +688,7 @@
           "device_state_running": "En marcha",
           "device_state_paused": "Pausada",
           "device_state_time_delay_active": "Inicio diferido",
+          "device_state_time_delay_paused": "Inicio diferido en pausa",
           "device_state_cancelling": "Cancelando",
           "device_state_door_open": "La puerta está abierta.",
           "device_state_settings": "Configuración"
@@ -372,7 +726,16 @@
           "program_dark_wash": "Lavado de ropa oscura",
           "program_outdoor": "Exteriores",
           "program_drum_clean_plus": "Limpieza del tambor+",
-          "program_steam_refresh": "Refrescar mediante vapor"
+          "program_steam_refresh": "Refrescar mediante vapor",
+          "program_duvet_downwear": "Plumíferos",
+          "program_hygiene_plus": "Higiene+",
+          "program_steam_therapy": "SteamTherapy",
+          "program_auto_program": "Automático",
+          "program_cold_wash": "Lavado en frío",
+          "program_darkwash_jeans": "Prendas oscuras / Jeans",
+          "program_mini": "Rápido",
+          "program_cotton": "Lavado intensivo",
+          "program_cool_clean": "Cool Clean"
         }
       },
       "washer_temperature": {
@@ -383,7 +746,9 @@
           "temperature_30": "30 °C",
           "temperature_40": "40 °C",
           "60c": "60 °C",
-          "90c": "90 °C"
+          "90c": "90 °C",
+          "temperature_60": "60 °C",
+          "temperature_90": "90 °C"
         }
       },
       "washer_spin": {
@@ -397,6 +762,7 @@
           "spin_rinse_hold": "Retención de aclarado",
           "spin_600": "600 rpm",
           "spin_800": "800 rpm",
+          "spin_1000": "1000 rpm",
           "spin_1200": "1200 rpm",
           "spin_1400": "1400 rpm",
           "1400rpm": "1400 rpm"
@@ -435,29 +801,6 @@
         "state": {
           "volume_low": "Bajo",
           "volume_high": "Alto"
-        }
-      },
-      "washer_hidden_anti_crease": {
-        "name": "Antiarrugas+",
-        "state": {
-          "hidden_anti_crease_off_0": "Desactivado",
-          "hidden_anti_crease_on_1": "Activado"
-        }
-      },
-      "settings_detergent_dosing_quantity": {
-        "name": "Cantidad de detergente",
-        "state": {
-          "quantity_low": "Baja",
-          "quantity_medium": "Media",
-          "quantity_high": "Alta"
-        }
-      },
-      "settings_softener_dosing_quantity": {
-        "name": "Cantidad de suavizante",
-        "state": {
-          "quantity_low": "Baja",
-          "quantity_medium": "Media",
-          "quantity_high": "Alta"
         }
       },
       "sub_state": {
@@ -500,11 +843,32 @@
           "dishwasher_message_program_started": "Programa iniciado",
           "dishwasher_message_washing": "Lavado",
           "dishwasher_message_rinsing": "Aclarando",
-          "dishwasher_message_drying": "Secado"
+          "dishwasher_message_drying": "Secado",
+          "dryer_message_program_finished": "Programa completado",
+          "dryer_message_hello": "Hola",
+          "dryer_message_closing": "Apagando",
+          "dryer_message_program_started": "Programa iniciado",
+          "dryer_message_drying": "Secando",
+          "dryer_message_time_delay_active": "Inicio diferido activo",
+          "dryer_message_paused": "En pausa",
+          "dryer_message_cooling": "Enfriando",
+          "dryer_message_refreshing": "Refrescando",
+          "dryer_message_anti_creasing": "Antiarrugas activo",
+          "dryer_message_drum_empty": "Tambor vacío",
+          "washer_substate_time_delay_paused": "Inicio diferido en pausa"
         }
       },
       "washer_delay": {
         "name": "Hora de finalización del programa"
+      },
+      "delay_start": {
+        "name": "Inicio diferido"
+      },
+      "delay_start_time": {
+        "name": "Hora de inicio programada"
+      },
+      "delay_end_time": {
+        "name": "Hora de finalización programada"
       },
       "washer_duration": {
         "name": "Duración"
@@ -530,6 +894,13 @@
       "washer_extrarinse": {
         "name": "Aclarado adicional"
       },
+      "washer_hidden_anti_crease": {
+        "name": "Antiarrugas+",
+        "state": {
+          "hidden_anti_crease_off_0": "Desactivado",
+          "hidden_anti_crease_on_1": "Activado"
+        }
+      },
       "washer_steam": {
         "name": "Vapor"
       },
@@ -547,6 +918,65 @@
       },
       "washer_anticrease": {
         "name": "Antiarrugas+"
+      },
+      "dryer_program": {
+        "name": "Programa",
+        "state": {
+          "program_cottons": "Algodón",
+          "program_cottons_eco": "Algodón Eco",
+          "program_synthetics": "Sintéticos",
+          "program_mix": "Mixtos",
+          "program_woolprotect": "Lana",
+          "program_night": "Programa nocturno",
+          "program_drying_rack_timer_programmes": "Cesta de secado / Por tiempo",
+          "program_jeans": "Jeans",
+          "program_outdoor_sports": "Ropa exterior / deportiva",
+          "program_duvet_downwear": "Plumíferos",
+          "program_gentlecare": "Cuidado delicado",
+          "program_xpress_super_short": "Xpress superrápido",
+          "program_hygienic_drying": "Secado higiénico",
+          "program_hygienic_refresh": "Refrescado higiénico",
+          "program_bedding": "Ropa de cama",
+          "program_lingerie": "Lencería",
+          "program_towel": "Toallas",
+          "program_fashion": "Moda",
+          "program_ready_to_wear": "Listo para llevar (camisas)",
+          "program_refresh": "Refrescar"
+        }
+      },
+      "dryer_drying_level": {
+        "name": "Nivel de secado",
+        "state": {
+          "drying_level_iron_dry": "Secado plancha",
+          "drying_level_cupboard_dry": "Secado armario",
+          "drying_level_plus": "Secado armario+",
+          "drying_level_extra_dry": "Secado extra"
+        }
+      },
+      "dryer_anti_creasing": {
+        "name": "Antiarrugas",
+        "state": {
+          "0": "Desactivado",
+          "30": "30 min",
+          "60": "60 min",
+          "120": "120 min"
+        }
+      },
+      "dryer_duration": {
+        "name": "Duración"
+      },
+      "dryer_lowtemp_mode": {
+        "name": "Modo de baja temperatura"
+      },
+      "variable_duration": {
+        "name": "Duración"
+      },
+      "setting_volume": {
+        "name": "Volumen",
+        "state": {
+          "volume_close": "Desactivado",
+          "volume_on": "Activado"
+        }
       },
       "oven_program": {
         "name": "Programa",
@@ -659,6 +1089,50 @@
       "dishwasher_liquid_detergent_low": {
         "name": "Detergente líquido bajo"
       },
+      "monitoring_hob2hood": {
+        "name": "Estado de HobToHood",
+        "state": {
+          "paired_with_hob": "Emparejada con la placa",
+          "hob_connected_via_ble": "Placa conectada por Bluetooth",
+          "hob2hoodactivated": "HobToHood activo"
+        }
+      },
+      "zone_1_zone_extended": {
+        "name": "Ampliación de la zona 1"
+      },
+      "zone_1_cooking_state": {
+        "name": "Estado de cocción de la zona 1"
+      },
+      "zone_1_duration": {
+        "name": "Duración de la zona 1"
+      },
+      "zone_2_zone_extended": {
+        "name": "Ampliación de la zona 2"
+      },
+      "zone_2_cooking_state": {
+        "name": "Estado de cocción de la zona 2"
+      },
+      "zone_2_duration": {
+        "name": "Duración de la zona 2"
+      },
+      "zone_3_zone_extended": {
+        "name": "Ampliación de la zona 3"
+      },
+      "zone_3_cooking_state": {
+        "name": "Estado de cocción de la zona 3"
+      },
+      "zone_3_duration": {
+        "name": "Duración de la zona 3"
+      },
+      "zone_4_zone_extended": {
+        "name": "Ampliación de la zona 4"
+      },
+      "zone_4_cooking_state": {
+        "name": "Estado de cocción de la zona 4"
+      },
+      "zone_4_duration": {
+        "name": "Duración de la zona 4"
+      },
       "dishwasher_traywash": {
         "name": "TrayWash"
       },
@@ -684,15 +1158,15 @@
         "name": "Programa",
         "state": {
           "program_auto": "40-65 °C automático",
-          "program_aqua_flex": "PROGRAM_AQUA_FLEX",
+          "program_aqua_flex": "AquaFlex",
           "program_intensive_70": "Intensivo 70 °C",
           "program_eco_50": "Eco 50 °C",
           "program_delicate": "Delicado",
-          "program_quick_and_shine": "PROGRAM_QUICK_AND_SHINE",
-          "program_mini": "PROGRAM_MINI",
+          "program_quick_and_shine": "Quick&Shine",
+          "program_mini": "Mini",
           "program_prewash": "Prelavar",
-          "program_quiet": "PROGRAM_QUIET",
-          "program_clean_and_shine": "PROGRAM_CLEAN_AND_SHINE",
+          "program_quiet": "QuietWash",
+          "program_clean_and_shine": "Clean&Shine",
           "program_innerclean": "InnerClean"
         }
       },
@@ -710,7 +1184,7 @@
         "state": {
           "dry_off": "Apagado",
           "dry_extra": "Secado extra",
-          "dry_cabinet": "Wardrobe Dry",
+          "dry_cabinet": "Secado armario",
           "dry_iron": "Secado plancha",
           "dry_10": "10 min",
           "dry_20": "20 min",
@@ -755,7 +1229,7 @@
           "left_right_vane_control_4": "4",
           "left_right_vane_control_5": "5",
           "left_right_vane_control_left": "Izquierda",
-          "left_right_vane_control_right": "Derecho",
+          "left_right_vane_control_right": "Derecha",
           "left_right_vane_control_auto": "Auto"
         }
       },
@@ -766,21 +1240,311 @@
         "name": "Minuto del modo de suspensión del aire acondicionado"
       },
       "air_conditioner_auto_switch_off": {
-        "name": "Cierre automático"
+        "name": "Apagado automático"
       },
       "air_conditioner_auto_switch_on": {
-        "name": "Apertura automática"
+        "name": "Encendido automático"
+      },
+      "fridge_cooler_temperature": {
+        "name": "Temperatura del frigorífico",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C",
+          "33f": "33 °F",
+          "34f": "34 °F",
+          "35f": "35 °F",
+          "36f": "36 °F",
+          "37f": "37 °F",
+          "38f": "38 °F",
+          "39f": "39 °F",
+          "40f": "40 °F",
+          "41f": "41 °F",
+          "42f": "42 °F",
+          "43f": "43 °F",
+          "44f": "44 °F",
+          "45f": "45 °F",
+          "46f": "46 °F"
+        }
+      },
+      "fridge_freezer_temperature": {
+        "name": "Temperatura del congelador"
+      },
+      "fridge_degree_dimension": {
+        "name": "Unidad de temperatura",
+        "state": {
+          "degree_dimension_celcius": "Celsius (°C)",
+          "degree_dimension_fahrenheit": "Fahrenheit (°F)"
+        }
+      },
+      "fridge_freezer_joker_mode": {
+        "name": "Modo del compartimento del congelador",
+        "state": {
+          "freezer_joker_mode_freezer": "Congelador",
+          "freezer_joker_mode_cooler": "Frigorífico"
+        }
+      },
+      "fridge_freezer_joker_temperature": {
+        "name": "Temperatura del compartimento del congelador",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C"
+        }
+      },
+      "settings_door_alarm_time": {
+        "name": "Tiempo de alarma de puerta",
+        "state": {
+          "one_min": "1 min",
+          "one_and_half_min": "1,5 min",
+          "two_min": "2 min",
+          "three_min": "3 min",
+          "four_min": "4 min",
+          "five_min": "5 min"
+        }
+      },
+      "fridge_vacation_mode": {
+        "name": "Modo vacaciones",
+        "state": {
+          "vacation_mode_passive": "Desactivado",
+          "vacation_mode_active": "Activado"
+        }
+      },
+      "fridge_eco_fuzzy": {
+        "name": "Eco Fuzzy",
+        "state": {
+          "eco_fuzzy_passive": "Desactivado",
+          "eco_fuzzy_active": "Activado"
+        }
+      },
+      "fridge_freezer_convertible_mode": {
+        "name": "Modo del compartimento convertible",
+        "state": {
+          "freezer_convertible_mode_freezer": "Congelador",
+          "freezer_convertible_mode_cooler": "Frigorífico",
+          "freezer_convertible_mode_off": "Apagado"
+        }
+      },
+      "fridge_freezer_convertible_temperature": {
+        "name": "Temperatura del compartimento convertible",
+        "state": {
+          "1c": "1 °C",
+          "2c": "2 °C",
+          "3c": "3 °C",
+          "4c": "4 °C",
+          "5c": "5 °C",
+          "6c": "6 °C",
+          "7c": "7 °C",
+          "8c": "8 °C",
+          "33f": "33 °F",
+          "34f": "34 °F",
+          "35f": "35 °F",
+          "36f": "36 °F",
+          "37f": "37 °F",
+          "38f": "38 °F",
+          "39f": "39 °F",
+          "40f": "40 °F",
+          "41f": "41 °F",
+          "42f": "42 °F",
+          "43f": "43 °F",
+          "44f": "44 °F",
+          "45f": "45 °F",
+          "46f": "46 °F"
+        }
+      },
+      "settings_handle_light": {
+        "name": "Luz del tirador",
+        "state": {
+          "handle_light_passive": "Apagada",
+          "handle_light_active": "Encendida"
+        }
+      },
+      "hood_aircleaning": {
+        "name": "Modo de purificación de aire",
+        "state": {
+          "hood_mode_normal": "Normal",
+          "hood_mode_air_cleaning": "Purificación de aire"
+        }
+      },
+      "hood_fan_level": {
+        "name": "Nivel del ventilador",
+        "state": {
+          "hood_fan_level_off": "Apagado",
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "4"
+        }
+      },
+      "hood_lamp": {
+        "name": "Luz",
+        "state": {
+          "hood_lamp_off": "Apagada",
+          "dim_level_2": "Nivel 2"
+        }
+      },
+      "oven_flexi": {
+        "name": "Flexi",
+        "state": {
+          "no_flexi": "Desactivado",
+          "flexi_level_one": "Nivel 1",
+          "flexi_level_two": "Nivel 2"
+        }
+      },
+      "monitoring_hood_filter_dirt_level_percentage": {
+        "name": "Nivel de suciedad del filtro"
+      },
+      "dishwasher_variable_delay": {
+        "name": "Hora de finalización del programa"
+      },
+      "dryer_steam_mode_level": {
+        "name": "Nivel del modo vapor",
+        "state": {
+          "steam_mode_level_1": "Bajo",
+          "steam_mode_level_2": "Medio",
+          "steam_mode_level_3": "Alto"
+        }
+      },
+      "dryer_washing_spin": {
+        "name": "Centrifugado del lavado"
+      },
+      "fridge_ice_source": {
+        "name": "Fuente de hielo"
+      },
+      "monitoring_awaiting_input": {
+        "name": "Esperando una acción"
+      },
+      "monitoring_cook_more_status": {
+        "name": "Estado de Cook More"
+      },
+      "oven_suggestion": {
+        "name": "Sugerencia"
+      },
+      "settings_detergent_dosing_amount": {
+        "name": "Dosis de detergente"
+      },
+      "settings_detergent_dosing_quantity": {
+        "name": "Cantidad de detergente",
+        "state": {
+          "quantity_low": "Baja",
+          "quantity_medium": "Media",
+          "quantity_high": "Alta"
+        }
+      },
+      "settings_hob2hood": {
+        "name": "Ajuste HobToHood"
+      },
+      "settings_keylocked": {
+        "name": "Bloqueo de teclas"
+      },
+      "settings_language": {
+        "name": "Idioma"
+      },
+      "settings_softener_dosing_amount": {
+        "name": "Dosis de suavizante"
+      },
+      "settings_softener_dosing_quantity": {
+        "name": "Cantidad de suavizante",
+        "state": {
+          "quantity_low": "Baja",
+          "quantity_medium": "Media",
+          "quantity_high": "Alta"
+        }
+      },
+      "washer_dirt_level": {
+        "name": "Nivel de suciedad"
+      },
+      "washer_dirt_type": {
+        "name": "Tipo de mancha"
+      },
+      "washer_extra_rinsing": {
+        "name": "Aclarado adicional"
+      },
+      "washer_liquid_detergent_dosing": {
+        "name": "Tipo de detergente"
+      },
+      "zone_1_hob_heater_level": {
+        "name": "Nivel de potencia de la zona 1"
+      },
+      "zone_1_hob_predefined_program": {
+        "name": "Programa predefinido de la zona 1"
+      },
+      "zone_1_program": {
+        "name": "Programa de la zona 1"
+      },
+      "zone_2_hob_heater_level": {
+        "name": "Nivel de potencia de la zona 2"
+      },
+      "zone_2_hob_predefined_program": {
+        "name": "Programa predefinido de la zona 2"
+      },
+      "zone_2_program": {
+        "name": "Programa de la zona 2"
+      },
+      "zone_3_hob_heater_level": {
+        "name": "Nivel de potencia de la zona 3"
+      },
+      "zone_3_hob_predefined_program": {
+        "name": "Programa predefinido de la zona 3"
+      },
+      "zone_3_program": {
+        "name": "Programa de la zona 3"
+      },
+      "zone_4_hob_heater_level": {
+        "name": "Nivel de potencia de la zona 4"
+      },
+      "zone_4_hob_predefined_program": {
+        "name": "Programa predefinido de la zona 4"
+      },
+      "zone_4_program": {
+        "name": "Programa de la zona 4"
+      }
+    },
+    "number": {
+      "delay_start_set": {
+        "name": "Inicio diferido"
       }
     },
     "binary_sensor": {
       "remote_control": {
         "name": "Control remoto"
       },
-      "washer_warning_low_detergent": {
-        "name": "Detergente bajo"
+      "dryer_warning_door_is_open": {
+        "name": "La puerta está abierta"
       },
-      "washer_warning_low_softener": {
-        "name": "Suavizante bajo"
+      "dryer_warning_tankfull": {
+        "name": "Depósito de agua lleno"
+      },
+      "dryer_warning_check_the_filter": {
+        "name": "Comprobar el filtro"
+      },
+      "dryer_warning_check_the_condenser_filter": {
+        "name": "Comprobar el filtro del condensador"
+      },
+      "dryer_warning_drum_empty": {
+        "name": "Tambor vacío"
+      },
+      "dryer_message_child_lock": {
+        "name": "Bloqueo infantil activo"
+      },
+      "dryer_message_end_program": {
+        "name": "Programa completado"
+      },
+      "dryer_message_anti_creasing": {
+        "name": "Antiarrugas activo"
+      },
+      "dryer_message_anti_creasing_finished": {
+        "name": "Antiarrugas finalizado"
       },
       "washer_warning_door_is_open": {
         "name": "La puerta está abierta"
@@ -820,19 +1584,96 @@
       },
       "dishwasher_liquid_detergent_low": {
         "name": "Detergente líquido bajo"
+      },
+      "zone_1_hob_hot": {
+        "name": "Superficie caliente en la zona 1"
+      },
+      "zone_1_hob_pan_info": {
+        "name": "Detección de recipiente en la zona 1"
+      },
+      "zone_2_hob_hot": {
+        "name": "Superficie caliente en la zona 2"
+      },
+      "zone_2_hob_pan_info": {
+        "name": "Detección de recipiente en la zona 2"
+      },
+      "zone_3_hob_hot": {
+        "name": "Superficie caliente en la zona 3"
+      },
+      "zone_3_hob_pan_info": {
+        "name": "Detección de recipiente en la zona 3"
+      },
+      "zone_4_hob_hot": {
+        "name": "Superficie caliente en la zona 4"
+      },
+      "zone_4_hob_pan_info": {
+        "name": "Detección de recipiente en la zona 4"
+      },
+      "fridge_warning_door_is_open": {
+        "name": "La puerta está abierta"
+      },
+      "fridge_warning_high_temperature": {
+        "name": "Temperatura alta"
+      },
+      "washer_warning_low_detergent": {
+        "name": "Detergente bajo"
+      },
+      "washer_warning_low_softener": {
+        "name": "Suavizante bajo"
+      },
+      "hood_filter_full": {
+        "name": "Filtro lleno"
+      },
+      "oven_warning_probe_is_detached": {
+        "name": "Sonda desconectada"
+      },
+      "oven_warning_pyro_cleaning": {
+        "name": "Limpieza pirolítica"
+      },
+      "washer_warning_liquid_detergent_pumping": {
+        "name": "Bombeando detergente"
+      },
+      "washer_warning_no_liquid_detergent": {
+        "name": "Añade detergente líquido"
+      },
+      "washer_warning_no_powder_detergent": {
+        "name": "Selecciona detergente en polvo"
+      },
+      "washer_warning_no_softener": {
+        "name": "Añade suavizante"
+      },
+      "washer_warning_pop_up": {
+        "name": "El programa no puede iniciarse o se ha detenido"
       }
     },
     "climate": {
       "ac": {
+        "state_attributes": {
+          "fan_mode": {
+            "name": "Velocidad del ventilador",
+            "state": {
+              "wind_strength_auto": "Auto",
+              "wind_strength_low": "Baja",
+              "wind_strength_mid": "Media",
+              "wind_strength_high": "Alta",
+              "2": "1",
+              "3": "2",
+              "4": "3",
+              "5": "4",
+              "6": "5",
+              "wind_strength_chaos_swing": "Chaos Swing"
+            }
+          }
+        },
         "name": "Ac"
       }
     },
     "switch": {
-      "washer_liquid_detergent": {
-        "name": "Usar detergente líquido"
+      "device_power": {
+        "name": "Encendido"
       },
-      "washer_softener_dosage": {
-        "name": "Usar suavizante"
+      "dryer_lowtemp_mode": {
+        "name": "Modo de baja temperatura"
       },
       "washer_prewash": {
         "name": "Prelavado"
@@ -873,6 +1714,18 @@
       "dishwasher_fastplus": {
         "name": "Lavavajillas Fastplus"
       },
+      "zone_1_hob_flexi": {
+        "name": "FlexiZone de la zona 1"
+      },
+      "zone_2_hob_flexi": {
+        "name": "FlexiZone de la zona 2"
+      },
+      "zone_3_hob_flexi": {
+        "name": "FlexiZone de la zona 3"
+      },
+      "zone_4_hob_flexi": {
+        "name": "FlexiZone de la zona 4"
+      },
       "dishwasher_steamgloss": {
         "name": "SteamGloss"
       },
@@ -893,6 +1746,80 @@
       },
       "dishwasher_deepwash": {
         "name": "Deep Wash"
+      },
+      "fridge_quick_cool": {
+        "name": "Refrigeración rápida"
+      },
+      "fridge_a_cool": {
+        "name": "A-Cool"
+      },
+      "fridge_quick_freeze": {
+        "name": "Congelación rápida"
+      },
+      "washer_fast_plus": {
+        "name": "Fast+"
+      },
+      "washer_heavy": {
+        "name": "Intensivo"
+      },
+      "washer_softener_dosage": {
+        "name": "Usar suavizante"
+      },
+      "washer_liquid_detergent": {
+        "name": "Usar detergente líquido"
+      },
+      "dishwasher_extra_shiny": {
+        "name": "Brillo extra"
+      },
+      "dishwasher_fastwash": {
+        "name": "Lavado rápido"
+      },
+      "dishwasher_filter_self_cleaning": {
+        "name": "Autolimpieza del filtro"
+      },
+      "dishwasher_strong_wash": {
+        "name": "Lavado intenso"
+      },
+      "dishwasher_tablet": {
+        "name": "Tableta"
+      },
+      "dryer_fast_mode": {
+        "name": "Modo rápido"
+      },
+      "dryer_steam_mode_onoff": {
+        "name": "Modo vapor"
+      },
+      "fridge_ice_machine": {
+        "name": "Máquina de hielo"
+      },
+      "washer_anti_crease": {
+        "name": "Antiarrugas remoto"
+      },
+      "washer_extra_rinse": {
+        "name": "Aclarado adicional"
+      },
+      "washer_extra_water": {
+        "name": "Agua adicional"
+      },
+      "washer_fast": {
+        "name": "Rápido"
+      },
+      "washer_hidden_extra_water": {
+        "name": "Agua adicional"
+      },
+      "washer_silent_mode": {
+        "name": "Modo silencioso"
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opciones de HomeWhiz",
+        "description": "Permite configurar opciones avanzadas de la integración.",
+        "data": {
+          "bt_reconnect_interval": "Intervalo de reconexión de Bluetooth (en horas)"
+        }
       }
     }
   }
