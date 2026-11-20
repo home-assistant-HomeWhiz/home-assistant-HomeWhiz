@@ -32,6 +32,11 @@ class HomewhizCoordinator(
     async def send_command(self, command: Command) -> None:
         pass
 
+    async def send_commands(self, commands: list[Command]) -> None:
+        """Send several commands that belong to one value, one after the other."""
+        for command in commands:
+            await self.send_command(command)
+
 
 brand_name_by_code = defaultdict(
     lambda: "Arcelik",

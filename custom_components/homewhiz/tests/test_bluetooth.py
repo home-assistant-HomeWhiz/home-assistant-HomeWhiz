@@ -9,9 +9,16 @@ Setting up that state requires touching private attributes.
 
 import asyncio
 from typing import Any
-from unittest.mock import Mock
+from unittest.mock import Mock, patch
 
-from custom_components.homewhiz.bluetooth import HomewhizBluetoothUpdateCoordinator
+import pytest
+from homeassistant.exceptions import HomeAssistantError
+
+from custom_components.homewhiz.bluetooth import (
+    BT_COMMAND_GAP,
+    HomewhizBluetoothUpdateCoordinator,
+)
+from custom_components.homewhiz.homewhiz import Command
 
 
 class _FakeClient:
@@ -85,3 +92,101 @@ def test_disconnect_without_client_tears_down() -> None:
 
     assert coord._connection is None
     assert live.disconnect_calls == 1
+
+
+class _WritingClient:
+    """Records the GATT writes and can drop the link after a number of writes."""
+
+    def __init__(self, writes: list[tuple[int, int]], drop_after: int | None = None):
+        self._writes = writes
+        self._drop_after = drop_after
+
+    @property
+    def is_connected(self) -> bool:
+        return self._drop_after is None or len(self._writes) < self._drop_after
+
+    async def write_gatt_char(self, uuid: str, payload: bytearray) -> None:
+        self._writes.append((payload[5], payload[7]))
+
+
+def _coordinator_with_client(client: Any) -> HomewhizBluetoothUpdateCoordinator:
+    coord = _make_coordinator([])
+    coord._connection = client
+    return coord
+
+
+def test_multi_command_write_waits_between_commands() -> None:
+    writes: list[tuple[int, int]] = []
+    sleeps: list[float] = []
+    coord = _coordinator_with_client(_WritingClient(writes))
+
+    async def fake_sleep(seconds: float) -> None:
+        sleeps.append(seconds)
+
+    with patch("custom_components.homewhiz.bluetooth.asyncio.sleep", fake_sleep):
+        asyncio.run(coord.send_commands([Command(48, 2), Command(49, 0)]))
+
+    assert writes == [(48, 2), (49, 0)]
+    assert sleeps == [BT_COMMAND_GAP]
+
+
+def test_single_command_write_does_not_wait() -> None:
+    writes: list[tuple[int, int]] = []
+    sleeps: list[float] = []
+    coord = _coordinator_with_client(_WritingClient(writes))
+
+    async def fake_sleep(seconds: float) -> None:
+        sleeps.append(seconds)
+
+    with patch("custom_components.homewhiz.bluetooth.asyncio.sleep", fake_sleep):
+        asyncio.run(coord.send_commands([Command(34, 10)]))
+
+    assert writes == [(34, 10)]
+    assert sleeps == []
+
+
+def test_other_command_cannot_slip_into_a_multi_command_write() -> None:
+    writes: list[tuple[int, int]] = []
+    coord = _coordinator_with_client(_WritingClient(writes))
+    real_sleep = asyncio.sleep
+
+    async def fake_sleep(seconds: float) -> None:
+        # Stay in the pause long enough for the other task to try its write.
+        for _ in range(5):
+            await real_sleep(0)
+
+    async def scenario() -> None:
+        sequence = asyncio.create_task(
+            coord.send_commands([Command(48, 2), Command(49, 0)])
+        )
+        await real_sleep(0)
+        other = asyncio.create_task(coord.send_command(Command(34, 30)))
+        await asyncio.gather(sequence, other)
+
+    with patch("custom_components.homewhiz.bluetooth.asyncio.sleep", fake_sleep):
+        asyncio.run(scenario())
+
+    assert writes == [(48, 2), (49, 0), (34, 30)]
+
+
+def test_link_lost_between_commands_is_reported() -> None:
+    writes: list[tuple[int, int]] = []
+    coord = _coordinator_with_client(_WritingClient(writes, drop_after=1))
+
+    async def fake_sleep(seconds: float) -> None:
+        return None
+
+    with (
+        patch("custom_components.homewhiz.bluetooth.asyncio.sleep", fake_sleep),
+        pytest.raises(HomeAssistantError, match="Only 1 of 2 commands"),
+    ):
+        asyncio.run(coord.send_commands([Command(48, 2), Command(49, 0)]))
+
+    assert writes == [(48, 2)]
+
+
+def test_not_connected_before_first_command_keeps_the_original_error() -> None:
+    coord = _coordinator_with_client(None)
+
+    with pytest.raises(HomeAssistantError, match="Device not connected"):
+        asyncio.run(coord.send_commands([Command(48, 2), Command(49, 0)]))
