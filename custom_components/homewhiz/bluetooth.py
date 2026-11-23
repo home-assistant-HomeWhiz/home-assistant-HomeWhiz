@@ -17,6 +17,12 @@ from .homewhiz import Command, HomewhizCoordinator
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
+# Pause between the commands that make up one value. Sent back to back, the
+# appliance drops the first of two commands (issue #520: the hour of the start delay
+# is lost, only the minutes arrive). The pause is the value reported to work in that
+# issue, it is not a measured minimum.
+BT_COMMAND_GAP = 2.0
+
 
 class MessageAccumulator:
     def __init__(self) -> None:
@@ -259,21 +265,48 @@ class HomewhizBluetoothUpdateCoordinator(HomewhizCoordinator):
             self.async_set_updated_data(full_message)
 
     async def send_command(self, command: Command) -> None:
-        _LOGGER.debug("Sending command %s:%s", command.index, command.value)
         async with self._connection_lock:
-            if self._connection is None or not self._connection.is_connected:
-                _LOGGER.warning("Cannot send command: not connected")
-                raise HomeAssistantError("Device not connected")
-            payload = bytearray([2, 4, 0, 4, 0, command.index, 1, command.value])
-            try:
-                await self._connection.write_gatt_char(
-                    "0000ac01-0000-1000-8000-00805F9B34FB",
-                    payload,
-                )
-            except Exception as e:
-                _LOGGER.error("Failed to send command: %s", e)
-                raise
-            _LOGGER.debug("Command sent")
+            await self._write_command(command)
+
+    async def send_commands(self, commands: list[Command]) -> None:
+        # The lock is held for the whole sequence so that no other command or
+        # disconnect handling can slip in between the parts of one value.
+        async with self._connection_lock:
+            for sent, command in enumerate(commands):
+                if sent:
+                    await asyncio.sleep(BT_COMMAND_GAP)
+                try:
+                    await self._write_command(command)
+                except Exception as e:
+                    if not sent:
+                        raise
+                    _LOGGER.error(
+                        "Only %d of %d commands were sent: %s",
+                        sent,
+                        len(commands),
+                        e,
+                    )
+                    raise HomeAssistantError(
+                        f"Only {sent} of {len(commands)} commands were sent, "
+                        "the value may be partly applied"
+                    ) from e
+
+    async def _write_command(self, command: Command) -> None:
+        """Write one command. The caller holds the connection lock."""
+        _LOGGER.debug("Sending command %s:%s", command.index, command.value)
+        if self._connection is None or not self._connection.is_connected:
+            _LOGGER.warning("Cannot send command: not connected")
+            raise HomeAssistantError("Device not connected")
+        payload = bytearray([2, 4, 0, 4, 0, command.index, 1, command.value])
+        try:
+            await self._connection.write_gatt_char(
+                "0000ac01-0000-1000-8000-00805F9B34FB",
+                payload,
+            )
+        except Exception as e:
+            _LOGGER.error("Failed to send command: %s", e)
+            raise
+        _LOGGER.debug("Command sent")
 
     @property
     def is_connected(self) -> bool:

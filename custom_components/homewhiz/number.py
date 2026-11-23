@@ -53,8 +53,7 @@ class HomeWhizNumberEntity(HomeWhizEntity, NumberEntity):
         return self._control.get_value(self.coordinator.data)
 
     async def async_set_native_value(self, value: float) -> None:
-        for command in self._control.set_value(int(value)):
-            await self.coordinator.send_command(command)
+        await self.coordinator.send_commands(self._control.set_value(int(value)))
 
 
 async def async_setup_entry(
