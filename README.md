@@ -6,7 +6,6 @@
 
 # HomeWhiz Integration for Home Assistant
 
-[![HACS Default](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=flat-square)](https://github.com/hacs/integration)
 [![Home Assistant](https://img.shields.io/badge/Home%20Assistant-Integration-41BDF5?style=flat-square&logo=home-assistant&logoColor=white)](https://www.home-assistant.io/)
 [![Version](https://img.shields.io/github/v/release/home-assistant-HomeWhiz/home-assistant-HomeWhiz?style=flat-square&logo=github&color=41BDF5&logoColor=white)](https://github.com/home-assistant-HomeWhiz/home-assistant-HomeWhiz/releases)
 
@@ -23,19 +22,18 @@ If you find this integration useful, please give it a ⭐ on GitHub.
 
 ## Installation
 
-### Option 1. Using HACS (recommended)
+### Option 1. Marketplace (Home Assistant 2026.11 and newer, recommended)
+
+Go to **Settings** → **Marketplace**, search for `HomeWhiz` and install it. The setup starts right after the installation.
+
+You can also open HomeWhiz in the Marketplace with this button:
+
+[![Open your Home Assistant instance and open this repository.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=home-assistant-HomeWhiz&repository=home-assistant-HomeWhiz&category=integration)
+
+### Option 2. HACS (older Home Assistant versions)
 
 - Search for `HomeWhiz` on the HACS integration page. The integration is part of the HACS default repository, so you do not need to add it manually as a custom repository.
 - Install the integration and restart Home Assistant.
-
-### Option 2. Manually
-
-- Open the directory for your HA configuration (where `configuration.yaml` lives).
-- If there is no `custom_components` directory, create it.
-- Inside `custom_components`, create a new folder called `homewhiz`.
-- Download _all_ files from the `custom_components/homewhiz/` directory in this repository.
-- Place the downloaded files in the folder you created.
-- Restart Home Assistant.
 
 ## Configuration
 
