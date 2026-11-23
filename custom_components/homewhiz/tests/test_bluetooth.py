@@ -12,6 +12,7 @@ from typing import Any
 from unittest.mock import Mock, patch
 
 import pytest
+from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 
 from custom_components.homewhiz.bluetooth import (
@@ -45,9 +46,62 @@ def _make_coordinator(scheduled: list) -> HomewhizBluetoothUpdateCoordinator:
     coord._device_lock = asyncio.Lock()
     hass = Mock()
     hass.create_task = scheduled.append
+    hass.async_create_background_task = lambda coro, name: scheduled.append(coro)
     hass.add_job = Mock()
     coord.hass = hass
     return coord
+
+
+def test_reconnect_does_not_block_startup_and_recovers(tmp_path: Any) -> None:
+    """A connectable proxy advertisement can arrive after startup has drained."""
+
+    async def run() -> None:
+        hass = HomeAssistant(str(tmp_path))
+        coord = _make_coordinator([])
+        coord.hass = hass
+        coord.reconnecting_lock = asyncio.Lock()
+        old_client: Any = _FakeClient(connected=False)
+        coord._connection = old_client
+        waiting = asyncio.Event()
+        advertised = asyncio.Event()
+        connected = asyncio.Event()
+
+        async def retry_wait(delay: float) -> None:
+            assert delay == 60
+            waiting.set()
+            await advertised.wait()
+
+        async def connect() -> None:
+            new_client: Any = _FakeClient()
+            coord._connection = new_client
+            connected.set()
+
+        with (
+            patch.object(coord, "connect", side_effect=connect),
+            patch(
+                "custom_components.homewhiz.bluetooth.bluetooth.async_address_present",
+                side_effect=lambda *_args, **_kwargs: advertised.is_set(),
+            ) as present,
+            patch("custom_components.homewhiz.bluetooth.asyncio") as bt_asyncio,
+        ):
+            # Sleep must be awaitable, as it is in the real loop.
+            bt_asyncio.sleep = retry_wait
+            with patch.object(coord, "async_set_updated_data"):
+                await coord.handle_disconnect(old_client)
+                await asyncio.wait_for(waiting.wait(), timeout=2)
+                startup = asyncio.create_task(hass.async_block_till_done())
+                try:
+                    done, _ = await asyncio.wait({startup}, timeout=0.2)
+                    assert startup in done, "Reconnect blocked HA startup task drain"
+                    assert not coord.is_connected
+                finally:
+                    advertised.set()
+                    await asyncio.wait_for(connected.wait(), timeout=2)
+                    await startup
+                assert coord.is_connected
+                present.assert_called_with(hass, coord.address, connectable=True)
+
+    asyncio.run(run())
 
 
 def test_stale_client_disconnect_is_ignored() -> None:
