@@ -34,6 +34,12 @@ POWER_APPLIANCE_TYPES = {3, 5}
 POWER_ON = "device_state_on"
 POWER_OFF = "device_state_off"
 
+# AUTO mode support for Arcelik ADE 607-2 cooker hood.
+HOOD_AUTO_MODEL = "7704331217"
+HOOD_AUTO_APPLIANCE_TYPE = 8
+HOOD_AUTO_INDEX = 44
+HOOD_AUTO_KEY = "hood_auto_mode"
+
 
 def allowed_transitions(states: ApplianceState) -> dict[str, set[str]]:
     """Map each device state to the states it may change to, named as in the select."""
@@ -99,84 +105,24 @@ class HomeWhizSwitchEntity(HomeWhizEntity, SwitchEntity):
         await self.coordinator.send_command(self._control.set_value(False))
 
 
+class HoodAutoSwitchEntity(HomeWhizSwitchEntity):
+    """Activate AUTO mode on the supported cooker hood.
+
+    Writing 0 to deactivate AUTO has not been verified on the physical device,
+    so this entity deliberately exposes only the activation command.
+    """
+
+    _attr_icon = "mdi:fan-auto"
+
+    async def async_turn_off(self, **kwargs: Any) -> None:
+        raise HomeAssistantError(
+            "AUTO deactivation has not been verified for this cooker hood."
+        )
+
+
 class PowerSwitch(HomeWhizEntity, SwitchEntity):
     """Switch the appliance on or off with the command of its state select."""
 
     def __init__(
         self,
         coordinator: HomewhizCoordinator,
-        device_name: str,
-        data: EntryData,
-        state: WriteEnumControl,
-        remote: BooleanCompareControl,
-        states: ApplianceState,
-    ) -> None:
-        super().__init__(coordinator, device_name, POWER_KEY, data)
-        # The base class uses a translation placeholder as its device class.
-        self._attr_device_class = None
-        self._state_control = state
-        self._remote_control = remote
-        self._allowed = allowed_transitions(states)
-
-    def _current_state(self) -> str | None:
-        packet = self.coordinator.data
-        if packet is None or len(packet) <= self._state_control.read_index:
-            return None
-        return self._state_control.get_value(packet)
-
-    @property
-    def is_on(self) -> bool | None:  # type: ignore[override]
-        state = self._current_state()
-        return None if state is None else state != POWER_OFF
-
-    @property
-    def available(self) -> bool:
-        """Require remote control and the one transition that flips the power."""
-        packet = self.coordinator.data
-        state = self._current_state()
-        if not self.coordinator.is_connected or packet is None or state is None:
-            return False
-        if len(packet) <= self._remote_control.read_index:
-            return False
-        if not self._remote_control.get_value(packet):
-            return False
-        target = POWER_ON if state == POWER_OFF else POWER_OFF
-        return target in self._allowed.get(state, set())
-
-    async def async_turn_on(self, **kwargs: Any) -> None:
-        await self._switch_to(POWER_ON)
-
-    async def async_turn_off(self, **kwargs: Any) -> None:
-        await self._switch_to(POWER_OFF)
-
-    async def _switch_to(self, target: str) -> None:
-        state = self._current_state()
-        if state is not None and (state != POWER_OFF) == (target == POWER_ON):
-            return
-        if not self.available:
-            raise HomeAssistantError(
-                "This action is not available in the current device state"
-            )
-        await self.coordinator.send_command(self._state_control.set_value(target))
-
-
-async def async_setup_entry(
-    hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
-) -> None:
-    data = build_entry_data(entry)
-    coordinator = hass.data[DOMAIN][entry.entry_id]
-    controls = generate_controls_from_config(entry.entry_id, data.contents.config)
-    write_enum_controls = [c for c in controls if isinstance(c, WriteBooleanControl)]
-    _LOGGER.debug("Switches: %s", [c.key for c in write_enum_controls])
-    entities: list[SwitchEntity] = [
-        HomeWhizSwitchEntity(coordinator, control, entry.title, data)
-        for control in write_enum_controls
-    ]
-    found = find_state_controls(entry.entry_id, data)
-    if found is not None:
-        state, remote, states = found
-        if POWER_ON in state.options.inverse and POWER_OFF in state.options.inverse:
-            entities.append(
-                PowerSwitch(coordinator, entry.title, data, state, remote, states)
-            )
-    async_add_entities(entities)
