@@ -106,18 +106,9 @@ class HomeWhizSwitchEntity(HomeWhizEntity, SwitchEntity):
 
 
 class HoodAutoSwitchEntity(HomeWhizSwitchEntity):
-    """Activate AUTO mode on the supported cooker hood.
-
-    Writing 0 to deactivate AUTO has not been verified on the physical device,
-    so this entity deliberately exposes only the activation command.
-    """
+    """Control AUTO mode on the supported cooker hood."""
 
     _attr_icon = "mdi:fan-auto"
-
-    async def async_turn_off(self, **kwargs: Any) -> None:
-        raise HomeAssistantError(
-            "AUTO deactivation has not been verified for this cooker hood."
-        )
 
 
 class PowerSwitch(HomeWhizEntity, SwitchEntity):
@@ -126,3 +117,12 @@ class PowerSwitch(HomeWhizEntity, SwitchEntity):
     def __init__(
         self,
         coordinator: HomewhizCoordinator,
+        device_name: str,
+        data: EntryData,
+        state: WriteEnumControl,
+        remote: BooleanCompareControl,
+        states: ApplianceState,
+    ) -> None:
+        super().__init__(coordinator, device_name, POWER_KEY, data)
+        # The base class uses a translation placeholder as its device class.
+        self._attr_device_class = None
