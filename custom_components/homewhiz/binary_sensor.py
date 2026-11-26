@@ -7,6 +7,7 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from custom_components.homewhiz import DOMAIN
 from custom_components.homewhiz.appliance_controls import (
+    BooleanCompareControl,
     BooleanControl,
     WriteBooleanControl,
     generate_controls_from_config,
@@ -48,6 +49,22 @@ async def async_setup_entry(
         for c in controls
         if isinstance(c, BooleanControl) and not isinstance(c, WriteBooleanControl)
     ]
+
+    # AUTO mode status for Arcelik ADE 607-2 cooker hood.
+    info = data.appliance_info
+    if (
+        info is not None
+        and info.model == "7704331217"
+        and info.applianceType == 8
+    ):
+        boolean_controls.append(
+            BooleanCompareControl(
+                key="hood_auto_mode",
+                read_index=44,
+                compare_value=1,
+            )
+        )
+
     _LOGGER.debug("Binary sensors: %s", [c.key for c in boolean_controls])
     async_add_entities(
         [
